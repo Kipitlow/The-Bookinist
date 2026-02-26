@@ -68,7 +68,7 @@ public class CameraMovement : MonoBehaviour
         float scroll = scrollZoom.action.ReadValue<float>();
         if (Mathf.Abs(scroll) > 0.01f)
         {
-            ApplyZoom(scroll * 20);
+            ApplyZoom(scroll * 200);
             return;
         }
 
