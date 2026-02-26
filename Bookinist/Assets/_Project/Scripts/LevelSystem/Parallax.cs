@@ -23,7 +23,6 @@ public class Parallax : MonoBehaviour
         // Camera movement delta
         Vector3 delta = cameraTransform.position - cameraStart;
 
-        // Apply parallax ONLY on X/Y, keep Z fixed
         transform.position = new Vector3(
             initialPosition.x + delta.x * parallaxFactor,
             initialPosition.y + delta.y * parallaxFactor,
