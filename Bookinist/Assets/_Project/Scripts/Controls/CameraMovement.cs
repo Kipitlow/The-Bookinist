@@ -5,18 +5,32 @@ using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class CameraMovement : MonoBehaviour
 {
+    [Header("Debug")]
+    [SerializeField] RayCastDebugger raycastDebugger;
+    
     [Header("Drag")]
-    [SerializeField] private InputActionReference dragDelta;
-    [SerializeField] private InputActionReference dragPress;
-    [SerializeField] private float dragSpeed = 0.01f;
+    [SerializeField] InputActionReference dragDelta;
+    [SerializeField] InputActionReference dragPress;
+    [SerializeField] float dragSpeed = 0.01f;
+
+    [Header("Tap")]
+    [SerializeField] float tapMaxTime = 0.25f;
+    [SerializeField] float tapMaxMovement = 10f;
+    [SerializeField] LayerMask tapMask;
+    [SerializeField] float tapRange = 100f;
 
     [Header("Zoom")]
-    [SerializeField] private InputActionReference scrollZoom;
-    [SerializeField] private float zoomSpeed = 0.02f;
-    [SerializeField] private float minZ;
-    [SerializeField] private float maxZ;
+    [SerializeField] InputActionReference scrollZoom;
+    [SerializeField] float zoomSpeed = 0.02f;
+    [SerializeField] float minZ;
+    [SerializeField] float maxZ;
 
-    private float previousPinchDistance;
+    float previousPinchDistance;
+
+    bool isPressing;
+    bool isDragging;
+    float pressStartTime;
+    Vector2 pressStartPosition;
 
     void OnEnable()
     {
@@ -41,30 +55,63 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        HandleDrag();
+        HandleTapAndDrag();
         HandleZoom();
     }
 
-    void HandleDrag()
+    void HandleTapAndDrag()
     {
-        // Only allow drag with ONE finger or mouse
-        if (!dragPress.action.IsPressed() || Touch.activeTouches.Count > 1)
-        {
+        if (Touch.activeTouches.Count > 1)
             return;
+
+        bool pressed = dragPress.action.IsPressed();
+
+        if (pressed && !isPressing)
+        {
+            isPressing = true;
+            isDragging = false;
+            pressStartTime = Time.time;
+            pressStartPosition = GetPointerPosition();
         }
 
-        Vector2 delta = dragDelta.action.ReadValue<Vector2>();
+        if (pressed && isPressing)
+        {
+            Vector2 delta = dragDelta.action.ReadValue<Vector2>();
 
-        transform.position += new Vector3(
-            -delta.x * dragSpeed,
-            -delta.y * dragSpeed,
-            0f
-        );
+            if (!isDragging && delta.magnitude > tapMaxMovement)
+            {
+                isDragging = true;
+            }
+
+            if (isDragging)
+            {
+                transform.position += new Vector3(
+                    -delta.x * dragSpeed,
+                    -delta.y * dragSpeed,
+                    0f
+                );
+            }
+        }
+
+        // Press released
+        if (!pressed && isPressing)
+        {
+            float pressDuration = Time.time - pressStartTime;
+            float movement = Vector2.Distance(pressStartPosition, GetPointerPosition());
+
+            if (!isDragging && pressDuration <= tapMaxTime && movement <= tapMaxMovement)
+            {
+                OnTap(pressStartPosition);
+            }
+
+            isPressing = false;
+            isDragging = false;
+        }
     }
 
     void HandleZoom()
     {
-        // Mouse scroll
+        // Scroll pour debug sur PC
         float scroll = scrollZoom.action.ReadValue<float>();
         if (Mathf.Abs(scroll) > 0.01f)
         {
@@ -72,7 +119,7 @@ public class CameraMovement : MonoBehaviour
             return;
         }
 
-        // Touch pinch
+        // Scroll mobile
         if (Touch.activeTouches.Count == 2)
         {
             Touch t0 = Touch.activeTouches[0];
@@ -100,5 +147,26 @@ public class CameraMovement : MonoBehaviour
         pos.z += delta * zoomSpeed;
         pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
         transform.position = pos;
+    }
+
+    Vector2 GetPointerPosition()
+    {
+        if (Touch.activeTouches.Count > 0)
+            return Touch.activeTouches[0].screenPosition;
+
+        return Mouse.current.position.ReadValue();
+    }
+
+    void OnTap(Vector2 screenPosition)
+    {
+        Camera playerCam = GetComponent<Camera>();
+
+        if (Physics.Raycast(playerCam.ScreenPointToRay(screenPosition), out RaycastHit hit, tapRange, tapMask))
+        {
+            if (hit.collider.TryGetComponent(out IInteractable interactable))
+            {
+                interactable.OnTap(hit.point);
+            }
+        }
     }
 }

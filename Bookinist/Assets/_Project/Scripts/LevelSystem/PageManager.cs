@@ -4,7 +4,7 @@ using UnityEngine;
 public class PageManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> layerHolder;
-    public static int layerSpread = 10;
+    public static int layerSpread = 20;
     public static int maxLayer;
     Transform layerPos;
     int offset = 0;
