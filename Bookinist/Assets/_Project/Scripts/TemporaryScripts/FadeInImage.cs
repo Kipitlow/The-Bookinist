@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class FadeInImage : MonoBehaviour
 {
     [SerializeField] private Image _image;
+    [SerializeField] private Button _button;
+
     [Range(3.0f, 20.0f)]
     [SerializeField] private float _duration = 5.0f;
     [Range(0.0f, 20.0f)]
@@ -17,6 +19,7 @@ public class FadeInImage : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
+        
         Color color = _image.color;
         color.a = 0f;
         _image.color = color;
@@ -25,6 +28,9 @@ public class FadeInImage : MonoBehaviour
             yield return new WaitForSeconds(_startingDelay);
 
         float elapsedTime = 0f;
+
+        if (_button != null)
+            _button.interactable = true;
 
         while (elapsedTime < _duration)
         {
