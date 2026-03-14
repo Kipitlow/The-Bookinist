@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class FurnitureRemplacement : MonoBehaviour
 {
     [SerializeField] GameObject[] _possibleFurniture;
     [SerializeField] int _startFurnitureIndex;
+
+    private GameObject _currentFurniture;
 
     void Start()
     {
@@ -12,6 +14,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     public void ChangeFurniture(int index)
     {
-        Instantiate(_possibleFurniture[index], transform.position, Quaternion.identity);
+        if (_currentFurniture != null) Destroy(_currentFurniture);
+
+        _currentFurniture = Instantiate(_possibleFurniture[index], transform.position, Quaternion.identity);
     }
 }
