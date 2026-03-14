@@ -1,10 +1,12 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FadeInImage : MonoBehaviour
 {
     [SerializeField] private Image _image;
+    [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private Button _button;
 
     [Range(3.0f, 20.0f)]
@@ -14,10 +16,14 @@ public class FadeInImage : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(FadeIn());
+        if (_image != null)
+            StartCoroutine(FadeInImg());
+
+        if (_text != null)
+            StartCoroutine(FadeInTxt());
     }
 
-    private IEnumerator FadeIn()
+    private IEnumerator FadeInImg()
     {
         
         Color color = _image.color;
@@ -44,4 +50,31 @@ public class FadeInImage : MonoBehaviour
         _image.color = color;
     }
 
+    private IEnumerator FadeInTxt()
+    {
+        Color color = _text.color;
+        color.a = 0f;
+        _text.color = color;
+
+        if (_startingDelay > 0f)
+            yield return new WaitForSeconds(_startingDelay);
+
+        float elapsedTime = 0f;
+
+        if (_button != null)
+            _button.interactable = true;
+
+        while (elapsedTime < _duration)
+        {
+            elapsedTime += Time.deltaTime;
+            color.a = Mathf.Clamp01(elapsedTime / _duration);
+            _text.color = color;
+            yield return null;
+        }
+
+        color.a = 1f;
+        _text.color = color;
+    }
 }
+
+
