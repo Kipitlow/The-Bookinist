@@ -5,43 +5,50 @@ using UnityEngine.UI;
 
 public class FadeInImage : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField] private Image _image;
-    [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private TextMeshProUGUI[] _texts;
     [SerializeField] private Button _button;
 
-    [Range(3.0f, 20.0f)]
-    [SerializeField] private float _duration = 5.0f;
-    [Range(0.0f, 20.0f)]
-    [SerializeField] private float _startingDelay = 0.0f;
+    [Header("Timing")]
+    [SerializeField, Range(3f, 20f)] private float _duration = 5f;
+    [SerializeField, Range(0f, 20f)] private float _startingDelay = 0f;
 
-    void Start()
+    private void Start()
     {
-        if (_image != null)
-            StartCoroutine(FadeInImg());
+        bool firstCustomerEncounter = GameManager.Instance._isFirstCustomerEncounter;
 
-        if (_text != null)
-            StartCoroutine(FadeInTxt());
+        if (_image != null)
+            StartCoroutine(FadeImage());
+
+        if (_texts == null || _texts.Length == 0)
+            return;
+
+        int textIndex = firstCustomerEncounter ? 1 : 0;
+
+        if (firstCustomerEncounter && _texts.Length > 0)
+            _texts[0].gameObject.SetActive(false);
+
+        StartCoroutine(FadeText(_texts[textIndex]));
     }
 
-    private IEnumerator FadeInImg()
+    private IEnumerator FadeImage()
     {
-        
-        Color color = _image.color;
-        color.a = 0f;
-        _image.color = color;
-
-        if (_startingDelay > 0f)
-            yield return new WaitForSeconds(_startingDelay);
-
-        float elapsedTime = 0f;
+        yield return new WaitForSeconds(_startingDelay);
 
         if (_button != null)
             _button.interactable = true;
 
-        while (elapsedTime < _duration)
+        Color color = _image.color;
+        color.a = 0f;
+        _image.color = color;
+
+        float elapsed = 0f;
+
+        while (elapsed < _duration)
         {
-            elapsedTime += Time.deltaTime;
-            color.a = Mathf.Clamp01(elapsedTime / _duration);
+            elapsed += Time.deltaTime;
+            color.a = Mathf.Clamp01(elapsed / _duration);
             _image.color = color;
             yield return null;
         }
@@ -50,31 +57,30 @@ public class FadeInImage : MonoBehaviour
         _image.color = color;
     }
 
-    private IEnumerator FadeInTxt()
+    private IEnumerator FadeText(TextMeshProUGUI text)
     {
-        Color color = _text.color;
-        color.a = 0f;
-        _text.color = color;
-
-        if (_startingDelay > 0f)
-            yield return new WaitForSeconds(_startingDelay);
-
-        float elapsedTime = 0f;
+        yield return new WaitForSeconds(_startingDelay);
 
         if (_button != null)
             _button.interactable = true;
 
-        while (elapsedTime < _duration)
+        text.gameObject.SetActive(true);
+
+        Color color = text.color;
+        color.a = 0f;
+        text.color = color;
+
+        float elapsed = 0f;
+
+        while (elapsed < _duration)
         {
-            elapsedTime += Time.deltaTime;
-            color.a = Mathf.Clamp01(elapsedTime / _duration);
-            _text.color = color;
+            elapsed += Time.deltaTime;
+            color.a = Mathf.Clamp01(elapsed / _duration);
+            text.color = color;
             yield return null;
         }
 
         color.a = 1f;
-        _text.color = color;
+        text.color = color;
     }
 }
-
-
