@@ -11,7 +11,7 @@ public class InventoryModel : MonoBehaviour
     [SerializeField] private GameObject _slotPrefab;
     [SerializeField] private Transform _slotContainer;
 
-    public event Action OnInventoryChanged;
+    //public event Action OnInventoryChanged;
 
     public int MaxSlots => _maxSlots;
     public Dictionary<GameObject, SlotData> Slots => _slots;
