@@ -3,27 +3,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-/// <summary>
-/// Optional UI component for the Level Editor.
-/// Generates layer-select buttons and palette buttons at runtime.
-/// Attach to a Canvas GameObject that contains:
-///   - A child Transform assigned to LayerBar   (e.g. with HorizontalLayoutGroup)
-///   - A child Transform assigned to PaletteBar (e.g. with HorizontalLayoutGroup)
-/// </summary>
 public class LevelEditorUI : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private LevelEditor _editor;
-    [SerializeField] private Transform _layerBar;   // parent for layer toggle buttons
-    [SerializeField] private Transform _paletteBar; // parent for prefab buttons
+    [SerializeField] private Transform _layerBar;
+    [SerializeField] private Transform _paletteBar;
 
-    [Header("Button Prefab")]
+    [Header("Button Prefab (must have a Button + TMP_Text child)")]
     [SerializeField] private GameObject _buttonPrefab;
 
-    [Header("Layer Button Labels")]
+    [Header("Layer Button Labels (optional, leave empty for auto-numbering)")]
     [SerializeField] private List<string> _layerLabels = new();
 
-    [Header("Palette Button Sprites")]
+    [Header("Palette Button Sprites (one per prefab, optional)")]
     [SerializeField] private List<Sprite> _paletteIcons = new();
 
     private static readonly Color ActiveColor = new(0.2f, 0.8f, 1f);
@@ -32,9 +25,9 @@ public class LevelEditorUI : MonoBehaviour
     private readonly List<Button> _layerButtons = new();
     private readonly List<Button> _paletteButtons = new();
 
-    // 
+    // ──────────────────────────────────────────────────────────
     //  Unity lifecycle
-    // 
+    // ──────────────────────────────────────────────────────────
 
     private void Start()
     {
@@ -43,13 +36,13 @@ public class LevelEditorUI : MonoBehaviour
         RefreshHighlight();
     }
 
-    // 
+    // ──────────────────────────────────────────────────────────
     //  Build buttons
-    // 
+    // ──────────────────────────────────────────────────────────
 
     private void BuildLayerButtons()
     {
-        if (_layerBar == null || _buttonPrefab == null || _editor == null) return;
+        if (_layerBar == null || _editor == null) return;
 
         for (int i = 0; i < _editor.LayerCount; i++)
         {
@@ -63,18 +56,20 @@ public class LevelEditorUI : MonoBehaviour
             SetButtonLabel(btn, label);
 
             Button b = btn.GetComponent<Button>();
-            b.onClick.AddListener(() =>
+            if (b == null)
             {
-                _editor.SetActiveLayer(captured);
-                RefreshHighlight();
-            });
+                Debug.LogError("[LevelEditorUI] Le _buttonPrefab n'a pas de composant Button à sa racine !", btn);
+                continue;
+            }
+            b.onClick.AddListener(() => { _editor.SetActiveLayer(captured); RefreshHighlight(); });
             _layerButtons.Add(b);
         }
+
     }
 
     private void BuildPaletteButtons()
     {
-        if (_paletteBar == null || _buttonPrefab == null || _editor == null) return;
+        if (_paletteBar == null || _editor == null) return;
 
         for (int i = 0; i < _editor.PaletteCount; i++)
         {
@@ -83,8 +78,11 @@ public class LevelEditorUI : MonoBehaviour
 
             if (i < _paletteIcons.Count && _paletteIcons[i] != null)
             {
-                Image img = btn.GetComponentInChildren<Image>();
-                if (img != null) img.sprite = _paletteIcons[i];
+                // Cherche une Image qui N'EST PAS celle du bouton lui-même (fond)
+                Image[] imgs = btn.GetComponentsInChildren<Image>();
+                // On prend la dernière Image trouvée (souvent l'icône, pas le fond)
+                Image icon = imgs.Length > 1 ? imgs[imgs.Length - 1] : (imgs.Length > 0 ? imgs[0] : null);
+                if (icon != null) icon.sprite = _paletteIcons[i];
             }
             else
             {
@@ -92,18 +90,20 @@ public class LevelEditorUI : MonoBehaviour
             }
 
             Button b = btn.GetComponent<Button>();
-            b.onClick.AddListener(() =>
+            if (b == null)
             {
-                _editor.SetSelectedPrefab(captured);
-                RefreshHighlight();
-            });
+                Debug.LogError("[LevelEditorUI] Le _buttonPrefab n'a pas de composant Button à sa racine !", btn);
+                continue;
+            }
+            b.onClick.AddListener(() => { _editor.SetSelectedPrefab(captured); RefreshHighlight(); });
             _paletteButtons.Add(b);
         }
+
     }
 
-    // 
+    // ──────────────────────────────────────────────────────────
     //  Highlight active buttons
-    // 
+    // ──────────────────────────────────────────────────────────
 
     private void RefreshHighlight()
     {
@@ -123,18 +123,14 @@ public class LevelEditorUI : MonoBehaviour
         btn.colors = cb;
     }
 
-    // 
+    // ──────────────────────────────────────────────────────────
     //  Helpers
-    // 
+    // ──────────────────────────────────────────────────────────
 
     private static void SetButtonLabel(GameObject btn, string text)
     {
         TMP_Text tmp = btn.GetComponentInChildren<TMP_Text>();
-        if (tmp != null)
-        {
-            tmp.text = text;
-            return;
-        }
+        if (tmp != null) { tmp.text = text; return; }
         Text legacy = btn.GetComponentInChildren<Text>();
         if (legacy != null) legacy.text = text;
     }

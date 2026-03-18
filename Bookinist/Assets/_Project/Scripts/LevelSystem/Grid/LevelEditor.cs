@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class LevelEditor : MonoBehaviour
 {
-    [Header("Layers (front to back)")]
+    [Header("Layers (ordered front → back, matching your Page setup)")]
     [SerializeField] private List<LayerGrid> _layers = new();
 
     [Header("Prefab Palette")]
@@ -18,12 +18,16 @@ public class LevelEditor : MonoBehaviour
     [Header("Ghost Preview")]
     [SerializeField] private float _ghostAlpha = 0.5f;
 
-    //  Runtime state 
+    // Nom du Sorting Layer dédié au ghost — doit exister dans Project Settings
+    // et être placé tout en haut de la liste (= rendu en premier plan absolu)
+    private const string GhostSortingLayer = "Editor_Ghost";
+
+    // ── Runtime state ─────────────────────────────────────────
     private GameObject _ghost;       // preview object following the mouse
     private Vector2Int? _ghostCell;   // current snapped cell (null = outside grid)
     private Camera _cam;
 
-    //  Cached input actions 
+    // ── Cached input actions ──────────────────────────────────
     private InputAction _placementAction;
     private InputAction _eraseAction;
     private InputAction _scrollAction;
@@ -31,7 +35,7 @@ public class LevelEditor : MonoBehaviour
     private InputAction _prevPrefabAction;
     private InputAction _mousePositionAction;
 
-    //  Properties 
+    // ── Properties ────────────────────────────────────────────
     public LayerGrid ActiveLayer =>
         (_layers != null && _activeLayerIndex >= 0 && _activeLayerIndex < _layers.Count)
             ? _layers[_activeLayerIndex]
@@ -47,9 +51,9 @@ public class LevelEditor : MonoBehaviour
     public int PaletteCount => _palette.Count;
     public int SelectedPaletteIndex => _selectedPaletteIndex;
 
-    // 
+    // ──────────────────────────────────────────────────────────
     //  Unity lifecycle
-    // 
+    // ──────────────────────────────────────────────────────────
 
     private void Awake()
     {
@@ -87,9 +91,9 @@ public class LevelEditor : MonoBehaviour
         HandleLayerSwitch();
     }
 
-    // 
+    // ──────────────────────────────────────────────────────────
     //  Input Actions – setup
-    // 
+    // ──────────────────────────────────────────────────────────
 
     private void CreateInputActions()
     {
@@ -162,9 +166,9 @@ public class LevelEditor : MonoBehaviour
         _mousePositionAction?.Dispose();
     }
 
-    // 
+    // ──────────────────────────────────────────────────────────
     //  Input callbacks
-    // 
+    // ──────────────────────────────────────────────────────────
 
     private void OnPlace(InputAction.CallbackContext ctx)
     {
@@ -188,9 +192,9 @@ public class LevelEditor : MonoBehaviour
     private void OnPrevPrefab(InputAction.CallbackContext ctx)
         => SetSelectedPrefab((_selectedPaletteIndex - 1 + _palette.Count) % Mathf.Max(1, _palette.Count));
 
-    // 
+    // ──────────────────────────────────────────────────────────
     //  Per-frame input (scroll + number keys)
-    // 
+    // ──────────────────────────────────────────────────────────
 
     private void HandleLayerSwitch()
     {
@@ -222,14 +226,23 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
-    // 
+    // ──────────────────────────────────────────────────────────
     //  Ghost (preview) management
-    // 
+    // ──────────────────────────────────────────────────────────
 
     private void SpawnGhost()
     {
         DestroyGhost();
         if (SelectedPrefab == null) return;
+
+        // Vérifie que le Sorting Layer dédié existe
+        bool layerExists = false;
+        foreach (var sl in SortingLayer.layers)
+            if (sl.name == GhostSortingLayer) { layerExists = true; break; }
+        if (!layerExists)
+            Debug.LogError($"[LevelEditor] Le Sorting Layer " + GhostSortingLayer + " n'existe pas. " +
+                           "Crée-le dans Edit → Project Settings → Tags and Layers " +
+                           "et place-le tout en haut de la liste.", this);
 
         _ghost = Instantiate(SelectedPrefab);
         SetupGhostRenderers(_ghost);
@@ -304,15 +317,20 @@ public class LevelEditor : MonoBehaviour
     {
         foreach (var sr in ghost.GetComponentsInChildren<SpriteRenderer>())
         {
+            // Transparence
             Color c = sr.color;
             c.a = _ghostAlpha;
             sr.color = c;
+
+            // Toujours au premier plan
+            sr.sortingLayerName = GhostSortingLayer;
+            sr.sortingOrder = 0;
         }
     }
 
-    // 
+    // ──────────────────────────────────────────────────────────
     //  Raycasting onto a layer's XY plane
-    // 
+    // ──────────────────────────────────────────────────────────
 
     /// <summary>
     /// Intersects the mouse ray with the XY plane of the given layer.
@@ -340,9 +358,9 @@ public class LevelEditor : MonoBehaviour
         return ray.origin + ray.direction * t;
     }
 
-    // 
+    // ──────────────────────────────────────────────────────────
     //  Public API (callable from UI buttons, etc.)
-    // 
+    // ──────────────────────────────────────────────────────────
 
     public void SetActiveLayer(int index)
     {
@@ -375,9 +393,9 @@ public class LevelEditor : MonoBehaviour
         _activeLayerIndex = Mathf.Clamp(_activeLayerIndex, 0, Mathf.Max(0, _layers.Count - 1));
     }
 
-    // 
+    // ──────────────────────────────────────────────────────────
     //  Debug Gizmos
-    // 
+    // ──────────────────────────────────────────────────────────
 
     private void OnDrawGizmos()
     {

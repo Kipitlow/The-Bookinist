@@ -7,11 +7,11 @@ public class LayerGrid : MonoBehaviour
     [SerializeField] private int _columns = 10;
     [SerializeField] private int _rows = 6;
 
-    [Header("Cell Size")]
+    [Header("Cell Size (world units)")]
     [SerializeField] private float _cellWidth = 1f;
     [SerializeField] private float _cellHeight = 1f;
 
-    [Header("Grid Origin")]
+    [Header("Grid Origin (bottom-left corner, local space)")]
     [SerializeField] private Vector2 _gridOrigin = Vector2.zero;
 
     [Header("Visuals")]
@@ -22,7 +22,9 @@ public class LayerGrid : MonoBehaviour
     // Maps grid coordinate → placed GameObject
     private Dictionary<Vector2Int, GameObject> _placedObjects = new();
 
+    // ──────────────────────────────────────────────────────────
     //  Public API
+    // ──────────────────────────────────────────────────────────
 
     public int Columns => _columns;
     public int Rows => _rows;
@@ -92,6 +94,12 @@ public class LayerGrid : MonoBehaviour
 
         Vector3 pos = CellToWorld(cell);
         GameObject obj = Instantiate(prefab, pos, Quaternion.identity, transform);
+
+        // Attache et initialise PlacedObject pour gérer le sortingOrder automatiquement
+        PlacedObject po = obj.GetComponent<PlacedObject>();
+        if (po == null) po = obj.AddComponent<PlacedObject>();
+        po.Init(cell, this);
+
         _placedObjects[cell] = obj;
         return obj;
     }
@@ -120,7 +128,9 @@ public class LayerGrid : MonoBehaviour
         _placedObjects.Clear();
     }
 
+    // ──────────────────────────────────────────────────────────
     //  Editor Gizmos
+    // ──────────────────────────────────────────────────────────
 
     private void OnDrawGizmos()
     {
