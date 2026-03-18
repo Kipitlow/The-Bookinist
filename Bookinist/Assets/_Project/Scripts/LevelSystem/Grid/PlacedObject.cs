@@ -6,6 +6,12 @@ public class PlacedObject : MonoBehaviour
     public Vector2Int Cell { get; private set; }
     public LayerGrid OwnerGrid { get; private set; }
 
+    /// <summary>
+    /// Référence au prefab source stockée au moment du placement.
+    /// Nécessaire pour la sauvegarde car PrefabUtility ne fonctionne pas en Play Mode.
+    /// </summary>
+    public GameObject SourcePrefab { get; private set; }
+
     // ── Contrôle manuel ───────────────────────────────────────
     [Header("Sorting Override")]
     [Tooltip("Décale le sortingOrder calculé automatiquement. " +
@@ -22,15 +28,16 @@ public class PlacedObject : MonoBehaviour
     //  Init
     // ──────────────────────────────────────────────────────────
 
-    public void Init(Vector2Int cell, LayerGrid ownerGrid)
+    public void Init(Vector2Int cell, LayerGrid ownerGrid, GameObject sourcePrefab)
     {
         Cell = cell;
         OwnerGrid = ownerGrid;
+        SourcePrefab = sourcePrefab;
         ApplySorting();
     }
 
     // ──────────────────────────────────────────────────────────
-    //  Calcul et application
+    //  Sorting
     // ──────────────────────────────────────────────────────────
 
     public void ApplySorting()

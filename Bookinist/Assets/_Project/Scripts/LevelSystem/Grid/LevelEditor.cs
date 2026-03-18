@@ -18,7 +18,7 @@ public class LevelEditor : MonoBehaviour
     [Header("Ghost Preview")]
     [SerializeField] private float _ghostAlpha = 0.5f;
 
-    // Nom du Sorting Layer dédié au ghost — doit exister dans Project Settings
+    // Nom du Sorting Layer dédié au ghost - doit exister dans Project Settings
     // et être placé tout en haut de la liste (= rendu en premier plan absolu)
     private const string GhostSortingLayer = "Editor_Ghost";
 
@@ -50,6 +50,7 @@ public class LevelEditor : MonoBehaviour
     public int ActiveLayerIndex => _activeLayerIndex;
     public int PaletteCount => _palette.Count;
     public int SelectedPaletteIndex => _selectedPaletteIndex;
+    public List<LayerGrid> Layers => _layers;
 
     // ──────────────────────────────────────────────────────────
     //  Unity lifecycle
@@ -240,7 +241,8 @@ public class LevelEditor : MonoBehaviour
         foreach (var sl in SortingLayer.layers)
             if (sl.name == GhostSortingLayer) { layerExists = true; break; }
         if (!layerExists)
-            Debug.LogError($"[LevelEditor] Le Sorting Layer " + GhostSortingLayer + " n'existe pas. " +
+            Debug.LogError($"[LevelEditor] Le Sorting Layer " + GhostSortingLayer +
+        " n'existe pas. " +
                            "Crée-le dans Edit → Project Settings → Tags and Layers " +
                            "et place-le tout en haut de la liste.", this);
 

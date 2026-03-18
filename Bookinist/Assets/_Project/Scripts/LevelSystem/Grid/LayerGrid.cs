@@ -95,10 +95,11 @@ public class LayerGrid : MonoBehaviour
         Vector3 pos = CellToWorld(cell);
         GameObject obj = Instantiate(prefab, pos, Quaternion.identity, transform);
 
-        // Attache et initialise PlacedObject pour gérer le sortingOrder automatiquement
+        // Attache et initialise PlacedObject pour gérer le sortingOrder automatiquement.
+        // On passe le prefab source ici pendant qu'on y a encore accès directement.
         PlacedObject po = obj.GetComponent<PlacedObject>();
         if (po == null) po = obj.AddComponent<PlacedObject>();
-        po.Init(cell, this);
+        po.Init(cell, this, prefab);
 
         _placedObjects[cell] = obj;
         return obj;
@@ -119,6 +120,13 @@ public class LayerGrid : MonoBehaviour
         _placedObjects.TryGetValue(cell, out GameObject obj);
         return obj;
     }
+
+    /// <summary>
+    /// Retourne une copie en lecture seule du dictionnaire des objets placés.
+    /// Utilisé par LevelEditorSaver pour sérialiser l'état de la grille.
+    /// </summary>
+    public IReadOnlyDictionary<Vector2Int, GameObject> GetPlacedObjects()
+        => _placedObjects;
 
     /// <summary>Remove all placed objects on this layer.</summary>
     public void ClearAll()
