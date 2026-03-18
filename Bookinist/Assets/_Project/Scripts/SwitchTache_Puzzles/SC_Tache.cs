@@ -9,7 +9,12 @@ using System.Runtime.CompilerServices; // Permet d'utiliser une Coroutine
 public class Tache_Layourt
 {
     [Header("Inscription Tache")]
-    [SerializeField] public string[] Objectif;
+    public string[] Objectif;
+
+    public string GetObjectif()
+    {
+        return Objectif[0];
+    }
 }
 
 public class SC_Tache : MonoBehaviour
@@ -29,12 +34,14 @@ public class SC_Tache : MonoBehaviour
     {
         if(CM_Player==null)CM_Player = GameObject.Find("CameraManager").GetComponent<Camera>();
         StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
+        UpdateQuestText();
     }
+
     void Update()
     {
         //Ce code consiste a vêrifier le layeur du joueur en fonction de sa position axe z.
         //Text_Objectif.text = $"Layeur: {Mathf.Round(CM_Player.transform.position.z / 20)}";
-        if(CM_Player != null&& Text_Objectif != null && WaitCondition != (int)Mathf.Round(CM_Player.transform.position.z)+1)
+        if(CM_Player != null && Text_Objectif != null && WaitCondition != (int)Mathf.Round(CM_Player.transform.position.z)+1)
         {
             WaitCondition = (int)Mathf.Round(CM_Player.transform.position.z / 20)+1;
             string Message = "";
@@ -68,7 +75,7 @@ public class SC_Tache : MonoBehaviour
         if(totalSeconds-1 >=1)
         {
             totalSeconds-=1;
-            Text_Chronom.text = $"Time: {totalSeconds / 60}:{totalSeconds % 60}s";
+            Text_Chronom.text = $"{totalSeconds / 60}:{totalSeconds % 60}";
             
             yield return new WaitForSeconds(1);
             StartCoroutine("Chronometre");
@@ -77,5 +84,10 @@ public class SC_Tache : MonoBehaviour
         {
             StopCoroutine("Chronometre");
         }
+    }
+
+    private void UpdateQuestText()
+    {
+        Text_Objectif.text = Tache_Dans_Ce_Layeur[0].GetObjectif();
     }
 }
