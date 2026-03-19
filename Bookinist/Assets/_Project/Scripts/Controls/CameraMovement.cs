@@ -35,7 +35,7 @@ public class CameraMovement : MonoBehaviour
     bool isDragging;
     float pressStartTime;
     Vector2 pressStartPosition;
-    int currentIndexSnapPoint = 0;
+    int currentIndexSnapPoint = 1;
 
     void OnEnable()
     {
