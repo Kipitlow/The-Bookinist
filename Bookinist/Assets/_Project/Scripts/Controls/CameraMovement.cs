@@ -21,9 +21,13 @@ public class CameraMovement : MonoBehaviour
 
     [Header("Zoom")]
     [SerializeField] InputActionReference scrollZoom;
-    [SerializeField] float zoomSpeed = 0.02f;
     [SerializeField] float minZ;
     [SerializeField] float maxZ;
+
+    [Header("Global Navigation")]
+    [SerializeField] GameObject[] snapPoints;
+    [SerializeField] int SnapPointNumberOnOneLayer = 3;
+
 
     float previousPinchDistance;
 
@@ -31,6 +35,7 @@ public class CameraMovement : MonoBehaviour
     bool isDragging;
     float pressStartTime;
     Vector2 pressStartPosition;
+    int currentIndexSnapPoint = 1;
 
     void OnEnable()
     {
@@ -85,11 +90,11 @@ public class CameraMovement : MonoBehaviour
 
             if (isDragging)
             {
-                transform.position += new Vector3(
-                    -delta.x * dragSpeed,
-                    -delta.y * dragSpeed,
-                    0f
-                );
+                //transform.position += new Vector3(
+                //    -delta.x * dragSpeed,
+                //    -delta.y * dragSpeed,
+                //    0f
+                //);
             }
         }
 
@@ -106,6 +111,21 @@ public class CameraMovement : MonoBehaviour
 
             isPressing = false;
             isDragging = false;
+
+            if (GetPointerPosition().x < pressStartPosition.x)
+            {
+                currentIndexSnapPoint++;
+
+                if (currentIndexSnapPoint > snapPoints.Length - 1) currentIndexSnapPoint = snapPoints.Length - 1;
+            }
+            else if (GetPointerPosition().x > pressStartPosition.x)
+            {
+                currentIndexSnapPoint--;
+
+                if (currentIndexSnapPoint < 0) currentIndexSnapPoint = 0;
+            }
+
+            transform.position = snapPoints[currentIndexSnapPoint].transform.position;
         }
     }
 
@@ -143,10 +163,25 @@ public class CameraMovement : MonoBehaviour
 
     void ApplyZoom(float delta)
     {
-        Vector3 pos = transform.position;
-        pos.z += delta * zoomSpeed;
-        pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
-        transform.position = pos;
+        //Vector3 pos = transform.position;
+        ////pos.z += delta * zoomSpeed;
+        //pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
+        //transform.position = pos;
+        if (delta < 0)
+        {
+            currentIndexSnapPoint -= SnapPointNumberOnOneLayer;
+
+            if (currentIndexSnapPoint < 0) currentIndexSnapPoint = 0;
+        }
+        else if (delta > 0)
+        {
+            currentIndexSnapPoint += SnapPointNumberOnOneLayer;
+        
+            if (currentIndexSnapPoint > snapPoints.Length - 1) currentIndexSnapPoint -= SnapPointNumberOnOneLayer;
+        }
+
+        transform.position = snapPoints[currentIndexSnapPoint].transform.position;
+
     }
 
     Vector2 GetPointerPosition()
