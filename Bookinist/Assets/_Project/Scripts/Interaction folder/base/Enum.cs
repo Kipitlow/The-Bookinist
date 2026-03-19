@@ -8,5 +8,6 @@ public enum ConditionType
 public enum ActionType
 {
     SetActive,
-    Open
+    Open,
+    Print
 }

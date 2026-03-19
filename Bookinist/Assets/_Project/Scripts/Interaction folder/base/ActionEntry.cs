@@ -18,4 +18,7 @@ public class ActionEntry
 
     [Tooltip("the door you want to open")]
     public OpenDoor openDoor;
+
+    public PrintText printText;
+    public string text;
 }

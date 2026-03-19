@@ -20,6 +20,10 @@ public class ActionEntryDrawer : PropertyDrawer
             case ActionType.Open:
                 lines += 2;
                 break;
+
+            case ActionType.Print:
+                lines += 2;
+                break;
         }
 
         return lines * (EditorGUIUtility.singleLineHeight + 2f);
@@ -54,6 +58,12 @@ public class ActionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("otherObject"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("openDoor"));
+                break;
+
+            case ActionType.Print:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("printText"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("text"));
                 break;
 
         }

@@ -62,7 +62,7 @@ public class ConditionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("otherObject"));
                 break;
 
-            case ConditionType.Onclic:
+            case ConditionType.OnTouch:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("thisObject"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("otherObject"));

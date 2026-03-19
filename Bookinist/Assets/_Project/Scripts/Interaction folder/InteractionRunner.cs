@@ -52,6 +52,14 @@ public class InteractionRunner : MonoBehaviour
 
                 return condition.zone.Contains(condition.otherObject);
                 ;
+            case ConditionType.OnTouch:
+                if (context == null || !context.isTouchEvent)
+                    return false;
+
+                if (condition.thisObject == null)
+                    return true;
+
+                return context.target == condition.thisObject;
 
             default:
                 return false;
@@ -70,6 +78,11 @@ public class InteractionRunner : MonoBehaviour
             case ActionType.Open:
                 if (action.otherObject != null)
                     action.openDoor.Toggle(action.otherObject);
+                break;
+
+            case ActionType.Print:
+                if (action.printText != null && action.text != null )
+                    action.printText.Print(action.text);
                 break;
         }
     }
