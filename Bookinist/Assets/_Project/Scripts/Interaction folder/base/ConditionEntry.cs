@@ -19,4 +19,6 @@ public class ConditionEntry
     public ZoneDetector zone;
  
     public int layer;
+
+    //public OnTouch touch 
 }

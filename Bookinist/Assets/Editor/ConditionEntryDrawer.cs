@@ -21,8 +21,8 @@ public class ConditionEntryDrawer : PropertyDrawer
                 lines += 3;
                 break;
 
-            case ConditionType.Onclic:
-                lines += 2;
+            case ConditionType.OnTouch:
+                lines += 1;
                 break;
         }
 

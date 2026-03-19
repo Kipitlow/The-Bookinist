@@ -2,7 +2,7 @@ public enum ConditionType
 {
     SameLayer,
     SameZone,
-    Onclic
+    OnTouch
 }
 
 public enum ActionType
