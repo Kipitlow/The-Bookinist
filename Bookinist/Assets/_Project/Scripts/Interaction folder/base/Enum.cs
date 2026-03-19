@@ -1,7 +1,8 @@
 public enum ConditionType
 {
     SameLayer,
-    SameZone
+    SameZone,
+    Onclic
 }
 
 public enum ActionType
