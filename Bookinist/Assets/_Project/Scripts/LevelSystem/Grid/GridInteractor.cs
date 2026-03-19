@@ -132,6 +132,7 @@ public class GridInteractor : MonoBehaviour
         }
 
         // Feedback visuel
+        // Debugging et test rapide — à désactiver
         StartCoroutine(FlashObject(obj));
 
         // Notifie tous les abonnés
