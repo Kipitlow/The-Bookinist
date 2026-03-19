@@ -42,7 +42,7 @@ public class LayerGrid : MonoBehaviour
         else
         {
             Debug.LogWarning($"[LayerGrid] Aucun LevelData assigné sur {gameObject.name} " +
-                             "— rien à charger.", this);
+                             "- rien à charger.", this);
         }
     }
 
@@ -146,7 +146,7 @@ public class LayerGrid : MonoBehaviour
     }
 
     /// <summary>
-    /// Charge un LevelData dans cette grille — efface l'état actuel et recrée les objets.
+    /// Charge un LevelData dans cette grille - efface l'état actuel et recrée les objets.
     /// Appelé automatiquement au Start si un LevelData est assigné.
     /// </summary>
     public void LoadFromData(LevelData data)

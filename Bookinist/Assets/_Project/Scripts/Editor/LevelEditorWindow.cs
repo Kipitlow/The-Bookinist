@@ -25,7 +25,7 @@ public class LevelEditorWindow : EditorWindow
     private void OnGUI()
     {
         EditorGUILayout.Space(8);
-        EditorGUILayout.LabelField("Level Editor — Save & Load", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("Level Editor - Save & Load", EditorStyles.boldLabel);
         EditorGUILayout.Space(4);
 
         // ── Référence au LevelEditor dans la scène ────────────
@@ -172,14 +172,14 @@ public class LevelEditorWindow : EditorWindow
                 if (po == null)
                 {
                     Debug.LogWarning($"[LevelEditorWindow] Objet en {kvp.Key} sans composant " +
-                                     "PlacedObject — ignoré.", kvp.Value);
+                                     "PlacedObject - ignoré.", kvp.Value);
                     continue;
                 }
 
                 if (po.SourcePrefab == null)
                 {
                     Debug.LogWarning($"[LevelEditorWindow] Objet en {kvp.Key} sans prefab source " +
-                                     "enregistré — ignoré.", kvp.Value);
+                                     "enregistré - ignoré.", kvp.Value);
                     continue;
                 }
 
