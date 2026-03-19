@@ -42,12 +42,12 @@ public class Page : MonoBehaviour
         if (string.IsNullOrEmpty(_sortingLayerName)) return;
 
         // Vérifie que le Sorting Layer existe bien dans le projet
-        if (!SortingLayerExists(_sortingLayerName))
+        /*if (!SortingLayerExists(_sortingLayerName) && _sortingLayerName!=null)                   <--------------------------------------------------
         {
             Debug.LogError($"[Page] Le Sorting Layer \"{_sortingLayerName}\" n'existe pas. " +
                            $"Crée-le dans Edit → Project Settings → Tags and Layers.", this);
             return;
-        }
+        }*/
 
         for (int i = 0; i < pageObjects.Count; i++)
         {
