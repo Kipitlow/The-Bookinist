@@ -19,8 +19,32 @@ public class LayerGrid : MonoBehaviour
     [SerializeField] private Color _gridColor = new Color(1f, 1f, 0f, 0.3f);
     [SerializeField] private Color _occupiedColor = new Color(1f, 0.3f, 0.3f, 0.5f);
 
+    [Header("Sauvegarde")]
+    [Tooltip("LevelData ScriptableObject correspondant à ce layer. " +
+             "Assigné automatiquement à la sauvegarde, ou manuellement dans l'Inspector.")]
+    [SerializeField] private LevelData _levelData;
+
     // Maps grid coordinate → placed GameObject
     private Dictionary<Vector2Int, GameObject> _placedObjects = new();
+
+    // ──────────────────────────────────────────────────────────
+    //  Unity lifecycle
+    // ──────────────────────────────────────────────────────────
+
+    private void Start()
+    {
+        if (_levelData != null)
+        {
+            Debug.Log($"[LayerGrid] Chargement automatique de {_levelData.name} " +
+                      $"({_levelData.entries.Count} entrées).");
+            LoadFromData(_levelData);
+        }
+        else
+        {
+            Debug.LogWarning($"[LayerGrid] Aucun LevelData assigné sur {gameObject.name} " +
+                             "— rien à charger.", this);
+        }
+    }
 
     // ──────────────────────────────────────────────────────────
     //  Public API
@@ -122,8 +146,45 @@ public class LayerGrid : MonoBehaviour
     }
 
     /// <summary>
+    /// Charge un LevelData dans cette grille — efface l'état actuel et recrée les objets.
+    /// Appelé automatiquement au Start si un LevelData est assigné.
+    /// </summary>
+    public void LoadFromData(LevelData data)
+    {
+        if (data == null) return;
+
+        ClearAll();
+        _levelData = data;
+
+        foreach (var entry in data.entries)
+        {
+            if (entry.prefab == null)
+            {
+                Debug.LogWarning($"[LayerGrid] Prefab manquant pour la cellule {entry.cell} " +
+                                 $"dans {data.name}.");
+                continue;
+            }
+
+            GameObject placed = PlaceObject(entry.prefab, entry.cell);
+            if (placed == null) continue;
+
+            PlacedObject po = placed.GetComponent<PlacedObject>();
+            if (po != null) po.ManualSortingOffset = entry.manualSortingOffset;
+        }
+
+        Debug.Log($"[LayerGrid] {data.entries.Count} objet(s) chargé(s) depuis {data.name}.");
+    }
+
+    /// <summary>
+    /// Assigne le LevelData de ce layer (appelé par LevelEditorWindow après sauvegarde).
+    /// </summary>
+    public void SetLevelData(LevelData data) => _levelData = data;
+
+    public LevelData GetLevelData() => _levelData;
+
+    /// <summary>
     /// Retourne une copie en lecture seule du dictionnaire des objets placés.
-    /// Utilisé par LevelEditorSaver pour sérialiser l'état de la grille.
+    /// Utilisé par LevelEditorWindow pour sérialiser l'état de la grille.
     /// </summary>
     public IReadOnlyDictionary<Vector2Int, GameObject> GetPlacedObjects()
         => _placedObjects;
