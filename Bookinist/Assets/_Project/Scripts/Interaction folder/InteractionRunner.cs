@@ -1,20 +1,35 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static TMPro.Examples.ObjectSpin;
 
 public class InteractionRunner : MonoBehaviour
 {
-    [SerializeField] private List<ConditionEntry> conditions;
-    [SerializeField] private List<ActionEntry> actions;
+    [SerializeField] private List<InteractionSet> interactionSets = new();
 
-    public void TryExecute(InteractionContext context)
+    public void TryExecuteAll(InteractionContext context)
+    {
+        foreach (var set in interactionSets)
+        {
+            if (AreConditionsValid(set.conditions, context))
+            {
+                ExecuteActions(set.actions, context);
+            }
+        }
+    }
+
+    private bool AreConditionsValid(List<ConditionEntry> conditions, InteractionContext context)
     {
         foreach (var condition in conditions)
         {
             if (!EvaluateCondition(condition, context))
-                return;
+                return false;
         }
 
+        return true;
+    }
+
+    private void ExecuteActions(List<ActionEntry> actions, InteractionContext context)
+    {
         foreach (var action in actions)
         {
             ExecuteAction(action, context);
@@ -26,7 +41,7 @@ public class InteractionRunner : MonoBehaviour
         switch (condition.type)
         {
             case ConditionType.SameLayer:
-                if (condition.thisObject == null)
+                if (condition.thisObject == null || condition.otherObject == null)
                     return false;
 
                 return condition.thisObject.layer == condition.otherObject.layer;
@@ -36,7 +51,7 @@ public class InteractionRunner : MonoBehaviour
                     return false;
 
                 return condition.zone.Contains(condition.otherObject);
-;
+                ;
 
             default:
                 return false;
@@ -56,7 +71,6 @@ public class InteractionRunner : MonoBehaviour
                 if (action.otherObject != null)
                     action.openDoor.Toggle(action.otherObject);
                 break;
-
         }
     }
 }
