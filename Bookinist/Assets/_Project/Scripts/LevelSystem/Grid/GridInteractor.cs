@@ -3,19 +3,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Détecte les touches sur les objets d'un LayerGrid spécifique.
-/// Utilise l'intersection rayon/plan pour éviter tout besoin de colliders.
-///
-/// SETUP :
-///   1. Attache ce composant sur un GameObject de ta scène de jeu.
-///   2. Assigne le LayerGrid du layer sur lequel tu veux détecter les interactions.
-///   3. La caméra est récupérée automatiquement (Camera.main).
-///
-/// EXTENSIBILITÉ :
-///   Surcharge ou abonne-toi à OnObjectTouched pour brancher ta logique de jeu.
-///   Le PlacedObject touché est passé en paramètre — tu as accès à tout son état.
-/// </summary>
 public class GridInteractor : MonoBehaviour
 {
     [Header("Layer cible")]

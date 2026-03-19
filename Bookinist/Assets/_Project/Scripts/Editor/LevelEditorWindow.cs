@@ -3,10 +3,6 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-/// <summary>
-/// Fenêtre Editor pour sauvegarder et charger les niveaux.
-/// Accessible via le menu Unity : Tools → Level Editor → Save & Load
-/// </summary>
 public class LevelEditorWindow : EditorWindow
 {
     [MenuItem("Tools/Level Editor/Save & Load")]

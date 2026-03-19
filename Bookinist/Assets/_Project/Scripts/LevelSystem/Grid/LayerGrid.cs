@@ -1,11 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Represents a single 2D grid on a specific layer (depth plane).
-/// Each Page/Layer has one of these attached to it.
-/// The grid lives in the XY plane at a fixed Z (the layer's Z position).
-/// </summary>
 public class LayerGrid : MonoBehaviour
 {
     [Header("Grid Dimensions")]
