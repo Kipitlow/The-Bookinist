@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -8,9 +9,17 @@ public class Dialogue_Marchant
     public string T_Dialogue;
 
 }
-
+[Serializable]
+public class GestionUI
+{
+    
+}
 public class SC_Marchant : MonoBehaviour
 {
+    [Header("Gestion UI")]
+    [SerializeField] public GameObject UI_Gameplay;
+    [SerializeField] public GameObject UI_Marchant;
+    [Header("Autre")]
     [SerializeField] public GameObject[] Button_Hidden;
     private Animator an;
     void Start()
@@ -21,6 +30,7 @@ public class SC_Marchant : MonoBehaviour
             if (aa.name == "B_balance") aa.SetActive(true);
             else aa.SetActive(false);
         }
+        change_UI(false);
     }
 
     /*public IEnumerator Switch_Variable()
@@ -57,6 +67,7 @@ public class SC_Marchant : MonoBehaviour
             case "B_Object_2":
                 Affichage(Self);
                 change_An_Balance(0);
+                change_UI(false);                
                 break;
             case "B_Object_3":
                 Affichage(Self);
@@ -81,5 +92,11 @@ public class SC_Marchant : MonoBehaviour
     private void change_An_Balance(int rr)
     {
         an.SetInteger("Enumeration", rr);
+    }
+
+    public void change_UI(bool UI_Marchante)
+    {
+        UI_Gameplay.SetActive(!UI_Marchante);
+        UI_Marchant.SetActive(UI_Marchante);
     }
 }

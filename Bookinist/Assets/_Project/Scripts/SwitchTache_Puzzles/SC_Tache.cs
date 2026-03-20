@@ -60,7 +60,7 @@ public class SC_Tache : MonoBehaviour
         
     }
 
-    void Update()
+    /*void Update()
     {
         //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z.
         //Text_Objectif.text = $"Layeur: {Mathf.Round(CM_Player.transform.position.z / 20)}";
@@ -73,7 +73,7 @@ public class SC_Tache : MonoBehaviour
             if(Tache_Dans_Ce_Layeur[CM.currentIndexSnapPoint]!=null) WaitCondition = CM.currentIndexSnapPoint;
             Change_Tach_List();
         }
-        /*
+        *//*
         if (CM_Player != null && Text_Objectif != null && WaitCondition != (int)Mathf.Round(CM_Player.transform.position.z) + 1)
         {
             WaitCondition = (int)Mathf.Round(CM_Player.transform.position.z / 20) + 1;
@@ -98,8 +98,8 @@ public class SC_Tache : MonoBehaviour
                     break;
             }
         }
-        */
-    }
+        *//*
+    }*/
 
     void Change_Tach_List()
     {
