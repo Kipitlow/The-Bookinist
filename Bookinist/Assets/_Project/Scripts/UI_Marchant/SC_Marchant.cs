@@ -1,21 +1,28 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
+[Serializable]
 public class Dialogue_Marchant
 {
-    public string T_Dialogue;
+    [SerializeField] public enum CatagorieDialogue {Random_Talk_GoodMorning, Random_Talk_GoodBye}
+    [SerializeField] public string[] T_Dialogue;
+    
 
 }
-[Serializable]
+/*[Serializable]
 public class GestionUI
 {
     
-}
+}*/
 public class SC_Marchant : MonoBehaviour
 {
+    [Header("Dialogue_Marchant")]
+    [SerializeField] public List<Dialogue_Marchant> Marchant_Talk_Player;
+
     [Header("Gestion UI")]
     [SerializeField] public GameObject UI_Gameplay;
     [SerializeField] public GameObject UI_Marchant;
@@ -28,9 +35,10 @@ public class SC_Marchant : MonoBehaviour
         foreach (GameObject aa in Button_Hidden)
         {
             if (aa.name == "B_balance") aa.SetActive(true);
+            else if (aa.name == "Panel_Talk") aa.SetActive(true);
             else aa.SetActive(false);
         }
-        change_UI(false);
+        change_UI();
     }
 
     /*public IEnumerator Switch_Variable()
@@ -57,6 +65,7 @@ public class SC_Marchant : MonoBehaviour
                 foreach (GameObject aa in Button_Hidden)
                 {
                     if (aa.name == "B_balance") aa.SetActive(true);
+                    else if (aa.name == "Panel_Talk") aa.SetActive(true);
                     else aa.SetActive(false);
                 }
                 break;
@@ -67,7 +76,15 @@ public class SC_Marchant : MonoBehaviour
             case "B_Object_2":
                 Affichage(Self);
                 change_An_Balance(0);
-                change_UI(false);                
+
+                foreach (GameObject aa in Button_Hidden)
+                {
+                    if (aa.name == "Panel_Blance") aa.SetActive(true);
+                    else if (aa.name == "Panel_Talk") aa.SetActive(true);
+                    else aa.SetActive(false);
+                }
+
+                Invoke("change_UI",1);
                 break;
             case "B_Object_3":
                 Affichage(Self);
@@ -94,9 +111,9 @@ public class SC_Marchant : MonoBehaviour
         an.SetInteger("Enumeration", rr);
     }
 
-    public void change_UI(bool UI_Marchante)
+    public void change_UI()
     {
-        UI_Gameplay.SetActive(!UI_Marchante);
-        UI_Marchant.SetActive(UI_Marchante);
+        UI_Gameplay.SetActive(UI_Marchant.activeSelf);
+        UI_Marchant.SetActive(!UI_Marchant.activeSelf);
     }
 }
