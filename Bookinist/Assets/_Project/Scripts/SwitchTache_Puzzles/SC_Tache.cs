@@ -38,8 +38,6 @@ public class SC_Tache : MonoBehaviour
     public List<GameObject> List_Temporair_Tache = new List<GameObject>();
 
 
-    //private GameObject[] List_Temporair_Tache;
-
     [Header("Autre")]
     public Camera CM_Player;
     [SerializeField]public CameraMovement CM;
@@ -52,17 +50,14 @@ public class SC_Tache : MonoBehaviour
         if (CM_Player == null) CM_Player = GameObject.Find("CameraManager").GetComponent<Camera>();
         StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
         UpdateQuestText();
-
-        
     }
 
     void Update()
     {
         if (CM_Player != null && WaitCondition != (int)Mathf.Round(CM_Player.transform.position.z) + 1 && WaitCondition!= CM.currentIndexSnapPoint)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
         {
-            //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z.
-            //Text_Objectif.text = $"Layeur: {Mathf.Round(CM_Player.transform.position.z / 20)}";
-            foreach(Tache_Layourt EE in Tache_Dans_Ce_Layeur)
+            
+            foreach (Tache_Layourt EE in Tache_Dans_Ce_Layeur)     //Nous utilison le curentIndex""" pour savoir sur quels layeur se trouver le joueur, si celle si posséder une tache, la mission change
             {
                 if(Tache_Dans_Ce_Layeur[CM.currentIndexSnapPoint] != null && EE.Layeur_Affiche_Mission == CM.currentIndexSnapPoint)
                 {
@@ -73,15 +68,16 @@ public class SC_Tache : MonoBehaviour
         }
     }
 
-    void Change_Tach_List()
+    void Change_Tach_List()//CodePermettant de actualiser les objectif
     {
-        //CodePermettant De supprimer tous les taches present dans la list.
+        //Supprimer tous les taches present dans la list.
         foreach (GameObject obj in List_Temporair_Tache)
         {
             if (obj != null) Destroy(obj);
         }
         List_Temporair_Tache.Clear(); //On n'oublie pas de clear si on veux liberais de la place
         
+        //En vêrifier tout les tache dans le layeur
         if (PrefableTache != null && Target_Parent_Prefable != null)
         {
             int Repeat = 0;

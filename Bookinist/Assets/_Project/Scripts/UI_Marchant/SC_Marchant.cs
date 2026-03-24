@@ -113,11 +113,15 @@ public class SC_Marchant : MonoBehaviour
     // Fonction "change_UI" permet d'intervertire entre le canva est celui du marchant.
     public void change_UI()
     {
-        
         if (E_Marchant != null)  E_Marchant.SetActive(!E_Marchant.activeSelf);
+        if (B_Marchant != null && E_Marchant.activeSelf == true) 
+        {
+            print("Yep");
+            B_Marchant.onClick.RemoveListener(change_UI);
+        }
     }
 
-    public void RemoveListenerFunction(UnityEngine.Events.UnityAction call)
+    public void Remove_Listener_Function(UnityEngine.Events.UnityAction call)
     {
         if (B_Marchant != null) B_Marchant.onClick.RemoveListener(call);
     }
