@@ -3,14 +3,16 @@ using System.Collections;
 using System.Collections.Generic; // Permet de faire un tableau
 using System.Runtime.CompilerServices; // Permet d'utiliser une Coroutine
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
 public class List_Element_Tach
 {
+    [SerializeField] public string Nom_Mission;
     [SerializeField] public string Tache;
     [SerializeField] public int prix;
-
+    [SerializeField] public bool TacheTerminer;
 }
 
 
@@ -18,15 +20,9 @@ public class List_Element_Tach
 public class Tache_Layourt
 {
     [Header("Inscription Tache")]
-    private int classs;
-    public string NamePersonnage;
+    public int Layeur_Affiche_Mission;
     public List<List_Element_Tach> list_Element_Taches;
-    public bool TacheTerminer;
-
-    /*public string GetObjectif()
-    {
-        return Objectif[0];
-    }*/   ///Poubelle
+    
 }
 
 public class SC_Tache : MonoBehaviour
@@ -39,7 +35,7 @@ public class SC_Tache : MonoBehaviour
     [Header("Prefable")]
     [SerializeField] public GameObject PrefableTache;
     [SerializeField] public Transform Target_Parent_Prefable;
-    private List<GameObject> List_Temporair_Tache = new List<GameObject>();
+    public List<GameObject> List_Temporair_Tache = new List<GameObject>();
 
 
     //private GameObject[] List_Temporair_Tache;
@@ -60,46 +56,22 @@ public class SC_Tache : MonoBehaviour
         
     }
 
-    /*void Update()
+    void Update()
     {
-        //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z.
-        //Text_Objectif.text = $"Layeur: {Mathf.Round(CM_Player.transform.position.z / 20)}";
-
-
-        if (CM_Player != null && WaitCondition != (int)Mathf.Round(CM_Player.transform.position.z) + 1)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
-        {//Text_Objectif.text = $"Layeur: {Mathf.Round(CM_Player.transform.position.z / 20)}";
-
-            //WaitCondition = (int)Mathf.Round(CM_Player.transform.position.z / 20) + 1;
-            if(Tache_Dans_Ce_Layeur[CM.currentIndexSnapPoint]!=null) WaitCondition = CM.currentIndexSnapPoint;
-            Change_Tach_List();
-        }
-        *//*
-        if (CM_Player != null && Text_Objectif != null && WaitCondition != (int)Mathf.Round(CM_Player.transform.position.z) + 1)
+        if (CM_Player != null && WaitCondition != (int)Mathf.Round(CM_Player.transform.position.z) + 1 && WaitCondition!= CM.currentIndexSnapPoint)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
         {
-            WaitCondition = (int)Mathf.Round(CM_Player.transform.position.z / 20) + 1;
-            
-            string Message = "";
-            switch (WaitCondition)
+            //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z.
+            //Text_Objectif.text = $"Layeur: {Mathf.Round(CM_Player.transform.position.z / 20)}";
+            foreach(Tache_Layourt EE in Tache_Dans_Ce_Layeur)
             {
-                case 0:
-                    int i = 0;
-                    while (i < Tache_Dans_Ce_Layeur[WaitCondition].Objectif.Length)
-                    {
-                        Message += "\n";
-                        Message += Tache_Dans_Ce_Layeur[WaitCondition].Objectif[i];
-                        i++;
-                    }
-                    if (CM_Player != null && WaitCondition != (int)Mathf.Round(CM_Player.transform.position.z) + 1)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
-                    {//Text_Objectif.text = $"Layeur: {Mathf.Round(CM_Player.transform.position.z / 20)}";
-
-                        WaitCondition = (int)Mathf.Round(CM_Player.transform.position.z / 20) + 1;
-                        Change_Tach_List();
-                    }
-                    break;
+                if(Tache_Dans_Ce_Layeur[CM.currentIndexSnapPoint] != null && EE.Layeur_Affiche_Mission == CM.currentIndexSnapPoint)
+                {
+                    WaitCondition = CM.currentIndexSnapPoint;
+                    Change_Tach_List();
+                }
             }
         }
-        *//*
-    }*/
+    }
 
     void Change_Tach_List()
     {
@@ -109,8 +81,7 @@ public class SC_Tache : MonoBehaviour
             if (obj != null) Destroy(obj);
         }
         List_Temporair_Tache.Clear(); //On n'oublie pas de clear si on veux liberais de la place
-
-
+        
         if (PrefableTache != null && Target_Parent_Prefable != null)
         {
             int Repeat = 0;
@@ -126,41 +97,25 @@ public class SC_Tache : MonoBehaviour
                     SC_Prefable_Tache TT = AA.GetComponentInChildren<SC_Prefable_Tache>();
                     if(TT != null)
                     {
-                        TT.Text_Objectif.text = iii.Tache;
-                        TT.Text_Récompence.text = $"Récompence: {iii.prix}$";
+
+                        if (iii.TacheTerminer)
+                        {
+                            TT.Text_Objectif.color = Color.red;
+                            TT.Text_Objectif.text = $"<s>{iii.Tache}</s>";
+                            TT.Text_Récompence.text = $"Récompence: {iii.prix}$";
+                        }
+                        else if (!iii.TacheTerminer)
+                        {
+                            TT.Text_Objectif.color = Color.black;
+                            TT.Text_Objectif.text = iii.Tache;
+                            TT.Text_Récompence.text = $"Récompence: {iii.prix}$";
+                        }
                     }
+
                     List_Temporair_Tache.Add(AA);
                     Repeat += 1;
                 }
             }
-            /*foreach (string iii in Tache_Dans_Ce_Layeur[WaitCondition].Objectif)
-            {
-                if(Tache_Dans_Ce_Layeur[WaitCondition].Objectif!=null)
-                {
-                    GameObject AA = Instantiate(PrefableTache, Target_Parent_Prefable);
-                    Vector3 Pos = AA.transform.position;
-                    Pos.y = Pos.y - 100 * Repeat;
-                    AA.transform.position = Pos;
-
-                    SC_Prefable_Tache TT = AA.GetComponentInChildren<SC_Prefable_Tache>();
-                    TT.Text_Objectif.text = iii;
-                    List_Temporair_Tache.Add(AA);
-                    Repeat += 1;
-                }
-            }*/  //Poubelle
-            /*foreach (string iii in Tache_Dans_Ce_Layeur[WaitCondition].Objectif)
-            {
-
-                GameObject AA = Instantiate(PrefableTache, Target_Parent_Prefable);
-                Vector3 Pos = AA.transform.position;
-                Pos.y = Pos.y - 100 * Repeat;
-                AA.transform.position = Pos;
-
-                TextMeshProUGUI TT = AA.GetComponentInChildren<TextMeshProUGUI>();
-                TT.text = iii;
-                List_Temporair_Tache.Add(AA);
-                Repeat += 1;
-            }*/
         }
     }
     IEnumerator Chronometre()
