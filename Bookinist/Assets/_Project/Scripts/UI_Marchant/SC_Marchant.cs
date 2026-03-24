@@ -46,7 +46,6 @@ public class SC_Marchant : MonoBehaviour
                 else aa.SetActive(false);
             }
 
-        //change_UI();
 
     }
 

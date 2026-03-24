@@ -29,6 +29,7 @@ public class SC_Tache : MonoBehaviour
 {
     [Header("Variable Utiliser pour le Chronom�tre")]
     [SerializeField] public TextMeshProUGUI Text_Chronom;
+    private bool LanceCouroutine;
     //[SerializeField] public TextMeshProUGUI Text_Objectif; //////Objectif
     public int totalSeconds;
 
@@ -124,10 +125,12 @@ public class SC_Tache : MonoBehaviour
             Text_Chronom.text = $"{totalSeconds / 60}:{totalSeconds % 60}";
 
             yield return new WaitForSeconds(1);
+            LanceCouroutine = true;
             StartCoroutine("Chronometre");
         }
         else
         {
+            LanceCouroutine = false;
             StopCoroutine("Chronometre");
         }
     } // Permet de faire un chronomêttre
@@ -151,6 +154,26 @@ public class SC_Tache : MonoBehaviour
 
             SC_Marchant SCM = RR.GetComponentInChildren<SC_Marchant>();
             //SCM.change_UI();
+        }
+    }
+
+    public void SetChronom(bool Continue)
+    {
+        if(Continue)
+        {
+            if (!LanceCouroutine) 
+            { 
+                StartCoroutine("Chronometre");
+                LanceCouroutine = true;
+            }
+        }
+        else if (!Continue)
+        {
+            if (LanceCouroutine)
+            {
+                StopCoroutine("Chronometre");
+                LanceCouroutine = false;
+            }
         }
     }
 }
