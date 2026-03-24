@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.UI;
 
 public class Dialogue_Marchant
 {
@@ -20,6 +21,8 @@ public class SC_Marchant : MonoBehaviour
     //[SerializeField] public GameObject UI_Gameplay;
     private SC_Tache Script_Tache;
     private GameObject E_Marchant;
+    private Button B_Marchant;
+
     [Header("Autre")]
     [SerializeField] public GameObject[] Button_Hidden;
     private Animator an;
@@ -30,17 +33,20 @@ public class SC_Marchant : MonoBehaviour
         an = GetComponentInChildren<Animator>();
 
         E_Marchant = GameObject.Find("E_Marchant"); if (E_Marchant == null) print("<E_Marchant> = null");
-
+            
         Script_Tache = GameObject.Find("Canvas").GetComponent< SC_Tache>();
         if(Script_Tache == null) { print("Erreur Script non trouver"); }
-            
+
+        B_Marchant = GameObject.Find("B_Spawn_Marchant").GetComponent<Button>();
+        if(B_Marchant==null) { print("Erreur Button Spawn disappeared"); }
+
         foreach (GameObject aa in Button_Hidden)
             {
                 if (aa.name == "B_balance") aa.SetActive(true);
                 else aa.SetActive(false);
             }
 
-        change_UI(false);
+        change_UI();
 
     }
 
@@ -67,7 +73,7 @@ public class SC_Marchant : MonoBehaviour
                 CacheCetteObject(Self);
                 change_An_Balance(0);
                 tache_terminer("Marchant");
-                change_UI(false);       //      <---------change les UI canva    
+                Invoke("change_UI", 2);       // <--- c'est ici que l'égnime prend fin    
                 break;
             case "B_Object_3":
                 CacheCetteObject(Self);
@@ -105,9 +111,15 @@ public class SC_Marchant : MonoBehaviour
 
 
     // Fonction "change_UI" permet d'intervertire entre le canva est celui du marchant.
-    public void change_UI(bool UI_Marchante)
+    public void change_UI()
     {
-        if (E_Marchant != null)  E_Marchant.SetActive(UI_Marchante);
+        
+        if (E_Marchant != null)  E_Marchant.SetActive(!E_Marchant.activeSelf);
+    }
+
+    public void RemoveListenerFunction(UnityEngine.Events.UnityAction call)
+    {
+        if (B_Marchant != null) B_Marchant.onClick.RemoveListener(call);
     }
 
 
