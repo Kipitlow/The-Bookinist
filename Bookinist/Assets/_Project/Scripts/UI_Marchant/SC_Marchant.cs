@@ -46,7 +46,7 @@ public class SC_Marchant : MonoBehaviour
                 else aa.SetActive(false);
             }
 
-        change_UI();
+        //change_UI();
 
     }
 
@@ -118,12 +118,17 @@ public class SC_Marchant : MonoBehaviour
         {
             print("Yep");
             B_Marchant.onClick.RemoveListener(change_UI);
+            B_Marchant.gameObject.SetActive(false);
         }
     }
 
     public void Remove_Listener_Function(UnityEngine.Events.UnityAction call)
     {
-        if (B_Marchant != null) B_Marchant.onClick.RemoveListener(call);
+        if (B_Marchant != null) 
+        {
+            B_Marchant.onClick.RemoveListener(call);
+
+        } 
     }
 
 

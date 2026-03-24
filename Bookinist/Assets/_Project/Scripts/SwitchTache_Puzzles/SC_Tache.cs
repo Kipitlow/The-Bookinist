@@ -68,7 +68,7 @@ public class SC_Tache : MonoBehaviour
         }
     }
 
-    void Change_Tach_List()//CodePermettant de actualiser les objectif
+    void Change_Tach_List()//CodePermettant de actualiser les objectif du joueur
     {
         //Supprimer tous les taches present dans la list.
         foreach (GameObject obj in List_Temporair_Tache)
@@ -91,6 +91,7 @@ public class SC_Tache : MonoBehaviour
                     AA.transform.position = Pos;
 
                     SC_Prefable_Tache TT = AA.GetComponentInChildren<SC_Prefable_Tache>();
+                    //Dans ce code, on vêrifier si la tache en elle même est completer, si oui on change de couleur on rouge puis on le barre
                     if(TT != null)
                     {
 
@@ -129,10 +130,27 @@ public class SC_Tache : MonoBehaviour
         {
             StopCoroutine("Chronometre");
         }
-    }
+    } // Permet de faire un chronomêttre
 
     private void UpdateQuestText()               
     {
-        /*Text_Objectif.text = Tache_Dans_Ce_Layeur[0].GetObjectif();        < ---------------------------------------------*/
+        //Text_Objectif.text = Tache_Dans_Ce_Layeur[0].GetObjectif();        <--- Je n'est pas utiliser, demander de le modifier ou supprimer si elle n'est point utiliser.
+    }
+
+    public void spawn_UI_Marchant(GameObject Prefable_UI)
+    {
+        SC_Marchant PUI = Prefable_UI.GetComponent<SC_Marchant>();
+        Transform GO_Canva = GameObject.Find("Canvas").transform;
+        if (PUI!=null && GO_Canva != null)
+        {
+            GameObject RR = Instantiate(Prefable_UI, GO_Canva);
+            RR.transform.SetParent(GO_Canva, false); // Permet d'annuller
+
+            RectTransform rt = RR.GetComponent<RectTransform>();
+            rt.anchoredPosition = new Vector2(0, 0);
+
+            SC_Marchant SCM = RR.GetComponentInChildren<SC_Marchant>();
+            //SCM.change_UI();
+        }
     }
 }
