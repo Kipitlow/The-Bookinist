@@ -1,18 +1,64 @@
 name: 🐛 Bug report
-description: Signaler un bug
+description: Submit a bug with all necessary information
 title: "[BUG] "
 labels: ["bug"]
 
 body:
   - type: textarea
     attributes:
-      label: Description
-      description: Décris le bug
+      label: Where / Context
+      description: "[PLACE YOU FIND THE ISSUE] Short context about the issue. Please check if the issue has already been submitted. If you are adding more details to an existing issue, add [UPDATED]."
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Build version
+      description: "Project build version"
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Git branch
+      description: "Name of the Git branch"
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Date + time
+      description: "Date and time when the bug was encountered"
     validations:
       required: true
 
   - type: textarea
     attributes:
-      label: Étapes pour reproduire
+      label: Detailed description
+      description: "Full details about the bug"
     validations:
       required: true
+
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: |
+        Describe the steps to reproduce the bug:
+        Step 1:
+        Step 2:
+        Step 3:
+        [...]
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: "What you expected to happen"
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Screen / Video
+      description: "Screenshot or video if applicable"
