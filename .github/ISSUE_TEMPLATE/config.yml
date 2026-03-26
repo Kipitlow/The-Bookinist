@@ -1,8 +1,19 @@
 blank_issues_enabled: false
-contact_links:
-  - name: GitHub Community Support
-    url: https://github.com/orgs/community/discussions
-    about: Please ask and answer questions here.
-  - name: GitHub Security Bug Bounty
-    url: https://bounty.github.com/
-    about: Please report security vulnerabilities here.
+name: 🐛 Bug report
+description: Signaler un bug
+title: "[BUG] "
+labels: ["bug"]
+
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: Décris le bug
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Étapes pour reproduire
+    validations:
+      required: true
