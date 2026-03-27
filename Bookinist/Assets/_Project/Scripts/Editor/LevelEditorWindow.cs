@@ -30,7 +30,7 @@ public class LevelEditorWindow : EditorWindow
 
         // ── Référence au LevelEditor dans la scène ────────────
         _levelEditor = (LevelEditor)EditorGUILayout.ObjectField(
-            "Level Editor",
+            "Level Editor (optionnel)",
             _levelEditor,
             typeof(LevelEditor),
             allowSceneObjects: true);
@@ -38,14 +38,12 @@ public class LevelEditorWindow : EditorWindow
         if (_levelEditor == null)
         {
             EditorGUILayout.HelpBox(
-                "Assigne le GameObject contenant ton LevelEditor.",
+                "Sans LevelEditor : seul le chargement est disponible (scène Gameplay)." +
+                "Avec LevelEditor : sauvegarde et chargement disponibles (scène Editor).",
                 MessageType.Info);
 
-            // Tentative de trouver automatiquement le LevelEditor dans la scène
             if (GUILayout.Button("Chercher automatiquement dans la scène"))
                 _levelEditor = FindFirstObjectByType<LevelEditor>();
-
-            return;
         }
 
         EditorGUILayout.Space(8);
@@ -60,8 +58,11 @@ public class LevelEditorWindow : EditorWindow
         EditorGUILayout.LabelField("Actions", EditorStyles.boldLabel);
 
         GUI.backgroundColor = new Color(0.4f, 0.9f, 0.4f);
-        if (GUILayout.Button("💾  Sauvegarder le niveau", GUILayout.Height(36)))
-            SaveAll();
+        using (new EditorGUI.DisabledGroupScope(_levelEditor == null))
+        {
+            if (GUILayout.Button("💾  Sauvegarder le niveau", GUILayout.Height(36)))
+                SaveAll();
+        }
 
         GUI.backgroundColor = new Color(0.4f, 0.7f, 1f);
         if (GUILayout.Button("📂  Charger le niveau", GUILayout.Height(36)))
@@ -190,6 +191,8 @@ public class LevelEditorWindow : EditorWindow
                 });
             }
 
+            // Assigne le LevelData au LayerGrid pour le chargement automatique au Start
+            grid.SetLevelData(data);
             EditorUtility.SetDirty(data);
         }
 
@@ -204,10 +207,34 @@ public class LevelEditorWindow : EditorWindow
 
     private void LoadAll()
     {
-        if (_levelEditor == null) return;
-
         string fullFolder = $"Assets/{_saveFolder}";
-        List<LayerGrid> layers = _levelEditor.Layers;
+
+        // Récupère les LayerGrids depuis le LevelEditor si présent,
+        // sinon cherche directement dans la scène (cas scène Gameplay)
+        List<LayerGrid> layers;
+        if (_levelEditor != null)
+        {
+            layers = _levelEditor.Layers;
+        }
+        else
+        {
+            layers = new List<LayerGrid>(FindObjectsByType<LayerGrid>(FindObjectsSortMode.None));
+            // Trie par pageIndex pour garantir l'ordre
+            layers.Sort((a, b) =>
+            {
+                Page pa = a.GetComponent<Page>();
+                Page pb = b.GetComponent<Page>();
+                int ia = pa != null ? pa.PageIndex : 0;
+                int ib = pb != null ? pb.PageIndex : 0;
+                return ia.CompareTo(ib);
+            });
+        }
+
+        if (layers.Count == 0)
+        {
+            Debug.LogWarning("[LevelEditorWindow] Aucun LayerGrid trouvé dans la scène.");
+            return;
+        }
 
         for (int i = 0; i < layers.Count; i++)
         {
@@ -243,9 +270,16 @@ public class LevelEditorWindow : EditorWindow
                 PlacedObject po = placed.GetComponent<PlacedObject>();
                 if (po != null) po.ManualSortingOffset = entry.manualSortingOffset;
             }
+
+            // Assigne le LevelData au LayerGrid pour persistance
+            grid.SetLevelData(data);
+            EditorUtility.SetDirty(grid);
         }
 
-        Debug.Log($"[LevelEditorWindow] Chargement terminé depuis Assets/{_saveFolder}");
+        // Sauvegarde la scène pour que les liens LevelData persistent
+        UnityEditor.SceneManagement.EditorSceneManager.MarkAllScenesDirty();
+        Debug.Log($"[LevelEditorWindow] Chargement terminé depuis Assets/{_saveFolder}. " +
+                  "Sauvegarde la scène (Ctrl+S) pour conserver les objets.");
     }
 
     // ──────────────────────────────────────────────────────────
