@@ -5,7 +5,6 @@ public class TouchDetection : MonoBehaviour
     Camera _cam;
     [SerializeField] private float _maxDistance = 100f;
     [SerializeField] private LayerMask _hitMask = ~0;
-    [SerializeField] private InteractionRunner _interactionRunner;
 
 
 
@@ -24,12 +23,11 @@ public class TouchDetection : MonoBehaviour
             string hitlayer = hit.collider.GetComponent<SpriteRenderer>().sortingLayerName;
             int camLayer = _cam.GetComponent<CameraMovement>().layerID;
             InteractionRunner interactionRunner = hit.collider.GetComponent<InteractionRunner>();
-            Debug.Log("layer objet touché : " + hitlayer + " layer cam : " + camLayer);
 
             InteractionContext context = new InteractionContext
             {
-                instigator = null ,
-                target = gameObject,
+                instigator = null,
+                target = hit.collider.gameObject
             };
 
             if (interactionRunner != null)

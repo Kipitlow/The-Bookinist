@@ -12,7 +12,7 @@ public class InteractionRunner : MonoBehaviour
         foreach (var condition in conditions)
         {
             if (!EvaluateCondition(condition, context))
-                return;
+            return;
         }
 
         foreach (var action in actions)
@@ -38,7 +38,7 @@ public class InteractionRunner : MonoBehaviour
                 return condition.zone.Contains(condition.target);
 
             case ConditionType.OnTouch:
-                if (condition.target == null)
+                if (context.target == null)
                     return false;
 
                 return this.gameObject == context.target;
@@ -56,6 +56,7 @@ public class InteractionRunner : MonoBehaviour
             case ActionType.SetActive:
                 if (action.target != null)
                     action.target.SetActive(action.activeState);
+
                 break;
 
             case ActionType.Open:
