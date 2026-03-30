@@ -124,22 +124,24 @@ public class CameraMovement : MonoBehaviour
 
                 if (currentIndexSnapPoint < 0) currentIndexSnapPoint = 0;
             }
-
+            print("Changed currentIndexSnapPoint");
             transform.position = snapPoints[currentIndexSnapPoint].transform.position;
         }
     }
 
     void HandleZoom()
     {
-        // Scroll pour debug sur PC
-        float scroll = scrollZoom.action.ReadValue<float>();
-        if (Mathf.Abs(scroll) > 0.01f)
-        {
-            ApplyZoom(scroll * 200);
-            return;
-        }
+#if UNITY_EDITOR
+        // Simulation du pinch avec ALT + souris
+        //if (Input.GetKey(KeyCode.LeftAlt))
+        //{
+        //    float mouseDelta = Input.GetAxis("Mouse Y");
+        //    ApplyZoom(mouseDelta * 10f);
+        //    return;
+        //}
+#endif
 
-        // Scroll mobile
+        // Vrai pinch mobile
         if (Touch.activeTouches.Count == 2)
         {
             Touch t0 = Touch.activeTouches[0];
@@ -163,6 +165,7 @@ public class CameraMovement : MonoBehaviour
 
     void ApplyZoom(float delta)
     {
+        
         //Vector3 pos = transform.position;
         ////pos.z += delta * zoomSpeed;
         //pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
@@ -176,7 +179,7 @@ public class CameraMovement : MonoBehaviour
         else if (delta > 0)
         {
             currentIndexSnapPoint += SnapPointNumberOnOneLayer;
-        
+
             if (currentIndexSnapPoint > snapPoints.Length - 1) currentIndexSnapPoint -= SnapPointNumberOnOneLayer;
         }
 
