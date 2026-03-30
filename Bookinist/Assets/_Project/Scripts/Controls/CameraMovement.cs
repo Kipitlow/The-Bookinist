@@ -28,6 +28,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] GameObject[] snapPoints;
     [SerializeField] int SnapPointNumberOnOneLayer = 3;
 
+    public readonly int layerID;
 
     float previousPinchDistance;
 
