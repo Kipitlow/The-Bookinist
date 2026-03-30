@@ -37,11 +37,11 @@ public class InteractionRunner : MonoBehaviour
 
                 return condition.zone.Contains(condition.target);
 
-            case ConditionType.Ontouch:
+            case ConditionType.OnTouch:
                 if (condition.target == null)
                     return false;
 
-                return condition.target == context.target;
+                return this.gameObject == context.target;
 ;
 
             default:
