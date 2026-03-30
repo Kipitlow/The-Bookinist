@@ -51,7 +51,7 @@ public class ConditionEntryDrawer : PropertyDrawer
             case ConditionType.SameLayer:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("thisObject"));
                 r.y += h + s;
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("otherObject"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 break;
 
             case ConditionType.SameZone:
@@ -59,7 +59,7 @@ public class ConditionEntryDrawer : PropertyDrawer
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("thisObject"));
                 r.y += h + s;
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("otherObject"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 break;
 
             case ConditionType.OnTouch:

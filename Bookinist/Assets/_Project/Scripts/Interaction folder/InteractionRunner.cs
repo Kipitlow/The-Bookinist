@@ -54,13 +54,13 @@ public class InteractionRunner : MonoBehaviour
         switch (action.type)
         {
             case ActionType.SetActive:
-                if (action.otherObject != null)
-                    action.otherObject.SetActive(action.activeState);
+                if (action.target != null)
+                    action.target.SetActive(action.activeState);
                 break;
 
             case ActionType.Open:
-                if (action.otherObject != null)
-                    action.openDoor.Toggle(action.otherObject);
+                if (action.target != null)
+                    action.openDoor.Toggle(action.target);
                 break;
             //case ActionType.StartDialogue:
             //    if (action.otherObject != null)

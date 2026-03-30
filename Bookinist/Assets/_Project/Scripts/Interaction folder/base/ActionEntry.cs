@@ -8,7 +8,7 @@ public class ActionEntry
     public ActionType type;
 
     public GameObject thisObject;
-    public GameObject otherObject;
+    public GameObject target;
 
     public bool activeState;
 

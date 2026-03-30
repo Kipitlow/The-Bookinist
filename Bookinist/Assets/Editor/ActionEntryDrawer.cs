@@ -48,11 +48,11 @@ public class ActionEntryDrawer : PropertyDrawer
             case ActionType.SetActive:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("activeState"));
                 r.y += h + s;
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("otherObject"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 break;
 
             case ActionType.Open:
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("otherObject"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("openDoor"));
                 break;
