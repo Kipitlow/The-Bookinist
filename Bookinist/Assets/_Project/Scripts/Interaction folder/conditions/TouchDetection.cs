@@ -2,17 +2,16 @@ using UnityEngine;
 
 public class TouchDetection : MonoBehaviour
 {
-
-    [SerializeField] private Camera _cam;
+    Camera _cam;
     [SerializeField] private float _maxDistance = 100f;
     [SerializeField] private LayerMask _hitMask = ~0;
+    [SerializeField] private InteractionRunner _interactionRunner;
 
 
 
     private void Awake()
     {
-        if (_cam == null)
-            _cam = Camera.main;
+        _cam = Camera.main;
     }
 
 
@@ -24,17 +23,19 @@ public class TouchDetection : MonoBehaviour
         {
             string hitlayer = hit.collider.GetComponent<SpriteRenderer>().sortingLayerName;
             int camLayer = _cam.GetComponent<CameraMovement>().layerID;
+            InteractionRunner interactionRunner = hit.collider.GetComponent<InteractionRunner>();
             Debug.Log("layer objet touché : " + hitlayer + " layer cam : " + camLayer);
 
-            //if (hitlayer == camLayer)
-            //{
-            //    Debug.Log("hitcorrect");
-            //    
-            //}
-            
+            InteractionContext context = new InteractionContext
+            {
+                instigator = null ,
+                target = gameObject,
+            };
 
+            if (interactionRunner != null)
+            {
+                interactionRunner.TryExecute(context);
+            }
         }
     }
-
-
 }

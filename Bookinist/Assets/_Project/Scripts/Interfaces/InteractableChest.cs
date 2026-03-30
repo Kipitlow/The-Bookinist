@@ -15,13 +15,4 @@ public class InteractableChest : MonoBehaviour, IInteractable
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = closedSprite;
     }
-
-    public void OnTap(Vector3 hitPoint)
-    {
-        isOpen = !isOpen;
-        if (isOpen)
-            spriteRenderer.sprite = openSprite;
-        else 
-            spriteRenderer.sprite = closedSprite;
-    }
 }

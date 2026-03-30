@@ -7,7 +7,7 @@ public class ConditionEntry
     public ConditionType type;
 
     public GameObject thisObject;
-    public GameObject otherObject;
+    public GameObject target;
 
     public string requiredTag;
 

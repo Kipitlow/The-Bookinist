@@ -29,13 +29,19 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.thisObject == null)
                     return false;
 
-                return condition.thisObject.layer == condition.otherObject.layer;
+                return condition.thisObject.layer == condition.target.layer;
 
             case ConditionType.SameZone:
-                if (condition.zone == null || condition.otherObject == null)
+                if (condition.zone == null || condition.target == null)
                     return false;
 
-                return condition.zone.Contains(condition.otherObject);
+                return condition.zone.Contains(condition.target);
+
+            case ConditionType.Ontouch:
+                if (condition.target == null)
+                    return false;
+
+                return condition.target == context.target;
 ;
 
             default:
@@ -56,6 +62,10 @@ public class InteractionRunner : MonoBehaviour
                 if (action.otherObject != null)
                     action.openDoor.Toggle(action.otherObject);
                 break;
+            //case ActionType.StartDialogue:
+            //    if (action.otherObject != null)
+            //        action.DialogueManager.StartDialogue(action.otherObject);
+            //    break;
 
         }
     }

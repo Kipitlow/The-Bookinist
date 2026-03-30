@@ -105,11 +105,6 @@ public class CameraMovement : MonoBehaviour
             float pressDuration = Time.time - pressStartTime;
             float movement = Vector2.Distance(pressStartPosition, GetPointerPosition());
 
-            if (!isDragging && pressDuration <= tapMaxTime && movement <= tapMaxMovement)
-            {
-                OnTap(pressStartPosition);
-            }
-
             isPressing = false;
             isDragging = false;
 
@@ -191,18 +186,5 @@ public class CameraMovement : MonoBehaviour
             return Touch.activeTouches[0].screenPosition;
 
         return Mouse.current.position.ReadValue();
-    }
-
-    void OnTap(Vector2 screenPosition)
-    {
-        Camera playerCam = GetComponent<Camera>();
-
-        if (Physics.Raycast(playerCam.ScreenPointToRay(screenPosition), out RaycastHit hit, tapRange, tapMask))
-        {
-            if (hit.collider.TryGetComponent(out IInteractable interactable))
-            {
-                interactable.OnTap(hit.point);
-            }
-        }
     }
 }
