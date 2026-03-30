@@ -48,6 +48,9 @@ public class SC_Tache : MonoBehaviour
     //public Tache_Layourt[] Tache_Dans_Ce_Layeur;
     private int WaitCondition;
 
+    [Header("UI_Enigme_01")]
+    public GameObject Balance;
+    public GameObject CanvaMarchant;
 
     void Start()
     {
@@ -182,12 +185,30 @@ public class SC_Tache : MonoBehaviour
             //SCM.change_UI();
         }
     }   /// <------ A plus utiliser
-    public void Affiche_Marchant()
+    public void Affiche_Marchant(GameObject Self)
     {
-        GameObject Balance = GameObject.Find("Balance2D");
-        if (Balance != null) Balance.SetActive(!Balance.activeSelf);
-        GameObject CanvaMarchant = GameObject.Find("E_Marchant");
-        if (CanvaMarchant != null) CanvaMarchant.SetActive(!CanvaMarchant.activeSelf);
+        if (Self != null) Self.SetActive(false);
+
+        if (Balance != null)
+        {
+            Balance.SetActive(!Balance.activeSelf);
+            Debug.Log($"Trouver Balance: {Balance.activeSelf} "); 
+        }
+        else 
+        { 
+            Debug.LogWarning("Erreur du system Balance =null"); 
+        }
+            
+
+        if (CanvaMarchant != null)
+        {
+            CanvaMarchant.SetActive(!CanvaMarchant.activeSelf);
+            Debug.Log($"Trouver Balance: {CanvaMarchant.activeSelf} ");
+        }
+        else 
+        {
+            Debug.LogWarning("Erreur du system CanvaMarchant =null");
+        }
     }
 
     public void SetChronom(bool Continue)

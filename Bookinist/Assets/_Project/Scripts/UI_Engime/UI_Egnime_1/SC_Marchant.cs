@@ -16,11 +16,12 @@ public class SC_Marchant : MonoBehaviour
 {
     [Header("Gestion UI")]
     //[SerializeField] public GameObject UI_Gameplay;
+    public GameObject Prefable_Poids;
     private SC_Tache Script_Tache;
     private GameObject E_Marchant;
     private GameObject Balance;
+    private GameObject Icone_Marchant;
     private Button B_Marchant;
-    public GameObject Prefable_Poids;
 
     [Header("Autre")]
     [SerializeField] public GameObject[] Button_Hidden;
@@ -33,18 +34,25 @@ public class SC_Marchant : MonoBehaviour
 
     void Start()
     {
+        Icone_Marchant = GameObject.Find("Icone_PNJ_Marchant");
         E_Marchant = GameObject.Find("E_Marchant");
         Balance = GameObject.Find("Balance2D");
-        Balance.SetActive(false);
             
         Script_Tache = GameObject.Find("Canvas").GetComponent< SC_Tache>();
-        if(Script_Tache == null) { print("Erreur Script non trouver"); }
         B_Marchant = GameObject.Find("B_Spawn_Marchant").GetComponent<Button>();
-        if(B_Marchant==null) { print("Erreur Button Spawn disappeared"); }
+
+        change_UI();
 
         foreach (GameObject aa in Button_Hidden)
         {
-            aa.SetActive(false);
+            if(aa.name== "B_balance")
+            {
+                aa.SetActive(true);
+            }
+            else
+            {
+                aa.SetActive(false);
+            }
         }
         Name_Tach_Self = "Egnigme_01";
     }
@@ -192,15 +200,19 @@ public class SC_Marchant : MonoBehaviour
         // Fonction "change_UI" permet d'intervertire entre le canva est celui du marchant.
     public void change_UI()
     {
-        if (Balance != null) Balance.SetActive(!Balance.activeSelf);
+        
 
 
-        if (E_Marchant != null) E_Marchant.SetActive(!E_Marchant.activeSelf);
-        if (B_Marchant != null && E_Marchant.activeSelf == true) 
+        if (B_Marchant != null && E_Marchant != null && E_Marchant.activeSelf && Balance != null && E_Marchant != null && Icone_Marchant!=null)
         {
             B_Marchant.onClick.RemoveListener(change_UI);
             B_Marchant.gameObject.SetActive(false);
+
+            E_Marchant.SetActive(!E_Marchant.activeSelf);
+            Balance.SetActive(!E_Marchant.activeSelf);
+            //Icone_Marchant.SetActive(!E_Marchant.activeSelf);
         }
+            
     }
 
     public void Remove_Listener_Function(UnityEngine.Events.UnityAction call)
