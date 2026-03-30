@@ -23,6 +23,7 @@ public class Tache_Layourt
     [Header("Inscription Tache")]
     public int Layeur_Affiche_Mission;
     public List<List_Element_Tach> list_Element_Taches;
+    public List<GameObject> CanvaUI;
     
 }
 
@@ -119,7 +120,27 @@ public class SC_Tache : MonoBehaviour
                     Repeat += 1;
                 }
             }
+            for (int i = 0; i<Tache_Dans_Ce_Layeur.Count; i++)
+            {
+                if(i == WaitCondition)
+                {
+                    foreach (GameObject CacheObjet in Tache_Dans_Ce_Layeur[i].CanvaUI)
+                    {
+                        CacheObjet.SetActive(true);
+                    }
+                }
+                else
+                {
+                    foreach (GameObject CacheObjet in Tache_Dans_Ce_Layeur[i].CanvaUI)
+                    {
+                        CacheObjet.SetActive(false);
+                    }
+                }
+            }// Cette option consiste a cacher tous les objets qui sont assigner a un layeur, on fonction du layeur du joueur cache le rester des objets.
         }
+
+
+        Debug.Log("Switch Canva");
     }
     IEnumerator Chronometre()
     {
