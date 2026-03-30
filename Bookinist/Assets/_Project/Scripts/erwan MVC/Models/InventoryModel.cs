@@ -4,7 +4,7 @@ public class InventoryModel
 {
     private readonly List<SlotModel> _slots = new();
 
-    public IReadOnlyList<SlotModel> Slots => _slots;
+    public List<SlotModel> Slots => _slots;
 
     public InventoryModel(int slotCount)
     {

@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class InventoryView : MonoBehaviour
 {
-    public void PlaceItem()
-    {
-
-    }
-
-    public void RemoveItem()
-    {
-
-    }
-
-    public void ReplaceItem()
+    public void InitSlots(List<SlotModel> Slots)
     {
 
     }

@@ -15,57 +15,13 @@ public class InventoryController : MonoBehaviour
 
     private void Awake()
     {
-        inventoryView.OnCardClicked += gameController.OnCardSelected;
-
-        if (_cardDataList == null || _cardDataList.Count == 0)
-        {
-            Debug.LogWarning($"{name} : aucune CardData assignée dans l’inspecteur !");
-        }
     }
 
     public void Init(InventoryModel inventoryModel)
     {
         _inventoryModel = inventoryModel;
-        inventoryView.InitSlots(inventoryModel.SlotList);
-        inventoryView.InitHand(inventoryModel.SlotList);
+        inventoryView.InitSlots(inventoryModel.Slots);
 
-        _inventoryModel.OnCreateNewSlot += inventoryView.AddSlot;
-    }
-
-    public void UpdateInventoryView(InventoryModel inventoryModel)
-    {
-        inventoryView.InitHand(inventoryModel.SlotList);
-    }
-
-    public void DrawCard(InventoryModel inventoryModel)
-    {
-        inventoryView.InitHand(inventoryModel.SlotList);
-    }
-
-    public void SetInteractable(bool isInteractable)
-    {
-        inventoryView.SetInteractable(isInteractable);
-    }
-
-    public void RemoveCardView(ItemModel cardModel)
-    {
-        if (cardModel == null) return;
-        inventoryView.RemoveCard(cardModel);
-    }
-
-    // Nettoie le highlight dans la main
-    public void ClearSelection()
-    {
-        inventoryView.ClearSelection();
-    }
-    public void SelectCard(ItemModel cardModel)
-    {
-        inventoryView.SelectCardView(cardModel);
-    }
-
-    private void OnDestroy()
-    {
-        inventoryView.OnCardClicked -= gameController.OnCardSelected;
     }
 
     public InventoryView GetInventoryView()
