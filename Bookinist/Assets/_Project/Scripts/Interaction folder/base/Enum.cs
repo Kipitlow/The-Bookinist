@@ -1,11 +1,13 @@
 public enum ConditionType
 {
     SameLayer,
-    SameZone
+    SameZone,
+    OnTouch
 }
 
 public enum ActionType
 {
     SetActive,
-    Open
+    Open,
+    Print
 }

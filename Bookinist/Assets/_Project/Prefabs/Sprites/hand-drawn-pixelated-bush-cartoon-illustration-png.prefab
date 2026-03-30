@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1934394532949215750}
   - component: {fileID: 2460909049627777956}
+  - component: {fileID: 6997057086830223699}
+  - component: {fileID: 1619433971924299418}
   m_Layer: 0
   m_Name: hand-drawn-pixelated-bush-cartoon-illustration-png
   m_TagString: Untagged
@@ -87,3 +89,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6997057086830223699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5925592111820185813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionSets:
+  - interactionName: 
+    conditions:
+    - type: 2
+      thisObject: {fileID: 0}
+      otherObject: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      layer: 0
+    actions:
+    - type: 2
+      thisObject: {fileID: 0}
+      otherObject: {fileID: 0}
+      activeState: 0
+      openDoor: {fileID: 0}
+      printText: {fileID: 1619433971924299418}
+      text: hey
+--- !u!114 &1619433971924299418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5925592111820185813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b7fd9a3641a224c9e6c42573905640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
