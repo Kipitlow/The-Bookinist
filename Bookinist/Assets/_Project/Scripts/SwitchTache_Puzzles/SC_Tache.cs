@@ -181,6 +181,13 @@ public class SC_Tache : MonoBehaviour
             SC_Marchant SCM = RR.GetComponentInChildren<SC_Marchant>();
             //SCM.change_UI();
         }
+    }   /// <------ A plus utiliser
+    public void Affiche_Marchant()
+    {
+        GameObject Balance = GameObject.Find("Balance2D");
+        if (Balance != null) Balance.SetActive(!Balance.activeSelf);
+        GameObject CanvaMarchant = GameObject.Find("E_Marchant");
+        if (CanvaMarchant != null) CanvaMarchant.SetActive(!CanvaMarchant.activeSelf);
     }
 
     public void SetChronom(bool Continue)

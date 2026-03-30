@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.UI;
+using static UnityEditor.ShaderData;
 
 public class Dialogue_Marchant
 {
@@ -16,11 +18,14 @@ public class SC_Marchant : MonoBehaviour
     //[SerializeField] public GameObject UI_Gameplay;
     private SC_Tache Script_Tache;
     private GameObject E_Marchant;
+    private GameObject Balance;
     private Button B_Marchant;
+    public GameObject Prefable_Poids;
 
     [Header("Autre")]
     [SerializeField] public GameObject[] Button_Hidden;
-    private Animator an;
+    private GameObject Poids;
+    private GameObject Poids2;
 
     [Header("RenameTache")]
     private string Name_Tach_Self;
@@ -28,20 +33,18 @@ public class SC_Marchant : MonoBehaviour
 
     void Start()
     {
-        an = GetComponentInChildren<Animator>();
-
-        E_Marchant = GameObject.Find("E_Marchant"); if (E_Marchant == null) Debug.LogError("<E_Marchant> = null");
+        E_Marchant = GameObject.Find("E_Marchant");
+        Balance = GameObject.Find("Balance2D");
+        Balance.SetActive(false);
             
         Script_Tache = GameObject.Find("Canvas").GetComponent< SC_Tache>();
         if(Script_Tache == null) { print("Erreur Script non trouver"); }
-
         B_Marchant = GameObject.Find("B_Spawn_Marchant").GetComponent<Button>();
         if(B_Marchant==null) { print("Erreur Button Spawn disappeared"); }
 
         foreach (GameObject aa in Button_Hidden)
         {
-            if (aa.name == "B_balance") aa.SetActive(true);
-            else aa.SetActive(false);
+            aa.SetActive(false);
         }
         Name_Tach_Self = "Egnigme_01";
     }
@@ -86,8 +89,10 @@ public class SC_Marchant : MonoBehaviour
         {
             case "B_balance":
                 CacheCetteObject(Self);
+                SpawnerPoidsBalance(0);
                 break;
             case "B_Reset":
+                SpawnerPoidsBalance(0);
                 foreach (GameObject aa in Button_Hidden)
                 {
                     if (aa.name == "B_balance") aa.SetActive(true);
@@ -96,29 +101,83 @@ public class SC_Marchant : MonoBehaviour
                 break;
             case "B_Object_1":
                 CacheCetteObject(Self);
-                change_An_Balance(-1);
+                SpawnerPoidsBalance(1);
                 break;
             case "B_Object_2":
                 CacheCetteObject(Self);
-                change_An_Balance(0);
                 tache_terminer();
-                Invoke("change_UI", 2);       // <--- c'est ici que l'égnime prend fin    
+                Invoke("change_UI", 2);
+                SpawnerPoidsBalance(2);      // <--- c'est ici que l'égnime prend fin    
                 break;
             case "B_Object_3":
                 CacheCetteObject(Self);
-                change_An_Balance(1);
+                SpawnerPoidsBalance(3);
                 break;
             case "B_Object_4":
                 CacheCetteObject(Self);
-                change_An_Balance(2);
+                SpawnerPoidsBalance(4);
                 break;
             case "B_Object_5":
                 CacheCetteObject(Self);
-                change_An_Balance(0);
+                SpawnerPoidsBalance(5);
                 break;
         }
     }
+    public void SpawnerPoidsBalance(int Mass)
+    {
+        if (Poids != null)
+        {
+            Destroy(Poids);
+            Poids=null;
+        }
+        if (Poids2 != null)
+        {
+            Destroy(Poids2);
+            Poids2 = null;
+        }
 
+
+        Transform EE = GameObject.Find("Target_spawn_Poids_R").transform;
+        Poids = Instantiate(Prefable_Poids, EE);
+
+        if (Poids.GetComponent<Rigidbody>() != null) { Debug.LogError("Pourquoi ce foutus de ce RigBody"); }
+
+        EE = GameObject.Find("Target_spawn_Poids_L").transform;
+        Poids2 = Instantiate(Prefable_Poids, EE);
+        Poids2.GetComponent<Rigidbody2D>().mass = 100;
+        switch (Mass)
+        {
+            case 0:
+                if (Poids != null)
+                {
+                    Destroy(Poids);
+                    Poids = null;
+                }
+                break;
+            case 1:
+                Poids.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
+                Poids.GetComponent<Rigidbody2D>().mass = 0;
+                break;
+            case 2:
+                Poids.transform.localScale = new Vector3(0.6f,0.6f,0.6f);
+                Poids.GetComponent<Rigidbody2D>().mass = 100;
+                break;
+            case 3:
+                Poids.transform.localScale = new Vector3(0.4f,0.4f,0.4f);
+                Poids.GetComponent<Rigidbody2D>().mass = 25;
+                break;
+            case 4:
+                Poids.transform.localScale = new Vector3(0.8f,0.8f,0.8f);
+                Poids.GetComponent<Rigidbody2D>().mass = 230;
+                break;
+            case 5:
+                Poids.transform.localScale = new Vector3(1.0f,1.0f,1.0f);
+                Poids.GetComponent<Rigidbody2D>().mass = 175;
+                break;
+        }
+
+
+    }
 
     //Fonction "CacheCetteObject" consister a montrer tout le contenue de Button_Hidden tout on cachant l'un des boutton
     private void CacheCetteObject(GameObject ee) 
@@ -130,21 +189,15 @@ public class SC_Marchant : MonoBehaviour
         ee.SetActive(false);
     }
 
-
-    //Fonction "change_An_Balance" Permet de changer l'animation de la balance
-    private void change_An_Balance(int rr)
-    {
-        an.SetInteger("Enumeration", rr);
-    }
-
-
-    // Fonction "change_UI" permet d'intervertire entre le canva est celui du marchant.
+        // Fonction "change_UI" permet d'intervertire entre le canva est celui du marchant.
     public void change_UI()
     {
-        if (E_Marchant != null)  E_Marchant.SetActive(!E_Marchant.activeSelf);
+        if (Balance != null) Balance.SetActive(!Balance.activeSelf);
+
+
+        if (E_Marchant != null) E_Marchant.SetActive(!E_Marchant.activeSelf);
         if (B_Marchant != null && E_Marchant.activeSelf == true) 
         {
-            print("Yep");
             B_Marchant.onClick.RemoveListener(change_UI);
             B_Marchant.gameObject.SetActive(false);
         }
