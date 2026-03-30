@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices; // Permet d'utiliser une Coroutine
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 [Serializable]
 public class List_Element_Tach
@@ -27,7 +28,7 @@ public class Tache_Layourt
 
 public class SC_Tache : MonoBehaviour
 {
-    [Header("Variable Utiliser pour le Chronom�tre")]
+    [Header("Variable Utiliser pour le Chronometre")]
     [SerializeField] public TextMeshProUGUI Text_Chronom;
     private bool LanceCouroutine;
     //[SerializeField] public TextMeshProUGUI Text_Objectif; //////Objectif
@@ -42,7 +43,8 @@ public class SC_Tache : MonoBehaviour
     [Header("Autre")]
     public Camera CM_Player;
     [SerializeField]public CameraMovement CM;
-    public Tache_Layourt[] Tache_Dans_Ce_Layeur;
+    public List<Tache_Layourt> Tache_Dans_Ce_Layeur = new List<Tache_Layourt>();
+    //public Tache_Layourt[] Tache_Dans_Ce_Layeur;
     private int WaitCondition;
 
 
@@ -57,27 +59,30 @@ public class SC_Tache : MonoBehaviour
     {
         if (CM_Player != null && WaitCondition != (int)Mathf.Round(CM_Player.transform.position.z) + 1 && WaitCondition!= CM.currentIndexSnapPoint)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
         {
+
+            WaitCondition = CM.currentIndexSnapPoint;
             
-            foreach (Tache_Layourt EE in Tache_Dans_Ce_Layeur)     //Nous utilison le curentIndex""" pour savoir sur quels layeur se trouver le joueur, si celle si posséder une tache, la mission change
             {
-                if(Tache_Dans_Ce_Layeur[CM.currentIndexSnapPoint] != null && EE.Layeur_Affiche_Mission == CM.currentIndexSnapPoint)
+                foreach (GameObject obj in List_Temporair_Tache)
                 {
-                    WaitCondition = CM.currentIndexSnapPoint;
+                    if (obj != null) Destroy(obj);
+                }
+                List_Temporair_Tache.Clear();
+            } // !!! A Pas Supprimer: Code qui permet de supprimer tout préfable tache dans le code 
+
+
+            foreach (Tache_Layourt Layeur in Tache_Dans_Ce_Layeur)     //Nous utilison le curentIndex""" pour savoir sur quels layeur se trouver le joueur, si celle si posséder une tache, la mission change
+            {
+                if (Layeur !=null && Layeur.Layeur_Affiche_Mission == CM.currentIndexSnapPoint)
+                {                    
                     Change_Tach_List();
                 }
             }
         }
     }
 
-    void Change_Tach_List()//CodePermettant de actualiser les objectif du joueur
-    {
-        //Supprimer tous les taches present dans la list.
-        foreach (GameObject obj in List_Temporair_Tache)
-        {
-            if (obj != null) Destroy(obj);
-        }
-        List_Temporair_Tache.Clear(); //On n'oublie pas de clear si on veux liberais de la place
-        
+    public void Change_Tach_List()//CodePermettant de actualiser les objectif du joueur
+    {        
         //En vêrifier tout les tache dans le layeur
         if (PrefableTache != null && Target_Parent_Prefable != null)
         {

@@ -10,11 +10,6 @@ public class Dialogue_Marchant
     public string T_Dialogue;
 
 }
-[Serializable]
-public class GestionUI
-{
-    
-}
 public class SC_Marchant : MonoBehaviour
 {
     [Header("Gestion UI")]
@@ -27,12 +22,15 @@ public class SC_Marchant : MonoBehaviour
     [SerializeField] public GameObject[] Button_Hidden;
     private Animator an;
 
+    [Header("RenameTache")]
+    private string Name_Tach_Self;
+
 
     void Start()
     {
         an = GetComponentInChildren<Animator>();
 
-        E_Marchant = GameObject.Find("E_Marchant"); if (E_Marchant == null) print("<E_Marchant> = null");
+        E_Marchant = GameObject.Find("E_Marchant"); if (E_Marchant == null) Debug.LogError("<E_Marchant> = null");
             
         Script_Tache = GameObject.Find("Canvas").GetComponent< SC_Tache>();
         if(Script_Tache == null) { print("Erreur Script non trouver"); }
@@ -41,13 +39,45 @@ public class SC_Marchant : MonoBehaviour
         if(B_Marchant==null) { print("Erreur Button Spawn disappeared"); }
 
         foreach (GameObject aa in Button_Hidden)
-            {
-                if (aa.name == "B_balance") aa.SetActive(true);
-                else aa.SetActive(false);
-            }
-
-
+        {
+            if (aa.name == "B_balance") aa.SetActive(true);
+            else aa.SetActive(false);
+        }
+        Name_Tach_Self = "Egnigme_01";
     }
+
+
+    /*private void Add_Mission()
+    {
+        if (Script_Tache != null)
+        {
+            //Construit Une tache Avec les Elements
+            List_Element_Tach Richart = new List_Element_Tach();
+            Name_Tach_Self = "Egnigme_01";
+            Richart.Nom_Mission = Name_Tach_Self;
+            Richart.Tache = "Trouve le Marchant, et ";
+            Richart.prix = 50;
+            Richart.TacheTerminer = false;
+
+            int LayeurNbr=0;// !Attention veuiller définir dans quels layeurs il apparait. Veiller que 2 mission ne s'affiche par dans le même layeur se deviendrer soulant.
+
+            if (Script_Tache.Tache_Dans_Ce_Layeur.Count <= LayeurNbr)
+            {
+                Debug.Log("A1");
+                Script_Tache.Tache_Dans_Ce_Layeur[LayeurNbr].list_Element_Taches.Add(Richart);
+            }
+            else
+            {
+                Debug.Log("A2");
+                Tache_Layourt TL = new Tache_Layourt();
+                TL.Layeur_Affiche_Mission = LayeurNbr;
+                TL.list_Element_Taches.Add(Richart);
+
+                Script_Tache.Tache_Dans_Ce_Layeur.Add(TL);
+            }
+        }
+        else { Debug.LogWarning("Erreur Script_Tache = null"); }
+    }*/
 
 
     public void Cache_Balance(GameObject Self)
@@ -71,7 +101,7 @@ public class SC_Marchant : MonoBehaviour
             case "B_Object_2":
                 CacheCetteObject(Self);
                 change_An_Balance(0);
-                tache_terminer("Marchant");
+                tache_terminer();
                 Invoke("change_UI", 2);       // <--- c'est ici que l'égnime prend fin    
                 break;
             case "B_Object_3":
@@ -108,7 +138,6 @@ public class SC_Marchant : MonoBehaviour
     }
 
 
-
     // Fonction "change_UI" permet d'intervertire entre le canva est celui du marchant.
     public void change_UI()
     {
@@ -133,7 +162,7 @@ public class SC_Marchant : MonoBehaviour
 
     //Cette Fonction "tache_terminer" permet de valider la mission a condition que le nom donner a la fonction corresponde au nom de la tache.
     //Pour tout explication claire, consulter Vatea
-    public void tache_terminer(string Name_Tache)
+    public void tache_terminer()
     {
         //vêrifier un tableau puis une liste, oui j'ai pas fait plus simple, Normalement vous devez donner un nom a tout mission, pour indentifier quels mission surligner
         if (Script_Tache != null)
@@ -142,8 +171,9 @@ public class SC_Marchant : MonoBehaviour
             {
                 foreach (List_Element_Tach LET in TL.list_Element_Taches)
                 {
-                    if (Name_Tache == LET.Nom_Mission)
+                    if (Name_Tach_Self == LET.Nom_Mission)
                     {
+                        Debug.Log("Mission Egnime 1 Terminer");
                         LET.TacheTerminer = true;
                         //ICI que la mission ce terminer, est donc de récompencer c'est joueur.
                     }
