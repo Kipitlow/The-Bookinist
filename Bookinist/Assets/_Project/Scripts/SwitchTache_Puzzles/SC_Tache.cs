@@ -126,14 +126,14 @@ public class SC_Tache : MonoBehaviour
                 {
                     foreach (GameObject CacheObjet in Tache_Dans_Ce_Layeur[i].CanvaUI)
                     {
-                        CacheObjet.SetActive(true);
+                        if(CacheObjet!=null) CacheObjet.SetActive(true);
                     }
                 }
                 else
                 {
                     foreach (GameObject CacheObjet in Tache_Dans_Ce_Layeur[i].CanvaUI)
                     {
-                        CacheObjet.SetActive(false);
+                        if (CacheObjet != null) CacheObjet.SetActive(false);
                     }
                 }
             }// Cette option consiste a cacher tous les objets qui sont assigner a un layeur, on fonction du layeur du joueur cache le rester des objets.

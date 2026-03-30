@@ -9,7 +9,7 @@ public class SC_Egnime_2 : MonoBehaviour
     [Header("Gestion UI")]
     private SC_Tache Script_Tache;
     private string NameTach;
-    private RectTransform canvasRect;
+    private Transform canvasRect;
     public GameObject prefabUI;
 
 
@@ -18,7 +18,7 @@ public class SC_Egnime_2 : MonoBehaviour
         Script_Tache = GameObject.Find("Canvas").GetComponent<SC_Tache>();
         NameTach = "Enigme_2";
 
-        canvasRect = GameObject.Find("Canvas").GetComponent<RectTransform>();
+        canvasRect = GameObject.Find("Empty_Cache_Puzzle_Marriage").GetComponent<Transform>();
     }
 
     public void Puzzle_Trouver()
