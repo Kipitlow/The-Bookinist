@@ -17,7 +17,7 @@ public class CameraMovement : MonoBehaviour
 {
     [Header("Debug")]
     [SerializeField] private RayCastDebugger raycastDebugger;
-    
+
     [Header("Drag")]
     [SerializeField] private InputActionReference dragDelta;
     [SerializeField] private InputActionReference dragPress;
@@ -141,13 +141,17 @@ public class CameraMovement : MonoBehaviour
 
                     if (currentIndexByLayer < 0) currentIndexByLayer = 0;
                 }
-                transform.position = snapPoints[currentIndexLayer].objects[currentIndexByLayer].transform.position; 
+                transform.position = snapPoints[currentIndexLayer].objects[currentIndexByLayer].transform.position;
             }
         }
     }
 
     private void HandleZoom()
     {
+#if UNITY_EDITOR
+        float zoomInput = scrollZoom.action.ReadValue<float>();
+        ApplyZoom(zoomInput * 10f);
+#endif
         if (Touch.activeTouches.Count != 2)
         {
             previousPinchDistance = 0f;
