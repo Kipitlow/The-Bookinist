@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
@@ -18,7 +17,7 @@ public class CameraMovement : MonoBehaviour
 {
     [Header("Debug")]
     [SerializeField] private RayCastDebugger raycastDebugger;
-    
+
     [Header("Drag")]
     [SerializeField] private InputActionReference dragDelta;
     [SerializeField] private InputActionReference dragPress;
@@ -142,7 +141,7 @@ public class CameraMovement : MonoBehaviour
 
                     if (currentIndexByLayer < 0) currentIndexByLayer = 0;
                 }
-                transform.position = snapPoints[currentIndexLayer].objects[currentIndexByLayer].transform.position; 
+                transform.position = snapPoints[currentIndexLayer].objects[currentIndexByLayer].transform.position;
             }
         }
     }
@@ -153,33 +152,7 @@ public class CameraMovement : MonoBehaviour
         float zoomInput = scrollZoom.action.ReadValue<float>();
         ApplyZoom(zoomInput * 10f);
 #endif
-        if (Touch.activeTouches.Count == 2)
-        {
-            Touch t0 = Touch.activeTouches[0];
-            Touch t1 = Touch.activeTouches[1];
-            float currentDistance = Vector2.Distance(t0.screenPosition, t1.screenPosition);
-
-            if (previousPinchDistance > 0f)
-            {
-                float delta = currentDistance - previousPinchDistance;
-
-                // saute qu'une seule fois par geste
-                bool cooldownPassed = (Time.time - lastZoomTime) >= zoomCooldown;
-                bool thresholdReached = Mathf.Abs(delta) >= pinchThreshold;
-
-                if (cooldownPassed && thresholdReached)
-                {
-                    ApplyZoom(delta);
-                    lastZoomTime = Time.time;
-                    previousPinchDistance = currentDistance; // Reset pour �viter l'accumulation
-                }
-            }
-            else
-            {
-                previousPinchDistance = currentDistance; // Initialisation propre
-            }
-        }
-        else
+        if (Touch.activeTouches.Count != 2)
         {
             previousPinchDistance = 0f;
             stopZooming = false;
@@ -218,11 +191,6 @@ public class CameraMovement : MonoBehaviour
             currentIndexLayer--;
         else if (delta > 0)
             currentIndexLayer++;
-        
-            if (currentIndexLayer > snapPoints.Count - 1) currentIndexLayer = snapPoints.Count - 1;
-        }
-        Debug.Log(currentIndexLayer);
-        transform.position = snapPoints[currentIndexLayer].objects[currentIndexByLayer].transform.position;
 
         currentIndexLayer = Mathf.Clamp(currentIndexLayer, 0, snapPoints.Count - 1);
 

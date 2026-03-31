@@ -6,6 +6,9 @@ public class NPCTalker : MonoBehaviour
     [Header("Bulle")]
     [SerializeField] private SpriteRenderer _bubbleRenderer;
     [SerializeField] private TextMeshPro _bubbleText;
+    [SerializeField] private Transform _bubbleParent;
+    [SerializeField] private Vector2 _padding = new Vector2(0.5f, 0.3f);
+    [SerializeField] private Vector2 _baseTextOffset = new Vector2(-4.27f, -0.17f);
 
     private NPCDialogue _dialogue;
 
@@ -41,6 +44,20 @@ public class NPCTalker : MonoBehaviour
         _bubbleRenderer.enabled = true;
         _bubbleText.enabled = true;
         _bubbleVisible = true;
+
+        _bubbleText.transform.localPosition = _baseTextOffset;
+
+        _bubbleText.ForceMeshUpdate();
+
+        Vector2 textSize = _bubbleText.textBounds.size;
+        Vector2 newSize = textSize + _padding;
+        _bubbleRenderer.size = newSize;
+
+        // Décaler le sprite et le texte vers la droite pour ancrer leur bord gauche au parent
+        float offsetX = newSize.x / 5f;
+
+        _bubbleRenderer.transform.localPosition = new Vector3(offsetX, 0, 0);
+        _bubbleText.transform.localPosition = new Vector3(offsetX, 0, 0) + new Vector3(_baseTextOffset.x, _baseTextOffset.y, -0.1f);
     }
 
     private void CloseBubble()
