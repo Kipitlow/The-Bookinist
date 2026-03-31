@@ -4,12 +4,12 @@ using static TMPro.Examples.ObjectSpin;
 
 public class InteractionRunner : MonoBehaviour
 {
-    [SerializeField] private List<InteractionSet> interactionSets = new();
+    [SerializeField] private List<InteractionSet> _interactionSets = new();
 
 
     public void TryExecuteAll(InteractionContext context)
     {
-        foreach (var set in interactionSets)
+        foreach (var set in _interactionSets)
         {
             if (AreConditionsValid(set.conditions, context))
             {
