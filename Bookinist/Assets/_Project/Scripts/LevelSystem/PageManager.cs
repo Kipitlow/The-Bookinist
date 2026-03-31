@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PageManager : MonoBehaviour
 {
-    [SerializeField] List<GameObject> layerHolder;
+    [SerializeField] private List<GameObject> _layerHolder;
 
     [SerializeField] string _sortingLayerPrefix = "Page_";
 
@@ -12,14 +12,14 @@ public class PageManager : MonoBehaviour
 
     private void Awake()
     {
-        maxLayer = layerHolder.Count;
+        maxLayer = _layerHolder.Count;
     }
 
     private void Start()
     {
-        for (int i = 0; i > layerHolder.Count; i++)
+        for (int i = 0; i < _layerHolder.Count; i++)
         {
-            GameObject layer = layerHolder[i];
+            GameObject layer = _layerHolder[i];
 
             // Position Z inchangée (gère le z-fighting en 3D)
             layer.transform.position = new Vector3(0, 0, i * layerSpread);
