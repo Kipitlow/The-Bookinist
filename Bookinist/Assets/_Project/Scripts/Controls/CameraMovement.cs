@@ -37,6 +37,11 @@ public class CameraMovement : MonoBehaviour
     Vector2 pressStartPosition;
     int currentIndexSnapPoint = 1;
 
+    bool stopZooming;
+    private float pinchThreshold = 30f;
+    private float zoomCooldown = 0.4f;
+    private float lastZoomTime = -999f;
+
     void OnEnable()
     {
         dragDelta.action.Enable();
@@ -128,34 +133,33 @@ public class CameraMovement : MonoBehaviour
             transform.position = snapPoints[currentIndexSnapPoint].transform.position;
         }
     }
-
     void HandleZoom()
     {
-#if UNITY_EDITOR
-        // Simulation du pinch avec ALT + souris
-        //if (Input.GetKey(KeyCode.LeftAlt))
-        //{
-        //    float mouseDelta = Input.GetAxis("Mouse Y");
-        //    ApplyZoom(mouseDelta * 10f);
-        //    return;
-        //}
-#endif
-
-        // Vrai pinch mobile
         if (Touch.activeTouches.Count == 2)
         {
             Touch t0 = Touch.activeTouches[0];
             Touch t1 = Touch.activeTouches[1];
-
             float currentDistance = Vector2.Distance(t0.screenPosition, t1.screenPosition);
 
             if (previousPinchDistance > 0f)
             {
                 float delta = currentDistance - previousPinchDistance;
-                ApplyZoom(delta);
-            }
 
-            previousPinchDistance = currentDistance;
+                // saute qu'une seule fois par geste
+                bool cooldownPassed = (Time.time - lastZoomTime) >= zoomCooldown;
+                bool thresholdReached = Mathf.Abs(delta) >= pinchThreshold;
+
+                if (cooldownPassed && thresholdReached)
+                {
+                    ApplyZoom(delta);
+                    lastZoomTime = Time.time;
+                    previousPinchDistance = currentDistance; // Reset pour éviter l'accumulation
+                }
+            }
+            else
+            {
+                previousPinchDistance = currentDistance; // Initialisation propre
+            }
         }
         else
         {
@@ -175,12 +179,14 @@ public class CameraMovement : MonoBehaviour
             currentIndexSnapPoint -= SnapPointNumberOnOneLayer;
 
             if (currentIndexSnapPoint < 0) currentIndexSnapPoint = 0;
+            print(currentIndexSnapPoint);
         }
         else if (delta > 0)
         {
             currentIndexSnapPoint += SnapPointNumberOnOneLayer;
 
             if (currentIndexSnapPoint > snapPoints.Length - 1) currentIndexSnapPoint -= SnapPointNumberOnOneLayer;
+            print(currentIndexSnapPoint);
         }
 
         transform.position = snapPoints[currentIndexSnapPoint].transform.position;
