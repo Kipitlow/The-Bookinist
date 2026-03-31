@@ -19,9 +19,10 @@ public class SC_Marchant : MonoBehaviour
     public GameObject Prefable_Poids;
     private SC_Tache Script_Tache;
     private GameObject E_Marchant;
-    private GameObject Balance;
+    private GameObject object_Balance;
     private GameObject Icone_Marchant;
-    private Button B_Marchant;
+    private Button b_spawn_Marchant;
+    private bool Icone_Apparaition;
 
     [Header("Autre")]
     [SerializeField] public GameObject[] Button_Hidden;
@@ -36,11 +37,12 @@ public class SC_Marchant : MonoBehaviour
     {
         Icone_Marchant = GameObject.Find("Icone_PNJ_Marchant");
         E_Marchant = GameObject.Find("E_Marchant");
-        Balance = GameObject.Find("Balance2D");
+        object_Balance = GameObject.Find("Balance2D");
             
         Script_Tache = GameObject.Find("Canvas").GetComponent< SC_Tache>();
-        B_Marchant = GameObject.Find("B_Spawn_Marchant").GetComponent<Button>();
+        b_spawn_Marchant = GameObject.Find("B_Spawn_Marchant").GetComponent<Button>();
 
+        Icone_Apparaition = true;
         change_UI();
 
         foreach (GameObject aa in Button_Hidden)
@@ -197,36 +199,47 @@ public class SC_Marchant : MonoBehaviour
         ee.SetActive(false);
     }
 
-        // Fonction "change_UI" permet d'intervertire entre le canva est celui du marchant.
+    // Fonction "change_UI" permet d'intervertire entre le canva est celui du marchant.
     public void change_UI()
     {
-        
-
-
-        if (B_Marchant != null && E_Marchant != null && E_Marchant.activeSelf && Balance != null && E_Marchant != null && Icone_Marchant!=null)
+        //Ce code: consister a mieux controller qu'elle GameObject actif et d'autre non
+        switch (Icone_Apparaition)
         {
-            B_Marchant.onClick.RemoveListener(change_UI);
-            B_Marchant.gameObject.SetActive(false);
+            case true: // on veut voir l'icone "Marchant" pas le reste
+                Icone_Marchant.SetActive(true);
+                E_Marchant.SetActive(false);
+                object_Balance.SetActive(false);
+                Icone_Apparaition = false;
+                break;
+            case false: // on veut voir la balance est l'UI, mais cache l'icone "Marchant
+                Icone_Marchant.SetActive(false);
+                E_Marchant.SetActive(true);
+                object_Balance.SetActive(true);
+                Icone_Apparaition = true;
 
-            E_Marchant.SetActive(!E_Marchant.activeSelf);
-            Balance.SetActive(!E_Marchant.activeSelf);
-            //Icone_Marchant.SetActive(!E_Marchant.activeSelf);
+                //Cette condition on veut faire disparait le bouton, et non le destroy;
+                if (b_spawn_Marchant != null)
+                {
+                    b_spawn_Marchant.onClick.RemoveListener(change_UI);
+                    b_spawn_Marchant.gameObject.SetActive(false);
+                }
+                break;
         }
-            
+
     }
 
-    public void Remove_Listener_Function(UnityEngine.Events.UnityAction call)
+    public void Remove_Listener_Function(UnityEngine.Events.UnityAction call) // Ou c'est appeller ceci?
     {
-        if (B_Marchant != null) 
+        if (b_spawn_Marchant != null) 
         {
-            B_Marchant.onClick.RemoveListener(call);
+            b_spawn_Marchant.onClick.RemoveListener(call);
 
         } 
     }
 
 
-    //Cette Fonction "tache_terminer" permet de valider la mission a condition que le nom donner a la fonction corresponde au nom de la tache.
-    //Pour tout explication claire, consulter Vatea
+
+    //Cette Fonction "tache_terminer" permet de valider la mission a condition que le nom donner a la fonction corresponde au nom de la tache. //Pour tout explication claire, consulter Vatea
     public void tache_terminer()
     {
         //vêrifier un tableau puis une liste, oui j'ai pas fait plus simple, Normalement vous devez donner un nom a tout mission, pour indentifier quels mission surligner
@@ -240,6 +253,7 @@ public class SC_Marchant : MonoBehaviour
                     {
                         Debug.Log("Mission Egnime 1 Terminer");
                         LET.TacheTerminer = true;
+                        Script_Tache.Change_Tach_List();
                         //ICI que la mission ce terminer, est donc de récompencer c'est joueur.
                     }
                 }
