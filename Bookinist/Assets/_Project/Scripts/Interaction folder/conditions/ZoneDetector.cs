@@ -18,43 +18,31 @@ public class ZoneDetector : MonoBehaviour
             ownerRoot = transform.parent;
     }
 
-    private GameObject SafetyCheck(GameObject obj)
-    {
-        if (obj == null)
-            return null;
-
-        return useRootObject ? obj.transform.root.gameObject : obj;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        GameObject candidate = SafetyCheck(other.gameObject);
-
-        if (candidate == null)
+        if (other.gameObject == null)
             return;
 
-        if (ownerRoot != null && candidate == ownerRoot.root.gameObject)
+        if (ownerRoot != null && other.gameObject == ownerRoot.root.gameObject)
             return;
 
-        objectsInside.Add(candidate);
+        objectsInside.Add(other.gameObject);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        GameObject candidate = SafetyCheck(other.gameObject);
-
-        if (candidate == null)
+        if (other.gameObject == null)
             return;
 
-        if (ownerRoot != null && candidate == ownerRoot.root.gameObject)
+        if (ownerRoot != null && other.gameObject == ownerRoot.root.gameObject)
             return;
 
-        objectsInside.Remove(candidate);
+        objectsInside.Remove(other.gameObject);
     }
 
-    public bool Contains(GameObject obj)
+    public bool IsInside(GameObject obj)
     {
-        GameObject candidate = SafetyCheck(obj);
-        return candidate != null && objectsInside.Contains(candidate);
+        if (obj == null) return false;
+        return objectsInside.Contains(obj);
     }
 }

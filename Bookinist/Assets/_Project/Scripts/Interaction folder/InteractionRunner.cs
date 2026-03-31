@@ -12,7 +12,7 @@ public class InteractionRunner : MonoBehaviour
         foreach (var condition in conditions)
         {
             if (!EvaluateCondition(condition, context))
-                return;
+            return;
         }
 
         foreach (var action in actions)
@@ -29,13 +29,19 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.thisObject == null)
                     return false;
 
-                return condition.thisObject.layer == condition.otherObject.layer;
+                return condition.thisObject.layer == condition.target.layer;
 
             case ConditionType.SameZone:
-                if (condition.zone == null || condition.otherObject == null)
+                if (condition.zone == null || condition.target == null)
                     return false;
 
-                return condition.zone.Contains(condition.otherObject);
+                return condition.zone.IsInside(condition.target);
+
+            case ConditionType.OnTouch:
+                if (context.target == null)
+                    return false;
+
+                return this.gameObject == context.target;
 ;
 
             default:
@@ -48,14 +54,19 @@ public class InteractionRunner : MonoBehaviour
         switch (action.type)
         {
             case ActionType.SetActive:
-                if (action.otherObject != null)
-                    action.otherObject.SetActive(action.activeState);
+                if (action.target != null)
+                    action.target.SetActive(action.activeState);
+
                 break;
 
             case ActionType.Open:
-                if (action.otherObject != null)
-                    action.openDoor.Toggle(action.otherObject);
+                if (action.target != null)
+                    action.openDoor.Toggle(action.target);
                 break;
+            //case ActionType.StartDialogue:
+            //    if (action.otherObject != null)
+            //        action.DialogueManager.StartDialogue(action.otherObject);
+            //    break;
 
         }
     }
