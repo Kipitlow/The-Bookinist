@@ -1,12 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic; // Permet de faire un tableau
-using System.Runtime.CompilerServices; // Permet d'utiliser une Coroutine
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 [Serializable]
 public class List_Element_Tach
