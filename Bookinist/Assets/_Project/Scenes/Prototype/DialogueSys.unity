@@ -995,21 +995,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conditions:
-  - type: 2
-    thisObject: {fileID: 0}
-    target: {fileID: 0}
-    requiredTag: 
-    zone: {fileID: 0}
-    layer: 0
-  actions:
-  - type: 2
-    thisObject: {fileID: 0}
-    target: {fileID: 0}
-    activeState: 0
-    openDoor: {fileID: 0}
-    npcDialogue: {fileID: 11400000, guid: e8d2f6e8552fe184e906c158f823adff, type: 2}
-    npcTalker: {fileID: 1457907054}
+  interactionSets:
+  - interactionName: start dialogue
+    conditions:
+    - type: 2
+      thisObject: {fileID: 0}
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      layer: 0
+    actions:
+    - type: 2
+      thisObject: {fileID: 0}
+      target: {fileID: 0}
+      activeState: 0
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 11400000, guid: e8d2f6e8552fe184e906c158f823adff, type: 2}
+      npcTalker: {fileID: 1457907054}
 --- !u!1 &1518411227
 GameObject:
   m_ObjectHideFlags: 0

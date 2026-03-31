@@ -4,17 +4,33 @@ using static TMPro.Examples.ObjectSpin;
 
 public class InteractionRunner : MonoBehaviour
 {
-    [SerializeField] private List<ConditionEntry> conditions;
-    [SerializeField] private List<ActionEntry> actions;
+    [SerializeField] private List<InteractionSet> interactionSets = new();
 
-    public void TryExecute(InteractionContext context)
+
+    public void TryExecuteAll(InteractionContext context)
+    {
+        foreach (var set in interactionSets)
+        {
+            if (AreConditionsValid(set.conditions, context))
+            {
+                ExecuteActions(set.actions, context);
+            }
+        }
+    }
+
+    private bool AreConditionsValid(List<ConditionEntry> conditions, InteractionContext context)
     {
         foreach (var condition in conditions)
         {
             if (!EvaluateCondition(condition, context))
-            return;
+                return false;
         }
 
+        return true;
+    }
+
+    private void ExecuteActions(List<ActionEntry> actions, InteractionContext context)
+    {
         foreach (var action in actions)
         {
             ExecuteAction(action, context);

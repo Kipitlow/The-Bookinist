@@ -33,7 +33,7 @@ public class TouchDetection : MonoBehaviour
 
             if (interactionRunner != null)
             {
-                interactionRunner.TryExecute(context);
+                interactionRunner.TryExecuteAll(context);
             }
         }
     }
