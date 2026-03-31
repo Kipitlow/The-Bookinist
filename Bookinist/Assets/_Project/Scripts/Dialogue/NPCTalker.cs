@@ -25,8 +25,6 @@ public class NPCTalker : MonoBehaviour
 
     void Update()
     {
-        if (!_playerInRange) return;
-        if (!Input.GetKeyDown(interactKey)) return;
 
         // Plus de répliques -> fermer la bulle
         if (_lineIndex >= dialogue.lines.Length)
