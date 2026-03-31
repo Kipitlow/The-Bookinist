@@ -196,7 +196,7 @@ public class CameraMovement : MonoBehaviour
         {
             currentIndexLayer++;
         
-            if (currentIndexLayer > snapPoints.Count - 1) currentIndexLayer -= SnapPointNumberOnOneLayer;
+            if (currentIndexLayer > snapPoints.Count - 1) currentIndexLayer = snapPoints.Count - 1;
         }
         Debug.Log(currentIndexLayer);
         transform.position = snapPoints[currentIndexLayer].objects[currentIndexByLayer].transform.position;
