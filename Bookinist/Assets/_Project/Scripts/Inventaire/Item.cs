@@ -5,7 +5,7 @@ using UnityEngine;
 public class Item 
 {
     public string itemName;
-    public string itemQuantity;
+    public int itemQuantity;
     public GameObject itemObtain;
     public GameObject itemDropoff;
 }
