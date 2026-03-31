@@ -1,42 +1,52 @@
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
+[Serializable]
+public class GameObjectList
+{
+    public List<GameObject> objects = new();
+}
+
 public class CameraMovement : MonoBehaviour
 {
     [Header("Debug")]
-    [SerializeField] RayCastDebugger raycastDebugger;
+    [SerializeField] private RayCastDebugger raycastDebugger;
     
     [Header("Drag")]
-    [SerializeField] InputActionReference dragDelta;
-    [SerializeField] InputActionReference dragPress;
-    [SerializeField] float dragSpeed = 0.01f;
+    [SerializeField] private InputActionReference dragDelta;
+    [SerializeField] private InputActionReference dragPress;
+    [SerializeField] private float dragSpeed = 0.01f;
 
     [Header("Tap")]
-    [SerializeField] float tapMaxTime = 0.25f;
-    [SerializeField] float tapMaxMovement = 10f;
-    [SerializeField] LayerMask tapMask;
-    [SerializeField] float tapRange = 100f;
+    [SerializeField] private float tapMaxTime = 0.25f;
+    [SerializeField] private float tapMaxMovement = 10f;
+    [SerializeField] private LayerMask tapMask;
+    [SerializeField] private float tapRange = 100f;
 
     [Header("Zoom")]
-    [SerializeField] InputActionReference scrollZoom;
-    [SerializeField] float minZ;
-    [SerializeField] float maxZ;
+    [SerializeField] private InputActionReference scrollZoom;
+    [SerializeField] private float minZ;
+    [SerializeField] private float maxZ;
 
     [Header("Global Navigation")]
-    [SerializeField] GameObject[] snapPoints;
-    [SerializeField] int SnapPointNumberOnOneLayer = 3;
+    [SerializeField] private List<GameObjectList> snapPoints = new();
+    [SerializeField] private int SnapPointNumberOnOneLayer = 3;
+    public int currentIndexLayer { get; private set; } = 0;
+    public int currentIndexByLayer { get; private set; } = 1;
 
-    public readonly int layerID;
+    private float previousPinchDistance;
 
-    float previousPinchDistance;
+    private bool isPressing;
+    private bool isDragging;
+    private float pressStartTime;
+    private Vector2 pressStartPosition;
 
-    bool isPressing;
-    bool isDragging;
-    float pressStartTime;
-    Vector2 pressStartPosition;
-    int currentIndexSnapPoint = 1;
 
     void OnEnable()
     {
@@ -110,22 +120,22 @@ public class CameraMovement : MonoBehaviour
 
             if (GetPointerPosition().x < pressStartPosition.x)
             {
-                currentIndexSnapPoint++;
+                currentIndexByLayer++;
 
-                if (currentIndexSnapPoint > snapPoints.Length - 1) currentIndexSnapPoint = snapPoints.Length - 1;
+                if (currentIndexByLayer > snapPoints.Count - 1) currentIndexByLayer = snapPoints.Count - 1;
             }
             else if (GetPointerPosition().x > pressStartPosition.x)
             {
-                currentIndexSnapPoint--;
+                currentIndexByLayer--;
 
-                if (currentIndexSnapPoint < 0) currentIndexSnapPoint = 0;
+                if (currentIndexByLayer < 0) currentIndexByLayer = 0;
             }
 
-            transform.position = snapPoints[currentIndexSnapPoint].transform.position;
+            transform.position = snapPoints[currentIndexLayer].objects[currentIndexByLayer].transform.position;
         }
     }
 
-    void HandleZoom()
+    private void HandleZoom()
     {
         // Scroll pour debug sur PC
         float scroll = scrollZoom.action.ReadValue<float>();
@@ -157,7 +167,7 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-    void ApplyZoom(float delta)
+    private void ApplyZoom(float delta)
     {
         //Vector3 pos = transform.position;
         ////pos.z += delta * zoomSpeed;
@@ -165,18 +175,18 @@ public class CameraMovement : MonoBehaviour
         //transform.position = pos;
         if (delta < 0)
         {
-            currentIndexSnapPoint -= SnapPointNumberOnOneLayer;
+            currentIndexLayer--;
 
-            if (currentIndexSnapPoint < 0) currentIndexSnapPoint = 0;
+            if (currentIndexLayer < 0) currentIndexLayer = 0;
         }
         else if (delta > 0)
         {
-            currentIndexSnapPoint += SnapPointNumberOnOneLayer;
+            currentIndexLayer++;
         
-            if (currentIndexSnapPoint > snapPoints.Length - 1) currentIndexSnapPoint -= SnapPointNumberOnOneLayer;
+            if (currentIndexLayer > snapPoints.Count - 1) currentIndexLayer -= SnapPointNumberOnOneLayer;
         }
-
-        transform.position = snapPoints[currentIndexSnapPoint].transform.position;
+        Debug.Log(currentIndexLayer);
+        transform.position = snapPoints[currentIndexLayer].objects[currentIndexByLayer].transform.position;
 
     }
 

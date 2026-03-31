@@ -35,7 +35,7 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.zone == null || condition.target == null)
                     return false;
 
-                return condition.zone.Contains(condition.target);
+                return condition.zone.IsInside(condition.target);
 
             case ConditionType.OnTouch:
                 if (context.target == null)

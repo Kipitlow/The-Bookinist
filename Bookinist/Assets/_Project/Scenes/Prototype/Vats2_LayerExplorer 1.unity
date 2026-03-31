@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb876616ec37d7a4384e9347a625a9cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touchDetection: {fileID: 0}
+  touchDetection: {fileID: 1245447398}
 --- !u!1 &28927035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,9 +1903,9 @@ MonoBehaviour:
     zone: {fileID: 0}
     layer: 0
   actions:
-  - type: 0
+  - type: 1
     thisObject: {fileID: 0}
-    target: {fileID: 0}
+    target: {fileID: 524650980}
     activeState: 0
     openDoor: {fileID: 0}
 --- !u!1 &545223335
@@ -3193,7 +3193,7 @@ MonoBehaviour:
   - {fileID: 1176242739}
   - {fileID: 350665881}
   - {fileID: 1063250789}
-  pageIndex: 200
+  pageIndex: 3
 --- !u!1 &963033253
 GameObject:
   m_ObjectHideFlags: 0
@@ -3576,7 +3576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageObjects: []
-  pageIndex: 400
+  pageIndex: 5
 --- !u!1 &1063250789
 GameObject:
   m_ObjectHideFlags: 0
@@ -4010,7 +4010,6 @@ MonoBehaviour:
   _hitMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  _interactionRunner: {fileID: 0}
 --- !u!1 &1295830289
 GameObject:
   m_ObjectHideFlags: 0
@@ -6847,15 +6846,18 @@ MonoBehaviour:
   minZ: -20
   maxZ: 40
   snapPoints:
-  - {fileID: 1365140434}
-  - {fileID: 206803403}
-  - {fileID: 1821429000}
-  - {fileID: 1537575686}
-  - {fileID: 111626167}
-  - {fileID: 791463696}
-  - {fileID: 318294542}
-  - {fileID: 2129243358}
-  - {fileID: 1144659499}
+  - objects:
+    - {fileID: 1365140434}
+    - {fileID: 206803403}
+    - {fileID: 1821429000}
+  - objects:
+    - {fileID: 1537575686}
+    - {fileID: 111626167}
+    - {fileID: 791463696}
+  - objects:
+    - {fileID: 318294542}
+    - {fileID: 2129243358}
+    - {fileID: 1144659499}
   SnapPointNumberOnOneLayer: 3
 --- !u!114 &1849893167
 MonoBehaviour:
@@ -7727,11 +7729,11 @@ SceneRoots:
   - {fileID: 1032671253}
   - {fileID: 1614605517}
   - {fileID: 1365140435}
-  - {fileID: 1537575687}
-  - {fileID: 318294543}
   - {fileID: 206803404}
-  - {fileID: 111626168}
-  - {fileID: 2129243359}
   - {fileID: 1821429001}
+  - {fileID: 1537575687}
+  - {fileID: 111626168}
   - {fileID: 791463697}
+  - {fileID: 318294543}
+  - {fileID: 2129243359}
   - {fileID: 1144659500}
