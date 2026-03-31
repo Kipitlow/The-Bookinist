@@ -123,79 +123,83 @@ public class CameraMovement : MonoBehaviour
             isPressing = false;
             isDragging = false;
 
-            if (GetPointerPosition().x < pressStartPosition.x)
+            if (pressDuration <= tapMaxTime && movement <= tapMaxMovement)
             {
-                currentIndexByLayer++;
-
-                if (currentIndexByLayer > snapPoints.Count - 1) currentIndexByLayer = snapPoints.Count - 1;
+                // tap
             }
-            else if (GetPointerPosition().x > pressStartPosition.x)
+            else
             {
-                currentIndexByLayer--;
+                if (GetPointerPosition().x < pressStartPosition.x)
+                {
+                    currentIndexByLayer++;
 
-                if (currentIndexByLayer < 0) currentIndexByLayer = 0;
+                    if (currentIndexByLayer > snapPoints[currentIndexLayer].objects.Count - 1) currentIndexByLayer = snapPoints[currentIndexLayer].objects.Count - 1;
+                }
+                else if (GetPointerPosition().x > pressStartPosition.x)
+                {
+                    currentIndexByLayer--;
+
+                    if (currentIndexByLayer < 0) currentIndexByLayer = 0;
+                }
+                transform.position = snapPoints[currentIndexLayer].objects[currentIndexByLayer].transform.position; 
             }
-
-            transform.position = snapPoints[currentIndexLayer].objects[currentIndexByLayer].transform.position;
         }
     }
 
     private void HandleZoom()
     {
-        if (Touch.activeTouches.Count == 2)
-        {
-            Touch t0 = Touch.activeTouches[0];
-            Touch t1 = Touch.activeTouches[1];
-            float currentDistance = Vector2.Distance(t0.screenPosition, t1.screenPosition);
-
-            if (previousPinchDistance > 0f)
-            {
-                float delta = currentDistance - previousPinchDistance;
-
-                // saute qu'une seule fois par geste
-                bool cooldownPassed = (Time.time - lastZoomTime) >= zoomCooldown;
-                bool thresholdReached = Mathf.Abs(delta) >= pinchThreshold;
-
-                if (cooldownPassed && thresholdReached)
-                {
-                    ApplyZoom(delta);
-                    lastZoomTime = Time.time;
-                    previousPinchDistance = currentDistance; // Reset pour �viter l'accumulation
-                }
-            }
-            else
-            {
-                previousPinchDistance = currentDistance; // Initialisation propre
-            }
-        }
-        else
+        if (Touch.activeTouches.Count != 2)
         {
             previousPinchDistance = 0f;
+            stopZooming = false;
+            return;
         }
+
+        Touch t0 = Touch.activeTouches[0];
+        Touch t1 = Touch.activeTouches[1];
+        float currentDistance = Vector2.Distance(t0.screenPosition, t1.screenPosition);
+
+        if (previousPinchDistance <= 0f)
+        {
+            previousPinchDistance = currentDistance;
+            return;
+        }
+
+        float delta = currentDistance - previousPinchDistance;
+        previousPinchDistance = currentDistance;
+
+        if (stopZooming)
+            return;
+
+        if (Mathf.Abs(delta) < pinchThreshold)
+            return;
+
+        ApplyZoom(delta);
+        stopZooming = true;
     }
 
     private void ApplyZoom(float delta)
     {
-        
-        //Vector3 pos = transform.position;
-        ////pos.z += delta * zoomSpeed;
-        //pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
-        //transform.position = pos;
+        if (snapPoints.Count == 0)
+            return;
+
         if (delta < 0)
-        {
             currentIndexLayer--;
-
-            if (currentIndexLayer < 0) currentIndexLayer = 0;
-        }
         else if (delta > 0)
-        {
             currentIndexLayer++;
-        
-            if (currentIndexLayer > snapPoints.Count - 1) currentIndexLayer -= SnapPointNumberOnOneLayer;
-        }
-        Debug.Log(currentIndexLayer);
-        transform.position = snapPoints[currentIndexLayer].objects[currentIndexByLayer].transform.position;
 
+        currentIndexLayer = Mathf.Clamp(currentIndexLayer, 0, snapPoints.Count - 1);
+
+        if (snapPoints[currentIndexLayer].objects.Count == 0)
+            return;
+
+        currentIndexByLayer = Mathf.Clamp(
+            currentIndexByLayer,
+            0,
+            snapPoints[currentIndexLayer].objects.Count - 1
+        );
+
+        transform.position = snapPoints[currentIndexLayer].objects[currentIndexByLayer].transform.position;
     }
 
     Vector2 GetPointerPosition()
