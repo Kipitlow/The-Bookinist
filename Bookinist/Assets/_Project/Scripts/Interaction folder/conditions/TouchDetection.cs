@@ -17,6 +17,7 @@ public class TouchDetection : MonoBehaviour
     public void OnTouch(Vector2 screenPosition)
     {
         Ray ray = _cam.ScreenPointToRay(screenPosition);
+        print("touched");
 
         if (Physics.Raycast(ray, out RaycastHit hit, _maxDistance, _hitMask))
         {

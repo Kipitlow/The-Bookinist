@@ -189,6 +189,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b91f4c6d-6aad-45ca-b64b-d8506a95efc6"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DragPress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""af313f99-fec9-45f5-9141-601f4ed09bfc"",
                     ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": """",
