@@ -119,9 +119,45 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""PrimaryTouchPosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""fb0a3d56-3f4b-4afb-b7a6-62fff4801c7f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SecondaryTouchPosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""537b3a3b-9a7e-4e4e-86b9-8a7824fadd82"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PrimaryTouchPress"",
+                    ""type"": ""Value"",
+                    ""id"": ""1275f7c1-7757-462c-bd8a-d94c1fb03180"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SecondaryTouchPress"",
+                    ""type"": ""Value"",
+                    ""id"": ""ccf9cc4d-d796-456a-8d8c-8eaaae0e76eb"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Position"",
                     ""type"": ""Value"",
-                    ""id"": ""4861ecfe-79d1-4074-ab46-65e42b26263c"",
+                    ""id"": ""bab0e4b5-f1f9-4338-9325-964c86e331cc"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -143,7 +179,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ab66531b-a8fa-4c44-a332-06bca505255e"",
-                    ""path"": ""<Pointer>/press"",
+                    ""path"": ""<Touchscreen>/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -164,7 +200,51 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5546e2d4-942d-44ef-b017-fa745c6696d9"",
+                    ""id"": ""18f672eb-7cb4-47d1-af31-b3422613a743"",
+                    ""path"": ""<Touchscreen>/touch0/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrimaryTouchPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5808a9af-a02b-4122-8937-179dec4c4c00"",
+                    ""path"": ""<Touchscreen>/touch1/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryTouchPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d1a260aa-6999-49c7-9053-3176d15c8a59"",
+                    ""path"": ""<Touchscreen>/touch0/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrimaryTouchPress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7e91244-2344-4701-9c98-d80e2cebf9e2"",
+                    ""path"": ""<Touchscreen>/touch1/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryTouchPress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1653dded-4a96-4659-93ce-f8e3d1be2a7f"",
                     ""path"": ""<Pointer>/position"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -760,6 +840,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_LevelNav_Drag = m_LevelNav.FindAction("Drag", throwIfNotFound: true);
         m_LevelNav_DragPress = m_LevelNav.FindAction("DragPress", throwIfNotFound: true);
         m_LevelNav_Zoom = m_LevelNav.FindAction("Zoom", throwIfNotFound: true);
+        m_LevelNav_PrimaryTouchPosition = m_LevelNav.FindAction("PrimaryTouchPosition", throwIfNotFound: true);
+        m_LevelNav_SecondaryTouchPosition = m_LevelNav.FindAction("SecondaryTouchPosition", throwIfNotFound: true);
+        m_LevelNav_PrimaryTouchPress = m_LevelNav.FindAction("PrimaryTouchPress", throwIfNotFound: true);
+        m_LevelNav_SecondaryTouchPress = m_LevelNav.FindAction("SecondaryTouchPress", throwIfNotFound: true);
         m_LevelNav_Position = m_LevelNav.FindAction("Position", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -857,6 +941,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_LevelNav_Drag;
     private readonly InputAction m_LevelNav_DragPress;
     private readonly InputAction m_LevelNav_Zoom;
+    private readonly InputAction m_LevelNav_PrimaryTouchPosition;
+    private readonly InputAction m_LevelNav_SecondaryTouchPosition;
+    private readonly InputAction m_LevelNav_PrimaryTouchPress;
+    private readonly InputAction m_LevelNav_SecondaryTouchPress;
     private readonly InputAction m_LevelNav_Position;
     /// <summary>
     /// Provides access to input actions defined in input action map "LevelNav".
@@ -881,6 +969,22 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "LevelNav/Zoom".
         /// </summary>
         public InputAction @Zoom => m_Wrapper.m_LevelNav_Zoom;
+        /// <summary>
+        /// Provides access to the underlying input action "LevelNav/PrimaryTouchPosition".
+        /// </summary>
+        public InputAction @PrimaryTouchPosition => m_Wrapper.m_LevelNav_PrimaryTouchPosition;
+        /// <summary>
+        /// Provides access to the underlying input action "LevelNav/SecondaryTouchPosition".
+        /// </summary>
+        public InputAction @SecondaryTouchPosition => m_Wrapper.m_LevelNav_SecondaryTouchPosition;
+        /// <summary>
+        /// Provides access to the underlying input action "LevelNav/PrimaryTouchPress".
+        /// </summary>
+        public InputAction @PrimaryTouchPress => m_Wrapper.m_LevelNav_PrimaryTouchPress;
+        /// <summary>
+        /// Provides access to the underlying input action "LevelNav/SecondaryTouchPress".
+        /// </summary>
+        public InputAction @SecondaryTouchPress => m_Wrapper.m_LevelNav_SecondaryTouchPress;
         /// <summary>
         /// Provides access to the underlying input action "LevelNav/Position".
         /// </summary>
@@ -920,6 +1024,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Zoom.started += instance.OnZoom;
             @Zoom.performed += instance.OnZoom;
             @Zoom.canceled += instance.OnZoom;
+            @PrimaryTouchPosition.started += instance.OnPrimaryTouchPosition;
+            @PrimaryTouchPosition.performed += instance.OnPrimaryTouchPosition;
+            @PrimaryTouchPosition.canceled += instance.OnPrimaryTouchPosition;
+            @SecondaryTouchPosition.started += instance.OnSecondaryTouchPosition;
+            @SecondaryTouchPosition.performed += instance.OnSecondaryTouchPosition;
+            @SecondaryTouchPosition.canceled += instance.OnSecondaryTouchPosition;
+            @PrimaryTouchPress.started += instance.OnPrimaryTouchPress;
+            @PrimaryTouchPress.performed += instance.OnPrimaryTouchPress;
+            @PrimaryTouchPress.canceled += instance.OnPrimaryTouchPress;
+            @SecondaryTouchPress.started += instance.OnSecondaryTouchPress;
+            @SecondaryTouchPress.performed += instance.OnSecondaryTouchPress;
+            @SecondaryTouchPress.canceled += instance.OnSecondaryTouchPress;
             @Position.started += instance.OnPosition;
             @Position.performed += instance.OnPosition;
             @Position.canceled += instance.OnPosition;
@@ -943,6 +1059,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Zoom.started -= instance.OnZoom;
             @Zoom.performed -= instance.OnZoom;
             @Zoom.canceled -= instance.OnZoom;
+            @PrimaryTouchPosition.started -= instance.OnPrimaryTouchPosition;
+            @PrimaryTouchPosition.performed -= instance.OnPrimaryTouchPosition;
+            @PrimaryTouchPosition.canceled -= instance.OnPrimaryTouchPosition;
+            @SecondaryTouchPosition.started -= instance.OnSecondaryTouchPosition;
+            @SecondaryTouchPosition.performed -= instance.OnSecondaryTouchPosition;
+            @SecondaryTouchPosition.canceled -= instance.OnSecondaryTouchPosition;
+            @PrimaryTouchPress.started -= instance.OnPrimaryTouchPress;
+            @PrimaryTouchPress.performed -= instance.OnPrimaryTouchPress;
+            @PrimaryTouchPress.canceled -= instance.OnPrimaryTouchPress;
+            @SecondaryTouchPress.started -= instance.OnSecondaryTouchPress;
+            @SecondaryTouchPress.performed -= instance.OnSecondaryTouchPress;
+            @SecondaryTouchPress.canceled -= instance.OnSecondaryTouchPress;
             @Position.started -= instance.OnPosition;
             @Position.performed -= instance.OnPosition;
             @Position.canceled -= instance.OnPosition;
@@ -1267,6 +1395,34 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnZoom(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PrimaryTouchPosition" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPrimaryTouchPosition(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SecondaryTouchPosition" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSecondaryTouchPosition(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PrimaryTouchPress" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPrimaryTouchPress(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SecondaryTouchPress" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSecondaryTouchPress(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Position" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
