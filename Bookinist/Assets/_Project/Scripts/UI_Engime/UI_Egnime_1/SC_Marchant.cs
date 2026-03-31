@@ -115,7 +115,7 @@ public class SC_Marchant : MonoBehaviour
                 break;
             case "B_Object_2":
                 CacheCetteObject(Self);
-                tache_terminer();
+                //tache_terminer();
                 Invoke("change_UI", 2);
                 SpawnerPoidsBalance(2);      // <--- c'est ici que l'égnime prend fin    
                 break;
@@ -240,7 +240,7 @@ public class SC_Marchant : MonoBehaviour
 
 
     //Cette Fonction "tache_terminer" permet de valider la mission a condition que le nom donner a la fonction corresponde au nom de la tache. //Pour tout explication claire, consulter Vatea
-    public void tache_terminer()
+    /*public void tache_terminer()
     {
         //vêrifier un tableau puis une liste, oui j'ai pas fait plus simple, Normalement vous devez donner un nom a tout mission, pour indentifier quels mission surligner
         if (Script_Tache != null)
@@ -254,10 +254,9 @@ public class SC_Marchant : MonoBehaviour
                         Debug.Log("Mission Egnime 1 Terminer");
                         LET.TacheTerminer = true;
                         Script_Tache.Change_Tach_List();
-                        //ICI que la mission ce terminer, est donc de récompencer c'est joueur.
                     }
                 }
             }
         }
-    }
+    }*/
 }

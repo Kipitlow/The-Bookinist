@@ -23,40 +23,73 @@ public class SC_Egnime_2 : MonoBehaviour
 
     public void Puzzle_Trouver()
     {
-        if(Nbr_Puzzle+1 >= Nbr_Puzzle_Max) // Condition de reussit du puzzle
         {
-            if (Script_Tache != null)
+            /*if (Nbr_Puzzle + 1 >= Nbr_Puzzle_Max) // Condition de reussit du puzzle
             {
-                foreach (Tache_Layourt TL in Script_Tache.Tache_Dans_Ce_Layeur)
+                if (Script_Tache != null)
                 {
-                    foreach (List_Element_Tach LET in TL.list_Element_Taches)
+                    foreach (Tache_Layourt TL in Script_Tache.Tache_Dans_Ce_Layeur)
                     {
-                        if (NameTach == LET.Nom_Mission)
+                        foreach (List_Element_Tach LET in TL.list_Element_Taches)
                         {
-                            LET.TacheTerminer = true;
-                            LET.Tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({Nbr_Puzzle_Max}/{Nbr_Puzzle_Max})";
-                            Script_Tache.Change_Tach_List();
-                            //ICI que la mission ce terminer, est donc de récompencer c'est joueur.
+                            if (NameTach == LET.Nom_Mission)
+                            {
+                                LET.TacheTerminer = true;
+                                LET.Tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({Nbr_Puzzle_Max}/{Nbr_Puzzle_Max})";
+                                Script_Tache.Change_Tach_List();
+                                //ICI que la mission ce terminer, est donc de récompencer c'est joueur.
+                            }
                         }
                     }
                 }
             }
+            else
+            {
+                Nbr_Puzzle += 1;
+                if (Script_Tache != null)
+                {
+                    foreach (Tache_Layourt TL in Script_Tache.Tache_Dans_Ce_Layeur)
+                    {
+                        foreach (List_Element_Tach LET in TL.list_Element_Taches)
+                        {
+                            if (NameTach == LET.Nom_Mission)
+                            {
+                                LET.Tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({Nbr_Puzzle}/{Nbr_Puzzle_Max})";
+                                Script_Tache.Change_Tach_List();
+                                //ICI que la mission ce terminer, est donc de récompencer c'est joueur.
+                            }
+                        }
+                    }
+                }
+            }*/
         }
-        else 
-        { 
+        if (Nbr_Puzzle + 1 >= Nbr_Puzzle_Max) // Condition de reussit du puzzle
+        {
+            if (Script_Tache != null)
+            {
+                foreach (List_Element_Tach LET in Script_Tache.Liste_Mission)
+                {
+                    if (NameTach == LET.Nom_Mission)
+                    {
+                        LET.Tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({Nbr_Puzzle_Max}/{Nbr_Puzzle_Max})";
+                        Script_Tache.Terminer_Tache(LET.Nom_Mission);
+                        //Script_Tache.Change_Tach_List();
+                    }
+                }
+            }
+        }
+        else
+        {
             Nbr_Puzzle += 1;
             if (Script_Tache != null)
             {
-                foreach (Tache_Layourt TL in Script_Tache.Tache_Dans_Ce_Layeur)
+                foreach (List_Element_Tach LET in Script_Tache.Liste_Mission)
                 {
-                    foreach (List_Element_Tach LET in TL.list_Element_Taches)
+                    if (NameTach == LET.Nom_Mission)
                     {
-                        if (NameTach == LET.Nom_Mission)
-                        {
-                            LET.Tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({Nbr_Puzzle}/{Nbr_Puzzle_Max})";
-                            Script_Tache.Change_Tach_List();
-                            //ICI que la mission ce terminer, est donc de récompencer c'est joueur.
-                        }
+                        LET.Tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({Nbr_Puzzle}/{Nbr_Puzzle_Max})";
+                        Script_Tache.Change_Tach_List();
+                        //ICI que la mission ce terminer, est donc de récompencer c'est joueur.
                     }
                 }
             }

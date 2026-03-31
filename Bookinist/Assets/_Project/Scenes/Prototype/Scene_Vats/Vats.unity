@@ -507,6 +507,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 545223340}
+        m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+        m_MethodName: Terminer_Tache
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: trouve bouton puzzle
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1034295592}
         m_TargetAssemblyTypeName: SC_Egnime_2, Assembly-CSharp
         m_MethodName: Spawn_Puzzle
@@ -849,12 +861,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111626167}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 8.800001, z: -156.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1659459456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &201662215
 GameObject:
@@ -1016,12 +1028,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206803403}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 8.800001, z: -271.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1659459456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &235965432
 GameObject:
@@ -1452,6 +1464,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 545223340}
+        m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+        m_MethodName: Terminer_Tache
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Chercher marchant
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 492115174}
         m_TargetAssemblyTypeName: SC_Marchant, Assembly-CSharp
         m_MethodName: change_UI
@@ -1526,12 +1550,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318294542}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -50, y: 8.800001, z: -26.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1659459456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &350665881
 GameObject:
@@ -2307,31 +2331,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text_Chronom: {fileID: 201662217}
   totalSeconds: 300
-  PrefableTache: {fileID: 7591524633391495982, guid: d36a553e2eea2c24fb6e9efbce4f869e, type: 3}
-  Target_Parent_Prefable: {fileID: 843667132}
-  List_Temporair_Tache: []
   CM_Player: {fileID: 1849893163}
   CM: {fileID: 1849893166}
-  Tache_Dans_Ce_Layeur:
+  UI_cacheLayeur:
   - Layeur_Affiche_Mission: 0
-    list_Element_Taches:
-    - Nom_Mission: Egnigme_01
-      Tache: "N\xE9gocie la lyre avec le marchant"
-      prix: 50
-      TacheTerminer: 0
     CanvaUI:
     - {fileID: 1715501170}
   - Layeur_Affiche_Mission: 1
-    list_Element_Taches:
-    - Nom_Mission: Enigme_2
-      Tache: Trouve Tous les Puzzle, sur cette Scene de Mariage (0/8)
-      prix: 25
-      TacheTerminer: 0
     CanvaUI:
     - {fileID: 995605393}
     - {fileID: 82877949}
   Balance: {fileID: 2469816004703808920}
   CanvaMarchant: {fileID: 1534741852}
+  PrefableTache: {fileID: 7591524633391495982, guid: d36a553e2eea2c24fb6e9efbce4f869e, type: 3}
+  Prefable_Canva_GameOver: {fileID: 8824466630921648668, guid: ea7505ab97eb4ee4d9b1eb4515b7d289, type: 3}
+  Target_Parent_Prefable: {fileID: 843667132}
+  List_Temporair_Tache: []
+  Liste_Mission:
+  - Nom_Mission: Chercher marchant
+    Tache: Trouve le marchant dans le premier layeur
+    TacheTerminer: 0
+  - Nom_Mission: Egnigme_01
+    Tache: "N\xE9gocie la lyre avec le marchant"
+    TacheTerminer: 0
+  - Nom_Mission: trouve bouton puzzle
+    Tache: Click sur le bouton pour spawn le puzzle
+    TacheTerminer: 0
+  - Nom_Mission: Enigme_2
+    Tache: Trouve Tous les Puzzle, sur cette Scene de Mariage (0/8)
+    TacheTerminer: 0
 --- !u!1 &564582614
 GameObject:
   m_ObjectHideFlags: 0
@@ -3195,6 +3223,66 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 797.6344
       objectReference: {fileID: 0}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 545223340}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 492115174}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Terminer_Tache
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Cache_Balance
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SC_Tache, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SC_Marchant, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Egnigme_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 738730757}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045597789625516890, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6086487665262243588, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3329,6 +3417,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+--- !u!1 &738730757 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4735543096536631646, guid: 57170a85d00bdd34f8e5e18ba25fa24a, type: 3}
+  m_PrefabInstance: {fileID: 738730756}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &747177066
 GameObject:
   m_ObjectHideFlags: 0
@@ -3339,7 +3432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 747177067}
   m_Layer: 0
-  m_Name: '@Marchant'
+  m_Name: '@Egnime1: Marchant'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3598,12 +3691,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791463696}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 50, y: 8.800001, z: -156.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1659459456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &843667131
 GameObject:
@@ -4306,7 +4399,7 @@ GameObject:
   - component: {fileID: 1034295591}
   - component: {fileID: 1034295592}
   m_Layer: 0
-  m_Name: Empty_Egnime2
+  m_Name: '@Egnime2: Puzzle'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4560,12 +4653,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144659499}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 50, y: 8.800001, z: -26.59999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1659459456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1170826240
 GameObject:
@@ -5504,12 +5597,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365140434}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -50, y: 8.8, z: -271.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1659459456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1366733407
 GameObject:
@@ -6349,12 +6442,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537575686}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -50, y: 8.800001, z: -156.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1659459456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1555493098
 GameObject:
@@ -7052,6 +7145,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630154645}
   m_CullTransparentMesh: 1
+--- !u!1 &1659459455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1659459456}
+  m_Layer: 0
+  m_Name: '@SnapPoint'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1659459456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659459455}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1365140435}
+  - {fileID: 206803404}
+  - {fileID: 1821429001}
+  - {fileID: 1537575687}
+  - {fileID: 111626168}
+  - {fileID: 791463697}
+  - {fileID: 318294543}
+  - {fileID: 2129243359}
+  - {fileID: 1144659500}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1715501170
 GameObject:
   m_ObjectHideFlags: 0
@@ -7734,12 +7867,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821429000}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 50, y: 8.800001, z: -271.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1659459456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1847198875
 GameObject:
@@ -8626,7 +8759,6 @@ GameObject:
   - component: {fileID: 1963800723}
   - component: {fileID: 1963800722}
   - component: {fileID: 1963800721}
-  - component: {fileID: 1963800725}
   m_Layer: 5
   m_Name: InventoryPanel
   m_TagString: Untagged
@@ -8722,19 +8854,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 12.300049}
   m_SizeDelta: {x: -100, y: 115}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &1963800725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1963800720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fadf2cc305f7a844f9f196ea8195e2d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Inventaire: []
 --- !u!1 &2129243358
 GameObject:
   m_ObjectHideFlags: 0
@@ -8759,12 +8878,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129243358}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 8.800001, z: -26.59999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1659459456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &132769646110459269
 GameObject:
@@ -9552,12 +9671,4 @@ SceneRoots:
   - {fileID: 545223339}
   - {fileID: 1032671253}
   - {fileID: 1614605517}
-  - {fileID: 1365140435}
-  - {fileID: 206803404}
-  - {fileID: 1821429001}
-  - {fileID: 1537575687}
-  - {fileID: 111626168}
-  - {fileID: 791463697}
-  - {fileID: 318294543}
-  - {fileID: 2129243359}
-  - {fileID: 1144659500}
+  - {fileID: 1659459456}
