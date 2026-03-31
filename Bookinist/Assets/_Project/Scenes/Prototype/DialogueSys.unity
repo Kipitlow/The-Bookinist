@@ -703,7 +703,7 @@ Transform:
   m_GameObject: {fileID: 935569756}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.02, y: 0.96, z: -17.06}
+  m_LocalPosition: {x: -6.38, y: -4.13, z: -14.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -725,7 +725,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1031684943
 Transform:
   m_ObjectHideFlags: 0
@@ -856,6 +856,7 @@ GameObject:
   - component: {fileID: 1457907054}
   - component: {fileID: 1457907053}
   - component: {fileID: 1457907057}
+  - component: {fileID: 1457907058}
   m_Layer: 0
   m_Name: PNJ(Clone)
   m_TagString: Untagged
@@ -872,7 +873,7 @@ Transform:
   m_GameObject: {fileID: 1457907051}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.5, y: -7.5, z: 0}
+  m_LocalPosition: {x: -6.8, y: -8.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -905,9 +906,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b60005bac8cfd5418d98f88de330f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: e8d2f6e8552fe184e906c158f823adff, type: 2}
-  bubbleRenderer: {fileID: 1048497792}
-  bubbleText: {fileID: 144153686}
+  _bubbleRenderer: {fileID: 1048497792}
+  _bubbleText: {fileID: 144153686}
 --- !u!212 &1457907056
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -984,6 +984,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.085, y: 10.534303, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1457907058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457907051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions:
+  - type: 2
+    thisObject: {fileID: 0}
+    target: {fileID: 0}
+    requiredTag: 
+    zone: {fileID: 0}
+    layer: 0
+  actions:
+  - type: 2
+    thisObject: {fileID: 0}
+    target: {fileID: 0}
+    activeState: 0
+    openDoor: {fileID: 0}
+    npcDialogue: {fileID: 11400000, guid: e8d2f6e8552fe184e906c158f823adff, type: 2}
+    npcTalker: {fileID: 1457907054}
 --- !u!1 &1518411227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,12 +1436,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 987474785978968419, guid: bc5327bdf5f692d47b897a3eb8002437, type: 3}
       propertyPath: pageObjects.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 987474785978968419, guid: bc5327bdf5f692d47b897a3eb8002437, type: 3}
       propertyPath: 'pageObjects.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1457907051}
     - target: {fileID: 987474785978968419, guid: bc5327bdf5f692d47b897a3eb8002437, type: 3}
       propertyPath: 'pageObjects.Array.data[1]'
       value: 

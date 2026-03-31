@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
@@ -142,6 +143,10 @@ public class CameraMovement : MonoBehaviour
 
     private void HandleZoom()
     {
+#if UNITY_EDITOR
+        float zoomInput = scrollZoom.action.ReadValue<float>();
+        ApplyZoom(zoomInput * 10f);
+#endif
         if (Touch.activeTouches.Count == 2)
         {
             Touch t0 = Touch.activeTouches[0];

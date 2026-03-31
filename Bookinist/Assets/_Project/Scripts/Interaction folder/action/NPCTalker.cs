@@ -20,6 +20,7 @@ public class NPCTalker : MonoBehaviour
 
     public void StartDialogue(NPCDialogue SO_dialogue)
     {
+        print("Starting Dialogue");
         _dialogue = SO_dialogue;
 
         // Plus de répliques -> fermer la bulle
