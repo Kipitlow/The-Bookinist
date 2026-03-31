@@ -56,7 +56,6 @@ public class InteractionRunner : MonoBehaviour
             case ConditionType.OnTouch:
                 if (context.target == null)
                     return false;
-                print("Touched");
                 return this.gameObject == context.target;
 ;
 

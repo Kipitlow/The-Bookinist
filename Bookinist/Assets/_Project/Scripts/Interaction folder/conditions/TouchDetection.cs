@@ -20,16 +20,12 @@ public class TouchDetection : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, _maxDistance, _hitMask))
         {
-            int hitlayer = hit.collider.GetComponent<SpriteRenderer>().sortingOrder;
+            int hitlayer = hit.collider.GetComponentInParent<Page>().PageIndex;
             int camLayer = _cam.GetComponent<CameraMovement>().currentIndexLayer;
             InteractionRunner interactionRunner = hit.collider.GetComponent<InteractionRunner>();
 
-
-            print(hitlayer + " : " + camLayer);
             if (hitlayer == camLayer)
             {
-
-                print("touched");
                 InteractionContext context = new InteractionContext
                 {
                     instigator = null,
