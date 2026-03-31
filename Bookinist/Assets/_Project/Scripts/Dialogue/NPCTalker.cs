@@ -10,12 +10,8 @@ public class NPCTalker : MonoBehaviour
     [SerializeField] private SpriteRenderer bubbleRenderer;
     [SerializeField] private TextMeshPro bubbleText;
 
-    [Header("Interaction")]
-    [SerializeField] private KeyCode interactKey = KeyCode.E;
-
     private int _lineIndex = 0;
     private bool _bubbleVisible = false;
-    private bool _playerInRange = false;
 
     void Start()
     {
@@ -52,19 +48,5 @@ public class NPCTalker : MonoBehaviour
         bubbleText.enabled = false;
         _bubbleVisible = false;
         _lineIndex = 0; // reset pour rejouer si besoin
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player")) _playerInRange = true;
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            _playerInRange = false;
-            CloseBubble(); // ferme si le joueur s'éloigne
-        }
     }
 }

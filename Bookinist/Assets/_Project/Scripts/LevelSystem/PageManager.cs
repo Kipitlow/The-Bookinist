@@ -17,7 +17,7 @@ public class PageManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i > layerHolder.Count; i++)
+        for (int i = 0; i < layerHolder.Count; i++)
         {
             GameObject layer = layerHolder[i];
 
@@ -28,7 +28,11 @@ public class PageManager : MonoBehaviour
             string sortingLayerName = _sortingLayerPrefix + i;
             Page page = layer.GetComponent<Page>();
             if (page != null)
+            {
                 page.SetSortingLayer(sortingLayerName);
+            }
+                
+                
             else
                 Debug.LogWarning($"[PageManager] Pas de composant Page sur {layer.name}.", layer);
         }
