@@ -1,10 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
-using JetBrains.Annotations;
-using System.Runtime.CompilerServices;
-using UnityEditor.Experimental.GraphView;
 
-public class Inventory : MonoBehaviour
+public class InventoryModel : MonoBehaviour
 {
     #region Variables
 
@@ -21,19 +18,23 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item itemToAdd)
     {
+        if (inventoryContents.Count < inventorySlots)
+            inventoryContents.Add(itemToAdd);
+    }
+
+    public void RemoveItem(Item itemToRemove)
+    {
         foreach (var item in inventoryContents)
         {
-            if (item == itemToAdd)
+            if (item == itemToRemove)
             {
-                getItemIndex(itemToAdd);
-                inventoryContents[0].itemQuantity++;
+                inventoryContents.RemoveAt(GetItemIndex(itemToRemove));
+                return;
             }
-            if (inventoryContents.Count < inventorySlots)
-                inventoryContents.Add(itemToAdd);
         }
     }
 
-    public int getItemIndex(Item checkItem)
+    public int GetItemIndex(Item checkItem)
     {
         int itemIndex = -1;
         foreach (var item in inventoryContents)
@@ -43,6 +44,11 @@ public class Inventory : MonoBehaviour
                 return itemIndex;
         }
         return -1;
+    }
+
+    public List<Item> GetInventoryContent()
+    {
+        return inventoryContents;
     }
     #endregion
 }
