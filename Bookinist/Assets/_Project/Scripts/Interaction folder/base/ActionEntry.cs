@@ -13,4 +13,7 @@ public class ActionEntry
     public bool activeState;
 
     public OpenDoor openDoor;
+
+    public NPCDialogue npcDialogue;
+    public NPCTalker npcTalker;
 }
