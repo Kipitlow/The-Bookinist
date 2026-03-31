@@ -63,10 +63,10 @@ public class InteractionRunner : MonoBehaviour
                 if (action.target != null)
                     action.openDoor.Toggle(action.target);
                 break;
-            //case ActionType.StartDialogue:
-            //    if (action.otherObject != null)
-            //        action.DialogueManager.StartDialogue(action.otherObject);
-            //    break;
+            case ActionType.StartDialogue:
+                if (action.npcDialogue != null && action.npcTalker != null)
+                    action.npcTalker.StartDialogue(action.npcDialogue);
+                break;
 
         }
     }

@@ -21,6 +21,10 @@ public class ActionEntryDrawer : PropertyDrawer
                 lines += 2;
                 break;
 
+            case ActionType.StartDialogue:
+                lines += 2;
+                break;
+
         }
 
         return lines * (EditorGUIUtility.singleLineHeight + 2f);
@@ -55,6 +59,12 @@ public class ActionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("openDoor"));
+                break;
+
+            case ActionType.StartDialogue:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("npcDialogue"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("npcTalker"));
                 break;
 
 

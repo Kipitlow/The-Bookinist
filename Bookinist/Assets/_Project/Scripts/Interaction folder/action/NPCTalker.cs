@@ -3,49 +3,49 @@ using UnityEngine;
 
 public class NPCTalker : MonoBehaviour
 {
-    [Header("Données")]
-    [SerializeField] private NPCDialogue dialogue;
-
     [Header("Bulle")]
-    [SerializeField] private SpriteRenderer bubbleRenderer;
-    [SerializeField] private TextMeshPro bubbleText;
+    [SerializeField] private SpriteRenderer _bubbleRenderer;
+    [SerializeField] private TextMeshPro _bubbleText;
+
+    private NPCDialogue _dialogue;
 
     private int _lineIndex = 0;
     private bool _bubbleVisible = false;
 
     void Start()
     {
-        bubbleRenderer.enabled = false;
-        bubbleText.enabled = false;
+        _bubbleRenderer.enabled = false;
+        _bubbleText.enabled = false;
     }
 
-    void Update()
+    public void StartDialogue(NPCDialogue SO_dialogue)
     {
+        _dialogue = SO_dialogue;
 
         // Plus de répliques -> fermer la bulle
-        if (_lineIndex >= dialogue.lines.Length)
+        if (_lineIndex >= _dialogue.lines.Length)
         {
             CloseBubble();
             return;
         }
 
         // Afficher la réplique courante
-        ShowLine(dialogue.lines[_lineIndex]);
+        ShowLine(_dialogue.lines[_lineIndex]);
         _lineIndex++;
     }
 
     private void ShowLine(string text)
     {
-        bubbleText.text = text;
-        bubbleRenderer.enabled = true;
-        bubbleText.enabled = true;
+        _bubbleText.text = text;
+        _bubbleRenderer.enabled = true;
+        _bubbleText.enabled = true;
         _bubbleVisible = true;
     }
 
     private void CloseBubble()
     {
-        bubbleRenderer.enabled = false;
-        bubbleText.enabled = false;
+        _bubbleRenderer.enabled = false;
+        _bubbleText.enabled = false;
         _bubbleVisible = false;
         _lineIndex = 0; // reset pour rejouer si besoin
     }
