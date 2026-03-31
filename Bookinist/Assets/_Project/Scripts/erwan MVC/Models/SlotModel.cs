@@ -1,55 +1,41 @@
-using UnityEngine;
-using System.Collections.Generic;
-
+[System.Serializable]
 public class SlotModel
 {
-    private int _index;
-    private bool _isEmpty = true;
-    public CardModel CardModel { get; set; }
-    public SlotView SlotView { get; set; }
+    public ItemData ItemData { get; private set; }
+    public int Amount { get; private set; }
 
-    // Référence vers les cartes disponibles (ScriptableObjects)
-    private List<CardData> _availableCards;
+    public bool IsEmpty => ItemData == null || Amount <= 0;
 
-    public SlotModel(int index, bool isEmpty, bool isPlayer1Card, List<CardData> availableCards)
+    public bool CanStack(ItemData data)
     {
-        _index = index;
-        _availableCards = availableCards;
-        SetIsEmpty(isEmpty, isPlayer1Card, availableCards);
+        return !IsEmpty
+            && ItemData == data
+            && ItemData.stackable
+            && Amount < ItemData.maxStack;
     }
 
-    public void SetIsEmpty(bool isEmpty, bool isPlayer1Card, List<CardData> availableCards)
+    public void Set(ItemData data, int amount)
     {
-        _isEmpty = isEmpty;
-
-        if (isEmpty)
-        {
-            CardModel = null;
-            return;
-        }
-
-        if (availableCards != null && availableCards.Count > 0)
-        {
-            int randomIndex = Random.Range(0, availableCards.Count);
-            CardData data = availableCards[randomIndex];
-
-            // Utiliser le constructeur basé sur CardData
-            CardModel = new CardModel(data, isPlayer1Card);
-        }
+        ItemData = data;
+        Amount = amount;
     }
 
-    public void SetCardModel(CardModel cardModel)
+    public void AddOne()
     {
-        CardModel = cardModel;
+        if (ItemData == null) return;
+        Amount++;
     }
 
-    public void SetIndex(int index)
+    public void RemoveOne()
     {
-        _index = index;
+        Amount--;
+        if (Amount <= 0)
+            Clear();
     }
 
-    #region Helpers
-    public bool IsEmpty => _isEmpty;
-    public int Index => _index;
-    #endregion
+    public void Clear()
+    {
+        ItemData = null;
+        Amount = 0;
+    }
 }

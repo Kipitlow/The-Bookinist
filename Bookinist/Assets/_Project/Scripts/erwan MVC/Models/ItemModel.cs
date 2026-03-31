@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public class CardModel
+public class ItemModel
 {
     public enum EPowerSide
     {
@@ -21,23 +21,20 @@ public class CardModel
     private int _cumulativPower;
 
     // Nouveau : référence à la CardData d’origine
-    public CardData Data { get; private set; }
+    public ItemData Data { get; private set; }
 
     public bool IsPlayer1Card => _isPlayer1Card;
 
     public Action OnPlayerChange;
 
     // Nouveau constructeur à partir d'une CardData
-    public CardModel(CardData data, bool isPlayer1Card)
+    public ItemModel(ItemData data, bool isPlayer1Card)
     {
         Data = data;
-        _name = data != null ? data.cardName : "Unknown";
+        _name = data != null ? data.displayName : "Unknown";
         _isPlayer1Card = isPlayer1Card;
 
-        _powerside.Add(EPowerSide.Top, data != null ? data.powerTop : 1);
-        _powerside.Add(EPowerSide.Right, data != null ? data.powerRight : 1);
-        _powerside.Add(EPowerSide.Bottom, data != null ? data.powerBottom : 1);
-        _powerside.Add(EPowerSide.Left, data != null ? data.powerLeft : 1);
+        //_powerside.Add(EPowerSide.Top, data != null ? data.powerTop : 1);
 
         UpdateCumulativPower();
     }

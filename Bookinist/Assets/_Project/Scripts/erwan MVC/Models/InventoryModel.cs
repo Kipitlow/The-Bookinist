@@ -1,118 +1,65 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class InventoryModel
 {
-    private readonly List<SlotModel> _slotList = new List<SlotModel>();
+    private readonly List<SlotModel> _slots = new();
 
-    // Source de données de cartes (ScriptableObjects)
-    private readonly List<CardData> _availableCards;
+    public List<SlotModel> Slots => _slots;
 
-    // Indique si cet inventaire appartient au joueur 1 (utile pour marquer les cartes piochées)
-    private readonly bool _isPlayer1Inventory;
-
-    public Action<SlotModel> OnCreateNewSlot;
-
-    public InventoryModel(int numberSlot, int numberCard, bool isPlayer1Inventory, List<CardData> availableCards)
+    public InventoryModel(int slotCount)
     {
-        _availableCards = availableCards;
-        _isPlayer1Inventory = isPlayer1Inventory;
-        AddSlot(numberSlot, numberCard, isPlayer1Inventory);
+        for (int i = 0; i < slotCount; i++)
+            _slots.Add(new SlotModel());
     }
 
-    public void AddSlot(int numberSlot, int numberCard, bool isPlayer1Card)
+    public bool TryAddItem(ItemData data, int amount = 1)
     {
-        for (int i = 0; i < numberSlot; i++)
+        if (data == null || amount <= 0)
+            return false;
+
+        // 1. remplir les stacks existants
+        if (data.stackable)
         {
-            bool isEmpty = i >= numberCard;
-            _slotList.Add(new SlotModel(i, isEmpty, isPlayer1Card, _availableCards));
-        }
-    }
-
-    public void AddOneSlot(int newNumberSlot, bool isPlayer1Card)
-    {
-        _slotList.Add(new SlotModel(newNumberSlot, true, isPlayer1Card, _availableCards));
-        OnCreateNewSlot?.Invoke(_slotList[^1]);
-    }
-
-    public void RemoveCard(CardModel card)
-    {
-        foreach (SlotModel slot in _slotList)
-        {
-            if (slot.CardModel == card)
+            foreach (var slot in _slots)
             {
-                // On marque simplement le slot comme vide, sans recréer de carte
-                slot.SetIsEmpty(true, true, _availableCards);
-                return;
-            }
-        }
-    }
-
-    // Ajoute une carte précise dans le premier slot vide
-    public void AddCard(CardModel card)
-    {
-        SlotModel emptySlot = null;
-        foreach (var slot in _slotList)
-        {
-            if (slot.IsEmpty)
-            {
-                emptySlot = slot;
-                break;
+                while (amount > 0 && slot.CanStack(data))
+                {
+                    slot.AddOne();
+                    amount--;
+                }
             }
         }
 
-        if (emptySlot == null)
+        // 2. utiliser les slots vides
+        foreach (var slot in _slots)
         {
-            Debug.LogWarning("InventoryModel.AddCard : aucun slot vide disponible, la carte ne peut pas être ajoutée.");
-            return;
-        }
-        
-        emptySlot.SetCardModel(card);
+            if (!slot.IsEmpty)
+                continue;
 
-        bool isPlayer1Card = card != null && card.IsPlayer1Card;
-        emptySlot.SetIsEmpty(false, isPlayer1Card, _availableCards);
+            int amountToPlace = data.stackable ? Mathf.Min(amount, data.maxStack) : 1;
+            slot.Set(data, amountToPlace);
+            amount -= amountToPlace;
+
+            if (amount <= 0)
+                return true;
+        }
+
+        return amount <= 0;
     }
 
-    // Pioche une carte aléatoire parmi AvailableCards et l'ajoute dans un slot vide
-    public void DrawCard()
+    public bool TryTakeOneFromSlot(int slotIndex, out ItemData takenItem)
     {
-        if (_availableCards == null || _availableCards.Count == 0)
-        {
-            Debug.LogWarning("InventoryModel.DrawCard : aucune CardData disponible pour piocher.");
-            return;
-        }
+        takenItem = null;
 
-        // Cherche un slot vide
-        SlotModel emptySlot = null;
-        foreach (var slot in _slotList)
-        {
-            if (slot.IsEmpty)
-            {
-                emptySlot = slot;
-                break;
-            }
-        }
+        if (slotIndex < 0 || slotIndex >= _slots.Count)
+            return false;
 
-        if (emptySlot == null)
-        {
-            Debug.LogWarning("InventoryModel.DrawCard : aucun slot vide disponible, la carte ne peut pas être piochée.");
-            return;
-        }
+        var slot = _slots[slotIndex];
+        if (slot.IsEmpty)
+            return false;
 
-        // Choisit une CardData aléatoire
-        int index = UnityEngine.Random.Range(0, _availableCards.Count);
-        CardData data = _availableCards[index];
-
-        // Crée le modèle de carte pour le bon joueur
-        CardModel newCard = new CardModel(data, _isPlayer1Inventory);
-
-        // Ajoute la carte via la méthode existante
-        AddCard(newCard);
+        takenItem = slot.ItemData;
+        slot.RemoveOne();
+        return true;
     }
-
-    #region Helpers
-    public List<SlotModel> SlotList => _slotList;
-    public List<CardData> AvailableCards => _availableCards;
-    #endregion
 }

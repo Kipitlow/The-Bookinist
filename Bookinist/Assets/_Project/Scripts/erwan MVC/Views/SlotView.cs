@@ -7,9 +7,4 @@ public class SlotView : MonoBehaviour
 {
     public SlotModel SlotModel { get; private set; }
 
-    public void Init(SlotModel slotModel)
-    {
-        SlotModel = slotModel;
-        slotModel.SlotView = this;
-    }
 }

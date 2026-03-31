@@ -223,16 +223,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conditions:
-  - type: 0
-    thisObject: {fileID: 3952309446029746017}
-    otherObject: {fileID: 0}
-    requiredTag: InteractableObject
-    zone: {fileID: 6826705614895182055}
-    layer: 0
-  actions:
-  - type: 1
-    thisObject: {fileID: 3952309446029746017}
-    otherObject: {fileID: 0}
-    activeState: 0
-    openDoor: {fileID: 0}
+  interactionSets:
+  - interactionName: 
+    conditions:
+    - type: 2
+      thisObject: {fileID: 0}
+      otherObject: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      layer: 0
+    actions:
+    - type: 1
+      thisObject: {fileID: 0}
+      otherObject: {fileID: 0}
+      activeState: 0
+      openDoor: {fileID: 0}

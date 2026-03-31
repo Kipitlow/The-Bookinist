@@ -12,6 +12,8 @@ public class ActionEntry
 
     public bool activeState;
 
+
+    [Tooltip("the door you want to open")]
     public OpenDoor openDoor;
 
     public NPCDialogue npcDialogue;

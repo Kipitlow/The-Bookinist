@@ -1,57 +1,40 @@
 public class CaseModel
 {
-    public enum ECaseState
+    public ItemData ItemData { get; private set; }
+    public int Amount { get; private set; }
+
+    public bool IsEmpty => ItemData == null || Amount <= 0;
+
+    public bool CanStack(ItemData data)
     {
-        EMPTY,
-        CARDFILL,
-        EFFECTFILL,
-        OBSTACLEFILL
+        return !IsEmpty
+            && ItemData == data
+            && ItemData.stackable
+            && Amount < ItemData.maxStack;
     }
 
-    private CardModel _cardModel;
-
-    public CaseModel(ECaseState caseState = ECaseState.EMPTY)
+    public void Set(ItemData data, int amount)
     {
-        CaseState = caseState;
+        ItemData = data;
+        Amount = amount;
     }
 
-    public ECaseState CaseState { get; private set; }
-
-    public CardModel CardModel => _cardModel;
-
-    public bool PlaceCard(CardModel card)
+    public void AddOne()
     {
-        if (CaseState != ECaseState.EMPTY)
-            return false;
-
-        _cardModel = card;
-        CaseState = ECaseState.CARDFILL;
-        return true;
+        if (ItemData == null) return;
+        Amount++;
     }
 
-    public void RemoveCard()
+    public void RemoveOne()
     {
-        if (CaseState == ECaseState.CARDFILL)
-        {
-            _cardModel = null;
-            CaseState = ECaseState.EMPTY;
-        }
+        Amount--;
+        if (Amount <= 0)
+            Clear();
     }
 
-    public void PlaceObstacle()
+    public void Clear()
     {
-        _cardModel = null;
-        CaseState = ECaseState.OBSTACLEFILL;
-    }
-
-    public void PlaceEffect()
-    {
-        _cardModel = null;
-        CaseState = ECaseState.EFFECTFILL;
-    }
-
-    public bool IsEmpty()
-    {
-        return CaseState == ECaseState.EMPTY;
+        ItemData = null;
+        Amount = 0;
     }
 }
