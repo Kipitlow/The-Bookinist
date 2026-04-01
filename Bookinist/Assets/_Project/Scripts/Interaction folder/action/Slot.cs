@@ -3,15 +3,18 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
+    [SerializeField] private InventoryController _inventoryController;
+
     private bool _isEmpty;
-    private GameObject _currentObject;
+    private Sprite _currentObject;
+
 
     public bool IsEmpty() { return _isEmpty; }
 
-    public void Fill(GameObject gameObject)
+    public void Fill()
     {
         if (gameObject == null) return;
-        Instantiate(gameObject);
+        _currentObject = Instantiate(_inventoryController.activeItem.itemSprite);
         _isEmpty = true;
     }
 

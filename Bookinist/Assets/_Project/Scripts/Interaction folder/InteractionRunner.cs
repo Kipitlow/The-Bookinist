@@ -94,7 +94,7 @@ public class InteractionRunner : MonoBehaviour
 
             case ActionType.PlaceObject:
                 if (action.slot != null && action.target != null)
-                    action.slot.Fill(action.target);
+                    action.slot.Fill();
                 break;
 
             case ActionType.ClearObject:
