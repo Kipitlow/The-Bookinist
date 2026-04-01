@@ -42,7 +42,7 @@ public class InteractionRunner : MonoBehaviour
         switch (condition.type)
         {
             case ConditionType.SameLayer:
-                if (condition.thisObject == null || condition.otherObject == null)
+                if (condition.thisObject == null || condition.target == null)
                     return false;
 
                 return condition.thisObject.layer == condition.target.layer;
@@ -83,10 +83,6 @@ public class InteractionRunner : MonoBehaviour
                     action.npcTalker.StartDialogue(action.npcDialogue);
                 break;
 
-            case ActionType.Print:
-                if (action.printText != null && action.text != null )
-                    action.printText.Print(action.text);
-                break;
         }
     }
 }

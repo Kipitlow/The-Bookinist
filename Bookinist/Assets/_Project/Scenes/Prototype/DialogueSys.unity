@@ -831,7 +831,7 @@ MonoBehaviour:
   scrollZoom: {fileID: 3594305976405456403, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   minZ: -20
   maxZ: 40
-  snapPoints:
+  snapPointsManager:
   - {fileID: 1810388930}
   - {fileID: 1673583384}
   - {fileID: 1707802781}
@@ -1294,10 +1294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a78073eb38278b48a5ee16f8b58f12f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerHolder:
-  - {fileID: 1810388931}
-  - {fileID: 1673583383}
-  - {fileID: 1707802780}
+  _layerHolder: []
   _sortingLayerPrefix: Page_
 --- !u!1 &1582303111 stripped
 GameObject:
@@ -1634,11 +1631,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7112083112492688035, guid: bc5327bdf5f692d47b897a3eb8002437, type: 3}
   m_PrefabInstance: {fileID: 1673583381}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1673583383 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3886226625964495449, guid: bc5327bdf5f692d47b897a3eb8002437, type: 3}
-  m_PrefabInstance: {fileID: 1673583381}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1673583384 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7170605830660503924, guid: bc5327bdf5f692d47b897a3eb8002437, type: 3}
@@ -1733,11 +1725,6 @@ PrefabInstance:
 --- !u!4 &1707802779 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7112083112492688035, guid: bc5327bdf5f692d47b897a3eb8002437, type: 3}
-  m_PrefabInstance: {fileID: 1707802778}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1707802780 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3886226625964495449, guid: bc5327bdf5f692d47b897a3eb8002437, type: 3}
   m_PrefabInstance: {fileID: 1707802778}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1707802781 stripped
@@ -1855,11 +1842,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563134a4431f3e94bb61479f7af96b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1810388931 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3886226625964495449, guid: bc5327bdf5f692d47b897a3eb8002437, type: 3}
-  m_PrefabInstance: {fileID: 1810388928}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2007113339
 GameObject:
   m_ObjectHideFlags: 0
