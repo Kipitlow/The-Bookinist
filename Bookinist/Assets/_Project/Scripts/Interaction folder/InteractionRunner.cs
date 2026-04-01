@@ -63,6 +63,11 @@ public class InteractionRunner : MonoBehaviour
                     return false;
                 return condition.slot.IsEmpty() == condition.shouldBeEmpty;
 
+            case ConditionType.IsSameItemSO:
+                if (condition.item == null)
+                    return false;
+                return condition.selectedItemIsWanted.IsCorrectObject(condition.item);
+
             default:
                 return false;
         }
