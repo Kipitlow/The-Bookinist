@@ -8,15 +8,21 @@ public class ConditionEntry
 {
     public ConditionType type;
 
-    [Tooltip("this object")]
-    public GameObject thisObject;
+    [Tooltip("objet ciblé")]
     public GameObject target;
 
+    [Tooltip("tag requis")]
     public string requiredTag;
 
+    [Tooltip("zone de detection")]
     public ZoneDetector zone;
- 
-    public int layer;
 
-    //public OnTouch touch 
+    [Tooltip("page sur laquel tu veux que l'objet soit")]
+    public Page checkedPage;
+
+    [Tooltip("script de detection du layer")]
+    public LayerDetector layerDetector;
+
+    [Tooltip("slot que tu veux verifier")]
+    public Slot slot;
 }

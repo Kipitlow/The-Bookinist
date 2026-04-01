@@ -42,22 +42,26 @@ public class InteractionRunner : MonoBehaviour
         switch (condition.type)
         {
             case ConditionType.SameLayer:
-                if (condition.thisObject == null || condition.target == null)
+                if (condition.target == null)
                     return false;
 
-                return condition.thisObject.layer == condition.target.layer;
+                return condition.layerDetector.IsInSameLayer(condition.target, condition.checkedPage);
 
             case ConditionType.SameZone:
                 if (condition.zone == null || condition.target == null)
                     return false;
 
-                return condition.zone.IsInside(condition.target);
+                return context.target == condition.target;
 
             case ConditionType.OnTouch:
                 if (context.target == null)
                     return false;
                 return this.gameObject == context.target;
-;
+
+            case ConditionType.IsEmpty:
+                if (condition.slot == null)
+                    return false;
+                return condition.slot.IsEmpty() == false;
 
             default:
                 return false;
@@ -71,16 +75,31 @@ public class InteractionRunner : MonoBehaviour
             case ActionType.SetActive:
                 if (action.target != null)
                     action.target.SetActive(action.activeState);
-
                 break;
 
             case ActionType.Open:
                 if (action.target != null)
                     action.openDoor.Toggle(action.target);
                 break;
+
             case ActionType.StartDialogue:
                 if (action.npcDialogue != null && action.npcTalker != null)
                     action.npcTalker.StartDialogue(action.npcDialogue);
+                break;
+
+            case ActionType.PlaceObject:
+                if (action.slot != null && action.target != null)
+                    action.slot.Fill(action.target);
+                break;
+
+            case ActionType.ClearObject:
+                if (action.slot != null && action.target != null)
+                    action.slot.Clear();
+                break;
+
+            case ActionType.CallFunction:
+                if (action.onExecute != null)
+                    action.onExecute?.Invoke();
                 break;
 
         }

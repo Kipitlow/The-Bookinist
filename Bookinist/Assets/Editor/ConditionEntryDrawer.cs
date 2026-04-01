@@ -24,6 +24,10 @@ public class ConditionEntryDrawer : PropertyDrawer
             case ConditionType.OnTouch:
                 lines += 0;
                 break;
+
+            case ConditionType.IsEmpty:
+                lines += 1;
+                break;
         }
 
         return lines * (EditorGUIUtility.singleLineHeight + 2f);
@@ -49,7 +53,7 @@ public class ConditionEntryDrawer : PropertyDrawer
         switch (type)
         {
             case ConditionType.SameLayer:
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("thisObject"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("layerDetector"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 break;
@@ -63,6 +67,11 @@ public class ConditionEntryDrawer : PropertyDrawer
                 break;
 
             case ConditionType.OnTouch:
+                break;
+
+            case ConditionType.IsEmpty:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
+                r.y += h + s;
                 break;
         }
 

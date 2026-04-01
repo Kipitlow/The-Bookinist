@@ -7,6 +7,7 @@ public class Page : MonoBehaviour
     [SerializeField] int pageIndex;
     private SnapPointManager _snapPointManager;
 
+    public List<GameObject> PageObjects => pageObjects;
     public int PageIndex => pageIndex;
 
     // Nom du Sorting Layer assigné à cette page (défini par PageManager au Start)

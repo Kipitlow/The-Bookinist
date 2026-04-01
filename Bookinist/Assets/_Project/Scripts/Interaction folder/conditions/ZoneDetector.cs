@@ -4,45 +4,61 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class ZoneDetector : MonoBehaviour
 {
-    [SerializeField] private Transform ownerRoot;
-    [SerializeField] private bool useRootObject = true;
+    [SerializeField] private Transform _ownerRoot;
+
+    private InteractionRunner _interactionRunner;
 
     private readonly HashSet<GameObject> objectsInside = new();
 
-    private void Reset()
+    private void Start()
     {
-        Collider col = GetComponent<Collider>();
-        col.isTrigger = true;
-
         if (transform.parent != null)
-            ownerRoot = transform.parent;
+        {
+            _ownerRoot = transform.parent;
+            _interactionRunner = GetComponentInParent<InteractionRunner>();
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void triggerCollision(bool shouldBeTriggered)
     {
-        if (other.gameObject == null)
-            return;
-
-        if (ownerRoot != null && other.gameObject == ownerRoot.root.gameObject)
-            return;
-
-        objectsInside.Add(other.gameObject);
+        Collider thisCollider = GetComponent<Collider>();
+        thisCollider.isTrigger = shouldBeTriggered;
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider hit)
     {
-        if (other.gameObject == null)
+        if (hit.gameObject == null)
             return;
 
-        if (ownerRoot != null && other.gameObject == ownerRoot.root.gameObject)
+        if (_ownerRoot != null && hit.gameObject == _ownerRoot.root.gameObject)
             return;
 
-        objectsInside.Remove(other.gameObject);
+        objectsInside.Add(hit.gameObject);
+
+
+        InteractionContext context = new InteractionContext
+        {
+            instigator = null,
+            target = hit.gameObject
+        };
+
+        _interactionRunner.TryExecuteAll(context);
     }
 
-    public bool IsInside(GameObject obj)
+    private void OnTriggerExit(Collider hit)
     {
-        if (obj == null) return false;
-        return objectsInside.Contains(obj);
+        if (hit.gameObject == null)
+            return;
+
+        if (_ownerRoot != null && hit.gameObject == _ownerRoot.root.gameObject)
+            return;
+
+        objectsInside.Remove(hit.gameObject);
+    }
+
+    public bool IsInside(GameObject Obj)
+    {
+        if (Obj == null) return false;
+        return objectsInside.Contains(Obj);
     }
 }
