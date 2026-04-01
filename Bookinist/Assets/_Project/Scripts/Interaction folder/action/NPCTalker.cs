@@ -7,18 +7,28 @@ public class NPCTalker : MonoBehaviour
     [SerializeField] private SpriteRenderer _bubbleRenderer;
     [SerializeField] private TextMeshPro _bubbleText;
     [SerializeField] private Transform _bubbleParent;
+    [SerializeField] private SpriteRenderer _nameBubbleRenderer;
+    [SerializeField] private TextMeshPro _nameBubbleText;
     [SerializeField] private Vector2 _padding = new Vector2(0.5f, 0.3f);
-    [SerializeField] private Vector2 _baseTextOffset = new Vector2(-4.27f, -0.17f);
+    
+    private Vector2 _baseTextOffset = new Vector2(-4.27f, -0.17f);
+    private Vector2 _nameTextOffset = new Vector2(-8,0);
 
     private NPCDialogue _dialogue;
 
     private int _lineIndex = 0;
     private bool _bubbleVisible = false;
 
+    private Vector3 _pivOffsetShop = new Vector3(1f,0f,0);
+    private Vector3 _pivOffsetBook = new Vector3(5,5,0);
+
     void Start()
     {
         _bubbleRenderer.enabled = false;
         _bubbleText.enabled = false;
+        _nameBubbleRenderer.enabled = false;
+        _nameBubbleText.enabled = false;
+
     }
 
     public void StartDialogue(NPCDialogue SO_dialogue)
@@ -46,18 +56,52 @@ public class NPCTalker : MonoBehaviour
         _bubbleVisible = true;
 
         _bubbleText.transform.localPosition = _baseTextOffset;
-
         _bubbleText.ForceMeshUpdate();
-
         Vector2 textSize = _bubbleText.textBounds.size;
         Vector2 newSize = textSize + _padding;
         _bubbleRenderer.size = newSize;
 
-        // Décaler le sprite et le texte vers la droite pour ancrer leur bord gauche au parent
-        float offsetX = newSize.x / 5f;
+        if (_dialogue.IsShopNPC)
+        {
+            _bubbleRenderer.sortingLayerName = "Bubbles";
+            _bubbleRenderer.sortingOrder = 0;
+            _nameBubbleRenderer.sortingLayerName = "Bubbles";
+            _nameBubbleRenderer.sortingOrder = 1;
 
-        _bubbleRenderer.transform.localPosition = new Vector3(offsetX, 0, 0);
-        _bubbleText.transform.localPosition = new Vector3(offsetX, 0, 0) + new Vector3(_baseTextOffset.x, _baseTextOffset.y, -0.1f);
+            _bubbleText.GetComponent<TextMeshPro>().sortingOrder = 0;
+            _nameBubbleText.GetComponent<TextMeshPro>().sortingOrder = 1;
+
+            _nameBubbleRenderer.enabled = true;
+            _nameBubbleText.enabled = true;
+            _nameBubbleText.text = _dialogue.NPCName;
+            _nameBubbleText.ForceMeshUpdate();
+            _nameBubbleText.transform.localPosition = _nameTextOffset;
+            _bubbleParent.transform.localPosition = _pivOffsetShop;
+            _bubbleParent.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+
+            float offsetX = newSize.x / 5f;
+            float offsetY = -newSize.y / 5f;
+
+            Vector2 nameSize = _nameBubbleText.textBounds.size + new Vector3(_padding.x, _padding.y, 0);
+            _nameBubbleRenderer.size = nameSize;
+
+            // Name bubble au dessus du coin supérieur gauche de la bulle principale
+            float nameBubbleX = offsetX + nameSize.x / 5f;
+            float nameBubbleY = offsetY + newSize.y / 5f + nameSize.y / 2.5f; // bord supérieur de la bulle principale
+            _nameBubbleRenderer.transform.localPosition = new Vector3(nameBubbleX, nameBubbleY, 0f);
+        }
+        else
+        {
+            // Ancrage bord gauche + bord supérieur fixe
+            float offsetX = newSize.x / 5f;
+            float offsetY = -newSize.y / 5f; // bord supérieur collé au point d'ancrage
+
+            _bubbleRenderer.transform.localPosition = new Vector3(offsetX, offsetY, 0f);
+            _bubbleText.transform.localPosition = new Vector3(offsetX, offsetY, -0.5f)
+                                                    + (Vector3)_baseTextOffset;
+
+            _bubbleParent.transform.localPosition = _pivOffsetBook;
+        }
     }
 
     private void CloseBubble()
@@ -65,6 +109,8 @@ public class NPCTalker : MonoBehaviour
         _bubbleRenderer.enabled = false;
         _bubbleText.enabled = false;
         _bubbleVisible = false;
+        _nameBubbleRenderer.enabled = false;
+        _nameBubbleText.enabled = false;
         _lineIndex = 0; // reset pour rejouer si besoin
     }
 }
