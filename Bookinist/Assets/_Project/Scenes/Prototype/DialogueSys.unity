@@ -235,7 +235,7 @@ MonoBehaviour:
       slot: {fileID: 0}
       shouldBeEmpty: 0
       item: {fileID: 11400000, guid: 4dd9171975d938444a9c004d3d4c8bdc, type: 2}
-      selectedItemIsWanted: {fileID: 0}
+      selectedItemIsWanted: {fileID: 247390102}
     actions:
     - type: 5
       target: {fileID: 0}
@@ -485,6 +485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 247390100}
   - component: {fileID: 247390101}
+  - component: {fileID: 247390102}
   m_Layer: 0
   m_Name: Conditions
   m_TagString: Untagged
@@ -523,6 +524,19 @@ MonoBehaviour:
   _hitMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &247390102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247390099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7148b1683e4950f4cbf34cff7d789b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventoryController: {fileID: 1190348954}
 --- !u!1 &312910468
 GameObject:
   m_ObjectHideFlags: 0
