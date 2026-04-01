@@ -39,7 +39,7 @@ public class ItemController : MonoBehaviour/*, IDragHandler, IBeginDragHandler, 
     }
 
     
-    public void OnZoobyClick()
+    public void OnItemClick()
     {
         Debug.Log("Event called OnClick, with item " + gameObject);
         onItemClicked?.Invoke(gameObject);
