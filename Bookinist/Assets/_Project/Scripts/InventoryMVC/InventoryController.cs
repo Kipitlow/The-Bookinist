@@ -6,7 +6,7 @@ public class InventoryController : MonoBehaviour
     #region Variables
     [SerializeField] private InventoryModel _inventoryModel;
     [SerializeField] private InventoryView _inventoryView;
-    [SerializeField] private GameObject _activeItem;
+    public Item activeItem;
 
     #endregion
 
@@ -41,10 +41,10 @@ public class InventoryController : MonoBehaviour
         _inventoryView.UpdateInventory(_inventoryModel.GetInventoryContent());
     }
 
-    private void HandleItemClicked(GameObject item)
+    private void HandleItemClicked(Item item)
     {
         Debug.Log($"Clicked: {item.name}");
-        _activeItem = item;
+        activeItem = item;
     }
 
     #endregion

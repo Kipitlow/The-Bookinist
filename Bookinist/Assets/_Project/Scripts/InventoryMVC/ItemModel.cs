@@ -5,7 +5,7 @@ public class ItemModel : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField] Item itemScriptable;
+    public Item itemScriptable;
 
     [HideInInspector] public string itemName;
     [HideInInspector] public Sprite itemSprite;

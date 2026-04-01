@@ -3,7 +3,8 @@ public enum ConditionType
     SameLayer,
     SameZone,
     OnTouch,
-    IsEmpty
+    IsEmpty,
+    IsSameItemSO
 }
 
 public enum ActionType

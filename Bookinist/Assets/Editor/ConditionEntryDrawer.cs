@@ -28,6 +28,10 @@ public class ConditionEntryDrawer : PropertyDrawer
             case ConditionType.IsEmpty:
                 lines += 2;
                 break;
+
+            case ConditionType.IsSameItemSO:
+                lines += 2;
+                break;
         }
 
         return lines * (EditorGUIUtility.singleLineHeight + 2f);
@@ -73,6 +77,12 @@ public class ConditionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("shouldBeEmpty"));
+                break;
+
+            case ConditionType.IsSameItemSO:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("selectedItemIsWanted"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
                 break;
         }
 

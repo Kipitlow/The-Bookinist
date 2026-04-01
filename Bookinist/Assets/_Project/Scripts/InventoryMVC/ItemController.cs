@@ -9,13 +9,13 @@ public class ItemController : MonoBehaviour/*, IDragHandler, IBeginDragHandler, 
     [SerializeField] private ItemModel _itemModel;
     [SerializeField] private ItemView _itemView;
     [SerializeField] private bool _itemIsSelected;
-    public static Action<GameObject> onItemClicked;
+    public static Action<Item> onItemClicked;
     //[SerializeField] private GameObject _EventManager;
     //private RectTransform _rectTransform;
     //private Image _image;
 
 
-    #endregion
+    #endregion  
 
     #region Unity Methods
     private void Awake()
@@ -42,7 +42,7 @@ public class ItemController : MonoBehaviour/*, IDragHandler, IBeginDragHandler, 
     public void OnItemClick()
     {
         Debug.Log("Event called OnClick, with item " + gameObject);
-        onItemClicked?.Invoke(gameObject);
+        onItemClicked?.Invoke(_itemModel.itemScriptable);
     }
     /*
     public void OnDrag(PointerEventData eventData)

@@ -29,5 +29,11 @@ public class ConditionEntry
     [Tooltip("verifier l'etat du slot")]
     public bool shouldBeEmpty;
 
+    [Tooltip("SO de l'item")]
+    public Item item;
+
+    [Tooltip("Script qui compare les SO")]
+    public SelectedItemIsWanted selectedItemIsWanted;
+
 
 }
