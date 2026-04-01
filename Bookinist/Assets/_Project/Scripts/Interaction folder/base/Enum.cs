@@ -9,5 +9,5 @@ public enum ActionType
 {
     SetActive,
     Open,
-    Print
+    StartDialogue
 }

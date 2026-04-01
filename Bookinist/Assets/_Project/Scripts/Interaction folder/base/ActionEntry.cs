@@ -8,10 +8,7 @@ public class ActionEntry
     public ActionType type;
 
     public GameObject thisObject;
-
-
-    [Tooltip("the object you want to activate")]
-    public GameObject otherObject;
+    public GameObject target;
 
     public bool activeState;
 
@@ -19,6 +16,6 @@ public class ActionEntry
     [Tooltip("the door you want to open")]
     public OpenDoor openDoor;
 
-    public PrintText printText;
-    public string text;
+    public NPCDialogue npcDialogue;
+    public NPCTalker npcTalker;
 }

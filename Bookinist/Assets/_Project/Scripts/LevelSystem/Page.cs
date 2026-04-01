@@ -5,6 +5,7 @@ public class Page : MonoBehaviour
 {
     [SerializeField] List<GameObject> pageObjects;
     [SerializeField] int pageIndex;
+    private SnapPointManager _snapPointManager;
 
     public int PageIndex => pageIndex;
 
@@ -20,6 +21,8 @@ public class Page : MonoBehaviour
             _sortingLayerName = "Page_" + pageIndex;
 
         ApplySortingToPageObjects();
+        _snapPointManager = GetComponentInChildren<SnapPointManager>();
+        if (_snapPointManager != null ) _snapPointManager.SetUpSnapPoints();
     }
 
     /// <summary>
@@ -57,6 +60,7 @@ public class Page : MonoBehaviour
             if (sr == null) continue;
 
             sr.sortingLayerName = _sortingLayerName;
+            //print("Sorting object in : " + _sortingLayerName);
             sr.sortingOrder = i; // 0, 1, 2... sans limite liée aux autres pages
         }
     }

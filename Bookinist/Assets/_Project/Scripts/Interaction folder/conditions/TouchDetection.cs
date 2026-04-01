@@ -1,63 +1,42 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlacedObject))]
 public class TouchDetection : MonoBehaviour
 {
-    [Header("Feedback couleur")]
-    [SerializeField] private Color _clickColor = Color.red;
+    Camera _cam;
+    [SerializeField] private float _maxDistance = 100f;
+    [SerializeField] private LayerMask _hitMask = ~0;
 
-    private PlacedObject _placedObject;
-    private SpriteRenderer _spriteRenderer;
-    private Color _originalColor;
-    private GridInteractor _interactor;
-    private InteractionRunner _interactionRunner;
+
 
     private void Awake()
     {
-        _placedObject = GetComponent<PlacedObject>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _originalColor = _spriteRenderer.color;
-
-        _interactionRunner = GetComponent<InteractionRunner>();
+        _cam = Camera.main;
     }
 
-    private void Start()
-    {
-        _interactor = FindObjectOfType<GridInteractor>();
 
-        if (_interactor == null)
+    public void OnTouch(Vector2 screenPosition)
+    {
+        Ray ray = _cam.ScreenPointToRay(screenPosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, _maxDistance, _hitMask))
         {
-            Debug.LogWarning("[ClickableCharacter] Aucun GridInteractor trouvé dans la scène.", this);
-            return;
+            int hitlayer = hit.collider.GetComponentInParent<Page>().PageIndex;
+            int camLayer = _cam.GetComponent<CameraMovement>().currentIndexLayer;
+            InteractionRunner interactionRunner = hit.collider.GetComponent<InteractionRunner>();
+
+            if (hitlayer == camLayer)
+            {
+                InteractionContext context = new InteractionContext
+                {
+                    instigator = null,
+                    target = hit.collider.gameObject
+                };
+
+                if (interactionRunner != null)
+                {
+                    interactionRunner.TryExecuteAll(context);
+                }
+            }
         }
-
-        _interactor.OnObjectTouched += OnObjectTouched;
-    }
-
-    private void OnDestroy()
-    {
-        if (_interactor != null)
-            _interactor.OnObjectTouched -= OnObjectTouched;
-    }
-
-    private void OnObjectTouched(PlacedObject touched, Vector2Int cell)
-    {
-        if (touched != _placedObject)
-            return;
-
-        _spriteRenderer.color = _clickColor;
-        Debug.Log($"[ClickableCharacter] {gameObject.name} a été cliqué !");
-
-        if (_interactionRunner == null)
-            return;
-
-        InteractionContext context = new InteractionContext
-        {
-            instigator = _interactor != null ? _interactor.gameObject : null,
-            target = gameObject,
-            isTouchEvent = true
-        };
-
-        _interactionRunner.TryExecuteAll(context);
     }
 }

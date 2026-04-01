@@ -21,9 +21,10 @@ public class ActionEntryDrawer : PropertyDrawer
                 lines += 2;
                 break;
 
-            case ActionType.Print:
+            case ActionType.StartDialogue:
                 lines += 2;
                 break;
+
         }
 
         return lines * (EditorGUIUtility.singleLineHeight + 2f);
@@ -51,20 +52,21 @@ public class ActionEntryDrawer : PropertyDrawer
             case ActionType.SetActive:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("activeState"));
                 r.y += h + s;
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("otherObject"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 break;
 
             case ActionType.Open:
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("otherObject"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("openDoor"));
                 break;
 
-            case ActionType.Print:
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("printText"));
+            case ActionType.StartDialogue:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("npcDialogue"));
                 r.y += h + s;
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("text"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("npcTalker"));
                 break;
+
 
         }
 

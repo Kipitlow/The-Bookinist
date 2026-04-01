@@ -10,9 +10,7 @@ public class ConditionEntry
 
     [Tooltip("this object")]
     public GameObject thisObject;
-
-    [Tooltip("the object you want to interact with")]
-    public GameObject otherObject;
+    public GameObject target;
 
     public string requiredTag;
 

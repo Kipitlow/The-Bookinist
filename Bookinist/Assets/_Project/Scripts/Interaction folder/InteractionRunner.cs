@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class InteractionRunner : MonoBehaviour
 {
-    [SerializeField] private List<InteractionSet> interactionSets = new();
+    [SerializeField] private List<InteractionSet> _interactionSets = new();
+
 
     public void TryExecuteAll(InteractionContext context)
     {
-        foreach (var set in interactionSets)
+        foreach (var set in _interactionSets)
         {
             if (AreConditionsValid(set.conditions, context))
             {
@@ -41,25 +42,22 @@ public class InteractionRunner : MonoBehaviour
         switch (condition.type)
         {
             case ConditionType.SameLayer:
-                if (condition.thisObject == null || condition.otherObject == null)
+                if (condition.thisObject == null || condition.target == null)
                     return false;
 
-                return condition.thisObject.layer == condition.otherObject.layer;
+                return condition.thisObject.layer == condition.target.layer;
 
             case ConditionType.SameZone:
-                if (condition.zone == null || condition.otherObject == null)
+                if (condition.zone == null || condition.target == null)
                     return false;
 
-                return condition.zone.Contains(condition.otherObject);
-                ;
+                return condition.zone.IsInside(condition.target);
+
             case ConditionType.OnTouch:
-                if (context == null || !context.isTouchEvent)
+                if (context.target == null)
                     return false;
-
-                if (condition.thisObject == null)
-                    return true;
-
-                return context.target == condition.thisObject;
+                return this.gameObject == context.target;
+;
 
             default:
                 return false;
@@ -71,19 +69,20 @@ public class InteractionRunner : MonoBehaviour
         switch (action.type)
         {
             case ActionType.SetActive:
-                if (action.otherObject != null)
-                    action.otherObject.SetActive(action.activeState);
+                if (action.target != null)
+                    action.target.SetActive(action.activeState);
+
                 break;
 
             case ActionType.Open:
-                if (action.otherObject != null)
-                    action.openDoor.Toggle(action.otherObject);
+                if (action.target != null)
+                    action.openDoor.Toggle(action.target);
+                break;
+            case ActionType.StartDialogue:
+                if (action.npcDialogue != null && action.npcTalker != null)
+                    action.npcTalker.StartDialogue(action.npcDialogue);
                 break;
 
-            case ActionType.Print:
-                if (action.printText != null && action.text != null )
-                    action.printText.Print(action.text);
-                break;
         }
     }
 }
