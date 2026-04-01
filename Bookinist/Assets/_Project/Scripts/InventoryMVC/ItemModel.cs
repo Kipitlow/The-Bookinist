@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class ItemModel : MonoBehaviour
@@ -10,18 +11,11 @@ public class ItemModel : MonoBehaviour
     [HideInInspector] public Sprite itemSprite;
     [HideInInspector] public GameObject itemObtain;
     [HideInInspector] public GameObject itemDropoff;
+    //[HideInInspector] public EventManager itemEventManager
 
     #endregion
 
     #region Unity Methods
-
-    private void Awake()
-    {
-        itemName = itemScriptable.itemName;
-        itemSprite = itemScriptable.itemSprite;
-        itemObtain = itemScriptable.itemObtain;
-        itemDropoff = itemScriptable.itemDropoff;
-    }
 
     #endregion
 
@@ -32,9 +26,12 @@ public class ItemModel : MonoBehaviour
         itemScriptable = ItemScriptable;
         itemName = itemScriptable.itemName;
         itemSprite = itemScriptable.itemSprite;
-        itemObtain = itemScriptable.itemObtain;
-        itemDropoff = itemScriptable.itemDropoff;
     }
-
+    /*
+    public void GetEventManager(EventManager eventManager)
+    {
+        itemEventManager = eventManager;
+    }
+    */
     #endregion
 }

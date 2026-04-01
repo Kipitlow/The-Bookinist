@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class InventoryView : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class InventoryView : MonoBehaviour
 
     [SerializeField] private GameObject _inventoryParent;
     [SerializeField] private GameObject _itemBase;
+    //[SerializeField] private EventManager _eventManager;
 
     #endregion
 
@@ -18,7 +20,6 @@ public class InventoryView : MonoBehaviour
 
     public void UpdateInventory(List<Item> objectList)
     {
-        Debug.Log("Inv updated");
         for (int i = _inventoryParent.transform.childCount - 1; i >= 0; i--)
         {
             Destroy(_inventoryParent.transform.GetChild(i).gameObject);
@@ -26,7 +27,17 @@ public class InventoryView : MonoBehaviour
         foreach (Item obj in objectList)
         {
             GameObject newObj = Instantiate(_itemBase, _inventoryParent.transform, false);
-            newObj.GetComponent<ItemModel>().SetScriptable(obj);
+            ItemModel objItemModel = newObj.GetComponent<ItemModel>();
+            objItemModel.SetScriptable(obj);
+
+            ItemController controller = newObj.GetComponent<ItemController>();
+
+            UnityEngine.UI.Button button = newObj.GetComponent<UnityEngine.UI.Button>();
+            button.onClick.AddListener(controller.OnZoobyClick);
+            button.onClick.AddListener(() => Debug.Log("BUTTON CLICKED"));
+
+            //objItemModel.GetEventManager(_eventManager);
+
             newObj.GetComponent<ItemController>().UpdateItem();
         }
     }
