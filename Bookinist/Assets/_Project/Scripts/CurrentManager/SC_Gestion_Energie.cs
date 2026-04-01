@@ -9,16 +9,17 @@ using UnityEngine;
 public class Saving_Json
 {
     public int Energie { set; get; }
-    public int Max_Energie = 5;
     public string Last_Time;
 }
 
 public class SC_Gestion_Energie : MonoBehaviour
 {
     [Header("Time")]
+    private TextMeshProUGUI T_Energie;
     private TextMeshProUGUI T_Horloge;
-    
-    private float Current = 2; //<-- cette variable est utiliser on tant que delay de recharge energie
+    public int Max_Energie;
+    public float Current = 5; //<-- cette variable est utiliser on tant que delay de recharge energie
+    float Temps_Restant;
     TimeSpan Resultat;
     //DateTime Last_Time;
 
@@ -34,21 +35,32 @@ public class SC_Gestion_Energie : MonoBehaviour
 
     void Start()
     {
+        T_Energie = GameObject.Find("T_Energie").GetComponent<TextMeshProUGUI>();
         T_Horloge = GameObject.Find("T_Horloge").GetComponent<TextMeshProUGUI>();
+        Loading();
         /*if (T_Horloge != null)
         {
             Last_Time = DateTime.Now;
             StartCoroutine(Time_Energie());
         }*/
-        
-    }
 
+    }
+    private void Update()
+    {
+        //T_Horloge.text = $"Energie: {SaveData.Energie}";//<-voir l'interval avec une autre valeur
+    }
     IEnumerator Time_Energie()
     {
-        while (SaveData.Energie < SaveData.Max_Energie)
+        
+        if (Temps_Restant > 0)// la on veut savoir si il reste du temps
         {
+            yield return new WaitForSeconds(Mathf.Abs(Temps_Restant - Current));
+        }
+        while (SaveData.Energie < Max_Energie)
+        {
+            print($"waitA1:{Current}");
             SaveData.Energie += 1;
-            T_Horloge.text = $"Energie: {SaveData.Energie}";
+            T_Energie.text = $"Energie: {SaveData.Energie}";
             yield return new WaitForSeconds(Current);
         }
     }
@@ -76,16 +88,25 @@ public class SC_Gestion_Energie : MonoBehaviour
     public void Affiche_Energie()
     {
         
-        int point_Energie = (int)Resultat.TotalSeconds / (int)Current;
-        if(SaveData.Energie + point_Energie >= SaveData.Max_Energie)
+        int totalSeconds = (int)Resultat.TotalSeconds;
+        int point_Energie = totalSeconds / (int)Current;
+        Temps_Restant = totalSeconds % (int)Current;
+        print($"Energie Save: {SaveData.Energie}");
+        if (SaveData.Energie + point_Energie >= Max_Energie)
         {
-            SaveData.Energie = SaveData.Max_Energie;
+            SaveData.Energie = Max_Energie;
         }
         else
         {
             SaveData.Energie += point_Energie;
         }
         T_Horloge.text = $"Energie: {Mathf.Abs(SaveData.Energie)}";
+    }
+
+
+    private void OnApplicationQuit()
+    {
+        Saving();
     }
 
     public void Saving()
