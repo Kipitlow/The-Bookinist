@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.IO;
 using TMPro;
+using UnityEditor.Overlays;
 using UnityEngine;
 
 [Serializable]
 public class Saving_Json
 {
     public int Energie { set; get; }
+    public int Max_Energie = 5;
     public string Last_Time;
 }
 
@@ -15,8 +17,7 @@ public class SC_Gestion_Energie : MonoBehaviour
 {
     [Header("Time")]
     private TextMeshProUGUI T_Horloge;
-    private int Max_Energie= 50;
-    private int Energie = 0;
+    
     private float Current = 2; //<-- cette variable est utiliser on tant que delay de recharge energie
     TimeSpan Resultat;
     //DateTime Last_Time;
@@ -42,37 +43,30 @@ public class SC_Gestion_Energie : MonoBehaviour
         
     }
 
-    /*IEnumerator Time_Energie()
+    IEnumerator Time_Energie()
     {
-        while (true)
+        while (SaveData.Energie < SaveData.Max_Energie)
         {
-
-            Resultat = DateTime.Now - Last_Time;
-            int point_Energie = (int)Resultat.TotalSeconds / (int)Current;
-            T_Horloge.text = $"Energie: {Mathf.Abs(point_Energie)}";
-            print("1");
-
-
-            //T_Horloge.text = Last_Time.ToString("HH:mm:ss");
-            //T_Horloge.text = $"Time{Last_Time.ToString("HH:mm:ss")}, Calcule ";
-            yield return new WaitForSeconds(1);
+            SaveData.Energie += 1;
+            T_Horloge.text = $"Energie: {SaveData.Energie}";
+            yield return new WaitForSeconds(Current);
         }
-    }*/
+    }
 
     
     public void Loading()
     {
         if(File.Exists(NamePath))
         {
-            print(SaveData.Last_Time);
+
             string json_DataPath = File.ReadAllText(NamePath);
             SaveData = JsonUtility.FromJson<Saving_Json>(json_DataPath);
-            print(SaveData.Last_Time);
             DateTime last_Timer = DateTime.Parse(SaveData.Last_Time);
 
             Resultat = DateTime.Now - last_Timer;
 
             Affiche_Energie();
+            StartCoroutine(Time_Energie());
         }
         else
         {
@@ -83,12 +77,19 @@ public class SC_Gestion_Energie : MonoBehaviour
     {
         
         int point_Energie = (int)Resultat.TotalSeconds / (int)Current;
-        T_Horloge.text = $"Energie: {Mathf.Abs(point_Energie)}";
+        if(SaveData.Energie + point_Energie >= SaveData.Max_Energie)
+        {
+            SaveData.Energie = SaveData.Max_Energie;
+        }
+        else
+        {
+            SaveData.Energie += point_Energie;
+        }
+        T_Horloge.text = $"Energie: {Mathf.Abs(SaveData.Energie)}";
     }
 
     public void Saving()
     {
-
         SaveData.Last_Time = DateTime.Now.ToString();
         print(SaveData.Last_Time);
         string JsonTo = JsonUtility.ToJson(SaveData);
