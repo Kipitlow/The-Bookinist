@@ -61,7 +61,7 @@ public class InteractionRunner : MonoBehaviour
             case ConditionType.IsEmpty:
                 if (condition.slot == null)
                     return false;
-                return condition.slot.IsEmpty() == false;
+                return condition.slot.IsEmpty() == condition.shouldBeEmpty;
 
             default:
                 return false;

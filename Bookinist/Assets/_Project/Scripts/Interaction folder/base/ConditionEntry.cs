@@ -25,4 +25,9 @@ public class ConditionEntry
 
     [Tooltip("slot que tu veux verifier")]
     public Slot slot;
+
+    [Tooltip("verifier l'etat du slot")]
+    public bool shouldBeEmpty;
+
+
 }

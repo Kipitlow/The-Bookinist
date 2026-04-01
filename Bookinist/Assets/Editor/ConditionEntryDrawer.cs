@@ -26,7 +26,7 @@ public class ConditionEntryDrawer : PropertyDrawer
                 break;
 
             case ConditionType.IsEmpty:
-                lines += 1;
+                lines += 2;
                 break;
         }
 
@@ -72,6 +72,7 @@ public class ConditionEntryDrawer : PropertyDrawer
             case ConditionType.IsEmpty:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
                 r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("shouldBeEmpty"));
                 break;
         }
 
