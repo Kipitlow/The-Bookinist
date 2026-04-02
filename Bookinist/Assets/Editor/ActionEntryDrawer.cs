@@ -50,6 +50,10 @@ public class ActionEntryDrawer : PropertyDrawer
                 lines += 3;
                 break;
 
+            case ActionType.ResetHasMoved:
+                lines += 1;
+                break;
+
             case ActionType.CycleSprites:
                 lines += 2;
 
@@ -119,6 +123,10 @@ public class ActionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("OffsetX"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("OffsetY"));
+                break;
+
+            case ActionType.ResetHasMoved:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("Move"));
                 break;
 
             case ActionType.CycleSprites:

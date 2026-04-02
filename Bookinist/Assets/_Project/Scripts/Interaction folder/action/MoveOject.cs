@@ -26,14 +26,23 @@ public class MoveObject : MonoBehaviour
     {
         transform.localPosition = Vector3.SmoothDamp(transform.localPosition, _targetPosition, ref _velocity, smoothTime);
     }
+    #endregion
 
+    #region Move
     public void Move(float offsetX, float offsetY)
     {
-        Debug.Log("Move : " + _hasMoved);
         _targetPosition += new Vector3(offsetX, offsetY, 0f);
         _hasMoved = true;
         _hasMovedThisManyTime++;
     }
+    #endregion
+
+    #region Move
+    public void ResethasMoved()
+    {
+        _hasMoved = false ;
+    }
+
     #endregion
 
     #region Check
