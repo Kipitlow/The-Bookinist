@@ -54,51 +54,44 @@ public class NPCTalker : MonoBehaviour
         _bubbleText.enabled = true;
         _bubbleVisible = true;
 
-        _bubbleText.transform.localPosition = _baseTextOffset;
+        // Calcul de la bulle de dialogue
         _bubbleText.ForceMeshUpdate();
         Vector2 textSize = _bubbleText.textBounds.size;
         Vector2 newSize = textSize + _padding;
         _bubbleRenderer.size = newSize;
 
+        // Ancrage bord gauche, bord supérieur fixe
+        float offsetX = newSize.x / 2f;
+        float offsetY = -newSize.y / 2f;
+
+        _bubbleRenderer.transform.localPosition = new Vector3(offsetX, offsetY, 0f);
+        _bubbleText.transform.localPosition = new Vector3(offsetX, offsetY, -0.1f);
+
         if (_dialogue.IsShopNPC)
         {
-            _bubbleRenderer.sortingLayerName = "Bubbles";
-            _bubbleRenderer.sortingOrder = 0;
-            _nameBubbleRenderer.sortingLayerName = "Bubbles";
-            _nameBubbleRenderer.sortingOrder = 1;
-
-            _bubbleText.GetComponent<TextMeshPro>().sortingOrder = 0;
-            _nameBubbleText.GetComponent<TextMeshPro>().sortingOrder = 1;
-
             _nameBubbleRenderer.enabled = true;
             _nameBubbleText.enabled = true;
             _nameBubbleText.text = _dialogue.NPCName;
             _nameBubbleText.ForceMeshUpdate();
-            _nameBubbleText.transform.localPosition = _nameTextOffset;
-            _bubbleParent.transform.localPosition = _pivOffsetShop;
-            _bubbleParent.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
 
-            float offsetX = newSize.x / 5f;
-            float offsetY = -newSize.y / 5f;
-
-            Vector2 nameSize = _nameBubbleText.textBounds.size + new Vector3(_padding.x, _padding.y, 0);
+            Vector2 nameSize = _nameBubbleText.textBounds.size + (Vector3)_padding;
             _nameBubbleRenderer.size = nameSize;
 
-            // Name bubble au dessus du coin supérieur gauche de la bulle principale
-            float nameBubbleX = offsetX + nameSize.x / 5f;
-            float nameBubbleY = offsetY + newSize.y / 5f + nameSize.y / 2.5f; // bord supérieur de la bulle principale
-            _nameBubbleRenderer.transform.localPosition = new Vector3(nameBubbleX, nameBubbleY, 0f);
+            // Coin supérieur gauche de la bulle dialogue = (0, 0) + décalages
+            // Bord gauche aligné, collé juste au dessus
+            float nameX = nameSize.x / 2f;
+            float nameY = offsetY + newSize.y / 2f
+                          + nameSize.y / 2f;
+
+            _nameBubbleRenderer.transform.localPosition = new Vector3(nameX, nameY, 0f);
+            _nameBubbleText.transform.localPosition = new Vector3(nameX, nameY, -0.1f);
+
+            _bubbleParent.transform.localPosition = _pivOffsetShop;
         }
         else
         {
-            // Ancrage bord gauche + bord supérieur fixe
-            float offsetX = newSize.x / 5f;
-            float offsetY = -newSize.y / 5f; // bord supérieur collé au point d'ancrage
-
-            _bubbleRenderer.transform.localPosition = new Vector3(offsetX, offsetY, 0f);
-            _bubbleText.transform.localPosition = new Vector3(offsetX, offsetY, -0.5f)
-                                                    + (Vector3)_baseTextOffset;
-
+            _nameBubbleRenderer.enabled = false;
+            _nameBubbleText.enabled = false;
             _bubbleParent.transform.localPosition = _pivOffsetBook;
         }
     }

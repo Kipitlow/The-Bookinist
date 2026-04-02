@@ -103,21 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conditions:
-  - type: 2
-    thisObject: {fileID: 0}
-    target: {fileID: 0}
-    requiredTag: 
-    zone: {fileID: 0}
-    layer: 0
-  actions:
-  - type: 2
-    thisObject: {fileID: 0}
-    target: {fileID: 0}
-    activeState: 0
-    openDoor: {fileID: 0}
-    npcDialogue: {fileID: 0}
-    npcTalker: {fileID: 7082141556296266056}
+  _interactionSets: []
 --- !u!114 &7082141556296266056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +346,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.655, y: 0.905, z: 0}
-  m_LocalScale: {x: 0.52, y: 0.52, z: 0.52}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6820785583730028535}
@@ -518,7 +504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1171892346382905963}
   m_Layer: 0
-  m_Name: Piv
+  m_Name: BubbleParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -569,14 +555,14 @@ RectTransform:
   m_GameObject: {fileID: 7524173954213360968}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9230769, y: 1.9230769, z: 1.9230769}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4243609864783937987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.05, y: 0}
+  m_AnchoredPosition: {x: -4.4, y: 0.01}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &2192425883901227337
@@ -671,7 +657,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8.05
+  m_fontSize: 5.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -709,7 +695,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 7.49846, y: 1.8764505, z: -1.1096497, w: 2.2199974}
+  m_margin: {x: 7.49846, y: 2.1351905, z: -1.1096497, w: 2.2199974}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
