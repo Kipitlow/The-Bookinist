@@ -58,31 +58,31 @@ public class SC_Tache : MonoBehaviour
 
     void Update()
     {
-        {
-            if (CM_Player != null && Layeur_Actuelle_Du_Joueur != (int)Mathf.Round(CM_Player.transform.position.z) + 1 && Layeur_Actuelle_Du_Joueur != CM.currentIndexSnapPoint)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
-            {
-                Layeur_Actuelle_Du_Joueur = CM.currentIndexSnapPoint;
+        //{
+        //    if (CM_Player != null && Layeur_Actuelle_Du_Joueur != (int)Mathf.Round(CM_Player.transform.position.z) + 1 && Layeur_Actuelle_Du_Joueur != CM.currentIndexSnapPoint)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
+        //    {
+        //        Layeur_Actuelle_Du_Joueur = CM.currentIndexLayer;
 
-                // Cette option consiste a cacher tous les objets qui sont assigner a un layeur, on fonction du layeur du joueur cache le rester des objets.
-                for (int i = 0; i < UI_cacheLayeur.Count; i++)
-                {
-                    if (i == Layeur_Actuelle_Du_Joueur)
-                    {
-                        foreach (GameObject CacheObjet in UI_cacheLayeur[i].CanvaUI)
-                        {
-                            if (CacheObjet != null) CacheObjet.SetActive(true);
-                        }
-                    }
-                    else
-                    {
-                        foreach (GameObject CacheObjet in UI_cacheLayeur[i].CanvaUI)
-                        {
-                            if (CacheObjet != null) CacheObjet.SetActive(false);
-                        }
-                    }
-                }
-            }
-        }
+        //        // Cette option consiste a cacher tous les objets qui sont assigner a un layeur, on fonction du layeur du joueur cache le rester des objets.
+        //        for (int i = 0; i < UI_cacheLayeur.Count; i++)
+        //        {
+        //            if (i == Layeur_Actuelle_Du_Joueur)
+        //            {
+        //                foreach (GameObject CacheObjet in UI_cacheLayeur[i].CanvaUI)
+        //                {
+        //                    if (CacheObjet != null) CacheObjet.SetActive(true);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                foreach (GameObject CacheObjet in UI_cacheLayeur[i].CanvaUI)
+        //                {
+        //                    if (CacheObjet != null) CacheObjet.SetActive(false);
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
         
     }
 

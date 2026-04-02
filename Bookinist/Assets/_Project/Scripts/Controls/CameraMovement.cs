@@ -29,10 +29,10 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float maxZ;
 
     [Header("Global Navigation")]
-    [SerializeField] private List<SnapPointManager> snapPointsManager = new();
+    public List<SnapPointManager> snapPointsManager = new();
     [SerializeField] private int SnapPointNumberOnOneLayer = 3;
     public int currentIndexLayer { get; private set; } = 0;
-    public int currentIndexByLayer { get; private set; } = 1;
+    public int currentIndexByLayer { get; private set; }
 
     private float previousPinchDistance;
 
@@ -61,6 +61,11 @@ public class CameraMovement : MonoBehaviour
         dragPress.action.Disable();
         scrollZoom.action.Disable();
         EnhancedTouchSupport.Disable();
+    }
+
+    private void Awake()
+    {
+        currentIndexByLayer = 1;
     }
 
     private void Start()
@@ -127,15 +132,18 @@ public class CameraMovement : MonoBehaviour
                 {
                     currentIndexByLayer++;
 
-                    if (currentIndexByLayer > snapPointsManager[currentIndexLayer].snapPoints.Length - 1) currentIndexByLayer = snapPointsManager[currentIndexLayer].snapPoints.Length - 1;
+                    if (currentIndexByLayer > snapPointsManager[currentIndexLayer].snapPoints.Length - 1) 
+                        currentIndexByLayer = snapPointsManager[currentIndexLayer].snapPoints.Length - 1;
                 }
                 else if (GetPointerPosition().x > pressStartPosition.x)
                 {
                     currentIndexByLayer--;
 
-                    if (currentIndexByLayer < 0) currentIndexByLayer = 0;
+                    if (currentIndexByLayer < 0) 
+                        currentIndexByLayer = 0;
                 }
                 transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
+                print(currentIndexByLayer);
             }
         }
     }
@@ -179,11 +187,13 @@ public class CameraMovement : MonoBehaviour
         if (snapPointsManager.Count == 0) return;
         if (snapPointsManager[currentIndexLayer].snapPoints.Length == 0) return;
 
-        if (delta < 0) currentIndexLayer--;
+        if (delta < 0)
+            currentIndexLayer--;
 
-        else if (delta > 0) currentIndexLayer++;
+        else if (delta > 0)
+            currentIndexLayer++;
 
-        currentIndexLayer = Mathf.Clamp(currentIndexLayer, 0, snapPointsManager.Count - 1);
+            currentIndexLayer = Mathf.Clamp(currentIndexLayer, 0, snapPointsManager.Count - 1);
 
         currentIndexByLayer = Mathf.Clamp(currentIndexByLayer, 0, snapPointsManager[currentIndexLayer].snapPoints.Length - 1);
 
