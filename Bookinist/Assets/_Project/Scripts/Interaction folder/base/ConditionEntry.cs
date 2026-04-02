@@ -38,5 +38,14 @@ public class ConditionEntry
     [Tooltip("perso sur lequel le dialogue doit avoir commencé")]
     public NPCTalker npcTalker;
 
+    [Tooltip("script de cycle de l'objet que tu veux verifier")]
+    public CycleThroughSprite cycleThroughSprite;
+
+    [Tooltip("frame que tu veux check")]
+    public int WantedFrame;
+
+    [Tooltip("si tu veux verifier si c'est sur la frame et celles d'apres")]
+    public bool trueIfMore;
+
 
 }
