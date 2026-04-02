@@ -35,5 +35,14 @@ public class ConditionEntry
     [Tooltip("Script qui compare les SO")]
     public SelectedItemIsWanted selectedItemIsWanted;
 
+    [Tooltip("script sur lequel le sprite cycle")]
+    public CycleThroughSprite cycleThroughSprite;
+
+    [Tooltip("sprite que vous voulez check")]
+    public int WantedFrame;
+
+    [Tooltip("permet de demander si on veut juste sur cette frame ou cette frame et celles d'apres")]
+    public bool trueIfMore;
+
 
 }

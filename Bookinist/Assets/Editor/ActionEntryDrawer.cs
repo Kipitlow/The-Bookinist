@@ -10,6 +10,8 @@ public class ActionEntryDrawer : PropertyDrawer
         ActionType type = (ActionType)typeProp.enumValueIndex;
 
         float lines = 2;
+        float lineHeight = EditorGUIUtility.singleLineHeight + 2f;
+        float extraHeight = 0f;
 
         switch (type)
         {
@@ -43,8 +45,16 @@ public class ActionEntryDrawer : PropertyDrawer
             case ActionType.ClearObject:
                 lines += 1;
                 break;
+
+            case ActionType.CycleSprites:
+                lines += 2;
+
+                var spritesProp = property.FindPropertyRelative("sprites");
+                extraHeight += EditorGUI.GetPropertyHeight(spritesProp, true);
+                break;
         }
-        return lines * (EditorGUIUtility.singleLineHeight + 2f);
+
+        return lines * lineHeight + extraHeight;
     }
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -99,9 +109,19 @@ public class ActionEntryDrawer : PropertyDrawer
                 r.y += h + s;
                 break;
 
+            case ActionType.CycleSprites:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("cycleThroughSprite"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("cycle"));
+                r.y += h + s;
+                var spritesProp = property.FindPropertyRelative("sprites");
+                float spritesHeight = EditorGUI.GetPropertyHeight(spritesProp, true);
+                Rect spritesRect = new Rect(r.x, r.y, r.width, spritesHeight);
+                EditorGUI.PropertyField(spritesRect, spritesProp, true);
+                r.y += spritesHeight + s;
 
+                break;
         }
-
         EditorGUI.EndProperty();
     }
 }

@@ -4,7 +4,8 @@ public enum ConditionType
     SameZone,
     OnTouch,
     IsEmpty,
-    IsSameItemSO
+    IsSameItemSO,
+    OnWichFrame
 }
 
 public enum ActionType
@@ -14,5 +15,6 @@ public enum ActionType
     StartDialogue,
     PlaceObject,
     ClearObject,
-    CallFunction
+    CallFunction,
+    CycleSprites
 }
