@@ -16,7 +16,7 @@ public class ActionEntry
     [Tooltip("veut tu activer ou desactiver ton objet")]
     public bool activeState;
 
-    [Tooltip("quel est le slot que tu veux remplire")]
+    [Tooltip("objet qui porte le sript")]
     public Slot slot;
 
     [Tooltip("the door you want to open")]
@@ -25,13 +25,13 @@ public class ActionEntry
     [Tooltip("quel est le dialogue tu tu veux activer")]
     public NPCDialogue npcDialogue;
 
-    [Tooltip("quel est le npc que tu veux faire parler")]
+    [Tooltip("objet qui porte le sript")]
     public NPCTalker npcTalker;
 
     [Tooltip("apelle une fonction voulue")]
     public UnityEvent onExecute;
 
-    [Tooltip("script sur lequel le sprite cycle")]
+    [Tooltip("objet qui porte le sript")]
     public CycleThroughSprite cycleThroughSprite;
 
     [Tooltip("est-ce que la list reviens au premier sprite ou reste bloqué sur le dernier")]
@@ -39,4 +39,15 @@ public class ActionEntry
 
     [Tooltip("apelle une fonction voulue")]
     public List<Sprite> sprites;
+
+    [Tooltip("objet qui porte le sript")]
+    public MoveObject Move;
+
+    [Tooltip("Offset sur l'axe X")]
+    public float OffsetX;
+
+    [Tooltip("Offset sur l'axe Y")]
+    public float OffsetY;
+
+
 }
