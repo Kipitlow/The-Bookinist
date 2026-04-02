@@ -6,6 +6,7 @@ public class InventoryController : MonoBehaviour
     #region Variables
     [SerializeField] private InventoryModel _inventoryModel;
     [SerializeField] private InventoryView _inventoryView;
+    [SerializeField] private Item _emptySlot;
     public Item activeItem;
 
     #endregion
@@ -34,7 +35,7 @@ public class InventoryController : MonoBehaviour
     {
         _inventoryModel.RemoveItem(ItemToAdd);
         UpdateInventory();
-        activeItem = null;
+        activeItem = _emptySlot;
     }
 
     public void UpdateInventory()
