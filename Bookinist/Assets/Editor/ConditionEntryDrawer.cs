@@ -32,6 +32,10 @@ public class ConditionEntryDrawer : PropertyDrawer
             case ConditionType.IsSameItemSO:
                 lines += 2;
                 break;
+
+            case ConditionType.HasDialogueStarted:
+                lines += 1;
+                break;
         }
 
         return lines * (EditorGUIUtility.singleLineHeight + 2f);
@@ -83,6 +87,11 @@ public class ConditionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("selectedItemIsWanted"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
+                break;
+
+            case ConditionType.HasDialogueStarted:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("npcTalker"));
+                r.y += h + s;
                 break;
         }
 
