@@ -35,5 +35,8 @@ public class ConditionEntry
     [Tooltip("Script qui compare les SO")]
     public SelectedItemIsWanted selectedItemIsWanted;
 
+    [Tooltip("perso sur lequel le dialogue doit avoir commencé")]
+    public NPCTalker npcTalker;
+
 
 }

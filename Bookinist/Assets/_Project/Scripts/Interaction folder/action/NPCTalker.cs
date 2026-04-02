@@ -16,7 +16,7 @@ public class NPCTalker : MonoBehaviour
 
     private NPCDialogue _dialogue;
 
-    private int _lineIndex = 0;
+    public int _lineIndex { get; private set; } = 0;
     private bool _bubbleVisible = false;
 
     private Vector3 _pivOffsetShop = new Vector3(1f,0f,0);

@@ -4,7 +4,8 @@ public enum ConditionType
     SameZone,
     OnTouch,
     IsEmpty,
-    IsSameItemSO
+    IsSameItemSO,
+    HasDialogueStarted
 }
 
 public enum ActionType
