@@ -7,8 +7,11 @@ public class MoveObject : MonoBehaviour
     #region Variables
     [Header("Movement")]
     [SerializeField] private float smoothTime = 0.2f;
+    [SerializeField] private float arrivalThreshold = 0.01f;
 
     private bool _hasMoved = false; 
+    private bool _isMoving = false;
+
     private int _hasMovedThisManyTime; 
 
     private Vector3 _targetPosition;
@@ -21,10 +24,20 @@ public class MoveObject : MonoBehaviour
     }
 
 
-    #region Variables
+    #region Update 
     private void Update()
     {
         transform.localPosition = Vector3.SmoothDamp(transform.localPosition, _targetPosition, ref _velocity, smoothTime);
+
+        if (Vector3.Distance(transform.localPosition, _targetPosition) <= arrivalThreshold)
+        {
+            transform.localPosition = _targetPosition;
+            _velocity = Vector3.zero;
+            _isMoving = false;
+
+            _hasMoved = true;
+            _hasMovedThisManyTime++;
+        }
     }
     #endregion
 
@@ -32,12 +45,11 @@ public class MoveObject : MonoBehaviour
     public void Move(float offsetX, float offsetY)
     {
         _targetPosition += new Vector3(offsetX, offsetY, 0f);
-        _hasMoved = true;
-        _hasMovedThisManyTime++;
+        _isMoving = true;
     }
     #endregion
 
-    #region Move
+    #region ResetHasMoved
     public void ResethasMoved()
     {
         _hasMoved = false ;
