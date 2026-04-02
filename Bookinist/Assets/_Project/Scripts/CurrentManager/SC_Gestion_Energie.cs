@@ -20,11 +20,12 @@ public class SC_Gestion_Energie : MonoBehaviour
     public int Max_Energie;
     public int Plume_Game;
     public float Current = 5; //<-- cette variable est utiliser on tant que delay de recharge energie
-    float Temps_Restant;
+    private float Temps_Restant;
     TimeSpan Resultat;
 
     [Header("Text_Saving")]
     public TextMeshProUGUI T_EnergieSaving;
+    public TextMeshProUGUI T_TimeRestant;
     public TextMeshProUGUI T_Plume;
 
     [Header("Saving Json")]
@@ -50,8 +51,39 @@ public class SC_Gestion_Energie : MonoBehaviour
     }
     IEnumerator Time_Energie()
     {
-        
-        if (Temps_Restant > 0)// la on veut savoir si il reste du temps
+        float i = Mathf.Abs(Temps_Restant - Current);
+        while (i > 0)
+        {
+            i--;
+            T_Horloge.text = $"TimeRestant: {i}";
+            T_TimeRestant.text = $"TimeRestant: {i}";
+            T_Energie.text = $"Plume: {Plume_Game}";
+            yield return new WaitForSeconds(1);
+        }
+        float current_enumerator = 0;
+        while (Plume_Game < Max_Energie)
+        {
+             if(current_enumerator>0)
+            {
+                current_enumerator--;
+                T_Horloge.text = $"TimeRestant: {current_enumerator}";
+                T_TimeRestant.text = $"TimeRestant: {current_enumerator}";
+
+                yield return new WaitForSeconds(1);
+            }
+            else
+            {
+                current_enumerator = Current;
+                Plume_Game += 1;
+                T_Energie.text = $"Plume: {Plume_Game}";
+                T_Horloge.text = $"TimeRestant: {current_enumerator}";
+                T_TimeRestant.text = $"TimeRestant: {current_enumerator}";
+                yield return new WaitForSeconds(1);
+            }
+        }
+
+
+        /*if (Temps_Restant > 0)// la on veut savoir si il reste du temps
         {
             yield return new WaitForSeconds(Mathf.Abs(Temps_Restant - Current));
         }
@@ -61,10 +93,10 @@ public class SC_Gestion_Energie : MonoBehaviour
             Plume_Game += 1;
             T_Energie.text = $"Energie: {Plume_Game}";
             yield return new WaitForSeconds(Current);
-        }
+        }*/
     }
 
-    
+
     public void Loading()
     {
         if(File.Exists(NamePath))
@@ -82,18 +114,21 @@ public class SC_Gestion_Energie : MonoBehaviour
             Resultat = DateTime.Now - last_Timer; //Code consite a prendre 2 type datatime (old/new) et le resultat c'est l'intervale entre les 2 time
             Plume_Game += SaveData.Energie; // on setup cette variable depuis la sauvegarde
 
-            Affiche_Energie();
+            Setup_Energie();
             StartCoroutine(Time_Energie());
         }
         else
         {
+            Saving();
+            Invoke("Loading", 0.1f);
             Debug.LogWarning("Pas SauveGarde");
         }
     }
-    public void Affiche_Energie()
+    public void Setup_Energie()
     {
         int totalSeconds = (int)Resultat.TotalSeconds; //ce code consister a prendre
         int point_Energie = totalSeconds / (int)Current;
+        T_Plume.text = $"Plume_Game: {point_Energie}";
         Temps_Restant = totalSeconds % (int)Current;
 
 
@@ -106,8 +141,7 @@ public class SC_Gestion_Energie : MonoBehaviour
         {
             Plume_Game += point_Energie;
         }
-        T_Plume.text = $"Plume_Game: {Plume_Game}";
-        T_Horloge.text = $"Energie: {Mathf.Abs(Plume_Game)}";
+        
     }
 
 
