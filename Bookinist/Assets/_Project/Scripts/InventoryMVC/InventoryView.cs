@@ -24,11 +24,13 @@ public class InventoryView : MonoBehaviour
         {
             Destroy(_inventoryParent.transform.GetChild(i).gameObject);
         }
-        foreach (Item obj in objectList)
+        Debug.Log(objectList.Count);
+        for (int i = 0; i < objectList.Count; i++)
         {
+            
             GameObject newObj = Instantiate(_itemBase, _inventoryParent.transform, false);
             ItemModel objItemModel = newObj.GetComponent<ItemModel>();
-            objItemModel.SetScriptable(obj);
+            objItemModel.SetScriptable(objectList[i]);
 
             ItemController controller = newObj.GetComponent<ItemController>();
 
@@ -38,7 +40,7 @@ public class InventoryView : MonoBehaviour
 
             //objItemModel.GetEventManager(_eventManager);
 
-            newObj.GetComponent<ItemController>().UpdateItem();
+            controller.UpdateItem();
         }
     }
 
