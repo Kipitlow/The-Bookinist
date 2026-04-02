@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 
 
@@ -29,4 +30,13 @@ public class ActionEntry
 
     [Tooltip("apelle une fonction voulue")]
     public UnityEvent onExecute;
+
+    [Tooltip("script sur lequel le sprite cycle")]
+    public CycleThroughSprite cycleThroughSprite;
+
+    [Tooltip("est-ce que la list reviens au premier sprite ou reste bloqué sur le dernier")]
+    public bool cycle;
+
+    [Tooltip("apelle une fonction voulue")]
+    public List<Sprite> sprites;
 }

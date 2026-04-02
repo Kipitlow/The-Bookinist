@@ -8,7 +8,7 @@ public class ConditionEntry
 {
     public ConditionType type;
 
-    [Tooltip("objet ciblé")]
+    [Tooltip("objet ciblÃ©")]
     public GameObject target;
 
     [Tooltip("tag requis")]
@@ -35,7 +35,7 @@ public class ConditionEntry
     [Tooltip("Script qui compare les SO")]
     public SelectedItemIsWanted selectedItemIsWanted;
 
-    [Tooltip("perso sur lequel le dialogue doit avoir commencé")]
+    [Tooltip("perso sur lequel le dialogue doit avoir commencÃ©")]
     public NPCTalker npcTalker;
 
 

@@ -15,5 +15,6 @@ public enum ActionType
     StartDialogue,
     PlaceObject,
     ClearObject,
-    CallFunction
+    CallFunction,
+    CycleSprites
 }

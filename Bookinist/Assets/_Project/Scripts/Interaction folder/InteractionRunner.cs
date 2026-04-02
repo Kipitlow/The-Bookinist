@@ -67,6 +67,11 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.item == null)
                     return false;
                 return condition.selectedItemIsWanted.IsCorrectObject(condition.item);
+                
+            case ConditionType.OnWichFrame:
+                if (condition.cycleThroughSprite == null)
+                    return false;
+                return condition.cycleThroughSprite.IsAtThisFrame(condition.WantedFrame, condition.trueIfMore);
 
             case ConditionType.HasDialogueStarted:
                 if (condition.npcTalker == null)
@@ -110,6 +115,11 @@ public class InteractionRunner : MonoBehaviour
             case ActionType.CallFunction:
                 if (action.onExecute != null)
                     action.onExecute?.Invoke();
+                break;
+
+            case ActionType.CycleSprites:
+                if (action.cycleThroughSprite != null || action.sprites == null)
+                    action.cycleThroughSprite.Cycle(action.sprites, action.cycle);
                 break;
 
         }
