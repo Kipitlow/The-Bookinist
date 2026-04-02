@@ -34,6 +34,7 @@ public class InventoryController : MonoBehaviour
     {
         _inventoryModel.RemoveItem(ItemToAdd);
         UpdateInventory();
+        activeItem = null;
     }
 
     public void UpdateInventory()
