@@ -1,4 +1,6 @@
+using NUnit.Framework.Internal;
 using System;
+using System.ComponentModel.Design;
 using UnityEngine;
 
 [Serializable]
@@ -6,12 +8,32 @@ public class ConditionEntry
 {
     public ConditionType type;
 
-    public GameObject thisObject;
+    [Tooltip("objet ciblé")]
     public GameObject target;
 
+    [Tooltip("tag requis")]
     public string requiredTag;
 
+    [Tooltip("zone de detection")]
     public ZoneDetector zone;
- 
-    public int layer;
+
+    [Tooltip("page sur laquel tu veux que l'objet soit")]
+    public Page checkedPage;
+
+    [Tooltip("script de detection du layer")]
+    public LayerDetector layerDetector;
+
+    [Tooltip("slot que tu veux verifier")]
+    public Slot slot;
+
+    [Tooltip("verifier l'etat du slot")]
+    public bool shouldBeEmpty;
+
+    [Tooltip("SO de l'item")]
+    public Item item;
+
+    [Tooltip("Script qui compare les SO")]
+    public SelectedItemIsWanted selectedItemIsWanted;
+
+
 }

@@ -2,12 +2,17 @@ public enum ConditionType
 {
     SameLayer,
     SameZone,
-    OnTouch
+    OnTouch,
+    IsEmpty,
+    IsSameItemSO
 }
 
 public enum ActionType
 {
     SetActive,
     Open,
-    StartDialogue
+    StartDialogue,
+    PlaceObject,
+    ClearObject,
+    CallFunction
 }

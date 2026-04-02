@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ChangeCustomView : MonoBehaviour
@@ -10,6 +11,9 @@ public class ChangeCustomView : MonoBehaviour
     private Camera _switchedCamActive;
 
     private bool _isInitiated = false;
+
+    public Action<int, int> OnViewChanged;
+
 
     private void Start()
     {
@@ -49,6 +53,8 @@ public class ChangeCustomView : MonoBehaviour
                 _currentIndexView = 0;
             else
                 _currentIndexView++;
+            
+            OnViewChanged?.Invoke(_currentIndexView, 1);
         }
         else
         {
@@ -56,9 +62,12 @@ public class ChangeCustomView : MonoBehaviour
                 _currentIndexView = _cameras.Length - 1;
             else
                 _currentIndexView--;
+
+            OnViewChanged?.Invoke(_currentIndexView, -1);
         }
 
         EnableCamera(_currentIndexView);
+
     }
 
     private void DisableCamera(int index)
@@ -71,5 +80,10 @@ public class ChangeCustomView : MonoBehaviour
     {
         _cameras[_currentIndexView].gameObject.SetActive(true);
         _switchedCamActive = _cameras[_currentIndexView];
+    }
+
+    public int GetCurrentIndexView()
+    {
+        return _currentIndexView;
     }
 }

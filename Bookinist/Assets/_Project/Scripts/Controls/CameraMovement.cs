@@ -7,12 +7,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
-[Serializable]
-public class GameObjectList
-{
-    public List<GameObject> objects = new();
-}
-
 public class CameraMovement : MonoBehaviour
 {
     [Header("Debug")]
@@ -35,7 +29,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float maxZ;
 
     [Header("Global Navigation")]
-    [SerializeField] private List<GameObjectList> snapPoints = new();
+    [SerializeField] private List<SnapPointManager> snapPointsManager = new();
     [SerializeField] private int SnapPointNumberOnOneLayer = 3;
     public int currentIndexLayer { get; private set; } = 0;
     public int currentIndexByLayer { get; private set; } = 1;
@@ -133,7 +127,7 @@ public class CameraMovement : MonoBehaviour
                 {
                     currentIndexByLayer++;
 
-                    if (currentIndexByLayer > snapPoints[currentIndexLayer].objects.Count - 1) currentIndexByLayer = snapPoints[currentIndexLayer].objects.Count - 1;
+                    if (currentIndexByLayer > snapPointsManager[currentIndexLayer].snapPoints.Length - 1) currentIndexByLayer = snapPointsManager[currentIndexLayer].snapPoints.Length - 1;
                 }
                 else if (GetPointerPosition().x > pressStartPosition.x)
                 {
@@ -141,7 +135,7 @@ public class CameraMovement : MonoBehaviour
 
                     if (currentIndexByLayer < 0) currentIndexByLayer = 0;
                 }
-                transform.position = snapPoints[currentIndexLayer].objects[currentIndexByLayer].transform.position;
+                transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
             }
         }
     }
@@ -172,11 +166,9 @@ public class CameraMovement : MonoBehaviour
         float delta = currentDistance - previousPinchDistance;
         previousPinchDistance = currentDistance;
 
-        if (stopZooming)
-            return;
+        if (stopZooming) return;
 
-        if (Mathf.Abs(delta) < pinchThreshold)
-            return;
+        if (Mathf.Abs(delta) < pinchThreshold) return;
 
         ApplyZoom(delta);
         stopZooming = true;
@@ -184,26 +176,18 @@ public class CameraMovement : MonoBehaviour
 
     private void ApplyZoom(float delta)
     {
-        if (snapPoints.Count == 0)
-            return;
+        if (snapPointsManager.Count == 0) return;
+        if (snapPointsManager[currentIndexLayer].snapPoints.Length == 0) return;
 
-        if (delta < 0)
-            currentIndexLayer--;
-        else if (delta > 0)
-            currentIndexLayer++;
+        if (delta < 0) currentIndexLayer--;
 
-        currentIndexLayer = Mathf.Clamp(currentIndexLayer, 0, snapPoints.Count - 1);
+        else if (delta > 0) currentIndexLayer++;
 
-        if (snapPoints[currentIndexLayer].objects.Count == 0)
-            return;
+        currentIndexLayer = Mathf.Clamp(currentIndexLayer, 0, snapPointsManager.Count - 1);
 
-        currentIndexByLayer = Mathf.Clamp(
-            currentIndexByLayer,
-            0,
-            snapPoints[currentIndexLayer].objects.Count - 1
-        );
+        currentIndexByLayer = Mathf.Clamp(currentIndexByLayer, 0, snapPointsManager[currentIndexLayer].snapPoints.Length - 1);
 
-        transform.position = snapPoints[currentIndexLayer].objects[currentIndexByLayer].transform.position;
+        transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
     }
 
     Vector2 GetPointerPosition()
