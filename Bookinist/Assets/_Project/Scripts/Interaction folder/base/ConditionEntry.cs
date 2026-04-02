@@ -8,7 +8,7 @@ public class ConditionEntry
 {
     public ConditionType type;
 
-    [Tooltip("objet cibl�")]
+    [Tooltip("objet ciblé")]
     public GameObject target;
 
     [Tooltip("tag requis")]
@@ -35,14 +35,8 @@ public class ConditionEntry
     [Tooltip("Script qui compare les SO")]
     public SelectedItemIsWanted selectedItemIsWanted;
 
-    [Tooltip("script sur lequel le sprite cycle")]
-    public CycleThroughSprite cycleThroughSprite;
-
-    [Tooltip("sprite que vous voulez check")]
-    public int WantedFrame;
-
-    [Tooltip("permet de demander si on veut juste sur cette frame ou cette frame et celles d'apres")]
-    public bool trueIfMore;
+    [Tooltip("perso sur lequel le dialogue doit avoir commencé")]
+    public NPCTalker npcTalker;
 
 
 }

@@ -18,16 +18,6 @@ public class ItemController : MonoBehaviour/*, IDragHandler, IBeginDragHandler, 
     #endregion  
 
     #region Unity Methods
-    private void Awake()
-    {
-        _itemView.UpdateSprite(_itemModel.itemSprite);
-    }
-
-    private void Start()
-    {
-        //_rectTransform = GetComponent<RectTransform>();
-        //_image = GetComponent<Image>(); 
-    }
 
     #endregion
 

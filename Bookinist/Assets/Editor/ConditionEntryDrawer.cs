@@ -33,8 +33,8 @@ public class ConditionEntryDrawer : PropertyDrawer
                 lines += 2;
                 break;
 
-            case ConditionType.OnWichFrame:
-                lines += 3;
+            case ConditionType.HasDialogueStarted:
+                lines += 1;
                 break;
         }
 
@@ -89,12 +89,9 @@ public class ConditionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
                 break;
 
-            case ConditionType.OnWichFrame:
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("cycleThroughSprite"));
+            case ConditionType.HasDialogueStarted:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("npcTalker"));
                 r.y += h + s;
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("WantedFrame"));
-                r.y += h + s;
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("trueIfMore"));
                 break;
         }
 

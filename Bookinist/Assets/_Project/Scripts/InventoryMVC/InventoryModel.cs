@@ -5,8 +5,8 @@ public class InventoryModel : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField] private List<Item> inventoryContents;
-    [SerializeField] private int inventorySlots;
+    [SerializeField] private List<Item> _inventoryContents;
+    [SerializeField] private int _inventorySlots;
 
     #endregion
 
@@ -18,17 +18,17 @@ public class InventoryModel : MonoBehaviour
 
     public void AddItem(Item itemToAdd)
     {
-        if (inventoryContents.Count < inventorySlots)
-            inventoryContents.Add(itemToAdd);
+        if (_inventoryContents.Count < _inventorySlots)
+            _inventoryContents.Add(itemToAdd);
     }
 
     public void RemoveItem(Item itemToRemove)
     {
-        foreach (var item in inventoryContents)
+        foreach (var item in _inventoryContents)
         {
             if (item == itemToRemove)
             {
-                inventoryContents.RemoveAt(GetItemIndex(itemToRemove));
+                _inventoryContents.RemoveAt(GetItemIndex(itemToRemove));
                 return;
             }
         }
@@ -37,7 +37,7 @@ public class InventoryModel : MonoBehaviour
     public int GetItemIndex(Item checkItem)
     {
         int itemIndex = -1;
-        foreach (var item in inventoryContents)
+        foreach (var item in _inventoryContents)
         {
             itemIndex++;
             if (item == checkItem)
@@ -48,7 +48,7 @@ public class InventoryModel : MonoBehaviour
 
     public List<Item> GetInventoryContent()
     {
-        return inventoryContents;
+        return _inventoryContents;
     }
     #endregion
 }

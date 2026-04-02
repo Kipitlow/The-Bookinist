@@ -5,7 +5,7 @@ public class ItemView : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField] Image itemSprite;
+    [SerializeField] private Image _itemSprite;
 
     #endregion
 
@@ -17,7 +17,7 @@ public class ItemView : MonoBehaviour
 
     public void UpdateSprite(Sprite newSprite)
     {
-        itemSprite.sprite = newSprite;
+        _itemSprite.sprite = newSprite;
     }
 
     #endregion
