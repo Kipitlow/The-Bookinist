@@ -36,6 +36,10 @@ public class ConditionEntryDrawer : PropertyDrawer
             case ConditionType.HasDialogueStarted:
                 lines += 1;
                 break;
+
+            case ConditionType.HasMoved:
+                lines += 3;
+                break;
         }
 
         return lines * (EditorGUIUtility.singleLineHeight + 2f);
@@ -92,6 +96,14 @@ public class ConditionEntryDrawer : PropertyDrawer
             case ConditionType.HasDialogueStarted:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("npcTalker"));
                 r.y += h + s;
+                break;
+
+            case ConditionType.HasMoved:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("Move"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("HasMoved"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("HowManyTimes"));
                 break;
         }
 
