@@ -16,5 +16,6 @@ public enum ActionType
     PlaceObject,
     ClearObject,
     CallFunction,
-    CycleSprites
+    CycleSprites,
+    Move
 }

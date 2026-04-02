@@ -46,6 +46,10 @@ public class ActionEntryDrawer : PropertyDrawer
                 lines += 1;
                 break;
 
+            case ActionType.Move:
+                lines += 3;
+                break;
+
             case ActionType.CycleSprites:
                 lines += 2;
 
@@ -107,6 +111,14 @@ public class ActionEntryDrawer : PropertyDrawer
             case ActionType.ClearObject:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
                 r.y += h + s;
+                break;
+
+            case ActionType.Move:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("Move"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("OffsetX"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("OffsetY"));
                 break;
 
             case ActionType.CycleSprites:

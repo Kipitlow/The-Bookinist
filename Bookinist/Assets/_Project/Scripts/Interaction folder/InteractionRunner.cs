@@ -107,14 +107,19 @@ public class InteractionRunner : MonoBehaviour
                     action.slot.Clear();
                 break;
 
-            case ActionType.CallFunction:
-                if (action.onExecute != null)
-                    action.onExecute?.Invoke();
+            case ActionType.Move:
+                if (action.Move != null)
+                    action.Move.Move(action.OffsetX, action.OffsetY);
                 break;
 
             case ActionType.CycleSprites:
                 if (action.cycleThroughSprite != null || action.sprites == null)
                     action.cycleThroughSprite.Cycle(action.sprites, action.cycle);
+                break;
+
+            case ActionType.CallFunction:
+                if (action.onExecute != null)
+                    action.onExecute?.Invoke();
                 break;
 
         }
