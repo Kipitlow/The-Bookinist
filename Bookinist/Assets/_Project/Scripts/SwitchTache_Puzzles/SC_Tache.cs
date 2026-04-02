@@ -24,6 +24,7 @@ public class UI_CacheLayeur
 
 public class SC_Tache : MonoBehaviour
 {
+    #region Variable
     [Header("Variable Utiliser pour le Chronometre")]
     [SerializeField] public TextMeshProUGUI Text_Chronom;
     private bool LanceCouroutine;
@@ -49,6 +50,7 @@ public class SC_Tache : MonoBehaviour
     [Header("Mission")]
     public List<List_Element_Tach> Liste_Mission = new List<List_Element_Tach>(); //Permet de stocker les Prefable_Tache.
 
+    #endregion
     void Start()
     {
         if (CM_Player == null) CM_Player = GameObject.Find("CameraManager").GetComponent<Camera>();
@@ -58,96 +60,36 @@ public class SC_Tache : MonoBehaviour
 
     void Update()
     {
-        //{
-        //    if (CM_Player != null && Layeur_Actuelle_Du_Joueur != (int)Mathf.Round(CM_Player.transform.position.z) + 1 && Layeur_Actuelle_Du_Joueur != CM.currentIndexSnapPoint)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
-        //    {
-        //        Layeur_Actuelle_Du_Joueur = CM.currentIndexLayer;
-
-        //        // Cette option consiste a cacher tous les objets qui sont assigner a un layeur, on fonction du layeur du joueur cache le rester des objets.
-        //        for (int i = 0; i < UI_cacheLayeur.Count; i++)
-        //        {
-        //            if (i == Layeur_Actuelle_Du_Joueur)
-        //            {
-        //                foreach (GameObject CacheObjet in UI_cacheLayeur[i].CanvaUI)
-        //                {
-        //                    if (CacheObjet != null) CacheObjet.SetActive(true);
-        //                }
-        //            }
-        //            else
-        //            {
-        //                foreach (GameObject CacheObjet in UI_cacheLayeur[i].CanvaUI)
-        //                {
-        //                    if (CacheObjet != null) CacheObjet.SetActive(false);
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-        
-    }
-
-    public void Change_Tach_List()//CodePermettant de actualiser les objectif du joueur
-    {
         {
-            /*
-            //En vêrifier tout les tache dans le layeur
-            if (PrefableTache != null && Target_Parent_Prefable != null)
+            if (CM_Player != null && Layeur_Actuelle_Du_Joueur != (int)Mathf.Round(CM_Player.transform.position.z) + 1 && Layeur_Actuelle_Du_Joueur != CM.currentIndexLayer)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
             {
-                int Repeat = 0;
-                foreach (List_Element_Tach iii in Tache_Dans_Ce_Layeur[WaitCondition].list_Element_Taches)
+                Layeur_Actuelle_Du_Joueur = CM.currentIndexLayer;
+
+                // Cette option consiste a cacher tous les objets qui sont assigner a un layeur, on fonction du layeur du joueur cache le rester des objets.
+                for (int i = 0; i < UI_cacheLayeur.Count; i++)
                 {
-                    if (Tache_Dans_Ce_Layeur[WaitCondition].list_Element_Taches != null)
+                    if (i == Layeur_Actuelle_Du_Joueur)
                     {
-                        GameObject AA = Instantiate(PrefableTache, Target_Parent_Prefable);
-                        Vector3 Pos = AA.transform.position;
-                        Pos.y = Pos.y - 100 * Repeat;
-                        AA.transform.position = Pos;
-
-                        SC_Prefable_Tache TT = AA.GetComponentInChildren<SC_Prefable_Tache>();
-                        //Dans ce code, on vêrifier si la tache en elle même est completer, si oui on change de couleur on rouge puis on le barre
-                        if (TT != null)
-                        {
-
-                            if (iii.TacheTerminer)
-                            {
-                                TT.Text_Objectif.color = Color.red;
-                                TT.Text_Objectif.text = $"<s>{iii.Tache}</s>";
-                                TT.Text_Récompence.text = $"Récompence: {iii.prix}$";
-                            }
-                            else if (!iii.TacheTerminer)
-                            {
-                                TT.Text_Objectif.color = Color.black;
-                                TT.Text_Objectif.text = iii.Tache;
-                                TT.Text_Récompence.text = $"Récompence: {iii.prix}$";
-                            }
-                        }
-
-                        List_Temporair_Tache.Add(AA);
-                        Repeat += 1;
-                    }
-                }
-                for (int i = 0; i < Tache_Dans_Ce_Layeur.Count; i++)
-                {
-                    if (i == WaitCondition)
-                    {
-                        foreach (GameObject CacheObjet in Tache_Dans_Ce_Layeur[i].CanvaUI)
+                        foreach (GameObject CacheObjet in UI_cacheLayeur[i].CanvaUI)
                         {
                             if (CacheObjet != null) CacheObjet.SetActive(true);
                         }
                     }
                     else
                     {
-                        foreach (GameObject CacheObjet in Tache_Dans_Ce_Layeur[i].CanvaUI)
+                        foreach (GameObject CacheObjet in UI_cacheLayeur[i].CanvaUI)
                         {
                             if (CacheObjet != null) CacheObjet.SetActive(false);
                         }
                     }
-                }// Cette option consiste a cacher tous les objets qui sont assigner a un layeur, on fonction du layeur du joueur cache le rester des objets.
-            }
-            Debug.Log("Switch Canva");
-            */
-        }//Switch tache on fonction du layeur du joueur
+                }
+           }
+        }
+        
+    }
 
+    public void Change_Tach_List()//CodePermettant de actualiser les objectif du joueur
+    {
         //On fonction quand terminer la tache précédent on veut switch de tache.
         if (PrefableTache != null && Target_Parent_Prefable != null)
         {
