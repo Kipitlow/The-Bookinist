@@ -6,7 +6,8 @@ public enum ConditionType
     IsEmpty,
     IsSameItemSO,
     HasDialogueStarted,
-    OnWichFrame
+    OnWichFrame,
+    HasMoved
 }
 
 public enum ActionType

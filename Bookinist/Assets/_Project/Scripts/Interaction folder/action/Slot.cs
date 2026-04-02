@@ -24,4 +24,5 @@ public class Slot : MonoBehaviour
         Destroy(_currentObject);
         _isEmpty = false;
     }
+
 }
