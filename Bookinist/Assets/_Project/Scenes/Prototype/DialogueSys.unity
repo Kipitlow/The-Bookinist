@@ -226,7 +226,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: start dialogue on touch
     conditions:
-    - type: 4
+    - type: 2
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -249,7 +249,7 @@ MonoBehaviour:
           m_Calls:
           - m_Target: {fileID: 1190348954}
             m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
+            m_MethodName: AddInventoryItem
             m_Mode: 2
             m_Arguments:
               m_ObjectArgument: {fileID: 11400000, guid: 4dd9171975d938444a9c004d3d4c8bdc, type: 2}
@@ -340,7 +340,7 @@ MonoBehaviour:
       item: {fileID: 0}
       selectedItemIsWanted: {fileID: 0}
     actions:
-    - type: 2
+    - type: 5
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -349,7 +349,19 @@ MonoBehaviour:
       npcTalker: {fileID: 147467241}
       onExecute:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: AddInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 4dd9171975d938444a9c004d3d4c8bdc, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
 --- !u!1 &192760868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,7 +1275,6 @@ GameObject:
   - component: {fileID: 1190348954}
   - component: {fileID: 1190348957}
   - component: {fileID: 1190348955}
-  - component: {fileID: 1190348958}
   m_Layer: 5
   m_Name: InventoryManager
   m_TagString: Untagged
@@ -1333,28 +1344,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe1911c5afe5f64d9b1c205f80fefb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryContents:
-  - {fileID: 11400000, guid: 4dd9171975d938444a9c004d3d4c8bdc, type: 2}
-  - {fileID: 11400000, guid: 28ce109407781b645aa6d18f3fc4eb62, type: 2}
-  - {fileID: 11400000, guid: 4dd9171975d938444a9c004d3d4c8bdc, type: 2}
-  inventorySlots: 5
---- !u!114 &1190348958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190348953}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ebec889c6dc4c3499b0bd9658cc1115, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inventoryController: {fileID: 1190348954}
-  CoolRock: {fileID: 11400000, guid: 4dd9171975d938444a9c004d3d4c8bdc, type: 2}
-  DebugAction: {fileID: 2894200628378597900, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  DebugAction1: {fileID: 1135009286868847374, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  canDo: 1
+  _inventoryContents: []
+  _inventorySlots: 5
 --- !u!1 &1191070474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,7 +1684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1547388284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1824,7 +1815,7 @@ MonoBehaviour:
       item: {fileID: 0}
       selectedItemIsWanted: {fileID: 0}
     actions:
-    - type: 2
+    - type: 5
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -1833,7 +1824,19 @@ MonoBehaviour:
       npcTalker: {fileID: 1582303114}
       onExecute:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: AddInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 28ce109407781b645aa6d18f3fc4eb62, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
 --- !u!1 &1588415116
 GameObject:
   m_ObjectHideFlags: 0
