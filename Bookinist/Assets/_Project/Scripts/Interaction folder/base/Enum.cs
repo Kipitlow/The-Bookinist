@@ -5,7 +5,7 @@ public enum ConditionType
     OnTouch,
     IsEmpty,
     IsSameItemSO,
-    OnWichFrame
+    HasDialogueStarted
 }
 
 public enum ActionType

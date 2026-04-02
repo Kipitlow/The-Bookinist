@@ -73,6 +73,11 @@ public class InteractionRunner : MonoBehaviour
                     return false;
                 return condition.cycleThroughSprite.IsAtThisFrame(condition.WantedFrame, condition.trueIfMore);
 
+            case ConditionType.HasDialogueStarted:
+                if (condition.npcTalker == null)
+                    return false;
+                return condition.npcTalker._lineIndex >= 1;
+
             default:
                 return false;
         }

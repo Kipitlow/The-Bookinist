@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TouchDetection : MonoBehaviour
 {
@@ -20,12 +21,11 @@ public class TouchDetection : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, _maxDistance, _hitMask))
         {
-            int hitlayer = hit.collider.GetComponentInParent<Page>().PageIndex;
-            int camLayer = _cam.GetComponent<CameraMovement>().currentIndexLayer;
             InteractionRunner interactionRunner = hit.collider.GetComponent<InteractionRunner>();
 
-            if (hitlayer == camLayer)
+            if(SceneManager.GetActiveScene().name == "BookShopUpdated")
             {
+
                 InteractionContext context = new InteractionContext
                 {
                     instigator = null,
@@ -35,6 +35,26 @@ public class TouchDetection : MonoBehaviour
                 if (interactionRunner != null)
                 {
                     interactionRunner.TryExecuteAll(context);
+                }
+            }
+
+            else
+            {
+                int hitlayer = hit.collider.GetComponentInParent<Page>().PageIndex;
+                int camLayer = _cam.GetComponent<CameraMovement>().currentIndexLayer;
+
+                if (hitlayer == camLayer)
+                {
+                    InteractionContext context = new InteractionContext
+                    {
+                        instigator = null,
+                        target = hit.collider.gameObject
+                    };
+
+                    if (interactionRunner != null)
+                    {
+                        interactionRunner.TryExecuteAll(context);
+                    }
                 }
             }
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,13 +11,17 @@ public class CustomShopManager : MonoBehaviour
 
     [SerializeField] ChangeCustomView _changeCustomView;
 
-    [SerializeField] GameObject _horizontalPanel;
-    [SerializeField] Button _buttonPrefab;
-    private List<List<Button>> _furnitureButtons;
+    [SerializeField] GameObject _horizontalPanelPrefab;
+    [SerializeField] GameObject _horizontalPanelParent;
+    [SerializeField] GameObject _buttonPrefab;
+    private List<List<GameObject>> _furnitureButtons;
 
-    private GameObject _currentFurniture;
+    private List<GameObject> _currentFurnitureList;
 
-    private int _currentIndexCamMemory;
+    private List<GameObject> _horizontalPanelMemList;
+
+    private bool _isAlreadySeeCustomShop;
+    private int _previousIndexFurnitureActivated;
 
     private void Awake()
     {
@@ -30,26 +35,52 @@ public class CustomShopManager : MonoBehaviour
 
     private void Start()
     {
-        _currentFurniture = null;
-        _furnitureButtons = new List<List<Button>>();
+        _currentFurnitureList = new List<GameObject>();
+        _furnitureButtons = new List<List<GameObject>>();
+        _horizontalPanelMemList = new List<GameObject>();
 
         for (int i = 0; i < _customFurnitureList.Count; i++)
         {
-            _furnitureButtons.Add(new List<Button>());
+            _currentFurnitureList.Add(null);
+            _furnitureButtons.Add(new List<GameObject>());
+
+            GameObject horizontalPanel = Instantiate(_horizontalPanelPrefab, _horizontalPanelParent.transform);
+
+            _horizontalPanelMemList.Add(horizontalPanel);
+
             for (int j = 0; j < _customFurnitureList[i].GetFurnitureListLength(); j++)
             {
-                Button button = Instantiate(_buttonPrefab, _horizontalPanel.transform);
+                int capturedIndex = j;
+
+                GameObject button = Instantiate(_buttonPrefab, _horizontalPanelMemList[i].transform);
+
+                button.GetComponent<Button>().onClick.RemoveAllListeners();
+                button.GetComponent<Button>().onClick.AddListener(() => ChangeFurniture(capturedIndex));
+
+                //button.GetComponent<MeshRenderer>().material = _customFurnitureList[j].GetFurniture(i).GetComponent<MeshRenderer>().material;
                 _furnitureButtons[i].Add(button);
-                button.gameObject.SetActive(false);
+                //button.gameObject.SetActive(false);
+
             }
+
+            _horizontalPanelMemList[i].SetActive(false);
         }
+
+        _horizontalPanelMemList[0].SetActive(true);
     }
     private void ChangeButtons(int index, int offset)
     {
-        //for (int i = 0; i < _furnitureButtons[index].Count; i++)
-        //{
-        //    _furnitureButtons[index][i] = Instantiate(_buttonPrefab);
-        //}
+        if (_isAlreadySeeCustomShop)
+        {
+            _horizontalPanelMemList[_previousIndexFurnitureActivated].SetActive(false);
+        }
+        
+        _horizontalPanelMemList[index].SetActive(true);
+
+        _previousIndexFurnitureActivated = index;
+
+        _isAlreadySeeCustomShop = true;
+
         Debug.Log(index);
     }
     public void AddObject(GameObject newObject)
@@ -59,19 +90,24 @@ public class CustomShopManager : MonoBehaviour
 
     public void ChangeFurniture(int index)
     {
-        if (_customFurnitureList[_changeCustomView.GetCurrentIndexView()].UpdateCurrentFurnitureIndex(index) == false) return;
+        Debug.Log(index);
 
-        if (_currentFurniture != null && _currentIndexCamMemory == _changeCustomView.GetCurrentIndexView()) Destroy(_currentFurniture);
+        int currentIndex = _changeCustomView.GetCurrentIndexView();
 
-        Quaternion newRotation = Quaternion.Euler(_customFurnitureList[_changeCustomView.GetCurrentIndexView()].GetFurnitureRotation());
+        if (_customFurnitureList[currentIndex].UpdateCurrentFurnitureIndex(index) == false) return;
 
-        _currentFurniture = Instantiate(_customFurnitureList[_changeCustomView.GetCurrentIndexView()].GetFurniture(index), _spawnPointList[_changeCustomView.GetCurrentIndexView()].transform.position, newRotation);
+        if (_currentFurnitureList[currentIndex] != null) 
+            Destroy(_currentFurnitureList[currentIndex]);
 
-        UpdateCurrentIndexCamMemory();
+        Quaternion newRotation = Quaternion.Euler(_customFurnitureList[currentIndex].GetFurnitureRotation());
+
+        _currentFurnitureList[currentIndex] = Instantiate(_customFurnitureList[currentIndex].GetFurniture(index), _spawnPointList[currentIndex].transform.position, newRotation);
+
+        //UpdateCurrentIndexCamMemory();
     }
 
-    private void UpdateCurrentIndexCamMemory()
-    {
-        _currentIndexCamMemory = _changeCustomView.GetCurrentIndexView();
-    }
+    //private void UpdateCurrentIndexCamMemory()
+    //{
+    //    _currentIndexCamMemory = _changeCustomView.GetCurrentIndexView();
+    //}
 }
