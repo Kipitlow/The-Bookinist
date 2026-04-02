@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &23145502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 23145503}
+  - component: {fileID: 23145504}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &23145503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23145502}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1847198876}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &23145504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23145502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb876616ec37d7a4384e9347a625a9cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchDetection: {fileID: 1245447398}
 --- !u!1 &28927035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,11 +1892,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 524650980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efb5d713952ade5499fdd51d293383c7, type: 3}
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closedSprite: {fileID: 21300000, guid: e38f57d157f1bf5438d0610322dc9a16, type: 3}
-  openSprite: {fileID: 21300000, guid: 265f9f23e7faefb4c8facc698ea22c67, type: 3}
+  conditions:
+  - type: 2
+    thisObject: {fileID: 0}
+    target: {fileID: 0}
+    requiredTag: 
+    zone: {fileID: 0}
+    layer: 0
+  actions:
+  - type: 1
+    thisObject: {fileID: 0}
+    target: {fileID: 524650980}
+    activeState: 0
+    openDoor: {fileID: 0}
 --- !u!1 &545223335
 GameObject:
   m_ObjectHideFlags: 0
@@ -3224,7 +3280,7 @@ MonoBehaviour:
   - {fileID: 1176242739}
   - {fileID: 350665881}
   - {fileID: 1063250789}
-  pageIndex: 200
+  pageIndex: 3
 --- !u!1 &963033253
 GameObject:
   m_ObjectHideFlags: 0
@@ -3607,7 +3663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageObjects: []
-  pageIndex: 400
+  pageIndex: 5
 --- !u!1 &1063250789
 GameObject:
   m_ObjectHideFlags: 0
@@ -3993,6 +4049,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178689697}
   m_CullTransparentMesh: 1
+--- !u!1 &1245447396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1245447397}
+  - component: {fileID: 1245447398}
+  m_Layer: 0
+  m_Name: TouchManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1245447397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245447396}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1847198876}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1245447398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245447396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdab7a9cd816c14787c703a217e52c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxDistance: 100
+  _hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1295830289
 GameObject:
   m_ObjectHideFlags: 0
@@ -6660,6 +6764,8 @@ Transform:
   - {fileID: 28927036}
   - {fileID: 1804375963}
   - {fileID: 3271316197596761027}
+  - {fileID: 23145503}
+  - {fileID: 1245447397}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1849893161
@@ -6827,15 +6933,18 @@ MonoBehaviour:
   minZ: -20
   maxZ: 40
   snapPoints:
-  - {fileID: 1365140434}
-  - {fileID: 206803403}
-  - {fileID: 1821429000}
-  - {fileID: 1537575686}
-  - {fileID: 111626167}
-  - {fileID: 791463696}
-  - {fileID: 318294542}
-  - {fileID: 2129243358}
-  - {fileID: 1144659499}
+  - objects:
+    - {fileID: 1365140434}
+    - {fileID: 206803403}
+    - {fileID: 1821429000}
+  - objects:
+    - {fileID: 1537575686}
+    - {fileID: 111626167}
+    - {fileID: 791463696}
+  - objects:
+    - {fileID: 318294542}
+    - {fileID: 2129243358}
+    - {fileID: 1144659499}
   SnapPointNumberOnOneLayer: 3
   currentIndexSnapPoint: 1
 --- !u!114 &1849893167

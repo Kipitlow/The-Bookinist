@@ -22,7 +22,15 @@ public class ConditionEntryDrawer : PropertyDrawer
                 break;
 
             case ConditionType.OnTouch:
-                lines += 1;
+                lines += 0;
+                break;
+
+            case ConditionType.IsEmpty:
+                lines += 2;
+                break;
+
+            case ConditionType.IsSameItemSO:
+                lines += 2;
                 break;
         }
 
@@ -49,9 +57,9 @@ public class ConditionEntryDrawer : PropertyDrawer
         switch (type)
         {
             case ConditionType.SameLayer:
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("thisObject"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("layerDetector"));
                 r.y += h + s;
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("otherObject"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 break;
 
             case ConditionType.SameZone:
@@ -59,14 +67,22 @@ public class ConditionEntryDrawer : PropertyDrawer
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("thisObject"));
                 r.y += h + s;
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("otherObject"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 break;
 
             case ConditionType.OnTouch:
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("thisObject"));
+                break;
+
+            case ConditionType.IsEmpty:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
                 r.y += h + s;
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("otherObject"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("shouldBeEmpty"));
+                break;
+
+            case ConditionType.IsSameItemSO:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("selectedItemIsWanted"));
                 r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
                 break;
         }
 

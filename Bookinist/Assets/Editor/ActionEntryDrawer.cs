@@ -9,7 +9,7 @@ public class ActionEntryDrawer : PropertyDrawer
         var typeProp = property.FindPropertyRelative("type");
         ActionType type = (ActionType)typeProp.enumValueIndex;
 
-        int lines = 2;
+        float lines = 2;
 
         switch (type)
         {
@@ -21,11 +21,29 @@ public class ActionEntryDrawer : PropertyDrawer
                 lines += 2;
                 break;
 
-            case ActionType.Print:
+            case ActionType.StartDialogue:
                 lines += 2;
                 break;
-        }
 
+            case ActionType.CallFunction:
+                var onExecuteProp = property.FindPropertyRelative("onExecute");
+                var callsProp = onExecuteProp.FindPropertyRelative("m_PersistentCalls.m_Calls");
+                int callCount = 0;
+                if (callsProp != null) callCount = callsProp.arraySize;
+
+                if (callCount > 0) lines += 3.7f;
+                else lines += 5;
+
+                break;
+
+            case ActionType.PlaceObject:
+                lines += 1;
+                break;
+
+            case ActionType.ClearObject:
+                lines += 1;
+                break;
+        }
         return lines * (EditorGUIUtility.singleLineHeight + 2f);
     }
 
@@ -51,20 +69,36 @@ public class ActionEntryDrawer : PropertyDrawer
             case ActionType.SetActive:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("activeState"));
                 r.y += h + s;
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("otherObject"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 break;
 
             case ActionType.Open:
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("otherObject"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("openDoor"));
                 break;
 
-            case ActionType.Print:
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("printText"));
+            case ActionType.StartDialogue:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("npcDialogue"));
                 r.y += h + s;
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("text"));
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("npcTalker"));
                 break;
+
+            case ActionType.CallFunction:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("onExecute"));
+                r.y += h + s;
+                break;
+
+            case ActionType.PlaceObject:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
+                r.y += h + s;
+                break;
+
+            case ActionType.ClearObject:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
+                r.y += h + s;
+                break;
+
 
         }
 

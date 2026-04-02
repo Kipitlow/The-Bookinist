@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class InteractionRunner : MonoBehaviour
 {
-    [SerializeField] private List<InteractionSet> interactionSets = new();
+    [SerializeField] private List<InteractionSet> _interactionSets = new();
+
 
     public void TryExecuteAll(InteractionContext context)
     {
-        foreach (var set in interactionSets)
+        foreach (var set in _interactionSets)
         {
             if (AreConditionsValid(set.conditions, context))
             {
@@ -41,25 +42,31 @@ public class InteractionRunner : MonoBehaviour
         switch (condition.type)
         {
             case ConditionType.SameLayer:
-                if (condition.thisObject == null || condition.otherObject == null)
+                if (condition.target == null)
                     return false;
 
-                return condition.thisObject.layer == condition.otherObject.layer;
+                return condition.layerDetector.IsInSameLayer(condition.target, condition.checkedPage);
 
             case ConditionType.SameZone:
-                if (condition.zone == null || condition.otherObject == null)
+                if (condition.zone == null || condition.target == null)
                     return false;
 
-                return condition.zone.Contains(condition.otherObject);
-                ;
+                return context.target == condition.target;
+
             case ConditionType.OnTouch:
-                if (context == null || !context.isTouchEvent)
+                if (context.target == null)
                     return false;
+                return this.gameObject == context.target;
 
-                if (condition.thisObject == null)
-                    return true;
+            case ConditionType.IsEmpty:
+                if (condition.slot == null)
+                    return false;
+                return condition.slot.IsEmpty() == condition.shouldBeEmpty;
 
-                return context.target == condition.thisObject;
+            case ConditionType.IsSameItemSO:
+                if (condition.item == null)
+                    return false;
+                return condition.selectedItemIsWanted.IsCorrectObject(condition.item);
 
             default:
                 return false;
@@ -71,19 +78,35 @@ public class InteractionRunner : MonoBehaviour
         switch (action.type)
         {
             case ActionType.SetActive:
-                if (action.otherObject != null)
-                    action.otherObject.SetActive(action.activeState);
+                if (action.target != null)
+                    action.target.SetActive(action.activeState);
                 break;
 
             case ActionType.Open:
-                if (action.otherObject != null)
-                    action.openDoor.Toggle(action.otherObject);
+                if (action.target != null)
+                    action.openDoor.Toggle(action.target);
                 break;
 
-            case ActionType.Print:
-                if (action.printText != null && action.text != null )
-                    action.printText.Print(action.text);
+            case ActionType.StartDialogue:
+                if (action.npcDialogue != null && action.npcTalker != null)
+                    action.npcTalker.StartDialogue(action.npcDialogue);
                 break;
+
+            case ActionType.PlaceObject:
+                if (action.slot != null && action.target != null)
+                    action.slot.Fill();
+                break;
+
+            case ActionType.ClearObject:
+                if (action.slot != null && action.target != null)
+                    action.slot.Clear();
+                break;
+
+            case ActionType.CallFunction:
+                if (action.onExecute != null)
+                    action.onExecute?.Invoke();
+                break;
+
         }
     }
 }

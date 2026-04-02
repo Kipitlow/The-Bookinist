@@ -28,7 +28,11 @@ public class PageManager : MonoBehaviour
             string sortingLayerName = _sortingLayerPrefix + i;
             Page page = layer.GetComponent<Page>();
             if (page != null)
+            {
                 page.SetSortingLayer(sortingLayerName);
+            }
+                
+                
             else
                 Debug.LogWarning($"[PageManager] Pas de composant Page sur {layer.name}.", layer);
         }

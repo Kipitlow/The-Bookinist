@@ -58,10 +58,10 @@ public class SC_Tache : MonoBehaviour
 
     void Update()
     {
-        if (CM_Player != null && WaitCondition != (int)Mathf.Round(CM_Player.transform.position.z) + 1 && WaitCondition!= CM.currentIndexSnapPoint)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
+        if (CM_Player != null && WaitCondition != (int)Mathf.Round(CM_Player.transform.position.z) + 1 && WaitCondition!= CM.currentIndexLayer)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
         {
 
-            WaitCondition = CM.currentIndexSnapPoint;
+            WaitCondition = CM.currentIndexLayer;
             
             {
                 foreach (GameObject obj in List_Temporair_Tache)
@@ -74,7 +74,7 @@ public class SC_Tache : MonoBehaviour
 
             foreach (Tache_Layourt Layeur in Tache_Dans_Ce_Layeur)     //Nous utilison le curentIndex""" pour savoir sur quels layeur se trouver le joueur, si celle si posséder une tache, la mission change
             {
-                if (Layeur !=null && Layeur.Layeur_Affiche_Mission == CM.currentIndexSnapPoint)
+                if (Layeur !=null && Layeur.Layeur_Affiche_Mission == CM.currentIndexLayer)
                 {                    
                     Change_Tach_List();
                 }
