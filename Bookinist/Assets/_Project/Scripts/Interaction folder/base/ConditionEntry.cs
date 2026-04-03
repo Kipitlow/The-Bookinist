@@ -23,7 +23,7 @@ public class ConditionEntry
     [Tooltip("script de detection du layer")]
     public LayerDetector layerDetector;
 
-    [Tooltip("slot que tu veux verifier")]
+    [Tooltip("objet que tu veux check")]
     public Slot slot;
 
     [Tooltip("verifier l'etat du slot")]
@@ -35,10 +35,10 @@ public class ConditionEntry
     [Tooltip("Script qui compare les SO")]
     public SelectedItemIsWanted selectedItemIsWanted;
 
-    [Tooltip("perso sur lequel le dialogue doit avoir commencé")]
+    [Tooltip("objet que tu veux check")]
     public NPCTalker npcTalker;
 
-    [Tooltip("script de cycle de l'objet que tu veux verifier")]
+    [Tooltip("objet que tu veux check")]
     public CycleThroughSprite cycleThroughSprite;
 
     [Tooltip("frame que tu veux check")]
@@ -46,6 +46,15 @@ public class ConditionEntry
 
     [Tooltip("si tu veux verifier si c'est sur la frame et celles d'apres")]
     public bool trueIfMore;
+
+    [Tooltip("objet que tu veux check")]
+    public MoveObject Move;
+
+    [Tooltip("si tu veux detecter que l'objet a bougé ou non")]
+    public bool HasMoved;
+
+    [Tooltip("check how many times object has moved")]
+    public int HowManyTimes;
 
 
 }

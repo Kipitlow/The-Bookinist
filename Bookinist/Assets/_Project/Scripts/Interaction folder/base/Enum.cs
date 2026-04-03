@@ -6,7 +6,8 @@ public enum ConditionType
     IsEmpty,
     IsSameItemSO,
     HasDialogueStarted,
-    OnWichFrame
+    OnWichFrame,
+    HasMoved
 }
 
 public enum ActionType
@@ -18,5 +19,6 @@ public enum ActionType
     ClearObject,
     CallFunction,
     CycleSprites,
-    Move
+    Move,
+    ResetHasMoved
 }

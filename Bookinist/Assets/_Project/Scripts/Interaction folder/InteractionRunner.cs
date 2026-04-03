@@ -78,6 +78,11 @@ public class InteractionRunner : MonoBehaviour
                     return false;
                 return condition.npcTalker._lineIndex >= 1;
 
+            case ConditionType.HasMoved:
+                if (condition.Move == null)
+                    return false;
+                return condition.Move.HasMoved(condition.HasMoved, condition.HowManyTimes);
+
             default:
                 return false;
         }
