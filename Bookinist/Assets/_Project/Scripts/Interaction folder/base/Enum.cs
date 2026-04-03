@@ -20,5 +20,6 @@ public enum ActionType
     CallFunction,
     CycleSprites,
     Move,
-    ResetHasMoved
+    ResetHasMoved,
+    Pick
 }

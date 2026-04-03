@@ -6,7 +6,6 @@ public class InteractionRunner : MonoBehaviour
 {
     [SerializeField] private List<InteractionSet> _interactionSets = new();
 
-
     public void TryExecuteAll(InteractionContext context)
     {
         foreach (var set in _interactionSets)
@@ -125,6 +124,11 @@ public class InteractionRunner : MonoBehaviour
             case ActionType.CycleSprites:
                 if (action.cycleThroughSprite != null || action.sprites == null)
                     action.cycleThroughSprite.Cycle(action.sprites, action.cycle);
+                break;
+
+            case ActionType.Pick:
+                if (action.pickable != null)
+                    action.pickable.Pick(this.gameObject);
                 break;
 
             case ActionType.CallFunction:

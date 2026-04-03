@@ -34,7 +34,7 @@ public class NPCTalker : MonoBehaviour
 
     private Vector3 _pivOffsetShop = new Vector3(1f, 0f, 0);
 
-    private Vector3 _pivOffsetBook = new Vector3(-2.5f, 0, 0);
+    private Vector3 _pivOffsetBook = new Vector3(-1, -3, 0);
 
     void Start()
     {
@@ -123,8 +123,6 @@ public class NPCTalker : MonoBehaviour
         }
         else
         {
-            _bubbleParent.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-
             // Ancrage bord gauche + bord supérieur fixe
 
             float offsetX = newSize.x / 5f;
