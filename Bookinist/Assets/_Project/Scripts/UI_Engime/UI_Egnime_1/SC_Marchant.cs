@@ -5,7 +5,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.UI;
-using static UnityEditor.ShaderData;
 
 public class Dialogue_Marchant
 {
