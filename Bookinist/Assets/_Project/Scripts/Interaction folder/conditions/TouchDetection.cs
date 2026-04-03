@@ -14,7 +14,6 @@ public class TouchDetection : MonoBehaviour
         _cam = Camera.main;
     }
 
-
     public void OnTouch(Vector2 screenPosition)
     {
         Ray ray = _cam.ScreenPointToRay(screenPosition);

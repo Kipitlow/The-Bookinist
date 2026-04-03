@@ -49,5 +49,8 @@ public class ActionEntry
     [Tooltip("Offset sur l'axe Y")]
     public float OffsetY;
 
+    [Tooltip("InventaireManager")]
+    public Pickable pickable;
+
 
 }
