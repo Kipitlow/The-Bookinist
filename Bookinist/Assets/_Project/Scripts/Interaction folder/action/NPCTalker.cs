@@ -29,6 +29,7 @@ public class NPCTalker : MonoBehaviour
     private NPCDialogue _dialogue;
 
     public int _lineIndex { get; private set; } = 0;
+    public bool _hasDialogueEnded { get; private set; } = false;
 
     private bool _bubbleVisible = false;
 
@@ -58,7 +59,7 @@ public class NPCTalker : MonoBehaviour
         if (_lineIndex >= _dialogue.lines.Length)
         {
             CloseBubble();
-
+            _hasDialogueEnded = true;
             return;
         }
 
