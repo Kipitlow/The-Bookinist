@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InteractionRunner : MonoBehaviour
 {
     [SerializeField] private List<InteractionSet> _interactionSets = new();
 
-
+    #region Try
     public void TryExecuteAll(InteractionContext context)
     {
         foreach (var set in _interactionSets)
@@ -36,6 +37,9 @@ public class InteractionRunner : MonoBehaviour
             ExecuteAction(action, context);
         }
     }
+    #endregion
+
+    #region test Condition
 
     private bool EvaluateCondition(ConditionEntry condition, InteractionContext context)
     {
@@ -78,6 +82,11 @@ public class InteractionRunner : MonoBehaviour
                     return false;
                 return condition.npcTalker._lineIndex >= 1;
 
+            case ConditionType.HasDialogueEnded:
+                if (condition.npcTalker == null)
+                    return false;
+                return condition.npcTalker._hasDialogueEnded;
+
             case ConditionType.HasMoved:
                 if (condition.Move == null)
                     return false;
@@ -87,6 +96,10 @@ public class InteractionRunner : MonoBehaviour
                 return false;
         }
     }
+
+    #endregion
+
+    #region execute Action
 
     private void ExecuteAction(ActionEntry action, InteractionContext context)
     {
@@ -127,6 +140,11 @@ public class InteractionRunner : MonoBehaviour
                     action.cycleThroughSprite.Cycle(action.sprites, action.cycle);
                 break;
 
+            case ActionType.Pick:
+                if (action.pickable != null)
+                    action.pickable.Pick(this.gameObject);
+                break;
+
             case ActionType.CallFunction:
                 if (action.onExecute != null)
                     action.onExecute?.Invoke();
@@ -134,4 +152,5 @@ public class InteractionRunner : MonoBehaviour
 
         }
     }
+    #endregion
 }

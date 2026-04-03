@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.IO;
 using TMPro;
-using UnityEditor.Overlays;
 using UnityEngine;
 
 [System.Serializable]
@@ -81,8 +80,6 @@ public class SC_Gestion_Energie : MonoBehaviour
                 yield return new WaitForSeconds(1);
             }
         }
-
-
         /*if (Temps_Restant > 0)// la on veut savoir si il reste du temps
         {
             yield return new WaitForSeconds(Mathf.Abs(Temps_Restant - Current));

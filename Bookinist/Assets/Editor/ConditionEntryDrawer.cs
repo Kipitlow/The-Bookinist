@@ -37,6 +37,10 @@ public class ConditionEntryDrawer : PropertyDrawer
                 lines += 1;
                 break;
 
+            case ConditionType.HasDialogueEnded:
+                lines += 1;
+                break;
+
             case ConditionType.HasMoved:
                 lines += 3;
                 break;
@@ -98,6 +102,11 @@ public class ConditionEntryDrawer : PropertyDrawer
                 break;
 
             case ConditionType.HasDialogueStarted:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("npcTalker"));
+                r.y += h + s;
+                break;
+
+            case ConditionType.HasDialogueEnded:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("npcTalker"));
                 r.y += h + s;
                 break;

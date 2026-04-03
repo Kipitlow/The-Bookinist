@@ -29,12 +29,13 @@ public class NPCTalker : MonoBehaviour
     private NPCDialogue _dialogue;
 
     public int _lineIndex { get; private set; } = 0;
+    public bool _hasDialogueEnded { get; private set; } = false;
 
     private bool _bubbleVisible = false;
 
     private Vector3 _pivOffsetShop = new Vector3(1f, 0f, 0);
 
-    private Vector3 _pivOffsetBook = new Vector3(5, 5, 0);
+    private Vector3 _pivOffsetBook = new Vector3(-1, -3, 0);
 
     void Start()
     {
@@ -58,7 +59,7 @@ public class NPCTalker : MonoBehaviour
         if (_lineIndex >= _dialogue.lines.Length)
         {
             CloseBubble();
-
+            _hasDialogueEnded = true;
             return;
         }
 

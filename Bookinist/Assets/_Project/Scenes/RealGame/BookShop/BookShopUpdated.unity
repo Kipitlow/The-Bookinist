@@ -5462,6 +5462,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4537737331346713201, guid: c154c34385ce7cf44a71557ea4993fe3, type: 3}
+      propertyPath: _maxDistance
+      value: 3220.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7435099332171205326, guid: c154c34385ce7cf44a71557ea4993fe3, type: 3}
       propertyPath: m_Name
       value: Managers
@@ -10408,6 +10412,11 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!1 &982231298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 902201829281851308, guid: 1e79e4c0e30beff46b47e71560f3f041, type: 3}
+  m_PrefabInstance: {fileID: 1994651901}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &997323238
 GameObject:
   m_ObjectHideFlags: 0
@@ -16053,7 +16062,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7082141556296266056, guid: 1e79e4c0e30beff46b47e71560f3f041, type: 3}
   m_PrefabInstance: {fileID: 1994651901}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 982231298}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b60005bac8cfd5418d98f88de330f1f, type: 3}
@@ -16064,6 +16073,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7769261810093663735, guid: 1e79e4c0e30beff46b47e71560f3f041, type: 3}
   m_PrefabInstance: {fileID: 1994651901}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1502102956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982231298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionSets:
+  - interactionName: 
+    conditions:
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 2
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 11400000, guid: c58f49e75e3e16249a0ea3ab588ea863, type: 2}
+      npcTalker: {fileID: 1502102950}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
 --- !u!1 &1502686555
 GameObject:
   m_ObjectHideFlags: 0
@@ -22517,6 +22575,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 902201829281851308, guid: 1e79e4c0e30beff46b47e71560f3f041, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1502102956}
     - targetCorrespondingSourceObject: {fileID: 2752168426292679618, guid: 1e79e4c0e30beff46b47e71560f3f041, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}

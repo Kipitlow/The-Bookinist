@@ -186,6 +186,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 902201829281851308, guid: 1e79e4c0e30beff46b47e71560f3f041, type: 3}
       insertIndex: 2
       addedObject: {fileID: 24036205}
+    - targetCorrespondingSourceObject: {fileID: 902201829281851308, guid: 1e79e4c0e30beff46b47e71560f3f041, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 24036206}
     - targetCorrespondingSourceObject: {fileID: 2752168426292679618, guid: 1e79e4c0e30beff46b47e71560f3f041, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -226,80 +229,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionSets:
-  - interactionName: start dialogue on touch
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 6a089352f5aef56409fbee80d6c12314, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 11400000, guid: e8d2f6e8552fe184e906c158f823adff, type: 2}
-      npcTalker: {fileID: 24036203}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 6a089352f5aef56409fbee80d6c12314, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-    - type: 2
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 11400000, guid: e8d2f6e8552fe184e906c158f823adff, type: 2}
-      npcTalker: {fileID: 24036203}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: AddInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 4dd9171975d938444a9c004d3d4c8bdc, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
+  _interactionSets: []
+--- !u!114 &24036206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24036201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothTime: 0.2
+  arrivalThreshold: 0.01
 --- !u!1 &114452389
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +328,9 @@ MonoBehaviour:
       cycleThroughSprite: {fileID: 0}
       WantedFrame: 0
       trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
     actions:
     - type: 5
       target: {fileID: 0}
@@ -1469,6 +1416,9 @@ MonoBehaviour:
       cycleThroughSprite: {fileID: 0}
       WantedFrame: 0
       trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
     actions:
     - type: 5
       target: {fileID: 0}

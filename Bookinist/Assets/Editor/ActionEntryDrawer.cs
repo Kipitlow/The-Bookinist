@@ -54,6 +54,10 @@ public class ActionEntryDrawer : PropertyDrawer
                 lines += 1;
                 break;
 
+            case ActionType.Pick:
+                lines += 1;
+                break;
+
             case ActionType.CycleSprites:
                 lines += 2;
 
@@ -127,6 +131,10 @@ public class ActionEntryDrawer : PropertyDrawer
 
             case ActionType.ResetHasMoved:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("Move"));
+                break;
+
+            case ActionType.Pick:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("pickable"));
                 break;
 
             case ActionType.CycleSprites:
