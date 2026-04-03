@@ -5,6 +5,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class CameraMovement : MonoBehaviour
@@ -27,6 +30,12 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private InputActionReference scrollZoom;
     [SerializeField] private float minZ;
     [SerializeField] private float maxZ;
+
+    [Header("Hold")]
+    Camera _cam;
+    [SerializeField] private GameObject _itemBase;
+    [SerializeField] private float holdMinTime = 0.5f;
+    private bool isHolding;
 
     [Header("Global Navigation")]
     public List<SnapPointManager> snapPointsManager = new();
@@ -66,6 +75,7 @@ public class CameraMovement : MonoBehaviour
     private void Awake()
     {
         currentIndexByLayer = 1;
+        _cam = Camera.main;
     }
 
     private void Start()
@@ -103,13 +113,42 @@ public class CameraMovement : MonoBehaviour
                 isDragging = true;
             }
 
+            if (!isDragging && !isHolding)
+            {
+                float heldTime = Time.time - pressStartTime;
+
+                if (heldTime >= holdMinTime)
+                {
+                    isHolding = true;
+
+
+                    PointerEventData pointerData = new PointerEventData(EventSystem.current)
+                    {
+                        position = GetPointerPosition()
+                    };
+
+                    List<RaycastResult> results = new List<RaycastResult>();
+                    EventSystem.current.RaycastAll(pointerData, results);
+
+                    foreach (var result in results)
+                    {
+                        Button button = result.gameObject.GetComponent<Button>();
+
+                        if (button != null)
+                        {
+                            Debug.Log("Hold detected on UI");
+
+                            GameObject newObj = Instantiate(_itemBase, button.transform, false);
+                            break;
+                        }
+                    }
+                }
+      
+            }
+
             if (isDragging)
             {
-                //transform.position += new Vector3(
-                //    -delta.x * dragSpeed,
-                //    -delta.y * dragSpeed,
-                //    0f
-                //);
+                // drag logic
             }
         }
 
@@ -120,31 +159,36 @@ public class CameraMovement : MonoBehaviour
             float movement = Vector2.Distance(pressStartPosition, GetPointerPosition());
 
             isPressing = false;
-            isDragging = false;
 
-            if (pressDuration <= tapMaxTime && movement <= tapMaxMovement)
+            if (isHolding)
+            {
+                Debug.Log("Hold released");
+            }
+            else if (pressDuration <= tapMaxTime && movement <= tapMaxMovement)
             {
                 // tap
             }
-            else
+            else if (isDragging)
             {
                 if (GetPointerPosition().x < pressStartPosition.x)
                 {
                     currentIndexByLayer++;
 
-                    if (currentIndexByLayer > snapPointsManager[currentIndexLayer].snapPoints.Length - 1) 
+                    if (currentIndexByLayer > snapPointsManager[currentIndexLayer].snapPoints.Length - 1)
                         currentIndexByLayer = snapPointsManager[currentIndexLayer].snapPoints.Length - 1;
                 }
                 else if (GetPointerPosition().x > pressStartPosition.x)
                 {
                     currentIndexByLayer--;
 
-                    if (currentIndexByLayer < 0) 
+                    if (currentIndexByLayer < 0)
                         currentIndexByLayer = 0;
                 }
                 transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
                 print(currentIndexByLayer);
             }
+            isDragging = false;
+            isHolding = false;
         }
     }
 
