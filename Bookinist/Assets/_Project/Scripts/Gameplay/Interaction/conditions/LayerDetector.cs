@@ -1,13 +1,18 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider))]
 public class LayerDetector : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField] private Transform _ownerRoot;
+    [SerializeField] private EventHandler _eventHandler;
 
     private InteractionRunner _interactionRunner;
+
+    #endregion
+
+    #region Unity Methods
 
     private void Start()
     {
@@ -18,14 +23,16 @@ public class LayerDetector : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Methods
+
     public bool IsInSameLayer(GameObject wantedObject, Page wantedLayer)
     {
         return wantedLayer.PageObjects.Contains(wantedObject);
     }
 
-    [SerializeField] private EventHandler _eventHandler;
-
-
+    // Exemples de hooks d'événements
     //private void OnEnable()
     //{
     //    _eventHandler.OnDroppedItem.AddListener(OnSenderTriggered);
@@ -38,14 +45,13 @@ public class LayerDetector : MonoBehaviour
 
     //private void OnSenderTriggered()
     //{
-
     //    InteractionContext context = new InteractionContext
     //    {
     //        instigator = null,
     //        target = hit.gameObject
     //    };
-
-    //    _interactionRunner.TryExecuteAll()
+    //    _interactionRunner.TryExecuteAll(context);
     //}
 
+    #endregion
 }

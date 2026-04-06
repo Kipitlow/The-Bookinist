@@ -24,31 +24,20 @@ public class InventoryModel : MonoBehaviour
 
     public void RemoveItem(Item itemToRemove)
     {
-        foreach (var item in _inventoryContents)
-        {
-            if (item == itemToRemove)
-            {
-                _inventoryContents.RemoveAt(GetItemIndex(itemToRemove));
-                return;
-            }
-        }
+        int index = GetItemIndex(itemToRemove);
+        if (index >= 0)
+            _inventoryContents.RemoveAt(index);
     }
 
     public int GetItemIndex(Item checkItem)
     {
-        int itemIndex = -1;
-        foreach (var item in _inventoryContents)
-        {
-            itemIndex++;
-            if (item == checkItem)
-                return itemIndex;
-        }
+        for (int i = 0; i < _inventoryContents.Count; i++)
+            if (_inventoryContents[i] == checkItem)
+                return i;
         return -1;
     }
 
-    public List<Item> GetInventoryContent()
-    {
-        return _inventoryContents;
-    }
+    public List<Item> GetInventoryContent() => _inventoryContents;
+
     #endregion
 }

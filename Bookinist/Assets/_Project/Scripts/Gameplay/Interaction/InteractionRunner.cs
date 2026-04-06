@@ -1,13 +1,23 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
+/// <summary>
+/// Exécute des jeux d'interactions (conditions -> actions).
+/// Parcourt les InteractionSet et exécute les actions si les conditions sont remplies.
+/// </summary>
 public class InteractionRunner : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField] private List<InteractionSet> _interactionSets = new();
 
-    #region Try
+    #endregion
+
+    #region Methods
+
+    /// <summary>
+    /// Tente d'exécuter toutes les interactions pour le contexte fourni.
+    /// </summary>
     public void TryExecuteAll(InteractionContext context)
     {
         foreach (var set in _interactionSets)
@@ -37,9 +47,10 @@ public class InteractionRunner : MonoBehaviour
             ExecuteAction(action, context);
         }
     }
+
     #endregion
 
-    #region test Condition
+    #region Conditions
 
     private bool EvaluateCondition(ConditionEntry condition, InteractionContext context)
     {
@@ -48,13 +59,11 @@ public class InteractionRunner : MonoBehaviour
             case ConditionType.SameLayer:
                 if (condition.target == null)
                     return false;
-
                 return condition.layerDetector.IsInSameLayer(condition.target, condition.checkedPage);
 
             case ConditionType.SameZone:
                 if (condition.zone == null || condition.target == null)
                     return false;
-
                 return context.target == condition.target;
 
             case ConditionType.OnTouch:
@@ -71,26 +80,26 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.item == null)
                     return false;
                 return condition.selectedItemIsWanted.IsCorrectObject(condition.item);
-                
+
             case ConditionType.OnWichFrame:
                 if (condition.cycleThroughSprite == null)
                     return false;
-                return condition.cycleThroughSprite.IsAtThisFrame(condition.WantedFrame, condition.trueIfMore);
+                return condition.cycleThroughSprite.IsAtThisFrame(condition.wantedFrame, condition.trueIfMore);
 
             case ConditionType.HasDialogueStarted:
                 if (condition.npcTalker == null)
                     return false;
-                return condition.npcTalker._lineIndex >= 1;
+                return condition.npcTalker.LineIndex >= 1;
 
             case ConditionType.HasDialogueEnded:
                 if (condition.npcTalker == null)
                     return false;
-                return condition.npcTalker._hasDialogueEnded;
+                return condition.npcTalker.HasDialogueEnded;
 
             case ConditionType.HasMoved:
-                if (condition.Move == null)
+                if (condition.move == null)
                     return false;
-                return condition.Move.HasMoved(condition.HasMoved, condition.HowManyTimes);
+                return condition.move.HasMoved(condition.hasMoved, condition.howManyTimes);
 
             default:
                 return false;
@@ -99,7 +108,7 @@ public class InteractionRunner : MonoBehaviour
 
     #endregion
 
-    #region execute Action
+    #region Actions
 
     private void ExecuteAction(ActionEntry action, InteractionContext context)
     {
@@ -131,8 +140,8 @@ public class InteractionRunner : MonoBehaviour
                 break;
 
             case ActionType.Move:
-                if (action.Move != null)
-                    action.Move.Move(action.OffsetX, action.OffsetY);
+                if (action.move != null)
+                    action.move.Move(action.offsetX, action.offsetY);
                 break;
 
             case ActionType.CycleSprites:
@@ -146,11 +155,10 @@ public class InteractionRunner : MonoBehaviour
                 break;
 
             case ActionType.CallFunction:
-                if (action.onExecute != null)
-                    action.onExecute?.Invoke();
+                action.onExecute?.Invoke();
                 break;
-
         }
     }
+
     #endregion
 }

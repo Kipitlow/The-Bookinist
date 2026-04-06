@@ -1,9 +1,12 @@
-using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Contrôleur de l'inventaire : pont entre model et view.
+/// </summary>
 public class InventoryController : MonoBehaviour
 {
     #region Variables
+
     [SerializeField] private InventoryModel _inventoryModel;
     [SerializeField] private InventoryView _inventoryView;
     [SerializeField] private Item _emptySlot;
@@ -12,28 +15,30 @@ public class InventoryController : MonoBehaviour
     #endregion
 
     #region Unity Methods
+
     private void OnEnable()
     {
-        ItemController.onItemClicked += HandleItemClicked;
+        ItemController.OnItemClicked += HandleItemClicked;
     }
 
     private void OnDisable()
     {
-        ItemController.onItemClicked -= HandleItemClicked;
+        ItemController.OnItemClicked -= HandleItemClicked;
     }
 
     #endregion
 
     #region Methods
 
-    public void AddInventoryItem(Item ItemToAdd)
+    public void AddInventoryItem(Item itemToAdd)
     {
-        _inventoryModel.AddItem(ItemToAdd);
+        _inventoryModel.AddItem(itemToAdd);
         UpdateInventory();
     }
-    public void RemoveInventoryItem(Item ItemToAdd)
+
+    public void RemoveInventoryItem(Item itemToRemove)
     {
-        _inventoryModel.RemoveItem(ItemToAdd);
+        _inventoryModel.RemoveItem(itemToRemove);
         UpdateInventory();
         activeItem = _emptySlot;
     }

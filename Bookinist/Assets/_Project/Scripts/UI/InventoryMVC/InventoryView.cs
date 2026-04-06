@@ -1,18 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
+using UnityEngine.UI;
 
+/// <summary>
+/// Vue de l'inventaire : instancie les éléments UI pour chaque Item.
+/// </summary>
 public class InventoryView : MonoBehaviour
 {
     #region Variables
 
     [SerializeField] private GameObject _inventoryParent;
     [SerializeField] private GameObject _itemBase;
-    //[SerializeField] private EventManager _eventManager;
-
-    #endregion
-
-    #region Unity Methods
 
     #endregion
 
@@ -24,21 +22,19 @@ public class InventoryView : MonoBehaviour
         {
             Destroy(_inventoryParent.transform.GetChild(i).gameObject);
         }
+
         Debug.Log(objectList.Count);
         for (int i = 0; i < objectList.Count; i++)
         {
-            
             GameObject newObj = Instantiate(_itemBase, _inventoryParent.transform, false);
             ItemModel objItemModel = newObj.GetComponent<ItemModel>();
             objItemModel.SetScriptable(objectList[i]);
 
             ItemController controller = newObj.GetComponent<ItemController>();
 
-            UnityEngine.UI.Button button = newObj.GetComponent<UnityEngine.UI.Button>();
+            Button button = newObj.GetComponent<Button>();
             button.onClick.AddListener(controller.OnItemClick);
             button.onClick.AddListener(() => Debug.Log("BUTTON CLICKED"));
-
-            //objItemModel.GetEventManager(_eventManager);
 
             controller.UpdateItem();
         }

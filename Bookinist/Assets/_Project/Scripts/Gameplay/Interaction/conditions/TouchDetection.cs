@@ -3,16 +3,24 @@ using UnityEngine.SceneManagement;
 
 public class TouchDetection : MonoBehaviour
 {
-    Camera _cam;
+    #region Variables
+
+    private Camera _cam;
     [SerializeField] private float _maxDistance = 100f;
     [SerializeField] private LayerMask _hitMask = ~0;
 
+    #endregion
 
+    #region Unity Methods
 
     private void Awake()
     {
         _cam = Camera.main;
     }
+
+    #endregion
+
+    #region Methods
 
     public void OnTouch(Vector2 screenPosition)
     {
@@ -22,10 +30,9 @@ public class TouchDetection : MonoBehaviour
         {
             InteractionRunner interactionRunner = hit.collider.GetComponent<InteractionRunner>();
 
-            if(SceneManager.GetActiveScene().name == "BookShopUpdated")
+            if (SceneManager.GetActiveScene().name == "BookShopUpdated")
             {
-
-                InteractionContext context = new InteractionContext
+                InteractionContext context = new()
                 {
                     instigator = null,
                     target = hit.collider.gameObject
@@ -34,18 +41,16 @@ public class TouchDetection : MonoBehaviour
                 if (interactionRunner != null)
                 {
                     interactionRunner.TryExecuteAll(context);
-
                 }
             }
-
             else
             {
-                int hitlayer = hit.collider.GetComponentInParent<Page>().PageIndex;
+                int hitLayer = hit.collider.GetComponentInParent<Page>().PageIndex;
                 int camLayer = _cam.GetComponent<CameraMovement>().currentIndexLayer;
 
-                if (hitlayer == camLayer)
+                if (hitLayer == camLayer)
                 {
-                    InteractionContext context = new InteractionContext
+                    InteractionContext context = new()
                     {
                         instigator = null,
                         target = hit.collider.gameObject
@@ -59,4 +64,6 @@ public class TouchDetection : MonoBehaviour
             }
         }
     }
+
+    #endregion
 }

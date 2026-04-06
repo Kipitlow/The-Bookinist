@@ -1,3 +1,6 @@
+/// <summary>
+/// Types de conditions disponibles.
+/// </summary>
 public enum ConditionType
 {
     SameLayer,
@@ -11,6 +14,9 @@ public enum ConditionType
     HasMoved
 }
 
+/// <summary>
+/// Types d'actions disponibles.
+/// </summary>
 public enum ActionType
 {
     SetActive,

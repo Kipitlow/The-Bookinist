@@ -1,13 +1,20 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// Représente un emplacement (slot) pouvant être rempli ou vidé par des items.
+/// </summary>
 public class Slot : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField] private InventoryController _inventoryController;
 
     private bool _isEmpty;
     private Sprite _currentObject;
 
+    #endregion
+
+    #region Methods
 
     public bool IsEmpty() { return _isEmpty; }
 
@@ -25,4 +32,5 @@ public class Slot : MonoBehaviour
         _isEmpty = false;
     }
 
+    #endregion
 }

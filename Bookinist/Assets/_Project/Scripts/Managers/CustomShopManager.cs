@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class CustomShopManager : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField] List<SO_FurnitureList> _customFurnitureList;
     [SerializeField] List<GameObject> _spawnPointList;
-
     [SerializeField] ChangeCustomView _changeCustomView;
 
     [SerializeField] GameObject _horizontalPanelPrefab;
@@ -22,6 +23,8 @@ public class CustomShopManager : MonoBehaviour
 
     private bool _isAlreadySeeCustomShop;
     private int _previousIndexFurnitureActivated;
+
+    #endregion
 
     private void Awake()
     {

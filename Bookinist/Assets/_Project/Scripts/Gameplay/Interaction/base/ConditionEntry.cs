@@ -1,11 +1,11 @@
-using NUnit.Framework.Internal;
 using System;
-using System.ComponentModel.Design;
 using UnityEngine;
 
 [Serializable]
 public class ConditionEntry
 {
+    #region Variables
+
     public ConditionType type;
 
     [Tooltip("objet ciblé")]
@@ -42,19 +42,19 @@ public class ConditionEntry
     public CycleThroughSprite cycleThroughSprite;
 
     [Tooltip("frame que tu veux check")]
-    public int WantedFrame;
+    public int wantedFrame;
 
     [Tooltip("si tu veux verifier si c'est sur la frame et celles d'apres")]
     public bool trueIfMore;
 
     [Tooltip("objet que tu veux check")]
-    public MoveObject Move;
+    public MoveObject move;
 
     [Tooltip("si tu veux detecter que l'objet a bougé ou non")]
-    public bool HasMoved;
+    public bool hasMoved;
 
     [Tooltip("check how many times object has moved")]
-    public int HowManyTimes;
+    public int howManyTimes;
 
-
+    #endregion
 }

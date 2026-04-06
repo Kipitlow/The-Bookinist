@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class ChangeCustomView : MonoBehaviour
 {
-    [SerializeField] int _startViewIndex;
-    [SerializeField] Camera[] _cameras;
+    #region Variables
+
+    [SerializeField] private int _startViewIndex;
+    [SerializeField] private Camera[] _cameras;
 
     private int _currentIndexView;
     private Camera _originalCamActive;
@@ -14,6 +16,9 @@ public class ChangeCustomView : MonoBehaviour
 
     public Action<int, int> OnViewChanged;
 
+    #endregion
+
+    #region Unity Methods
 
     private void Start()
     {
@@ -33,8 +38,8 @@ public class ChangeCustomView : MonoBehaviour
 
     private void OnDisable()
     {
-        _switchedCamActive.gameObject.SetActive(false);
-        _originalCamActive.gameObject.SetActive(true);
+        if (_switchedCamActive != null) _switchedCamActive.gameObject.SetActive(false);
+        if (_originalCamActive != null) _originalCamActive.gameObject.SetActive(true);
     }
 
     private void OnEnable()
@@ -42,6 +47,10 @@ public class ChangeCustomView : MonoBehaviour
         if (_isInitiated)
             EnableCamera(_currentIndexView);
     }
+
+    #endregion
+
+    #region Methods
 
     public void ChangeCurrentCameraIndex(bool isButtonRight)
     {
@@ -53,7 +62,7 @@ public class ChangeCustomView : MonoBehaviour
                 _currentIndexView = 0;
             else
                 _currentIndexView++;
-            
+
             OnViewChanged?.Invoke(_currentIndexView, 1);
         }
         else
@@ -67,23 +76,24 @@ public class ChangeCustomView : MonoBehaviour
         }
 
         EnableCamera(_currentIndexView);
-
     }
 
     private void DisableCamera(int index)
     {
-        _cameras[_currentIndexView].gameObject.SetActive(false);
-
+        if (_cameras != null && index >= 0 && index < _cameras.Length)
+            _cameras[index].gameObject.SetActive(false);
     }
 
     private void EnableCamera(int index)
     {
-        _cameras[_currentIndexView].gameObject.SetActive(true);
-        _switchedCamActive = _cameras[_currentIndexView];
+        if (_cameras != null && index >= 0 && index < _cameras.Length)
+        {
+            _cameras[index].gameObject.SetActive(true);
+            _switchedCamActive = _cameras[index];
+        }
     }
 
-    public int GetCurrentIndexView()
-    {
-        return _currentIndexView;
-    }
+    public int GetCurrentIndexView() => _currentIndexView;
+
+    #endregion
 }
