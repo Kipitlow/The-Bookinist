@@ -1,12 +1,18 @@
-using System;
-using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class ScriptBalance : MonoBehaviour
 {
+    #region Variable
+    [Header("Controller Rotation")]
+    //[SerializeField] public GameObject UI_Gameplay;
+    public GameObject balanceSprite;
+    public GameObject balance;
+    public GameObject plateau1;
+    public GameObject plateau2;
+
+
+
     [Header("Gestion UI")]
     //[SerializeField] public GameObject UI_Gameplay;
     public GameObject Prefable_Poids;
@@ -16,13 +22,25 @@ public class ScriptBalance : MonoBehaviour
     private GameObject Poids;
     private GameObject Poids2;
     private bool _targetOne;
-
+    #endregion
 
 
     void Start()
     {
         _targetOne=true;    
     }
+
+    private void Update()
+    {
+        if (balance == null) Debug.LogError("Balance éclater au sol");
+        Vector3 Euler = balance.transform.eulerAngles;
+
+        balanceSprite.transform.localRotation = Quaternion.Euler(Euler.x, Euler.y, Euler.z);
+        plateau1.transform.rotation = Quaternion.Euler(0, 0, 0);
+        plateau2.transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+
 
     public void FinishTask()
     {

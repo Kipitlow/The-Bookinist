@@ -65,25 +65,20 @@ public class SC_Tache : MonoBehaviour
             if (CM_Player != null && Layeur_Actuelle_Du_Joueur != (int)Mathf.Round(CM_Player.transform.position.z) + 1 && Layeur_Actuelle_Du_Joueur != CM.currentIndexByLayer)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
             {
                 Layeur_Actuelle_Du_Joueur = CM.currentIndexByLayer;
-                Debug.Log("A1");
                 // Cette option consiste a cacher tous les objets qui sont assigner a un layeur, on fonction du layeur du joueur cache le rester des objets.
                 for (int i = 0; i < UI_cacheLayeur.Count; i++)
                 {
                     if (i == Layeur_Actuelle_Du_Joueur)
                     {
-                        Debug.Log("A2");
                         foreach (GameObject CacheObjet in UI_cacheLayeur[i].CanvaUI)
                         {
-                            Debug.Log("B1");
                             if (CacheObjet != null) CacheObjet.SetActive(true);
                         }
                     }
                     else
                     {
-                        Debug.Log("A3");
                         foreach (GameObject CacheObjet in UI_cacheLayeur[i].CanvaUI)
                         {
-                            Debug.Log("B2");
                             if (CacheObjet != null) CacheObjet.SetActive(false);
                         }
                     }
