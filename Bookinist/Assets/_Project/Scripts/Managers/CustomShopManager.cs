@@ -8,6 +8,8 @@ public class CustomShopManager : MonoBehaviour
 {
     #region Variables
 
+    public static CustomShopManager Instance { get; private set; }
+
     [SerializeField] List<SO_FurnitureList> _customFurnitureList;
     [SerializeField] List<GameObject> _spawnPointList;
     [SerializeField] ChangeCustomView _changeCustomView;

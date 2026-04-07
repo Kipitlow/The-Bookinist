@@ -9,4 +9,5 @@ public class ShopItemData : ScriptableObject
     public int price;
     public bool isFurniture;
     public GameObject mesh;
+    public bool isPurchased;
 }
