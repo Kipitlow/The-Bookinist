@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Cinemachine;
@@ -5,13 +6,17 @@ using UnityEngine;
 
 public class CamManager : MonoBehaviour
 {
-    List<CinemachineCamera> allCams;
+    [SerializeField] private List<CinemachineCamera> _allCams;
 
-    CinemachineCamera activeCam;
+    [SerializeField] private CinemachineCamera _mainCam;
+
+    [SerializeField] private CinemachineCamera _activeCam;
+
+    public Action<int, int> OnViewChanged;
 
     private void Awake()
     {
-        if (allCams == null || allCams.Count == 0)
+        if (_allCams == null || _allCams.Count == 0)
         {
             var allCams = FindObjectsByType<CinemachineCamera>(FindObjectsSortMode.None);
             foreach (var cam in allCams) 
@@ -19,34 +24,36 @@ public class CamManager : MonoBehaviour
                 allCams.Append(cam);
             }
         }
-        activeCam = allCams[0];
+        _activeCam = _allCams[0];
     }
 
     public void SwitchToCam(int cam, bool debug)
     {
-        if (cam < 0 || cam >= allCams.Count)
+        if (cam < 0 || cam >= _allCams.Count)
         {
             if (debug) Debug.LogWarning("Invalid camera index.");
             return;
         }
 
-        if (allCams[cam] == activeCam)
+        if (_allCams[cam] == _activeCam)
         {
             if (debug) Debug.Log("New Cam is Active Cam!");
             return;
         }
 
-        activeCam.Priority = 0;
-        allCams[cam].Priority = 1;
-        activeCam = allCams[cam];
+        _activeCam.Priority = 0;
+        _allCams[cam].Priority = 1;
+        _activeCam = _allCams[cam];
 
-        if (debug) Debug.Log("Swapped to " + activeCam);
+        
+
+        if (debug) Debug.Log("Swapped to " + _activeCam);
     }
 
 
     public void SwitchToCam(CinemachineCamera targetCam)
     {
-        int index = allCams.IndexOf(targetCam);
+        int index = _allCams.IndexOf(targetCam);
         if (index == -1)
         {
             Debug.LogWarning("Camera not found.");
@@ -54,6 +61,13 @@ public class CamManager : MonoBehaviour
         }
 
         SwitchToCam(index, false);
+    }
+
+    public void ReturnToCam(CinemachineCamera targetCam)
+    {
+        _activeCam.Priority = 0;
+        targetCam.Priority = 1;
+        _activeCam = targetCam;
     }
 
     /*
@@ -75,22 +89,28 @@ public class CamManager : MonoBehaviour
 
     public void NextCamera()
     {
-        int next = (allCams.IndexOf(activeCam) + 1) % allCams.Count;
+        int next = (_allCams.IndexOf(_activeCam) + 1) % _allCams.Count;
         SwitchToCam(next, false);
+
+        OnViewChanged?.Invoke(_allCams.IndexOf(_activeCam), 1);
     }
 
     public void PreviousCamera()
     {
-        int prev = (allCams.IndexOf(activeCam) - 1 + allCams.Count) % allCams.Count;
+        int prev = (_allCams.IndexOf(_activeCam) - 1 + _allCams.Count) % _allCams.Count;
         SwitchToCam(prev, false);
+
+        OnViewChanged?.Invoke(_allCams.IndexOf(_activeCam), -1);
     }
+
+    public int GetCurrentIndexView() => _allCams.IndexOf(_activeCam) + 1;
 
     private void OnDrawGizmos()
     {
-        if (activeCam != null)
+        if (_activeCam != null)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(activeCam.transform.position, 0.5f);
+            Gizmos.DrawWireSphere(_activeCam.transform.position, 0.5f);
         }
     }
 }

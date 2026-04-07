@@ -10,7 +10,7 @@ public class CustomShopManager : MonoBehaviour
 
     [SerializeField] List<SO_FurnitureList> _customFurnitureList;
     [SerializeField] List<GameObject> _spawnPointList;
-    [SerializeField] ChangeCustomView _changeCustomView;
+    [SerializeField] CamManager _changeCustomView;
 
     [SerializeField] GameObject _horizontalPanelPrefab;
     [SerializeField] GameObject _horizontalPanelParent;
