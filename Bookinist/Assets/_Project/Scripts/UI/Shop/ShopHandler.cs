@@ -27,6 +27,7 @@ public class ShopHandler : MonoBehaviour
     {
         _uiToDisable.SetActive(false);
         _shopMenu.SetActive(true);
+        NavigateShop(ShopTabs.Furniture);
     }
 
     public void CloseShop()
@@ -48,15 +49,17 @@ public class ShopHandler : MonoBehaviour
 
     private void PopulateCategory(Transform container, ShopTabs tab)
     {
-        foreach (Transform child in container)
+        Transform realContainer = container.GetChild(0);
+        foreach (Transform child in realContainer)
             Destroy(child.gameObject);
 
         foreach (ShopItemData item in _allItems)
         {
             bool belongs = tab == ShopTabs.Furniture ? item.isFurniture : !item.isFurniture;
+            print(belongs); 
             if (!belongs) continue;
 
-            ShopItemUI ui = Instantiate(_shopItemPrefab, container);
+            ShopItemUI ui = Instantiate(_shopItemPrefab, realContainer);
             ui.Setup(item);
         }
     }

@@ -9,14 +9,16 @@ public class ShopItemUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _priceText;
     [SerializeField] private Button _buyButton;
 
+    private CustomShopManager _customManager;
     private ShopItemData _data;
 
     public void Setup(ShopItemData data)
     {
         _data = data;
         _icon.sprite = data.icon;
-        _nameText.text = data.itemName;
+        //_nameText.text = data.itemName;
         _priceText.text = $"{data.price} €";
+        _customManager = FindFirstObjectByType<CustomShopManager>();
 
         _buyButton.onClick.AddListener(OnBuyClicked);
     }
@@ -25,8 +27,11 @@ public class ShopItemUI : MonoBehaviour
     {
         if (CurrencyManager.Instance.GetSoftCurrency() >= _data.price)
         {
-            Debug.Log($"Achat : {_data.itemName} pour {_data.price}€");
             CurrencyManager.Instance.SpendSoftCurrency(_data.price);
+            if (_customManager != null)
+                _customManager.AddObject(_data);
+            else
+                print("Null manager");
         }
     }
 
