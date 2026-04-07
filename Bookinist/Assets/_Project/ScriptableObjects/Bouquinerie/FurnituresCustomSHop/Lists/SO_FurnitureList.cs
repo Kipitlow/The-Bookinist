@@ -4,14 +4,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SO_FurnitureList", menuName = "Scriptable Objects/SO_FurnitureList")]
 public class SO_FurnitureList : ScriptableObject
 {
-    [SerializeField] List<GameObject> _furnitureList;
+    [SerializeField] List<ShopItemData> _furnitureList;
     [SerializeField] Vector3 _furnitureRotationList;
 
     [SerializeField] int _currentFurnitureIndex;
 
     public GameObject GetFurniture(int index)
     {
-        return _furnitureList[index];
+        return _furnitureList[index].mesh;
     }
 
     public int GetFurnitureListLength()
@@ -29,7 +29,7 @@ public class SO_FurnitureList : ScriptableObject
         return _currentFurnitureIndex;
     }
 
-    public void AddFurniture(GameObject newFurniture)
+    public void AddFurniture(ShopItemData newFurniture)
     {
         _furnitureList.Add(newFurniture);
     }

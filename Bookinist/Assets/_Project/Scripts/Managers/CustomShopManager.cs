@@ -86,7 +86,7 @@ public class CustomShopManager : MonoBehaviour
 
         Debug.Log(index);
     }
-    public void AddObject(GameObject newObject)
+    public void AddObject(ShopItemData newObject)
     {
         _customFurnitureList[_changeCustomView.GetCurrentIndexView()].AddFurniture(newObject);
     }

@@ -11,9 +11,7 @@ public class CurrencyManager : MonoBehaviour
     public static CurrencyManager Instance { get; private set; }
 
     [Header("Valeurs initiales")]
-    // Valeur initiale de la monnaie "soft" (modifiable dans l'inspecteur)
     [SerializeField] private int _softCurrency = 0;
-    // Valeur initiale de la monnaie "hard" (modifiable dans l'inspecteur)
     [SerializeField] private int _hardCurrency = 0;
 
     // Événements Unity déclenchés quand une monnaie change (envoie la nouvelle valeur)
@@ -73,4 +71,8 @@ public class CurrencyManager : MonoBehaviour
         OnHardCurrencyChanged?.Invoke(_hardCurrency);
         return true;
     }
+
+    public int GetSoftCurrency() { return _softCurrency; }
+
+    public int GetHardCurrency() { return _hardCurrency; }
 }
