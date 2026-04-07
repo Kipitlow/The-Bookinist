@@ -108,7 +108,7 @@ public class InteractionRunner : MonoBehaviour
 
             case ActionType.PlaceObject:
                 if (action.slot != null && action.target != null)
-                    action.slot.Fill();
+                    action.slot.Fill(action.itemPrefab);
                 break;
 
             case ActionType.ClearObject:
@@ -129,6 +129,11 @@ public class InteractionRunner : MonoBehaviour
             case ActionType.Pick:
                 if (action.pickable != null)
                     action.pickable.Pick(this.gameObject);
+                break;
+
+            case ActionType.ResetHasMoved:
+                if (action.Move != null)
+                    action.Move.ResethasMoved();
                 break;
 
             case ActionType.CallFunction:

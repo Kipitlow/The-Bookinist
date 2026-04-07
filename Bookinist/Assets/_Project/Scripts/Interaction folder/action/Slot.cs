@@ -6,15 +6,15 @@ public class Slot : MonoBehaviour
     [SerializeField] private InventoryController _inventoryController;
 
     private bool _isEmpty;
-    private Sprite _currentObject;
+    private GameObject _currentObject;
 
 
     public bool IsEmpty() { return _isEmpty; }
 
-    public void Fill()
+    public void Fill(GameObject prefab)
     {
         if (gameObject == null) return;
-        _currentObject = Instantiate(_inventoryController.activeItem.itemSprite);
+        _currentObject = Instantiate(prefab);
         _isEmpty = true;
     }
 

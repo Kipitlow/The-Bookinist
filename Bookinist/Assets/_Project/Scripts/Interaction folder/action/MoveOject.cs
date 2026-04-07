@@ -11,6 +11,7 @@ public class MoveObject : MonoBehaviour
 
     private bool _hasMoved = false; 
     private bool _isMoving = false;
+    private bool _shouldReset = false;
 
     private int _hasMovedThisManyTime; 
 
@@ -21,6 +22,7 @@ public class MoveObject : MonoBehaviour
     private void Awake()
     {
         _targetPosition = transform.localPosition;
+        _hasMovedThisManyTime = 0;
     }
 
 
@@ -29,11 +31,17 @@ public class MoveObject : MonoBehaviour
     {
         transform.localPosition = Vector3.SmoothDamp(transform.localPosition, _targetPosition, ref _velocity, _smoothTime);
 
-        if (Vector3.Distance(transform.localPosition, _targetPosition) <= _arrivalThreshold)
+        if (Vector3.Distance(transform.localPosition, _targetPosition) <= _arrivalThreshold && _isMoving)
         {
             transform.localPosition = _targetPosition;
             _velocity = Vector3.zero;
             _isMoving = false;
+
+            if( _shouldReset)
+            {
+                _shouldReset = false;
+                return;
+            }
 
             _hasMoved = true;
             _hasMovedThisManyTime++;
@@ -44,6 +52,7 @@ public class MoveObject : MonoBehaviour
     #region Move
     public void Move(float offsetX, float offsetY)
     {
+        if (_isMoving) return;
         _targetPosition += new Vector3(offsetX, offsetY, 0f);
         _isMoving = true;
     }
@@ -52,7 +61,9 @@ public class MoveObject : MonoBehaviour
     #region ResetHasMoved
     public void ResethasMoved()
     {
+        _shouldReset = true;
         _hasMoved = false ;
+        _hasMovedThisManyTime = 0 ;
     }
 
     #endregion
