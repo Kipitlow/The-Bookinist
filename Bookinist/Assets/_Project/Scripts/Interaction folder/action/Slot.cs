@@ -13,8 +13,8 @@ public class Slot : MonoBehaviour
 
     public void Fill(GameObject prefab)
     {
-        if (gameObject == null) return;
-        _currentObject = Instantiate(prefab);
+        if (prefab == null) return;
+        _currentObject = Instantiate(prefab, this.transform.position, this.transform.rotation, this.transform);
         _isEmpty = true;
     }
 

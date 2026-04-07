@@ -107,7 +107,7 @@ public class InteractionRunner : MonoBehaviour
                 break;
 
             case ActionType.PlaceObject:
-                if (action.slot != null && action.target != null)
+                if (action.slot != null && action.itemPrefab != null)
                     action.slot.Fill(action.itemPrefab);
                 break;
 
