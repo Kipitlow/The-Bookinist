@@ -384,7 +384,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -439,7 +439,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -629,7 +629,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -684,7 +684,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -978,7 +978,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1033,7 +1033,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1515,6 +1515,7 @@ GameObject:
   - component: {fileID: 826112049}
   - component: {fileID: 826112048}
   - component: {fileID: 826112047}
+  - component: {fileID: 826112050}
   m_Layer: 0
   m_Name: pierre
   m_TagString: Untagged
@@ -1531,7 +1532,7 @@ Transform:
   m_GameObject: {fileID: 826112045}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.08, y: -7.12, z: 0}
+  m_LocalPosition: {x: -10.08, y: -5.3, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1620,6 +1621,38 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 718f3c769c233b7449a6ad2befd14f5d, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 826112047}
+      cycle: 0
+      sprites:
+      - {fileID: 21300000, guid: 7e6f145482773ab48af007549fd8a0ef, type: 3}
+      - {fileID: 21300000, guid: 1a074c032fe4be04a9c5f69359557af7, type: 3}
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
 --- !u!212 &826112049
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1669,12 +1702,33 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.71, y: 7.31}
+  m_Size: {x: 49.61591, y: 35.08}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &826112050
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826112045}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 24.779917, y: 23.92381, z: 4}
+  m_Center: {x: 4.0599995, y: 0.96000034, z: 0}
 --- !u!1 &913069972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,6 +1741,7 @@ GameObject:
   - component: {fileID: 913069976}
   - component: {fileID: 913069975}
   - component: {fileID: 913069974}
+  - component: {fileID: 913069977}
   m_Layer: 0
   m_Name: statue
   m_TagString: Untagged
@@ -1782,7 +1837,7 @@ MonoBehaviour:
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 674745122}
-      itemPrefab: {fileID: 7487870290225042571, guid: 10cfa6d8eeaf3084599a9b307a81aee1, type: 3}
+      itemPrefab: {fileID: 7487870290225042571, guid: b4b026c0b24b52442a2079590d7e1117, type: 3}
       openDoor: {fileID: 0}
       npcDialogue: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -1800,24 +1855,7 @@ MonoBehaviour:
       pickable: {fileID: 0}
   - interactionName: spawnCouronne
     conditions:
-    - type: 7
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 913069974}
-      WantedFrame: 1
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    - type: 7
+    - type: 6
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1829,6 +1867,47 @@ MonoBehaviour:
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
       cycleThroughSprite: {fileID: 826112047}
+      WantedFrame: 1
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 3
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 1378069750}
+      itemPrefab: {fileID: 7487870290225042571, guid: 10cfa6d8eeaf3084599a9b307a81aee1, type: 3}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 913069974}
+      cycle: 0
+      sprites:
+      - {fileID: 21300000, guid: 5dd5de2278e301946b418d17935f44d2, type: 3}
+      - {fileID: 21300000, guid: 9c31e1c5dda290b44a46aaef8ca01fa4, type: 3}
+      - {fileID: 21300000, guid: fc5c42621145f5245b38a0b14d8f3768, type: 3}
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+  - interactionName: spawnCouronne
+    conditions:
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 913069974}
       WantedFrame: 1
       trueIfMore: 0
       Move: {fileID: 0}
@@ -1905,12 +1984,33 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.085, y: 10.534303}
+  m_Size: {x: 49.61591, y: 35.08}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &913069977
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913069972}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 13.61591, y: 31.080002, z: 4.200006}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &935569756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,15 +2078,13 @@ MonoBehaviour:
   scrollZoom: {fileID: 3594305976405456403, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   minZ: -20
   maxZ: 40
-  _itemBase: {fileID: 5256060629017711014, guid: 34d4779fc7f0d72418f979dc4e294bc3, type: 3}
-  holdMinTime: 0.5
   snapPointsManager:
   - {fileID: 332266884774670728}
   - {fileID: 332266884886331918}
   - {fileID: 1579172638}
   SnapPointNumberOnOneLayer: 3
   currentIndexLayer: 0
-  currentIndexByLayer: 0
+  currentIndexByLayer: 1
 --- !u!114 &935569759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2131,7 +2229,7 @@ Transform:
   m_GameObject: {fileID: 998146617}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.64, y: -5.43, z: 0}
+  m_LocalPosition: {x: 9.64, y: -4.36, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2181,12 +2279,12 @@ SpriteRenderer:
   m_SortingLayerID: 1603831995
   m_SortingLayer: 4
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 111ea7951cdc65f44adfe5b300eaf21c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e90f9beae1e538c4d80948c28282b6dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.085, y: 10.534303}
+  m_Size: {x: 9.923182, y: 7.016}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2653,7 +2751,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -2708,7 +2806,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -3078,7 +3176,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -3133,7 +3231,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -3344,7 +3442,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -3399,7 +3497,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -4511,7 +4609,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -4528,7 +4626,7 @@ MonoBehaviour:
       Move: {fileID: 1285788819}
       HasMoved: 1
       HowManyTimes: 1
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -4545,7 +4643,7 @@ MonoBehaviour:
       Move: {fileID: 217524902}
       HasMoved: 1
       HowManyTimes: 1
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -4642,7 +4740,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.085, y: 10.534303}
+  m_Size: {x: 49.61591, y: 35.08}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4771,7 +4869,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -4826,7 +4924,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 8
+    - type: 7
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -4945,6 +5043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1930588107}
   - component: {fileID: 1930588108}
+  - component: {fileID: 1930588109}
   m_Layer: 0
   m_Name: flute
   m_TagString: Untagged
@@ -5022,6 +5121,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &1930588109
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930588106}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.61, y: 7.4, z: 4}
+  m_Center: {x: 0.27, y: 0, z: 0}
 --- !u!4 &1934825656 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1635770487475110987, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
@@ -5660,6 +5780,10 @@ PrefabInstance:
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 2355281588436072745, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.63
+      objectReference: {fileID: 0}
     - target: {fileID: 2414026624617848392, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5736,6 +5860,22 @@ PrefabInstance:
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 6930594756944471797, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      propertyPath: m_Size.x
+      value: 49.61591
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930594756944471797, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      propertyPath: m_Size.y
+      value: 35.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930594756944471797, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e90f9beae1e538c4d80948c28282b6dc, type: 3}
+    - target: {fileID: 6930594756944471797, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7212644521588149856, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
       propertyPath: _invController
       value: 
@@ -5756,6 +5896,30 @@ PrefabInstance:
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 8996920457429695498, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      propertyPath: pageObjects.Array.size
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996920457429695498, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      propertyPath: 'pageObjects.Array.data[27]'
+      value: 
+      objectReference: {fileID: 1285788816}
+    - target: {fileID: 8996920457429695498, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      propertyPath: 'pageObjects.Array.data[28]'
+      value: 
+      objectReference: {fileID: 217524899}
+    - target: {fileID: 8996920457429695498, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      propertyPath: 'pageObjects.Array.data[29]'
+      value: 
+      objectReference: {fileID: 645995908}
+    - target: {fileID: 8996920457429695498, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      propertyPath: 'pageObjects.Array.data[30]'
+      value: 
+      objectReference: {fileID: 1898912079}
+    - target: {fileID: 8996920457429695498, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      propertyPath: 'pageObjects.Array.data[31]'
+      value: 
+      objectReference: {fileID: 1280793728}
     - target: {fileID: 9068346363142063467, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
       propertyPath: _invController
       value: 

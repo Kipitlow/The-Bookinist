@@ -13,18 +13,19 @@ public class CycleThroughSprite : MonoBehaviour
     {
         if (_currentFrame == 0)
         {
-            _numberOfSprite = sprites.Count;
+            _numberOfSprite = sprites.Count - 1;
             _cycle = cycle;
         }
 
+        _currentFrame++;
 
-        if (_currentFrame < _numberOfSprite)
+        if (_currentFrame > _numberOfSprite)
         {
             if (_cycle) _currentFrame = 0; 
             else _currentFrame = _numberOfSprite;
         }
 
-        _currentFrame++;
+        Debug.Log(_currentFrame);
         _spriteRenderer.sprite = sprites[_currentFrame];
     }
 
