@@ -237,6 +237,93 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &61428643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 61428644}
+  - component: {fileID: 61428645}
+  m_Layer: 0
+  m_Name: Couronne_Fusion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &61428644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61428643}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.323, y: -4.109, z: -0.67250824}
+  m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1285432163}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &61428645
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61428643}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 2048427503
+  m_SortingLayer: 5
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: c33823fb20e52e04d8d39bde1ed164e7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.97, y: 1.3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &69521510
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,12 +546,12 @@ GameObject:
   - component: {fileID: 123711576}
   - component: {fileID: 123711577}
   m_Layer: 0
-  m_Name: Socle_02
+  m_Name: Couronne_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &123711576
 Transform:
   m_ObjectHideFlags: 0
@@ -475,7 +562,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.323, y: -4.109, z: -0.67250824}
-  m_LocalScale: {x: 1.5, y: 1.5000002, z: 1.5}
+  m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1285432163}
@@ -524,7 +611,7 @@ SpriteRenderer:
   m_SortingLayerID: 2048427503
   m_SortingLayer: 5
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9dfa35b49aabb8b418b254e239f68d83, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bbc3b3cdcadc1ee4494db897b2471812, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -704,377 +791,6 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.71, y: 7.31}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!1 &180450999
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 180451000}
-  - component: {fileID: 180451003}
-  - component: {fileID: 180451002}
-  - component: {fileID: 180451001}
-  m_Layer: 0
-  m_Name: Socle_01 (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &180451000
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180450999}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.111, y: -1.338, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 470798272}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &180451001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180450999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactionSets:
-  - interactionName: FlowerRed
-    conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 987049512}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 987049512}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 180450999}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-  - interactionName: FlowerPurpel
-    conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 987049512}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 987049512}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 180450999}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
---- !u!65 &180451002
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180450999}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.35, y: 0.4, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0.0000019073486}
---- !u!212 &180451003
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180450999}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1603831995
-  m_SortingLayer: 4
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9dfa35b49aabb8b418b254e239f68d83, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 7.97, y: 1.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1624,6 +1340,35 @@ MonoBehaviour:
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 224727247}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Chasse les nuage'
               m_BoolArgument: 0
             m_CallState: 2
       cycleThroughSprite: {fileID: 0}
@@ -2697,93 +2442,6 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 0}
---- !u!1 &311624789
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 311624790}
-  - component: {fileID: 311624791}
-  m_Layer: 0
-  m_Name: Couronne_Fusion
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &311624790
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 311624789}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.58, y: -4.14, z: -0.396}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 470798272}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &311624791
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 311624789}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1603831995
-  m_SortingLayer: 4
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c33823fb20e52e04d8d39bde1ed164e7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 7.97, y: 1.3}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &311631749
 GameObject:
   m_ObjectHideFlags: 0
@@ -2871,6 +2529,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &325110022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 325110023}
+  m_Layer: 0
+  m_Name: '@Button_Table'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &325110023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325110022}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1780365212}
+  - {fileID: 402150550}
+  - {fileID: 546021900}
+  m_Father: {fileID: 1285432163}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &348500470
 GameObject:
   m_ObjectHideFlags: 0
@@ -2958,6 +2650,407 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &402150549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 402150550}
+  - component: {fileID: 402150552}
+  - component: {fileID: 402150551}
+  - component: {fileID: 402150553}
+  m_Layer: 0
+  m_Name: Button_Couronne
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &402150550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402150549}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.323, y: -4.109, z: -0.67250824}
+  m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 325110023}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &402150551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402150549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionSets:
+  - interactionName: Couronne_Fusion
+    conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 0a709a5066689d24fb824e471a5f0d88, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 5
+      target: {fileID: 61428643}
+      activeState: 1
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 0a709a5066689d24fb824e471a5f0d88, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 0
+      target: {fileID: 61428643}
+      activeState: 1
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 61428643}
+      activeState: 1
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Place les offrandre'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+  - interactionName: Couronne_Red
+    conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 4b82783ca61b87b479507b0eec5f70f2, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 5
+      target: {fileID: 123711575}
+      activeState: 1
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 4b82783ca61b87b479507b0eec5f70f2, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 0
+      target: {fileID: 123711575}
+      activeState: 1
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+  - interactionName: Couronne_Purple
+    conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 2fb0f5680000e4c468c8c48714eb2389, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 5
+      target: {fileID: 528688680}
+      activeState: 1
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 2fb0f5680000e4c468c8c48714eb2389, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 0
+      target: {fileID: 528688680}
+      activeState: 1
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+--- !u!212 &402150552
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402150549}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 2048427503
+  m_SortingLayer: 5
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: bbc3b3cdcadc1ee4494db897b2471812, type: 3}
+  m_Color: {r: 0.31132078, g: 0.3098523, b: 0.3098523, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.97, y: 1.3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!65 &402150553
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402150549}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 21.431034, y: 13.070001, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &430844982
 GameObject:
   m_ObjectHideFlags: 0
@@ -3132,6 +3225,181 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &441102765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 441102766}
+  - component: {fileID: 441102770}
+  - component: {fileID: 441102769}
+  - component: {fileID: 441102768}
+  - component: {fileID: 441102767}
+  m_Layer: 0
+  m_Name: Couronne
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &441102766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441102765}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.77, y: -2.89, z: -0.396}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 470798272}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &441102767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441102765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24c7b5e8bbbba14d9cb542165813fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _item: {fileID: 11400000, guid: 4b82783ca61b87b479507b0eec5f70f2, type: 2}
+  _invController: {fileID: 1190348954}
+--- !u!114 &441102768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441102765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionSets:
+  - interactionName: drop l'objet
+    conditions:
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 9
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 441102767}
+--- !u!65 &441102769
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441102765}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 21.6, y: 13, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &441102770
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441102765}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1603831995
+  m_SortingLayer: 4
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: bbc3b3cdcadc1ee4494db897b2471812, type: 3}
+  m_Color: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.97, y: 1.3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &453528115
 GameObject:
   m_ObjectHideFlags: 0
@@ -3253,14 +3521,15 @@ Transform:
   - {fileID: 2141931499}
   - {fileID: 2089101306}
   - {fileID: 1573543416}
-  - {fileID: 180451000}
-  - {fileID: 1715617743}
-  - {fileID: 1687869234}
-  - {fileID: 1465893407}
+  - {fileID: 652865222}
+  - {fileID: 1615849970}
+  - {fileID: 1920834838}
+  - {fileID: 441102766}
+  - {fileID: 1759237400}
   - {fileID: 987049510}
   - {fileID: 897579958}
-  - {fileID: 1089419739}
-  - {fileID: 311624790}
+  - {fileID: 1520595936}
+  - {fileID: 1631015225}
   m_Father: {fileID: 1587385645}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &494938417 stripped
@@ -3433,6 +3702,35 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 507031637}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Ramasser une fleur'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 507031637}
 --- !u!65 &507031639
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3499,6 +3797,93 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7a92cc839ea1e1b40bf88768cdb5e1d5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.97, y: 1.3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &528688680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 528688681}
+  - component: {fileID: 528688682}
+  m_Layer: 0
+  m_Name: Couronne_Purple
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &528688681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528688680}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.323, y: -4.109, z: -0.67250824}
+  m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1285432163}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &528688682
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528688680}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 2048427503
+  m_SortingLayer: 5
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 43aaa3a9e7375b64d93a1401bfe8b24f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3601,6 +3986,35 @@ MonoBehaviour:
       onExecute:
         m_PersistentCalls:
           m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 537087209}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Ramasser une fleur'
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -3873,6 +4287,270 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 545301382}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Chasse les nuage'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+--- !u!1 &546021899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 546021900}
+  - component: {fileID: 546021902}
+  - component: {fileID: 546021901}
+  - component: {fileID: 546021903}
+  m_Layer: 0
+  m_Name: Button_Pot_Miel_Remplir
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &546021900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546021899}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.77, y: -3.57, z: -0.67250824}
+  m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 325110023}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &546021901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546021899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionSets:
+  - interactionName: Miel
+    conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 7310a20c3c65a7c4e8f6c567f6d05ca8, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 5
+      target: {fileID: 1767206656}
+      activeState: 1
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 7310a20c3c65a7c4e8f6c567f6d05ca8, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 0
+      target: {fileID: 1767206656}
+      activeState: 1
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 1767206656}
+      activeState: 1
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Place les offrandre'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+--- !u!212 &546021902
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546021899}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 2048427503
+  m_SortingLayer: 5
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: f9bd86a68809596429a2a5d1af2c81e3, type: 3}
+  m_Color: {r: 0.31132078, g: 0.3098523, b: 0.3098523, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.97, y: 1.3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!65 &546021903
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546021899}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 13.914375, y: 28.960001, z: 0.2}
+  m_Center: {x: 0, y: 0.0000076293945, z: 0}
 --- !u!1001 &549954325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4226,6 +4904,35 @@ MonoBehaviour:
       onExecute:
         m_PersistentCalls:
           m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 580614435}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Ramasser une fleur'
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -4651,6 +5358,35 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 591765642}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Chasse les nuage'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
 --- !u!65 &591765646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4759,6 +5495,435 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &652865221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 652865222}
+  - component: {fileID: 652865225}
+  - component: {fileID: 652865224}
+  - component: {fileID: 652865223}
+  m_Layer: 0
+  m_Name: Socle_01 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &652865222
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652865221}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.43, y: -1.19, z: 0}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 470798272}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &652865223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652865221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionSets:
+  - interactionName: FlowerPurpel
+    conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 0
+      target: {fileID: 652865221}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: addFlower
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: addFlower
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: spawnFlowers
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 652865221}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+  - interactionName: FlowerRed
+    conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 0
+      target: {fileID: 652865221}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: spawnFlowers
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 652865221}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: addFlower
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: spawnFlowers
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 652865221}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+--- !u!65 &652865224
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652865221}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 16.04, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0.0000019073486}
+--- !u!212 &652865225
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652865221}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1603831995
+  m_SortingLayer: 4
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e46d46ef5ce5c7a4f84c2ba8cd83fecc, type: 3}
+  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.97, y: 1.3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &701432246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 902201829281851308, guid: 1e79e4c0e30beff46b47e71560f3f041, type: 3}
@@ -4782,7 +5947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionSets:
-  - interactionName: "Confession Orph\xE9e"
+  - interactionName: "Talk Pr\xEAter"
     conditions:
     - type: 2
       target: {fileID: 0}
@@ -4807,11 +5972,40 @@ MonoBehaviour:
       activeState: 0
       slot: {fileID: 0}
       openDoor: {fileID: 0}
-      npcDialogue: {fileID: 11400000, guid: 6cb16e69436be3449998c335540a7f09, type: 2}
+      npcDialogue: {fileID: 11400000, guid: b061617703148b947ac097b80258d966, type: 2}
       npcTalker: {fileID: 701432250}
       onExecute:
         m_PersistentCalls:
           m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 11400000, guid: b061617703148b947ac097b80258d966, type: 2}
+      npcTalker: {fileID: 701432250}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: "SceneMariage: Parler au pr\xEAter"
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -4984,6 +6178,35 @@ MonoBehaviour:
       onExecute:
         m_PersistentCalls:
           m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 746968063}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Ramasser une fleur'
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -5632,6 +6855,35 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 821954379}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Ramasser une fleur'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 821954379}
 --- !u!65 &821954381
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6068,6 +7320,35 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 894259078}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Ramasser une fleur'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 894259078}
 --- !u!65 &894259080
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6241,6 +7522,9 @@ GameObject:
   m_Component:
   - component: {fileID: 897579958}
   - component: {fileID: 897579959}
+  - component: {fileID: 897579962}
+  - component: {fileID: 897579961}
+  - component: {fileID: 897579960}
   m_Layer: 0
   m_Name: Couronne_Red
   m_TagString: Untagged
@@ -6257,7 +7541,7 @@ Transform:
   m_GameObject: {fileID: 897579957}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.58, y: -4.14, z: -0.396}
+  m_LocalPosition: {x: 9.77, y: -2.89, z: -0.396}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -6318,6 +7602,120 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &897579960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897579957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24c7b5e8bbbba14d9cb542165813fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _item: {fileID: 11400000, guid: 4b82783ca61b87b479507b0eec5f70f2, type: 2}
+  _invController: {fileID: 1190348954}
+--- !u!114 &897579961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897579957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionSets:
+  - interactionName: drop l'objet
+    conditions:
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 9
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 897579960}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: "SceneMariage: 2\xE9me Offrandre Couronne de Fleur"
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 897579960}
+--- !u!65 &897579962
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897579957}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 21.6, y: 13, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &909766574
 GameObject:
   m_ObjectHideFlags: 0
@@ -6994,8 +8392,8 @@ Transform:
   m_GameObject: {fileID: 987049509}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.58, y: -4.14, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalPosition: {x: 9.74, y: -2.91, z: 0}
+  m_LocalScale: {x: 6.476438, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 470798272}
@@ -7045,7 +8443,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 9dfa35b49aabb8b418b254e239f68d83, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7069,10 +8467,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefableFlowers: {fileID: 8036025160952648915, guid: 1877b91d55314b24ea2fcdc26a2ff2ef, type: 3}
   RougeFleur: {fileID: 21300000, guid: e46d46ef5ce5c7a4f84c2ba8cd83fecc, type: 3}
-  VioletFleur: {fileID: 21300000, guid: 58e89299fdb0a1642a46a24f817e5ff3, type: 3}
+  VioletFleur: {fileID: 21300000, guid: dcf763ffb1b261c4693d67c9badd0837, type: 3}
   couronne_rouge: {fileID: 897579957}
-  couronne_fusion: {fileID: 0}
-  couronne_violet: {fileID: 1089419738}
+  couronne_fusion: {fileID: 1631015224}
+  couronne_violet: {fileID: 1520595935}
 --- !u!1 &1000230616
 GameObject:
   m_ObjectHideFlags: 0
@@ -7388,6 +8786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1055531522}
   - component: {fileID: 1055531523}
+  - component: {fileID: 1055531525}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -7466,6 +8865,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &1055531525
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055531521}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8.83, y: 6, z: 0.2}
+  m_Center: {x: 0, y: 0.46, z: 0}
 --- !u!1 &1062523057
 GameObject:
   m_ObjectHideFlags: 0
@@ -7565,6 +8985,35 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 1062523059}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Ramasser une fleur'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 1062523059}
 --- !u!65 &1062523061
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7652,12 +9101,12 @@ GameObject:
   - component: {fileID: 1083204234}
   - component: {fileID: 1083204235}
   m_Layer: 0
-  m_Name: Socle_01
+  m_Name: Pot_Nectar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1083204234
 Transform:
   m_ObjectHideFlags: 0
@@ -7667,8 +9116,8 @@ Transform:
   m_GameObject: {fileID: 1083204233}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.202, y: -4.123, z: -0.67250824}
-  m_LocalScale: {x: 1.5, y: 1.5000002, z: 1.5}
+  m_LocalPosition: {x: -1.04, y: -3.58, z: -0.67250824}
+  m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1285432163}
@@ -7717,7 +9166,7 @@ SpriteRenderer:
   m_SortingLayerID: 2048427503
   m_SortingLayer: 5
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9dfa35b49aabb8b418b254e239f68d83, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 07a528d6ce6cbc949b7b5916c6db94aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7739,93 +9188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563134a4431f3e94bb61479f7af96b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1089419738
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1089419739}
-  - component: {fileID: 1089419740}
-  m_Layer: 0
-  m_Name: Couronne_Purpel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1089419739
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089419738}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.58, y: -4.14, z: -0.396}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 470798272}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1089419740
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089419738}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1603831995
-  m_SortingLayer: 4
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 43aaa3a9e7375b64d93a1401bfe8b24f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 7.97, y: 1.3}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &1104520692
 GameObject:
   m_ObjectHideFlags: 0
@@ -8427,6 +9789,35 @@ MonoBehaviour:
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: "SceneMariage: 3\xE9me Offrandre Le N\xE9ctar"
               m_BoolArgument: 0
             m_CallState: 2
       cycleThroughSprite: {fileID: 0}
@@ -9318,8 +10709,11 @@ Transform:
   - {fileID: 802212365}
   - {fileID: 1850029432}
   - {fileID: 250704084}
+  - {fileID: 325110023}
   - {fileID: 1083204234}
   - {fileID: 123711576}
+  - {fileID: 528688681}
+  - {fileID: 61428644}
   - {fileID: 1767206657}
   - {fileID: 1055531522}
   m_Father: {fileID: 2025650620}
@@ -9897,54 +11291,131 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.size
-      value: 6
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: UI_cacheLayeur.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[0].Tache
-      value: "Parler \xE0 Orph\xE9e"
+      value: "Le Discuter avec [???], pour la c\xE9n\xE9r\xE9monie"
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[1].Tache
-      value: "Parler \xE0 Apollon le marchant"
+      value: "Amener Orph\xE9e a Eurydice"
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[2].Tache
-      value: "resoudre l'\xE9nigme de la balance"
+      value: Trouver le pots pour  miel
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[3].Tache
-      value: Optenir la lyre
+      value: "Pour la premi\xE9r offrande, trouver est r\xE9cuperer le miel dans
+        un pot"
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[4].Tache
-      value: "Donner la lyre \xE0 Orph\xE9e "
+      value: "Trouver les fleur, est r\xE9cup\xE9rer une seul"
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[5].Tache
+      value: "Trouver un [???] pour cr\xE9er l'offrande: couronne de fleur"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[6].Tache
+      value: "Trouver l'\xE9thand d'eau est chasser les nuages(0/3)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[7].Tache
+      value: "R\xE9colter avec le pot la 3\xE9me offrandre le N\xE9ctar"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[8].Tache
+      value: ' Place les 3 offrandre sur la table du mariage(0/3)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[9].Tache
+      value: "Parler \xE0 Orph\xE9e"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[10].Tache
+      value: "Parler \xE0 Apollon le marchant"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[11].Tache
+      value: "resoudre l'\xE9nigme de la balance"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[12].Tache
+      value: Optenir la lyre
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[13].Tache
+      value: "Donner la lyre \xE0 Orph\xE9e "
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[14].Tache
       value: "Amener Orph\xE9e a Eurydice"
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[0].Nom_Mission
-      value: "Parler \xE0 Orph\xE9e"
+      value: "SceneMariage: Parler au pr\xEAter"
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[1].Nom_Mission
-      value: "Parler \xE0 Apollon le marchant"
+      value: "SceneMariage: chercher les vases N\xE9ctar"
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[2].Nom_Mission
-      value: "resoudre l'\xE9nigme de la balance"
+      value: 'SceneMariage: chercher les vases miel'
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[3].Nom_Mission
-      value: Optenir la lyre
+      value: 'SceneMariage: 1er Offrandre: Miel'
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[4].Nom_Mission
-      value: "Donner la lyre \xE0 Orph\xE9e "
+      value: 'SceneMariage: Ramasser une fleur'
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[5].Nom_Mission
+      value: "SceneMariage: 2\xE9me Offrandre Couronne de Fleur"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[6].Nom_Mission
+      value: 'SceneMariage: Chasse les nuage'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[7].Nom_Mission
+      value: "SceneMariage: 3\xE9me Offrandre Le N\xE9ctar"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[8].Nom_Mission
+      value: 'SceneMariage: Place les offrandre'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[9].Nom_Mission
+      value: "Parler \xE0 Orph\xE9e"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[10].Nom_Mission
+      value: "Parler \xE0 Apollon le marchant"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[11].Nom_Mission
+      value: "resoudre l'\xE9nigme de la balance"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[12].Nom_Mission
+      value: Optenir la lyre
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[13].Nom_Mission
+      value: "Donner la lyre \xE0 Orph\xE9e "
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: Liste_Mission.Array.data[14].Nom_Mission
       value: Acte6_Confession
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
@@ -9952,8 +11423,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: UI_cacheLayeur.Array.data[0].CanvaUI.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: 'UI_cacheLayeur.Array.data[0].CanvaUI.Array.data[0]'
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
+      propertyPath: UI_cacheLayeur.Array.data[0].Layeur_Affiche_Mission
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -10041,377 +11520,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1197638706}
   m_SourcePrefab: {fileID: 100100000, guid: 1e79e4c0e30beff46b47e71560f3f041, type: 3}
---- !u!1 &1465893406
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1465893407}
-  - component: {fileID: 1465893410}
-  - component: {fileID: 1465893409}
-  - component: {fileID: 1465893408}
-  m_Layer: 0
-  m_Name: Socle_01 (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1465893407
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465893406}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.75, y: -5.66, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 470798272}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1465893408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465893406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactionSets:
-  - interactionName: FlowerRed
-    conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 987049512}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 987049512}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 1465893406}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-  - interactionName: FlowerPurpel
-    conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 987049512}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 987049512}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 1465893406}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
---- !u!65 &1465893409
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465893406}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.35, y: 0.4, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0.0000019073486}
---- !u!212 &1465893410
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465893406}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1603831995
-  m_SortingLayer: 4
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9dfa35b49aabb8b418b254e239f68d83, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 7.97, y: 1.3}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &1492525021
 GameObject:
   m_ObjectHideFlags: 0
@@ -10619,6 +11727,210 @@ Transform:
   - {fileID: 298605733}
   m_Father: {fileID: 208743963}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1520595935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1520595936}
+  - component: {fileID: 1520595940}
+  - component: {fileID: 1520595939}
+  - component: {fileID: 1520595938}
+  - component: {fileID: 1520595937}
+  m_Layer: 0
+  m_Name: Couronne_Purple
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1520595936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520595935}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.77, y: -2.8900003, z: -0.396}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 470798272}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1520595937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520595935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24c7b5e8bbbba14d9cb542165813fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _item: {fileID: 11400000, guid: 2fb0f5680000e4c468c8c48714eb2389, type: 2}
+  _invController: {fileID: 1190348954}
+--- !u!114 &1520595938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520595935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionSets:
+  - interactionName: drop l'objet
+    conditions:
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 9
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 1520595937}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: "SceneMariage: 2\xE9me Offrandre Couronne de Fleur"
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 1520595937}
+--- !u!65 &1520595939
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520595935}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 21.6, y: 13, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &1520595940
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520595935}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1603831995
+  m_SortingLayer: 4
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 43aaa3a9e7375b64d93a1401bfe8b24f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.97, y: 1.3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1555171032
 GameObject:
   m_ObjectHideFlags: 0
@@ -10821,8 +12133,8 @@ Transform:
   m_GameObject: {fileID: 1573543415}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.108, y: -2.546, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 7.62, y: -2.85, z: 0}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 470798272}
@@ -10870,9 +12182,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1603831995
   m_SortingLayer: 4
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9dfa35b49aabb8b418b254e239f68d83, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e46d46ef5ce5c7a4f84c2ba8cd83fecc, type: 3}
+  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10895,8 +12207,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionSets:
-  - interactionName: FlowerRed
+  - interactionName: FlowerPurpel
     conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
     - type: 2
       target: {fileID: 0}
       requiredTag: 
@@ -10914,55 +12243,9 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
     actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
+    - type: 0
+      target: {fileID: 1573543415}
       activeState: 0
       slot: {fileID: 0}
       openDoor: {fileID: 0}
@@ -10981,7 +12264,7 @@ MonoBehaviour:
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
-              m_BoolArgument: 1
+              m_BoolArgument: 0
             m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
@@ -10990,72 +12273,6 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 987049512}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 1573543415}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-  - interactionName: FlowerPurpel
-    conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    actions:
     - type: 5
       target: {fileID: 0}
       activeState: 0
@@ -11143,6 +12360,159 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 0}
+  - interactionName: FlowerRed
+    conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 0
+      target: {fileID: 1573543415}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: spawnFlowers
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 1573543415}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: addFlower
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: spawnFlowers
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 1573543415}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
 --- !u!65 &1573543419
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11162,7 +12532,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.35, y: 0.4, z: 0.2}
+  m_Size: {x: 20, y: 16.04, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0.0000019073486}
 --- !u!1 &1573724281
 GameObject:
@@ -11875,6 +13245,639 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1e79e4c0e30beff46b47e71560f3f041, type: 3}
+--- !u!1 &1615849969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1615849970}
+  - component: {fileID: 1615849973}
+  - component: {fileID: 1615849972}
+  - component: {fileID: 1615849971}
+  m_Layer: 0
+  m_Name: Socle_01 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1615849970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615849969}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.53, y: -1.77, z: 0}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 470798272}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1615849971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615849969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionSets:
+  - interactionName: FlowerPurpel
+    conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 0
+      target: {fileID: 1615849969}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: addFlower
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: addFlower
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: spawnFlowers
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 1615849969}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+  - interactionName: FlowerRed
+    conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 0
+      target: {fileID: 1615849969}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: spawnFlowers
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 1615849969}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: addFlower
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: spawnFlowers
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 1615849969}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+--- !u!65 &1615849972
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615849969}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 16.04, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0.0000019073486}
+--- !u!212 &1615849973
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615849969}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1603831995
+  m_SortingLayer: 4
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e46d46ef5ce5c7a4f84c2ba8cd83fecc, type: 3}
+  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.97, y: 1.3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &1631015224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1631015225}
+  - component: {fileID: 1631015229}
+  - component: {fileID: 1631015228}
+  - component: {fileID: 1631015227}
+  - component: {fileID: 1631015226}
+  m_Layer: 0
+  m_Name: Couronne_Fusion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1631015225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631015224}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.77, y: -2.8900003, z: -0.396}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 470798272}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1631015226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631015224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24c7b5e8bbbba14d9cb542165813fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _item: {fileID: 11400000, guid: 0a709a5066689d24fb824e471a5f0d88, type: 2}
+  _invController: {fileID: 1190348954}
+--- !u!114 &1631015227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631015224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionSets:
+  - interactionName: drop l'objet
+    conditions:
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 9
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 1631015226}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: "SceneMariage: 2\xE9me Offrandre Couronne de Fleur"
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 1631015226}
+--- !u!65 &1631015228
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631015224}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 21.6, y: 13, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &1631015229
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631015224}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1603831995
+  m_SortingLayer: 4
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: c33823fb20e52e04d8d39bde1ed164e7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.97, y: 1.3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1649979493
 GameObject:
   m_ObjectHideFlags: 0
@@ -12036,377 +14039,6 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 6.085, y: 10.534303}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!1 &1687869233
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1687869234}
-  - component: {fileID: 1687869237}
-  - component: {fileID: 1687869236}
-  - component: {fileID: 1687869235}
-  m_Layer: 0
-  m_Name: Socle_01 (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1687869234
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687869233}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.75, y: -5.8, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 470798272}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1687869235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687869233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactionSets:
-  - interactionName: FlowerRed
-    conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 987049512}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 987049512}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 1687869233}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-  - interactionName: FlowerPurpel
-    conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 987049512}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 987049512}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 1687869233}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
---- !u!65 &1687869236
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687869233}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.35, y: 0.4, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0.0000019073486}
---- !u!212 &1687869237
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687869233}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1603831995
-  m_SortingLayer: 4
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9dfa35b49aabb8b418b254e239f68d83, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 7.97, y: 1.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -12575,7 +14207,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7112083112492688035, guid: bc5327bdf5f692d47b897a3eb8002437, type: 3}
   m_PrefabInstance: {fileID: 1707802778}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1715617742
+--- !u!1 &1759237399
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12583,47 +14215,64 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1715617743}
-  - component: {fileID: 1715617746}
-  - component: {fileID: 1715617745}
-  - component: {fileID: 1715617744}
+  - component: {fileID: 1759237400}
+  - component: {fileID: 1759237403}
+  - component: {fileID: 1759237402}
+  - component: {fileID: 1759237401}
   m_Layer: 0
-  m_Name: Socle_01 (2)
+  m_Name: Socle_01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1715617743
+--- !u!4 &1759237400
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1715617742}
+  m_GameObject: {fileID: 1759237399}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.414, y: -3.015, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 9.03, y: -4.48, z: 0}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 470798272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1715617744
+--- !u!114 &1759237401
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1715617742}
+  m_GameObject: {fileID: 1759237399}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionSets:
-  - interactionName: FlowerRed
+  - interactionName: FlowerPurpel
     conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
     - type: 2
       target: {fileID: 0}
       requiredTag: 
@@ -12641,55 +14290,9 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
     actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
+    - type: 0
+      target: {fileID: 1759237399}
       activeState: 0
       slot: {fileID: 0}
       openDoor: {fileID: 0}
@@ -12708,7 +14311,7 @@ MonoBehaviour:
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
-              m_BoolArgument: 1
+              m_BoolArgument: 0
             m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
@@ -12717,72 +14320,6 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 987049512}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 1715617742}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-  - interactionName: FlowerPurpel
-    conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-    actions:
     - type: 5
       target: {fileID: 0}
       activeState: 0
@@ -12856,7 +14393,7 @@ MonoBehaviour:
             m_MethodName: spawnFlowers
             m_Mode: 2
             m_Arguments:
-              m_ObjectArgument: {fileID: 1715617742}
+              m_ObjectArgument: {fileID: 1759237399}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
               m_IntArgument: 0
               m_FloatArgument: 0
@@ -12870,13 +14407,166 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 0}
---- !u!65 &1715617745
+  - interactionName: FlowerRed
+    conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 0
+      target: {fileID: 1759237399}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: spawnFlowers
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 1759237399}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: addFlower
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: spawnFlowers
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 1759237399}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+--- !u!65 &1759237402
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1715617742}
+  m_GameObject: {fileID: 1759237399}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -12889,15 +14579,15 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.35, y: 0.4, z: 0.2}
+  m_Size: {x: 20, y: 16.04, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0.0000019073486}
---- !u!212 &1715617746
+--- !u!212 &1759237403
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1715617742}
+  m_GameObject: {fileID: 1759237399}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -12934,9 +14624,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1603831995
   m_SortingLayer: 4
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9dfa35b49aabb8b418b254e239f68d83, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e46d46ef5ce5c7a4f84c2ba8cd83fecc, type: 3}
+  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -12957,12 +14647,12 @@ GameObject:
   - component: {fileID: 1767206657}
   - component: {fileID: 1767206658}
   m_Layer: 0
-  m_Name: Socle_03
+  m_Name: Pot_Miel_Remplir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1767206657
 Transform:
   m_ObjectHideFlags: 0
@@ -12972,8 +14662,8 @@ Transform:
   m_GameObject: {fileID: 1767206656}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.815, y: -4.098, z: -0.67250824}
-  m_LocalScale: {x: 1.5, y: 1.5000002, z: 1.5}
+  m_LocalPosition: {x: 1.77, y: -3.57, z: -0.67250824}
+  m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1285432163}
@@ -13022,7 +14712,7 @@ SpriteRenderer:
   m_SortingLayerID: 2048427503
   m_SortingLayer: 5
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9dfa35b49aabb8b418b254e239f68d83, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f9bd86a68809596429a2a5d1af2c81e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -13033,6 +14723,241 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1780365211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1780365212}
+  - component: {fileID: 1780365214}
+  - component: {fileID: 1780365213}
+  - component: {fileID: 1780365215}
+  m_Layer: 0
+  m_Name: Button_Pot_Nectar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1780365212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780365211}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.04, y: -3.5799997, z: -0.67250824}
+  m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 325110023}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1780365213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780365211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionSets:
+  - interactionName: Pot_Nectar
+    conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: da1090ded22d88b42b2a5b95617987ff, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 5
+      target: {fileID: 1083204233}
+      activeState: 1
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: da1090ded22d88b42b2a5b95617987ff, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 0
+      target: {fileID: 1083204233}
+      activeState: 1
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 1083204233}
+      activeState: 1
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Place les offrandre'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+--- !u!212 &1780365214
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780365211}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 2048427503
+  m_SortingLayer: 5
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 07a528d6ce6cbc949b7b5916c6db94aa, type: 3}
+  m_Color: {r: 0.31132078, g: 0.3098523, b: 0.3098523, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.97, y: 1.3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!65 &1780365215
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780365211}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 13.640001, y: 28.947899, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1790705225 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 902201829281851308, guid: 1e79e4c0e30beff46b47e71560f3f041, type: 3}
@@ -13700,8 +15625,8 @@ Transform:
   m_GameObject: {fileID: 1853726868}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.46, y: -6.3, z: -0.452}
-  m_LocalScale: {x: 5, y: 2.5, z: 5}
+  m_LocalPosition: {x: 8.46, y: -4.97, z: -0.452}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1518518751}
@@ -13802,6 +15727,93 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 0}
+    - type: 0
+      target: {fileID: 860428571}
+      activeState: 1
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: e8b2d8274ed02e948a0633edb3f2aa20, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 0
+      target: {fileID: 1853726868}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: e8b2d8274ed02e948a0633edb3f2aa20, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 1853726868}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: 1er Offrandre: Miel'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
 --- !u!65 &1853726871
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13821,7 +15833,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Size: {x: 12, y: 32.36, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &1853726872
 SpriteRenderer:
@@ -13867,8 +15879,8 @@ SpriteRenderer:
   m_SortingLayerID: 494694743
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9dfa35b49aabb8b418b254e239f68d83, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6e1d4a8ebf6976145b84a0a24ca86f45, type: 3}
+  m_Color: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -13907,8 +15919,8 @@ Transform:
   m_GameObject: {fileID: 1888278094}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.2, y: -4.91, z: 0.049995422}
-  m_LocalScale: {x: 0.59999996, y: 0.59999996, z: 0.59999996}
+  m_LocalPosition: {x: -12.29, y: -4.11, z: 0.049995422}
+  m_LocalScale: {x: 0.17, y: 0.17, z: 0.17}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1295285775}
@@ -13946,7 +15958,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.7599998, y: 4.37, z: 0.19999999}
+  m_Size: {x: 14, y: 30, z: 0.19999999}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1888278098
 MonoBehaviour:
@@ -14010,6 +16022,35 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 1888278096}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: "SceneMariage: chercher les vases N\xE9ctar"
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 1888278096}
 --- !u!212 &1888278099
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14054,9 +16095,9 @@ SpriteRenderer:
   m_SortingLayerID: 2048427503
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f9469894031e61a40a00fd07a44186f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e1d4a8ebf6976145b84a0a24ca86f45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 6.085, y: 10.534303}
@@ -14076,6 +16117,435 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563134a4431f3e94bb61479f7af96b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1920834837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1920834838}
+  - component: {fileID: 1920834841}
+  - component: {fileID: 1920834840}
+  - component: {fileID: 1920834839}
+  m_Layer: 0
+  m_Name: Socle_01 (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1920834838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920834837}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.77, y: -3.81, z: 0}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 470798272}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1920834839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920834837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionSets:
+  - interactionName: FlowerPurpel
+    conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 0
+      target: {fileID: 1920834837}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: addFlower
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: addFlower
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: spawnFlowers
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 1920834837}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+  - interactionName: FlowerRed
+    conditions:
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+    actions:
+    - type: 0
+      target: {fileID: 1920834837}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: spawnFlowers
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 1920834837}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1190348954}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: addFlower
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 987049512}
+            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
+            m_MethodName: spawnFlowers
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 1920834837}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 1
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+--- !u!65 &1920834840
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920834837}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 16.04, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0.0000019073486}
+--- !u!212 &1920834841
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920834837}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1603831995
+  m_SortingLayer: 4
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e46d46ef5ce5c7a4f84c2ba8cd83fecc, type: 3}
+  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.97, y: 1.3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1963588532
 GameObject:
   m_ObjectHideFlags: 0
@@ -14230,6 +16700,35 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 1963588535}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Ramasser une fleur'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 1963588535}
 --- !u!65 &1963588537
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14343,6 +16842,35 @@ MonoBehaviour:
       onExecute:
         m_PersistentCalls:
           m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 1967772205}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Ramasser une fleur'
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -14544,6 +17072,35 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 1979602896}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: chercher les vases miel'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 1979602896}
 --- !u!212 &1979602895
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14705,6 +17262,35 @@ MonoBehaviour:
       onExecute:
         m_PersistentCalls:
           m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 2003066732}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Ramasser une fleur'
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -15391,6 +17977,35 @@ MonoBehaviour:
       onExecute:
         m_PersistentCalls:
           m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 2104828827}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1178204253}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage: Ramasser une fleur'
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []

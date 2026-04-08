@@ -9,7 +9,7 @@ public class VRRR
 public class ScriptCouronne : MonoBehaviour
 {
     public GameObject prefableFlowers;
-    private bool _typeFleure;
+    private bool _typeFleureRed;
 
     public Sprite RougeFleur;
     public Sprite VioletFleur;
@@ -17,14 +17,14 @@ public class ScriptCouronne : MonoBehaviour
     public GameObject couronne_rouge;
     public GameObject couronne_fusion;
     public GameObject couronne_violet;
-    int redFlowers=0, purpleFlowers = 0, placeFlowers=0;
+    int _redFlowers=0, _purpleFlowers = 0, _numberFlowers=0;
 
     public void spawnFlowers(GameObject selfObject)
     {
         //GameObject RR = Instantiate(prefableFlowers, selfObject.transform.position, selfObject.transform.rotation);
         GameObject RR = Instantiate(prefableFlowers, selfObject.transform.position, selfObject.transform.rotation);
         RR.transform.localScale = new Vector3(0.05f, 0.05f, 1f);
-        if(_typeFleure)
+        if(_typeFleureRed)
         {
             RR.GetComponent<SpriteRenderer>().sprite = RougeFleur;
         }
@@ -36,16 +36,19 @@ public class ScriptCouronne : MonoBehaviour
     {
         if(redFleur)
         {
-            _typeFleure = true;
-            redFlowers += 1; 
+            _typeFleureRed = true;
+            _redFlowers += 1;
         }
         else 
         {
-            _typeFleure = false;
-            purpleFlowers += 1; 
+            _typeFleureRed = false;
+            _purpleFlowers += 1; 
         }
-        placeFlowers += 1;
-        if(placeFlowers>=5)
+        _numberFlowers += 1;
+
+        Debug.Log($"Fleur Rouge: {_redFlowers}, Fleur Purple: {_purpleFlowers},Fleur Number: {_numberFlowers}, Bool: {_typeFleureRed} ");
+
+        if (_numberFlowers>=5)
         {
             _visiblingCouronne();
         }
@@ -53,8 +56,8 @@ public class ScriptCouronne : MonoBehaviour
 
     private void _visiblingCouronne()
     {
-        if(redFlowers>0 && purpleFlowers == 0) { couronne_rouge.SetActive(true); }
-        if(redFlowers>0 && purpleFlowers>0) { couronne_fusion.SetActive(true); }
-        if(redFlowers==0 && purpleFlowers > 0) { couronne_violet.SetActive(true); }
+        if(_redFlowers>0 && _purpleFlowers == 0) { couronne_rouge.SetActive(true); }
+        if(_redFlowers>0 && _purpleFlowers>0) { couronne_fusion.SetActive(true); }
+        if(_redFlowers==0 && _purpleFlowers > 0) { couronne_violet.SetActive(true); }
     }
 }
