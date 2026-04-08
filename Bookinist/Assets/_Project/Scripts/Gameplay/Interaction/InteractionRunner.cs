@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class InteractionRunner : MonoBehaviour
 {
@@ -91,7 +90,8 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.Move == null)
                     return false;
                 return condition.Move.HasMoved(condition.HasMoved, condition.HowManyTimes);
-
+            case ConditionType.HasToCheckEmptynessInventory:
+                return InventoryController.Instance.IsInventoryHasPlace();
             default:
                 return false;
         }

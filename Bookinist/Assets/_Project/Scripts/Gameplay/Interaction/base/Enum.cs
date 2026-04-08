@@ -8,7 +8,8 @@ public enum ConditionType
     HasDialogueStarted,
     HasDialogueEnded,
     OnWichFrame,
-    HasMoved
+    HasMoved,
+    HasToCheckEmptynessInventory
 }
 
 public enum ActionType

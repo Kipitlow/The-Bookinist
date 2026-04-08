@@ -206,6 +206,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &99394942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7192046706893502341, guid: 65f594185a3d2e74f9e6c74697f69a73, type: 3}
+  m_PrefabInstance: {fileID: 6916962808897003235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &114452389
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +619,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 5
       target: {fileID: 0}
@@ -1053,6 +1065,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 2
       target: {fileID: 0}
@@ -2328,6 +2341,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 6
       target: {fileID: 0}
@@ -2597,6 +2611,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 2
       target: {fileID: 0}
@@ -2663,6 +2678,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -2680,6 +2696,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 5
       target: {fileID: 0}
@@ -2932,6 +2949,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -2949,6 +2967,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 5
       target: {fileID: 0}
@@ -3056,6 +3075,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 2
       target: {fileID: 1302105607}
@@ -3986,6 +4006,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 5
       target: {fileID: 1790705225}
@@ -4282,6 +4303,14 @@ PrefabInstance:
     - target: {fileID: 5632583037348351895, guid: bc5327bdf5f692d47b897a3eb8002437, type: 3}
       propertyPath: m_Name
       value: SnapPoints L1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798131783621300587, guid: bc5327bdf5f692d47b897a3eb8002437, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798131783621300587, guid: bc5327bdf5f692d47b897a3eb8002437, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7112083112492688035, guid: bc5327bdf5f692d47b897a3eb8002437, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4904,6 +4933,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -5765,6 +5813,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -5931,6 +5998,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -5948,6 +6016,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 5
       target: {fileID: 8274138415182853394}
@@ -6084,6 +6153,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -6101,6 +6171,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 5
       target: {fileID: 0}
@@ -6179,6 +6250,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -6196,6 +6268,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 5
       target: {fileID: 0}
@@ -6274,6 +6347,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -6291,6 +6365,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 5
       target: {fileID: 0}
@@ -6382,6 +6457,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -6969,6 +7063,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -7838,6 +7951,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -7964,6 +8096,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -8067,6 +8218,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -8327,6 +8497,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -8513,6 +8702,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -8680,6 +8888,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -9381,6 +9608,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -9473,6 +9719,18 @@ PrefabInstance:
     - target: {fileID: 2068231429404475264, guid: 65f594185a3d2e74f9e6c74697f69a73, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 9.049133
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171670376592023272, guid: 65f594185a3d2e74f9e6c74697f69a73, type: 3}
+      propertyPath: m_RaycastPadding.w
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171670376592023272, guid: 65f594185a3d2e74f9e6c74697f69a73, type: 3}
+      propertyPath: m_RaycastPadding.x
+      value: 340
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171670376592023272, guid: 65f594185a3d2e74f9e6c74697f69a73, type: 3}
+      propertyPath: m_RaycastPadding.z
+      value: 340
       objectReference: {fileID: 0}
     - target: {fileID: 4721649726995261052, guid: 65f594185a3d2e74f9e6c74697f69a73, type: 3}
       propertyPath: m_Pivot.x
@@ -9569,6 +9827,26 @@ PrefabInstance:
     - target: {fileID: 4721649726995261052, guid: 65f594185a3d2e74f9e6c74697f69a73, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5118427360009736596, guid: 65f594185a3d2e74f9e6c74697f69a73, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 99394942}
+    - target: {fileID: 8954519631977239095, guid: 65f594185a3d2e74f9e6c74697f69a73, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954519631977239095, guid: 65f594185a3d2e74f9e6c74697f69a73, type: 3}
+      propertyPath: m_RaycastPadding.w
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954519631977239095, guid: 65f594185a3d2e74f9e6c74697f69a73, type: 3}
+      propertyPath: m_RaycastPadding.x
+      value: 340
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954519631977239095, guid: 65f594185a3d2e74f9e6c74697f69a73, type: 3}
+      propertyPath: m_RaycastPadding.z
+      value: 340
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9899,6 +10177,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -9961,6 +10258,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -10350,6 +10666,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -10613,6 +10948,25 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}

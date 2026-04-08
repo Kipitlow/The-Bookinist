@@ -50,5 +50,11 @@ public class InventoryModel : MonoBehaviour
     {
         return _inventoryContents;
     }
+
+    public bool IsInventoryHasAPlace()
+    {
+        return _inventoryContents.Count < _inventorySlots;
+
+    }
     #endregion
 }

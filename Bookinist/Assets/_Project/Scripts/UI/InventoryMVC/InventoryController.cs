@@ -11,6 +11,38 @@ public class InventoryController : MonoBehaviour
 
     #endregion
 
+    private static InventoryController _instance;
+
+    public static InventoryController Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindAnyObjectByType<InventoryController>();
+
+                if (_instance == null)
+                {
+                    GameObject obj = new GameObject(nameof(InventoryController));
+                    _instance = obj.AddComponent<InventoryController>();
+                }
+            }
+            return _instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        _instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
     #region Unity Methods
     private void OnEnable()
     {
@@ -47,6 +79,11 @@ public class InventoryController : MonoBehaviour
     {
         Debug.Log($"Clicked: {item.name}");
         activeItem = item;
+    }
+
+    public bool IsInventoryHasPlace()
+    {
+        return _inventoryModel.IsInventoryHasAPlace();
     }
 
     #endregion
