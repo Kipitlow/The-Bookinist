@@ -134,6 +134,10 @@ public class SC_Tache : MonoBehaviour
             {
                 Prefable_Script_Tache.Text_Objectif.color = Color.black;
                 Prefable_Script_Tache.Text_Objectif.text = Liste_Mission[i].Tache;
+                /*if (Liste_Mission[i].nbrTask + 1 < Liste_Mission[i].nbrTaskMax)
+                {
+                    Prefable_Script_Tache.Text_Objectif.text = Liste_Mission[i].Tache + $"({}/{})";
+                }*/
             }
         }
 
@@ -149,6 +153,16 @@ public class SC_Tache : MonoBehaviour
                 if(Liste_Mission[i].Nom_Mission == nom_mission)
                 {
                     Liste_Mission[i].TacheTerminer = true;
+                    /*if(Liste_Mission[i].nbrTask+1 >= Liste_Mission[i].nbrTaskMax)
+                    {
+                        Liste_Mission[i].nbrTask = Liste_Mission[i].nbrTaskMax;
+                        Liste_Mission[i].TacheTerminer = true;
+                    }
+                    else
+                    {
+                        Liste_Mission[i].nbrTask += 1;
+                        Liste_Mission[i].TacheTerminer = false;
+                    }*/
                     Change_Tach_List();
                 }
                 else
@@ -157,6 +171,11 @@ public class SC_Tache : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void UpdateTache()
+    {
+
     }
 
 
@@ -175,7 +194,6 @@ public class SC_Tache : MonoBehaviour
             rt.anchoredPosition = new Vector2(transform.position.x / 2, transform.position .y/ 2);
         }
     }
-
 
     public void Affiche_Marchant(GameObject Self)
     {
