@@ -189,6 +189,10 @@ public class SC_Tache : MonoBehaviour
 
     }
 
+    public void LoadMap(string NameScene)
+    {
+        SceneManager.LoadScene(NameScene);
+    }
 
     private void Spawn_Canva_GameOver()
     {
