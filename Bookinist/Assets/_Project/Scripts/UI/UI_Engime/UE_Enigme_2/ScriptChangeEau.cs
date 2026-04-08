@@ -4,6 +4,7 @@ using UnityEngine;
 public class ScriptChangeEau : MonoBehaviour
 {
     private InteractionRunner _scriptActivation;
+    private BoxCollider boxCollider;
     private SpriteRenderer _selfSprite;
     private int _nombreNuage;
     private float _lerpColorFloat;
@@ -11,6 +12,7 @@ public class ScriptChangeEau : MonoBehaviour
     {
         _selfSprite = GetComponent<SpriteRenderer>();
         _scriptActivation = GetComponent<InteractionRunner>();
+        boxCollider= GetComponent<BoxCollider>();
         Invoke("_DisableInteractionRunner", 0.1f);
         _nombreNuage = 0;
         _lerpColorFloat = 0;
@@ -19,6 +21,7 @@ public class ScriptChangeEau : MonoBehaviour
     private void _DisableInteractionRunner()
     {
         _scriptActivation.enabled = false;
+        boxCollider.enabled = false;
     }
 
     public void addIntCloud()
@@ -46,5 +49,6 @@ public class ScriptChangeEau : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         _scriptActivation.enabled= true;
+        boxCollider.enabled= true;
     }
 }
