@@ -7,4 +7,6 @@ public class InteractionContext
     public GameObject target;
 
     public bool isTouchEvent;
+
+    public Item item;
 }
