@@ -35,10 +35,14 @@ public class ScriptChangeEau : MonoBehaviour
         //new Color(1, 1, 0, 1); => this at the color is red
         //new Color(0, 0, 1, 1); => this at the color is red
         _lerpColorFloat = 0;
+
+        Color _colorOrigine = new Color(140.0f/ 255.0f,166.0f/255.0f, 163.0f / 255.0f, 1f);
+        Color _colorChange = new Color(230.0f / 255.0f, 255.0f / 255.0f, 168.0f/255.0f, 1f);
         while (_lerpColorFloat < 1)
         {
             _lerpColorFloat+= 0.1f;
-            _selfSprite.color = Color.Lerp(Color.blue, Color.yellow, _lerpColorFloat);
+            //_selfSprite.color = Color.Lerp(Color.white, Color.yellow, _lerpColorFloat);
+            _selfSprite.color = Color.Lerp(_colorOrigine, _colorChange, _lerpColorFloat);
             yield return new WaitForSeconds(0.1f);
         }
         _scriptActivation.enabled= true;

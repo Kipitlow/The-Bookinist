@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic; // Permet de faire un tableau
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class List_Element_Tach
@@ -40,6 +41,9 @@ public class SC_Tache : MonoBehaviour
     [Header("UI_Enigme_01")]
     public GameObject Balance;
     public GameObject CanvaMarchant;
+
+    [Header("UI_Enigme_02")]
+    public int NombreTacheValide=0;
 
     [Header("Prefable")]
     [SerializeField] public GameObject PrefableTache;
@@ -173,8 +177,15 @@ public class SC_Tache : MonoBehaviour
         }
     }
 
-    public void UpdateTache()
+    public void FinEnigme2(int nbrTach)
     {
+        if (nbrTach == 0) { NombreTacheValide = nbrTach; }
+        else if(NombreTacheValide+1>= nbrTach)
+        {
+            NombreTacheValide = nbrTach;
+            SceneManager.LoadScene("BookShopUpdated");
+        }
+        else { NombreTacheValide += 1; }
 
     }
 
