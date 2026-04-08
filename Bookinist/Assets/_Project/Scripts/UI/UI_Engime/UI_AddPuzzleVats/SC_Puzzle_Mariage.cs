@@ -1,16 +1,20 @@
 using UnityEngine;
 
+/// <summary>
+/// Interface UI pour prendre un puzzle (détruit son GameObject et notifie SC_Egnime_2).
+/// </summary>
 public class SC_Puzzle_Mariage : MonoBehaviour
 {
-    private SC_Egnime_2 E2;
+    private SC_Egnime_2 _e2;
+
     private void Start()
     {
-        E2 = GameObject.Find("@Egnime2: Puzzle").GetComponent<SC_Egnime_2>();
+        _e2 = GameObject.Find("@Egnime2: Puzzle").GetComponent<SC_Egnime_2>();
     }
 
-    public void Take_One_Puzzle() //Fonction permettant a UI interface d'interagire avec l'Egnime 2, Comme c'est un Button Préfable il était Préférable d'utiliser cette mêthode
+    public void TakeOnePuzzle()
     {
-        E2.Puzzle_Trouver();
+        _e2.PuzzleTrouver();
         Destroy(gameObject);
     }
 }

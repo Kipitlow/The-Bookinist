@@ -1,6 +1,8 @@
-using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Model wrapper pour un ScriptableObject Item utilisé par la vue.
+/// </summary>
 public class ItemModel : MonoBehaviour
 {
     #region Variables
@@ -11,27 +13,20 @@ public class ItemModel : MonoBehaviour
     [HideInInspector] public Sprite itemSprite;
     [HideInInspector] public GameObject itemObtain;
     [HideInInspector] public GameObject itemDropoff;
-    //[HideInInspector] public EventManager itemEventManager
-
-    #endregion
-
-    #region Unity Methods
 
     #endregion
 
     #region Methods
 
-    public void SetScriptable(Item ItemScriptable)
+    public void SetScriptable(Item itemScriptable)
     {
-        itemScriptable = ItemScriptable;
-        itemName = itemScriptable.itemName;
-        itemSprite = itemScriptable.itemSprite;
+        this.itemScriptable = itemScriptable;
+        if (itemScriptable != null)
+        {
+            itemName = itemScriptable.itemName;
+            itemSprite = itemScriptable.itemSprite;
+        }
     }
-    /*
-    public void GetEventManager(EventManager eventManager)
-    {
-        itemEventManager = eventManager;
-    }
-    */
+
     #endregion
 }

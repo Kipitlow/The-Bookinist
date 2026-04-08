@@ -3,17 +3,27 @@ using UnityEngine.UI;
 
 public class ButtonColor : MonoBehaviour
 {
-    public Image _buttonImage;
-    public Color _selectedColor;
-    public Color _unselectedColor;
+    #region Variables
+
+    public Image buttonImage;
+    public Color selectedColor;
+    public Color unselectedColor;
+
+    #endregion
+
+    #region Methods
 
     public void SelectedButtonChangeColor()
     {
-        _buttonImage.color = _selectedColor;
+        if (buttonImage != null)
+            buttonImage.color = selectedColor;
     }
 
     public void UnselectedButtonChangeColor()
     {
-        _buttonImage.color = _unselectedColor;
+        if (buttonImage != null)
+            buttonImage.color = unselectedColor;
     }
+
+    #endregion
 }

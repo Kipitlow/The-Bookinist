@@ -4,11 +4,17 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class ZoneDetector : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField] private Transform _ownerRoot;
 
     private InteractionRunner _interactionRunner;
 
-    private readonly HashSet<GameObject> objectsInside = new();
+    private readonly HashSet<GameObject> _objectsInside = new();
+
+    #endregion
+
+    #region Unity Methods
 
     private void Start()
     {
@@ -19,7 +25,11 @@ public class ZoneDetector : MonoBehaviour
         }
     }
 
-    public void triggerCollision(bool shouldBeTriggered)
+    #endregion
+
+    #region Methods
+
+    public void TriggerCollision(bool shouldBeTriggered)
     {
         Collider thisCollider = GetComponent<Collider>();
         thisCollider.isTrigger = shouldBeTriggered;
@@ -33,10 +43,9 @@ public class ZoneDetector : MonoBehaviour
         if (_ownerRoot != null && hit.gameObject == _ownerRoot.root.gameObject)
             return;
 
-        objectsInside.Add(hit.gameObject);
+        _objectsInside.Add(hit.gameObject);
 
-
-        InteractionContext context = new InteractionContext
+        InteractionContext context = new()
         {
             instigator = null,
             target = hit.gameObject
@@ -53,12 +62,14 @@ public class ZoneDetector : MonoBehaviour
         if (_ownerRoot != null && hit.gameObject == _ownerRoot.root.gameObject)
             return;
 
-        objectsInside.Remove(hit.gameObject);
+        _objectsInside.Remove(hit.gameObject);
     }
 
-    public bool IsInside(GameObject Obj)
+    public bool IsInside(GameObject obj)
     {
-        if (Obj == null) return false;
-        return objectsInside.Contains(Obj);
+        if (obj == null) return false;
+        return _objectsInside.Contains(obj);
     }
+
+    #endregion
 }

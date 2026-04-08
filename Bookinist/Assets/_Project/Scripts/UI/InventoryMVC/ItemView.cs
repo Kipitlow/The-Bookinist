@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Vue d'un item : affiche le sprite.
+/// </summary>
 public class ItemView : MonoBehaviour
 {
     #region Variables
@@ -9,15 +12,12 @@ public class ItemView : MonoBehaviour
 
     #endregion
 
-    #region Unity Methods
-
-    #endregion
-
     #region Methods
 
     public void UpdateSprite(Sprite newSprite)
     {
-        _itemSprite.sprite = newSprite;
+        if (_itemSprite != null)
+            _itemSprite.sprite = newSprite;
     }
 
     #endregion

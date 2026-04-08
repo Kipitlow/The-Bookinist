@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using UnityEditor;
 using UnityEngine;
 
 public class LevelEditorWindow : EditorWindow
 {
+    #region Variables
+
     [MenuItem("Tools/Level Editor/Save & Load")]
     public static void OpenWindow()
     {
@@ -13,14 +14,13 @@ public class LevelEditorWindow : EditorWindow
         window.Show();
     }
 
-    // ── Champs de la fenêtre ──────────────────────────────────
     private string _saveFolder = "Levels/Level_01";
     private LevelEditor _levelEditor;
     private Vector2 _scrollPos;
 
-    // ──────────────────────────────────────────────────────────
-    //  GUI
-    // ──────────────────────────────────────────────────────────
+    #endregion
+
+    #region GUI
 
     private void OnGUI()
     {
@@ -28,7 +28,6 @@ public class LevelEditorWindow : EditorWindow
         EditorGUILayout.LabelField("Level Editor - Save & Load", EditorStyles.boldLabel);
         EditorGUILayout.Space(4);
 
-        // ── Référence au LevelEditor dans la scène ────────────
         _levelEditor = (LevelEditor)EditorGUILayout.ObjectField(
             "Level Editor (optionnel)",
             _levelEditor,
@@ -48,13 +47,11 @@ public class LevelEditorWindow : EditorWindow
 
         EditorGUILayout.Space(8);
 
-        // ── Dossier de sauvegarde ─────────────────────────────
         EditorGUILayout.LabelField("Dossier de sauvegarde", EditorStyles.boldLabel);
         _saveFolder = EditorGUILayout.TextField("Assets/", _saveFolder);
 
         EditorGUILayout.Space(8);
 
-        // ── Boutons principaux ────────────────────────────────
         EditorGUILayout.LabelField("Actions", EditorStyles.boldLabel);
 
         GUI.backgroundColor = new Color(0.4f, 0.9f, 0.4f);
@@ -90,11 +87,13 @@ public class LevelEditorWindow : EditorWindow
 
         EditorGUILayout.Space(8);
 
-        // ── Assets existants ──────────────────────────────────
         DrawExistingAssets();
     }
 
-    /// <summary>Affiche les assets LevelData déjà sauvegardés dans le dossier.</summary>
+    #endregion
+
+    #region Methods
+
     private void DrawExistingAssets()
     {
         string fullFolder = $"Assets/{_saveFolder}";
@@ -130,10 +129,6 @@ public class LevelEditorWindow : EditorWindow
         EditorGUILayout.EndScrollView();
     }
 
-    // ──────────────────────────────────────────────────────────
-    //  Sauvegarde
-    // ──────────────────────────────────────────────────────────
-
     private void SaveAll()
     {
         if (_levelEditor == null) return;
@@ -168,18 +163,15 @@ public class LevelEditorWindow : EditorWindow
             {
                 if (kvp.Value == null) continue;
 
-                PlacedObject po = kvp.Value.GetComponent<PlacedObject>();
-                if (po == null)
+                if (!kvp.Value.TryGetComponent<PlacedObject>(out var po))
                 {
-                    Debug.LogWarning($"[LevelEditorWindow] Objet en {kvp.Key} sans composant " +
-                                     "PlacedObject - ignoré.", kvp.Value);
+                    Debug.LogWarning($"[LevelEditorWindow] Objet en {kvp.Key} sans composant PlacedObject - ignoré.", kvp.Value);
                     continue;
                 }
 
                 if (po.SourcePrefab == null)
                 {
-                    Debug.LogWarning($"[LevelEditorWindow] Objet en {kvp.Key} sans prefab source " +
-                                     "enregistré - ignoré.", kvp.Value);
+                    Debug.LogWarning($"[LevelEditorWindow] Objet en {kvp.Key} sans prefab source enregistré - ignoré.", kvp.Value);
                     continue;
                 }
 
@@ -191,7 +183,6 @@ public class LevelEditorWindow : EditorWindow
                 });
             }
 
-            // Assigne le LevelData au LayerGrid pour le chargement automatique au Start
             grid.SetLevelData(data);
             EditorUtility.SetDirty(data);
         }
@@ -201,16 +192,10 @@ public class LevelEditorWindow : EditorWindow
         Debug.Log($"[LevelEditorWindow] Sauvegarde terminée dans Assets/{_saveFolder}");
     }
 
-    // ──────────────────────────────────────────────────────────
-    //  Chargement
-    // ──────────────────────────────────────────────────────────
-
     private void LoadAll()
     {
         string fullFolder = $"Assets/{_saveFolder}";
 
-        // Récupère les LayerGrids depuis le LevelEditor si présent,
-        // sinon cherche directement dans la scène (cas scène Gameplay)
         List<LayerGrid> layers;
         if (_levelEditor != null)
         {
@@ -219,7 +204,6 @@ public class LevelEditorWindow : EditorWindow
         else
         {
             layers = new List<LayerGrid>(FindObjectsByType<LayerGrid>(FindObjectsSortMode.None));
-            // Trie par pageIndex pour garantir l'ordre
             layers.Sort((a, b) =>
             {
                 Page pa = a.GetComponent<Page>();
@@ -259,32 +243,23 @@ public class LevelEditorWindow : EditorWindow
             {
                 if (entry.prefab == null)
                 {
-                    Debug.LogWarning($"[LevelEditorWindow] Prefab manquant pour la cellule " +
-                                     $"{entry.cell} sur {data.layerName}.");
+                    Debug.LogWarning($"[LevelEditorWindow] Prefab manquant pour la cellule {entry.cell} sur {data.layerName}.");
                     continue;
                 }
 
                 GameObject placed = grid.PlaceObject(entry.prefab, entry.cell);
                 if (placed == null) continue;
 
-                PlacedObject po = placed.GetComponent<PlacedObject>();
-                if (po != null) po.ManualSortingOffset = entry.manualSortingOffset;
+                if (placed.TryGetComponent<PlacedObject>(out var po)) po.ManualSortingOffset = entry.manualSortingOffset;
             }
 
-            // Assigne le LevelData au LayerGrid pour persistance
             grid.SetLevelData(data);
             EditorUtility.SetDirty(grid);
         }
 
-        // Sauvegarde la scène pour que les liens LevelData persistent
         UnityEditor.SceneManagement.EditorSceneManager.MarkAllScenesDirty();
-        Debug.Log($"[LevelEditorWindow] Chargement terminé depuis Assets/{_saveFolder}. " +
-                  "Sauvegarde la scène (Ctrl+S) pour conserver les objets.");
+        Debug.Log($"[LevelEditorWindow] Chargement terminé depuis Assets/{_saveFolder}. Sauvegarde la scène (Ctrl+S) pour conserver les objets.");
     }
-
-    // ──────────────────────────────────────────────────────────
-    //  Vider
-    // ──────────────────────────────────────────────────────────
 
     private void ClearAll()
     {
@@ -292,10 +267,6 @@ public class LevelEditorWindow : EditorWindow
         foreach (LayerGrid grid in _levelEditor.Layers)
             grid?.ClearAll();
     }
-
-    // ──────────────────────────────────────────────────────────
-    //  Utilitaires
-    // ──────────────────────────────────────────────────────────
 
     private static void EnsureFolderExists(string folderPath)
     {
@@ -310,4 +281,6 @@ public class LevelEditorWindow : EditorWindow
             current = next;
         }
     }
+
+    #endregion
 }

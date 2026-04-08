@@ -1,32 +1,40 @@
 using UnityEngine;
 
+/// <summary>
+/// Parallax simple : déplace l'objet en fonction du mouvement de la caméra.
+/// </summary>
 public class Parallax : MonoBehaviour
 {
+    #region Variables
+
     public Transform cameraTransform;
-    [Range(0f, 1f)]
-    public float parallaxFactor = 0.3f;
+    [Range(0f, 1f)] public float parallaxFactor = 0.3f;
 
     [Header("Scaling")]
     public float scaleFactor = 0.05f;
 
-    private Vector3 initialPosition;
-    private Vector3 cameraStart;
+    private Vector3 _initialPosition;
+    private Vector3 _cameraStart;
 
-    void Start()
+    #endregion
+
+    #region Unity Methods
+
+    private void Start()
     {
-        initialPosition = transform.position;
-        cameraStart = cameraTransform.position;
+        _initialPosition = transform.position;
+        _cameraStart = cameraTransform.position;
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
-        // Camera movement delta
-        Vector3 delta = cameraTransform.position - cameraStart;
-
+        Vector3 delta = cameraTransform.position - _cameraStart;
         transform.position = new Vector3(
-            initialPosition.x + delta.x * parallaxFactor,
-            initialPosition.y + delta.y * parallaxFactor,
-            initialPosition.z + delta.y * parallaxFactor
+            _initialPosition.x + delta.x * parallaxFactor,
+            _initialPosition.y + delta.y * parallaxFactor,
+            _initialPosition.z + delta.y * parallaxFactor
         );
     }
+
+    #endregion
 }

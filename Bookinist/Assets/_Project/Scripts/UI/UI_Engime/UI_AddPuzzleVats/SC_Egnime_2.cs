@@ -1,116 +1,81 @@
+using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Énigme 2 : comptabilise puzzles trouvés et notifie SC_Tache.
+/// </summary>
 public class SC_Egnime_2 : MonoBehaviour
 {
-    [Header("Nombre de Puzzle")]
-    private int Nbr_Puzzle;
-    [SerializeField] public int Nbr_Puzzle_Max;
+    #region Variables
 
-    [Header("Gestion UI")]
-    private SC_Tache Script_Tache;
-    private string NameTach;
-    private Transform canvasRect;
+    private int _nbrPuzzle;
+    public int nbrPuzzleMax;
+
+    private SC_Tache _scriptTache;
+    private string _nameTache;
+    private Transform _canvasRect;
     public GameObject prefabUI;
 
+    #endregion
 
-    void Start()
+    #region Unity Methods
+
+    private void Start()
     {
-        Script_Tache = GameObject.Find("Canvas").GetComponent<SC_Tache>();
-        NameTach = "Enigme_2";
-
-        canvasRect = GameObject.Find("Empty_Cache_Puzzle_Marriage").GetComponent<Transform>();
+        _scriptTache = GameObject.Find("Canvas")?.GetComponent<SC_Tache>();
+        _nameTache = "Enigme_2";
+        _canvasRect = GameObject.Find("Empty_Cache_Puzzle_Marriage")?.transform;
     }
 
-    public void Puzzle_Trouver()
+    #endregion
+
+    #region Methods
+
+    public void PuzzleTrouver()
     {
+        if (_scriptTache == null) return;
+
+        if (_nbrPuzzle + 1 >= nbrPuzzleMax)
         {
-            /*if (Nbr_Puzzle + 1 >= Nbr_Puzzle_Max) // Condition de reussit du puzzle
+            foreach (var let in _scriptTache.listeMission)
             {
-                if (Script_Tache != null)
+                if (_nameTache == let.nomMission)
                 {
-                    foreach (Tache_Layourt TL in Script_Tache.Tache_Dans_Ce_Layeur)
-                    {
-                        foreach (List_Element_Tach LET in TL.list_Element_Taches)
-                        {
-                            if (NameTach == LET.Nom_Mission)
-                            {
-                                LET.TacheTerminer = true;
-                                LET.Tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({Nbr_Puzzle_Max}/{Nbr_Puzzle_Max})";
-                                Script_Tache.Change_Tach_List();
-                                //ICI que la mission ce terminer, est donc de récompencer c'est joueur.
-                            }
-                        }
-                    }
-                }
-            }
-            else
-            {
-                Nbr_Puzzle += 1;
-                if (Script_Tache != null)
-                {
-                    foreach (Tache_Layourt TL in Script_Tache.Tache_Dans_Ce_Layeur)
-                    {
-                        foreach (List_Element_Tach LET in TL.list_Element_Taches)
-                        {
-                            if (NameTach == LET.Nom_Mission)
-                            {
-                                LET.Tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({Nbr_Puzzle}/{Nbr_Puzzle_Max})";
-                                Script_Tache.Change_Tach_List();
-                                //ICI que la mission ce terminer, est donc de récompencer c'est joueur.
-                            }
-                        }
-                    }
-                }
-            }*/
-        }
-        if (Nbr_Puzzle + 1 >= Nbr_Puzzle_Max) // Condition de reussit du puzzle
-        {
-            if (Script_Tache != null)
-            {
-                foreach (List_Element_Tach LET in Script_Tache.Liste_Mission)
-                {
-                    if (NameTach == LET.Nom_Mission)
-                    {
-                        LET.Tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({Nbr_Puzzle_Max}/{Nbr_Puzzle_Max})";
-                        Script_Tache.Terminer_Tache(LET.Nom_Mission);
-                        //Script_Tache.Change_Tach_List();
-                    }
+                    let.tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({nbrPuzzleMax}/{nbrPuzzleMax})";
+                    _scriptTache.TerminerTache(let.nomMission);
+                    break;
                 }
             }
         }
         else
         {
-            Nbr_Puzzle += 1;
-            if (Script_Tache != null)
+            _nbrPuzzle += 1;
+            foreach (var let in _scriptTache.listeMission)
             {
-                foreach (List_Element_Tach LET in Script_Tache.Liste_Mission)
+                if (_nameTache == let.nomMission)
                 {
-                    if (NameTach == LET.Nom_Mission)
-                    {
-                        LET.Tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({Nbr_Puzzle}/{Nbr_Puzzle_Max})";
-                        Script_Tache.Change_Tach_List();
-                        //ICI que la mission ce terminer, est donc de récompencer c'est joueur.
-                    }
+                    let.tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({_nbrPuzzle}/{nbrPuzzleMax})";
+                    _scriptTache.ChangeTacheList();
+                    break;
                 }
             }
         }
     }
 
-
-    public void Spawn_Puzzle(GameObject Supprimer_Button)
+    public void SpawnPuzzle(GameObject supprimerButton)
     {
-        Destroy(Supprimer_Button);
-        for (int i = 0; i < Nbr_Puzzle_Max; i++)
+        if (supprimerButton != null) Destroy(supprimerButton);
+        if (prefabUI == null || _canvasRect == null) return;
+
+        for (int i = 0; i < nbrPuzzleMax; i++)
         {
-            GameObject obj = Instantiate(prefabUI, canvasRect);
-
+            GameObject obj = Instantiate(prefabUI, _canvasRect);
             RectTransform rect = obj.GetComponent<RectTransform>();
-
-            // Position aléatoire dans le Canvas
             float x = Random.Range(141, 480);
             float y = Random.Range(146, 1033);
-
-            rect.anchoredPosition = new Vector2(x, y);
+            if (rect != null) rect.anchoredPosition = new Vector2(x, y);
         }
     }
+
+    #endregion
 }

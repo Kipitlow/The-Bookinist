@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Gestion d'un objet placé sur la grille : tracking de cellule, référence au prefab source et tri automatique.
+/// </summary>
 public class PlacedObject : MonoBehaviour
 {
+    #region Variables
+
     // ── Données de placement ──────────────────────────────────
     public Vector2Int Cell { get; private set; }
     public LayerGrid OwnerGrid { get; private set; }
@@ -14,15 +19,22 @@ public class PlacedObject : MonoBehaviour
 
     // ── Contrôle manuel ───────────────────────────────────────
     [Header("Sorting Override")]
-    [Tooltip("Décale le sortingOrder calculé automatiquement. " +
-             "Positif = devant, Négatif = derrière.")]
+    [Tooltip("Décale le sortingOrder calculé automatiquement. Positif = devant, Négatif = derrière.")]
     [SerializeField] private int _manualSortingOffset = 0;
+
+    #endregion
+
+    #region Properties
 
     public int ManualSortingOffset
     {
         get => _manualSortingOffset;
         set { _manualSortingOffset = value; ApplySorting(); }
     }
+
+    #endregion
+
+    #region Methods
 
     // ──────────────────────────────────────────────────────────
     //  Init
@@ -44,8 +56,7 @@ public class PlacedObject : MonoBehaviour
     {
         if (OwnerGrid == null) return;
 
-        Page page = OwnerGrid.GetComponent<Page>();
-        if (page == null)
+        if (!OwnerGrid.TryGetComponent<Page>(out var page))
         {
             Debug.LogWarning("[PlacedObject] Pas de composant Page sur le LayerGrid parent.", this);
             return;
@@ -65,4 +76,6 @@ public class PlacedObject : MonoBehaviour
     {
         if (Application.isPlaying) ApplySorting();
     }
+
+    #endregion
 }

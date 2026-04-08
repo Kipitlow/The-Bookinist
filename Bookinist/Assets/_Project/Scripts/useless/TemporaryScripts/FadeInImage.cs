@@ -3,8 +3,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Fade in d'une image / texte avec délai et durée.
+/// </summary>
 public class FadeInImage : MonoBehaviour
 {
+    #region Variables
+
     [Header("UI")]
     [SerializeField] private Image _image;
     [SerializeField] private TextMeshProUGUI[] _texts;
@@ -14,9 +19,13 @@ public class FadeInImage : MonoBehaviour
     [SerializeField, Range(3f, 20f)] private float _duration = 5f;
     [SerializeField, Range(0f, 20f)] private float _startingDelay = 0f;
 
+    #endregion
+
+    #region Unity Methods
+
     private void Start()
     {
-        bool firstCustomerEncounter = GameManager.Instance._isFirstCustomerEncounter;
+        bool firstCustomerEncounter = GameManager.Instance.isFirstCustomerEncounter;
 
         if (_image != null)
             StartCoroutine(FadeImage());
@@ -31,6 +40,10 @@ public class FadeInImage : MonoBehaviour
 
         StartCoroutine(FadeText(_texts[textIndex]));
     }
+
+    #endregion
+
+    #region Methods
 
     private IEnumerator FadeImage()
     {
@@ -83,4 +96,6 @@ public class FadeInImage : MonoBehaviour
         color.a = 1f;
         text.color = color;
     }
+
+    #endregion
 }
