@@ -1,4 +1,7 @@
+using NUnit.Framework;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
@@ -7,73 +10,65 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
-/// <summary>
-/// Gestion des mouvements de la caméra : drag, tap, zoom, hold, navigation par snap points.
-/// </summary>
 public class CameraMovement : MonoBehaviour
 {
-    #region Variables
-
     [Header("Debug")]
-    [SerializeField] private RayCastDebugger _raycastDebugger;
+    [SerializeField] private RayCastDebugger raycastDebugger;
 
     [Header("Drag")]
-    [SerializeField] private InputActionReference _dragDelta;
-    [SerializeField] private InputActionReference _dragPress;
-    [SerializeField] private float _dragSpeed = 0.01f;
+    [SerializeField] private InputActionReference dragDelta;
+    [SerializeField] private InputActionReference dragPress;
+    [SerializeField] private float dragSpeed = 0.01f;
 
     [Header("Tap")]
-    [SerializeField] private float _tapMaxTime = 0.25f;
-    [SerializeField] private float _tapMaxMovement = 10f;
-    [SerializeField] private LayerMask _tapMask;
-    [SerializeField] private float _tapRange = 100f;
+    [SerializeField] private float tapMaxTime = 0.25f;
+    [SerializeField] private float tapMaxMovement = 10f;
+    [SerializeField] private LayerMask tapMask;
+    [SerializeField] private float tapRange = 100f;
 
     [Header("Zoom")]
-    [SerializeField] private InputActionReference _scrollZoom;
-    [SerializeField] private float _minZ;
-    [SerializeField] private float _maxZ;
+    [SerializeField] private InputActionReference scrollZoom;
+    [SerializeField] private float minZ;
+    [SerializeField] private float maxZ;
 
     [Header("Hold")]
-    [SerializeField] private Camera _cam;
+    Camera _cam;
     [SerializeField] private GameObject _itemBase;
-    [SerializeField] private float _holdMinTime = 0.5f;
-    private bool _isHolding;
+    [SerializeField] private float holdMinTime = 0.5f;
+    private bool isHolding;
 
     [Header("Global Navigation")]
     public List<SnapPointManager> snapPointsManager = new();
-    [SerializeField] private int _snapPointNumberOnOneLayer = 3;
+    [SerializeField] private int SnapPointNumberOnOneLayer = 3;
     public int currentIndexLayer = 0;
     public int currentIndexByLayer;
 
-    private float _previousPinchDistance;
+    private float previousPinchDistance;
 
-    private bool _isPressing;
-    private bool _isDragging;
-    private float _pressStartTime;
-    private Vector2 _pressStartPosition;
+    private bool isPressing;
+    private bool isDragging;
+    private float pressStartTime;
+    private Vector2 pressStartPosition;
 
-    private bool _stopZooming;
-    private float _pinchThreshold = 30f;
-    private float _zoomCooldown = 0.4f;
-    private float _lastZoomTime = -999f;
 
-    #endregion
+    bool stopZooming;
+    private float pinchThreshold = 30f;
+    private float zoomCooldown = 0.4f;
+    private float lastZoomTime = -999f;
 
-    #region Unity Methods
-
-    private void OnEnable()
+    void OnEnable()
     {
-        _dragDelta.action.Enable();
-        _dragPress.action.Enable();
-        _scrollZoom.action.Enable();
+        dragDelta.action.Enable();
+        dragPress.action.Enable();
+        scrollZoom.action.Enable();
         EnhancedTouchSupport.Enable();
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
-        _dragDelta.action.Disable();
-        _dragPress.action.Disable();
-        _scrollZoom.action.Disable();
+        dragDelta.action.Disable();
+        dragPress.action.Disable();
+        scrollZoom.action.Disable();
         EnhancedTouchSupport.Disable();
     }
 
@@ -85,105 +80,104 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
-        _maxZ = PageManager.maxLayer * (PageManager.layerSpread / 2);
+        maxZ = PageManager.maxLayer * (PageManager.layerSpread / 2);
     }
 
-    private void Update()
+    void Update()
     {
         HandleTapAndDrag();
         HandleZoom();
     }
 
-    #endregion
-
-    #region Methods
-
-    private void HandleTapAndDrag()
+    void HandleTapAndDrag()
     {
         if (Touch.activeTouches.Count > 1)
             return;
 
-        bool pressed = _dragPress.action.IsPressed();
+        bool pressed = dragPress.action.IsPressed();
 
-        if (pressed && !_isPressing)
+        if (pressed && !isPressing)
         {
-            _isPressing = true;
-            _isDragging = false;
-            _pressStartTime = Time.time;
-            _pressStartPosition = GetPointerPosition();
+            isPressing = true;
+            isDragging = false;
+            pressStartTime = Time.time;
+            pressStartPosition = GetPointerPosition();
         }
 
-        if (pressed && _isPressing)
+        if (pressed && isPressing)
         {
-            Vector2 delta = _dragDelta.action.ReadValue<Vector2>();
+            Vector2 delta = dragDelta.action.ReadValue<Vector2>();
 
-            if (!_isDragging && delta.magnitude > _tapMaxMovement)
+            if (!isDragging && delta.magnitude > tapMaxMovement)
             {
-                _isDragging = true;
+                isDragging = true;
             }
 
-            if (!_isDragging && !_isHolding)
+            if (!isDragging && !isHolding)
             {
-                float heldTime = Time.time - _pressStartTime;
+                float heldTime = Time.time - pressStartTime;
 
-                if (heldTime >= _holdMinTime)
+                if (heldTime >= holdMinTime)
                 {
-                    _isHolding = true;
+                    isHolding = true;
 
-                    PointerEventData pointerData = new(EventSystem.current)
+
+                    PointerEventData pointerData = new PointerEventData(EventSystem.current)
                     {
                         position = GetPointerPosition()
                     };
 
-                    List<RaycastResult> results = new();
+                    List<RaycastResult> results = new List<RaycastResult>();
                     EventSystem.current.RaycastAll(pointerData, results);
 
                     foreach (var result in results)
                     {
-                        
-                        if (result.gameObject.TryGetComponent<Button>(out var button))
+                        Button button = result.gameObject.GetComponent<Button>();
+
+                        if (button != null)
                         {
                             Debug.Log("Hold detected on UI");
 
-                            Instantiate(_itemBase, button.transform, false);
+                            GameObject newObj = Instantiate(_itemBase, button.transform, false);
                             break;
                         }
                     }
                 }
+      
             }
 
-            if (_isDragging)
+            if (isDragging)
             {
                 // drag logic
             }
         }
 
         // Press released
-        if (!pressed && _isPressing)
+        if (!pressed && isPressing)
         {
-            float pressDuration = Time.time - _pressStartTime;
-            float movement = Vector2.Distance(_pressStartPosition, GetPointerPosition());
+            float pressDuration = Time.time - pressStartTime;
+            float movement = Vector2.Distance(pressStartPosition, GetPointerPosition());
 
-            _isPressing = false;
+            isPressing = false;
 
-            if (_isHolding)
+            if (isHolding)
             {
                 Debug.Log("Hold released");
             }
-            else if (pressDuration <= _tapMaxTime && movement <= _tapMaxMovement)
+            else if (pressDuration <= tapMaxTime && movement <= tapMaxMovement)
             {
                 // tap
             }
-            else if (_isDragging)
+            else if (isDragging)
             {
-                if (GetPointerPosition().x < _pressStartPosition.x)
+                if (GetPointerPosition().x < pressStartPosition.x)
                 {
                     currentIndexByLayer++;
 
                     if (currentIndexByLayer > snapPointsManager[currentIndexLayer].snapPoints.Length - 1)
                         currentIndexByLayer = snapPointsManager[currentIndexLayer].snapPoints.Length - 1;
                 }
-                else if (GetPointerPosition().x > _pressStartPosition.x)
+                else if (GetPointerPosition().x > pressStartPosition.x)
                 {
                     currentIndexByLayer--;
 
@@ -191,25 +185,23 @@ public class CameraMovement : MonoBehaviour
                         currentIndexByLayer = 0;
                 }
                 transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
-                Debug.Log(currentIndexByLayer);
+                print(currentIndexByLayer);
             }
-
-            _isDragging = false;
-            _isHolding = false;
+            isDragging = false;
+            isHolding = false;
         }
     }
 
     private void HandleZoom()
     {
 #if UNITY_EDITOR
-        float zoomInput = _scrollZoom.action.ReadValue<float>();
+        float zoomInput = scrollZoom.action.ReadValue<float>();
         ApplyZoom(zoomInput * 10f);
 #endif
-
         if (Touch.activeTouches.Count != 2)
         {
-            _previousPinchDistance = 0f;
-            _stopZooming = false;
+            previousPinchDistance = 0f;
+            stopZooming = false;
             return;
         }
 
@@ -217,21 +209,21 @@ public class CameraMovement : MonoBehaviour
         Touch t1 = Touch.activeTouches[1];
         float currentDistance = Vector2.Distance(t0.screenPosition, t1.screenPosition);
 
-        if (_previousPinchDistance <= 0f)
+        if (previousPinchDistance <= 0f)
         {
-            _previousPinchDistance = currentDistance;
+            previousPinchDistance = currentDistance;
             return;
         }
 
-        float delta = currentDistance - _previousPinchDistance;
-        _previousPinchDistance = currentDistance;
+        float delta = currentDistance - previousPinchDistance;
+        previousPinchDistance = currentDistance;
 
-        if (_stopZooming) return;
+        if (stopZooming) return;
 
-        if (Mathf.Abs(delta) < _pinchThreshold) return;
+        if (Mathf.Abs(delta) < pinchThreshold) return;
 
         ApplyZoom(delta);
-        _stopZooming = true;
+        stopZooming = true;
     }
 
     private void ApplyZoom(float delta)
@@ -241,23 +233,22 @@ public class CameraMovement : MonoBehaviour
 
         if (delta < 0)
             currentIndexLayer--;
+
         else if (delta > 0)
             currentIndexLayer++;
 
-        currentIndexLayer = Mathf.Clamp(currentIndexLayer, 0, snapPointsManager.Count - 1);
+            currentIndexLayer = Mathf.Clamp(currentIndexLayer, 0, snapPointsManager.Count - 1);
 
         currentIndexByLayer = Mathf.Clamp(currentIndexByLayer, 0, snapPointsManager[currentIndexLayer].snapPoints.Length - 1);
 
         transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
     }
 
-    private Vector2 GetPointerPosition()
+    Vector2 GetPointerPosition()
     {
         if (Touch.activeTouches.Count > 0)
             return Touch.activeTouches[0].screenPosition;
 
         return Mouse.current.position.ReadValue();
     }
-
-    #endregion
 }

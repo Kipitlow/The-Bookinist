@@ -3,18 +3,12 @@ using UnityEngine;
 
 public class CycleThroughSprite : MonoBehaviour
 {
-    #region Variables
-
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private bool _cycle;
+
     private int _numberOfSprite;
     public int _currentFrame { get; private set; } = 0;
-
-    #endregion
-
-    #region Methods
-
     public void Cycle(List<Sprite> sprites, bool cycle)
     {
         if (_currentFrame == 0)
@@ -23,9 +17,10 @@ public class CycleThroughSprite : MonoBehaviour
             _cycle = cycle;
         }
 
+
         if (_currentFrame < _numberOfSprite)
         {
-            if (_cycle) _currentFrame = 0;
+            if (_cycle) _currentFrame = 0; 
             else _currentFrame = _numberOfSprite;
         }
 
@@ -39,6 +34,4 @@ public class CycleThroughSprite : MonoBehaviour
         if (trueIfMore && _currentFrame > wantedFrame) return true;
         return false;
     }
-
-    #endregion
 }

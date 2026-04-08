@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SO_FurnitureList", menuName = "Scriptable Objects/Bouquinerie/FurnituresCustomSHop/SO_FurnitureList")]
+[CreateAssetMenu(fileName = "SO_FurnitureList", menuName = "Scriptable Objects/SO_FurnitureList")]
 public class SO_FurnitureList : ScriptableObject
 {
     [SerializeField] List<GameObject> _furnitureList;

@@ -1,29 +1,30 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoveObject : MonoBehaviour
 {
 
     #region Variables
-
     [Header("Movement")]
     [SerializeField] private float _smoothTime = 0.2f;
     [SerializeField] private float _arrivalThreshold = 0.01f;
 
-    private bool _hasMoved = false;
+    private bool _hasMoved = false; 
     private bool _isMoving = false;
-    private int _hasMovedThisManyTime;
+
+    private int _hasMovedThisManyTime; 
+
     private Vector3 _targetPosition;
     private Vector3 _velocity;
-
     #endregion
-
-    #region Unity Methods
 
     private void Awake()
     {
         _targetPosition = transform.localPosition;
     }
 
+
+    #region Update 
     private void Update()
     {
         transform.localPosition = Vector3.SmoothDamp(transform.localPosition, _targetPosition, ref _velocity, _smoothTime);
@@ -38,21 +39,25 @@ public class MoveObject : MonoBehaviour
             _hasMovedThisManyTime++;
         }
     }
-
     #endregion
 
-    #region Methods
-
+    #region Move
     public void Move(float offsetX, float offsetY)
     {
         _targetPosition += new Vector3(offsetX, offsetY, 0f);
         _isMoving = true;
     }
+    #endregion
 
-    public void ResetHasMoved()
+    #region ResetHasMoved
+    public void ResethasMoved()
     {
-        _hasMoved = false;
+        _hasMoved = false ;
     }
+
+    #endregion
+
+    #region Check
 
     public bool HasMoved(bool hasMoved, int HowManytime)
     {
@@ -61,6 +66,5 @@ public class MoveObject : MonoBehaviour
         else
             return !_hasMoved;
     }
-
     #endregion
 }

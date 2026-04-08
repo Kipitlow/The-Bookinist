@@ -1,6 +1,3 @@
-/// <summary>
-/// Types de conditions disponibles.
-/// </summary>
 public enum ConditionType
 {
     SameLayer,
@@ -15,9 +12,6 @@ public enum ConditionType
     HasToCheckEmptynessInventory
 }
 
-/// <summary>
-/// Types d'actions disponibles.
-/// </summary>
 public enum ActionType
 {
     SetActive,

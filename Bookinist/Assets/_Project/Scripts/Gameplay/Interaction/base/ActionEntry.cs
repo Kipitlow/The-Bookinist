@@ -1,13 +1,13 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
+
+
 
 [Serializable]
 public class ActionEntry
 {
-    #region Variables
-
     public ActionType type;
 
     [Tooltip("quel est ta cible")]
@@ -37,20 +37,20 @@ public class ActionEntry
     [Tooltip("est-ce que la list reviens au premier sprite ou reste bloqué sur le dernier")]
     public bool cycle;
 
-    [Tooltip("liste de sprites à cycler")]
+    [Tooltip("apelle une fonction voulue")]
     public List<Sprite> sprites;
 
     [Tooltip("objet qui porte le sript")]
-    public MoveObject move;
+    public MoveObject Move;
 
     [Tooltip("Offset sur l'axe X")]
-    public float offsetX;
+    public float OffsetX;
 
     [Tooltip("Offset sur l'axe Y")]
-    public float offsetY;
+    public float OffsetY;
 
     [Tooltip("InventaireManager")]
     public Pickable pickable;
 
-    #endregion
+
 }
