@@ -5,6 +5,7 @@ public enum ConditionType
     OnTouch,
     IsEmpty,
     IsSameItemSO,
+    IsNotSameItemSO,
     HasDialogueStarted,
     OnWichFrame,
     HasMoved

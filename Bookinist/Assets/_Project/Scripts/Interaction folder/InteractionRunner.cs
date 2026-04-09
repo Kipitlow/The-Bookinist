@@ -66,6 +66,11 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.item == null)
                     return false;
                 return condition.selectedItemIsWanted.IsCorrectObject(condition.item);
+
+            case ConditionType.IsNotSameItemSO:
+                if (condition.item == null)
+                    return false;
+                return !condition.selectedItemIsWanted.IsCorrectObject(condition.item);
                 
             case ConditionType.OnWichFrame:
                 if (condition.cycleThroughSprite == null)

@@ -33,6 +33,10 @@ public class ConditionEntryDrawer : PropertyDrawer
                 lines += 2;
                 break;
 
+            case ConditionType.IsNotSameItemSO:
+                lines += 2;
+                break;
+
             case ConditionType.HasDialogueStarted:
                 lines += 1;
                 break;
@@ -92,6 +96,12 @@ public class ConditionEntryDrawer : PropertyDrawer
                 break;
 
             case ConditionType.IsSameItemSO:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("selectedItemIsWanted"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
+                break;
+
+            case ConditionType.IsNotSameItemSO:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("selectedItemIsWanted"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
