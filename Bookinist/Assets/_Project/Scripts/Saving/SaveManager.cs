@@ -13,7 +13,6 @@ public class SaveManager : MonoBehaviour
             Debug.LogWarning($"[SaveManager] Fichier non trouvé : {filePath}");
             return default(T);
         }
-
         try
         {
             string json = File.ReadAllText(filePath);

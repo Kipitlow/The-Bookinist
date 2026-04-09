@@ -702,12 +702,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 021b314b9448e9b4ba1fe106ad3a8cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player:
-    playerName: Ego
-    playerLevel: 1
+  profile:
+    playerName: 
+    playerLevel: 0
     playerXP: 0
     playerBooksUnlocked: 0
     playerDisplayedBook: {fileID: 0}
+  settings:
+    playerSoundGeneral: 100
+    playerSoundMusic: 100
+    playerSoundSound: 100
   _saveManager: {fileID: 1145866962}
 --- !u!1 &1221895531
 GameObject:
@@ -1200,6 +1204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textVal: {fileID: 1841686114}
+  textType: 0
 --- !u!1 &2044008340
 GameObject:
   m_ObjectHideFlags: 0
