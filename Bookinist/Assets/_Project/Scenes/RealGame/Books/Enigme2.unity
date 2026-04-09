@@ -153,447 +153,6 @@ Transform:
   - {fileID: 208743963}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &123783105
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 123783106}
-  - component: {fileID: 123783109}
-  - component: {fileID: 123783108}
-  - component: {fileID: 123783107}
-  m_Layer: 0
-  m_Name: Socle_01 (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &123783106
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 123783105}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.6, y: -4.47, z: 0}
-  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1898512502}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &123783107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 123783105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactionSets:
-  - interactionName: FlowerPurpel
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 10
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 0
-      target: {fileID: 123783105}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 123783105}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-  - interactionName: FlowerRed
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 10
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 0
-      target: {fileID: 123783105}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 123783105}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 123783105}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
---- !u!65 &123783108
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 123783105}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 20, y: 16.04, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0.0000019073486}
---- !u!212 &123783109
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 123783105}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1603831995
-  m_SortingLayer: 4
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e46d46ef5ce5c7a4f84c2ba8cd83fecc, type: 3}
-  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 7.97, y: 1.3}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1001 &208743962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -610,22 +169,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mariage_Layer3
       objectReference: {fileID: 0}
-    - target: {fileID: 6159493076264315521, guid: e304b2cf705e83844a68096c06b5a498, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6159493076264315521, guid: e304b2cf705e83844a68096c06b5a498, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].item
-      value: 
-      objectReference: {fileID: 11400000, guid: e8b2d8274ed02e948a0633edb3f2aa20, type: 2}
-    - target: {fileID: 6159493076264315521, guid: e304b2cf705e83844a68096c06b5a498, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].type
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6159493076264315521, guid: e304b2cf705e83844a68096c06b5a498, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].selectedItemIsWanted
-      value: 
-      objectReference: {fileID: 247390102}
     - target: {fileID: 6159493076264315521, guid: e304b2cf705e83844a68096c06b5a498, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].selectedItemIsWanted
       value: 
@@ -758,458 +301,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventoryController: {fileID: 1190348954}
---- !u!114 &306510620 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4997106687485784053, guid: abde5900fef9895409a3da322287422f, type: 3}
+--- !u!1 &282333350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2639512941852062160, guid: abde5900fef9895409a3da322287422f, type: 3}
   m_PrefabInstance: {fileID: 1587385644}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d1b1fb846e7eb64c8fe2aa3957ae071, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &509506968
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 509506969}
-  - component: {fileID: 509506972}
-  - component: {fileID: 509506971}
-  - component: {fileID: 509506970}
-  m_Layer: 0
-  m_Name: Socle_01 (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &509506969
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509506968}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.97, y: -3.94, z: 0}
-  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1898512502}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &509506970
+--- !u!114 &282333355
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509506968}
+  m_GameObject: {fileID: 282333350}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Script: {fileID: 11500000, guid: b3580de2f1e903942aab7a2f23e8136c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionSets:
-  - interactionName: FlowerPurpel
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 10
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 0
-      target: {fileID: 509506968}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 509506968}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-  - interactionName: FlowerRed
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 10
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 0
-      target: {fileID: 509506968}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 509506968}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 509506968}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
---- !u!65 &509506971
-BoxCollider:
+  _inventoryController: {fileID: 1190348954}
+  _prefabSprite: {fileID: 7281052662607791975, guid: 014bfa4c62312484885a110dc4c2e64a, type: 3}
+--- !u!1 &354254241 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1533350514069478635, guid: abde5900fef9895409a3da322287422f, type: 3}
+  m_PrefabInstance: {fileID: 1587385644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &354254246
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509506968}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_GameObject: {fileID: 354254241}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 20, y: 16.04, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0.0000019073486}
---- !u!212 &509506972
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509506968}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1603831995
-  m_SortingLayer: 4
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e46d46ef5ce5c7a4f84c2ba8cd83fecc, type: 3}
-  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 7.97, y: 1.3}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3580de2f1e903942aab7a2f23e8136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventoryController: {fileID: 1190348954}
+  _prefabSprite: {fileID: 7281052662607791975, guid: 014bfa4c62312484885a110dc4c2e64a, type: 3}
 --- !u!1001 &549954325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1218,14 +347,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 114452390}
     m_Modifications:
-    - target: {fileID: 634292115222749370, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 634292115222749370, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 634292115222749370, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1236,7 +357,7 @@ PrefabInstance:
       objectReference: {fileID: 1178204253}
     - target: {fileID: 791199729294914174, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 791199729294914174, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.size
@@ -1256,7 +377,7 @@ PrefabInstance:
       objectReference: {fileID: 549954329}
     - target: {fileID: 791199729294914174, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].type
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 791199729294914174, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].type
@@ -1265,7 +386,7 @@ PrefabInstance:
     - target: {fileID: 791199729294914174, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].item
       value: 
-      objectReference: {fileID: 11400000, guid: da1090ded22d88b42b2a5b95617987ff, type: 2}
+      objectReference: {fileID: 11400000, guid: b823da740980b4249aff3d3615942290, type: 2}
     - target: {fileID: 791199729294914174, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
       value: 4
@@ -1282,38 +403,6 @@ PrefabInstance:
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].selectedItemIsWanted
       value: 
       objectReference: {fileID: 247390102}
-    - target: {fileID: 791199729294914174, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 791199729294914174, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 791199729294914174, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1178204253}
-    - target: {fileID: 791199729294914174, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 791199729294914174, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FinEnigme2
-      objectReference: {fileID: 0}
-    - target: {fileID: 791199729294914174, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SC_Tache, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 791199729294914174, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 791199729294914174, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1819985752532628466, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _invController
       value: 
@@ -1439,14 +528,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7737865133552073110, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7737865133552073110, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7737865133552073110, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
@@ -1470,30 +551,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1921833531116834250, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       insertIndex: -1
       addedObject: {fileID: 549954331}
-    - targetCorrespondingSourceObject: {fileID: 2023562056430983745, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1664261500}
-    - targetCorrespondingSourceObject: {fileID: 2023562056430983745, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1664261504}
-    - targetCorrespondingSourceObject: {fileID: 2023562056430983745, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1664261503}
-    - targetCorrespondingSourceObject: {fileID: 2023562056430983745, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1664261502}
     - targetCorrespondingSourceObject: {fileID: 4434594289077090597, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       insertIndex: -1
       addedObject: {fileID: 549954330}
-    - targetCorrespondingSourceObject: {fileID: 4434594289077090597, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 549954336}
-    - targetCorrespondingSourceObject: {fileID: 4434594289077090597, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 549954338}
-    - targetCorrespondingSourceObject: {fileID: 4434594289077090597, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 549954334}
   m_SourcePrefab: {fileID: 100100000, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
 --- !u!4 &549954326 stripped
 Transform:
@@ -1533,94 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionSets:
-  - interactionName: 
-    conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 7310a20c3c65a7c4e8f6c567f6d05ca8, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 3
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 549954336}
-      itemPrefab: {fileID: 2204687104674799107, guid: eae745bbb1d107f4595d4aeb8aac21f8, type: 3}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 549954336}
-      itemPrefab: {fileID: 2204687104674799107, guid: eae745bbb1d107f4595d4aeb8aac21f8, type: 3}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1178204253}
-            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
-            m_MethodName: FinEnigme2
-            m_Mode: 3
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 3
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
+  _interactionSets: []
 --- !u!212 &549954331
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1664,7 +637,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2048427503
   m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 07a528d6ce6cbc949b7b5916c6db94aa, type: 3}
   m_Color: {r: 0.16981131, g: 0.16740832, b: 0.16740832, a: 0.8862745}
   m_FlipX: 0
@@ -1697,541 +670,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 15, y: 30, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!212 &549954334
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549954327}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2048427503
-  m_SortingLayer: 5
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f9bd86a68809596429a2a5d1af2c81e3, type: 3}
-  m_Color: {r: 0.16862746, g: 0.16862746, b: 0.16862746, a: 0.8862745}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 13.914375, y: 28.960001}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!114 &549954336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549954327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3580de2f1e903942aab7a2f23e8136c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inventoryController: {fileID: 1190348954}
---- !u!65 &549954338
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549954327}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 15, y: 30, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &575212671 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3886226625964495449, guid: abde5900fef9895409a3da322287422f, type: 3}
   m_PrefabInstance: {fileID: 1587385644}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &931499967
+--- !u!1 &682605967 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4400142794986835814, guid: abde5900fef9895409a3da322287422f, type: 3}
+  m_PrefabInstance: {fileID: 1587385644}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 931499968}
-  - component: {fileID: 931499971}
-  - component: {fileID: 931499970}
-  - component: {fileID: 931499969}
-  m_Layer: 0
-  m_Name: Socle_01 (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &931499968
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931499967}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.18, y: -1.84, z: 0}
-  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1898512502}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &931499969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931499967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactionSets:
-  - interactionName: FlowerPurpel
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 10
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 0
-      target: {fileID: 931499967}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 931499967}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-  - interactionName: FlowerRed
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 10
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 0
-      target: {fileID: 931499967}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 931499967}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 931499967}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
---- !u!65 &931499970
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931499967}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 20, y: 16.04, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0.0000019073486}
---- !u!212 &931499971
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931499967}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1603831995
-  m_SortingLayer: 4
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e46d46ef5ce5c7a4f84c2ba8cd83fecc, type: 3}
-  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 7.97, y: 1.3}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &935569756
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,447 +874,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1019024529
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1019024530}
-  - component: {fileID: 1019024533}
-  - component: {fileID: 1019024532}
-  - component: {fileID: 1019024531}
-  m_Layer: 0
-  m_Name: Socle_01 (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1019024530
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019024529}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.84, y: -2.19, z: 0}
-  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1898512502}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1019024531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019024529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactionSets:
-  - interactionName: FlowerPurpel
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 10
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 0
-      target: {fileID: 1019024529}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 1019024529}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-  - interactionName: FlowerRed
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 10
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 0
-      target: {fileID: 1019024529}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 1019024529}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1190348954}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: addFlower
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 306510620}
-            m_TargetAssemblyTypeName: ScriptCouronne, Assembly-CSharp
-            m_MethodName: spawnFlowers
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 1019024529}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
---- !u!65 &1019024532
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019024529}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 20, y: 16.04, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0.0000019073486}
---- !u!212 &1019024533
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019024529}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1603831995
-  m_SortingLayer: 4
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e46d46ef5ce5c7a4f84c2ba8cd83fecc, type: 3}
-  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 7.97, y: 1.3}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &1031684942
 GameObject:
   m_ObjectHideFlags: 0
@@ -3140,11 +1147,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[1].Tache
-      value: Trouve le pot de Nectar
+      value: "Amener Orph\xE9e a Eurydice"
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[2].Tache
-      value: Trouve le pot de miel
+      value: Trouver le pots pour  miel
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[3].Tache
@@ -3387,6 +1394,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 114452390}
     m_Modifications:
     - target: {fileID: 150944911945410665, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - target: {fileID: 150944911945410665, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
@@ -3394,22 +1405,6 @@ PrefabInstance:
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[2].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
-    - target: {fileID: 375185553366198068, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: m_Size.x
-      value: 25.222488
-      objectReference: {fileID: 0}
-    - target: {fileID: 375185553366198068, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: m_Size.y
-      value: 10.690001
-      objectReference: {fileID: 0}
-    - target: {fileID: 375185553366198068, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9221a14f3ce6471478963240c9a5010d, type: 3}
-    - target: {fileID: 375185553366198068, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 689950223142195886, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[2].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3418,22 +1413,6 @@ PrefabInstance:
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
-    - target: {fileID: 1302912034212122671, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1302912034212122671, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].item
-      value: 
-      objectReference: {fileID: 11400000, guid: 79c71621f29b2e944ba1d568b75247eb, type: 2}
-    - target: {fileID: 1302912034212122671, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].type
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1302912034212122671, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].selectedItemIsWanted
-      value: 
-      objectReference: {fileID: 247390102}
     - target: {fileID: 1302912034212122671, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].selectedItemIsWanted
       value: 
@@ -3451,14 +1430,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1178204253}
     - target: {fileID: 1505422808187428164, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1505422808187428164, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1505422808187428164, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
@@ -3466,6 +1437,10 @@ PrefabInstance:
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 2188342657413605326, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
     - target: {fileID: 2188342657413605326, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
@@ -3475,14 +1450,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1178204253}
     - target: {fileID: 2724702879646257498, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2724702879646257498, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2724702879646257498, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
@@ -3491,21 +1458,129 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1178204253}
     - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].interactionName
+      value: on drag orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].interactionName
+      value: on drag rose
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 282333355}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 282333355}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 282333355}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].item
       value: 
-      objectReference: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
+      objectReference: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].slot
+      value: 
+      objectReference: {fileID: 282333355}
     - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 282333355}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].slot
+      value: 
+      objectReference: {fileID: 282333355}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].itemPrefab
+      value: 
+      objectReference: {fileID: 682605967}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].itemPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].shouldBeEmpty
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].selectedItemIsWanted
       value: 
-      objectReference: {fileID: 247390102}
+      objectReference: {fileID: 0}
     - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].selectedItemIsWanted
       value: 
@@ -3513,7 +1588,19 @@ PrefabInstance:
     - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].selectedItemIsWanted
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].selectedItemIsWanted
+      value: 
       objectReference: {fileID: 247390102}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3599302331401450238, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3531,37 +1618,13 @@ PrefabInstance:
       value: Mariage_Layer2
       objectReference: {fileID: 0}
     - target: {fileID: 3921541761343954861, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3921541761343954861, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3921541761343954861, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
     - target: {fileID: 4186604387084747127, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4186604387084747127, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4186604387084747127, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
-    - target: {fileID: 4232155767096500678, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4232155767096500678, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4232155767096500678, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3571,41 +1634,189 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1178204253}
     - target: {fileID: 4431273307770345694, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - target: {fileID: 4431273307770345694, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 4538745862027767526, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
     - target: {fileID: 4538745862027767526, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
     - target: {fileID: 4578718461303514432, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - target: {fileID: 4578718461303514432, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 4809386697821215842, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
     - target: {fileID: 4809386697821215842, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
     - target: {fileID: 5673547119974503688, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - target: {fileID: 5673547119974503688, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 5879568959394690930, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
     - target: {fileID: 5879568959394690930, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
     - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
+      propertyPath: _interactionSets.Array.data[0].interactionName
+      value: on drag orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].interactionName
+      value: on drag rose
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 1975725927}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 1975725927}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 1975725927}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].slot
+      value: 
+      objectReference: {fileID: 282333355}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 1975725927}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].slot
+      value: 
+      objectReference: {fileID: 282333355}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].itemPrefab
+      value: 
+      objectReference: {fileID: 682605967}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].shouldBeEmpty
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].selectedItemIsWanted
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].selectedItemIsWanted
       value: 
       objectReference: {fileID: 247390102}
     - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].selectedItemIsWanted
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].selectedItemIsWanted
+      value: 
       objectReference: {fileID: 247390102}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3615,33 +1826,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1190348954}
     - target: {fileID: 6215350636369460841, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6215350636369460841, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6215350636369460841, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
+    - target: {fileID: 6339601780718117443, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
     - target: {fileID: 6339601780718117443, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
     - target: {fileID: 6340711833060292342, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6340711833060292342, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6340711833060292342, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].interactionName
+      value: on drag orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].interactionName
+      value: on drag rose
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.size
       value: 2
@@ -3651,25 +1866,97 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 1591372984}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 1591372984}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 1591372984}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].item
       value: 
-      objectReference: {fileID: 11400000, guid: a0c47f71671018847a21059735583d14, type: 2}
+      objectReference: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].slot
+      value: 
+      objectReference: {fileID: 282333355}
     - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
-      value: 10
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 1591372984}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].type
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].item
       value: 
-      objectReference: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].slot
+      value: 
+      objectReference: {fileID: 282333355}
     - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].type
-      value: 10
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].itemPrefab
+      value: 
+      objectReference: {fileID: 682605967}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].shouldBeEmpty
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].selectedItemIsWanted
       value: 
-      objectReference: {fileID: 247390102}
+      objectReference: {fileID: 0}
     - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].selectedItemIsWanted
       value: 
@@ -3677,12 +1964,20 @@ PrefabInstance:
     - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].selectedItemIsWanted
       value: 
-      objectReference: {fileID: 247390102}
+      objectReference: {fileID: 0}
     - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].selectedItemIsWanted
       value: 
       objectReference: {fileID: 247390102}
     - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734192363588787237, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1190348954}
@@ -3691,17 +1986,141 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1190348954}
     - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
+      propertyPath: _interactionSets.Array.data[0].interactionName
+      value: on drag orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].interactionName
+      value: on drag rose
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 354254246}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 354254246}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 354254246}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].slot
+      value: 
+      objectReference: {fileID: 282333355}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 354254246}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].slot
+      value: 
+      objectReference: {fileID: 282333355}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].itemPrefab
+      value: 
+      objectReference: {fileID: 682605967}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].shouldBeEmpty
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].selectedItemIsWanted
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].selectedItemIsWanted
       value: 
       objectReference: {fileID: 247390102}
     - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].selectedItemIsWanted
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].selectedItemIsWanted
+      value: 
       objectReference: {fileID: 247390102}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6765851573336285690, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3711,17 +2130,141 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1190348954}
     - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
+      propertyPath: _interactionSets.Array.data[0].interactionName
+      value: on drag orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].interactionName
+      value: on drag rose
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 2115160855}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 2115160855}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 2115160855}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].slot
+      value: 
+      objectReference: {fileID: 282333355}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].slot
+      value: 
+      objectReference: {fileID: 2115160855}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].slot
+      value: 
+      objectReference: {fileID: 282333355}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].itemPrefab
+      value: 
+      objectReference: {fileID: 682605967}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].shouldBeEmpty
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].selectedItemIsWanted
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].selectedItemIsWanted
       value: 
       objectReference: {fileID: 247390102}
     - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].selectedItemIsWanted
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[1].selectedItemIsWanted
+      value: 
       objectReference: {fileID: 247390102}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6843465724394812295, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3771,14 +2314,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7887087125988933715, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7887087125988933715, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7887087125988933715, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
@@ -3787,107 +2322,73 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1190348954}
     - target: {fileID: 8255195706598246378, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - target: {fileID: 8255195706598246378, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
     - target: {fileID: 8579172474021792402, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8579172474021792402, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8579172474021792402, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
-    - target: {fileID: 8840043476766714425, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: m_Size.x
-      value: 28.055935
-      objectReference: {fileID: 0}
-    - target: {fileID: 8840043476766714425, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: m_Size.y
-      value: 10.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 8840043476766714425, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f47482796c3cf4649b43a54efad89f36, type: 3}
-    - target: {fileID: 8840043476766714425, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8894239458158261333, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
-    - target: {fileID: 9055518852005775529, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: m_Size.x
-      value: 27.931534
-      objectReference: {fileID: 0}
-    - target: {fileID: 9055518852005775529, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: m_Size.y
-      value: 11.920001
-      objectReference: {fileID: 0}
-    - target: {fileID: 9055518852005775529, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 954cd64322683db4498c480292e5556f, type: 3}
-    - target: {fileID: 9055518852005775529, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083392245501667595, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083392245501667595, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 9083392245501667595, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
-    - target: {fileID: 9184805932175395502, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184805932175395502, guid: abde5900fef9895409a3da322287422f, type: 3}
-      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].type
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 9184805932175395502, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 918881376590228950, guid: abde5900fef9895409a3da322287422f, type: 3}
-    - {fileID: 4914524472081321756, guid: abde5900fef9895409a3da322287422f, type: 3}
-    - {fileID: 1533350514069478635, guid: abde5900fef9895409a3da322287422f, type: 3}
-    - {fileID: 2639512941852062160, guid: abde5900fef9895409a3da322287422f, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4190750497323433524, guid: abde5900fef9895409a3da322287422f, type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 931499968}
-    - targetCorrespondingSourceObject: {fileID: 4190750497323433524, guid: abde5900fef9895409a3da322287422f, type: 3}
-      insertIndex: 6
-      addedObject: {fileID: 1019024530}
-    - targetCorrespondingSourceObject: {fileID: 4190750497323433524, guid: abde5900fef9895409a3da322287422f, type: 3}
-      insertIndex: 7
-      addedObject: {fileID: 509506969}
-    - targetCorrespondingSourceObject: {fileID: 4190750497323433524, guid: abde5900fef9895409a3da322287422f, type: 3}
-      insertIndex: 8
-      addedObject: {fileID: 123783106}
-    m_AddedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5851616028950299277, guid: abde5900fef9895409a3da322287422f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1591372984}
+    - targetCorrespondingSourceObject: {fileID: 2639512941852062160, guid: abde5900fef9895409a3da322287422f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 282333355}
+    - targetCorrespondingSourceObject: {fileID: 1533350514069478635, guid: abde5900fef9895409a3da322287422f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 354254246}
+    - targetCorrespondingSourceObject: {fileID: 4914524472081321756, guid: abde5900fef9895409a3da322287422f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1975725927}
+    - targetCorrespondingSourceObject: {fileID: 918881376590228950, guid: abde5900fef9895409a3da322287422f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2115160855}
   m_SourcePrefab: {fileID: 100100000, guid: abde5900fef9895409a3da322287422f, type: 3}
 --- !u!4 &1587385645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7112083112492688035, guid: abde5900fef9895409a3da322287422f, type: 3}
   m_PrefabInstance: {fileID: 1587385644}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1591372979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5851616028950299277, guid: abde5900fef9895409a3da322287422f, type: 3}
+  m_PrefabInstance: {fileID: 1587385644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1591372984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591372979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3580de2f1e903942aab7a2f23e8136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventoryController: {fileID: 1190348954}
+  _prefabSprite: {fileID: 7281052662607791975, guid: 014bfa4c62312484885a110dc4c2e64a, type: 3}
 --- !u!1 &1591546935
 GameObject:
   m_ObjectHideFlags: 0
@@ -4088,325 +2589,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!1 &1664261498 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2023562056430983745, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
-  m_PrefabInstance: {fileID: 549954325}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1664261500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664261498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactionSets:
-  - interactionName: Drop Flower LerpColor
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 0a709a5066689d24fb824e471a5f0d88, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 3
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 1664261504}
-      itemPrefab: {fileID: 2204687104674799107, guid: ef4aa5202ee763d49a8dd8020d0c0669, type: 3}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 1664261504}
-      itemPrefab: {fileID: 2204687104674799107, guid: ef4aa5202ee763d49a8dd8020d0c0669, type: 3}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1178204253}
-            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
-            m_MethodName: FinEnigme2
-            m_Mode: 3
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 3
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-  - interactionName: Drop Flowers Color Red
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 4b82783ca61b87b479507b0eec5f70f2, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 3
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 1664261504}
-      itemPrefab: {fileID: 2204687104674799107, guid: c77d82d9335222446b120efb781eefab, type: 3}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 1664261504}
-      itemPrefab: {fileID: 2204687104674799107, guid: c77d82d9335222446b120efb781eefab, type: 3}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1178204253}
-            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
-            m_MethodName: FinEnigme2
-            m_Mode: 3
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 3
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-  - interactionName: Drop Flowers Color Purple
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 2fb0f5680000e4c468c8c48714eb2389, type: 2}
-      selectedItemIsWanted: {fileID: 247390102}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 3
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 1664261504}
-      itemPrefab: {fileID: 2204687104674799107, guid: b41bb9be91ed355498814b99e573b7dd, type: 3}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 1664261504}
-      itemPrefab: {fileID: 2204687104674799107, guid: b41bb9be91ed355498814b99e573b7dd, type: 3}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1178204253}
-            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
-            m_MethodName: FinEnigme2
-            m_Mode: 3
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 3
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
---- !u!212 &1664261502
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664261498}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2048427503
-  m_SortingLayer: 5
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bbc3b3cdcadc1ee4494db897b2471812, type: 3}
-  m_Color: {r: 0.16862746, g: 0.16862746, b: 0.16862746, a: 0.8862745}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 21.199999, y: 13.38457}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!65 &1664261503
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664261498}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 23, y: 14, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1664261504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664261498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3580de2f1e903942aab7a2f23e8136c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inventoryController: {fileID: 1190348954}
---- !u!4 &1898512502 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4190750497323433524, guid: abde5900fef9895409a3da322287422f, type: 3}
-  m_PrefabInstance: {fileID: 1587385644}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1900882013 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 332266885477718299, guid: abde5900fef9895409a3da322287422f, type: 3}
@@ -4418,6 +2600,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563134a4431f3e94bb61479f7af96b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1975725922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4914524472081321756, guid: abde5900fef9895409a3da322287422f, type: 3}
+  m_PrefabInstance: {fileID: 1587385644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1975725927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975725922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3580de2f1e903942aab7a2f23e8136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventoryController: {fileID: 1190348954}
+  _prefabSprite: {fileID: 7281052662607791975, guid: 014bfa4c62312484885a110dc4c2e64a, type: 3}
 --- !u!1 &2007113339
 GameObject:
   m_ObjectHideFlags: 0
@@ -4514,6 +2715,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2007113340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2115160850 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 918881376590228950, guid: abde5900fef9895409a3da322287422f, type: 3}
+  m_PrefabInstance: {fileID: 1587385644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2115160855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115160850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3580de2f1e903942aab7a2f23e8136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventoryController: {fileID: 1190348954}
+  _prefabSprite: {fileID: 7281052662607791975, guid: 014bfa4c62312484885a110dc4c2e64a, type: 3}
 --- !u!1001 &6916962808897003235
 PrefabInstance:
   m_ObjectHideFlags: 0

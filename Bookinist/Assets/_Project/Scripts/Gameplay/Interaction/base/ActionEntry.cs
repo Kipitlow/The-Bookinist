@@ -55,5 +55,6 @@ public class ActionEntry
     [Tooltip("InventaireManager")]
     public Pickable pickable;
 
-
+    [Tooltip("SO de l'item")]
+    public Item item;
 }
