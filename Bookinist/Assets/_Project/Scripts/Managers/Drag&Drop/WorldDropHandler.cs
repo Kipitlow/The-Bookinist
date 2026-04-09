@@ -1,26 +1,26 @@
 using UnityEngine;
 
 /// <summary>
-/// Singleton placé sur un Manager GameObject (ex: GameManager).
-/// Reçoit la position écran de fin de drag, lance un Raycast 3D
-/// filtré par la page active, et déclenche l'InteractionRunner si touché.
+/// Singleton placï¿½ sur un Manager GameObject (ex: GameManager).
+/// Reï¿½oit la position ï¿½cran de fin de drag, lance un Raycast 3D
+/// filtrï¿½ par la page active, et dï¿½clenche l'InteractionRunner si touchï¿½.
 /// </summary>
 public class WorldDropHandler : MonoBehaviour
 {
     public static WorldDropHandler Instance { get; private set; }
 
-    [Header("Références")]
-    [Tooltip("Référence au PageManager pour connaître la page active.")]
+    [Header("Rï¿½fï¿½rences")]
+    [Tooltip("Rï¿½fï¿½rence au PageManager pour connaï¿½tre la page active.")]
     [SerializeField] private PageManager _pageManager;
 
-    [Tooltip("Référence à l'InventoryController pour retirer l'item si drop réussi.")]
+    [Tooltip("Rï¿½fï¿½rence ï¿½ l'InventoryController pour retirer l'item si drop rï¿½ussi.")]
     [SerializeField] private InventoryController _inventoryController;
 
-    [Tooltip("Caméra utilisée pour le raycast. Si null, Camera.main est utilisée.")]
+    [Tooltip("Camï¿½ra utilisï¿½e pour le raycast. Si null, Camera.main est utilisï¿½e.")]
     [SerializeField] private Camera _camera;
 
-    [Header("Paramètres")]
-    [Tooltip("Distance max du raycast depuis la caméra.")]
+    [Header("Paramï¿½tres")]
+    [Tooltip("Distance max du raycast depuis la camï¿½ra.")]
     [SerializeField] private float _raycastDistance = 200f;
 
     private void Awake()
@@ -40,7 +40,7 @@ public class WorldDropHandler : MonoBehaviour
     }
 
     /// <summary>
-    /// Appelé par ItemDragHandler.OnEndDrag avec la position écran du doigt.
+    /// Appelï¿½ par ItemDragHandler.OnEndDrag avec la position ï¿½cran du doigt.
     /// </summary>
     public void TryDrop(Vector2 screenPosition)
     {
@@ -51,44 +51,37 @@ public class WorldDropHandler : MonoBehaviour
 
         if (activePage == null)
         {
-            Debug.LogWarning("[WorldDropHandler] Aucune page active trouvée.");
             return;
         }
-
-        Debug.Log($"[Drop] TryDrop appelé. IsDragging={DragContext.IsDragging}, screenPos={screenPosition}");
 
         Ray ray = _camera.ScreenPointToRay(screenPosition);
         Physics.Raycast(ray, out RaycastHit hit, _raycastDistance);
 
-        Debug.Log($"[Drop] -> {hit.collider.gameObject.name}");
-
-        //InteractionRunner targetRunner = FindRunnerOnActivePage(hits, activePage);
         InteractionRunner targetRunner = hit.collider.gameObject.GetComponent<InteractionRunner>();
 
-        if (targetRunner != null)
+        int hitlayer = hit.collider.GetComponentInParent<Page>().PageIndex;
+        int camLayer = _camera.GetComponent<CameraMovement>().currentIndexLayer;
+
+        if (targetRunner != null && hitlayer == camLayer)
         {
-            // Drop réussi : construit le context et déclenche l'interaction
-            // instigator = GameObject de l'item UI source (pour traçabilité)
-            // target     = objet 3D touché dans le monde
+            // Drop rï¿½ussi : construit le context et dï¿½clenche l'interaction
+            // instigator = GameObject de l'item UI source (pour traï¿½abilitï¿½)
+            // target     = objet 3D touchï¿½ dans le monde
+
             InteractionContext context = new InteractionContext
             {
                 instigator = DragContext.SourceController.gameObject,
                 target = targetRunner.gameObject,
-                isTouchEvent = false,
-                item = draggedItem
+                item = draggedItem          // champ ï¿½ ajouter dans InteractionContext (voir ci-dessous)
             };
 
             targetRunner.TryExecuteAll(context);
-            _inventoryController.RemoveInventoryItem(draggedItem);
+        }
+    }
 
-            Debug.Log($"[WorldDropHandler] Drop réussi sur '{targetRunner.gameObject.name}' " +
-                      $"(page {activePage.PageIndex}) avec '{draggedItem.itemName}'");
-        }
-        else
-        {
-            // Aucun objet valide sur la page active -> l'item reste dans l'inventaire
-            Debug.Log("[WorldDropHandler] Aucun InteractionRunner sur la page active. " +
-                      "L'item retourne dans l'inventaire.");
-        }
+    public void Drop(Item item, Slot slot)
+    {
+        slot.FillWithSprite(item);
+        _inventoryController.RemoveInventoryItem(item);
     }
 }

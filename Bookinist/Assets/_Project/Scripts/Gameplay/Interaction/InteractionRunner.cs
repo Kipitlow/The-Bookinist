@@ -62,10 +62,15 @@ public class InteractionRunner : MonoBehaviour
                     return false;
                 return this.gameObject == context.target;
 
+            case ConditionType.OnDrag:
+                if (context.target == null)
+                    return false;
+                return this.gameObject == context.target;
+
             case ConditionType.IsEmpty:
                 if (condition.slot == null)
                     return false;
-                return condition.slot.IsEmpty() == condition.shouldBeEmpty;
+                return condition.slot.IsEmpty() == !condition.shouldBeEmpty;
 
             case ConditionType.IsSameItemSO:
                 if (condition.item == null)

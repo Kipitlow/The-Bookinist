@@ -3,6 +3,7 @@ public enum ConditionType
     SameLayer,
     SameZone,
     OnTouch,
+    OnDrag,
     IsEmpty,
     IsSameItemSO,
     IsNotSameItemSO,
