@@ -13,16 +13,6 @@ public class List_Element_Tach
     [SerializeField] public bool TacheTerminer;
 }
 
-
-[Serializable]
-public class UI_CacheLayeur
-{
-    [Header("Affiche UI & Objet dans un layeur")]
-    public int Layeur_Affiche_Mission;
-    public List<GameObject> CanvaUI;
-    
-}
-
 public class SC_Tache : MonoBehaviour
 {
     #region Variable
@@ -32,15 +22,10 @@ public class SC_Tache : MonoBehaviour
     //[SerializeField] public TextMeshProUGUI Text_Objectif; //////Objectif
     public int totalSeconds;
 
-    [Header("Autre")]
+    /*[Header("Autre")]
     public Camera CM_Player;
-    [SerializeField]public CameraMovement CM;
-    public List<UI_CacheLayeur> UI_cacheLayeur = new List<UI_CacheLayeur>();
-    private int Layeur_Actuelle_Du_Joueur;
-
-    [Header("UI_Enigme_01")]
-    public GameObject Balance;
-    public GameObject CanvaMarchant;
+    [SerializeField]public CameraMovement CM;*/
+    //private int Layeur_Actuelle_Du_Joueur;
 
     [Header("UI_Enigme_02")]
     public int NombreTacheValide=0;
@@ -59,11 +44,11 @@ public class SC_Tache : MonoBehaviour
     #region Unity Methods
     void Start()
     {
-        if (CM_Player == null) CM_Player = GameObject.Find("CameraManager").GetComponent<Camera>();
+        //if (CM_Player == null) CM_Player = GameObject.Find("CameraManager").GetComponent<Camera>();
         StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
         Change_Tach_List();
     }
-    void Update()
+    /*void Update()
     {
         {
             if (CM_Player != null && Layeur_Actuelle_Du_Joueur != (int)Mathf.Round(CM_Player.transform.position.z) + 1 && Layeur_Actuelle_Du_Joueur != CM.currentIndexByLayer)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
@@ -89,7 +74,7 @@ public class SC_Tache : MonoBehaviour
                 }
            }
         }
-    }
+    }*/
     #endregion
         #region Methods
 
@@ -210,7 +195,7 @@ public class SC_Tache : MonoBehaviour
         }
     }
 
-    public void Affiche_Marchant(GameObject Self)
+    /*public void Affiche_Marchant(GameObject Self)
     {
         if (Self != null) Self.SetActive(false);
 
@@ -234,7 +219,7 @@ public class SC_Tache : MonoBehaviour
         {
             Debug.LogWarning("Erreur du system CanvaMarchant =null");
         }
-    }
+    }*/
     // Permet de faire un chronomêttre
     IEnumerator Chronometre()
     {
