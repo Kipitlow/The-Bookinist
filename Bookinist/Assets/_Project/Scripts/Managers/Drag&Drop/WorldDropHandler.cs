@@ -75,7 +75,7 @@ public class WorldDropHandler : MonoBehaviour
                 instigator = DragContext.SourceController.gameObject,
                 target = targetRunner.gameObject,
                 isTouchEvent = false,
-                item = draggedItem          // champ à ajouter dans InteractionContext (voir ci-dessous)
+                item = draggedItem
             };
 
             targetRunner.TryExecuteAll(context);
