@@ -10,10 +10,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(ItemController))]
 public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [Header("Références")]
-    [Tooltip("Le Canvas racine de l'UI (doit être en Screen Space - Overlay ou Camera).")]
-    [SerializeField] private Canvas _rootCanvas;
-
     [Tooltip("Le prefab du ghost (simple Image avec le sprite de l'item). " +
              "Si null, un ghost est créé dynamiquement depuis l'image de cet item.")]
     [SerializeField] private GameObject _ghostPrefab;
@@ -28,6 +24,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     // Divers
     private CanvasGroup _canvasGroup;
+    private Canvas _rootCanvas;
 
     #region Unity Methods
 
@@ -35,6 +32,8 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         _itemController = GetComponent<ItemController>();
         _itemImage = GetComponentInChildren<Image>();
+
+        _rootCanvas = FindAnyObjectByType<Canvas>();
 
         // CanvasGroup optionnel : permet de passer en semi-transparent pendant le drag
         _canvasGroup = GetComponent<CanvasGroup>();
@@ -124,7 +123,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             if (_itemImage != null)
             {
                 ghostImage.sprite = _itemImage.sprite;
-                ghostImage.SetNativeSize();
+                //ghostImage.SetNativeSize();
             }
         }
 

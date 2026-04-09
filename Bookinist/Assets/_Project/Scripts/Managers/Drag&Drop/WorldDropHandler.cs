@@ -55,10 +55,15 @@ public class WorldDropHandler : MonoBehaviour
             return;
         }
 
-        Ray ray = _camera.ScreenPointToRay(screenPosition);
-        RaycastHit[] hits = Physics.RaycastAll(ray, _raycastDistance);
+        Debug.Log($"[Drop] TryDrop appelé. IsDragging={DragContext.IsDragging}, screenPos={screenPosition}");
 
-        InteractionRunner targetRunner = FindRunnerOnActivePage(hits, activePage);
+        Ray ray = _camera.ScreenPointToRay(screenPosition);
+        Physics.Raycast(ray, out RaycastHit hit, _raycastDistance);
+
+        Debug.Log($"[Drop] -> {hit.collider.gameObject.name}");
+
+        //InteractionRunner targetRunner = FindRunnerOnActivePage(hits, activePage);
+        InteractionRunner targetRunner = hit.collider.gameObject.GetComponent<InteractionRunner>();
 
         if (targetRunner != null)
         {
@@ -90,26 +95,39 @@ public class WorldDropHandler : MonoBehaviour
     /// <summary>
     /// Parcourt les hits et retourne le premier InteractionRunner dont le collider
     /// est listé dans PageObjects de la page active.
-    /// Utilise page.PageObjects.Contains() — identique à LayerDetector.IsInSameLayer().
+    /// Utilise page.PageObjects.Contains() - identique à LayerDetector.IsInSameLayer().
     /// </summary>
     private InteractionRunner FindRunnerOnActivePage(RaycastHit[] hits, Page activePage)
     {
         foreach (var hit in hits)
         {
-            GameObject hitObj = hit.collider.gameObject;
+            // 1. Remonte depuis le hit pour trouver l'empty listé dans pageObjects
+            GameObject pageObj = GetPageObject(hit.collider.gameObject, activePage);
+            if (pageObj == null) continue;
 
-            // Même logique que LayerDetector.IsInSameLayer()
-            if (!activePage.PageObjects.Contains(hitObj))
-                continue;
-
-            InteractionRunner runner = hitObj.GetComponent<InteractionRunner>();
+            // 2. L'InteractionRunner peut être sur le hit lui-même,
+            //    un parent, ou un enfant du pageObj
+            InteractionRunner runner = hit.collider.GetComponent<InteractionRunner>();
             if (runner == null)
-                runner = hitObj.GetComponentInParent<InteractionRunner>();
+                runner = hit.collider.GetComponentInParent<InteractionRunner>();
+            if (runner == null)
+                runner = pageObj.GetComponentInChildren<InteractionRunner>();
 
             if (runner != null)
                 return runner;
         }
+        return null;
+    }
 
+    private GameObject GetPageObject(GameObject hitObj, Page activePage)
+    {
+        Transform current = hitObj.transform;
+        while (current != null)
+        {
+            if (activePage.PageObjects.Contains(current.gameObject))
+                return current.gameObject;
+            current = current.parent;
+        }
         return null;
     }
 }
