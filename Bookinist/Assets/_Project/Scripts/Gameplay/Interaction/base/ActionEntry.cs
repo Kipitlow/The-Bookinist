@@ -18,6 +18,9 @@ public class ActionEntry
 
     [Tooltip("objet qui porte le sript")]
     public Slot slot;
+    
+    [Tooltip("objet qui porte le sript")]
+    public GameObject itemPrefab;
 
     [Tooltip("the door you want to open")]
     public OpenDoor openDoor;

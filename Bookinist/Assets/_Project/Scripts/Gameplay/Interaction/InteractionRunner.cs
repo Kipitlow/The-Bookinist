@@ -71,6 +71,11 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.item == null)
                     return false;
                 return condition.selectedItemIsWanted.IsCorrectObject(condition.item);
+
+            case ConditionType.IsNotSameItemSO:
+                if (condition.item == null)
+                    return false;
+                return !condition.selectedItemIsWanted.IsCorrectObject(condition.item);
                 
             case ConditionType.OnWichFrame:
                 if (condition.cycleThroughSprite == null)
@@ -121,8 +126,8 @@ public class InteractionRunner : MonoBehaviour
                 break;
 
             case ActionType.PlaceObject:
-                if (action.slot != null && action.target != null)
-                    action.slot.Fill();
+                if (action.slot != null && action.itemPrefab != null)
+                    action.slot.Fill(action.itemPrefab);
                 break;
 
             case ActionType.ClearObject:
@@ -143,6 +148,11 @@ public class InteractionRunner : MonoBehaviour
             case ActionType.Pick:
                 if (action.pickable != null)
                     action.pickable.Pick(this.gameObject);
+                break;
+
+            case ActionType.ResetHasMoved:
+                if (action.Move != null)
+                    action.Move.ResethasMoved();
                 break;
 
             case ActionType.CallFunction:
