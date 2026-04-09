@@ -40,6 +40,9 @@ public class MoveObject : MonoBehaviour
             if( _shouldReset)
             {
                 _shouldReset = false;
+                _hasMoved = false;
+                _hasMovedThisManyTime = 0;
+                Debug.Log("reset");
                 return;
             }
 
@@ -55,15 +58,17 @@ public class MoveObject : MonoBehaviour
         if (_isMoving) return;
         _targetPosition += new Vector3(offsetX, offsetY, 0f);
         _isMoving = true;
+        _hasMovedThisManyTime++;
+        Debug.Log(_hasMovedThisManyTime);
+
     }
     #endregion
 
     #region ResetHasMoved
     public void ResethasMoved()
     {
-        _shouldReset = true;
-        _hasMoved = false ;
-        _hasMovedThisManyTime = 0 ;
+        if ( _isMoving) return;
+            _shouldReset = true;
     }
 
     #endregion
