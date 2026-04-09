@@ -1,17 +1,12 @@
-<<<<<<< HEAD:Bookinist/Assets/_Project/Scripts/UI/UI_Engime/UI_Egnime_1/ScriptBalance.cs
-using UnityEngine;
-=======
 using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
->>>>>>> Paul:Bookinist/Assets/_Project/Scripts/UI_Engime/UI_Egnime_1/ScriptBalance.cs
 
 
 public class ScriptBalance : MonoBehaviour
 {
-<<<<<<< HEAD:Bookinist/Assets/_Project/Scripts/UI/UI_Engime/UI_Egnime_1/ScriptBalance.cs
     #region Variable
     [Header("Controller Rotation")]
     //[SerializeField] public GameObject UI_Gameplay;
@@ -20,10 +15,6 @@ public class ScriptBalance : MonoBehaviour
     public GameObject plateau1;
     public GameObject plateau2;
 
-
-
-=======
->>>>>>> Paul:Bookinist/Assets/_Project/Scripts/UI_Engime/UI_Egnime_1/ScriptBalance.cs
     [Header("Gestion UI")]
     //[SerializeField] public GameObject UI_Gameplay;
     public GameObject Prefable_Poids;
@@ -33,11 +24,7 @@ public class ScriptBalance : MonoBehaviour
     private GameObject Poids;
     private GameObject Poids2;
     private bool _targetOne;
-<<<<<<< HEAD:Bookinist/Assets/_Project/Scripts/UI/UI_Engime/UI_Egnime_1/ScriptBalance.cs
     #endregion
-=======
-
->>>>>>> Paul:Bookinist/Assets/_Project/Scripts/UI_Engime/UI_Egnime_1/ScriptBalance.cs
 
 
     void Start()
@@ -45,7 +32,6 @@ public class ScriptBalance : MonoBehaviour
         _targetOne=true;    
     }
 
-<<<<<<< HEAD:Bookinist/Assets/_Project/Scripts/UI/UI_Engime/UI_Egnime_1/ScriptBalance.cs
     private void Update()
     {
         if (balance == null) Debug.LogError("Balance éclater au sol");
@@ -56,10 +42,6 @@ public class ScriptBalance : MonoBehaviour
         plateau2.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
-
-
-=======
->>>>>>> Paul:Bookinist/Assets/_Project/Scripts/UI_Engime/UI_Egnime_1/ScriptBalance.cs
     public void FinishTask()
     {
         print("finish task");

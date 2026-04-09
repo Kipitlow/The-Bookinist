@@ -48,55 +48,6 @@ public class SC_Tache : MonoBehaviour
         StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
         Change_Tach_List();
     }
-<<<<<<< HEAD:Bookinist/Assets/_Project/Scripts/Gameplay/PuzzleSwitchTask/SC_Tache.cs
-    /*void Update()
-=======
-    void Update()
->>>>>>> Paul:Bookinist/Assets/_Project/Scripts/SwitchTache_Puzzles/SC_Tache.cs
-    {
-        {
-            if (CM_Player != null && Layeur_Actuelle_Du_Joueur != (int)Mathf.Round(CM_Player.transform.position.z) + 1 && Layeur_Actuelle_Du_Joueur != CM.currentIndexByLayer)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
-            {
-                Layeur_Actuelle_Du_Joueur = CM.currentIndexByLayer;
-<<<<<<< HEAD:Bookinist/Assets/_Project/Scripts/Gameplay/PuzzleSwitchTask/SC_Tache.cs
-=======
-                Debug.Log("A1");
->>>>>>> Paul:Bookinist/Assets/_Project/Scripts/SwitchTache_Puzzles/SC_Tache.cs
-                // Cette option consiste a cacher tous les objets qui sont assigner a un layeur, on fonction du layeur du joueur cache le rester des objets.
-                for (int i = 0; i < UI_cacheLayeur.Count; i++)
-                {
-                    if (i == Layeur_Actuelle_Du_Joueur)
-                    {
-<<<<<<< HEAD:Bookinist/Assets/_Project/Scripts/Gameplay/PuzzleSwitchTask/SC_Tache.cs
-=======
-                        Debug.Log("A2");
->>>>>>> Paul:Bookinist/Assets/_Project/Scripts/SwitchTache_Puzzles/SC_Tache.cs
-                        foreach (GameObject CacheObjet in UI_cacheLayeur[i].CanvaUI)
-                        {
-                            Debug.Log("B1");
-                            if (CacheObjet != null) CacheObjet.SetActive(true);
-                        }
-                    }
-                    else
-                    {
-<<<<<<< HEAD:Bookinist/Assets/_Project/Scripts/Gameplay/PuzzleSwitchTask/SC_Tache.cs
-=======
-                        Debug.Log("A3");
->>>>>>> Paul:Bookinist/Assets/_Project/Scripts/SwitchTache_Puzzles/SC_Tache.cs
-                        foreach (GameObject CacheObjet in UI_cacheLayeur[i].CanvaUI)
-                        {
-                            Debug.Log("B2");
-                            if (CacheObjet != null) CacheObjet.SetActive(false);
-                        }
-                    }
-                }
-           }
-        }
-<<<<<<< HEAD:Bookinist/Assets/_Project/Scripts/Gameplay/PuzzleSwitchTask/SC_Tache.cs
-    }*/
-=======
-    }
->>>>>>> Paul:Bookinist/Assets/_Project/Scripts/SwitchTache_Puzzles/SC_Tache.cs
     #endregion
         #region Methods
 
@@ -164,16 +115,6 @@ public class SC_Tache : MonoBehaviour
                 if(Liste_Mission[i].Nom_Mission == nom_mission)
                 {
                     Liste_Mission[i].TacheTerminer = true;
-                    /*if(Liste_Mission[i].nbrTask+1 >= Liste_Mission[i].nbrTaskMax)
-                    {
-                        Liste_Mission[i].nbrTask = Liste_Mission[i].nbrTaskMax;
-                        Liste_Mission[i].TacheTerminer = true;
-                    }
-                    else
-                    {
-                        Liste_Mission[i].nbrTask += 1;
-                        Liste_Mission[i].TacheTerminer = false;
-                    }*/
                     Change_Tach_List();
                 }
                 else
@@ -216,33 +157,6 @@ public class SC_Tache : MonoBehaviour
             rt.anchoredPosition = new Vector2(transform.position.x / 2, transform.position .y/ 2);
         }
     }
-
-    /*public void Affiche_Marchant(GameObject Self)
-    {
-        if (Self != null) Self.SetActive(false);
-
-        if (Balance != null)
-        {
-            Balance.SetActive(!Balance.activeSelf);
-            Debug.Log($"Trouver Balance: {Balance.activeSelf} "); 
-        }
-        else 
-        { 
-            Debug.LogWarning("Erreur du system Balance =null"); 
-        }
-            
-
-        if (CanvaMarchant != null)
-        {
-            CanvaMarchant.SetActive(!CanvaMarchant.activeSelf);
-            Debug.Log($"Trouver Balance: {CanvaMarchant.activeSelf} ");
-        }
-        else 
-        {
-            Debug.LogWarning("Erreur du system CanvaMarchant =null");
-        }
-    }*/
-    // Permet de faire un chronomêttre
     IEnumerator Chronometre()
     {
         if (totalSeconds - 1 >= 1)
@@ -263,7 +177,6 @@ public class SC_Tache : MonoBehaviour
             StopCoroutine("Chronometre");
         }
     } 
-    //Cette fonction ci-dessous est utiliser dans un event bouton, et permet de mêttre pause le chrono !!! Attention elle ne stop pas le déroulement dans la scéne
     public void SetChronom(bool Continue)
     {
         if(Continue)

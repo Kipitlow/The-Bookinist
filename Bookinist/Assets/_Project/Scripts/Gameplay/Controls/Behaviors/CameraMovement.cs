@@ -41,11 +41,7 @@ public class CameraMovement : MonoBehaviour
     public List<SnapPointManager> snapPointsManager = new();
     [SerializeField] private int SnapPointNumberOnOneLayer = 3;
     public int currentIndexLayer = 0;
-<<<<<<< HEAD:Bookinist/Assets/_Project/Scripts/Gameplay/Controls/Behaviors/CameraMovement.cs
-    public int currentIndexByLayer;
-=======
     public int currentIndexByLayer = 1;
->>>>>>> Paul:Bookinist/Assets/_Project/Scripts/Controls/CameraMovement.cs
 
     private float previousPinchDistance;
 
