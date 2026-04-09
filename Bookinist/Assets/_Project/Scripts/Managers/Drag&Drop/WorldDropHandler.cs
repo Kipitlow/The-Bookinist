@@ -65,7 +65,10 @@ public class WorldDropHandler : MonoBehaviour
         //InteractionRunner targetRunner = FindRunnerOnActivePage(hits, activePage);
         InteractionRunner targetRunner = hit.collider.gameObject.GetComponent<InteractionRunner>();
 
-        if (targetRunner != null)
+        int hitlayer = hit.collider.GetComponentInParent<Page>().PageIndex;
+        int camLayer = _camera.GetComponent<CameraMovement>().currentIndexLayer;
+
+        if (targetRunner != null && hitlayer == camLayer)
         {
             // Drop réussi : construit le context et déclenche l'interaction
             // instigator = GameObject de l'item UI source (pour traçabilité)
