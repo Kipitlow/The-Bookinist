@@ -81,8 +81,9 @@ public class WorldDropHandler : MonoBehaviour
                 item = draggedItem
             };
 
-            targetRunner.TryExecuteAll(context);
-            _inventoryController.RemoveInventoryItem(draggedItem);
+            bool wasHandled = targetRunner.TryExecuteAll(context);
+            if (wasHandled)
+                _inventoryController.RemoveInventoryItem(draggedItem);
 
             Debug.Log($"[WorldDropHandler] Drop réussi sur '{targetRunner.gameObject.name}' " +
                       $"(page {activePage.PageIndex}) avec '{draggedItem.itemName}'");
