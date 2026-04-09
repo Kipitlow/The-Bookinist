@@ -39,7 +39,7 @@ public class ActionEntryDrawer : PropertyDrawer
                 break;
 
             case ActionType.PlaceObject:
-                lines += 1;
+                lines += 2;
                 break;
 
             case ActionType.ClearObject:
@@ -114,6 +114,7 @@ public class ActionEntryDrawer : PropertyDrawer
             case ActionType.PlaceObject:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
                 r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("itemPrefab"));
                 break;
 
             case ActionType.ClearObject:
