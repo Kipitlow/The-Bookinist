@@ -5,4 +5,5 @@ public class InteractionContext
 {
     public GameObject instigator;
     public GameObject target;
+    public Item item;
 }
