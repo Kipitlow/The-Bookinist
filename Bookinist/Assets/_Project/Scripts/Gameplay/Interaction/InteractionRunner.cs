@@ -67,7 +67,7 @@ public class InteractionRunner : MonoBehaviour
             case ConditionType.IsEmpty:
                 if (condition.slot == null)
                     return false;
-                return condition.slot.IsEmpty() == !condition.shouldBeEmpty;
+                return condition.slot.IsEmpty() == condition.shouldBeEmpty;
 
             case ConditionType.IsSameItemSO:
                 if (condition.item == null)
