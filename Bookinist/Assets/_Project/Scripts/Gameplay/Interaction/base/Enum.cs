@@ -23,5 +23,8 @@ public enum ActionType
     CycleSprites,
     Move,
     ResetHasMoved,
-    Pick
+    Pick,
+    Destroy,
+    Drop
+
 }

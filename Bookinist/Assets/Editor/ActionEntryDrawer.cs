@@ -58,6 +58,14 @@ public class ActionEntryDrawer : PropertyDrawer
                 lines += 1;
                 break;
 
+            case ActionType.Drop:
+                lines += 2;
+                break;
+
+            case ActionType.Destroy:
+                lines += 0;
+                break;
+
             case ActionType.CycleSprites:
                 lines += 2;
 
@@ -136,6 +144,15 @@ public class ActionEntryDrawer : PropertyDrawer
 
             case ActionType.Pick:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("pickable"));
+                break;
+
+            case ActionType.Drop:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
+                break;
+
+            case ActionType.Destroy:
                 break;
 
             case ActionType.CycleSprites:

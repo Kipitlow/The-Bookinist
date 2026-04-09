@@ -162,6 +162,16 @@ public class InteractionRunner : MonoBehaviour
                     action.onExecute?.Invoke();
                 break;
 
+            case ActionType.Destroy:
+                if (action.target != null)
+                    Destroy(action.target);
+                break;
+
+            case ActionType.Drop:
+                if (action.slot != null)
+                    action.slot.FillWithSprite(action.item);
+                break;
+
         }
     }
     #endregion
