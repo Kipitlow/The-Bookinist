@@ -13,4 +13,9 @@ public class PlayerProfile
     {
         playerName = newName;
     }
+    
+    public int LevelToMaxExp(int level)
+    {
+        return level * 200;
+    }
 }

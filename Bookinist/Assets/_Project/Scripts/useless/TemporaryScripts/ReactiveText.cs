@@ -4,7 +4,9 @@ using UnityEngine;
 public enum DataDisplay
 {
     PlayerName,
+    PlayerNameNoPre,
     PlayerLevel,
+    PlayerLevelNoPre,
     PlayerXP,
     PlayerBooksUnlocked
 }
@@ -27,12 +29,20 @@ public class ReactiveText : MonoBehaviour
                 textVal.text = "Name : " + SaveSystem.instance.profile.playerName;
                 break;
 
+            case DataDisplay.PlayerNameNoPre:
+                textVal.text = SaveSystem.instance.profile.playerName;
+                break;
+
             case DataDisplay.PlayerLevel:
+                textVal.text = "LVL " + SaveSystem.instance.profile.playerLevel.ToString();
+                break;
+
+            case DataDisplay.PlayerLevelNoPre:
                 textVal.text = SaveSystem.instance.profile.playerLevel.ToString();
                 break;
 
             case DataDisplay.PlayerXP:
-                textVal.text = SaveSystem.instance.profile.playerXP.ToString() + " / " + (SaveSystem.instance.profile.playerXP + 1).ToString();
+                textVal.text = SaveSystem.instance.profile.playerXP.ToString() + " / " + SaveSystem.instance.profile.LevelToMaxExp(SaveSystem.instance.profile.playerLevel).ToString();
                 break;
 
             case DataDisplay.PlayerBooksUnlocked:
