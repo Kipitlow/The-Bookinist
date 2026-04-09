@@ -34,7 +34,7 @@ public class ScriptBalance : MonoBehaviour
 
     private void Update()
     {
-        if (balance == null) return;
+        if (balance == null) Debug.LogError("Balance éclater au sol");
         Vector3 Euler = balance.transform.eulerAngles;
 
         balanceSprite.transform.localRotation = Quaternion.Euler(Euler.x, Euler.y, Euler.z);
