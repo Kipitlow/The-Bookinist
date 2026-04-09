@@ -82,6 +82,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        Debug.Log("OnEndDrag Triggered");
         // Restaure l'opacité
         if (_canvasGroup != null)
             _canvasGroup.alpha = 1f;
@@ -97,8 +98,13 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (WorldDropHandler.Instance != null)
             WorldDropHandler.Instance.TryDrop(eventData.position);
 
+        
+
         // Nettoie le contexte
         DragContext.EndDrag();
+
+        if(DragContext.DraggedItem == null)
+            Debug.Log($"[Handler] Item dragged : null");
     }
 
     #endregion
