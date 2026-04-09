@@ -6,6 +6,11 @@ public class SaveService : MonoBehaviour
 
     private PlayerProfile profile => SaveSystem.instance.profile;
 
+    public void Awake()
+    {
+        instance = this;
+    }
+
     public void ChangeName(string newName)
     {
         profile.ChangePlayerName(newName);
