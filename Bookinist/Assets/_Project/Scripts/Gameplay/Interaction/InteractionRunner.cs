@@ -8,15 +8,18 @@ public class InteractionRunner : MonoBehaviour
     [SerializeField] private List<InteractionSet> _interactionSets = new();
 
     #region Try
-    public void TryExecuteAll(InteractionContext context)
+    public bool TryExecuteAll(InteractionContext context)
     {
+        bool anyExecuted = false;
         foreach (var set in _interactionSets)
         {
             if (AreConditionsValid(set.conditions, context))
             {
                 ExecuteActions(set.actions, context);
+                anyExecuted = true;
             }
         }
+        return anyExecuted;
     }
 
     private bool AreConditionsValid(List<ConditionEntry> conditions, InteractionContext context)
@@ -58,13 +61,7 @@ public class InteractionRunner : MonoBehaviour
                 return context.target == condition.target;
 
             case ConditionType.OnTouch:
-                if (context.target == null)
-                    return false;
-                return this.gameObject == context.target;
-
-            case ConditionType.OnDrag:
-                if (context.target == null)
-                    return false;
+                if (context.target == null || !context.isTouchEvent) return false;
                 return this.gameObject == context.target;
 
             case ConditionType.IsEmpty:

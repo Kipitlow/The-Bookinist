@@ -51,12 +51,18 @@ public class WorldDropHandler : MonoBehaviour
 
         if (activePage == null)
         {
+            Debug.LogWarning("[WorldDropHandler] Aucune page active trouvée.");
             return;
         }
+
+        Debug.Log($"[Drop] TryDrop appelé. IsDragging={DragContext.IsDragging}, screenPos={screenPosition}");
 
         Ray ray = _camera.ScreenPointToRay(screenPosition);
         Physics.Raycast(ray, out RaycastHit hit, _raycastDistance);
 
+        Debug.Log($"[Drop] -> {hit.collider.gameObject.name}");
+
+        //InteractionRunner targetRunner = FindRunnerOnActivePage(hits, activePage);
         InteractionRunner targetRunner = hit.collider.gameObject.GetComponent<InteractionRunner>();
 
         int hitlayer = hit.collider.GetComponentInParent<Page>().PageIndex;
@@ -67,21 +73,26 @@ public class WorldDropHandler : MonoBehaviour
             // Drop réussi : construit le context et déclenche l'interaction
             // instigator = GameObject de l'item UI source (pour traçabilité)
             // target     = objet 3D touché dans le monde
-
             InteractionContext context = new InteractionContext
             {
                 instigator = DragContext.SourceController.gameObject,
                 target = targetRunner.gameObject,
-                item = draggedItem          // champ à ajouter dans InteractionContext (voir ci-dessous)
+                isTouchEvent = false,
+                item = draggedItem
             };
 
-            targetRunner.TryExecuteAll(context);
-        }
-    }
+            bool wasHandled = targetRunner.TryExecuteAll(context);
+            if (wasHandled)
+                _inventoryController.RemoveInventoryItem(draggedItem);
 
-    public void Drop(Item item, Slot slot)
-    {
-        slot.FillWithSprite(item);
-        _inventoryController.RemoveInventoryItem(item);
+            Debug.Log($"[WorldDropHandler] Drop réussi sur '{targetRunner.gameObject.name}' " +
+                      $"(page {activePage.PageIndex}) avec '{draggedItem.itemName}'");
+        }
+        else
+        {
+            // Aucun objet valide sur la page active -> l'item reste dans l'inventaire
+            Debug.Log("[WorldDropHandler] Aucun InteractionRunner sur la page active. " +
+                      "L'item retourne dans l'inventaire.");
+        }
     }
 }
