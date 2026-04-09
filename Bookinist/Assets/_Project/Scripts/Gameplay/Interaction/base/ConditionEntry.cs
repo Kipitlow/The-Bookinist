@@ -56,5 +56,7 @@ public class ConditionEntry
     [Tooltip("check how many times object has moved")]
     public int HowManyTimes;
 
+    [Tooltip("check if inventory has one slot empty")]
+    public bool HasToCheckEmptynessInventory;
 
 }
