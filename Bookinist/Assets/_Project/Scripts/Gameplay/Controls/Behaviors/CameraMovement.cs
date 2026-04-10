@@ -157,9 +157,7 @@ public class CameraMovement : MonoBehaviour
         {
             float pressDuration = Time.time - pressStartTime;
             float movement = Vector2.Distance(pressStartPosition, GetPointerPosition());
-
             isPressing = false;
-
             if (isHolding)
             {
                 Debug.Log("Hold released");
@@ -170,22 +168,24 @@ public class CameraMovement : MonoBehaviour
             }
             else if (isDragging)
             {
-                if (GetPointerPosition().x < pressStartPosition.x)
+                if (!DragContext.WasDroppedThisFrame)
                 {
-                    currentIndexByLayer++;
-
-                    if (currentIndexByLayer > snapPointsManager[currentIndexLayer].snapPoints.Length - 1)
-                        currentIndexByLayer = snapPointsManager[currentIndexLayer].snapPoints.Length - 1;
+                    print("[Movement] Start swiping");
+                    if (GetPointerPosition().x < pressStartPosition.x)
+                    {
+                        currentIndexByLayer++;
+                        if (currentIndexByLayer > snapPointsManager[currentIndexLayer].snapPoints.Length - 1)
+                            currentIndexByLayer = snapPointsManager[currentIndexLayer].snapPoints.Length - 1;
+                    }
+                    else if (GetPointerPosition().x > pressStartPosition.x)
+                    {
+                        currentIndexByLayer--;
+                        if (currentIndexByLayer < 0)
+                            currentIndexByLayer = 0;
+                    }
+                    transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
+                    print(currentIndexByLayer);
                 }
-                else if (GetPointerPosition().x > pressStartPosition.x)
-                {
-                    currentIndexByLayer--;
-
-                    if (currentIndexByLayer < 0)
-                        currentIndexByLayer = 0;
-                }
-                transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
-                print(currentIndexByLayer);
             }
             isDragging = false;
             isHolding = false;

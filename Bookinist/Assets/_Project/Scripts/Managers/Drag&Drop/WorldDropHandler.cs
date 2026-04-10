@@ -39,6 +39,11 @@ public class WorldDropHandler : MonoBehaviour
             _camera = Camera.main;
     }
 
+    private void LateUpdate()
+    {
+        DragContext.ConsumeDropFlag();
+    }
+
     /// <summary>
     /// Appelé par ItemDragHandler.OnEndDrag avec la position écran du doigt.
     /// </summary>

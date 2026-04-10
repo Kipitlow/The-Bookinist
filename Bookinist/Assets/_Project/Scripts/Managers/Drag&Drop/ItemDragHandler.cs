@@ -103,8 +103,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         // Nettoie le contexte
         DragContext.EndDrag();
 
-        if(DragContext.DraggedItem == null)
-            Debug.Log($"[Handler] Item dragged : null");
+        print("[DragHandler] Not dragging anymore");
     }
 
     #endregion
