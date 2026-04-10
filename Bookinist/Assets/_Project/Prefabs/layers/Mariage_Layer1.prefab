@@ -283,6 +283,7 @@ MonoBehaviour:
   _nameBubbleRenderer: {fileID: 8598400640006541799}
   _nameBubbleText: {fileID: 3034204991636459838}
   _padding: {x: 3, y: 2}
+  _pivOffsetBook: {x: -1, y: -3, z: 0}
 --- !u!65 &7859973830679637538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -336,6 +337,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 2
       target: {fileID: 0}
@@ -490,6 +492,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -498,7 +501,7 @@ MonoBehaviour:
       layerDetector: {fileID: 0}
       slot: {fileID: 0}
       shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: b823da740980b4249aff3d3615942290, type: 2}
+      item: {fileID: 11400000, guid: da1090ded22d88b42b2a5b95617987ff, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
       cycleThroughSprite: {fileID: 0}
@@ -507,8 +510,9 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 3
+    - type: 11
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 7105573307723376972}
@@ -526,7 +530,38 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 0}
-      item: {fileID: 0}
+      item: {fileID: 11400000, guid: da1090ded22d88b42b2a5b95617987ff, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 7105573307723376972}
+      itemPrefab: {fileID: 2204687104674799107, guid: 1bc18ecb87ef2e441bcfc2044ea952c8, type: 3}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: da1090ded22d88b42b2a5b95617987ff, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: da1090ded22d88b42b2a5b95617987ff, type: 2}
 --- !u!114 &7105573307723376972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,7 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventoryController: {fileID: 0}
-  _prefabSprite: {fileID: 0}
+  _prefabSprite: {fileID: 7281052662607791975, guid: b34dbe1199f5eb64db5327005da0b075, type: 3}
 --- !u!65 &8340880668600800108
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -860,6 +895,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 6
       target: {fileID: 2487491004219493841}
@@ -1234,6 +1270,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -1251,12 +1288,13 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 3
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 5280502122721757423}
-      itemPrefab: {fileID: 2204687104674799107, guid: 1bc18ecb87ef2e441bcfc2044ea952c8, type: 3}
+      itemPrefab: {fileID: 2204687104674799107, guid: 5fa77cc418a1ac246acf9623b7a7d8a7, type: 3}
       openDoor: {fileID: 0}
       npcDialogue: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -1304,7 +1342,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 15, y: 30, z: 10}
+  m_Size: {x: 23, y: 20, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &7278566874961008637
 SpriteRenderer:
@@ -1700,7 +1738,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3352420972043177241}
   - component: {fileID: 1317314206365834472}
-  - component: {fileID: 1086230788276984091}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -1778,27 +1815,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &1086230788276984091
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4044899405079225591}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 8.83, y: 6, z: 0.2}
-  m_Center: {x: 0, y: 0.46, z: 0}
 --- !u!1 &4286950802716364090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,6 +1937,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -2003,7 +2020,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 13.8, y: 30.09, z: 0.19999999}
+  m_Size: {x: 13.8, y: 30.09, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4870577328146110398
 MonoBehaviour:
@@ -2325,6 +2342,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -2342,8 +2360,9 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 3
+    - type: 11
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 6463904288567990408}
@@ -2361,7 +2380,38 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 0}
-      item: {fileID: 0}
+      item: {fileID: 11400000, guid: 7310a20c3c65a7c4e8f6c567f6d05ca8, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 6463904288567990408}
+      itemPrefab: {fileID: 2204687104674799107, guid: 1bc18ecb87ef2e441bcfc2044ea952c8, type: 3}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 7310a20c3c65a7c4e8f6c567f6d05ca8, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: 7310a20c3c65a7c4e8f6c567f6d05ca8, type: 2}
 --- !u!114 &6463904288567990408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2375,7 +2425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventoryController: {fileID: 0}
-  _prefabSprite: {fileID: 0}
+  _prefabSprite: {fileID: 7281052662607791975, guid: b34dbe1199f5eb64db5327005da0b075, type: 3}
 --- !u!65 &3239687488154310348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2706,9 +2756,9 @@ SpriteRenderer:
   m_SortingLayerID: 2048427503
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6e1d4a8ebf6976145b84a0a24ca86f45, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e78ed2be62446240b094f1e30ee673b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 6.085, y: 10.534303}
@@ -2763,6 +2813,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -2845,7 +2896,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 14, y: 30, z: 0.19999999}
+  m_Size: {x: 14, y: 30, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7039026760964015476
 GameObject:

@@ -179,14 +179,15 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
+      slot: {fileID: 6905778844664347388}
+      shouldBeEmpty: 1
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -196,6 +197,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -213,8 +215,9 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 3
+    - type: 11
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 6905778844664347388}
@@ -225,6 +228,68 @@ MonoBehaviour:
       onExecute:
         m_PersistentCalls:
           m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 4400142794986835814}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 9217262366064112439}
+            m_TargetAssemblyTypeName: InteractionRunner, Assembly-CSharp
+            m_MethodName: CallTry
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 4400142794986835814}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -252,6 +317,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 3
       target: {fileID: 0}
       requiredTag: 
@@ -259,7 +325,7 @@ MonoBehaviour:
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
       slot: {fileID: 6905778844664347388}
-      shouldBeEmpty: 0
+      shouldBeEmpty: 1
       item: {fileID: 0}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -269,6 +335,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -286,8 +353,9 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 3
+    - type: 11
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 6905778844664347388}
@@ -297,7 +365,81 @@ MonoBehaviour:
       npcTalker: {fileID: 0}
       onExecute:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 9217262366064112439}
+            m_TargetAssemblyTypeName: InteractionRunner, Assembly-CSharp
+            m_MethodName: CallTry
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -550,14 +692,15 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
+      slot: {fileID: 5471089135800185935}
+      shouldBeEmpty: 1
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -567,6 +710,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -584,8 +728,9 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 3
+    - type: 11
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 5471089135800185935}
@@ -596,6 +741,68 @@ MonoBehaviour:
       onExecute:
         m_PersistentCalls:
           m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 4400142794986835814}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 9217262366064112439}
+            m_TargetAssemblyTypeName: InteractionRunner, Assembly-CSharp
+            m_MethodName: CallTry
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 4400142794986835814}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -623,14 +830,15 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
-      slot: {fileID: 6905778844664347388}
-      shouldBeEmpty: 0
+      slot: {fileID: 5471089135800185935}
+      shouldBeEmpty: 1
       item: {fileID: 0}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -640,6 +848,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -657,8 +866,9 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 3
+    - type: 11
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 5471089135800185935}
@@ -668,7 +878,81 @@ MonoBehaviour:
       npcTalker: {fileID: 0}
       onExecute:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 9217262366064112439}
+            m_TargetAssemblyTypeName: InteractionRunner, Assembly-CSharp
+            m_MethodName: CallTry
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -702,6 +986,7 @@ GameObject:
   - component: {fileID: 6036674347534122937}
   - component: {fileID: 9055518852005775529}
   - component: {fileID: 689950223142195886}
+  - component: {fileID: 1086951580436024200}
   - component: {fileID: 3120855301193886108}
   m_Layer: 0
   m_Name: Nuage_02
@@ -793,7 +1078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionSets:
-  - interactionName: Move_Nuage
+  - interactionName: moveCloudRight
     conditions:
     - type: 2
       target: {fileID: 0}
@@ -812,9 +1097,28 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 1086951580436024200}
+      HasMoved: 1
+      HowManyTimes: 1
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 0
-      target: {fileID: 1551119273995023771}
+    - type: 7
+      target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
       itemPrefab: {fileID: 0}
@@ -827,13 +1131,13 @@ MonoBehaviour:
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
+      Move: {fileID: 1086951580436024200}
+      OffsetX: -5
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
-    - type: 5
-      target: {fileID: 1551119273995023771}
+    - type: 8
+      target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
       itemPrefab: {fileID: 0}
@@ -842,29 +1146,56 @@ MonoBehaviour:
       npcTalker: {fileID: 0}
       onExecute:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 7036732203153800494}
-            m_TargetAssemblyTypeName: ScriptChangeEau, Assembly-CSharp
-            m_MethodName: addIntCloud
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
+      Move: {fileID: 1086951580436024200}
+      OffsetX: 10
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
-    - type: 5
-      target: {fileID: 1551119273995023771}
+  - interactionName: moveCloudLeft
+    conditions:
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 1086951580436024200}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    actions:
+    - type: 7
+      target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
       itemPrefab: {fileID: 0}
@@ -873,27 +1204,29 @@ MonoBehaviour:
       npcTalker: {fileID: 0}
       onExecute:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
-            m_MethodName: Terminer_Tache
-            m_Mode: 5
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 'SceneMariage: Chasse les nuage'
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
+      Move: {fileID: 1086951580436024200}
+      OffsetX: 5
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
+--- !u!114 &1086951580436024200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551119273995023771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _smoothTime: 0.2
+  _arrivalThreshold: 0.01
 --- !u!65 &3120855301193886108
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -913,7 +1246,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 28.1, y: 12, z: 5}
+  m_Size: {x: 10, y: 4, z: 2}
   m_Center: {x: 0, y: 0.0000019073486, z: 0}
 --- !u!1 &1571045866772013154
 GameObject:
@@ -977,7 +1310,7 @@ Transform:
   m_GameObject: {fileID: 1634506160151822110}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.53, y: -0.75, z: 0}
+  m_LocalPosition: {x: 4.83, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1091,6 +1424,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -1167,6 +1501,7 @@ GameObject:
   - component: {fileID: 8627377678851002280}
   - component: {fileID: 8840043476766714425}
   - component: {fileID: 4394346997502161527}
+  - component: {fileID: 5786420907582443606}
   - component: {fileID: 6227254505840770988}
   m_Layer: 0
   m_Name: Nuage_03
@@ -1258,7 +1593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionSets:
-  - interactionName: Move_Nuage
+  - interactionName: moveCloudRight
     conditions:
     - type: 2
       target: {fileID: 0}
@@ -1277,9 +1612,28 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 5786420907582443606}
+      HasMoved: 1
+      HowManyTimes: 1
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 0
-      target: {fileID: 1665725814872255074}
+    - type: 7
+      target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
       itemPrefab: {fileID: 0}
@@ -1292,13 +1646,13 @@ MonoBehaviour:
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
+      Move: {fileID: 5786420907582443606}
+      OffsetX: 5
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
-    - type: 5
-      target: {fileID: 1665725814872255074}
+    - type: 8
+      target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
       itemPrefab: {fileID: 0}
@@ -1307,29 +1661,56 @@ MonoBehaviour:
       npcTalker: {fileID: 0}
       onExecute:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 7036732203153800494}
-            m_TargetAssemblyTypeName: ScriptChangeEau, Assembly-CSharp
-            m_MethodName: addIntCloud
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
+      Move: {fileID: 5786420907582443606}
+      OffsetX: 10
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
-    - type: 5
-      target: {fileID: 1665725814872255074}
+  - interactionName: moveCloudLeft
+    conditions:
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 5786420907582443606}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    actions:
+    - type: 7
+      target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
       itemPrefab: {fileID: 0}
@@ -1338,27 +1719,29 @@ MonoBehaviour:
       npcTalker: {fileID: 0}
       onExecute:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
-            m_MethodName: Terminer_Tache
-            m_Mode: 5
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 'SceneMariage: Chasse les nuage'
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
+      Move: {fileID: 5786420907582443606}
+      OffsetX: -5
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
+--- !u!114 &5786420907582443606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665725814872255074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _smoothTime: 0.2
+  _arrivalThreshold: 0.01
 --- !u!65 &6227254505840770988
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1378,7 +1761,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 29.5, y: 10.7, z: 5}
+  m_Size: {x: 10, y: 4, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1710461516232536717
 GameObject:
@@ -1392,6 +1775,7 @@ GameObject:
   - component: {fileID: 375185553366198068}
   - component: {fileID: 8412932242987822253}
   - component: {fileID: 307568562583461313}
+  - component: {fileID: 1268568215973690842}
   m_Layer: 0
   m_Name: Nuage_01
   m_TagString: Untagged
@@ -1488,7 +1872,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 26.1, y: 10.7, z: 5}
+  m_Size: {x: 10, y: 4, z: 2}
   m_Center: {x: 0, y: 0.0000019073486, z: 0}
 --- !u!114 &307568562583461313
 MonoBehaviour:
@@ -1503,7 +1887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionSets:
-  - interactionName: Nuage
+  - interactionName: moveCloudRight
     conditions:
     - type: 2
       target: {fileID: 0}
@@ -1522,9 +1906,28 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 1268568215973690842}
+      HasMoved: 1
+      HowManyTimes: 1
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 0
-      target: {fileID: 1710461516232536717}
+    - type: 7
+      target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
       itemPrefab: {fileID: 0}
@@ -1537,13 +1940,13 @@ MonoBehaviour:
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
+      Move: {fileID: 1268568215973690842}
+      OffsetX: 5
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
-    - type: 5
-      target: {fileID: 1710461516232536717}
+    - type: 8
+      target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
       itemPrefab: {fileID: 0}
@@ -1552,29 +1955,56 @@ MonoBehaviour:
       npcTalker: {fileID: 0}
       onExecute:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 7036732203153800494}
-            m_TargetAssemblyTypeName: ScriptChangeEau, Assembly-CSharp
-            m_MethodName: addIntCloud
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
+      Move: {fileID: 1268568215973690842}
+      OffsetX: 10
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
-    - type: 5
-      target: {fileID: 1710461516232536717}
+  - interactionName: moveCloudLeft
+    conditions:
+    - type: 2
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 1268568215973690842}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    actions:
+    - type: 7
+      target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
       itemPrefab: {fileID: 0}
@@ -1583,27 +2013,29 @@ MonoBehaviour:
       npcTalker: {fileID: 0}
       onExecute:
         m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
-            m_MethodName: Terminer_Tache
-            m_Mode: 5
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 'SceneMariage: Chasse les nuage'
-              m_BoolArgument: 0
-            m_CallState: 2
+          m_Calls: []
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
+      Move: {fileID: 1268568215973690842}
+      OffsetX: -5
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
+--- !u!114 &1268568215973690842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710461516232536717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _smoothTime: 0.2
+  _arrivalThreshold: 0.01
 --- !u!1 &1776108927248272357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,7 +2065,7 @@ Transform:
   m_GameObject: {fileID: 1776108927248272357}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7, y: 2.52, z: 0}
+  m_LocalPosition: {x: -0.1838429, y: 3.5153558, z: 0.5048096}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1747,6 +2179,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -1878,7 +2311,7 @@ Transform:
   m_GameObject: {fileID: 1965428382130740928}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.26, y: 3.63, z: 0}
+  m_LocalPosition: {x: 6.56, y: 3.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1992,6 +2425,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -2318,6 +2752,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 3
       target: {fileID: 0}
       requiredTag: 
@@ -2325,7 +2760,7 @@ MonoBehaviour:
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
       slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
+      shouldBeEmpty: 1
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -2335,6 +2770,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -2352,8 +2788,9 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 3
+    - type: 11
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 4633567926509822577}
@@ -2364,6 +2801,68 @@ MonoBehaviour:
       onExecute:
         m_PersistentCalls:
           m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 4400142794986835814}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 9217262366064112439}
+            m_TargetAssemblyTypeName: InteractionRunner, Assembly-CSharp
+            m_MethodName: CallTry
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 4400142794986835814}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -2391,14 +2890,15 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
-      slot: {fileID: 6905778844664347388}
-      shouldBeEmpty: 0
+      slot: {fileID: 4633567926509822577}
+      shouldBeEmpty: 1
       item: {fileID: 0}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -2408,6 +2908,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -2425,8 +2926,9 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 3
+    - type: 11
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 4633567926509822577}
@@ -2436,7 +2938,81 @@ MonoBehaviour:
       npcTalker: {fileID: 0}
       onExecute:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 9217262366064112439}
+            m_TargetAssemblyTypeName: InteractionRunner, Assembly-CSharp
+            m_MethodName: CallTry
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -2490,37 +3066,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3844705245665300409}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3658633981356791720
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 702109312275237117}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &702109312275237117
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3658633981356791720}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7112083112492688035}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3886226625964495449
 GameObject:
   m_ObjectHideFlags: 0
@@ -2553,7 +3098,6 @@ Transform:
   m_Children:
   - {fileID: 3844705245665300409}
   - {fileID: 4706412778175483344}
-  - {fileID: 702109312275237117}
   - {fileID: 2606402159680751532}
   - {fileID: 8799200867647015449}
   - {fileID: 3291033382778382018}
@@ -2572,26 +3116,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageObjects:
-  - {fileID: 0}
-  - {fileID: 6708910490051694838}
-  - {fileID: 0}
-  - {fileID: 6117205790584780616}
-  - {fileID: 1710461516232536717}
-  - {fileID: 1551119273995023771}
-  - {fileID: 1665725814872255074}
-  - {fileID: 0}
+  - {fileID: 7559275831146446711}
+  - {fileID: 7559275831146446711}
+  - {fileID: 8105794944866442438}
+  - {fileID: 8486927982958438086}
   - {fileID: 8800557930603560847}
   - {fileID: 2078044835163157572}
-  - {fileID: 8108103698655964381}
-  - {fileID: 1947493327873725491}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1947493327873725491}
+  - {fileID: 6725737510195940500}
   - {fileID: 4947474280886968778}
+  - {fileID: 1776108927248272357}
+  - {fileID: 1634506160151822110}
+  - {fileID: 8726937502343122360}
+  - {fileID: 8066803036229618107}
+  - {fileID: 4400142794986835814}
+  - {fileID: 1965428382130740928}
+  - {fileID: 4348273619064075406}
+  - {fileID: 6454478327709482460}
+  - {fileID: 8666410605102737223}
+  - {fileID: 6117205790584780616}
+  - {fileID: 6708910490051694838}
   - {fileID: 1710461516232536717}
   - {fileID: 1551119273995023771}
   - {fileID: 1665725814872255074}
+  - {fileID: 5851616028950299277}
+  - {fileID: 2639512941852062160}
+  - {fileID: 1533350514069478635}
+  - {fileID: 4914524472081321756}
+  - {fileID: 918881376590228950}
+  - {fileID: 8256351256893729805}
   pageIndex: 1
 --- !u!1 &4348273619064075406
 GameObject:
@@ -2622,7 +3174,7 @@ Transform:
   m_GameObject: {fileID: 4348273619064075406}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.36, y: 1.14, z: 0}
+  m_LocalPosition: {x: 1.77, y: 3.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2736,6 +3288,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -2830,7 +3383,7 @@ Transform:
   m_GameObject: {fileID: 4400142794986835814}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.65, y: 0.08, z: 0}
+  m_LocalPosition: {x: 11.48, y: 4.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2944,6 +3497,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -3152,14 +3706,15 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
+      slot: {fileID: 6112968420535144930}
+      shouldBeEmpty: 1
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -3169,6 +3724,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -3186,8 +3742,9 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 3
+    - type: 11
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 6112968420535144930}
@@ -3198,6 +3755,68 @@ MonoBehaviour:
       onExecute:
         m_PersistentCalls:
           m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 4400142794986835814}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 9217262366064112439}
+            m_TargetAssemblyTypeName: InteractionRunner, Assembly-CSharp
+            m_MethodName: CallTry
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 4400142794986835814}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -3225,14 +3844,15 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
-      slot: {fileID: 6905778844664347388}
-      shouldBeEmpty: 0
+      slot: {fileID: 6112968420535144930}
+      shouldBeEmpty: 1
       item: {fileID: 0}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -3242,6 +3862,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -3259,8 +3880,9 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 3
+    - type: 11
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 6112968420535144930}
@@ -3270,7 +3892,81 @@ MonoBehaviour:
       npcTalker: {fileID: 0}
       onExecute:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 9217262366064112439}
+            m_TargetAssemblyTypeName: InteractionRunner, Assembly-CSharp
+            m_MethodName: CallTry
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -3322,7 +4018,7 @@ Transform:
   m_GameObject: {fileID: 4947474280886968778}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7, y: -0.4, z: 0}
+  m_LocalPosition: {x: -2.0419846, y: 4.608464, z: -0.12073712}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3436,6 +4132,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -3499,7 +4196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24c7b5e8bbbba14d9cb542165813fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _item: {fileID: 11400000, guid: 846508e051531fa478a36dbd525c5d56, type: 2}
+  _item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
   _invController: {fileID: 0}
 --- !u!1 &5851616028950299277
 GameObject:
@@ -3644,14 +4341,15 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
+      slot: {fileID: 7499541439770442492}
+      shouldBeEmpty: 1
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -3661,6 +4359,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -3678,8 +4377,9 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 3
+    - type: 11
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 7499541439770442492}
@@ -3690,6 +4390,68 @@ MonoBehaviour:
       onExecute:
         m_PersistentCalls:
           m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 4400142794986835814}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 9217262366064112439}
+            m_TargetAssemblyTypeName: InteractionRunner, Assembly-CSharp
+            m_MethodName: CallTry
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 4400142794986835814}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -3717,14 +4479,15 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
-      slot: {fileID: 6905778844664347388}
-      shouldBeEmpty: 0
+      slot: {fileID: 7499541439770442492}
+      shouldBeEmpty: 1
       item: {fileID: 0}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -3734,6 +4497,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -3751,8 +4515,9 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
-    - type: 3
+    - type: 11
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 7499541439770442492}
@@ -3762,7 +4527,81 @@ MonoBehaviour:
       npcTalker: {fileID: 0}
       onExecute:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+    - type: 5
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 4633567926509822577}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 9217262366064112439}
+            m_TargetAssemblyTypeName: InteractionRunner, Assembly-CSharp
+            m_MethodName: CallTry
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -3797,7 +4636,6 @@ GameObject:
   - component: {fileID: 4281853094593211494}
   - component: {fileID: 6554706546922077623}
   - component: {fileID: 1302912034212122671}
-  - component: {fileID: 7036732203153800494}
   m_Layer: 0
   m_Name: etang Nectar
   m_TagString: Untagged
@@ -3894,7 +4732,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 33, y: 5.8, z: 0.2}
+  m_Size: {x: 33, y: 5.8, z: 2}
   m_Center: {x: 0, y: 0.000000014901161, z: 0}
 --- !u!114 &1302912034212122671
 MonoBehaviour:
@@ -3903,13 +4741,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6117205790584780616}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionSets:
-  - interactionName: Prend sceau Nectard
+  - interactionName: get nectar
     conditions:
     - type: 2
       target: {fileID: 0}
@@ -3928,6 +4766,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -3945,6 +4784,61 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 79c71621f29b2e944ba1d568b75247eb, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 1268568215973690842}
+      HasMoved: 1
+      HowManyTimes: 1
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 79c71621f29b2e944ba1d568b75247eb, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 1086951580436024200}
+      HasMoved: 1
+      HowManyTimes: 1
+      HasToCheckEmptynessInventory: 0
+    - type: 9
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 79c71621f29b2e944ba1d568b75247eb, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 5786420907582443606}
+      HasMoved: 1
+      HowManyTimes: 1
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 5
       target: {fileID: 0}
@@ -4008,49 +4902,6 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
-            m_MethodName: Terminer_Tache
-            m_Mode: 5
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: "SceneMariage: 3\xE9me Offrandre Le N\xE9ctar"
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 0}
---- !u!114 &7036732203153800494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6117205790584780616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82614d68f6fa545428f23f66efb72eef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6454478327709482460
 GameObject:
   m_ObjectHideFlags: 0
@@ -4080,7 +4931,7 @@ Transform:
   m_GameObject: {fileID: 6454478327709482460}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.24, y: 2.93, z: 0}
+  m_LocalPosition: {x: 1.8134923, y: 4.955406, z: 0.29120687}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4194,6 +5045,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -4375,7 +5227,7 @@ Transform:
   m_GameObject: {fileID: 6725737510195940500}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.57, y: 1.43, z: 0}
+  m_LocalPosition: {x: 8.76, y: 3.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4489,6 +5341,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -4784,7 +5637,7 @@ Transform:
   m_GameObject: {fileID: 8066803036229618107}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.92, y: 1.86, z: 0}
+  m_LocalPosition: {x: 8.84, y: 5.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4898,6 +5751,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -5102,7 +5956,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8691509174810043412}
   - component: {fileID: 3405101499372562532}
-  - component: {fileID: 4997106687485784053}
+  - component: {fileID: 9217262366064112439}
+  - component: {fileID: 5898718780113638903}
   m_Layer: 0
   m_Name: Socle_Couronne
   m_TagString: Untagged
@@ -5120,8 +5975,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 9.74, y: -2.91, z: 0}
-  m_LocalScale: {x: 6.476438, y: 4, z: 4}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4190750497323433524}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5180,7 +6035,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4997106687485784053
+--- !u!114 &9217262366064112439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5189,15 +6044,136 @@ MonoBehaviour:
   m_GameObject: {fileID: 8256351256893729805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d1b1fb846e7eb64c8fe2aa3957ae071, type: 3}
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefableFlowers: {fileID: 8036025160952648915, guid: 1877b91d55314b24ea2fcdc26a2ff2ef, type: 3}
-  RougeFleur: {fileID: 21300000, guid: e46d46ef5ce5c7a4f84c2ba8cd83fecc, type: 3}
-  VioletFleur: {fileID: 21300000, guid: dcf763ffb1b261c4693d67c9badd0837, type: 3}
-  couronne_rouge: {fileID: 0}
-  couronne_fusion: {fileID: 0}
-  couronne_violet: {fileID: 0}
+  _interactionSets:
+  - interactionName: spawn Couronne de fleur
+    conditions:
+    - type: 3
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 7499541439770442492}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 3
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 4633567926509822577}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 3
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 5471089135800185935}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 3
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 6112968420535144930}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    - type: 3
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 6905778844664347388}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+    actions:
+    - type: 3
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 5898718780113638903}
+      itemPrefab: {fileID: 2204687104674799107, guid: c77d82d9335222446b120efb781eefab, type: 3}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+--- !u!114 &5898718780113638903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256351256893729805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3580de2f1e903942aab7a2f23e8136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventoryController: {fileID: 0}
+  _prefabSprite: {fileID: 0}
 --- !u!1 &8486927982958438086
 GameObject:
   m_ObjectHideFlags: 0
@@ -5314,7 +6290,7 @@ Transform:
   m_GameObject: {fileID: 8666410605102737223}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.63, y: 0.63, z: 0}
+  m_LocalPosition: {x: -1.79, y: 3.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5428,6 +6404,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -5522,7 +6499,7 @@ Transform:
   m_GameObject: {fileID: 8726937502343122360}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.36, y: 3.23, z: 0}
+  m_LocalPosition: {x: 3.89, y: 3.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5636,6 +6613,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
