@@ -773,24 +773,6 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: 
     conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -1668,6 +1650,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1178204253}
     - target: {fileID: 1302912034212122671, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302912034212122671, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 79c71621f29b2e944ba1d568b75247eb, type: 2}
+    - target: {fileID: 1302912034212122671, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302912034212122671, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].selectedItemIsWanted
+      value: 
+      objectReference: {fileID: 247390102}
+    - target: {fileID: 1302912034212122671, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].selectedItemIsWanted
       value: 
       objectReference: {fileID: 247390102}
@@ -1723,6 +1721,14 @@ PrefabInstance:
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
+    - target: {fileID: 3120855301193886108, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_Size.x
+      value: 9.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120855301193886108, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_Size.y
+      value: 5.6
+      objectReference: {fileID: 0}
     - target: {fileID: 3141869208044461615, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2047,6 +2053,18 @@ PrefabInstance:
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 5263445460718509517, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263445460718509517, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263445460718509517, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 5673547119974503688, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _item
       value: 
@@ -2067,6 +2085,18 @@ PrefabInstance:
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 6036674347534122937, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036674347534122937, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036674347534122937, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6192463288125530569, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].interactionName
       value: on drag orange
@@ -2223,6 +2253,14 @@ PrefabInstance:
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
+    - target: {fileID: 6227254505840770988, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_Size.x
+      value: 10.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227254505840770988, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6339601780718117443, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _item
       value: 
@@ -2815,6 +2853,14 @@ PrefabInstance:
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 8412932242987822253, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_Size.x
+      value: 9.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412932242987822253, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_Size.y
+      value: 4.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8579172474021792402, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.size
       value: 2
@@ -2827,6 +2873,18 @@ PrefabInstance:
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
+    - target: {fileID: 8627377678851002280, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8627377678851002280, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8627377678851002280, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.31
+      objectReference: {fileID: 0}
     - target: {fileID: 8894239458158261333, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
