@@ -76,11 +76,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2048427503
-  m_SortingLayer: 5
-  m_SortingOrder: 1
+  m_SortingLayerID: 1603831995
+  m_SortingLayer: 4
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: bbc3b3cdcadc1ee4494db897b2471812, type: 3}
-  m_Color: {r: 0.31132078, g: 0.3098523, b: 0.3098523, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -122,6 +122,7 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
     actions:
     - type: 9
       target: {fileID: 0}
@@ -141,6 +142,7 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 2636925257542229572}
+      item: {fileID: 0}
 --- !u!65 &916289882676637760
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -160,7 +162,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 13.640001, y: 28.947899, z: 2.48}
+  m_Size: {x: 25, y: 25, z: 2.48}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2636925257542229572
 MonoBehaviour:
@@ -174,5 +176,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24c7b5e8bbbba14d9cb542165813fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _item: {fileID: 11400000, guid: b823da740980b4249aff3d3615942290, type: 2}
+  _item: {fileID: 11400000, guid: 0a709a5066689d24fb824e471a5f0d88, type: 2}
   _invController: {fileID: 0}

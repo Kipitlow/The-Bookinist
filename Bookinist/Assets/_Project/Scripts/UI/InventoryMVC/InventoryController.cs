@@ -70,6 +70,11 @@ public class InventoryController : MonoBehaviour
         activeItem = _emptySlot;
     }
 
+    public bool IsInventoryFull()
+    {
+        return _inventoryModel.IsInventoryFull();
+    }
+
     public void UpdateInventory()
     {
         _inventoryView.UpdateInventory(_inventoryModel.GetInventoryContent());

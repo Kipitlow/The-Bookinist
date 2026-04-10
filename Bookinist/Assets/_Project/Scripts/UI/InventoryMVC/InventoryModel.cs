@@ -18,7 +18,7 @@ public class InventoryModel : MonoBehaviour
 
     public void AddItem(Item itemToAdd)
     {
-        if (_inventoryContents.Count < _inventorySlots)
+        if (IsInventoryFull())
             _inventoryContents.Add(itemToAdd);
     }
 
@@ -55,6 +55,11 @@ public class InventoryModel : MonoBehaviour
     {
         return _inventoryContents.Count < _inventorySlots;
 
+    }
+
+    public bool IsInventoryFull()
+    {
+        return _inventorySlots >= _inventoryContents.Count ;
     }
     #endregion
 }
