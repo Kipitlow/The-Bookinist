@@ -11,4 +11,9 @@ public class AccountCreator : MonoBehaviour
         SaveService.instance.ChangeName(username);
         SaveSystem.instance.Save();
     }
+
+    public void DeleteAccount()
+    {
+        SaveSystem.instance.Delete();
+    }
 }
