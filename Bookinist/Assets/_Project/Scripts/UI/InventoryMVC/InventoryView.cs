@@ -24,7 +24,7 @@ public class InventoryView : MonoBehaviour
         {
             Destroy(_inventoryParent.transform.GetChild(i).gameObject);
         }
-        Debug.Log(objectList.Count);
+        //Debug.Log(objectList.Count);
         for (int i = 0; i < objectList.Count; i++)
         {
             
