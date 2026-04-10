@@ -5,6 +5,7 @@ public enum ConditionType
     OnTouch,
     IsEmpty,
     IsSameItemSO,
+    IsNotSameItemSO,
     HasDialogueStarted,
     HasDialogueEnded,
     OnWichFrame,
@@ -23,5 +24,8 @@ public enum ActionType
     CycleSprites,
     Move,
     ResetHasMoved,
-    Pick
+    Pick,
+    Destroy,
+    Drop
+
 }

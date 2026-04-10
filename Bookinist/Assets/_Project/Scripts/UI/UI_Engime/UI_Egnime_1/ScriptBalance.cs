@@ -1,4 +1,8 @@
+using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class ScriptBalance : MonoBehaviour
@@ -10,8 +14,6 @@ public class ScriptBalance : MonoBehaviour
     public GameObject balance;
     public GameObject plateau1;
     public GameObject plateau2;
-
-
 
     [Header("Gestion UI")]
     //[SerializeField] public GameObject UI_Gameplay;
@@ -39,8 +41,6 @@ public class ScriptBalance : MonoBehaviour
         plateau1.transform.rotation = Quaternion.Euler(0, 0, 0);
         plateau2.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
-
-
 
     public void FinishTask()
     {

@@ -6,10 +6,11 @@ public class SelectedItemIsWanted : MonoBehaviour
     public bool IsCorrectObject(Item objName)
     {
         if (objName == null) return false;
-        if (_inventoryController.activeItem.itemName == objName.itemName)
-        {
-            return true;
-        }
-        return false;
+        return _inventoryController.activeItem.name == objName.itemName;
+
+
+        //if (objName == null) return false;
+        //if (DragContext.DraggedItem == null) return false; // pas de drag en cours
+        //return DragContext.DraggedItem.itemName == objName.itemName;
     }
 }
