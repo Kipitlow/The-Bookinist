@@ -7,15 +7,18 @@ public class InteractionRunner : MonoBehaviour
     [SerializeField] private List<InteractionSet> _interactionSets = new();
 
     #region Try
-    public void TryExecuteAll(InteractionContext context)
+    public bool TryExecuteAll(InteractionContext context)
     {
+        bool anyExecuted = false;
         foreach (var set in _interactionSets)
         {
             if (AreConditionsValid(set.conditions, context))
             {
                 ExecuteActions(set.actions, context);
+                anyExecuted = true;
             }
         }
+        return anyExecuted;
     }
 
     private bool AreConditionsValid(List<ConditionEntry> conditions, InteractionContext context)
@@ -57,8 +60,7 @@ public class InteractionRunner : MonoBehaviour
                 return context.target == condition.target;
 
             case ConditionType.OnTouch:
-                if (context.target == null)
-                    return false;
+                if (context.target == null || !context.isTouchEvent) return false;
                 return this.gameObject == context.target;
 
             case ConditionType.IsEmpty:
@@ -70,6 +72,11 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.item == null)
                     return false;
                 return condition.selectedItemIsWanted.IsCorrectObject(condition.item);
+
+            case ConditionType.IsNotSameItemSO:
+                if (condition.item == null)
+                    return false;
+                return !condition.selectedItemIsWanted.IsCorrectObject(condition.item);
                 
             case ConditionType.OnWichFrame:
                 if (condition.cycleThroughSprite == null)
@@ -121,8 +128,8 @@ public class InteractionRunner : MonoBehaviour
                 break;
 
             case ActionType.PlaceObject:
-                if (action.slot != null && action.target != null)
-                    action.slot.Fill();
+                if (action.slot != null && action.itemPrefab != null)
+                    action.slot.Fill(action.itemPrefab);
                 break;
 
             case ActionType.ClearObject:
@@ -145,12 +152,41 @@ public class InteractionRunner : MonoBehaviour
                     action.pickable.Pick(this.gameObject);
                 break;
 
+            case ActionType.ResetHasMoved:
+                if (action.Move != null)
+                    action.Move.ResethasMoved();
+                break;
+
             case ActionType.CallFunction:
                 if (action.onExecute != null)
                     action.onExecute?.Invoke();
                 break;
 
+            case ActionType.Destroy:
+                if (action.target != null)
+                    Destroy(action.target);
+                break;
+
+            case ActionType.Drop:
+                if (action.slot != null)
+                    action.slot.FillWithSprite(action.item);
+                break;
+
         }
     }
     #endregion
+
+    #region Call Try
+
+    public void CallTry()
+    {
+        InteractionContext context = new InteractionContext
+        {
+        };
+
+        TryExecuteAll(context);
+    }
+
+    #endregion
+
 }

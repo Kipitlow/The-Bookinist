@@ -28,7 +28,8 @@ public class TouchDetection : MonoBehaviour
                 InteractionContext context = new InteractionContext
                 {
                     instigator = null,
-                    target = hit.collider.gameObject
+                    target = hit.collider.gameObject,
+                    isTouchEvent = true,
                 };
 
                 if (interactionRunner != null)
@@ -48,7 +49,8 @@ public class TouchDetection : MonoBehaviour
                     InteractionContext context = new InteractionContext
                     {
                         instigator = null,
-                        target = hit.collider.gameObject
+                        target = hit.collider.gameObject,
+                        isTouchEvent = true,
                     };
 
                     if (interactionRunner != null)

@@ -10,6 +10,7 @@ public class ItemController : MonoBehaviour/*, IDragHandler, IBeginDragHandler, 
     [SerializeField] private ItemView _itemView;
     [SerializeField] private bool _itemIsSelected;
     public static Action<Item> onItemClicked;
+    public Item ItemScriptable => _itemModel.itemScriptable;
     //[SerializeField] private GameObject _EventManager;
     //private RectTransform _rectTransform;
     //private Image _image;
