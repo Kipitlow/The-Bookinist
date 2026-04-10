@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class InventoryModel : MonoBehaviour
 {
@@ -56,5 +57,6 @@ public class InventoryModel : MonoBehaviour
         return _inventoryContents.Count < _inventorySlots;
 
     }
+
     #endregion
 }
