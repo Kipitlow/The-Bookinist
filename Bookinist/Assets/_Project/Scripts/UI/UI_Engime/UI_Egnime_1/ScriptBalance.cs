@@ -33,6 +33,7 @@ public class ScriptBalance : MonoBehaviour
     private bool _targetOne; //permet de d'instantier le deuxiéme poids "c'est la lyre"
     private int _poidAccumuller=0;
     private int _poidAutoriser=0;
+    private GameObject _2emePoids;
 
     #endregion
 
@@ -130,8 +131,8 @@ public class ScriptBalance : MonoBehaviour
         if (_targetOne==true)
         {
             _targetOne=false;
-            GameObject _2emePoids = Instantiate(prefable_Poids, _ballMass);
-            _listPoids.Add(_2emePoids);
+            _2emePoids = Instantiate(prefable_Poids, _ballMass);
+            
             _2emePoids.GetComponent<Rigidbody2D>().mass = 100;
             _2emePoids.GetComponent<SpriteRenderer>().sprite = lyreSTP.itemSprite;
             _2emePoids.GetComponent<BoxCollider2D>().size = new Vector2(4.78f, 6f);
@@ -240,10 +241,9 @@ public class ScriptBalance : MonoBehaviour
     IEnumerator _setItem()
     {
         InventoryController inventoryController = GameObject.Find("Canvas").GetComponentInChildren<InventoryController>() ;
-        int _iteamRestant = 0;
         if(inventoryController!=null) 
         {
-            for(int i=0; i<_stockIteam.Count+1; i++)
+            for(int i=0; i<_stockIteam.Count; i++)
             {
                 if (_listPoids[i] != null && _stockIteam[i] != null)//&& inventoryController._inventoryContents
                 {
@@ -251,6 +251,7 @@ public class ScriptBalance : MonoBehaviour
                     Destroy(_listPoids[i]);
                     _poidAutoriser -= 1;
                 }
+                Destroy(_2emePoids);
                 //if (_stockIteam[i].itemName == "Lyre") Destroy(_stockIteam[i]);
                 yield return new WaitForSeconds(0.1f);
             }
