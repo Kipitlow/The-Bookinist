@@ -10,6 +10,8 @@ public class PageManager : MonoBehaviour
     public static int layerSpread = 20;
     public static int maxLayer;
 
+    [SerializeField] private int _activePageIndex = 0;
+
     private void Awake()
     {
         maxLayer = _layerHolder.Count;
@@ -36,5 +38,17 @@ public class PageManager : MonoBehaviour
             else
                 Debug.LogWarning($"[PageManager] Pas de composant Page sur {layer.name}.", layer);
         }
+    }
+
+    public Page GetActivePage()
+    {
+        if (_activePageIndex < 0 || _activePageIndex >= _layerHolder.Count)
+            return null;
+        return _layerHolder[_activePageIndex].GetComponent<Page>();
+    }
+
+    public void SetActivePage(int index)
+    {
+        _activePageIndex = Mathf.Clamp(index, 0, _layerHolder.Count - 1);
     }
 }

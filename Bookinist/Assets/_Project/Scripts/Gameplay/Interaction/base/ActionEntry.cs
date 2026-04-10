@@ -18,6 +18,9 @@ public class ActionEntry
 
     [Tooltip("objet qui porte le sript")]
     public Slot slot;
+    
+    [Tooltip("objet qui porte le sript")]
+    public GameObject itemPrefab;
 
     [Tooltip("the door you want to open")]
     public OpenDoor openDoor;
@@ -52,5 +55,6 @@ public class ActionEntry
     [Tooltip("InventaireManager")]
     public Pickable pickable;
 
-
+    [Tooltip("SO de l'item")]
+    public Item item;
 }
