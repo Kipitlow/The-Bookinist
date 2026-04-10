@@ -130,9 +130,8 @@ public class ScriptBalance : MonoBehaviour
             Poids2 = null;
         }*/
 
-
+        if (_poidAccumuler >= 3) {  return; }
         Transform _ballMass = GameObject.Find("Target_spawn_Poids_R").transform;
-        //Poids = Instantiate(Prefable_Poids, _ballMass);
         Poids = Instantiate(Prefable_Poids, _ballMass);
         
         if (Poids.GetComponent<Rigidbody>() != null) { Debug.LogError("Pourquoi ce foutus de ce RigBody"); }
@@ -194,6 +193,10 @@ public class ScriptBalance : MonoBehaviour
                 _poidAccumuler += 1;
                 _stockIteam.Add(Context);
                 break;
+        }
+        foreach( var gay in _stockIteam)
+        {
+
         }
 
 
