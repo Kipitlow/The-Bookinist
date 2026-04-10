@@ -383,6 +383,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventoryController: {fileID: 1190348954}
+--- !u!114 &517162593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5280502122721757423, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+  m_PrefabInstance: {fileID: 549954325}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3580de2f1e903942aab7a2f23e8136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &549954325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -392,9 +403,69 @@ PrefabInstance:
     m_TransformParent: {fileID: 114452390}
     m_Modifications:
     - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a709a5066689d24fb824e471a5f0d88, type: 2}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].type
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a709a5066689d24fb824e471a5f0d88, type: 2}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].slot
+      value: 
+      objectReference: {fileID: 517162593}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].itemPrefab
+      value: 
+      objectReference: {fileID: 2204687104674799107, guid: 5fa77cc418a1ac246acf9623b7a7d8a7, type: 3}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].selectedItemIsWanted
       value: 
       objectReference: {fileID: 247390102}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1190348954}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RemoveInventoryItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InventoryController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a709a5066689d24fb824e471a5f0d88, type: 2}
+    - target: {fileID: 77497394257366598, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Item, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 634292115222749370, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -439,6 +510,10 @@ PrefabInstance:
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 5280502122721757423, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _prefabSprite
+      value: 
+      objectReference: {fileID: 7281052662607791975, guid: b34dbe1199f5eb64db5327005da0b075, type: 3}
     - target: {fileID: 5280502122721757423, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _inventoryController
       value: 

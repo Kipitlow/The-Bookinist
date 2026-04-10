@@ -56,6 +56,7 @@ public class CameraMovement : MonoBehaviour
     private float zoomCooldown = 0.4f;
     private float lastZoomTime = -999f;
 
+   
     void OnEnable()
     {
         dragDelta.action.Enable();
@@ -81,6 +82,9 @@ public class CameraMovement : MonoBehaviour
     private void Start()
     {
         maxZ = PageManager.maxLayer * (PageManager.layerSpread / 2);
+        currentIndexByLayer = 1;
+        currentIndexLayer = 0;
+        transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
     }
 
     void Update()
