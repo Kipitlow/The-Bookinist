@@ -89,7 +89,13 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
-        maxZ = PageManager.maxLayer * (PageManager.layerSpread / 2);
+        int turn = PageManager.Instance.LayerHolder.Count;
+
+        for (int i = 0; i < turn; i++)
+        {
+            maxZ = PageManager.maxLayer * (PageManager.Instance.LayerSpread[i + 1] / 2);
+        
+        }
         currentIndexByLayer = 1;
         currentIndexLayer = 0;
         transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
