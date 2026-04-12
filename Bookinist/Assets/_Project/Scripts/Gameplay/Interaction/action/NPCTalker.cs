@@ -35,6 +35,7 @@ public class NPCTalker : MonoBehaviour
 
     private Vector3 _pivOffsetShop = new Vector3(1f, 0f, 0);
 
+    [SerializeField]
     private Vector3 _pivOffsetBook = new Vector3(-1, -3, 0);
 
     void Start()

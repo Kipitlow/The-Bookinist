@@ -49,7 +49,8 @@ public class SC_Tache : MonoBehaviour
         Change_Tach_List();
     }
     #endregion
-        #region Methods
+
+    #region Methods
 
     public void Change_Tach_List()//CodePermettant de actualiser les objectif du joueur
     {
@@ -137,11 +138,6 @@ public class SC_Tache : MonoBehaviour
 
     }
 
-    public void LoadMap(string NameScene)
-    {
-        SceneManager.LoadScene(NameScene);
-    }
-
     private void Spawn_Canva_GameOver()
     {
         SC_UI_GameOver PUI = Prefable_Canva_GameOver.GetComponent<SC_UI_GameOver>();
@@ -157,6 +153,7 @@ public class SC_Tache : MonoBehaviour
             rt.anchoredPosition = new Vector2(transform.position.x / 2, transform.position .y/ 2);
         }
     }
+
     IEnumerator Chronometre()
     {
         if (totalSeconds - 1 >= 1)
@@ -176,7 +173,8 @@ public class SC_Tache : MonoBehaviour
             Spawn_Canva_GameOver();
             StopCoroutine("Chronometre");
         }
-    } 
+    }
+
     public void SetChronom(bool Continue)
     {
         if(Continue)

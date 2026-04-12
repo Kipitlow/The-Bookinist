@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class InteractionRunner : MonoBehaviour
 {
@@ -67,7 +66,7 @@ public class InteractionRunner : MonoBehaviour
             case ConditionType.IsEmpty:
                 if (condition.slot == null)
                     return false;
-                return condition.slot.IsEmpty() == !condition.shouldBeEmpty;
+                return condition.slot.IsEmpty() == condition.shouldBeEmpty;
 
             case ConditionType.IsSameItemSO:
                 if (condition.item == null)
@@ -98,7 +97,8 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.Move == null)
                     return false;
                 return condition.Move.HasMoved(condition.HasMoved, condition.HowManyTimes);
-
+            case ConditionType.HasToCheckEmptynessInventory:
+                return InventoryController.Instance.IsInventoryHasPlace();
             default:
                 return false;
         }
@@ -175,4 +175,18 @@ public class InteractionRunner : MonoBehaviour
         }
     }
     #endregion
+
+    #region Call Try
+
+    public void CallTry()
+    {
+        InteractionContext context = new InteractionContext
+        {
+        };
+
+        TryExecuteAll(context);
+    }
+
+    #endregion
+
 }

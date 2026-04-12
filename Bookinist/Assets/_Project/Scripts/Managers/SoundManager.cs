@@ -1,46 +1,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 /// <summary>
-/// Le manager de son, gere le fait de jouer un son, et le stockage des sound effect
-/// Singleton DDOL
+/// Le manager de son : joue des effets, pool d'AudioSource, dictionnaire des clips.
+/// Singleton DDOL.
 /// </summary>
 public class SoundManager : MonoBehaviour
 {
-    #region Variables
+    #region Types
 
     [System.Serializable]
     public class SoundEffect
     {
         public string name;
-
         public AudioClip clip;
-
         [Range(0f, 1f)] public float volume = 1f;
-
         [Range(0.1f, 3f)] public float pitch = 1f;
-
         public bool loop = false;
-
     }
 
+    #endregion
+
+    #region Variables
+
     [SerializeField] private SoundEffect[] _soundEffects;
-
     [SerializeField][Range(1, 100)] private int _poolSize = 10;
+    private List<AudioSource> _audioSources = new();
+    private Dictionary<string, AudioClip> _soundDictionary = new();
+    private float _globalSfxVolume = 1f;
 
-    private List<AudioSource> _audioSources = new List<AudioSource>();
+    public static SoundManager Instance { get; private set; }
 
-    private Dictionary<string, AudioClip> _soundDictionary = new Dictionary<string, AudioClip>();
-
-    private float _gloablSFXVolume = 1f;
-
-    public static SoundManager instance { get; private set; }
-
-    public float GloablSFXVolume
+    public float GlobalSfxVolume
     {
-        get { return _gloablSFXVolume; }
-        set { _gloablSFXVolume = Mathf.Clamp01(value); }
+        get { return _globalSfxVolume; }
+        set { _globalSfxVolume = Mathf.Clamp01(value); }
     }
 
     #endregion
@@ -49,9 +43,9 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -79,14 +73,8 @@ public class SoundManager : MonoBehaviour
 
     #region Methods
 
-    /// <summary>
-    /// Retourne un AudioSource disponible dans la pool
-    /// SI aucun n'est disponible, recycle le premier
-    /// </summary>
     private AudioSource GetAvailableAudioSource()
     {
-
-        // On prend le premier AudioSource libre
         foreach (var source in _audioSources)
         {
             if (!source.isPlaying)
@@ -94,14 +82,9 @@ public class SoundManager : MonoBehaviour
                 return source;
             }
         }
-
-        // Forcer le recyclage du premier AudioSource si tous sont occupés
         return _audioSources.Count > 0 ? _audioSources[0] : null;
     }
 
-    /// <summary>
-    /// Joue un son par son nom
-    /// </summary>
     public void PlaySound(string soundName, float pitch = 1f, bool loop = false)
     {
         if (!_soundDictionary.TryGetValue(soundName, out AudioClip clip))
@@ -113,13 +96,12 @@ public class SoundManager : MonoBehaviour
         AudioSource source = GetAvailableAudioSource();
         if (source != null)
         {
-
             foreach (SoundEffect sound in _soundEffects)
             {
                 if (sound.name == soundName)
                 {
                     source.clip = clip;
-                    source.volume = sound.volume * _gloablSFXVolume;
+                    source.volume = sound.volume * _globalSfxVolume;
                     source.pitch = pitch;
                     source.loop = loop;
                     source.Play();
@@ -129,9 +111,6 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Arrête tous les sons en cours de lecture
-    /// </summary>
     public void StopAllSounds()
     {
         foreach (var source in _audioSources)
@@ -140,9 +119,6 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Arrête un son par son nom
-    /// </summary>
     public void StopSound(string soundName)
     {
         foreach (var source in _audioSources)
@@ -154,10 +130,6 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-
-    /// <summary>
-    /// Vérifie si un son est en cours de lecture
-    /// </summary>
     public bool IsSoundPlaying(string soundName)
     {
         foreach (var source in _audioSources)
@@ -170,15 +142,10 @@ public class SoundManager : MonoBehaviour
         return false;
     }
 
-
-    /// <summary>
-    /// Définit la taille [1-100] de la pool d'AudioSource 
-    /// </summary>
-    public void SetpoolSize(int size)
+    public void SetPoolSize(int size)
     {
         _poolSize = Mathf.Clamp(size, 1, 100);
 
-        // Ajuster la taille de la pool
         while (_audioSources.Count < _poolSize)
         {
             AudioSource source = gameObject.AddComponent<AudioSource>();
@@ -186,7 +153,7 @@ public class SoundManager : MonoBehaviour
         }
         while (_audioSources.Count > _poolSize)
         {
-            AudioSource source = _audioSources[_audioSources.Count - 1];
+            AudioSource source = _audioSources[^1];
             _audioSources.RemoveAt(_audioSources.Count - 1);
             Destroy(source);
         }
