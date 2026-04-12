@@ -46,4 +46,9 @@ public class SaveSystem : MonoBehaviour
         profile = data.profile;
         settings = data.settings;
     }
+
+    public void Delete()
+    {
+        _saveManager.Delete("saveData.json");
+    }
 }
