@@ -12,6 +12,9 @@ using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class CameraMovement : MonoBehaviour
 {
+    [SerializeField] private GraphicRaycaster _uiRaycaster;
+    [SerializeField] private EventSystem _eventSystem;
+
     [Header("Debug")]
     [SerializeField] private RayCastDebugger raycastDebugger;
 
@@ -56,21 +59,26 @@ public class CameraMovement : MonoBehaviour
     private float zoomCooldown = 0.4f;
     private float lastZoomTime = -999f;
 
-   
+    private bool _isPointerBlocked;
+    private bool _actionsDisabled;
+
+
     void OnEnable()
     {
-        dragDelta.action.Enable();
-        dragPress.action.Enable();
-        scrollZoom.action.Enable();
+        dragDelta?.action.Enable();
+        dragPress?.action.Enable();
+        scrollZoom?.action.Enable();
         EnhancedTouchSupport.Enable();
+        _actionsDisabled = false;
     }
 
     void OnDisable()
     {
-        dragDelta.action.Disable();
-        dragPress.action.Disable();
-        scrollZoom.action.Disable();
+        dragDelta?.action.Disable();
+        dragPress?.action.Disable();
+        scrollZoom?.action.Disable();
         EnhancedTouchSupport.Disable();
+        _actionsDisabled = false;
     }
 
     private void Awake()
@@ -89,14 +97,114 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
+        // Évaluer une fois par frame si AU MOINS un pointeur est bloqué par l'UI
+        _isPointerBlocked = IsAnyPointerBlocked();
+
+        // Bloquer / débloquer les InputActions référencées pour "bloquer toutes les actions"
+        ManageActionsEnabledState(!_isPointerBlocked);
+
         HandleTapAndDrag();
         HandleZoom();
+    }
+
+    private void ManageActionsEnabledState(bool enable)
+    {
+        if (enable && _actionsDisabled)
+        {
+            dragDelta?.action.Enable();
+            dragPress?.action.Enable();
+            scrollZoom?.action.Enable();
+            _actionsDisabled = false;
+        }
+        else if (!enable && !_actionsDisabled)
+        {
+            dragDelta?.action.Disable();
+            dragPress?.action.Disable();
+            scrollZoom?.action.Disable();
+            _actionsDisabled = true;
+        }
+    }
+
+    private bool IsPointerBlockedByUI(Vector2 screenPosition)
+    {
+        // sécurité si pas configuré
+        if (_uiRaycaster == null || _eventSystem == null || _cam == null)
+            return false;
+
+        PointerEventData pointerData = new PointerEventData(_eventSystem)
+        {
+            position = screenPosition
+        };
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        _uiRaycaster.Raycast(pointerData, results);
+
+        if (results.Count == 0)
+            return false;
+
+        foreach (var result in results)
+        {
+            // si un CanvasGroup parent bloque les raycasts (overlay noir)
+            CanvasGroup cg = result.gameObject.GetComponentInParent<CanvasGroup>();
+            if (cg != null && cg.blocksRaycasts && cg.alpha > 0.01f)
+                return true;
+
+            var shader = result.gameObject.GetComponentInParent<ShaderBasedRaycast>();
+
+            if (shader != null)
+            {
+                // CORRECTION : si le shader dit que l'emplacement est VALIDE (opaque) => bloquer
+                if (shader.IsRaycastLocationValid(screenPosition, _cam))
+                    return true;
+                else
+                    continue; // transparent ici, vérifier le résultat suivant
+            }
+            else
+            {
+                // élément UI sans shader => bloque
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    // Nouveau : vérifie tous les pointeurs (touches actives + souris) et renvoie true si AU MOINS un pointeur est bloqué par l'UI
+    private bool IsAnyPointerBlocked()
+    {
+        if (_uiRaycaster == null || _eventSystem == null || _cam == null)
+            return false;
+
+        // Touches actives (EnhancedTouch)
+        foreach (var t in Touch.activeTouches)
+        {
+            if (IsPointerBlockedByUI(t.screenPosition))
+                return true;
+        }
+
+        // Si pas de touch ou sur éditeur, vérifier la souris
+        if (Touch.activeTouches.Count == 0 && Mouse.current != null)
+        {
+            if (IsPointerBlockedByUI(Mouse.current.position.ReadValue()))
+                return true;
+        }
+
+        return false;
     }
 
     void HandleTapAndDrag()
     {
         if (Touch.activeTouches.Count > 1)
             return;
+
+        // utiliser la valeur calculée en Update
+        if (_isPointerBlocked)
+        {
+            isPressing = false;
+            isDragging = false;
+            isHolding = false;
+            return;
+        }
 
         bool pressed = dragPress.action.IsPressed();
 
@@ -125,14 +233,14 @@ public class CameraMovement : MonoBehaviour
                 {
                     isHolding = true;
 
-
-                    PointerEventData pointerData = new PointerEventData(EventSystem.current)
+                    // Raycast proprement sur l'UI pour détecter un Button sous le pointeur
+                    PointerEventData pointerData = new PointerEventData(_eventSystem)
                     {
                         position = GetPointerPosition()
                     };
 
                     List<RaycastResult> results = new List<RaycastResult>();
-                    EventSystem.current.RaycastAll(pointerData, results);
+                    _uiRaycaster.Raycast(pointerData, results);
 
                     foreach (var result in results)
                     {
@@ -140,8 +248,6 @@ public class CameraMovement : MonoBehaviour
 
                         if (button != null)
                         {
-                            Debug.Log("Hold detected on UI");
-
                             GameObject newObj = Instantiate(_itemBase, button.transform, false);
                             break;
                         }
@@ -166,7 +272,6 @@ public class CameraMovement : MonoBehaviour
 
             if (isHolding)
             {
-                Debug.Log("Hold released");
             }
             else if (pressDuration <= tapMaxTime && movement <= tapMaxMovement)
             {
@@ -202,6 +307,11 @@ public class CameraMovement : MonoBehaviour
         float zoomInput = scrollZoom.action.ReadValue<float>();
         ApplyZoom(zoomInput * 10f);
 #endif
+
+        // Utiliser la valeur calculée en Update pour bloquer le zoom quand l'UI doit le bloquer
+        if (_isPointerBlocked)
+            return;
+
         if (Touch.activeTouches.Count != 2)
         {
             previousPinchDistance = 0f;
@@ -211,6 +321,15 @@ public class CameraMovement : MonoBehaviour
 
         Touch t0 = Touch.activeTouches[0];
         Touch t1 = Touch.activeTouches[1];
+
+        // Double-sécurité : si l'un des deux doigts est sur l'UI, annuler le pinch
+        if (IsPointerBlockedByUI(t0.screenPosition) || IsPointerBlockedByUI(t1.screenPosition))
+        {
+            previousPinchDistance = 0f;
+            stopZooming = false;
+            return;
+        }
+
         float currentDistance = Vector2.Distance(t0.screenPosition, t1.screenPosition);
 
         if (previousPinchDistance <= 0f)
