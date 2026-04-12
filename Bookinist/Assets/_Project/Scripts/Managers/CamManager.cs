@@ -12,19 +12,18 @@ public class CamManager : MonoBehaviour
 
     [SerializeField] private CinemachineCamera _activeCam;
 
+    private CinemachineCamera _memorisedCam;
+
     public Action<int, int> OnViewChanged;
 
     private void Awake()
     {
         if (_allCams == null || _allCams.Count == 0)
         {
-            var allCams = FindObjectsByType<CinemachineCamera>(FindObjectsSortMode.None);
-            foreach (var cam in allCams) 
-            {
-                allCams.Append(cam);
-            }
+            _allCams = FindObjectsByType<CinemachineCamera>(FindObjectsSortMode.None).ToList();
         }
-        _activeCam = _allCams[0];
+
+        _activeCam = _mainCam;
     }
 
     public void SwitchToCam(int cam, bool debug)
@@ -44,16 +43,24 @@ public class CamManager : MonoBehaviour
         _activeCam.Priority = 0;
         _allCams[cam].Priority = 1;
         _activeCam = _allCams[cam];
+        _memorisedCam = _activeCam;
 
-        
+
 
         if (debug) Debug.Log("Swapped to " + _activeCam);
     }
 
 
-    public void SwitchToCam(CinemachineCamera targetCam)
+    public void SwitchToCam()
     {
-        int index = _allCams.IndexOf(targetCam);
+        if (_memorisedCam == null)
+        {
+            Debug.LogWarning("No memorised camera.");
+            return;
+        }
+
+        int index = _allCams.IndexOf(_memorisedCam);
+
         if (index == -1)
         {
             Debug.LogWarning("Camera not found.");
@@ -63,11 +70,13 @@ public class CamManager : MonoBehaviour
         SwitchToCam(index, false);
     }
 
-    public void ReturnToCam(CinemachineCamera targetCam)
+    public void ReturnToCam()
     {
-        _activeCam.Priority = 0;
-        targetCam.Priority = 1;
-        _activeCam = targetCam;
+        if (_activeCam != null)
+            _activeCam.Priority = 0;
+
+        _mainCam.Priority = 1;
+        _activeCam = _mainCam;
     }
 
     /*
