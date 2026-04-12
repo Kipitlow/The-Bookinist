@@ -5,12 +5,35 @@ public class PageManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _layerHolder;
 
-    [SerializeField] string _sortingLayerPrefix = "Page_";
+    [SerializeField] private string _sortingLayerPrefix = "Page_";
 
-    public static int layerSpread = 20;
+    [SerializeField] private List<int> _layerSpread;
     public static int maxLayer;
 
     [SerializeField] private int _activePageIndex = 0;
+
+    public List<int> LayerSpread => _layerSpread;
+    public List<GameObject> LayerHolder => _layerHolder;
+
+    private static PageManager _instance;
+
+    public static PageManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindAnyObjectByType<PageManager>();
+
+                if (_instance == null)
+                {
+                    GameObject obj = new GameObject(nameof(PageManager));
+                    _instance = obj.AddComponent<PageManager>();
+                }
+            }
+            return _instance;
+        }
+    }
 
     private void Awake()
     {
@@ -24,7 +47,7 @@ public class PageManager : MonoBehaviour
             GameObject layer = _layerHolder[i];
 
             // Position Z inchangée (gère le z-fighting en 3D)
-            layer.transform.position = new Vector3(0, 0, i * layerSpread);
+            layer.transform.position = new Vector3(0, 0, _layerSpread[i]);
 
             // Assigne le Sorting Layer à tous les SpriteRenderer du layer
             string sortingLayerName = _sortingLayerPrefix + i;
