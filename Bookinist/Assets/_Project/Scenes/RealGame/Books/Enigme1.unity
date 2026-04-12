@@ -975,23 +975,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[1].Tache
-      value: "Parler \xE0 Apollon le marchant"
+      value: "Parler \xE0 Apollon le marchand"
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[2].Tache
-      value: "resoudre l'\xE9nigme de la balance"
+      value: Faites un troc
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[3].Tache
-      value: Optenir la lyre
+      value: Obtenir la lyre
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[4].Tache
-      value: "Donner la lyre \xE0 Orph\xE9e "
+      value: "Donner la lyre \xE0 Orph\xE9e"
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[5].Tache
-      value: 'Donner la lyre la femme '
+      value: "Donner la lyre \xE0 Euridyce"
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[0].Nom_Mission
@@ -999,23 +999,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[1].Nom_Mission
-      value: "Parler \xE0 Apollon le marchant"
+      value: "Parler \xE0 Apollon le marchand"
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[2].Nom_Mission
-      value: A2
+      value: Faites un troc
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[3].Nom_Mission
-      value: Optenir la lyre
+      value: Obtenir la lyre
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[4].Nom_Mission
-      value: "Donner la lyre \xE0 Orph\xE9e "
+      value: "Donner la lyre \xE0 Orph\xE9e"
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[5].Nom_Mission
-      value: 'Donner la lyre la femme '
+      value: "Donner la lyre \xE0 Euridyce"
       objectReference: {fileID: 0}
     - target: {fileID: 6982762687544064626, guid: 0131f90452257e547b16d47f167f057b, type: 3}
       propertyPath: Liste_Mission.Array.data[1].TacheTerminer
@@ -1628,7 +1628,19 @@ PrefabInstance:
     - target: {fileID: 7392496759680648835, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[3].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1178204253}
+      objectReference: {fileID: 11400000, guid: 7db92e633979bbf48bf86c410442437c, type: 2}
+    - target: {fileID: 7392496759680648835, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[3].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392496759680648835, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[3].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SO_SceneManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392496759680648835, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[2].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "Donner la lyre \xE0 Euridyce"
+      objectReference: {fileID: 0}
     - target: {fileID: 8206170917440922578, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].selectedItemIsWanted
       value: 
@@ -1653,6 +1665,10 @@ PrefabInstance:
       propertyPath: _interactionSets.Array.data[1].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1178204253}
+    - target: {fileID: 8206170917440922578, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "Donner la lyre \xE0 Orph\xE9e"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1854,7 +1870,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6032900992667401585, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
 --- !u!1001 &6916962808897003235
 PrefabInstance:
