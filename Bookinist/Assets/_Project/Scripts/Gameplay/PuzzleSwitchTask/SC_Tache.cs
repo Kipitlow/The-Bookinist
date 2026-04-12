@@ -81,7 +81,7 @@ public class SC_Tache : MonoBehaviour
     {
         GameObject New_Object = Instantiate(PrefableTache, Target_Parent_Prefable);
         Vector3 Pos = New_Object.transform.position;
-        Pos.y = Pos.y - 100 * i;
+        Pos.y = Pos.y - 25 * i;
         New_Object.transform.position = Pos;
 
         SC_Prefable_Tache Prefable_Script_Tache = New_Object.GetComponentInChildren<SC_Prefable_Tache>();

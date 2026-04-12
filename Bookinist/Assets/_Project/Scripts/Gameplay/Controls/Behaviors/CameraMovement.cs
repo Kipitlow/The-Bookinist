@@ -294,7 +294,7 @@ public class CameraMovement : MonoBehaviour
                         currentIndexByLayer = 0;
                 }
                 transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
-                print(currentIndexByLayer);
+                //print(currentIndexByLayer);
             }
             isDragging = false;
             isHolding = false;

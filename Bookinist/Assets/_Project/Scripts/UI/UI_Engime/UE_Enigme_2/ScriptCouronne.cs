@@ -56,7 +56,14 @@ public class ScriptCouronne : MonoBehaviour
 
     private void _visiblingCouronne()
     {
-        if(_redFlowers>0 && _purpleFlowers == 0) { couronne_rouge.SetActive(true); }
+        /*if(_redFlowers>0 && _purpleFlowers == 0) { couronne_rouge.SetActive(true); }
+        if(_redFlowers>0 && _purpleFlowers>0) { couronne_fusion.SetActive(true); }
+        if(_redFlowers==0 && _purpleFlowers > 0) { couronne_violet.SetActive(true); }*/
+        if(_redFlowers>0 && _purpleFlowers == 0) 
+        {
+            couronne_rouge.SetActive(true);
+            //Instantiate(couronne_rouge,);
+        }
         if(_redFlowers>0 && _purpleFlowers>0) { couronne_fusion.SetActive(true); }
         if(_redFlowers==0 && _purpleFlowers > 0) { couronne_violet.SetActive(true); }
     }

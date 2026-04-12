@@ -47,20 +47,13 @@ public class WorldDropHandler : MonoBehaviour
         if (!DragContext.IsDragging) return;
 
         Item draggedItem = DragContext.DraggedItem;
-        Page activePage = _pageManager.GetActivePage();
-
-        if (activePage == null)
-        {
-            Debug.LogWarning("[WorldDropHandler] Aucune page active trouvée.");
-            return;
-        }
 
         Debug.Log($"[Drop] TryDrop appelé. IsDragging={DragContext.IsDragging}, screenPos={screenPosition}");
 
         Ray ray = _camera.ScreenPointToRay(screenPosition);
         Physics.Raycast(ray, out RaycastHit hit, _raycastDistance);
 
-        Debug.Log($"[Drop] -> {hit.collider.gameObject.name}");
+        if (hit.collider == null) return;
 
         //InteractionRunner targetRunner = FindRunnerOnActivePage(hits, activePage);
         InteractionRunner targetRunner = hit.collider.gameObject.GetComponent<InteractionRunner>();
@@ -85,8 +78,6 @@ public class WorldDropHandler : MonoBehaviour
             if (wasHandled)
                 _inventoryController.RemoveInventoryItem(draggedItem);
 
-            Debug.Log($"[WorldDropHandler] Drop réussi sur '{targetRunner.gameObject.name}' " +
-                      $"(page {activePage.PageIndex}) avec '{draggedItem.itemName}'");
         }
         else
         {
