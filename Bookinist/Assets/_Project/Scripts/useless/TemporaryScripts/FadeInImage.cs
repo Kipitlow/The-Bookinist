@@ -14,6 +14,37 @@ public class FadeInImage : MonoBehaviour
     [SerializeField, Range(3f, 20f)] private float _duration = 5f;
     [SerializeField, Range(0f, 20f)] private float _startingDelay = 0f;
 
+    private bool _isFading = true;
+
+    private void OnEnable()
+    {
+        Debug.Log(_isFading);
+        if (_isFading)
+        {
+            _isFading = false;
+            return;
+        }
+
+        FullyActivateButton();
+
+        FadeImage();
+        //FadeText();
+
+    }
+
+    private void FullyActivateButton()
+    {
+        if (_image != null)
+        {
+            Color color = _image.color;
+            color.a = 1f;
+            _image.color = color;
+        }
+
+        if (_button != null)
+            _button.interactable = true;
+    }
+
     private void Start()
     {
         bool firstCustomerEncounter = GameManager.Instance._isFirstCustomerEncounter;
@@ -36,9 +67,6 @@ public class FadeInImage : MonoBehaviour
     {
         yield return new WaitForSeconds(_startingDelay);
 
-        if (_button != null)
-            _button.interactable = true;
-
         Color color = _image.color;
         color.a = 0f;
         _image.color = color;
@@ -55,6 +83,9 @@ public class FadeInImage : MonoBehaviour
 
         color.a = 1f;
         _image.color = color;
+
+        if (_button != null)
+            _button.interactable = true;
     }
 
     private IEnumerator FadeText(TextMeshProUGUI text)

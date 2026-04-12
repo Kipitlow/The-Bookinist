@@ -112,7 +112,7 @@ public class CamManager : MonoBehaviour
         OnViewChanged?.Invoke(_allCams.IndexOf(_activeCam), -1);
     }
 
-    public int GetCurrentIndexView() => _allCams.IndexOf(_activeCam) + 1;
+    public int GetCurrentIndexView() => _allCams.IndexOf(_activeCam);
 
     private void OnDrawGizmos()
     {
