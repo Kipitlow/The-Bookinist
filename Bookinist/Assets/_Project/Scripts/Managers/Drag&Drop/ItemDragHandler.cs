@@ -54,6 +54,8 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         // Stocke l'item dans le contexte partagé
         DragContext.BeginDrag(_itemController.ItemScriptable, _itemController);
 
+        _itemImage.enabled = false;
+
         // Crée le ghost
         _ghost = CreateGhost();
 
@@ -82,10 +84,11 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag Triggered");
         // Restaure l'opacité
         if (_canvasGroup != null)
             _canvasGroup.alpha = 1f;
+
+        _itemImage.enabled = true;
 
         // Détruit le ghost
         if (_ghost != null)
@@ -102,9 +105,6 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         // Nettoie le contexte
         DragContext.EndDrag();
-
-        if(DragContext.DraggedItem == null)
-            Debug.Log($"[Handler] Item dragged : null");
     }
 
     #endregion
