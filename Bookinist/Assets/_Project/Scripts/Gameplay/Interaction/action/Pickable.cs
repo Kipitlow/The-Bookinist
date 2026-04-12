@@ -15,7 +15,10 @@ public class Pickable : MonoBehaviour
 
     public void Pick(GameObject objetclicked)
     {
-        Destroy(objetclicked);
-        _invController.AddInventoryItem(_item);
+        if (_invController.IsInventoryHasPlace())
+        {
+            Destroy(objetclicked);
+            _invController.AddInventoryItem(_item);
+        }
     }
 }

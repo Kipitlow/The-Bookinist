@@ -19,7 +19,7 @@ public class InventoryModel : MonoBehaviour
 
     public void AddItem(Item itemToAdd)
     {
-        if (_inventoryContents.Count < _inventorySlots)
+        if (IsInventoryHasAPlace())
             _inventoryContents.Add(itemToAdd);
     }
 

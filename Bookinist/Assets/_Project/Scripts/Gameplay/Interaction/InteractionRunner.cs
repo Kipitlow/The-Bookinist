@@ -175,4 +175,18 @@ public class InteractionRunner : MonoBehaviour
         }
     }
     #endregion
+
+    #region Call Try
+
+    public void CallTry()
+    {
+        InteractionContext context = new InteractionContext
+        {
+        };
+
+        TryExecuteAll(context);
+    }
+
+    #endregion
+
 }
