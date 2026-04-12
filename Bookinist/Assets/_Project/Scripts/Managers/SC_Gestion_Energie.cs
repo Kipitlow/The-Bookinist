@@ -108,7 +108,7 @@ public class SC_Gestion_Energie : MonoBehaviour
             T_EnergieSaving.text = $"Energie Savegarde: {SaveData.Energie}";
 
 
-            Resultat = DateTime.Now - last_Timer; //Code consite a prendre 2 type datatime (old/new) et le resultat c'est l'intervalle entre les 2 time
+            Resultat = DateTime.Now - last_Timer; //Code consite a prendre 2 type datatime (old/new) et le resultat c'est l'intervale entre les 2 time
             Plume_Game += SaveData.Energie; // on setup cette variable depuis la sauvegarde
 
             Setup_Energie();
@@ -142,10 +142,10 @@ public class SC_Gestion_Energie : MonoBehaviour
     }
 
 
-    //private void OnApplicationQuit()
-    //{
-    //    //Saving();
-    //}
+    private void OnApplicationQuit()
+    {
+        //Saving();
+    }
 
     public void Saving()
     {

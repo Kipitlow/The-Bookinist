@@ -1,14 +1,24 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ItemController : MonoBehaviour
+public class ItemController : MonoBehaviour/*, IDragHandler, IBeginDragHandler, IEndDragHandler*/
 {
     #region Variables
 
     [SerializeField] private ItemModel _itemModel;
     [SerializeField] private ItemView _itemView;
     [SerializeField] private bool _itemIsSelected;
-    public static Action<Item> OnItemClicked;
+    public static Action<Item> onItemClicked;
+    public Item ItemScriptable => _itemModel.itemScriptable;
+    //[SerializeField] private GameObject _EventManager;
+    //private RectTransform _rectTransform;
+    //private Image _image;
+
+
+    #endregion  
+
+    #region Unity Methods
 
     #endregion
 
@@ -19,11 +29,27 @@ public class ItemController : MonoBehaviour
         _itemView.UpdateSprite(_itemModel.itemSprite);
     }
 
+    
     public void OnItemClick()
     {
         Debug.Log("Event called OnClick, with item " + gameObject);
-        OnItemClicked?.Invoke(_itemModel.itemScriptable);
+        onItemClicked?.Invoke(_itemModel.itemScriptable);
+    }
+    /*
+    public void OnDrag(PointerEventData eventData)
+    {
+       //_rectTransform.anchoredPosition += eventData.delta;
     }
 
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        //_itemModel.EventManager.OnDragEnded?.Invoke(this);
+    }
+    */
     #endregion
 }

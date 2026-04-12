@@ -1,6 +1,3 @@
-/// <summary>
-/// Types de conditions disponibles.
-/// </summary>
 public enum ConditionType
 {
     SameLayer,
@@ -8,15 +5,14 @@ public enum ConditionType
     OnTouch,
     IsEmpty,
     IsSameItemSO,
+    IsNotSameItemSO,
     HasDialogueStarted,
     HasDialogueEnded,
     OnWichFrame,
-    HasMoved
+    HasMoved,
+    HasToCheckEmptynessInventory
 }
 
-/// <summary>
-/// Types d'actions disponibles.
-/// </summary>
 public enum ActionType
 {
     SetActive,
@@ -28,5 +24,8 @@ public enum ActionType
     CycleSprites,
     Move,
     ResetHasMoved,
-    Pick
+    Pick,
+    Destroy,
+    Drop
+
 }

@@ -1,11 +1,11 @@
+using NUnit.Framework.Internal;
 using System;
+using System.ComponentModel.Design;
 using UnityEngine;
 
 [Serializable]
 public class ConditionEntry
 {
-    #region Variables
-
     public ConditionType type;
 
     [Tooltip("objet ciblé")]
@@ -42,19 +42,21 @@ public class ConditionEntry
     public CycleThroughSprite cycleThroughSprite;
 
     [Tooltip("frame que tu veux check")]
-    public int wantedFrame;
+    public int WantedFrame;
 
     [Tooltip("si tu veux verifier si c'est sur la frame et celles d'apres")]
     public bool trueIfMore;
 
     [Tooltip("objet que tu veux check")]
-    public MoveObject move;
+    public MoveObject Move;
 
     [Tooltip("si tu veux detecter que l'objet a bougé ou non")]
-    public bool hasMoved;
+    public bool HasMoved;
 
     [Tooltip("check how many times object has moved")]
-    public int howManyTimes;
+    public int HowManyTimes;
 
-    #endregion
+    [Tooltip("check if inventory has one slot empty")]
+    public bool HasToCheckEmptynessInventory;
+
 }

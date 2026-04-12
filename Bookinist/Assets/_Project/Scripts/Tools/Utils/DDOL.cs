@@ -1,17 +1,8 @@
 using UnityEngine;
 
-/// <summary>
-/// Singleton "Don't Destroy On Load" minimal.
-/// </summary>
 public class DDOL : MonoBehaviour
 {
-    #region Variables
-
     public static DDOL Instance;
-
-    #endregion
-
-    #region Unity Methods
 
     private void Awake()
     {
@@ -24,6 +15,4 @@ public class DDOL : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-
-    #endregion
 }

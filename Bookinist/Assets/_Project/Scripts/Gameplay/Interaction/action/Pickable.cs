@@ -1,27 +1,24 @@
+using Unity.VisualScripting;
 using UnityEngine;
-
-/// <summary>
-/// Composant rendant un GameObject récupérable et ajoutant l'item à l'inventaire.
-/// </summary>
-
 [RequireComponent(typeof(BoxCollider))]
 [RequireComponent(typeof(InteractionRunner))]
+
 public class Pickable : MonoBehaviour
 {
-    #region Variables
-
     [SerializeField] private Item _item;
     [SerializeField] private InventoryController _invController;
-
-    #endregion
-
-    #region Methods
+    
+    private void Start()
+    {
+        if (_invController == null) _invController = GameObject.Find("InventoryManager").GetComponent<InventoryController>();
+    }
 
     public void Pick(GameObject objetclicked)
     {
-        Destroy(objetclicked);
-        _invController.AddInventoryItem(_item);
+        if (_invController.IsInventoryHasPlace())
+        {
+            Destroy(objetclicked);
+            _invController.AddInventoryItem(_item);
+        }
     }
-
-    #endregion
 }

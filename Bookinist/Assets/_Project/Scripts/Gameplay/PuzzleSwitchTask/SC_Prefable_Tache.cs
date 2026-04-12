@@ -3,21 +3,11 @@ using UnityEngine;
 
 public class SC_Prefable_Tache : MonoBehaviour
 {
-    #region Variables
-
-    public TextMeshProUGUI textObjectif;
-    public TextMeshProUGUI textRecompence;
-
-    #endregion
-
-    #region Methods
-
-    public void LigneBarrer()
+    [SerializeField] public TextMeshProUGUI Text_Objectif;
+    [SerializeField] public TextMeshProUGUI Text_Récompence;
+    public void ligne_Barrer()
     {
-        if (textObjectif == null) return;
-        string text = textObjectif.text;
-        textObjectif.text = $"<s>{text}</s>";
+        string Text = Text_Objectif.text;
+        Text_Objectif.text = $"<s>{Text}</s>";
     }
-
-    #endregion
 }

@@ -1,18 +1,10 @@
 using UnityEngine;
 
-/// <summary>
-/// Singleton global du jeu.
-/// </summary>
 public class GameManager : MonoBehaviour
 {
-    #region Variables
-
     public static GameManager Instance;
-    public bool isFirstCustomerEncounter;
 
-    #endregion
-
-    #region Unity Methods
+    public bool _isFirstCustomerEncounter;
 
     private void Awake()
     {
@@ -26,14 +18,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    #endregion
-
-    #region Methods
-
     public void FirstCustomerEncounter()
     {
-        isFirstCustomerEncounter = true;
+        _isFirstCustomerEncounter = true;
     }
-
-    #endregion
 }

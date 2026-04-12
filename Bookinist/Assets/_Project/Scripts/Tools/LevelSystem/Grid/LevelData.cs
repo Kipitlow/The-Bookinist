@@ -2,9 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// ScriptableObject contenant la definition d'un level/page (objets placés, métadonnées).
-/// </summary>
 [CreateAssetMenu(fileName = "LevelData_Page", menuName = "Level Editor/Level Data")]
 public class LevelData : ScriptableObject
 {

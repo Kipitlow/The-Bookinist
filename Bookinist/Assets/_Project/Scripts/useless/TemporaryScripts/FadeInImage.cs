@@ -3,13 +3,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Fade in d'une image / texte avec délai et durée.
-/// </summary>
 public class FadeInImage : MonoBehaviour
 {
-    #region Variables
-
     [Header("UI")]
     [SerializeField] private Image _image;
     [SerializeField] private TextMeshProUGUI[] _texts;
@@ -19,13 +14,40 @@ public class FadeInImage : MonoBehaviour
     [SerializeField, Range(3f, 20f)] private float _duration = 5f;
     [SerializeField, Range(0f, 20f)] private float _startingDelay = 0f;
 
-    #endregion
+    private bool _isFading = true;
 
-    #region Unity Methods
+    private void OnEnable()
+    {
+        Debug.Log(_isFading);
+        if (_isFading)
+        {
+            _isFading = false;
+            return;
+        }
+
+        FullyActivateButton();
+
+        FadeImage();
+        //FadeText();
+
+    }
+
+    private void FullyActivateButton()
+    {
+        if (_image != null)
+        {
+            Color color = _image.color;
+            color.a = 1f;
+            _image.color = color;
+        }
+
+        if (_button != null)
+            _button.interactable = true;
+    }
 
     private void Start()
     {
-        bool firstCustomerEncounter = GameManager.Instance.isFirstCustomerEncounter;
+        bool firstCustomerEncounter = GameManager.Instance._isFirstCustomerEncounter;
 
         if (_image != null)
             StartCoroutine(FadeImage());
@@ -41,16 +63,9 @@ public class FadeInImage : MonoBehaviour
         StartCoroutine(FadeText(_texts[textIndex]));
     }
 
-    #endregion
-
-    #region Methods
-
     private IEnumerator FadeImage()
     {
         yield return new WaitForSeconds(_startingDelay);
-
-        if (_button != null)
-            _button.interactable = true;
 
         Color color = _image.color;
         color.a = 0f;
@@ -68,6 +83,9 @@ public class FadeInImage : MonoBehaviour
 
         color.a = 1f;
         _image.color = color;
+
+        if (_button != null)
+            _button.interactable = true;
     }
 
     private IEnumerator FadeText(TextMeshProUGUI text)
@@ -96,6 +114,4 @@ public class FadeInImage : MonoBehaviour
         color.a = 1f;
         text.color = color;
     }
-
-    #endregion
 }
