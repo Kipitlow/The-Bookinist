@@ -961,6 +961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b7c05af8173cf479e0807788c1f62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _usernameInput: {fileID: 3683335804258543718}
 --- !u!1 &650760934
 GameObject:
   m_ObjectHideFlags: 0
@@ -3543,6 +3544,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 646579147}
+        m_TargetAssemblyTypeName: AccountCreator, Assembly-CSharp
+        m_MethodName: CreateAccount
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 11400000, guid: 7db92e633979bbf48bf86c410442437c, type: 2}
         m_TargetAssemblyTypeName: SO_SceneManager, Assembly-CSharp
         m_MethodName: LoadScene
@@ -3686,6 +3699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b7c05af8173cf479e0807788c1f62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _usernameInput: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
