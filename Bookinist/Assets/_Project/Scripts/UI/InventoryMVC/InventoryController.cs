@@ -77,7 +77,7 @@ public class InventoryController : MonoBehaviour
 
     private void HandleItemClicked(Item item)
     {
-        //Debug.Log($"Clicked: {item.name}");
+        Debug.Log($"Clicked: {item.name}");
         activeItem = item;
     }
 

@@ -121,7 +121,6 @@ public class ScriptBalance : MonoBehaviour
     
     public void SpawnerIteamBalance(Item Context )
     {
-        Debug.Log("------------------Spawn Fonction");
         if (_poidAutoriser >= 3) {  return; }
         Transform _ballMass = GameObject.Find("Target_spawn_Poids_R").transform;
         GameObject _1erPoids = Instantiate(prefable_Poids, _ballMass);
@@ -223,7 +222,7 @@ public class ScriptBalance : MonoBehaviour
                 break;
         }
 
-        if (_poidAccumuller >= 100)
+        if (_poidAccumuller == 100)
         {
             GameObject Chiant_Variable = GameObject.Find("B_Reset_Iteam_Balance");
             if (Chiant_Variable) Destroy(Chiant_Variable);
@@ -246,8 +245,7 @@ public class ScriptBalance : MonoBehaviour
         {
             for(int i=0; i<_stockIteam.Count; i++)
             {
-                Debug.Log($"Place: {inventoryController.IsInventoryHasPlace()}");
-                if (_listPoids[i] != null && _stockIteam[i] != null && inventoryController.IsInventoryHasPlace())//&& inventoryController._inventoryContents
+                if (_listPoids[i] != null && _stockIteam[i] != null)//&& inventoryController._inventoryContents
                 {
                     inventoryController.AddInventoryItem(_stockIteam[i]);
                     Destroy(_listPoids[i]);
@@ -273,7 +271,8 @@ public class ScriptBalance : MonoBehaviour
                 _iteamRestant += 1;
                 yield return new WaitForSeconds(0.1f);
             }*/
-                //_stockIteam.Clear();
-        }  
+            //_stockIteam.Clear();
+        }
+            
     }
 }
