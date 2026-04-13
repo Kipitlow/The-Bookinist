@@ -23,7 +23,7 @@ public class Page : MonoBehaviour
 
         ApplySortingToPageObjects();
         _snapPointManager = GetComponentInChildren<SnapPointManager>();
-        if (_snapPointManager != null ) _snapPointManager.SetUpSnapPoints();
+        if (_snapPointManager != null ) _snapPointManager.SetUpSnapPoints(pageIndex);
     }
 
     /// <summary>
