@@ -3,8 +3,9 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class MoveOnZoom : MonoBehaviour
 {
-    private enum ZoomState
+    public enum ZoomState
     {
+        Starting,
         Visible,
         Hidden,
         Showing,
@@ -38,7 +39,7 @@ public class MoveOnZoom : MonoBehaviour
     private Vector3 _targetLocalPosition;
     private Vector3 _velocity;
 
-    private ZoomState _state = ZoomState.Visible;
+    public ZoomState _state = ZoomState.Visible;
 
     private float _h;
     private float _s;
@@ -54,11 +55,7 @@ public class MoveOnZoom : MonoBehaviour
         _baseLocalPosition = transform.localPosition;
 
         Vector2 direction = _hideDirection.normalized;
-        _hiddenLocalPosition = _baseLocalPosition + new Vector3(
-            direction.x * _hideDistance,
-            direction.y * _hideDistance,
-            0f
-        );
+        _hiddenLocalPosition = _baseLocalPosition + new Vector3( direction.x * _hideDistance, direction.y * _hideDistance, 0f );
 
         _targetLocalPosition = _baseLocalPosition;
 
@@ -67,6 +64,8 @@ public class MoveOnZoom : MonoBehaviour
         _alphaVisible = Mathf.Clamp01(_alphaVisible);
         _alphaHidden = Mathf.Clamp01(_alphaHidden);
 
+        transform.localPosition = new Vector3(direction.x * 30, direction.y * 30 + _baseLocalPosition.y, 0f);
+        _state = ZoomState.Starting;
     }
 
     private void OnEnable()
@@ -87,6 +86,9 @@ public class MoveOnZoom : MonoBehaviour
 
     public void OnChangingLayer(int layer, int lateralIndex)
     {
+        if (_state == ZoomState.Starting)
+            StartShowinAtTheBegining();
+
         if (layer == _myLayer)
         {
             if (lateralIndex == _lateral) StartShowing();
@@ -99,12 +101,20 @@ public class MoveOnZoom : MonoBehaviour
         }
     }
 
+    private void StartShowinAtTheBegining()
+    {
+        _state = ZoomState.Showing;
+        _targetLocalPosition = _baseLocalPosition;
+        _actualSmoothingTime = 0.01f;
+        _currentAlpha = 0.0f;
+    }
+
     private void StartShowing()
     {
         _state = ZoomState.Showing;
         _targetLocalPosition = _baseLocalPosition;
         _actualSmoothingTime = _smoothTime;
-        if (_currentAlpha < 0.5f) _currentAlpha = 0.5f;
+        if (_currentAlpha < 0.5f) _currentAlpha = 0.7f;
     }
 
     private void StartHiding()
