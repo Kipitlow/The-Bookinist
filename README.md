@@ -63,8 +63,9 @@ git config --global fetch.prune true
 ```
 
 ### Sync propre :
-bash
+```bash
 git fetch --prune
+```
 
 ## 🚀 3. Pull Request Pipeline : 
 
