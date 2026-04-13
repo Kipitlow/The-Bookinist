@@ -1,6 +1,67 @@
-<div align="center"> # 🚀 Git Workflow + PR Pipeline ![Git](https://img.shields.io/badge/Git-Workflow-orange) ![PR](https://img.shields.io/badge/Pull_Request-Driven-blue) ![CI](https://img.shields.io/badge/CI-Pipeline-green) ![QA](https://img.shields.io/badge/QA-Required-red) <br/> 📘 Documentation interne du workflow Git ⚙️ GitHub Desktop • Review • CI • QA • Production --- ### 🧠 Clean commits, clean pipeline, clean production. </div> --- ## 📚 Sommaire - [🌿 Branching Strategy](##-1-branching-strategy) - [🧾 Naming convention](##-naming-convention) - [🔄 Clean Git Setup](##-2-clean-git-setup) - [🚀 Pull Request Pipeline](##-3-pull-request-pipeline) - [📝 Contenu PR](##-contenu-obligatoire-dune-pr) - [📊 Pipeline visuelle](##-4-pipeline-visuelle) - [🧪 GitHub Actions](##-5-github-actions-ci-suggestion) - [🚀 Résultat attendu](##-résultat-attendu) - [🧩 Pipeline final](##-6-pipeline-final) --- ## 🌿 1. Branching Strategy : ### 📌 Branches principales : | Branche | Rôle | |--------------|------| | main | production | | Acceptance | validation QA + intégration | | feature/* | développement | | fix/* | correction de bug | | hotfix/* | correction critique production | --- ## 🧾 Naming convention : ### 🚀 Features : - feature/login-system - feature/payment-integration ### 🐛 Fixes : - fix/login-error - fix/null-pointer-dashboard ### 🚨 Hotfix : - hotfix/security-patch --- ## 🔄 2. Clean Git Setup : ### 🧹 Activer prune automatique :
-bash
+# 🚀 Git Workflow & PR Pipeline
+
+![Git](https://img.shields.io/badge/Git-Workflow-orange)
+![PR](https://img.shields.io/badge/Pull_Request-Driven-blue)
+![CI](https://img.shields.io/badge/CI-Pipeline-green)
+![QA](https://img.shields.io/badge/QA-Required-red)
+
+📘 Documentation interne du workflow Git  
+⚙️ GitHub Desktop • Review • CI • QA • Production  
+
+> 🧠 *Clean commits, clean pipeline, clean production.*
+
+---
+
+## 📚 Sommaire
+
+- 🌿 [Branching Strategy](#-1-branching-strategy)
+- 🧾 [Naming Convention](#-naming-convention)
+- 🔄 [Clean Git Setup](#-2-clean-git-setup)
+- 🚀 [Pull Request Pipeline](#-3-pull-request-pipeline)
+- 📝 [Contenu d’une PR](#-contenu-obligatoire-dune-pr)
+- 📊 [Pipeline visuelle](#-4-pipeline-visuelle)
+- 🧪 [GitHub Actions](#-5-github-actions-ci-suggestion)
+- 🚀 [Résultat attendu](#-résultat-attendu)
+- 🧩 [Pipeline final](#-6-pipeline-final)
+
+---
+
+## 🌿 1. Branching Strategy
+
+### 📌 Branches principales
+
+| Branche      | Rôle                         |
+|--------------|------------------------------|
+| `main`       | Production                   |
+| `Acceptance` | Validation QA + intégration  |
+| `feature/*`  | Développement                |
+| `fix/*`      | Correction de bug            |
+| `hotfix/*`   | Correction critique prod     |
+
+---
+
+## 🧾 Naming Convention
+
+### 🚀 Features
+- `feature/login-system`
+- `feature/payment-integration`
+
+### 🐛 Fixes
+- `fix/login-error`
+- `fix/null-pointer-dashboard`
+
+### 🚨 Hotfix
+- `hotfix/security-patch`
+
+---
+
+## 🔄 2. Clean Git Setup
+
+### 🧹 Activer le prune automatique
+```bash
 git config --global fetch.prune true
+```
+
 ### Sync propre :
 bash
 git fetch --prune
