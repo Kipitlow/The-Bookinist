@@ -25,6 +25,3 @@
 
 ## ⚠️ Risques / impact
 <!-- Si applicable -->
-
-## 🧪 Tickets affiliés
-<!-- Si applicable -->
