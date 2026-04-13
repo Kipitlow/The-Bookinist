@@ -1,0 +1,42 @@
+name: PR Strict Guard
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate PR content
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.pull_request.body || "";
+
+            // 🔢 1. minimum tests cochés
+            const checkedTests = (body.match(/\- \[x\]/gi) || []).length;
+
+            // 🧠 2. regex TODO detection
+            const hasTodo = /TODO/i.test(body);
+
+            // 📌 3. required sections
+            const required = [
+              "## 🧪 Tests à effectuer",
+              "## 📌 Description"
+            ];
+
+            let missing = required.filter(s => !body.includes(s));
+
+            if (checkedTests < 1) {
+              core.setFailed("At least 1 test must be checked");
+            }
+
+            if (hasTodo) {
+              core.setFailed("TODO found in PR description");
+            }
+
+            if (missing.length > 0) {
+              core.setFailed("Missing sections: " + missing.join(", "));
+            }
