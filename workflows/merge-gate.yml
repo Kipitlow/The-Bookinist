@@ -1,0 +1,39 @@
+name: Merge Gate
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, review_requested]
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check PR readiness
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+
+            const reviewers = pr.requested_reviewers.map(r => r.login);
+
+            const tech = "tech-reviewer";
+            const qaList = ["qa1", "qa2", "qa3"];
+
+            const hasTech = reviewers.includes(tech);
+            const hasQA = reviewers.some(r => qaList.includes(r));
+
+            const body = pr.body || "";
+            const validTests = (body.match(/\- \[x\]/gi) || []).length;
+
+            if (!hasTech) {
+              core.setFailed("Missing tech review");
+            }
+
+            if (!hasQA) {
+              core.setFailed("Missing QA review");
+            }
+
+            if (validTests < 1) {
+              core.setFailed("No validated tests");
+            }
