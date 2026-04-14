@@ -139,7 +139,7 @@ public class InteractionRunner : MonoBehaviour
 
             case ActionType.Move:
                 if (action.Move != null)
-                    action.Move.Move(action.OffsetX, action.OffsetY);
+                    action.Move.MoveInteraction(action.OffsetX, action.OffsetY);
                 break;
 
             case ActionType.CycleSprites:
@@ -154,7 +154,7 @@ public class InteractionRunner : MonoBehaviour
 
             case ActionType.ResetHasMoved:
                 if (action.Move != null)
-                    action.Move.ResethasMoved();
+                    action.Move.ResetHasMoved();
                 break;
 
             case ActionType.CallFunction:
