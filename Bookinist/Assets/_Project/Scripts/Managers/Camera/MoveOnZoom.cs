@@ -119,13 +119,47 @@ public class MoveOnZoom : MonoBehaviour
                 QuickHiding();
         }
     }
+    private void UpdateStateFromMovement()
+    {
+        if (_state == ZoomState.Showing && _moveObject.IsAtPosition(_moveObject._baseLocalPosition))
+        {
+            _isVisible = true;
+            _state = ZoomState.Visible;
+        }
+        else if (_state == ZoomState.Hiding && _moveObject.IsAtPosition(GetHiddenPosition()))
+        {
+            _isVisible = false;
+            _state = ZoomState.Hidden;
+        }
+    }
+
+    private Vector3 GetCurrentBasePosition()
+    {
+        return _moveObject._baseLocalPosition;
+    }
+
+    private Vector3 GetHiddenPosition()
+    {
+        Vector2 direction = _hideDirection.normalized;
+        Vector3 basePos = GetCurrentBasePosition();
+
+        return basePos + new Vector3( direction.x * _hideDistance, direction.y * _hideDistance, 0f );
+    }
+
+    private Vector3 GetStartingPosition()
+    {
+        Vector2 direction = _hideDirection.normalized;
+        Vector3 basePos = GetCurrentBasePosition();
+         
+        return basePos + new Vector3( direction.x * _startOffsetDistance,  direction.y * _startOffsetDistance, 0f );
+    }
 
     private void StartShowingAtBeginning()
     {
-        _moveObject.SetPositionImmediate(new Vector3(_moveObject._baseLocalPosition.x + (30 * _hideDirection.x), _moveObject._baseLocalPosition.y, _moveObject._baseLocalPosition.z));
+        _moveObject.SetPositionImmediate(GetStartingPosition());
         _state = ZoomState.Showing;
         _currentAlpha = 0f;
-        _moveObject.MoveTo(_moveObject._baseLocalPosition, 0.2f);
+        _moveObject.MoveTo(GetCurrentBasePosition(), _smoothTime);
     }
 
     private void StartShowing()
@@ -140,7 +174,7 @@ public class MoveOnZoom : MonoBehaviour
     private void StartHiding()
     {
         _state = ZoomState.Hiding;
-        _moveObject.MoveTo(_hiddenLocalPosition, _smoothTime);
+        _moveObject.MoveTo(GetHiddenPosition(), _smoothTime);
     }
 
     private void QuickShowing()
@@ -152,21 +186,7 @@ public class MoveOnZoom : MonoBehaviour
     private void QuickHiding()
     {
         _state = ZoomState.Hiding;
-        _moveObject.MoveTo(_hiddenLocalPosition, 0f);
-    }
-
-    private void UpdateStateFromMovement()
-    {
-        if (_state == ZoomState.Showing && _moveObject.IsAtPosition(_moveObject._baseLocalPosition))
-        {
-            _isVisible = true;
-            _state = ZoomState.Visible;
-        }
-        else if (_state == ZoomState.Hiding && _moveObject.IsAtPosition(_hiddenLocalPosition))
-        {
-            _isVisible = false;
-            _state = ZoomState.Hidden;
-        }
+        _moveObject.MoveTo(GetHiddenPosition(), 0f);
     }
 
     private void UpdateVisual()
