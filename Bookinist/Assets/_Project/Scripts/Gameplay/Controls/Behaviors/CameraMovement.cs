@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using UnityEngine.Events;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -61,6 +62,8 @@ public class CameraMovement : MonoBehaviour
 
     private bool _isPointerBlocked;
     private bool _actionsDisabled;
+
+    public event Action<int, int> OnZoom;
 
 
     void OnEnable()
@@ -357,6 +360,7 @@ public class CameraMovement : MonoBehaviour
 
     private void ApplyZoom(float delta)
     {
+
         if (snapPointsManager.Count == 0) return;
         if (snapPointsManager[currentIndexLayer].snapPoints.Length == 0) return;
 
@@ -366,11 +370,14 @@ public class CameraMovement : MonoBehaviour
         else if (delta > 0)
             currentIndexLayer++;
 
-            currentIndexLayer = Mathf.Clamp(currentIndexLayer, 0, snapPointsManager.Count - 1);
 
+        currentIndexLayer = Mathf.Clamp(currentIndexLayer, 0, snapPointsManager.Count - 1);
         currentIndexByLayer = Mathf.Clamp(currentIndexByLayer, 0, snapPointsManager[currentIndexLayer].snapPoints.Length - 1);
 
+        OnZoom?.Invoke(currentIndexLayer, currentIndexByLayer);
+
         transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
+
     }
 
     Vector2 GetPointerPosition()
