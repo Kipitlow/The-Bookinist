@@ -61,14 +61,24 @@ public class NPCTalker : MonoBehaviour
         {
             CloseBubble();
             _hasDialogueEnded = true;
+            _dialogue.timesEnded++;
             return;
         }
 
         // Afficher la réplique courante
 
-        ShowLine(_dialogue.lines[_lineIndex]);
-
-        _lineIndex++;
+        if (_dialogue.isLoopable)
+        {
+            ShowLine(_dialogue.lines[_lineIndex]);
+            _lineIndex++;
+        }
+        else if (!_dialogue.isLoopable && _dialogue.timesEnded == 0)
+        {
+            ShowLine(_dialogue.lines[_lineIndex]);
+            _lineIndex++;
+        }
+        else
+            return;
     }
 
     private void ShowLine(string text)
