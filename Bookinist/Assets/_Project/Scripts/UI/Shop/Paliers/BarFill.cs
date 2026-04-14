@@ -12,6 +12,7 @@ public class BarFill : MonoBehaviour
     {
 
         float newHeight = (curXP / maxXP) * Height;
+        //Mathf.Lerp()
         FillBar.sizeDelta = new Vector2(Width, newHeight);
     }
 
