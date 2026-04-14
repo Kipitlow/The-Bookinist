@@ -8,6 +8,7 @@ public class ScriptChangeEau : MonoBehaviour
     private SpriteRenderer _selfSprite;
     private int _nombreNuage;
     private float _lerpColorFloat;
+    private bool _finishEnigmeEtang = false;
     void Start()
     {
         _selfSprite = GetComponent<SpriteRenderer>();
@@ -50,5 +51,14 @@ public class ScriptChangeEau : MonoBehaviour
         }
         _scriptActivation.enabled= true;
         boxCollider.enabled= true;
+    }
+
+    public void starCoroutineChangeColor()
+    {
+        if (!_finishEnigmeEtang)
+        {
+            StartCoroutine(IChangeColor());
+            _finishEnigmeEtang = true;
+        }
     }
 }
