@@ -35,6 +35,7 @@ public class ScriptBalance : MonoBehaviour
     private int _poidAccumuller = 0;
     private int _poidAutoriser = 0;
     private GameObject _2emePoids;
+    private bool BalanceTerminer = false;
 
     #endregion
 
@@ -42,6 +43,19 @@ public class ScriptBalance : MonoBehaviour
     {
         _targetOne = true;
         _inventoryController = GameObject.Find("Canvas").GetComponentInChildren<InventoryController>();
+        Transform _ballMass = GameObject.Find("Target_spawn_Poids_L").transform;
+
+        if (_targetOne == true)
+        {
+            _targetOne = false;
+            _2emePoids = Instantiate(prefable_Poids, _ballMass);
+
+            _2emePoids.GetComponent<Rigidbody2D>().mass = 100;
+            _2emePoids.GetComponent<SpriteRenderer>().sprite = lyreSTP.itemSprite;
+            _2emePoids.GetComponent<SpriteRenderer>().color = new Color(121.0f/255.0f,121.0f/255.0f,121.0f/255.0f,0.85f);
+            _2emePoids.GetComponent<BoxCollider2D>().size = new Vector2(4.78f, 6f);
+            _2emePoids.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+        }
     }
 
     private void Update()
@@ -59,7 +73,9 @@ public class ScriptBalance : MonoBehaviour
         Vector3 _v3 = new Vector3(transform.position.x, transform.position.y + 2.6f, transform.position.z);
         GameObject ee = Instantiate(prefableLyre, transform);
         ee.transform.position = _v3;
-
+        BalanceTerminer = true;
+        Destroy(_2emePoids);
+        _2emePoids = null;
         for (int i = 0; i < _listPoids.Count; i++)
         {
             if (_listPoids[i] != null)
@@ -123,7 +139,7 @@ public class ScriptBalance : MonoBehaviour
 
     public void SpawnerIteamBalance(Item Context)
     {
-        if (_poidAutoriser < 3)
+        if (_poidAutoriser < 3 && BalanceTerminer==false)
         {
             _inventoryController.RemoveInventoryItem(Context);
             Debug.Log("------------------Spawn Fonction");
@@ -132,19 +148,6 @@ public class ScriptBalance : MonoBehaviour
             GameObject _1erPoids = Instantiate(prefable_Poids, _ballMass);
             _listPoids.Add(_1erPoids);
             if (_1erPoids.GetComponent<Rigidbody>() != null) { Debug.LogError("Pourquoi ce foutus de ce RigBody"); }
-
-            _ballMass = GameObject.Find("Target_spawn_Poids_L").transform;
-            if (_targetOne == true)
-            {
-                _targetOne = false;
-                _2emePoids = Instantiate(prefable_Poids, _ballMass);
-
-                _2emePoids.GetComponent<Rigidbody2D>().mass = 100;
-                _2emePoids.GetComponent<SpriteRenderer>().sprite = lyreSTP.itemSprite;
-                _2emePoids.GetComponent<BoxCollider2D>().size = new Vector2(4.78f, 6f);
-                _2emePoids.transform.localScale = new Vector3(0.16f, 0.16f, 0.16f);
-            }
-
 
             switch (Context.itemName)
             {
@@ -259,8 +262,6 @@ public class ScriptBalance : MonoBehaviour
                     Destroy(_listPoids[i]);
                     _poidAutoriser -= 1;
                 }
-                Destroy(_2emePoids);
-                //if (_stockIteam[i].itemName == "Lyre") Destroy(_stockIteam[i]);
                 yield return new WaitForSeconds(0.1f);
             }
 
