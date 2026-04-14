@@ -129,6 +129,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             if (_itemImage != null)
             {
                 ghostImage.sprite = _itemImage.sprite;
+                ghostImage.preserveAspect = _itemImage.preserveAspect;
                 //ghostImage.SetNativeSize();
             }
         }

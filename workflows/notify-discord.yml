@@ -1,0 +1,21 @@
+name: PR Notifications
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, closed]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Discord message
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "{\"content\": \"📢 PR: $TITLE - $ACTION\"}" \
+          $DISCORD_WEBHOOK
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          TITLE: ${{ github.event.pull_request.title }}
+          ACTION: ${{ github.event.action }}

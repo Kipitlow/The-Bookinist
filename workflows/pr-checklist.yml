@@ -1,0 +1,36 @@
+name: PR Checklist Validator
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate PR description
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.pull_request.body || "";
+
+            const requiredSections = [
+              "## 🧪 Tests à effectuer",
+              "## 📌 Description",
+              "[ ]"
+            ];
+
+            let missing = [];
+
+            for (const section of requiredSections) {
+              if (!body.includes(section)) {
+                missing.push(section);
+              }
+            }
+
+            if (missing.length > 0) {
+              core.setFailed(
+                "PR template incomplete. Missing: " + missing.join(", ")
+              );
+            }
