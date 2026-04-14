@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(MoveObject))]
 public class MoveOnZoom : MonoBehaviour
 {
     public enum ZoomState
@@ -19,12 +20,13 @@ public class MoveOnZoom : MonoBehaviour
     [Header("Hide Movement")]
     [SerializeField] private Vector2 _hideDirection = Vector2.right;
     [SerializeField] private float _hideDistance = 2f;
+    [SerializeField] private float _startOffsetDistance = 30f;
 
     [Header("Movement")]
     [SerializeField] private float _smoothTime = 0.2f;
-    [SerializeField] private float _arrivalThreshold = 0.01f;
-    private float _actualSmoothingTime;
+    private bool _isVisible = false;
 
+    [Header("Visual")]
     [SerializeField] private float _alphaVisible = 1f;
     [SerializeField] private float _alphaHidden = 0f;
     [SerializeField] private float _alphaSpeed = 1f;
@@ -33,128 +35,158 @@ public class MoveOnZoom : MonoBehaviour
 
     private CameraMovement _camMovement;
     private SpriteRenderer _spriteRenderer;
+    private MoveObject _moveObject;
 
-    private Vector3 _baseLocalPosition;
     private Vector3 _hiddenLocalPosition;
-    private Vector3 _targetLocalPosition;
-    private Vector3 _velocity;
+    private Vector3 _startingLocalPosition;
 
     public ZoomState _state = ZoomState.Visible;
-
-    private float _h;
-    private float _s;
-    private float _v;
-
+    
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _moveObject = GetComponent<MoveObject>();
 
         Camera mainCam = Camera.main;
-        _camMovement = mainCam.GetComponent<CameraMovement>();
+        if (mainCam != null)
+            _camMovement = mainCam.GetComponent<CameraMovement>();
 
-        _baseLocalPosition = transform.localPosition;
 
         Vector2 direction = _hideDirection.normalized;
-        _hiddenLocalPosition = _baseLocalPosition + new Vector3( direction.x * _hideDistance, direction.y * _hideDistance, 0f );
 
-        _targetLocalPosition = _baseLocalPosition;
+        _hiddenLocalPosition = _moveObject._baseLocalPosition + new Vector3(
+            direction.x * _hideDistance,
+            direction.y * _hideDistance,
+            0f
+        );
 
-        _currentAlpha = _spriteRenderer.color.a;
+        _startingLocalPosition = _moveObject._baseLocalPosition + new Vector3(
+            direction.x * _startOffsetDistance,
+            direction.y * _startOffsetDistance,
+            0f
+        );
 
         _alphaVisible = Mathf.Clamp01(_alphaVisible);
         _alphaHidden = Mathf.Clamp01(_alphaHidden);
 
-        transform.localPosition = new Vector3(direction.x * 30, direction.y * 30 + _baseLocalPosition.y, 0f);
+        _currentAlpha = 0f;
         _state = ZoomState.Starting;
+
+
+        Color color = _spriteRenderer.color;
+        color.a = _currentAlpha;
+        _spriteRenderer.color = color;
     }
 
     private void OnEnable()
     {
-        _camMovement.OnZoom += OnChangingLayer;
+        if (_camMovement != null)
+            _camMovement.OnZoom += OnChangingLayer;
     }
 
     private void OnDisable()
     {
-        _camMovement.OnZoom -= OnChangingLayer;
+        if (_camMovement != null)
+            _camMovement.OnZoom -= OnChangingLayer;
     }
 
     private void Update()
     {
-        UpdateMovement();
+        UpdateStateFromMovement();
         UpdateVisual();
     }
 
     public void OnChangingLayer(int layer, int lateralIndex)
     {
         if (_state == ZoomState.Starting)
-            StartShowinAtTheBegining();
-
-        if (layer == _myLayer)
         {
-            if (lateralIndex == _lateral) StartShowing();
-            if (lateralIndex != _lateral) QuickShowing();
+            StartShowingAtBeginning();
+            return;
+        }
+
+        if (layer == _myLayer && !_isVisible)
+        {
+            if (lateralIndex == _lateral)
+                StartShowing();
+            else
+                QuickShowing();
         }
         else if (layer == _myLayer + 1)
         {
-            if (lateralIndex == _lateral) StartHiding();
-            if (lateralIndex != _lateral) QuickHiding();
+            if (lateralIndex == _lateral)
+                StartHiding();
+            else
+                QuickHiding();
+        }
+    }
+    private void UpdateStateFromMovement()
+    {
+        if (_state == ZoomState.Showing && _moveObject.IsAtPosition(_moveObject._baseLocalPosition))
+        {
+            _isVisible = true;
+            _state = ZoomState.Visible;
+        }
+        else if (_state == ZoomState.Hiding && _moveObject.IsAtPosition(GetHiddenPosition()))
+        {
+            _isVisible = false;
+            _state = ZoomState.Hidden;
         }
     }
 
-    private void StartShowinAtTheBegining()
+    private Vector3 GetCurrentBasePosition()
     {
+        return _moveObject._baseLocalPosition;
+    }
+
+    private Vector3 GetHiddenPosition()
+    {
+        Vector2 direction = _hideDirection.normalized;
+        Vector3 basePos = GetCurrentBasePosition();
+
+        return basePos + new Vector3( direction.x * _hideDistance, direction.y * _hideDistance, 0f );
+    }
+
+    private Vector3 GetStartingPosition()
+    {
+        Vector2 direction = _hideDirection.normalized;
+        Vector3 basePos = GetCurrentBasePosition();
+         
+        return basePos + new Vector3( direction.x * _startOffsetDistance,  direction.y * _startOffsetDistance, 0f );
+    }
+
+    private void StartShowingAtBeginning()
+    {
+        _moveObject.SetPositionImmediate(GetStartingPosition());
         _state = ZoomState.Showing;
-        _targetLocalPosition = _baseLocalPosition;
-        _actualSmoothingTime = 0.01f;
-        _currentAlpha = 0.0f;
+        _currentAlpha = 0f;
+        _moveObject.MoveTo(GetCurrentBasePosition(), _smoothTime);
     }
 
     private void StartShowing()
     {
         _state = ZoomState.Showing;
-        _targetLocalPosition = _baseLocalPosition;
-        _actualSmoothingTime = _smoothTime;
-        if (_currentAlpha < 0.5f) _currentAlpha = 0.7f;
+        _moveObject.MoveTo(_moveObject._baseLocalPosition, _smoothTime);
+
+        if (_currentAlpha < 0.5f)
+            _currentAlpha = 0.7f;
     }
 
     private void StartHiding()
     {
         _state = ZoomState.Hiding;
-        _targetLocalPosition = _hiddenLocalPosition;
-        _actualSmoothingTime = _smoothTime;
+        _moveObject.MoveTo(GetHiddenPosition(), _smoothTime);
     }
 
     private void QuickShowing()
     {
         _state = ZoomState.Showing;
-        _targetLocalPosition = _baseLocalPosition;
-        _actualSmoothingTime = 0f;
+        _moveObject.MoveTo(_moveObject._baseLocalPosition, 0f);
     }
 
     private void QuickHiding()
     {
         _state = ZoomState.Hiding;
-        _targetLocalPosition = _hiddenLocalPosition;
-        _actualSmoothingTime = 0f;
-    }
-
-    private void UpdateMovement()
-    {
-        if (_state != ZoomState.Showing && _state != ZoomState.Hiding)
-            return;
-
-        transform.localPosition = Vector3.SmoothDamp( transform.localPosition,_targetLocalPosition, ref _velocity, _actualSmoothingTime);
-
-        if (Vector3.Distance(transform.localPosition, _targetLocalPosition) <= _arrivalThreshold)
-        {
-            transform.localPosition = _targetLocalPosition;
-            _velocity = Vector3.zero;
-
-            if (_state == ZoomState.Showing)
-                _state = ZoomState.Visible;
-            else if (_state == ZoomState.Hiding)
-                _state = ZoomState.Hidden;
-        }
+        _moveObject.MoveTo(GetHiddenPosition(), 0f);
     }
 
     private void UpdateVisual()
@@ -170,6 +202,7 @@ public class MoveOnZoom : MonoBehaviour
 
             case ZoomState.Hidden:
             case ZoomState.Hiding:
+            case ZoomState.Starting:
                 targetAlpha = _alphaHidden;
                 break;
         }
@@ -185,17 +218,24 @@ public class MoveOnZoom : MonoBehaviour
     public void ResetToVisible()
     {
         _state = ZoomState.Visible;
-        _targetLocalPosition = _baseLocalPosition;
-        transform.localPosition = _baseLocalPosition;
-        _velocity = Vector3.zero;
+        _moveObject.SetPositionImmediate(_moveObject._baseLocalPosition);
+        SetAlphaImmediate(_alphaVisible);
     }
 
     [ContextMenu("Reset To Hidden")]
     public void ResetToHidden()
     {
         _state = ZoomState.Hidden;
-        _targetLocalPosition = _hiddenLocalPosition;
-        transform.localPosition = _hiddenLocalPosition;
-        _velocity = Vector3.zero;
+        _moveObject.SetPositionImmediate(_hiddenLocalPosition);
+        SetAlphaImmediate(_alphaHidden);
+    }
+
+    private void SetAlphaImmediate(float alpha)
+    {
+        _currentAlpha = Mathf.Clamp01(alpha);
+
+        Color color = _spriteRenderer.color;
+        color.a = _currentAlpha;
+        _spriteRenderer.color = color;
     }
 }
