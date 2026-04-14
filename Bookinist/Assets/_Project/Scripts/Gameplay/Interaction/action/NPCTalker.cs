@@ -55,33 +55,20 @@ public class NPCTalker : MonoBehaviour
 
         _dialogue = SO_dialogue;
 
-        if(_dialogue.)
-
-        // Plus de rï¿½pliques -> fermer la bulle
+        // Plus de répliques -> fermer la bulle
 
         if (_lineIndex >= _dialogue.lines.Length)
         {
             CloseBubble();
             _hasDialogueEnded = true;
-            _dialogue.timesEnded++;
             return;
         }
 
-        // Afficher la rï¿½plique courante
-        if(_dialogue.isLoopable)
-        {
-            ShowLine(_dialogue.lines[_lineIndex]);
-            _lineIndex++;
-        }
-        else if (!_dialogue.isLoopable && timesEnded == 0)
-        {
-            ShowLine(_dialogue.lines[_lineIndex]);
-            _lineIndex++;
-        }
-        else
-            return;
+        // Afficher la réplique courante
 
-        
+        ShowLine(_dialogue.lines[_lineIndex]);
+
+        _lineIndex++;
     }
 
     private void ShowLine(string text)
@@ -129,19 +116,19 @@ public class NPCTalker : MonoBehaviour
 
             _nameBubbleRenderer.size = nameSize;
 
-            // Name bubble au dessus du coin supï¿½rieur gauche de la bulle principale
+            // Name bubble au dessus du coin supérieur gauche de la bulle principale
 
             float nameBubbleX = offsetX + nameSize.x / 5f;
-            float nameBubbleY = offsetY + (newSize.y / 5f)*4; // bord supï¿½rieur de la bulle principale
+            float nameBubbleY = offsetY + (newSize.y / 5f)*4; // bord supérieur de la bulle principale
 
             _nameBubbleRenderer.transform.localPosition = new Vector3(nameBubbleX, nameBubbleY, 0f);
         }
         else
         {
-            // Ancrage bord gauche + bord supï¿½rieur fixe
+            // Ancrage bord gauche + bord supérieur fixe
 
             float offsetX = newSize.x / 5f;
-            float offsetY = -newSize.y / 5f; // bord supï¿½rieur collï¿½ au point d'ancrage
+            float offsetY = -newSize.y / 5f; // bord supérieur collé au point d'ancrage
 
             _bubbleRenderer.transform.localPosition = new Vector3(offsetX, offsetY, 0f);
 
