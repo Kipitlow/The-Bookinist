@@ -67,12 +67,12 @@ public class SC_Egnime_2 : MonoBehaviour
         {
             if (Script_Tache != null)
             {
-                foreach (List_Element_Tach LET in Script_Tache.listeMission)
+                foreach (List_Element_Tach LET in Script_Tache.Liste_Mission)
                 {
-                    if (NameTach == LET.nomMission)
+                    if (NameTach == LET.Nom_Mission)
                     {
-                        LET.tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({Nbr_Puzzle_Max}/{Nbr_Puzzle_Max})";
-                        Script_Tache.TerminerTache(LET.nomMission);
+                        LET.Tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({Nbr_Puzzle_Max}/{Nbr_Puzzle_Max})";
+                        Script_Tache.Terminer_Tache(LET.Nom_Mission);
                         //Script_Tache.Change_Tach_List();
                     }
                 }
@@ -83,12 +83,12 @@ public class SC_Egnime_2 : MonoBehaviour
             Nbr_Puzzle += 1;
             if (Script_Tache != null)
             {
-                foreach (List_Element_Tach LET in Script_Tache.listeMission)
+                foreach (List_Element_Tach LET in Script_Tache.Liste_Mission)
                 {
-                    if (NameTach == LET.nomMission)
+                    if (NameTach == LET.Nom_Mission)
                     {
-                        LET.tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({Nbr_Puzzle}/{Nbr_Puzzle_Max})";
-                        Script_Tache.ChangeTacheList();
+                        LET.Tache = $"Trouve Tous les Puzzle, sur cette Scene de Mariage ({Nbr_Puzzle}/{Nbr_Puzzle_Max})";
+                        Script_Tache.Change_Tach_List();
                         //ICI que la mission ce terminer, est donc de récompencer c'est joueur.
                     }
                 }

@@ -8,17 +8,17 @@ using UnityEngine.SceneManagement;
 [Serializable]
 public class List_Element_Tach
 {
-    public string nomMission;
-    public string tache;
-    public bool tacheTerminer;
+    [SerializeField] public string Nom_Mission;
+    [SerializeField] public string Tache;
+    [SerializeField] public bool TacheTerminer;
 }
 
 public class SC_Tache : MonoBehaviour
 {
     #region Variable
     [Header("Variable Utiliser pour le Chronometre")]
-    public TextMeshProUGUI textChronom;
-    private bool _lanceCouroutine;
+    [SerializeField] public TextMeshProUGUI Text_Chronom;
+    private bool lanceCouroutine;
     //[SerializeField] public TextMeshProUGUI Text_Objectif; //////Objectif
     public int totalSeconds;
 
@@ -28,16 +28,16 @@ public class SC_Tache : MonoBehaviour
     //private int Layeur_Actuelle_Du_Joueur;
 
     [Header("UI_Enigme_02")]
-    public int nombreTacheValide=0;
+    public int NombreTacheValide=0;
 
     [Header("Prefable")]
-    public GameObject prefableTache;
-    public GameObject prefableCanvaGameOver;
-    public Transform targetParentPrefable;
-    public List<GameObject> listTemporairTache = new List<GameObject>(); //Permet de stocker les Prefable_Tache.
+    [SerializeField] public GameObject PrefableTache;
+    [SerializeField] public GameObject Prefable_Canva_GameOver;
+    [SerializeField] public Transform Target_Parent_Prefable;
+    public List<GameObject> List_Temporair_Tache = new List<GameObject>(); //Permet de stocker les Prefable_Tache.
 
     [Header("Mission")]
-    public List<List_Element_Tach> listeMission = new List<List_Element_Tach>(); //Permet de stocker les Prefable_Tache.
+    public List<List_Element_Tach> Liste_Mission = new List<List_Element_Tach>(); //Permet de stocker les Prefable_Tache.
 
     #endregion
 
@@ -46,29 +46,29 @@ public class SC_Tache : MonoBehaviour
     {
         //if (CM_Player == null) CM_Player = GameObject.Find("CameraManager").GetComponent<Camera>();
         StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
-        ChangeTacheList();
+        Change_Tach_List();
     }
     #endregion
 
     #region Methods
 
-    public void ChangeTacheList()//CodePermettant de actualiser les objectif du joueur
+    public void Change_Tach_List()//CodePermettant de actualiser les objectif du joueur
     {
         //On fonction quand terminer la tache précédent on veut switch de tache.
-        if (prefableTache != null && targetParentPrefable != null)
+        if (PrefableTache != null && Target_Parent_Prefable != null)
         {
             {
                 // Code qui permet de supprimer tout préfable tache dans le code 
-                foreach (GameObject obj in listTemporairTache)
+                foreach (GameObject obj in List_Temporair_Tache)
                 {
                     if (obj != null) Destroy(obj);
                 }
-                listTemporairTache.Clear();
+                List_Temporair_Tache.Clear();
                 //Code permet d'afficher tous les mission terminer et une seul mission non terminer
-                for (int i = 0; i < listeMission.Count; i++)
+                for (int i = 0; i < Liste_Mission.Count; i++)
                 {
-                    SpawnPrefableTache(i);
-                    if (listeMission[i].tacheTerminer == false)
+                    Spawn_Prefable_Tache(i);
+                    if (Liste_Mission[i].TacheTerminer == false)
                     {
                         return; // la boucle ce terminer quand une tache n'est pas terminer
                     }
@@ -77,9 +77,9 @@ public class SC_Tache : MonoBehaviour
             
         }
     }
-    private void SpawnPrefableTache(int i)               
+    private void Spawn_Prefable_Tache(int i)               
     {
-        GameObject New_Object = Instantiate(prefableTache, targetParentPrefable);
+        GameObject New_Object = Instantiate(PrefableTache, Target_Parent_Prefable);
         Vector3 Pos = New_Object.transform.position;
         Pos.y = Pos.y - 25 * i;
         New_Object.transform.position = Pos;
@@ -88,15 +88,15 @@ public class SC_Tache : MonoBehaviour
         //Dans ce code, on vêrifier si la tache en elle même est completer, si oui on change de couleur on rouge puis on le barre
         if (Prefable_Script_Tache != null)
         {
-            if (listeMission[i].tacheTerminer)
+            if (Liste_Mission[i].TacheTerminer)
             {
-                Prefable_Script_Tache.textObjectif.color = Color.red;
-                Prefable_Script_Tache.textObjectif.text = $"<s>{listeMission[i].tache}</s>";
+                Prefable_Script_Tache.Text_Objectif.color = Color.red;
+                Prefable_Script_Tache.Text_Objectif.text = $"<s>{Liste_Mission[i].Tache}</s>";
             }
-            else if (!listeMission[i].tacheTerminer)
+            else if (!Liste_Mission[i].TacheTerminer)
             {
-                Prefable_Script_Tache.textObjectif.color = Color.black;
-                Prefable_Script_Tache.textObjectif.text = listeMission[i].tache;
+                Prefable_Script_Tache.Text_Objectif.color = Color.black;
+                Prefable_Script_Tache.Text_Objectif.text = Liste_Mission[i].Tache;
                 /*if (Liste_Mission[i].nbrTask + 1 < Liste_Mission[i].nbrTaskMax)
                 {
                     Prefable_Script_Tache.Text_Objectif.text = Liste_Mission[i].Tache + $"({}/{})";
@@ -104,23 +104,23 @@ public class SC_Tache : MonoBehaviour
             }
         }
 
-        listTemporairTache.Add(New_Object);
+        List_Temporair_Tache.Add(New_Object);
     }
 
-    public void TerminerTache(string nom_mission)
+    public void Terminer_Tache(string nom_mission)
     {
-        for (int i = 0; i < listeMission.Count; i++)
+        for (int i = 0; i < Liste_Mission.Count; i++)
         {
-            if (listeMission[i].tacheTerminer == false)
+            if (Liste_Mission[i].TacheTerminer == false)
             {
-                if(listeMission[i].nomMission == nom_mission)
+                if(Liste_Mission[i].Nom_Mission == nom_mission)
                 {
-                    listeMission[i].tacheTerminer = true;
-                    ChangeTacheList();
+                    Liste_Mission[i].TacheTerminer = true;
+                    Change_Tach_List();
                 }
                 else
                 {
-                    Debug.LogWarning($"la mission {listeMission[i].nomMission} estr terminer");
+                    Debug.LogWarning($"la mission {Liste_Mission[i].Nom_Mission} estr terminer");
                 }
             }
         }
@@ -128,23 +128,23 @@ public class SC_Tache : MonoBehaviour
 
     public void FinEnigme2(int nbrTach)
     {
-        if (nbrTach == 0) { nombreTacheValide = nbrTach; }
-        else if(nombreTacheValide+1>= nbrTach)
+        if (nbrTach == 0) { NombreTacheValide = nbrTach; }
+        else if(NombreTacheValide+1>= nbrTach)
         {
-            nombreTacheValide = nbrTach;
+            NombreTacheValide = nbrTach;
             SceneManager.LoadScene("BookShopUpdated");
         }
-        else { nombreTacheValide += 1; }
+        else { NombreTacheValide += 1; }
 
     }
 
-    private void SpawnCanvaGameOver()
+    private void Spawn_Canva_GameOver()
     {
-        SC_UI_GameOver PUI = prefableCanvaGameOver.GetComponent<SC_UI_GameOver>();
+        SC_UI_GameOver PUI = Prefable_Canva_GameOver.GetComponent<SC_UI_GameOver>();
         Transform GO_Canva = GameObject.Find("Canvas").transform;
         if (PUI != null && GO_Canva != null)
         {
-            GameObject RR = Instantiate(prefableCanvaGameOver, transform.position, transform.rotation);
+            GameObject RR = Instantiate(Prefable_Canva_GameOver, transform.position, transform.rotation);
             RR.transform.SetParent(GO_Canva, false); // Permet d'annuler
 
             RR.transform.localScale = new Vector2(0.5f, 0.5f);
@@ -156,40 +156,40 @@ public class SC_Tache : MonoBehaviour
 
     IEnumerator Chronometre()
     {
-        _lanceCouroutine = true;
+        lanceCouroutine = true;
 
         while (totalSeconds > 0)
         {
             int minutes = totalSeconds / 60;
             int seconds = totalSeconds % 60;
-            textChronom.text = $"{minutes:D2}:{seconds:D2}";
+            Text_Chronom.text = $"{minutes:D2}:{seconds:D2}";
 
             yield return new WaitForSeconds(1);
 
             totalSeconds--;
         }
 
-        textChronom.text = "00:00";
-        _lanceCouroutine = false;
-        SpawnCanvaGameOver();
+        Text_Chronom.text = "00:00";
+        lanceCouroutine = false;
+        Spawn_Canva_GameOver();
     }
 
     public void SetChronom(bool Continue)
     {
         if(Continue)
         {
-            if (!_lanceCouroutine) 
+            if (!lanceCouroutine) 
             { 
                 StartCoroutine("Chronometre");
-                _lanceCouroutine = true;
+                lanceCouroutine = true;
             }
         }
         else if (!Continue)
         {
-            if (_lanceCouroutine)
+            if (lanceCouroutine)
             {
                 StopCoroutine("Chronometre");
-                _lanceCouroutine = false;
+                lanceCouroutine = false;
             }
         }
     }
