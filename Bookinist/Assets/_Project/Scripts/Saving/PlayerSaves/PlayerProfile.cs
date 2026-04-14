@@ -3,10 +3,10 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerProfile
 {
-    public string playerName;
-    public int playerLevel;
-    public int playerXP;
-    public int playerBooksUnlocked;
+    public string playerName = "Bookinist";
+    public int playerLevel = 1;
+    public int playerXP = 0;
+    public int playerBooksUnlocked = 0;
     public ScriptableObject playerDisplayedBook;
 
     public void ChangePlayerName(string newName)

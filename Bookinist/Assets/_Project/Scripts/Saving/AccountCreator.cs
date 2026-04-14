@@ -8,8 +8,11 @@ public class AccountCreator : MonoBehaviour
 
     public void CreateAccount()
     {
-        SaveSystem.instance.Save();
-        SaveService.instance.ChangeName(_usernameInput.text);
+        SaveSystem.instance.Create();
+        if (_usernameInput.text == "")
+            SaveService.instance.ChangeName("Bookinist");
+        else
+            SaveService.instance.ChangeName(_usernameInput.text);
         SaveSystem.instance.Save();
     }
 

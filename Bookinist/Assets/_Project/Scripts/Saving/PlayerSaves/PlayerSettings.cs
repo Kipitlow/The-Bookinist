@@ -3,7 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerSettings
 {
-    public int playerSoundGeneral;
-    public int playerSoundMusic;
-    public int playerSoundSound;
+    public int playerSoundGeneral = 50;
+    public int playerSoundMusic = 50;
+    public int playerSoundSound = 50;
 }
