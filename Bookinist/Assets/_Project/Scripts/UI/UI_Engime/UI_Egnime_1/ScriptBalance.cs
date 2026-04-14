@@ -64,7 +64,7 @@ public class ScriptBalance : MonoBehaviour
     [Header("Item Weights")]
     [SerializeField] private List<ItemWeightEntry> _itemWeights = new();
 
-    private readonly Dictionary<Item, int> _weightByItem = new();
+    private readonly Dictionary<string, int> _weightByItem = new();
     private readonly List<DepositedItem> _depositedItems = new();
 
     private GameObject _counterweightInstance;
@@ -103,7 +103,7 @@ public class ScriptBalance : MonoBehaviour
 
         TrySpawnCounterWeight();
 
-        if (!_weightByItem.TryGetValue(item, out int weight))
+        if (!_weightByItem.TryGetValue(item.itemName, out int weight))
             return false;
 
         GameObject instance = SpawnBalanceObject(item, weight, _itemSpawnPoint);
@@ -122,10 +122,10 @@ public class ScriptBalance : MonoBehaviour
     }
 
 
-    public int TryTakeBackItems()
+    public void TryTakeBackItems()
     {
         if (!CanTakeBackAtLeastOneItem())
-            return 0;
+            return;//0;
 
         int returnedCount = 0;
 
@@ -155,7 +155,7 @@ public class ScriptBalance : MonoBehaviour
             ResetBalanceVisuals();
         }
 
-        return returnedCount;
+        return; //returnedCount;
     }
 
     #endregion
@@ -164,19 +164,19 @@ public class ScriptBalance : MonoBehaviour
 
     public bool CanAcceptItem(Item item)
     {
-        if (_isSolved || _isSolving)
-            return false;
+    //    if (_isSolved || _isSolving)
+    //        return false;
 
-        if (item == null)
-            return false;
+    //    if (item == null)
+    //        return false;
 
-        if (IsFull)
-            return false;
+    //    if (IsFull)
+    //        return false;
 
-        if (item.itemSprite == null)
-            return false;
+    //    if (item.itemSprite == null)
+    //        return false;
 
-        return _weightByItem.ContainsKey(item);
+        return _weightByItem.ContainsKey(item.itemName);
     }
 
     public bool ContainsItem(Item item)
@@ -244,7 +244,7 @@ public class ScriptBalance : MonoBehaviour
             if (entry == null || entry.item == null)
                 continue;
 
-            _weightByItem[entry.item] = Mathf.Max(0, entry.weight);
+            _weightByItem[entry.item.itemName] = Mathf.Max(0, entry.weight);
         }
     }
 

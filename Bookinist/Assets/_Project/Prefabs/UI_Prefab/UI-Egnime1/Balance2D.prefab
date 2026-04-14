@@ -31,6 +31,7 @@ Transform:
   m_Children:
   - {fileID: 3602972265433869252}
   - {fileID: 2714571128537942994}
+  - {fileID: 1067454703401762786}
   - {fileID: 6121991146553269787}
   - {fileID: 3303963313440197341}
   - {fileID: 1885576333599712029}
@@ -68,8 +69,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.017, z: 0}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1067454703401762786}
+  m_Children: []
   m_Father: {fileID: 7781582390666980535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2781455298839232573
@@ -154,13 +154,13 @@ Transform:
   m_GameObject: {fileID: 3397767627571701526}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.314285, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.5990002, z: -0}
+  m_LocalScale: {x: 0.07000001, y: 0.06999999, z: 0.06999999}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7218459107886733622}
   - {fileID: 4173458773192079972}
-  m_Father: {fileID: 6121991146553269787}
+  m_Father: {fileID: 7781582390666980535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7841980146906742198
 SpriteRenderer:
@@ -256,9 +256,11 @@ GameObject:
   - component: {fileID: 151242168666447416}
   - component: {fileID: 4890861496524013424}
   - component: {fileID: 6522061521045977051}
-  - component: {fileID: 5098686006345157549}
   - component: {fileID: 5827197604760810083}
   - component: {fileID: 6056361388805948823}
+  - component: {fileID: 3022565627059633902}
+  - component: {fileID: 6448539436995412689}
+  - component: {fileID: 362314734741060500}
   m_Layer: 0
   m_Name: Balance2D
   m_TagString: Untagged
@@ -299,10 +301,10 @@ MonoBehaviour:
   _rewardSpawnPoint: {fileID: 0}
   _spawnedItemsRoot: {fileID: 3588093082380222011}
   _inventoryController: {fileID: 0}
-  _balancePivot: {fileID: 6121991146553269787}
+  _balancePivot: {fileID: 2714571128537942994}
   _balanceSprite: {fileID: 1067454703401762786}
-  _plateau1: {fileID: 7218459107886733622}
-  _plateau2: {fileID: 4173458773192079972}
+  _plateau1: {fileID: 0}
+  _plateau2: {fileID: 0}
   _balanceItemPrefab: {fileID: 2665785821794531234, guid: 5d080f7fd03390d479ab895f63348b82, type: 3}
   _rewardLyrePrefab: {fileID: 2665785821794531234, guid: fd772b10c0326b2488eb9454640494e6, type: 3}
   _lyreItem: {fileID: 11400000, guid: a2114c022a36ff5469e84d97edbc4e4c, type: 2}
@@ -350,7 +352,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactionSets:
   - interactionName: place in balance
-    conditions: []
+    conditions:
+    - type: 11
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 151242168666447416}
     actions:
     - type: 12
       target: {fileID: 0}
@@ -405,7 +426,43 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.13, y: 3.78, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!212 &5098686006345157549
+--- !u!114 &5827197604760810083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717664852829386936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+--- !u!114 &6056361388805948823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717664852829386936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: -1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _state: 1
+--- !u!212 &3022565627059633902
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -460,7 +517,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5827197604760810083
+--- !u!114 &6448539436995412689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -474,7 +531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
---- !u!114 &6056361388805948823
+--- !u!114 &362314734741060500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -863,7 +920,7 @@ Transform:
   m_GameObject: {fileID: 5225403428471096408}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.66, y: 2.85, z: 0}
+  m_LocalPosition: {x: 15.659999, y: 2.8500032, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1437,7 +1494,7 @@ Transform:
   m_GameObject: {fileID: 8475029282605456787}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.51, y: 2.9, z: 0}
+  m_LocalPosition: {x: -15.509997, y: 2.9000013, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -104,7 +104,7 @@ public class InteractionRunner : MonoBehaviour
                 return false;
 
             case ConditionType.CanBePlacedInBalance:
-                if (condition.Move == null)
+                if (condition.balance == null)
                     return false;
                 return condition.balance.CanAcceptItem(context.item);
         }
