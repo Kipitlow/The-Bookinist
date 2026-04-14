@@ -222,6 +222,7 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
     actions:
     - type: 9
       target: {fileID: 0}
@@ -254,6 +255,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 81062535}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!212 &81062538
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -858,11 +860,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8332658603820137628, guid: bf12b82ff285a3d4791305c7ddcf2c4c, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8332658603820137628, guid: bf12b82ff285a3d4791305c7ddcf2c4c, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332658603820137628, guid: bf12b82ff285a3d4791305c7ddcf2c4c, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[2].slot
+      value: 
+      objectReference: {fileID: 1266181014}
+    - target: {fileID: 8332658603820137628, guid: bf12b82ff285a3d4791305c7ddcf2c4c, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[2].type
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8332658603820137628, guid: bf12b82ff285a3d4791305c7ddcf2c4c, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].item
@@ -872,6 +882,10 @@ PrefabInstance:
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].type
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8332658603820137628, guid: bf12b82ff285a3d4791305c7ddcf2c4c, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[2].itemPrefab
+      value: 
+      objectReference: {fileID: 968460625904555924, guid: a3b665f5f714e2d49b4f81f2b6d316ed, type: 3}
     - target: {fileID: 8332658603820137628, guid: bf12b82ff285a3d4791305c7ddcf2c4c, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].selectedItemIsWanted
       value: 
@@ -888,6 +902,10 @@ PrefabInstance:
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[2].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 8332658603820137628, guid: bf12b82ff285a3d4791305c7ddcf2c4c, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[2].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 718f3c769c233b7449a6ad2befd14f5d, type: 2}
     - target: {fileID: 8366578031362234139, guid: bf12b82ff285a3d4791305c7ddcf2c4c, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.size
       value: 1
@@ -1137,6 +1155,7 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
     actions:
     - type: 9
       target: {fileID: 0}
@@ -1169,6 +1188,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 1073456098}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!212 &1073456101
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2269,6 +2289,22 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8206170917440922578, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206170917440922578, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: a2114c022a36ff5469e84d97edbc4e4c, type: 2}
+    - target: {fileID: 8206170917440922578, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206170917440922578, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].selectedItemIsWanted
+      value: 
+      objectReference: {fileID: 247390102}
+    - target: {fileID: 8206170917440922578, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[1].selectedItemIsWanted
       value: 
       objectReference: {fileID: 247390102}
@@ -2466,6 +2502,10 @@ PrefabInstance:
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 1422185308758315351, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TryTakeBackItems
+      objectReference: {fileID: 0}
     - target: {fileID: 1596375564067236570, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
       propertyPath: m_Size.x
       value: 20.837406
@@ -2494,6 +2534,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Layer2
       objectReference: {fileID: 0}
+    - target: {fileID: 3135607629346682298, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      propertyPath: _inventoryController
+      value: 
+      objectReference: {fileID: 1190348954}
     - target: {fileID: 3338480927341859821, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[3].slot
       value: 

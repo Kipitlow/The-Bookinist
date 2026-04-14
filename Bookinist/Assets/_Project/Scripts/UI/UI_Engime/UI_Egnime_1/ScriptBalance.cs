@@ -122,10 +122,10 @@ public class ScriptBalance : MonoBehaviour
     }
 
 
-    public int TryTakeBackItems()
+    public void TryTakeBackItems()
     {
         if (!CanTakeBackAtLeastOneItem())
-            return 0;
+            return; //0;
 
         int returnedCount = 0;
 
@@ -155,7 +155,7 @@ public class ScriptBalance : MonoBehaviour
             ResetBalanceVisuals();
         }
 
-        return returnedCount;
+        return; // returnedCount;
     }
 
     #endregion
