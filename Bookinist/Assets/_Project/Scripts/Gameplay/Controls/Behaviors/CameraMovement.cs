@@ -65,6 +65,8 @@ public class CameraMovement : MonoBehaviour
 
     public event Action<int, int> OnZoom;
 
+    [SerializeField] private CamManager _camManager;
+
 
     void OnEnable()
     {
@@ -290,17 +292,23 @@ public class CameraMovement : MonoBehaviour
             {
                 if (GetPointerPosition().x < pressStartPosition.x)
                 {
-                    currentIndexByLayer++;
+                    if (currentIndexByLayer != 2)
+                    { 
+                        currentIndexByLayer++;
+                        _camManager.NextCamera();
+                    }
 
-                    if (currentIndexByLayer > snapPointsManager[currentIndexLayer].snapPoints.Length - 1)
-                        currentIndexByLayer = snapPointsManager[currentIndexLayer].snapPoints.Length - 1;
                 }
                 else if (GetPointerPosition().x > pressStartPosition.x)
                 {
-                    currentIndexByLayer--;
+                    if (currentIndexByLayer != 0)
+                    { 
+                        currentIndexByLayer--;
+                        _camManager.PreviousCamera();
+                    }
 
-                    if (currentIndexByLayer < 0)
-                        currentIndexByLayer = 0;
+
+
                 }
                 transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
                 //print(currentIndexByLayer);
@@ -365,10 +373,28 @@ public class CameraMovement : MonoBehaviour
         if (snapPointsManager[currentIndexLayer].snapPoints.Length == 0) return;
 
         if (delta < 0)
-            currentIndexLayer--;
+        {
+            
+            if (currentIndexLayer != 0)
+            {
+                currentIndexLayer--;
+                _camManager.PreviousCamera();
+                _camManager.PreviousCamera();
+                _camManager.PreviousCamera();
+            }
 
+        }
         else if (delta > 0)
-            currentIndexLayer++;
+        {
+            
+            if (currentIndexLayer != 2)
+            {
+                currentIndexLayer++;
+                _camManager.NextCamera();
+                _camManager.NextCamera();
+                _camManager.NextCamera();
+            }
+        }
 
 
         currentIndexLayer = Mathf.Clamp(currentIndexLayer, 0, snapPointsManager.Count - 1);
