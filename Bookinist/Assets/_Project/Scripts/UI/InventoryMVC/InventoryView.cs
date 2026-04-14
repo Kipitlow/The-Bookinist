@@ -36,7 +36,7 @@ public class InventoryView : MonoBehaviour
 
             UnityEngine.UI.Button button = newObj.GetComponent<UnityEngine.UI.Button>();
             button.onClick.AddListener(controller.OnItemClick);
-            button.onClick.AddListener(() => Debug.Log("BUTTON CLICKED"));
+            //button.onClick.AddListener(() => Debug.Log("BUTTON CLICKED"));
 
             //objItemModel.GetEventManager(_eventManager);
 

@@ -91,9 +91,9 @@ public class CameraMovement : MonoBehaviour
     {
         int turn = PageManager.Instance.LayerHolder.Count;
 
-        for (int i = 0; i < turn; i++)
+        for (int i = 0; i < turn - 1; i++)
         {
-            maxZ = PageManager.maxLayer * (PageManager.Instance.LayerSpread[i + 1] / 2);
+            maxZ = PageManager.maxLayer * (PageManager.Instance.LayerSpread[i] / 2);
         
         }
         currentIndexByLayer = 1;

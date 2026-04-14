@@ -1,0 +1,44 @@
+name: CI Gate
+
+on:
+  pull_request:
+    branches: [Acceptance, main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+
+  gate:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Enforce review rules (soft gate)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+
+            const reviewers = pr.requested_reviewers.map(r => r.login);
+
+            const requiredTech = "tech-reviewer";
+            const qaList = ["qa1", "qa2", "qa3"];
+
+            const hasTech = reviewers.includes(requiredTech);
+            const hasQA = reviewers.some(r => qaList.includes(r));
+
+            if (!hasTech || !hasQA) {
+              core.setFailed("Missing required reviewers (tech + QA)");
+            }
