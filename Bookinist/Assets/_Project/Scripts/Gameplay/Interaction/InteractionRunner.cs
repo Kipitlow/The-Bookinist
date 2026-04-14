@@ -97,10 +97,16 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.Move == null)
                     return false;
                 return condition.Move.HasMoved(condition.HasMoved, condition.HowManyTimes);
+
             case ConditionType.HasToCheckEmptynessInventory:
                 return InventoryController.Instance.IsInventoryHasPlace();
             default:
                 return false;
+
+            case ConditionType.CanBePlacedInBalance:
+                if (condition.Move == null)
+                    return false;
+                return condition.balance.CanAcceptItem(context.item);
         }
     }
 
@@ -172,6 +178,10 @@ public class InteractionRunner : MonoBehaviour
                     action.slot.FillWithSprite(action.item);
                 break;
 
+            case ActionType.PlaceInBalance:
+                if (action.balance != null)
+                    action.balance.TryAddItem(context.item);
+                break;
         }
     }
     #endregion
