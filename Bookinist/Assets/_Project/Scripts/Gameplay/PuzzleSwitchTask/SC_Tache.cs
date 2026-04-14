@@ -18,7 +18,7 @@ public class SC_Tache : MonoBehaviour
     #region Variable
     [Header("Variable Utiliser pour le Chronometre")]
     [SerializeField] public TextMeshProUGUI Text_Chronom;
-    private bool LanceCouroutine;
+    private bool lanceCouroutine;
     //[SerializeField] public TextMeshProUGUI Text_Objectif; //////Objectif
     public int totalSeconds;
 
@@ -156,41 +156,40 @@ public class SC_Tache : MonoBehaviour
 
     IEnumerator Chronometre()
     {
-        if (totalSeconds - 1 >= 1)
+        lanceCouroutine = true;
+
+        while (totalSeconds > 0)
         {
-            totalSeconds -= 1;
-            Text_Chronom.text = $"{totalSeconds / 60}:{totalSeconds % 60}";
+            int minutes = totalSeconds / 60;
+            int seconds = totalSeconds % 60;
+            Text_Chronom.text = $"{minutes:D2}:{seconds:D2}";
 
             yield return new WaitForSeconds(1);
-            LanceCouroutine = true;
-            StartCoroutine("Chronometre");
+
+            totalSeconds--;
         }
-        else
-        {
-            totalSeconds = 0;
-            Text_Chronom.text = $"{totalSeconds / 60}:{totalSeconds % 60}";
-            LanceCouroutine = false;
-            Spawn_Canva_GameOver();
-            StopCoroutine("Chronometre");
-        }
+
+        Text_Chronom.text = "00:00";
+        lanceCouroutine = false;
+        Spawn_Canva_GameOver();
     }
 
     public void SetChronom(bool Continue)
     {
         if(Continue)
         {
-            if (!LanceCouroutine) 
+            if (!lanceCouroutine) 
             { 
                 StartCoroutine("Chronometre");
-                LanceCouroutine = true;
+                lanceCouroutine = true;
             }
         }
         else if (!Continue)
         {
-            if (LanceCouroutine)
+            if (lanceCouroutine)
             {
                 StopCoroutine("Chronometre");
-                LanceCouroutine = false;
+                lanceCouroutine = false;
             }
         }
     }
