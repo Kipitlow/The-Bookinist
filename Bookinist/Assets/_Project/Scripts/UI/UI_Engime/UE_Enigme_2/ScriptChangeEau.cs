@@ -55,6 +55,7 @@ public class ScriptChangeEau : MonoBehaviour
 
     public void starCoroutineChangeColor()
     {
+        Debug.Log("start couroutine");
         if (!_finishEnigmeEtang)
         {
             StartCoroutine(IChangeColor());
