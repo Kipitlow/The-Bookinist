@@ -23,7 +23,7 @@ public class Page : MonoBehaviour
 
         ApplySortingToPageObjects();
         _snapPointManager = GetComponentInChildren<SnapPointManager>();
-        if (_snapPointManager != null ) _snapPointManager.SetUpSnapPoints();
+        if (_snapPointManager != null ) _snapPointManager.SetUpSnapPoints(pageIndex);
     }
 
     /// <summary>
@@ -63,6 +63,7 @@ public class Page : MonoBehaviour
             sr.sortingLayerName = _sortingLayerName;
             //print("Sorting object in : " + _sortingLayerName);
             sr.sortingOrder = i; // 0, 1, 2... sans limite liée aux autres pages
+            pageObjects[i].layer = 3;
         }
     }
 
