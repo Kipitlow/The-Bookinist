@@ -256,6 +256,9 @@ GameObject:
   - component: {fileID: 151242168666447416}
   - component: {fileID: 4890861496524013424}
   - component: {fileID: 6522061521045977051}
+  - component: {fileID: 5098686006345157549}
+  - component: {fileID: 5827197604760810083}
+  - component: {fileID: 6056361388805948823}
   m_Layer: 0
   m_Name: Balance2D
   m_TagString: Untagged
@@ -271,7 +274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3717664852829386936}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.93, y: -2.71, z: -0.024000168}
   m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
   m_ConstrainProportionsScale: 1
@@ -291,13 +294,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3ac2a139b3f6e41b83bb7dd5b44873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balanceSprite: {fileID: 3397767627571701526}
-  balance: {fileID: 3798097720561933428}
-  plateau1: {fileID: 5225403428471096408}
-  plateau2: {fileID: 8475029282605456787}
-  prefable_Poids: {fileID: 3885355113873321147, guid: f4ba5796f04f07f4382f3d90221b5a6b, type: 3}
-  prefableLyre: {fileID: 2665785821794531234, guid: fd772b10c0326b2488eb9454640494e6, type: 3}
-  lyreSTP: {fileID: 11400000, guid: a2114c022a36ff5469e84d97edbc4e4c, type: 2}
+  _itemSpawnPoint: {fileID: 3303963313440197341}
+  _counterweightSpawnPoint: {fileID: 1885576333599712029}
+  _rewardSpawnPoint: {fileID: 0}
+  _spawnedItemsRoot: {fileID: 3588093082380222011}
+  _inventoryController: {fileID: 0}
+  _balancePivot: {fileID: 6121991146553269787}
+  _balanceSprite: {fileID: 1067454703401762786}
+  _plateau1: {fileID: 7218459107886733622}
+  _plateau2: {fileID: 4173458773192079972}
+  _balanceItemPrefab: {fileID: 2665785821794531234, guid: 5d080f7fd03390d479ab895f63348b82, type: 3}
+  _rewardLyrePrefab: {fileID: 2665785821794531234, guid: fd772b10c0326b2488eb9454640494e6, type: 3}
+  _lyreItem: {fileID: 11400000, guid: a2114c022a36ff5469e84d97edbc4e4c, type: 2}
+  _maxItems: 3
+  _targetWeight: 100
+  _counterweightWeight: 100
+  _solveDelay: 0.5
+  _spawnedItemScale: {x: 0.1, y: 0.1, z: 0.1}
+  _itemWeights:
+  - item: {fileID: 11400000, guid: 6687dba69648bd24ea66d4683be78832, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: feb22f05d1da171428b00a3e7cdddbb4, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 7350593cc37646343be58232e214838a, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: c92cf27cc84388244b01c3fc36596964, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 7439c859235314a4083db17631921c12, type: 2}
+    weight: 90
+  - item: {fileID: 11400000, guid: 3a6409fce1b2f1b41838db46c2704208, type: 2}
+    weight: 45
+  - item: {fileID: 11400000, guid: 91cfd2754d7027649be9e00d4a5465ed, type: 2}
+    weight: 45
+  - item: {fileID: 11400000, guid: 5755fe98c94558b429821530ae68f05a, type: 2}
+    weight: 45
+  - item: {fileID: 11400000, guid: 432b72a9e2276c747a23a78f42c23d62, type: 2}
+    weight: 100
+  - item: {fileID: 11400000, guid: 6eebcdfd04c3e9f4fa5f14420453f3fb, type: 2}
+    weight: 10
+  - item: {fileID: 11400000, guid: 7308a310cafd67744a377b3936025613, type: 2}
+    weight: 10
+  - item: {fileID: 11400000, guid: 1f263dd5a994d6f48b3a1edc4fe07c1d, type: 2}
+    weight: 10
 --- !u!114 &4890861496524013424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,28 +349,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionSets:
-  - interactionName: drop Flute
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 432b72a9e2276c747a23a78f42c23d62, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
+  - interactionName: place in balance
+    conditions: []
     actions:
-    - type: 5
+    - type: 12
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -345,12 +365,12 @@ MonoBehaviour:
           m_Calls:
           - m_Target: {fileID: 151242168666447416}
             m_TargetAssemblyTypeName: ScriptBalance, Assembly-CSharp
-            m_MethodName: SpawnerIteamBalance
+            m_MethodName: TryAddItem
             m_Mode: 2
             m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 432b72a9e2276c747a23a78f42c23d62, type: 2}
+              m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 100
+              m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
               m_BoolArgument: 0
@@ -363,526 +383,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
-  - interactionName: "drop Am\xE9thyste"
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 7439c859235314a4083db17631921c12, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 151242168666447416}
-            m_TargetAssemblyTypeName: ScriptBalance, Assembly-CSharp
-            m_MethodName: SpawnerIteamBalance
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 7439c859235314a4083db17631921c12, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 90
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 0}
-  - interactionName: drop Collier
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 3a6409fce1b2f1b41838db46c2704208, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 151242168666447416}
-            m_TargetAssemblyTypeName: ScriptBalance, Assembly-CSharp
-            m_MethodName: SpawnerIteamBalance
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 3a6409fce1b2f1b41838db46c2704208, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 45
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 0}
-  - interactionName: drop Couronne d'Appolan
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 5755fe98c94558b429821530ae68f05a, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 151242168666447416}
-            m_TargetAssemblyTypeName: ScriptBalance, Assembly-CSharp
-            m_MethodName: SpawnerIteamBalance
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 5755fe98c94558b429821530ae68f05a, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 45
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 0}
-  - interactionName: 'drop Fruits: Citron'
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 7350593cc37646343be58232e214838a, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 151242168666447416}
-            m_TargetAssemblyTypeName: ScriptBalance, Assembly-CSharp
-            m_MethodName: SpawnerIteamBalance
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 7350593cc37646343be58232e214838a, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 5
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 0}
-  - interactionName: 'drop Fruits: Figue'
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: c92cf27cc84388244b01c3fc36596964, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 151242168666447416}
-            m_TargetAssemblyTypeName: ScriptBalance, Assembly-CSharp
-            m_MethodName: SpawnerIteamBalance
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: c92cf27cc84388244b01c3fc36596964, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 5
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 0}
-  - interactionName: 'drop Fruits: Orange'
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 6687dba69648bd24ea66d4683be78832, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 151242168666447416}
-            m_TargetAssemblyTypeName: ScriptBalance, Assembly-CSharp
-            m_MethodName: SpawnerIteamBalance
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 6687dba69648bd24ea66d4683be78832, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 5
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 0}
-  - interactionName: 'drop Fruits: Pomme'
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: feb22f05d1da171428b00a3e7cdddbb4, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 151242168666447416}
-            m_TargetAssemblyTypeName: ScriptBalance, Assembly-CSharp
-            m_MethodName: SpawnerIteamBalance
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: feb22f05d1da171428b00a3e7cdddbb4, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 5
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 0}
-  - interactionName: 'drop Pots: petit'
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 7308a310cafd67744a377b3936025613, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 151242168666447416}
-            m_TargetAssemblyTypeName: ScriptBalance, Assembly-CSharp
-            m_MethodName: SpawnerIteamBalance
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 7308a310cafd67744a377b3936025613, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 10
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 0}
-  - interactionName: 'drop Pots: moyen'
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 1f263dd5a994d6f48b3a1edc4fe07c1d, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 151242168666447416}
-            m_TargetAssemblyTypeName: ScriptBalance, Assembly-CSharp
-            m_MethodName: SpawnerIteamBalance
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 1f263dd5a994d6f48b3a1edc4fe07c1d, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 10
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 0}
-  - interactionName: 'drop Pots: Grand'
-    conditions:
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 6eebcdfd04c3e9f4fa5f14420453f3fb, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 151242168666447416}
-            m_TargetAssemblyTypeName: ScriptBalance, Assembly-CSharp
-            m_MethodName: SpawnerIteamBalance
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 6eebcdfd04c3e9f4fa5f14420453f3fb, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 10
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 0}
+      balance: {fileID: 151242168666447416}
 --- !u!65 &6522061521045977051
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -904,6 +405,97 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.13, y: 3.78, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &5098686006345157549
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717664852829386936}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &5827197604760810083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717664852829386936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+--- !u!114 &6056361388805948823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717664852829386936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: -1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _state: 1
 --- !u!1 &3798097720561933428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,6 +802,7 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
     actions:
     - type: 5
       target: {fileID: 0}
@@ -1242,6 +835,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!1 &5225403428471096408
 GameObject:
   m_ObjectHideFlags: 0
