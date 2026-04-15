@@ -2,11 +2,11 @@ using NUnit.Framework;
 using UnityEngine;
 
 public class SnapPointManager : MonoBehaviour
-{
-    public GameObject[] snapPoints;
-    public int layer; 
+    {
+        public GameObject[] snapPoints;
+        public int layer; 
 
-    public void SetUpSnapPoints(int layer)
+        public void SetUpSnapPoints(int layer)
     {
         foreach(GameObject snapPoint in snapPoints)
         {

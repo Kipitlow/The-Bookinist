@@ -164,17 +164,17 @@ public class ScriptBalance : MonoBehaviour
 
     public bool CanAcceptItem(Item item)
     {
-    //    if (_isSolved || _isSolving)
-    //        return false;
+        if (_isSolved || _isSolving)
+            return false;
 
-    //    if (item == null)
-    //        return false;
+        if (item == null)
+            return false;
 
-    //    if (IsFull)
-    //        return false;
+        if (IsFull)
+            return false;
 
-    //    if (item.itemSprite == null)
-    //        return false;
+        if (item.itemSprite == null)
+            return false;
 
         return _weightByItem.ContainsKey(item.itemName);
     }
@@ -390,6 +390,8 @@ public class ScriptBalance : MonoBehaviour
 
         Destroy(_counterweightInstance);
         _counterweightInstance = null;
+
+        Destroy(this);
     }
 
     #endregion
