@@ -8,6 +8,7 @@ public class ProgressionBar : MonoBehaviour
     public int palier = 0;
     public float xpPass;
     public Image BattlePassBar;
+    public GameObject BattlePassIcon;
     public List<Image> Paliers = new List<Image>();
 
     private Color Lock = new Color32(109, 109, 109, 255);
@@ -56,15 +57,26 @@ public class ProgressionBar : MonoBehaviour
     }
     public void addXpPass() // fonction appeler par le bouton d'ouverture de pass, pour actualiser la barre que lorsque on est dessus
     {
-        //desactiver l'icon qui dit d'aller voir le pass
+        BattlePassIcon.SetActive(false);
         StartCoroutine(AnimateBar(waitingXp));
+        waitingXp = 0;
     }
     public void xpGain(float xp) // fonction à appeler pour les récompenses de quêtes
     {
         waitingXp += xp;
-        if (waitingXp + xpPass >= (palier * 0.0333 + 0.015)) // check si on a passer un palier
-        { 
-            // activer l'icon pour dire d'aller voir le pass
+        if(palier == 0)
+        {
+            if ((1f / 15000f * waitingXp) + xpPass >= (palier * 0.0333 + 0.015)) // check si on a passer le palier 1
+            {
+                BattlePassIcon.SetActive(true);
+            }
+        }
+        else
+        {
+            if ((1f / 15000f * waitingXp) + xpPass >= (palier * 0.0333 + 0.015) && palier < 30) // check si on a passer un palier
+            {
+                BattlePassIcon.SetActive(true);
+            }
         }
         
     }
@@ -73,7 +85,7 @@ public class ProgressionBar : MonoBehaviour
     {
         float currentTime = 0;
         float startXp = xpPass;
-        float targetXp = xpPass + (1f / 15000f) * xp;
+        float targetXp = Mathf.Clamp(xpPass + (1f / 15000f) * xp, 0, 1);
 
         while (currentTime < lerpTime)
         {
@@ -91,7 +103,6 @@ public class ProgressionBar : MonoBehaviour
 
         xpPass = targetXp;
         BattlePassBar.fillAmount = xpPass;
-        waitingXp = 0;
     }
 
 
