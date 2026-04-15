@@ -10718,7 +10718,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &996885437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15153,6 +15153,7 @@ GameObject:
   - component: {fileID: 1359643278}
   - component: {fileID: 1359643277}
   - component: {fileID: 1359643276}
+  - component: {fileID: 1359643280}
   m_Layer: 5
   m_Name: StepsButton
   m_TagString: Untagged
@@ -15244,10 +15245,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 996885436}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1359643280}
+        m_TargetAssemblyTypeName: ToggleUI, Assembly-CSharp
+        m_MethodName: ToggleAllMenus
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15294,6 +15295,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359643274}
   m_CullTransparentMesh: 1
+--- !u!114 &1359643280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359643274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1846e7df6c3f9f4499bfd24de42291f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enableUI: {fileID: 996885436}
+  _disableUI:
+  - {fileID: 535440129}
+  - {fileID: 931700725}
+  - {fileID: 1474302690}
+  - {fileID: 226565517}
+  - {fileID: 1749599992}
 --- !u!1 &1362279587
 GameObject:
   m_ObjectHideFlags: 0
