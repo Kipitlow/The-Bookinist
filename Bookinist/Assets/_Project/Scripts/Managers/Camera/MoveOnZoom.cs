@@ -197,7 +197,7 @@ public class MoveOnZoom : MonoBehaviour
 
         foreach (GameObject obj in _objToDesable)
         {
-            obj.SetActive(true);
+            obj.SetActive(false);
         }
     }
 

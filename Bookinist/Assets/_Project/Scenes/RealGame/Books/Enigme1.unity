@@ -1497,7 +1497,7 @@ Transform:
   m_GameObject: {fileID: 788203403}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -8.92, z: 0}
+  m_LocalPosition: {x: 0, y: -7.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2829,6 +2829,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchDetection: {fileID: 247390101}
+--- !u!1 &1215925321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1215925322}
+  - component: {fileID: 1215925323}
+  m_Layer: 0
+  m_Name: collider (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1215925322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215925321}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -7.83, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6151352902022145471}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1215925323
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215925321}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 37, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1228447323 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6680723705465889309, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
@@ -5481,6 +5534,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7237595373935860042, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
       insertIndex: -1
       addedObject: {fileID: 788203404}
+    - targetCorrespondingSourceObject: {fileID: 7237595373935860042, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1215925322}
     - targetCorrespondingSourceObject: {fileID: 2282063073067650081, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
       insertIndex: -1
       addedObject: {fileID: 526209274}
@@ -5739,6 +5795,10 @@ PrefabInstance:
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 6649658205024266076, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 11400000, guid: 91cfd2754d7027649be9e00d4a5465ed, type: 2}
     - target: {fileID: 6649658205024266076, guid: e940dcbba02ae0741ad7df802116df74, type: 3}
       propertyPath: _invController
       value: 
