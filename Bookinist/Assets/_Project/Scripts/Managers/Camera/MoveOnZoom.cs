@@ -38,7 +38,6 @@ public class MoveOnZoom : MonoBehaviour
 
     private List<SpriteRenderer> _spriteRenderers = new();
     private float _currentAlpha;
-    private bool _isVisible;
 
     private CameraMovement _camMovement;
     private MoveObject _moveObject;
@@ -71,7 +70,6 @@ public class MoveOnZoom : MonoBehaviour
 
         _currentAlpha = 0f;
         _state = ZoomState.Starting;
-        _isVisible = false;
 
         ApplyAlphaToAllRenderers(_currentAlpha);
 
@@ -112,7 +110,7 @@ public class MoveOnZoom : MonoBehaviour
             return;
         }
 
-        if (layer == _myLayer && !_isVisible)
+        if (layer == _myLayer)
         {
             if (lateralIndex == _lateral)
                 StartShowing();
@@ -132,12 +130,10 @@ public class MoveOnZoom : MonoBehaviour
     {
         if (_state == ZoomState.Showing && _moveObject.IsAtPosition(GetCurrentBasePosition()))
         {
-            _isVisible = true;
             _state = ZoomState.Visible;
         }
         else if (_state == ZoomState.Hiding && _moveObject.IsAtPosition(GetHiddenPosition()))
         {
-            _isVisible = false;
             _state = ZoomState.Hidden;
         }
     }
@@ -287,7 +283,6 @@ public class MoveOnZoom : MonoBehaviour
     public void ResetToVisible()
     {
         _state = ZoomState.Visible;
-        _isVisible = true;
         _moveObject.SetPositionImmediate(GetCurrentBasePosition());
         SetAlphaImmediate(_alphaVisible);
     }
@@ -296,7 +291,6 @@ public class MoveOnZoom : MonoBehaviour
     public void ResetToHidden()
     {
         _state = ZoomState.Hidden;
-        _isVisible = false;
         _moveObject.SetPositionImmediate(GetHiddenPosition());
         SetAlphaImmediate(_alphaHidden);
     }

@@ -90,6 +90,8 @@ public class WorldDropHandler : MonoBehaviour
             //set Pickable
             droppedObject.GetComponent<Pickable>().SetItem(draggedItem);
 
+            _inventoryController.RemoveInventoryItem(draggedItem);
+
             return;
         };
 
