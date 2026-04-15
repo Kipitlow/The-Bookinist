@@ -72,6 +72,10 @@ public class ActionEntryDrawer : PropertyDrawer
                 var spritesProp = property.FindPropertyRelative("sprites");
                 extraHeight += EditorGUI.GetPropertyHeight(spritesProp, true);
                 break;
+
+            case ActionType.PlaceInBalance:
+                lines += 1;
+                break;
         }
 
         return lines * lineHeight + extraHeight;
@@ -166,6 +170,10 @@ public class ActionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(spritesRect, spritesProp, true);
                 r.y += spritesHeight + s;
 
+                break;
+
+            case ActionType.PlaceInBalance:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("balance"));
                 break;
         }
         EditorGUI.EndProperty();

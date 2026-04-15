@@ -18,6 +18,17 @@ public class CurrencyManager : MonoBehaviour
     public UnityEvent<int> OnSoftCurrencyChanged;
     public UnityEvent<int> OnHardCurrencyChanged;
 
+    private void OnEnable()
+    {
+        SaveSystem.instance.OnDataUpdate += SetupCurrency;
+    }
+
+    private void OnDisable()
+    {
+        if (SaveSystem.instance != null)
+            SaveSystem.instance.OnDataUpdate -= SetupCurrency;
+    }
+
     private void Awake()
     {
         // Mise en place du singleton : détruit les doublons et conserve l'instance unique
@@ -52,6 +63,15 @@ public class CurrencyManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Set la soft currency a une quantité specifique, puis notifie les abonnés.
+    /// </summary>
+    public void SetSoftCurrency(int amount)
+    {
+        _softCurrency = amount;
+        //OnSoftCurrencyChanged?.Invoke(_softCurrency);
+    }
+
+    /// <summary>
     /// Ajoute une quantité à la monnaie hard et notifie les abonnés.
     /// </summary>
     public void AddHardCurrency(int amount)
@@ -72,7 +92,23 @@ public class CurrencyManager : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Set la hard currency a une quantité specifique, puis notifie les abonnés.
+    /// </summary>
+    public void SetHardCurrency(int amount)
+    {
+        _hardCurrency = amount;
+        //OnHardCurrencyChanged?.Invoke(_hardCurrency);
+    }
+
     public int GetSoftCurrency() { return _softCurrency; }
 
     public int GetHardCurrency() { return _hardCurrency; }
+
+    public void SetupCurrency()
+    {
+        Debug.Log("SetupCurrency Executed");
+        SetSoftCurrency(SaveSystem.instance.currency.playerCurrencySoft);
+        SetHardCurrency(SaveSystem.instance.currency.playerCurrencyHard);
+    }
 }

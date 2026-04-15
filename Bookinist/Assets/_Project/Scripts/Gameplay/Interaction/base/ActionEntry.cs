@@ -57,4 +57,7 @@ public class ActionEntry
 
     [Tooltip("SO de l'item")]
     public Item item;
+
+    [Tooltip("Balance")]
+    public ScriptBalance balance;
 }
