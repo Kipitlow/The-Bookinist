@@ -18,7 +18,9 @@ public class ShopItemUI : MonoBehaviour
         _icon.sprite = data.icon;
         //_nameText.text = data.itemName;
         _priceText.text = $"{data.price} €";
-        _customManager = FindFirstObjectByType<CustomShopManager>();
+        _customManager = CustomShopManager.Instance;
+        if ( _customManager != null )
+            print("[ShopItem] CustomShopManager is null");
 
         _buyButton.onClick.AddListener(OnBuyClicked);
     }
