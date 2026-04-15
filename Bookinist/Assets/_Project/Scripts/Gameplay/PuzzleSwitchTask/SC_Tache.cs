@@ -13,34 +13,19 @@ public class List_Element_Tach
     [SerializeField] public bool TacheTerminer;
 }
 
-
-[Serializable]
-public class UI_CacheLayeur
-{
-    [Header("Affiche UI & Objet dans un layeur")]
-    public int Layeur_Affiche_Mission;
-    public List<GameObject> CanvaUI;
-    
-}
-
 public class SC_Tache : MonoBehaviour
 {
     #region Variable
     [Header("Variable Utiliser pour le Chronometre")]
     [SerializeField] public TextMeshProUGUI Text_Chronom;
-    private bool LanceCouroutine;
+    private bool lanceCouroutine;
     //[SerializeField] public TextMeshProUGUI Text_Objectif; //////Objectif
     public int totalSeconds;
 
-    [Header("Autre")]
+    /*[Header("Autre")]
     public Camera CM_Player;
-    [SerializeField]public CameraMovement CM;
-    public List<UI_CacheLayeur> UI_cacheLayeur = new List<UI_CacheLayeur>();
-    private int Layeur_Actuelle_Du_Joueur;
-
-    [Header("UI_Enigme_01")]
-    public GameObject Balance;
-    public GameObject CanvaMarchant;
+    [SerializeField]public CameraMovement CM;*/
+    //private int Layeur_Actuelle_Du_Joueur;
 
     [Header("UI_Enigme_02")]
     public int NombreTacheValide=0;
@@ -59,39 +44,16 @@ public class SC_Tache : MonoBehaviour
     #region Unity Methods
     void Start()
     {
-        if (CM_Player == null) CM_Player = GameObject.Find("CameraManager").GetComponent<Camera>();
-        StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
+        //if (CM_Player == null) CM_Player = GameObject.Find("CameraManager").GetComponent<Camera>();
+        
+        if (SceneManager.GetActiveScene().name != "Enigme1") 
+            StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
+
         Change_Tach_List();
     }
-    void Update()
-    {
-        {
-            if (CM_Player != null && Layeur_Actuelle_Du_Joueur != (int)Mathf.Round(CM_Player.transform.position.z) + 1 && Layeur_Actuelle_Du_Joueur != CM.currentIndexByLayer)  //Ce code consiste a v�rifier le layeur du joueur en fonction de sa position axe z et enfin de le terminer quand un changement est fait.     //&& Text_Objectif != null
-            {
-                Layeur_Actuelle_Du_Joueur = CM.currentIndexByLayer;
-                // Cette option consiste a cacher tous les objets qui sont assigner a un layeur, on fonction du layeur du joueur cache le rester des objets.
-                for (int i = 0; i < UI_cacheLayeur.Count; i++)
-                {
-                    if (i == Layeur_Actuelle_Du_Joueur)
-                    {
-                        foreach (GameObject CacheObjet in UI_cacheLayeur[i].CanvaUI)
-                        {
-                            if (CacheObjet != null) CacheObjet.SetActive(true);
-                        }
-                    }
-                    else
-                    {
-                        foreach (GameObject CacheObjet in UI_cacheLayeur[i].CanvaUI)
-                        {
-                            if (CacheObjet != null) CacheObjet.SetActive(false);
-                        }
-                    }
-                }
-           }
-        }
-    }
     #endregion
-        #region Methods
+
+    #region Methods
 
     public void Change_Tach_List()//CodePermettant de actualiser les objectif du joueur
     {
@@ -122,7 +84,7 @@ public class SC_Tache : MonoBehaviour
     {
         GameObject New_Object = Instantiate(PrefableTache, Target_Parent_Prefable);
         Vector3 Pos = New_Object.transform.position;
-        Pos.y = Pos.y - 100 * i;
+        Pos.y = Pos.y - 25 * i;
         New_Object.transform.position = Pos;
 
         SC_Prefable_Tache Prefable_Script_Tache = New_Object.GetComponentInChildren<SC_Prefable_Tache>();
@@ -157,16 +119,6 @@ public class SC_Tache : MonoBehaviour
                 if(Liste_Mission[i].Nom_Mission == nom_mission)
                 {
                     Liste_Mission[i].TacheTerminer = true;
-                    /*if(Liste_Mission[i].nbrTask+1 >= Liste_Mission[i].nbrTaskMax)
-                    {
-                        Liste_Mission[i].nbrTask = Liste_Mission[i].nbrTaskMax;
-                        Liste_Mission[i].TacheTerminer = true;
-                    }
-                    else
-                    {
-                        Liste_Mission[i].nbrTask += 1;
-                        Liste_Mission[i].TacheTerminer = false;
-                    }*/
                     Change_Tach_List();
                 }
                 else
@@ -189,7 +141,6 @@ public class SC_Tache : MonoBehaviour
 
     }
 
-
     private void Spawn_Canva_GameOver()
     {
         SC_UI_GameOver PUI = Prefable_Canva_GameOver.GetComponent<SC_UI_GameOver>();
@@ -206,69 +157,42 @@ public class SC_Tache : MonoBehaviour
         }
     }
 
-    public void Affiche_Marchant(GameObject Self)
-    {
-        if (Self != null) Self.SetActive(false);
-
-        if (Balance != null)
-        {
-            Balance.SetActive(!Balance.activeSelf);
-            Debug.Log($"Trouver Balance: {Balance.activeSelf} "); 
-        }
-        else 
-        { 
-            Debug.LogWarning("Erreur du system Balance =null"); 
-        }
-            
-
-        if (CanvaMarchant != null)
-        {
-            CanvaMarchant.SetActive(!CanvaMarchant.activeSelf);
-            Debug.Log($"Trouver Balance: {CanvaMarchant.activeSelf} ");
-        }
-        else 
-        {
-            Debug.LogWarning("Erreur du system CanvaMarchant =null");
-        }
-    }
-    // Permet de faire un chronomêttre
     IEnumerator Chronometre()
     {
-        if (totalSeconds - 1 >= 1)
+        lanceCouroutine = true;
+
+        while (totalSeconds > 0)
         {
-            totalSeconds -= 1;
-            Text_Chronom.text = $"{totalSeconds / 60}:{totalSeconds % 60}";
+            int minutes = totalSeconds / 60;
+            int seconds = totalSeconds % 60;
+            Text_Chronom.text = $"{minutes:D2}:{seconds:D2}";
 
             yield return new WaitForSeconds(1);
-            LanceCouroutine = true;
-            StartCoroutine("Chronometre");
+
+            totalSeconds--;
         }
-        else
-        {
-            totalSeconds = 0;
-            Text_Chronom.text = $"{totalSeconds / 60}:{totalSeconds % 60}";
-            LanceCouroutine = false;
-            Spawn_Canva_GameOver();
-            StopCoroutine("Chronometre");
-        }
-    } 
-    //Cette fonction ci-dessous est utiliser dans un event bouton, et permet de mêttre pause le chrono !!! Attention elle ne stop pas le déroulement dans la scéne
+
+        Text_Chronom.text = "00:00";
+        lanceCouroutine = false;
+        Spawn_Canva_GameOver();
+    }
+
     public void SetChronom(bool Continue)
     {
         if(Continue)
         {
-            if (!LanceCouroutine) 
+            if (!lanceCouroutine) 
             { 
                 StartCoroutine("Chronometre");
-                LanceCouroutine = true;
+                lanceCouroutine = true;
             }
         }
         else if (!Continue)
         {
-            if (LanceCouroutine)
+            if (lanceCouroutine)
             {
                 StopCoroutine("Chronometre");
-                LanceCouroutine = false;
+                lanceCouroutine = false;
             }
         }
     }

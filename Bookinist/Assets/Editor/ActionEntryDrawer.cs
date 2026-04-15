@@ -39,7 +39,7 @@ public class ActionEntryDrawer : PropertyDrawer
                 break;
 
             case ActionType.PlaceObject:
-                lines += 1;
+                lines += 2;
                 break;
 
             case ActionType.ClearObject:
@@ -58,11 +58,23 @@ public class ActionEntryDrawer : PropertyDrawer
                 lines += 1;
                 break;
 
+            case ActionType.Drop:
+                lines += 2;
+                break;
+
+            case ActionType.Destroy:
+                lines += 0;
+                break;
+
             case ActionType.CycleSprites:
                 lines += 2;
 
                 var spritesProp = property.FindPropertyRelative("sprites");
                 extraHeight += EditorGUI.GetPropertyHeight(spritesProp, true);
+                break;
+
+            case ActionType.PlaceInBalance:
+                lines += 1;
                 break;
         }
 
@@ -114,6 +126,7 @@ public class ActionEntryDrawer : PropertyDrawer
             case ActionType.PlaceObject:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
                 r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("itemPrefab"));
                 break;
 
             case ActionType.ClearObject:
@@ -137,6 +150,15 @@ public class ActionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("pickable"));
                 break;
 
+            case ActionType.Drop:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
+                break;
+
+            case ActionType.Destroy:
+                break;
+
             case ActionType.CycleSprites:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("cycleThroughSprite"));
                 r.y += h + s;
@@ -148,6 +170,10 @@ public class ActionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(spritesRect, spritesProp, true);
                 r.y += spritesHeight + s;
 
+                break;
+
+            case ActionType.PlaceInBalance:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("balance"));
                 break;
         }
         EditorGUI.EndProperty();

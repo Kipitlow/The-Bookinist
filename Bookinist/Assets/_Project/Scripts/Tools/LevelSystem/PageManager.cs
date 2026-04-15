@@ -4,14 +4,40 @@ using UnityEngine;
 public class PageManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _layerHolder;
+
     [SerializeField] private string _sortingLayerPrefix = "Page_";
 
-    public static int layerSpread = 20;
+    [SerializeField] private List<int> _layerSpread;
     public static int maxLayer;
+
+    [SerializeField] private int _activePageIndex = 0;
+
+    public List<int> LayerSpread => _layerSpread;
+    public List<GameObject> LayerHolder => _layerHolder;
+
+    private static PageManager _instance;
+
+    public static PageManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindAnyObjectByType<PageManager>();
+
+                if (_instance == null)
+                {
+                    GameObject obj = new GameObject(nameof(PageManager));
+                    _instance = obj.AddComponent<PageManager>();
+                }
+            }
+            return _instance;
+        }
+    }
 
     private void Awake()
     {
-        maxLayer = _layerHolder != null ? _layerHolder.Count : 0;
+        maxLayer = _layerHolder.Count;
     }
 
     private void Start()
@@ -19,17 +45,33 @@ public class PageManager : MonoBehaviour
         for (int i = 0; i < _layerHolder.Count; i++)
         {
             GameObject layer = _layerHolder[i];
-            layer.transform.position = new Vector3(0, 0, i * layerSpread);
 
+            // Position Z inchangée (gère le z-fighting en 3D)
+            layer.transform.position = new Vector3(0, 0, _layerSpread[i]);
+
+            // Assigne le Sorting Layer à tous les SpriteRenderer du layer
             string sortingLayerName = _sortingLayerPrefix + i;
-            if (layer.TryGetComponent<Page>(out var page))
+            Page page = layer.GetComponent<Page>();
+            if (page != null)
             {
                 page.SetSortingLayer(sortingLayerName);
             }
+                
+                
             else
-            {
                 Debug.LogWarning($"[PageManager] Pas de composant Page sur {layer.name}.", layer);
-            }
         }
+    }
+
+    public Page GetActivePage()
+    {
+        if (_activePageIndex < 0 || _activePageIndex >= _layerHolder.Count)
+            return null;
+        return _layerHolder[_activePageIndex].GetComponent<Page>();
+    }
+
+    public void SetActivePage(int index)
+    {
+        _activePageIndex = Mathf.Clamp(index, 0, _layerHolder.Count - 1);
     }
 }

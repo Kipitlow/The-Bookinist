@@ -33,6 +33,10 @@ public class ConditionEntryDrawer : PropertyDrawer
                 lines += 2;
                 break;
 
+            case ConditionType.IsNotSameItemSO:
+                lines += 2;
+                break;
+
             case ConditionType.HasDialogueStarted:
                 lines += 1;
                 break;
@@ -47,6 +51,10 @@ public class ConditionEntryDrawer : PropertyDrawer
 
             case ConditionType.OnWichFrame:
                 lines += 3;
+                break;
+
+            case ConditionType.CanBePlacedInBalance:
+                lines += 1;
                 break;
         }
 
@@ -101,6 +109,12 @@ public class ConditionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
                 break;
 
+            case ConditionType.IsNotSameItemSO:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("selectedItemIsWanted"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
+                break;
+
             case ConditionType.HasDialogueStarted:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("npcTalker"));
                 r.y += h + s;
@@ -125,6 +139,10 @@ public class ConditionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("WantedFrame"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("trueIfMore"));
+                break;
+
+            case ConditionType.CanBePlacedInBalance:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("balance"));
                 break;
         }
 

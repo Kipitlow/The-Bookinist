@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class InventoryModel : MonoBehaviour
 {
@@ -18,26 +19,44 @@ public class InventoryModel : MonoBehaviour
 
     public void AddItem(Item itemToAdd)
     {
-        if (_inventoryContents.Count < _inventorySlots)
+        if (IsInventoryHasAPlace())
             _inventoryContents.Add(itemToAdd);
     }
 
     public void RemoveItem(Item itemToRemove)
     {
-        int index = GetItemIndex(itemToRemove);
-        if (index >= 0)
-            _inventoryContents.RemoveAt(index);
+        foreach (var item in _inventoryContents)
+        {
+            if (item == itemToRemove)
+            {
+                _inventoryContents.RemoveAt(GetItemIndex(itemToRemove));
+                return;
+            }
+        }
     }
 
     public int GetItemIndex(Item checkItem)
     {
-        for (int i = 0; i < _inventoryContents.Count; i++)
-            if (_inventoryContents[i] == checkItem)
-                return i;
+        int itemIndex = -1;
+        foreach (var item in _inventoryContents)
+        {
+            itemIndex++;
+            if (item == checkItem)
+                return itemIndex;
+        }
         return -1;
     }
 
-    public List<Item> GetInventoryContent() => _inventoryContents;
+    public List<Item> GetInventoryContent()
+    {
+        return _inventoryContents;
+    }
+
+    public bool IsInventoryHasAPlace()
+    {
+        return _inventoryContents.Count < _inventorySlots;
+
+    }
 
     #endregion
 }

@@ -8,9 +8,11 @@ public class CustomShopManager : MonoBehaviour
 {
     #region Variables
 
+    public static CustomShopManager Instance { get; private set; }
+
     [SerializeField] List<SO_FurnitureList> _customFurnitureList;
     [SerializeField] List<GameObject> _spawnPointList;
-    [SerializeField] ChangeCustomView _changeCustomView;
+    [SerializeField] CamManager _changeCustomView;
 
     [SerializeField] GameObject _horizontalPanelPrefab;
     [SerializeField] GameObject _horizontalPanelParent;
@@ -86,7 +88,7 @@ public class CustomShopManager : MonoBehaviour
 
         Debug.Log(index);
     }
-    public void AddObject(GameObject newObject)
+    public void AddObject(ShopItemData newObject)
     {
         _customFurnitureList[_changeCustomView.GetCurrentIndexView()].AddFurniture(newObject);
     }

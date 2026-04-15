@@ -1,224 +1,423 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 
 public class ScriptBalance : MonoBehaviour
 {
-    #region Variable
-    [Header("Controller Rotation")]
-    //[SerializeField] public GameObject UI_Gameplay;
-    public GameObject balanceSprite;
-    public GameObject balance;
-    public GameObject plateau1;
-    public GameObject plateau2;
 
+    #region Class Serializable
 
+    [Serializable]
+    private class ItemWeightEntry
+    {
+        public Item item;
+        public int weight = 1;
+    }
 
-    [Header("Gestion UI")]
-    //[SerializeField] public GameObject UI_Gameplay;
-    public GameObject Prefable_Poids;
+    private class DepositedItem
+    {
 
-    [Header("Autre")]
-    [SerializeField] public GameObject[] Button_Hidden;
-    private GameObject Poids;
-    private GameObject Poids2;
-    private bool _targetOne;
+        public Item Item;
+        public GameObject Instance;
+        public int Weight;
+
+        public DepositedItem(Item item, GameObject instance, int weight)
+        {
+            Item = item;
+            Instance = instance;
+            Weight = weight;
+        }
+    }
+
     #endregion
 
+    #region Variables
 
-    void Start()
+    [Header("Scene References")]
+    [SerializeField] private Transform _itemSpawnPoint;
+    [SerializeField] private Transform _counterweightSpawnPoint;
+    [SerializeField] private Transform _rewardSpawnPoint;
+    [SerializeField] private Transform _spawnedItemsRoot;
+    [SerializeField] private InventoryController _inventoryController;
+
+    [Header("Optional Balance Visuals")]
+    [SerializeField] private Transform _balancePivot;
+    [SerializeField] private Transform _balanceSprite;
+    [SerializeField] private Transform _plateau1;
+    [SerializeField] private Transform _plateau2;
+
+    [Header("Prefabs / Items")]
+    [SerializeField] private GameObject _balanceItemPrefab;
+    [SerializeField] private GameObject _rewardLyrePrefab;
+    [SerializeField] private Item _lyreItem;
+
+    [Header("Rules")]
+    [SerializeField] private int _maxItems = 3;
+    [SerializeField] private int _targetWeight = 100;
+    [SerializeField] private int _counterweightWeight = 100;
+    [SerializeField] private float _solveDelay = 0.5f;
+
+    [Header("Spawned Item Visual")]
+    [SerializeField] private Vector3 _spawnedItemScale = new Vector3(0.1f, 0.1f, 0.1f);
+
+    [Header("Item Weights")]
+    [SerializeField] private List<ItemWeightEntry> _itemWeights = new();
+
+    private readonly Dictionary<string, int> _weightByItem = new();
+    private readonly List<DepositedItem> _depositedItems = new();
+
+    private GameObject _counterweightInstance;
+    private bool _isSolved;
+    private bool _isSolving;
+    private int _currentWeight;
+
+    public int CurrentWeight => _currentWeight;
+    public int DepositedCount => _depositedItems.Count;
+    public bool IsSolved => _isSolved;
+    public bool IsFull => _depositedItems.Count >= _maxItems;
+
+    #endregion
+
+    #region Unity Methods
+    private void Awake()
     {
-        _targetOne=true;    
+        RebuildWeightTable();
     }
 
     private void Update()
     {
-        if (balance == null) Debug.LogError("Balance éclater au sol");
-        Vector3 Euler = balance.transform.eulerAngles;
+        UpdateBalanceVisuals();
+    }
 
-        balanceSprite.transform.localRotation = Quaternion.Euler(Euler.x, Euler.y, Euler.z);
-        plateau1.transform.rotation = Quaternion.Euler(0, 0, 0);
-        plateau2.transform.rotation = Quaternion.Euler(0, 0, 0);
+    #endregion
+
+    #region Methods
+
+    #region Try
+
+    public bool TryAddItem(Item item)
+    {
+        if (!CanAcceptItem(item))
+            return false;
+
+        TrySpawnCounterWeight();
+
+        if (!_weightByItem.TryGetValue(item.itemName, out int weight))
+            return false;
+
+        GameObject instance = SpawnBalanceObject(item, weight, _itemSpawnPoint);
+        if (instance == null)
+            return false;
+
+        _depositedItems.Add(new DepositedItem(item, instance, weight));
+        _currentWeight += weight;
+
+        if (_currentWeight >= _targetWeight)
+        {
+            StartSolveFlow();
+        }
+
+        return true;
     }
 
 
-
-    public void FinishTask()
+    public void TryTakeBackItems()
     {
-        print("finish task");
-        Invoke("CacheSelf", 2.0f);
-    }
-    /*public void Cache_Balance(GameObject Self)
-    {
-        switch (Self.name)
+        if (!CanTakeBackAtLeastOneItem())
+            return;//0;
+
+        int returnedCount = 0;
+
+        for (int i = _depositedItems.Count - 1; i >= 0; i--)
         {
-            case "B_balance":
-                CacheCetteObject(Self);
-                SpawnerPoidsBalance(0);
+            if (_inventoryController == null || !_inventoryController.IsInventoryHasPlace())
                 break;
-            case "B_Reset":
-                SpawnerPoidsBalance(0);
-                foreach (GameObject aa in Button_Hidden)
-                {
-                    if (aa.name == "B_balance") aa.SetActive(true);
-                    else aa.SetActive(false);
-                }
-                break;
-            case "B_Object_1":
-                CacheCetteObject(Self);
-                SpawnerPoidsBalance(1);
-                break;
-            case "B_Object_2":
-                CacheCetteObject(Self);
-                Invoke("change_UI", 2);
-                SpawnerPoidsBalance(2);      // <--- c'est ici que l'égnime prend fin    
-                break;
-            case "B_Object_3":
-                CacheCetteObject(Self);
-                SpawnerPoidsBalance(3);
-                break;
-            case "B_Object_4":
-                CacheCetteObject(Self);
-                SpawnerPoidsBalance(4);
-                break;
-            case "B_Object_5":
-                CacheCetteObject(Self);
-                SpawnerPoidsBalance(5);
-                break;
-        }
-    }*/
-    private void CacheSelf()
-    { 
-        gameObject.SetActive(false);
-    }
-    public void SpawnerPoidsBalance(int Mass)
-    {
-        /*if (Poids != null)
-        {
-            Destroy(Poids);
-            Poids=null;
-        }
-        if (Poids2 != null)
-        {
-            Destroy(Poids2);
-            Poids2 = null;
-        }*/
 
+            DepositedItem depositedItem = _depositedItems[i];
 
-        Transform EE = GameObject.Find("Target_spawn_Poids_R").transform;
-        Poids = Instantiate(Prefable_Poids, EE);
+            _inventoryController.AddInventoryItem(depositedItem.Item);
+            _currentWeight -= depositedItem.Weight;
 
-        if (Poids.GetComponent<Rigidbody>() != null) { Debug.LogError("Pourquoi ce foutus de ce RigBody"); }
-
-        EE = GameObject.Find("Target_spawn_Poids_L").transform;
-        if (_targetOne==true)
-        {
-            _targetOne=false;   
-            Poids2 = Instantiate(Prefable_Poids, EE);
-            Poids2.GetComponent<Rigidbody2D>().mass = 100;
-        }
-        switch (Mass)
-        {
-            case 0:
-                if (Poids != null)
-                {
-                    Destroy(Poids);
-                    Poids = null;
-                }
-                break;
-            case 1:
-                Poids.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
-                Poids.GetComponent<Rigidbody2D>().mass = 0;
-                break;
-            case 2:
-                Poids.transform.localScale = new Vector3(0.6f,0.6f,0.6f);
-                Poids.GetComponent<Rigidbody2D>().mass = 100;
-                break;
-            case 3:
-                Poids.transform.localScale = new Vector3(0.4f,0.4f,0.4f);
-                Poids.GetComponent<Rigidbody2D>().mass = 25;
-                break;
-            case 4:
-                Poids.transform.localScale = new Vector3(0.8f,0.8f,0.8f);
-                Poids.GetComponent<Rigidbody2D>().mass = 230;
-                break;
-            case 5:
-                Poids.transform.localScale = new Vector3(1.0f,1.0f,1.0f);
-                Poids.GetComponent<Rigidbody2D>().mass = 175;
-                break;
-        }
-
-
-    }
-    
-
-    //Fonction "CacheCetteObject" consister a montrer tout le contenue de Button_Hidden tout on cachant l'un des boutton
-    /*private void CacheCetteObject(GameObject ee) 
-    {
-        foreach(GameObject aa in Button_Hidden)
-        {
-            if(aa.name !="B_balance") aa.SetActive(true);
-        }
-        ee.SetActive(false);
-    }*/
-
-    // Fonction "change_UI" permet d'intervertire entre le canva est celui du marchant.
-    /*public void change_UI()
-    {
-        //Ce code: consister a mieux controller qu'elle GameObject actif et d'autre non
-        switch (Icone_Apparaition)
-        {
-            case true: // on veut voir l'icone "Marchant" pas le reste
-                Icone_Marchant.SetActive(true);
-                E_Marchant.SetActive(false);
-                object_Balance.SetActive(false);
-                Icone_Apparaition = false;
-                break;
-            case false: // on veut voir la balance est l'UI, mais cache l'icone "Marchant
-                Icone_Marchant.SetActive(false);
-                E_Marchant.SetActive(true);
-                object_Balance.SetActive(true);
-                Icone_Apparaition = true;
-
-                //Cette condition on veut faire disparait le bouton, et non le destroy;
-                if (b_spawn_Marchant != null)
-                {
-                    b_spawn_Marchant.onClick.RemoveListener(change_UI);
-                    b_spawn_Marchant.gameObject.SetActive(false);
-                }
-                break;
-        }
-
-    }*/
-
-    /*public void Remove_Listener_Function(UnityEngine.Events.UnityAction call) // Ou c'est appeller ceci?
-    {
-        if (b_spawn_Marchant != null) 
-        {
-            b_spawn_Marchant.onClick.RemoveListener(call);
-
-        } 
-    }*/
-
-
-
-    //Cette Fonction "tache_terminer" permet de valider la mission a condition que le nom donner a la fonction corresponde au nom de la tache. //Pour tout explication claire, consulter Vatea
-    /*public void tache_terminer()
-    {
-        //vêrifier un tableau puis une liste, oui j'ai pas fait plus simple, Normalement vous devez donner un nom a tout mission, pour indentifier quels mission surligner
-        if (Script_Tache != null)
-        {
-            foreach (Tache_Layourt TL in Script_Tache.Tache_Dans_Ce_Layeur)
+            if (depositedItem.Instance != null)
             {
-                foreach (List_Element_Tach LET in TL.list_Element_Taches)
-                {
-                    if (Name_Tach_Self == LET.Nom_Mission)
-                    {
-                        Debug.Log("Mission Egnime 1 Terminer");
-                        LET.TacheTerminer = true;
-                        Script_Tache.Change_Tach_List();
-                    }
-                }
+                Destroy(depositedItem.Instance);
+            }
+
+            _depositedItems.RemoveAt(i);
+            returnedCount++;
+        }
+
+        if (_depositedItems.Count == 0)
+        {
+            _currentWeight = 0;
+            DestroyCounterweight();
+            ResetBalanceVisuals();
+        }
+
+        return; //returnedCount;
+    }
+
+    #endregion
+
+    #region Check
+
+    public bool CanAcceptItem(Item item)
+    {
+        if (_isSolved || _isSolving)
+            return false;
+
+        if (item == null)
+            return false;
+
+        if (IsFull)
+            return false;
+
+        if (item.itemSprite == null)
+            return false;
+
+        return _weightByItem.ContainsKey(item.itemName);
+    }
+
+    public bool ContainsItem(Item item)
+    {
+        if (item == null)
+            return false;
+
+        for (int i = 0; i < _depositedItems.Count; i++)
+        {
+            if (_depositedItems[i].Item == item)
+                return true;
+        }
+
+        return false;
+    }
+
+    public bool CanTakeBackAtLeastOneItem()
+    {
+        if (_isSolved || _isSolving)
+            return false;
+
+        if (_depositedItems.Count == 0)
+            return false;
+
+        return _inventoryController != null && _inventoryController.IsInventoryHasPlace();
+    }
+
+    #endregion
+
+    #region destroy Balance
+
+    public void ResetBalance()
+    {
+        StopAllCoroutines();
+
+        _isSolved = false;
+        _isSolving = false;
+        _currentWeight = 0;
+
+        ClearDepositedItems();
+        DestroyCounterweight();
+        ResetBalanceVisuals();
+    }
+
+    private void ResetBalanceVisuals()
+    {
+        if (_balancePivot != null)
+        {
+            _balancePivot.localRotation = Quaternion.identity;
+        }
+    }
+
+    #endregion
+
+    #region Safety
+
+    // clean le dictionaire au awake si des poids son null ou autre
+    public void RebuildWeightTable()
+    {
+        _weightByItem.Clear();
+
+        for (int i = 0; i < _itemWeights.Count; i++)
+        {
+            ItemWeightEntry entry = _itemWeights[i];
+            if (entry == null || entry.item == null)
+                continue;
+
+            _weightByItem[entry.item.itemName] = Mathf.Max(0, entry.weight);
+        }
+    }
+
+#endregion
+
+    #region Solve
+
+    private void StartSolveFlow()
+    {
+        if (_isSolved || _isSolving)
+            return;
+
+        _isSolving = true;
+
+        if (_solveDelay <= 0f)
+        {
+            CompleteSolve();
+            return;
+        }
+
+        StartCoroutine(SolveRoutine());
+    }
+
+    private IEnumerator SolveRoutine()
+    {
+        yield return new WaitForSeconds(_solveDelay);
+        CompleteSolve();
+    }
+
+    private void CompleteSolve()
+    {
+        _isSolving = false;
+        _isSolved = true;
+
+        SpawnRewardLyre();
+        ClearDepositedItems();
+        DestroyCounterweight();
+
+        _currentWeight = 0;
+        ResetBalanceVisuals();
+    }
+
+#endregion
+
+    #region Spawn Object
+
+    private void TrySpawnCounterWeight()
+    {
+        if (_counterweightInstance != null || _counterweightSpawnPoint == null || _lyreItem == null)
+            return;
+
+        _counterweightInstance = SpawnBalanceObject(_lyreItem, _counterweightWeight, _counterweightSpawnPoint);
+    }
+
+    private GameObject SpawnBalanceObject(Item item, int weight, Transform spawnPoint)
+    {
+        if (_balanceItemPrefab == null || spawnPoint == null || item == null)
+            return null;
+
+        GameObject instance;
+
+        if (_spawnedItemsRoot != null)
+            instance = Instantiate(_balanceItemPrefab, spawnPoint.position, spawnPoint.rotation, _spawnedItemsRoot);
+        else
+            instance = Instantiate(_balanceItemPrefab, spawnPoint.position, spawnPoint.rotation);
+
+        ConfigureSpawnedObject(instance, item, weight);
+        return instance;
+    }
+
+    private void ConfigureSpawnedObject(GameObject instance, Item item, int weight)
+    {
+        if (instance == null || item == null)
+            return;
+
+        instance.transform.localScale = _spawnedItemScale;
+
+        SpriteRenderer spriteRenderer = instance.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.sprite = item.itemSprite;
+        }
+
+        Rigidbody2D rigidbody2D = instance.GetComponent<Rigidbody2D>();
+        if (rigidbody2D != null)
+        {
+            rigidbody2D.mass = weight;
+        }
+
+        BoxCollider2D boxCollider2D = instance.GetComponent<BoxCollider2D>();
+        if (boxCollider2D != null && item.itemSprite != null)
+        {
+            boxCollider2D.size = item.itemSprite.bounds.size;
+            boxCollider2D.offset = item.itemSprite.bounds.center;
+        }
+    }
+
+#endregion
+
+    #region Lyre + Clean
+
+    private void SpawnRewardLyre()
+    {
+        if (_rewardSpawnPoint == null)
+            return;
+
+        if (_rewardLyrePrefab != null)
+        {
+            Instantiate(_rewardLyrePrefab, _rewardSpawnPoint.position, _rewardSpawnPoint.rotation);
+            return;
+        }
+
+        if (_lyreItem != null && _balanceItemPrefab != null)
+        {
+            GameObject reward = Instantiate(_balanceItemPrefab, _rewardSpawnPoint.position, _rewardSpawnPoint.rotation);
+            ConfigureSpawnedObject(reward, _lyreItem, _counterweightWeight);
+
+            Rigidbody2D rigidbody2D = reward.GetComponent<Rigidbody2D>();
+            if (rigidbody2D != null)
+            {
+                rigidbody2D.mass = _counterweightWeight;
             }
         }
-    }*/
+    }
+
+    private void ClearDepositedItems()
+    {
+        for (int i = 0; i < _depositedItems.Count; i++)
+        {
+            if (_depositedItems[i].Instance != null)
+            {
+                Destroy(_depositedItems[i].Instance);
+            }
+        }
+
+        _depositedItems.Clear();
+    }
+
+    private void DestroyCounterweight()
+    {
+        if (_counterweightInstance == null)
+            return;
+
+        Destroy(_counterweightInstance);
+        _counterweightInstance = null;
+
+        Destroy(this);
+    }
+
+    #endregion
+
+    #region Update Visual
+
+    private void UpdateBalanceVisuals()
+    {
+        if (_balancePivot != null && _balanceSprite != null)
+        {
+            Vector3 euler = _balancePivot.eulerAngles;
+            _balanceSprite.localRotation = Quaternion.Euler(euler.x, euler.y, euler.z);
+        }
+
+        if (_plateau1 != null)
+        {
+            _plateau1.rotation = Quaternion.identity;
+        }
+
+        if (_plateau2 != null)
+        {
+            _plateau2.rotation = Quaternion.identity;
+        }
+    }
+
+    #endregion
+
+    #endregion
 }

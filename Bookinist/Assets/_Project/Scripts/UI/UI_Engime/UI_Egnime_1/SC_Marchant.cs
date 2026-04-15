@@ -1,191 +1,261 @@
+using System;
+using System.Collections;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.UI;
 
-/// <summary>
-/// Composant de l'énigme marchand (UI / spawn poids / contrôle boutons).
-/// </summary>
+public class Dialogue_Marchant
+{
+    public string T_Dialogue;
+
+}
 public class SC_Marchant : MonoBehaviour
 {
-    #region Variables
-
     [Header("Gestion UI")]
-    public GameObject prefablePoids;
-    private SC_Tache _scriptTache;
-    private GameObject _eMarchant;
-    private GameObject _objectBalance;
-    private GameObject _iconeMarchant;
-    private Button _bSpawnMarchant;
-    private bool _iconeApparition;
+    //[SerializeField] public GameObject UI_Gameplay;
+    public GameObject Prefable_Poids;
+    private SC_Tache Script_Tache;
+    private GameObject E_Marchant;
+    private GameObject object_Balance;
+    private GameObject Icone_Marchant;
+    private Button b_spawn_Marchant;
+    private bool Icone_Apparaition;
 
     [Header("Autre")]
-    public GameObject[] buttonHidden;
-    private GameObject _poids;
-    private GameObject _poids2;
+    [SerializeField] public GameObject[] Button_Hidden;
+    private GameObject Poids;
+    private GameObject Poids2;
 
-    private string _nameTacheSelf;
+    [Header("RenameTache")]
+    private string Name_Tach_Self;
 
-    #endregion
 
-    #region Unity Methods
-
-    private void Start()
+    void Start()
     {
-        _iconeMarchant = GameObject.Find("Icone_PNJ_Marchant");
-        _eMarchant = GameObject.Find("E_Marchant");
-        _objectBalance = GameObject.Find("Balance2D");
+        Icone_Marchant = GameObject.Find("Icone_PNJ_Marchant");
+        E_Marchant = GameObject.Find("E_Marchant");
+        object_Balance = GameObject.Find("Balance2D");
+            
+        Script_Tache = GameObject.Find("Canvas").GetComponent< SC_Tache>();
+        b_spawn_Marchant = GameObject.Find("B_Spawn_Marchant").GetComponent<Button>();
 
-        _scriptTache = GameObject.Find("Canvas").GetComponent<SC_Tache>();
-        _bSpawnMarchant = GameObject.Find("B_Spawn_Marchant").GetComponent<Button>();
+        Icone_Apparaition = true;
+        change_UI();
 
-        _iconeApparition = true;
-        ChangeUI();
-
-        foreach (GameObject aa in buttonHidden)
+        foreach (GameObject aa in Button_Hidden)
         {
-            if (aa.name == "B_balance")
+            if(aa.name== "B_balance")
+            {
                 aa.SetActive(true);
+            }
             else
+            {
                 aa.SetActive(false);
+            }
         }
-        _nameTacheSelf = "Egnigme_01";
+        Name_Tach_Self = "Egnigme_01";
     }
 
-    #endregion
 
-    #region Methods
-
-    public void CacheBalance(GameObject self)
+    /*private void Add_Mission()
     {
-        switch (self.name)
+        if (Script_Tache != null)
+        {
+            //Construit Une tache Avec les Elements
+            List_Element_Tach Richart = new List_Element_Tach();
+            Name_Tach_Self = "Egnigme_01";
+            Richart.Nom_Mission = Name_Tach_Self;
+            Richart.Tache = "Trouve le Marchant, et ";
+            Richart.prix = 50;
+            Richart.TacheTerminer = false;
+
+            int LayeurNbr=0;// !Attention veuiller définir dans quels layeurs il apparait. Veiller que 2 mission ne s'affiche par dans le même layeur se deviendrer soulant.
+
+            if (Script_Tache.Tache_Dans_Ce_Layeur.Count <= LayeurNbr)
+            {
+                Debug.Log("A1");
+                Script_Tache.Tache_Dans_Ce_Layeur[LayeurNbr].list_Element_Taches.Add(Richart);
+            }
+            else
+            {
+                Debug.Log("A2");
+                Tache_Layourt TL = new Tache_Layourt();
+                TL.Layeur_Affiche_Mission = LayeurNbr;
+                TL.list_Element_Taches.Add(Richart);
+
+                Script_Tache.Tache_Dans_Ce_Layeur.Add(TL);
+            }
+        }
+        else { Debug.LogWarning("Erreur Script_Tache = null"); }
+    }*/
+
+
+    public void Cache_Balance(GameObject Self)
+    {
+        switch (Self.name)
         {
             case "B_balance":
-                CacheCetteObject(self);
+                CacheCetteObject(Self);
                 SpawnerPoidsBalance(0);
                 break;
             case "B_Reset":
                 SpawnerPoidsBalance(0);
-                foreach (GameObject aa in buttonHidden)
+                foreach (GameObject aa in Button_Hidden)
                 {
                     if (aa.name == "B_balance") aa.SetActive(true);
                     else aa.SetActive(false);
                 }
                 break;
             case "B_Object_1":
-                CacheCetteObject(self);
+                CacheCetteObject(Self);
                 SpawnerPoidsBalance(1);
                 break;
             case "B_Object_2":
-                CacheCetteObject(self);
-                Invoke(nameof(ChangeUI), 2);
-                SpawnerPoidsBalance(2);
+                CacheCetteObject(Self);
+                //tache_terminer();
+                Invoke("change_UI", 2);
+                SpawnerPoidsBalance(2);      // <--- c'est ici que l'égnime prend fin    
                 break;
             case "B_Object_3":
-                CacheCetteObject(self);
+                CacheCetteObject(Self);
                 SpawnerPoidsBalance(3);
                 break;
             case "B_Object_4":
-                CacheCetteObject(self);
+                CacheCetteObject(Self);
                 SpawnerPoidsBalance(4);
                 break;
             case "B_Object_5":
-                CacheCetteObject(self);
+                CacheCetteObject(Self);
                 SpawnerPoidsBalance(5);
                 break;
         }
     }
-
-    public void SpawnerPoidsBalance(int mass)
+    public void SpawnerPoidsBalance(int Mass)
     {
-        if (_poids != null)
+        if (Poids != null)
         {
-            Destroy(_poids);
-            _poids = null;
+            Destroy(Poids);
+            Poids=null;
         }
-        if (_poids2 != null)
+        if (Poids2 != null)
         {
-            Destroy(_poids2);
-            _poids2 = null;
+            Destroy(Poids2);
+            Poids2 = null;
         }
 
-        Transform ee = GameObject.Find("Target_spawn_Poids_R").transform;
-        _poids = Instantiate(prefablePoids, ee);
 
-        ee = GameObject.Find("Target_spawn_Poids_L").transform;
-        _poids2 = Instantiate(prefablePoids, ee);
-        _poids2.GetComponent<Rigidbody2D>().mass = 100;
+        Transform EE = GameObject.Find("Target_spawn_Poids_R").transform;
+        Poids = Instantiate(Prefable_Poids, EE);
 
-        switch (mass)
+        if (Poids.GetComponent<Rigidbody>() != null) { Debug.LogError("Pourquoi ce foutus de ce RigBody"); }
+
+        EE = GameObject.Find("Target_spawn_Poids_L").transform;
+        Poids2 = Instantiate(Prefable_Poids, EE);
+        Poids2.GetComponent<Rigidbody2D>().mass = 100;
+        switch (Mass)
         {
             case 0:
-                if (_poids != null)
+                if (Poids != null)
                 {
-                    Destroy(_poids);
-                    _poids = null;
+                    Destroy(Poids);
+                    Poids = null;
                 }
                 break;
             case 1:
-                _poids.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                _poids.GetComponent<Rigidbody2D>().mass = 0;
+                Poids.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
+                Poids.GetComponent<Rigidbody2D>().mass = 0;
                 break;
             case 2:
-                _poids.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-                _poids.GetComponent<Rigidbody2D>().mass = 100;
+                Poids.transform.localScale = new Vector3(0.6f,0.6f,0.6f);
+                Poids.GetComponent<Rigidbody2D>().mass = 100;
                 break;
             case 3:
-                _poids.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
-                _poids.GetComponent<Rigidbody2D>().mass = 25;
+                Poids.transform.localScale = new Vector3(0.4f,0.4f,0.4f);
+                Poids.GetComponent<Rigidbody2D>().mass = 25;
                 break;
             case 4:
-                _poids.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
-                _poids.GetComponent<Rigidbody2D>().mass = 230;
+                Poids.transform.localScale = new Vector3(0.8f,0.8f,0.8f);
+                Poids.GetComponent<Rigidbody2D>().mass = 230;
                 break;
             case 5:
-                _poids.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-                _poids.GetComponent<Rigidbody2D>().mass = 175;
+                Poids.transform.localScale = new Vector3(1.0f,1.0f,1.0f);
+                Poids.GetComponent<Rigidbody2D>().mass = 175;
                 break;
         }
+
+
     }
 
-    private void CacheCetteObject(GameObject ee)
+    //Fonction "CacheCetteObject" consister a montrer tout le contenue de Button_Hidden tout on cachant l'un des boutton
+    private void CacheCetteObject(GameObject ee) 
     {
-        foreach (GameObject aa in buttonHidden)
+        foreach(GameObject aa in Button_Hidden)
         {
-            if (aa.name != "B_balance") aa.SetActive(true);
+            if(aa.name !="B_balance") aa.SetActive(true);
         }
         ee.SetActive(false);
     }
 
-    public void ChangeUI()
+    // Fonction "change_UI" permet d'intervertire entre le canva est celui du marchant.
+    public void change_UI()
     {
-        if (_iconeApparition)
+        //Ce code: consister a mieux controller qu'elle GameObject actif et d'autre non
+        switch (Icone_Apparaition)
         {
-            _iconeMarchant.SetActive(true);
-            _eMarchant.SetActive(false);
-            _objectBalance.SetActive(false);
-            _iconeApparition = false;
-        }
-        else
-        {
-            _iconeMarchant.SetActive(false);
-            _eMarchant.SetActive(true);
-            _objectBalance.SetActive(true);
-            _iconeApparition = true;
+            case true: // on veut voir l'icone "Marchant" pas le reste
+                Icone_Marchant.SetActive(true);
+                E_Marchant.SetActive(false);
+                object_Balance.SetActive(false);
+                Icone_Apparaition = false;
+                break;
+            case false: // on veut voir la balance est l'UI, mais cache l'icone "Marchant
+                Icone_Marchant.SetActive(false);
+                E_Marchant.SetActive(true);
+                object_Balance.SetActive(true);
+                Icone_Apparaition = true;
 
-            if (_bSpawnMarchant != null)
+                //Cette condition on veut faire disparait le bouton, et non le destroy;
+                if (b_spawn_Marchant != null)
+                {
+                    b_spawn_Marchant.onClick.RemoveListener(change_UI);
+                    b_spawn_Marchant.gameObject.SetActive(false);
+                }
+                break;
+        }
+
+    }
+
+    public void Remove_Listener_Function(UnityEngine.Events.UnityAction call) // Ou c'est appeller ceci?
+    {
+        if (b_spawn_Marchant != null) 
+        {
+            b_spawn_Marchant.onClick.RemoveListener(call);
+
+        } 
+    }
+
+
+
+    //Cette Fonction "tache_terminer" permet de valider la mission a condition que le nom donner a la fonction corresponde au nom de la tache. //Pour tout explication claire, consulter Vatea
+    /*public void tache_terminer()
+    {
+        //vêrifier un tableau puis une liste, oui j'ai pas fait plus simple, Normalement vous devez donner un nom a tout mission, pour indentifier quels mission surligner
+        if (Script_Tache != null)
+        {
+            foreach (Tache_Layourt TL in Script_Tache.Tache_Dans_Ce_Layeur)
             {
-                _bSpawnMarchant.onClick.RemoveListener(ChangeUI);
-                _bSpawnMarchant.gameObject.SetActive(false);
+                foreach (List_Element_Tach LET in TL.list_Element_Taches)
+                {
+                    if (Name_Tach_Self == LET.Nom_Mission)
+                    {
+                        Debug.Log("Mission Egnime 1 Terminer");
+                        LET.TacheTerminer = true;
+                        Script_Tache.Change_Tach_List();
+                    }
+                }
             }
         }
-    }
-
-    public void RemoveListenerFunction(UnityEngine.Events.UnityAction call)
-    {
-        if (_bSpawnMarchant != null)
-        {
-            _bSpawnMarchant.onClick.RemoveListener(call);
-        }
-    }
-
-    #endregion
+    }*/
 }

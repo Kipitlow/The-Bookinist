@@ -3,18 +3,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Gère les interactions utilisateur sur une LayerGrid : conversion écran→cell, feedback visuel, callback.
-/// </summary>
 public class GridInteractor : MonoBehaviour
 {
-    #region Variables
-
     [Header("Layer cible")]
     [SerializeField] private LayerGrid _targetLayer;
 
     [Header("Feedback visuel (test)")]
-    [SerializeField] private Color _flashColor = new(1f, 0.8f, 0f);
+    [SerializeField] private Color _flashColor = new Color(1f, 0.8f, 0f);
     [SerializeField] private float _flashDuration = 0.2f;
 
     // Événement auquel d'autres scripts peuvent s'abonner
@@ -23,10 +18,6 @@ public class GridInteractor : MonoBehaviour
     private Camera _cam;
     private InputAction _touchAction;
     private InputAction _touchPositionAction;
-
-    #endregion
-
-    #region Unity Methods
 
     // ──────────────────────────────────────────────────────────
     //  Unity lifecycle
@@ -58,10 +49,6 @@ public class GridInteractor : MonoBehaviour
         _touchPositionAction?.Dispose();
     }
 
-    #endregion
-
-    #region Methods
-
     // ──────────────────────────────────────────────────────────
     //  Input
     // ──────────────────────────────────────────────────────────
@@ -82,8 +69,15 @@ public class GridInteractor : MonoBehaviour
 
     private void OnTouch(InputAction.CallbackContext ctx)
     {
+        Debug.Log("[GridInteractor] Touch détecté !");
+
         // Ignore si le touch est sur un élément UI
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        {
+            Debug.Log("[GridInteractor] Bloqué par un élément UI.");
+            return;
+        }
+
         if (_targetLayer == null)
         {
             Debug.LogWarning("[GridInteractor] Aucun LayerGrid assigné.", this);
@@ -91,16 +85,38 @@ public class GridInteractor : MonoBehaviour
         }
 
         Vector2 screenPos = _touchPositionAction.ReadValue<Vector2>();
+        Debug.Log($"[GridInteractor] Position écran : {screenPos}");
+
         Vector3? worldPos = RaycastOntoLayerPlane(_targetLayer, screenPos);
-        if (worldPos == null) return;
+        if (worldPos == null)
+        {
+            Debug.Log("[GridInteractor] Pas d'intersection avec le plan du layer.");
+            return;
+        }
+        Debug.Log($"[GridInteractor] Point monde : {worldPos.Value}");
 
         Vector2Int? cell = _targetLayer.WorldToCell(worldPos.Value);
-        if (cell == null) return;
+        if (cell == null)
+        {
+            Debug.Log("[GridInteractor] Point hors de la grille.");
+            return;
+        }
+        Debug.Log($"[GridInteractor] Cellule : {cell.Value}");
 
         GameObject obj = _targetLayer.GetObjectAt(cell.Value);
-        if (obj == null) return;
+        if (obj == null)
+        {
+            Debug.Log($"[GridInteractor] Cellule {cell.Value} vide.");
+            return;
+        }
+        Debug.Log($"[GridInteractor] Objet trouvé : {obj.name}");
 
-        if (!obj.TryGetComponent<PlacedObject>(out var placed)) return;
+        PlacedObject placed = obj.GetComponent<PlacedObject>();
+        if (placed == null)
+        {
+            Debug.Log("[GridInteractor] L'objet n'a pas de composant PlacedObject.");
+            return;
+        }
 
         // Feedback visuel
         // Debugging et test rapide - à désactiver
@@ -108,6 +124,8 @@ public class GridInteractor : MonoBehaviour
 
         // Notifie tous les abonnés
         OnObjectTouched?.Invoke(placed, cell.Value);
+
+        Debug.Log($"[GridInteractor] Objet touché : {obj.name} en cellule {cell.Value}");
     }
 
     // ──────────────────────────────────────────────────────────
@@ -121,6 +139,7 @@ public class GridInteractor : MonoBehaviour
     private Vector3? RaycastOntoLayerPlane(LayerGrid layer, Vector2 screenPos)
     {
         Ray ray = _cam.ScreenPointToRay(screenPos);
+
         Vector3 planeNormal = layer.transform.forward;
         Vector3 planePoint = layer.transform.position;
 
@@ -140,12 +159,19 @@ public class GridInteractor : MonoBehaviour
     private IEnumerator FlashObject(GameObject obj)
     {
         SpriteRenderer[] renderers = obj.GetComponentsInChildren<SpriteRenderer>();
-        UnityEngine.Color[] originalColors = new UnityEngine.Color[renderers.Length];
-        for (int i = 0; i < renderers.Length; i++) originalColors[i] = renderers[i].color;
 
-        foreach (var sr in renderers) sr.color = _flashColor;
+        // Sauvegarde les couleurs d'origine
+        Color[] originalColors = new Color[renderers.Length];
+        for (int i = 0; i < renderers.Length; i++)
+            originalColors[i] = renderers[i].color;
+
+        // Flash
+        foreach (var sr in renderers)
+            sr.color = _flashColor;
+
         yield return new WaitForSeconds(_flashDuration);
 
+        // Restaure
         for (int i = 0; i < renderers.Length; i++)
             if (renderers[i] != null)
                 renderers[i].color = originalColors[i];
@@ -157,6 +183,4 @@ public class GridInteractor : MonoBehaviour
 
     /// <summary>Change le layer cible à la volée (utile si la caméra snappe sur un autre layer).</summary>
     public void SetTargetLayer(LayerGrid layer) => _targetLayer = layer;
-
-    #endregion
 }

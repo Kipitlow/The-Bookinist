@@ -1,36 +1,40 @@
 using UnityEngine;
 
-/// <summary>
-/// Représente un emplacement (slot) pouvant être rempli ou vidé par des items.
-/// </summary>
 public class Slot : MonoBehaviour
 {
-    #region Variables
-
     [SerializeField] private InventoryController _inventoryController;
+    [SerializeField] private GameObject _prefabSprite;
 
-    private bool _isEmpty;
-    private Sprite _currentObject;
-
-    #endregion
-
-    #region Methods
+    private bool _isEmpty = true;
+    private GameObject _currentObject;
 
     public bool IsEmpty() { return _isEmpty; }
 
-    public void Fill()
+    private void Start()
     {
-        if (gameObject == null) return;
-        _currentObject = Instantiate(_inventoryController.activeItem.itemSprite);
-        _isEmpty = true;
+        //_prefabSprite = new GameObject("prefabsprite", typeof(SpriteRenderer));
+    }
+
+    public void Fill(GameObject prefab)
+    {
+        if (prefab == null) return;
+        _currentObject = Instantiate(prefab, this.transform.position, this.transform.rotation, this.transform);
+        _isEmpty = false;
+    }
+
+     public void FillWithSprite (Item item)
+    {
+        if (item == null) return;
+
+        _currentObject = Instantiate(_prefabSprite, this.transform.position, this.transform.rotation, this.transform);
+        _currentObject.GetComponent<SpriteRenderer>().sprite = item.itemSprite;
+        _isEmpty = false;
     }
 
     public void Clear()
     {
         if (_isEmpty || _currentObject == null) return;
         Destroy(_currentObject);
-        _isEmpty = false;
+        _isEmpty = true;
     }
-
-    #endregion
 }

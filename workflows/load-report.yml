@@ -1,0 +1,53 @@
+name: Review Load Report
+
+on:
+  schedule:
+    - cron: "0 9 * * 1"
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate report
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prs = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open"
+            });
+
+            const tech = "tech-reviewer";
+            const qaList = ["qa1", "qa2", "qa3"];
+
+            let techCount = 0;
+            let qaCount = {};
+
+            qaList.forEach(q => qaCount[q] = 0);
+
+            for (const pr of prs.data) {
+              const reviewers = (pr.requested_reviewers || []).map(r => r.login);
+
+              if (reviewers.includes(tech)) techCount++;
+
+              for (const q of qaList) {
+                if (reviewers.includes(q)) qaCount[q]++;
+              }
+            }
+
+            let report = "## 📊 Weekly Review Load\n\n";
+            report += `👨‍💻 Tech reviewer: ${techCount} PRs\n\n`;
+            report += "🧪 QA load:\n";
+
+            for (const [name, count] of Object.entries(qaCount)) {
+              report += `- ${name}: ${count}\n`;
+            }
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: "📊 Weekly Review Load Report",
+              body: report
+            });

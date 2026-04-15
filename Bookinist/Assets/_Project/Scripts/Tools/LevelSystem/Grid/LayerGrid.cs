@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class LayerGrid : MonoBehaviour
 {
-    #region Variables
-
     [Header("Grid Dimensions")]
     [SerializeField] private int _columns = 10;
     [SerializeField] private int _rows = 6;
@@ -18,17 +16,20 @@ public class LayerGrid : MonoBehaviour
 
     [Header("Visuals")]
     [SerializeField] private bool _showGridGizmos = true;
-    [SerializeField] private Color _gridColor = new(1f, 1f, 0f, 0.3f);
-    [SerializeField] private Color _occupiedColor = new(1f, 0.3f, 0.3f, 0.5f);
+    [SerializeField] private Color _gridColor = new Color(1f, 1f, 0f, 0.3f);
+    [SerializeField] private Color _occupiedColor = new Color(1f, 0.3f, 0.3f, 0.5f);
 
     [Header("Sauvegarde")]
+    [Tooltip("LevelData ScriptableObject correspondant à ce layer. " +
+             "Assigné automatiquement à la sauvegarde, ou manuellement dans l'Inspector.")]
     [SerializeField] private LevelData _levelData;
 
+    // Maps grid coordinate → placed GameObject
     private Dictionary<Vector2Int, GameObject> _placedObjects = new();
 
-    #endregion
-
-    #region Unity Methods
+    // ──────────────────────────────────────────────────────────
+    //  Unity lifecycle
+    // ──────────────────────────────────────────────────────────
 
     private void Start()
     {
@@ -45,9 +46,9 @@ public class LayerGrid : MonoBehaviour
         }
     }
 
-    #endregion
-
-    #region API
+    // ──────────────────────────────────────────────────────────
+    //  Public API
+    // ──────────────────────────────────────────────────────────
 
     public int Columns => _columns;
     public int Rows => _rows;
@@ -84,7 +85,7 @@ public class LayerGrid : MonoBehaviour
         float ly = _gridOrigin.y + (cell.y + 0.5f) * _cellHeight;
 
         // Z stays at 0 in local space → the transform's world Z is the layer's depth
-        Vector3 localCenter = new(lx, ly, 0f);
+        Vector3 localCenter = new Vector3(lx, ly, 0f);
         return transform.TransformPoint(localCenter);
     }
 
@@ -120,7 +121,8 @@ public class LayerGrid : MonoBehaviour
 
         // Attache et initialise PlacedObject pour gérer le sortingOrder automatiquement.
         // On passe le prefab source ici pendant qu'on y a encore accès directement.
-        if (!obj.TryGetComponent<PlacedObject>(out var po)) po = obj.AddComponent<PlacedObject>();
+        PlacedObject po = obj.GetComponent<PlacedObject>();
+        if (po == null) po = obj.AddComponent<PlacedObject>();
         po.Init(cell, this, prefab);
 
         _placedObjects[cell] = obj;
@@ -166,7 +168,8 @@ public class LayerGrid : MonoBehaviour
             GameObject placed = PlaceObject(entry.prefab, entry.cell);
             if (placed == null) continue;
 
-            if (placed.TryGetComponent<PlacedObject>(out var po)) po.ManualSortingOffset = entry.manualSortingOffset;
+            PlacedObject po = placed.GetComponent<PlacedObject>();
+            if (po != null) po.ManualSortingOffset = entry.manualSortingOffset;
         }
 
         Debug.Log($"[LayerGrid] {data.entries.Count} objet(s) chargé(s) depuis {data.name}.");
@@ -194,9 +197,9 @@ public class LayerGrid : MonoBehaviour
         _placedObjects.Clear();
     }
 
-    #endregion
-
-    #region Editor Gizmos
+    // ──────────────────────────────────────────────────────────
+    //  Editor Gizmos
+    // ──────────────────────────────────────────────────────────
 
     private void OnDrawGizmos()
     {
@@ -235,6 +238,4 @@ public class LayerGrid : MonoBehaviour
                 new Vector3(_gridOrigin.x + totalW, y, 0f));
         }
     }
-
-    #endregion
 }

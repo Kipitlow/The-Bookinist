@@ -1,12 +1,7 @@
 using UnityEngine;
 
-/// <summary>
-/// Outil de debug : trace un rayon depuis l'écran et affiche hits / sphere handle en Editor.
-/// </summary>
 public class RayCastDebugger : MonoBehaviour
 {
-    #region Variables
-
     [Header("Ray Settings")]
     public Camera targetCamera;
     public float rayLength = 100f;
@@ -18,10 +13,6 @@ public class RayCastDebugger : MonoBehaviour
     public float hitSphereRadius = 0.15f;
     public bool logHits = true;
 
-    #endregion
-
-    #region Methods
-
     public void DebugRayFromScreen(Vector2 screenPosition)
     {
         if (!targetCamera)
@@ -29,10 +20,12 @@ public class RayCastDebugger : MonoBehaviour
 
         Ray ray = targetCamera.ScreenPointToRay(screenPosition);
 
+        // Draw ray
         Debug.DrawRay(ray.origin, ray.direction * rayLength, rayColor, 10f);
 
         if (Physics.Raycast(ray, out RaycastHit hit, rayLength, hitMask))
         {
+            // Draw hit point
             Debug.DrawLine(ray.origin, hit.point, hitColor, 1f);
             DrawHitSphere(hit.point);
 
@@ -54,6 +47,4 @@ public class RayCastDebugger : MonoBehaviour
         );
 #endif
     }
-
-    #endregion
 }
