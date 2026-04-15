@@ -45,12 +45,20 @@ public class SC_Tache : MonoBehaviour
     void Start()
     {
         //if (CM_Player == null) CM_Player = GameObject.Find("CameraManager").GetComponent<Camera>();
-        StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
+        
+        if (SceneManager.GetActiveScene().name != "Enigme1") 
+            StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
+
         Change_Tach_List();
     }
     #endregion
 
     #region Methods
+
+    public void StartChrono()
+    {
+        StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
+    }
 
     public void Change_Tach_List()//CodePermettant de actualiser les objectif du joueur
     {
