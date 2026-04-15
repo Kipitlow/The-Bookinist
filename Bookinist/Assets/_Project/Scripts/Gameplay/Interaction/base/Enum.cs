@@ -10,7 +10,8 @@ public enum ConditionType
     HasDialogueEnded,
     OnWichFrame,
     HasMoved,
-    HasToCheckEmptynessInventory
+    HasToCheckEmptynessInventory,
+    CanBePlacedInBalance
 }
 
 public enum ActionType
@@ -26,6 +27,6 @@ public enum ActionType
     ResetHasMoved,
     Pick,
     Destroy,
-    Drop
-
+    Drop,
+    PlaceInBalance
 }

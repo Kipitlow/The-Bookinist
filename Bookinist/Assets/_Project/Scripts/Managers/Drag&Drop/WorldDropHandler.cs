@@ -58,7 +58,11 @@ public class WorldDropHandler : MonoBehaviour
         Ray ray = _camera.ScreenPointToRay(screenPosition);
         Physics.Raycast(ray, out RaycastHit hit, _raycastDistance);
 
-        if (hit.collider == null) return;
+        if (hit.collider == null)
+        {
+            //here
+            return;
+        }
 
         //InteractionRunner targetRunner = FindRunnerOnActivePage(hits, activePage);
         InteractionRunner targetRunner = hit.collider.gameObject.GetComponent<InteractionRunner>();
@@ -82,6 +86,10 @@ public class WorldDropHandler : MonoBehaviour
             bool wasHandled = targetRunner.TryExecuteAll(context);
             if (wasHandled)
                 _inventoryController.RemoveInventoryItem(draggedItem);
+            else
+            {
+                //here
+            }
 
         }
         else

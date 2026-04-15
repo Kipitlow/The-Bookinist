@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,6 +13,8 @@ public class TouchDetection : MonoBehaviour
 
     [SerializeField] private GraphicRaycaster _uiRaycaster;
     [SerializeField] private EventSystem _eventSystem;
+
+    public event Action<GameObject> OnClick;
 
     private void Awake()
     {
@@ -69,6 +72,8 @@ public class TouchDetection : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, _maxDistance, _hitMask))
         {
             InteractionRunner interactionRunner = hit.collider.GetComponent<InteractionRunner>();
+
+            OnClick?.Invoke(hit.collider.gameObject);
 
             InteractionContext context = new InteractionContext
             {
