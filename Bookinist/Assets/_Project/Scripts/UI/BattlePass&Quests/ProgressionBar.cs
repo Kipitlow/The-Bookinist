@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,9 +9,12 @@ public class ProgressionBar : MonoBehaviour
     public float xpPass;
     public Image BattlePassBar;
     public List<Image> Paliers = new List<Image>();
+
     private Color Lock = new Color32(109, 109, 109, 255);
     private Color Unlock = new Color32(241, 211, 0, 255);
 
+    float lerpTime = 0.7f;
+    float waitingXp = 0;
 
     void Start()
     {
@@ -32,7 +36,6 @@ public class ProgressionBar : MonoBehaviour
                 palier += 1;
         }
     }
-   
 
     private void ResetLock()
     {
@@ -43,7 +46,7 @@ public class ProgressionBar : MonoBehaviour
     }
     public void unlockVerif()
     {
-        for (int i = 0; i <= palier-1; i++)
+        for (int i = 0; i <= palier - 1; i++)
         {
             if (Paliers[i].color == Lock)
             {
@@ -51,15 +54,46 @@ public class ProgressionBar : MonoBehaviour
             }
         }
     }
-    public void addXpPass(float xp)
+    public void addXpPass() // fonction appeler par le bouton d'ouverture de pass, pour actualiser la barre que lorsque on est dessus
     {
-        xpPass += (1f / 15000f) * xp;
-        BattlePassBar.fillAmount = xpPass;
-        if (xpPass >= 15400)
-            xpPass = 15400;
-        CheckPalierProgress();
-        unlockVerif();
+        //desactiver l'icon qui dit d'aller voir le pass
+        StartCoroutine(AnimateBar(waitingXp));
     }
+    public void xpGain(float xp) // fonction à appeler pour les récompenses de quêtes
+    {
+        waitingXp += xp;
+        if (waitingXp + xpPass >= (palier * 0.0333 + 0.015)) // check si on a passer un palier
+        { 
+            // activer l'icon pour dire d'aller voir le pass
+        }
+        
+    }
+
+    private IEnumerator AnimateBar(float xp)
+    {
+        float currentTime = 0;
+        float startXp = xpPass;
+        float targetXp = xpPass + (1f / 15000f) * xp;
+
+        while (currentTime < lerpTime)
+        {
+            currentTime += Time.deltaTime;
+
+            xpPass = Mathf.Lerp(startXp, targetXp, currentTime / lerpTime);
+
+            BattlePassBar.fillAmount = xpPass;
+
+            CheckPalierProgress();
+            unlockVerif();
+
+            yield return null; 
+        }
+
+        xpPass = targetXp;
+        BattlePassBar.fillAmount = xpPass;
+        waitingXp = 0;
+    }
+
 
 
     /*missions quotidiennes : 100points 
@@ -85,4 +119,12 @@ public class ProgressionBar : MonoBehaviour
     1       0.333
      
     */
+}
+
+public class passReward : MonoBehaviour
+{
+    bool isLock;
+    bool wasTaked;
+    public bool vip;
+
 }
