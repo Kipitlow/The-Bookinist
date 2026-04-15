@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -53,6 +54,9 @@ public class NPCTalker : MonoBehaviour
     [SerializeField]
     private Vector3 _pivOffsetBook = new Vector3(-1, -3, 0);
 
+    public event Action OnShowBook;
+    public event Action OnDialogEnd;
+
     void Start()
     {
         _bubbleRenderer.enabled = false;
@@ -86,6 +90,7 @@ public class NPCTalker : MonoBehaviour
             _hasDialogueEnded = true;
             _timesEnded++;
             UpdateIndicator();
+            OnDialogEnd?.Invoke();
             return;
         }
 
@@ -101,8 +106,11 @@ public class NPCTalker : MonoBehaviour
             ShowLine(_dialogue.lines[_lineIndex]);
             _lineIndex++;
         }
-        else
-            return;
+
+        if (_dialogue.IsShopNPC && _lineIndex == 3)
+        {
+            OnShowBook?.Invoke();
+        }
     }
 
     private void ShowLine(string text)
@@ -205,6 +213,11 @@ public class NPCTalker : MonoBehaviour
 
         if (!hasBeenRead)
             _indicatorCoroutine = StartCoroutine(AnimateNotRead());
+
+        if(!_dialogue.isLoopable &&  _timesEnded > 0)
+        {
+            _thinkBubble.gameObject.SetActive(false);
+        }
     }
 
     private IEnumerator AnimateNotRead()
