@@ -98,7 +98,11 @@ public class MoveOnZoom : MonoBehaviour
 
     #endregion
 
-
+    public void SetIndexs(int myLayer, int Lateral)
+    {
+        _myLayer = myLayer;
+        _lateral = Lateral;
+    }
 
     public void OnChangingLayer(int layer, int lateralIndex)
     {
