@@ -64,6 +64,8 @@ public class CameraMovement : MonoBehaviour
     private bool _actionsDisabled;
 
     public event Action<int, int> OnZoom;
+    public event Action<int> OnZoomOrDezoom;
+    public event Action OnSwipe;
 
     [SerializeField] private CamManager _camManager;
 
@@ -296,6 +298,7 @@ public class CameraMovement : MonoBehaviour
                     { 
                         currentIndexByLayer++;
                         _camManager.NextCamera();
+                        OnSwipe?.Invoke();
                     }
 
                 }
@@ -305,6 +308,7 @@ public class CameraMovement : MonoBehaviour
                     { 
                         currentIndexByLayer--;
                         _camManager.PreviousCamera();
+                        OnSwipe?.Invoke();
                     }
 
 
@@ -381,6 +385,7 @@ public class CameraMovement : MonoBehaviour
                 _camManager.PreviousCamera();
                 _camManager.PreviousCamera();
                 _camManager.PreviousCamera();
+                OnZoomOrDezoom?.Invoke(-1);
             }
 
         }
@@ -393,6 +398,7 @@ public class CameraMovement : MonoBehaviour
                 _camManager.NextCamera();
                 _camManager.NextCamera();
                 _camManager.NextCamera();
+                OnZoomOrDezoom?.Invoke(1);
             }
         }
 
