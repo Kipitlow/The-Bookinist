@@ -257,6 +257,7 @@ public class CameraMovement : MonoBehaviour
 
                     foreach (var result in results)
                     {
+                        Debug.Log("hfiushudf");
                         Button button = result.gameObject.GetComponent<Button>();
 
                         if (button != null)
