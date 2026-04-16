@@ -47,6 +47,11 @@ public class InteractionRunner : MonoBehaviour
     {
         switch (condition.type)
         {
+            case ConditionType.ISBookFinish:
+                //return GameManager.Insta
+                return true;
+
+
             case ConditionType.SameLayer:
                 if (condition.target == null)
                     return false;
