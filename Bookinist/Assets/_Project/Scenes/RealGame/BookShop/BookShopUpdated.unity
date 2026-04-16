@@ -5531,7 +5531,7 @@ PrefabInstance:
       objectReference: {fileID: 1036510606}
     - target: {fileID: 4537737331346713201, guid: c154c34385ce7cf44a71557ea4993fe3, type: 3}
       propertyPath: _hitMask.m_Bits
-      value: 0
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 7435099332171205326, guid: c154c34385ce7cf44a71557ea4993fe3, type: 3}
       propertyPath: m_Name
@@ -9968,6 +9968,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 950536436}
+  - component: {fileID: 950536437}
   m_Layer: 5
   m_Name: AllBook
   m_TagString: Untagged
@@ -9996,6 +9997,20 @@ RectTransform:
   m_AnchoredPosition: {x: -4.796959, y: -108.27249}
   m_SizeDelta: {x: 190.78693, y: 409.02045}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &950536437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950536435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f89235cee44cb5247a598a2ee30b0d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bookToActivate: {fileID: 1620539836}
+  _npcTalker: {fileID: 1502102950}
 --- !u!1 &965695445
 GameObject:
   m_ObjectHideFlags: 0
@@ -13029,7 +13044,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 16777215
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -18315,7 +18330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1620539837
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18349,7 +18364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20125782, g: 0.096695386, b: 0.04240334, a: 0}
+  m_Color: {r: 0.20125782, g: 0.096695386, b: 0.04240334, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -18399,7 +18414,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.3018868, g: 0.13679402, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -18413,7 +18428,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1620539838}
   m_OnClick:
     m_PersistentCalls:
