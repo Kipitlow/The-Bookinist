@@ -44,6 +44,8 @@ public class ShopHandler : MonoBehaviour
         GameObject activeCategory = _shopCategories[(int)newTab];
         activeCategory.SetActive(true);
 
+        if (newTab == ShopTabs.Energy)
+            return;
         PopulateCategory(activeCategory.transform, newTab);
     }
 
