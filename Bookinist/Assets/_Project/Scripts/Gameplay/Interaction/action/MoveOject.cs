@@ -203,6 +203,11 @@ public class MoveObject : MonoBehaviour
 
     #region reset
 
+    public void UpdateBasePos()
+    {
+        _baseLocalPosition = transform.localPosition;
+    }
+
     private void ResetMoveStateImmediate()
     {
         _hasMoved = false;

@@ -41,6 +41,7 @@ public class MoveOnZoom : MonoBehaviour
 
     private CameraMovement _camMovement;
     private MoveObject _moveObject;
+    private Rigidbody _rb;
 
     public ZoomState _state = ZoomState.Visible;
 
@@ -51,6 +52,7 @@ public class MoveOnZoom : MonoBehaviour
     private void Awake()
     {
         _moveObject = GetComponent<MoveObject>();
+
 
         Camera mainCam = Camera.main;
         if (mainCam != null)
@@ -102,6 +104,11 @@ public class MoveOnZoom : MonoBehaviour
         _lateral = Lateral;
     }
 
+    public int GetLayer()
+    {
+        return _myLayer;
+    }
+
     public void OnChangingLayer(int layer, int lateralIndex)
     {
         if (_state == ZoomState.Starting)
@@ -112,6 +119,9 @@ public class MoveOnZoom : MonoBehaviour
 
         if (layer == _myLayer)
         {
+            if (_state == ZoomState.Visible || _state == ZoomState.Showing)
+                return;
+
             if (lateralIndex == _lateral)
                 StartShowing();
             else
@@ -119,6 +129,9 @@ public class MoveOnZoom : MonoBehaviour
         }
         else if (layer == _myLayer + 1)
         {
+            if (_state == ZoomState.Hidden || _state == ZoomState.Hiding)
+                return;
+
             if (lateralIndex == _lateral)
                 StartHiding();
             else
@@ -192,6 +205,7 @@ public class MoveOnZoom : MonoBehaviour
 
     private void StartHiding()
     {
+        _moveObject.UpdateBasePos();
         _state = ZoomState.Hiding;
         _moveObject.MoveTo(GetHiddenPosition(), _smoothTime);
 
@@ -209,6 +223,7 @@ public class MoveOnZoom : MonoBehaviour
 
     private void QuickHiding()
     {
+        _moveObject.UpdateBasePos();
         _state = ZoomState.Hiding;
         _moveObject.MoveTo(GetHiddenPosition(), 0f);
     }
@@ -220,12 +235,21 @@ public class MoveOnZoom : MonoBehaviour
         switch (_state)
         {
             case ZoomState.Visible:
+                targetAlpha = _alphaVisible;
+                break;
+
             case ZoomState.Showing:
                 targetAlpha = _alphaVisible;
                 break;
 
             case ZoomState.Hidden:
+                targetAlpha = _alphaHidden;
+                break;
+
             case ZoomState.Hiding:
+                targetAlpha = _alphaHidden;
+                break;
+
             case ZoomState.Starting:
                 targetAlpha = _alphaHidden;
                 break;

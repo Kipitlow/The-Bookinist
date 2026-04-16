@@ -14,6 +14,7 @@ public class TouchDetection : MonoBehaviour
     [SerializeField] private GraphicRaycaster _uiRaycaster;
     [SerializeField] private EventSystem _eventSystem;
 
+
     public event Action<GameObject> OnClick;
 
     private void Awake()
@@ -72,6 +73,13 @@ public class TouchDetection : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, _maxDistance, _hitMask))
         {
             InteractionRunner interactionRunner = hit.collider.GetComponent<InteractionRunner>();
+
+            int camLayer = _cam.GetComponent<CameraMovement>().currentIndexLayer;
+            int hitlayer = hit.collider.GetComponent<MoveOnZoom>().GetLayer();
+            Debug.Log("cam layer : " + camLayer + " hit layer : " + hitlayer);
+
+
+            if (camLayer != hitlayer) return;
 
             OnClick?.Invoke(hit.collider.gameObject);
 

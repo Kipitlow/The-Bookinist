@@ -84,6 +84,15 @@ public class WorldDropHandler : MonoBehaviour
             spriterenderer.sortingLayerName = "Page_" + camLayer;
             spriterenderer.sortingOrder = page.PageObjects.Count;
 
+            Vector2 spriteSize = spriterenderer.sprite.bounds.size;
+            Vector3 size = droppedObject.transform.localScale;
+
+            Vector3 scale = droppedObject.transform.localScale;
+            scale.x = size.x / spriteSize.x;
+            scale.y = size.y / spriteSize.y;
+
+            droppedObject.transform.localScale = scale;
+
             //Set MoveOnZoom
             droppedObject.GetComponent<MoveOnZoom>().SetIndexs(camLayer, _camera.GetComponent<CameraMovement>().currentIndexByLayer);
 
