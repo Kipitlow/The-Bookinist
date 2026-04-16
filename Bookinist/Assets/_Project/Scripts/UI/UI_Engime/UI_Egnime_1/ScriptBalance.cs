@@ -212,7 +212,7 @@ public class ScriptBalance : MonoBehaviour
 
     #endregion
 
-    #region destroy Balance
+    #region Reset Balance
 
     public void ResetBalance()
     {
@@ -396,8 +396,6 @@ public class ScriptBalance : MonoBehaviour
 
         Destroy(_counterweightInstance);
         _counterweightInstance = null;
-
-        Destroy(this);
     }
 
     #endregion

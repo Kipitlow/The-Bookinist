@@ -13,6 +13,8 @@ public class Pickable : MonoBehaviour
         if (_invController == null) _invController = GameObject.Find("InventoryManager").GetComponent<InventoryController>();
     }
 
+    public void SetItem(Item item) {  _item = item; }
+
     public void Pick(GameObject objetclicked)
     {
         if (_invController.IsInventoryHasPlace())
