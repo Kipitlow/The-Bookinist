@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ScriptBalance : MonoBehaviour
 {
@@ -58,6 +59,10 @@ public class ScriptBalance : MonoBehaviour
     [SerializeField] private int _counterweightWeight = 100;
     [SerializeField] private float _solveDelay = 0.5f;
 
+    [Header("Set Text Item Mass")]
+    [SerializeField] private TextMeshPro _text;
+    
+    
     [Header("Spawned Item Visual")]
     [SerializeField] private Vector3 _spawnedItemScale = new Vector3(0.1f, 0.1f, 0.1f);
 
@@ -113,6 +118,7 @@ public class ScriptBalance : MonoBehaviour
         _depositedItems.Add(new DepositedItem(item, instance, weight));
         _currentWeight += weight;
 
+        _text.text = $"{_currentWeight} >= 100Mass";
         if (_currentWeight >= _targetWeight)
         {
             StartSolveFlow();
@@ -154,7 +160,7 @@ public class ScriptBalance : MonoBehaviour
             DestroyCounterweight();
             ResetBalanceVisuals();
         }
-
+        _text.text = $"{_currentWeight} >= 100Mass";
         return; //returnedCount;
     }
 
