@@ -55,11 +55,6 @@ public class SC_Tache : MonoBehaviour
 
     #region Methods
 
-    public void StartChrono()
-    {
-        StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
-    }
-
     public void Change_Tach_List()//CodePermettant de actualiser les objectif du joueur
     {
         //On fonction quand terminer la tache précédent on veut switch de tache.

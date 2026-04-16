@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(MoveObject))]
 public class MoveOnZoom : MonoBehaviour
 {
+    #region variables
+
     public enum ZoomState
     {
         Starting,
@@ -24,58 +26,56 @@ public class MoveOnZoom : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float _smoothTime = 0.2f;
-    private bool _isVisible = false;
 
     [Header("Visual")]
     [SerializeField] private float _alphaVisible = 1f;
     [SerializeField] private float _alphaHidden = 0f;
     [SerializeField] private float _alphaSpeed = 1f;
 
+    [Header("Sprite Renderers")]
+    [SerializeField] private bool _autoGetChildrenSprites = true;
+    [SerializeField] private List<GameObject> _objToDesable = new();
+
+    private List<SpriteRenderer> _spriteRenderers = new();
     private float _currentAlpha;
+    private bool _isVisible;
 
     private CameraMovement _camMovement;
-    private SpriteRenderer _spriteRenderer;
     private MoveObject _moveObject;
 
-    private Vector3 _hiddenLocalPosition;
-    private Vector3 _startingLocalPosition;
-
     public ZoomState _state = ZoomState.Visible;
-    
+
+    #endregion
+
+    #region Unity Methods
+
     private void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _moveObject = GetComponent<MoveObject>();
 
         Camera mainCam = Camera.main;
         if (mainCam != null)
             _camMovement = mainCam.GetComponent<CameraMovement>();
+    }
 
 
-        Vector2 direction = _hideDirection.normalized;
-
-        _hiddenLocalPosition = _moveObject._baseLocalPosition + new Vector3(
-            direction.x * _hideDistance,
-            direction.y * _hideDistance,
-            0f
-        );
-
-        _startingLocalPosition = _moveObject._baseLocalPosition + new Vector3(
-            direction.x * _startOffsetDistance,
-            direction.y * _startOffsetDistance,
-            0f
-        );
+    private void Start()
+    {
+        if (_autoGetChildrenSprites)
+            AutoFillSpriteRenderers();
+        else
+            CleanRendererList();
 
         _alphaVisible = Mathf.Clamp01(_alphaVisible);
         _alphaHidden = Mathf.Clamp01(_alphaHidden);
 
         _currentAlpha = 0f;
         _state = ZoomState.Starting;
+        _isVisible = false;
 
+        ApplyAlphaToAllRenderers(_currentAlpha);
 
-        Color color = _spriteRenderer.color;
-        color.a = _currentAlpha;
-        _spriteRenderer.color = color;
+        StartShowingAtBeginning();
     }
 
     private void OnEnable()
@@ -95,6 +95,10 @@ public class MoveOnZoom : MonoBehaviour
         UpdateStateFromMovement();
         UpdateVisual();
     }
+
+    #endregion
+
+
 
     public void OnChangingLayer(int layer, int lateralIndex)
     {
@@ -119,9 +123,10 @@ public class MoveOnZoom : MonoBehaviour
                 QuickHiding();
         }
     }
+
     private void UpdateStateFromMovement()
     {
-        if (_state == ZoomState.Showing && _moveObject.IsAtPosition(_moveObject._baseLocalPosition))
+        if (_state == ZoomState.Showing && _moveObject.IsAtPosition(GetCurrentBasePosition()))
         {
             _isVisible = true;
             _state = ZoomState.Visible;
@@ -143,15 +148,23 @@ public class MoveOnZoom : MonoBehaviour
         Vector2 direction = _hideDirection.normalized;
         Vector3 basePos = GetCurrentBasePosition();
 
-        return basePos + new Vector3( direction.x * _hideDistance, direction.y * _hideDistance, 0f );
+        return basePos + new Vector3(
+            direction.x * _hideDistance,
+            direction.y * _hideDistance,
+            0f
+        );
     }
 
     private Vector3 GetStartingPosition()
     {
         Vector2 direction = _hideDirection.normalized;
         Vector3 basePos = GetCurrentBasePosition();
-         
-        return basePos + new Vector3( direction.x * _startOffsetDistance,  direction.y * _startOffsetDistance, 0f );
+
+        return basePos + new Vector3(
+            direction.x * _startOffsetDistance,
+            direction.y * _startOffsetDistance,
+            0f
+        );
     }
 
     private void StartShowingAtBeginning()
@@ -159,13 +172,19 @@ public class MoveOnZoom : MonoBehaviour
         _moveObject.SetPositionImmediate(GetStartingPosition());
         _state = ZoomState.Showing;
         _currentAlpha = 0f;
+        ApplyAlphaToAllRenderers(_currentAlpha);
         _moveObject.MoveTo(GetCurrentBasePosition(), _smoothTime);
     }
 
     private void StartShowing()
     {
         _state = ZoomState.Showing;
-        _moveObject.MoveTo(_moveObject._baseLocalPosition, _smoothTime);
+        _moveObject.MoveTo(GetCurrentBasePosition(), _smoothTime);
+
+        foreach (GameObject obj in _objToDesable)
+        {
+            obj.SetActive(true);
+        }
 
         if (_currentAlpha < 0.5f)
             _currentAlpha = 0.7f;
@@ -175,12 +194,17 @@ public class MoveOnZoom : MonoBehaviour
     {
         _state = ZoomState.Hiding;
         _moveObject.MoveTo(GetHiddenPosition(), _smoothTime);
+
+        foreach (GameObject obj in _objToDesable)
+        {
+            obj.SetActive(true);
+        }
     }
 
     private void QuickShowing()
     {
         _state = ZoomState.Showing;
-        _moveObject.MoveTo(_moveObject._baseLocalPosition, 0f);
+        _moveObject.MoveTo(GetCurrentBasePosition(), 0f);
     }
 
     private void QuickHiding()
@@ -208,17 +232,59 @@ public class MoveOnZoom : MonoBehaviour
         }
 
         _currentAlpha = Mathf.MoveTowards(_currentAlpha, targetAlpha, _alphaSpeed * Time.deltaTime);
+        ApplyAlphaToAllRenderers(_currentAlpha);
+    }
 
-        Color color = _spriteRenderer.color;
-        color.a = _currentAlpha;
-        _spriteRenderer.color = color;
+    private void ApplyAlphaToAllRenderers(float alpha)
+    {
+        alpha = Mathf.Clamp01(alpha);
+
+        for (int i = 0; i < _spriteRenderers.Count; i++)
+        {
+            SpriteRenderer sr = _spriteRenderers[i];
+
+            if (sr == null)
+                continue;
+
+            Color color = sr.color;
+            color.a = alpha;
+            sr.color = color;
+        }
+    }
+
+    public void AutoFillSpriteRenderers()
+    {
+        _spriteRenderers.Clear();
+
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>(true);
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            if (renderers[i] != null)
+                _spriteRenderers.Add(renderers[i]);
+        }
+    }
+
+    private void CleanRendererList()
+    {
+        for (int i = _spriteRenderers.Count - 1; i >= 0; i--)
+        {
+            if (_spriteRenderers[i] == null)
+                _spriteRenderers.RemoveAt(i);
+        }
+    }
+
+    [ContextMenu("Refresh Child Sprite Renderers")]
+    private void RefreshChildSpriteRenderers()
+    {
+        AutoFillSpriteRenderers();
     }
 
     [ContextMenu("Reset To Visible")]
     public void ResetToVisible()
     {
         _state = ZoomState.Visible;
-        _moveObject.SetPositionImmediate(_moveObject._baseLocalPosition);
+        _isVisible = true;
+        _moveObject.SetPositionImmediate(GetCurrentBasePosition());
         SetAlphaImmediate(_alphaVisible);
     }
 
@@ -226,16 +292,14 @@ public class MoveOnZoom : MonoBehaviour
     public void ResetToHidden()
     {
         _state = ZoomState.Hidden;
-        _moveObject.SetPositionImmediate(_hiddenLocalPosition);
+        _isVisible = false;
+        _moveObject.SetPositionImmediate(GetHiddenPosition());
         SetAlphaImmediate(_alphaHidden);
     }
 
     private void SetAlphaImmediate(float alpha)
     {
         _currentAlpha = Mathf.Clamp01(alpha);
-
-        Color color = _spriteRenderer.color;
-        color.a = _currentAlpha;
-        _spriteRenderer.color = color;
+        ApplyAlphaToAllRenderers(_currentAlpha);
     }
 }

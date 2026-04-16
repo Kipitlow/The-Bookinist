@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 2665785821794531234}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.78, y: 0.7200002, z: 0.24140167}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -143,6 +143,8 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
     actions:
     - type: 9
       target: {fileID: 0}
@@ -174,6 +176,8 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 7005838125770230705}
+      item: {fileID: 0}
+      balance: {fileID: 0}
     - type: 5
       target: {fileID: 0}
       activeState: 0
@@ -204,6 +208,8 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 7005838125770230705}
+      item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &7005838125770230705
 MonoBehaviour:
   m_ObjectHideFlags: 0
