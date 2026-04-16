@@ -11,7 +11,7 @@ public class SnapPointManager : MonoBehaviour
         foreach(GameObject snapPoint in snapPoints)
         {
             Vector3 pos = snapPoint.transform.position;
-            snapPoint.transform.position = new Vector3 ( pos.x, pos.y, transform.position.z - 20 * Mathf.Pow(1.35f, layer));
+            snapPoint.transform.position = new Vector3 ( pos.x, pos.y, transform.position.z - 22 * Mathf.Pow(1.3f, layer));
         }
     }
 }

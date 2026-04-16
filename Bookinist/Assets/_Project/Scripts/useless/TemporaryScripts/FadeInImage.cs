@@ -34,33 +34,33 @@ public class FadeInImage : MonoBehaviour
 
     private void FullyActivateButton()
     {
-        if (_image != null)
-        {
-            Color color = _image.color;
-            color.a = 1f;
-            _image.color = color;
-        }
+        //if (_image != null)
+        //{
+        //    Color color = _image.color;
+        //    color.a = 1f;
+        //    _image.color = color;
+        //}
 
-        if (_button != null)
-            _button.interactable = true;
+        //if (_button != null)
+        //    _button.interactable = true;
     }
 
     private void Start()
     {
-        bool firstCustomerEncounter = GameManager.Instance._isFirstCustomerEncounter;
+        //bool firstCustomerEncounter = GameManager.Instance._isFirstCustomerEncounter;
 
-        if (_image != null)
-            StartCoroutine(FadeImage());
+        //if (_image != null)
+        //    StartCoroutine(FadeImage());
 
-        if (_texts == null || _texts.Length == 0)
-            return;
+        //if (_texts == null || _texts.Length == 0)
+        //    return;
 
-        int textIndex = firstCustomerEncounter ? 1 : 0;
+        //int textIndex = firstCustomerEncounter ? 1 : 0;
 
-        if (firstCustomerEncounter && _texts.Length > 0)
-            _texts[0].gameObject.SetActive(false);
+        //if (firstCustomerEncounter && _texts.Length > 0)
+        //    _texts[0].gameObject.SetActive(false);
 
-        StartCoroutine(FadeText(_texts[textIndex]));
+        //StartCoroutine(FadeText(_texts[textIndex]));
     }
 
     private IEnumerator FadeImage()

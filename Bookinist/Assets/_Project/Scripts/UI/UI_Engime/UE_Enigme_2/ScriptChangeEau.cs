@@ -8,6 +8,7 @@ public class ScriptChangeEau : MonoBehaviour
     private SpriteRenderer _selfSprite;
     private int _nombreNuage;
     private float _lerpColorFloat;
+
     void Start()
     {
         _selfSprite = GetComponent<SpriteRenderer>();
@@ -16,6 +17,7 @@ public class ScriptChangeEau : MonoBehaviour
         Invoke("_DisableInteractionRunner", 0.1f);
         _nombreNuage = 0;
         _lerpColorFloat = 0;
+
     }
 
     private void _DisableInteractionRunner()
@@ -24,16 +26,16 @@ public class ScriptChangeEau : MonoBehaviour
         boxCollider.enabled = false;
     }
 
-    public void addIntCloud()
+    public void ChangeColor()
     {
         _nombreNuage += 1;
         if (_nombreNuage >= 3)
         {
-            StartCoroutine(IChangeColor());
+            StartCoroutine(IEChangeColor());
         }
     }
 
-    private IEnumerator IChangeColor()
+    private IEnumerator IEChangeColor()
     {
         //new Color(1, 1, 0, 1); => this at the color is red
         //new Color(0, 0, 1, 1); => this at the color is red
