@@ -73,26 +73,45 @@ public class TouchDetection : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, _maxDistance, _hitMask))
         {
             InteractionRunner interactionRunner = hit.collider.GetComponent<InteractionRunner>();
-            MoveOnZoom moveOnZoom = hit.collider.GetComponent<MoveOnZoom>();
 
-            if (moveOnZoom == null && interactionRunner == null) return;
-
-            int camLayer = _cam.GetComponent<CameraMovement>().currentIndexLayer;
-            int hitlayer = moveOnZoom.GetLayer();
-
-            if (camLayer != hitlayer) return;
-
-            OnClick?.Invoke(hit.collider.gameObject);
-
-            InteractionContext context = new InteractionContext
+            if (SceneManager.GetActiveScene().name == "BookShopUpdated")
             {
-                instigator = null,
-                target = hit.collider.gameObject,
-                isTouchEvent = true,
-            };
 
-            if (interactionRunner != null)
-                interactionRunner.TryExecuteAll(context);
+                OnClick?.Invoke(hit.collider.gameObject);
+
+                InteractionContext context = new InteractionContext
+                {
+                    instigator = null,
+                    target = hit.collider.gameObject,
+                    isTouchEvent = true,
+                };
+
+                if (interactionRunner != null)
+                    interactionRunner.TryExecuteAll(context);
+            }
+            else
+            {
+                MoveOnZoom moveOnZoom = hit.collider.GetComponent<MoveOnZoom>();
+
+                if (moveOnZoom == null && interactionRunner == null) return;
+
+                int camLayer = _cam.GetComponent<CameraMovement>().currentIndexLayer;
+                int hitlayer = moveOnZoom.GetLayer();
+
+                if (camLayer != hitlayer) return;
+
+                OnClick?.Invoke(hit.collider.gameObject);
+
+                InteractionContext context = new InteractionContext
+                {
+                    instigator = null,
+                    target = hit.collider.gameObject,
+                    isTouchEvent = true,
+                };
+
+                if (interactionRunner != null)
+                    interactionRunner.TryExecuteAll(context);
+            }
         }
     }
 }
