@@ -16,25 +16,31 @@ public class ShopItemUI : MonoBehaviour
     {
         _data = data;
         _icon.sprite = data.icon;
-        //_nameText.text = data.itemName;
+        // _nameText.text = data.itemName;
         _priceText.text = $"{data.price} €";
+
         _customManager = CustomShopManager.Instance;
-        if ( _customManager != null )
-            print("[ShopItem] CustomShopManager is null");
+
+        if (_customManager == null)
+            Debug.LogWarning("[ShopItem] CustomShopManager.Instance est null");
 
         _buyButton.onClick.AddListener(OnBuyClicked);
     }
 
     private void OnBuyClicked()
     {
-        if (CurrencyManager.Instance.GetSoftCurrency() >= _data.price)
+        if (CurrencyManager.Instance.GetSoftCurrency() < _data.price)
         {
-            CurrencyManager.Instance.SpendSoftCurrency(_data.price);
-            if (_customManager != null)
-                _customManager.AddObject(_data);
-            else
-                print("Null manager");
+            Debug.Log("[ShopItem] Fonds insuffisants.");
+            return;
         }
+
+        CurrencyManager.Instance.SpendSoftCurrency(_data.price);
+
+        if (_customManager != null)
+            _customManager.AddObject(_data);
+        else
+            Debug.LogWarning("[ShopItem] Impossible d'ajouter le meuble : CustomShopManager est null.");
     }
 
     private void OnDestroy()
