@@ -128,7 +128,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: drop iteam lyre
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -147,8 +147,9 @@ MonoBehaviour:
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -169,38 +170,6 @@ MonoBehaviour:
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 7005838125770230705}
-      item: {fileID: 0}
-      balance: {fileID: 0}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
-            m_MethodName: Terminer_Tache
-            m_Mode: 5
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: Optenir la lyre
               m_BoolArgument: 0
             m_CallState: 2
       cycleThroughSprite: {fileID: 0}

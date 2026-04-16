@@ -1,49 +1,46 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private List<ScriptableObject> _itemsUnlockable;
-    [SerializeField] private GameObject _displayObtained;
+    public static GameManager Instance;
 
-    public bool isBookStarted;
-    public bool isBookEnded;
+    public bool _isFirstCustomerEncounter;
+    public bool bookFinish;
+    public bool bookStarted;
 
-    public void Gamble()
+    private void Awake()
     {
-        DisplayScriptable(PullItem());
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
-    public ScriptableObject PullItem()
+    public void FirstCustomerEncounter()
     {
-        RandomService rng = new RandomService();
-        return _itemsUnlockable[rng.Range(0, _itemsUnlockable.Count)];
+        _isFirstCustomerEncounter = true;
+        bookFinish = false;
+        bookStarted = true;
     }
 
-    public void DisplayScriptable(ScriptableObject itemObtained)
+    public bool IsBookfinish()
     {
-        Debug.Log(itemObtained.name);
+        return bookFinish;
     }
 
     public bool IsBookStarted()
     {
-        return isBookStarted;
+        return bookFinish;
     }
 
-    public bool IsBookEnded()
+    public void FinishBook()
     {
-        return isBookEnded;
-    }
-
-    public void StartBook()
-    {
-        isBookStarted = true;
-        isBookEnded = false;
-    }
-
-    public void EndBook()
-    {
-        isBookEnded = true;
+        bookStarted = false;
+        bookFinish = true;
     }
 
 }

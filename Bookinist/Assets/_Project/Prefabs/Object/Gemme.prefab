@@ -105,7 +105,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: pick
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -122,8 +122,11 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -141,6 +144,8 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 3377554470943866456}
+      item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!65 &109587939705502630
 BoxCollider:
   m_ObjectHideFlags: 0

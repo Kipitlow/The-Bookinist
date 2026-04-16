@@ -6216,6 +6216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isFirstCustomerEncounter: 0
+  bookFinish: 0
+  bookStarted: 0
 --- !u!4 &573563032
 Transform:
   m_ObjectHideFlags: 0
@@ -16351,7 +16353,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: 
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -16370,8 +16372,9 @@ MonoBehaviour:
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
