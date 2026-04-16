@@ -73,11 +73,12 @@ public class TouchDetection : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, _maxDistance, _hitMask))
         {
             InteractionRunner interactionRunner = hit.collider.GetComponent<InteractionRunner>();
+            MoveOnZoom moveOnZoom = hit.collider.GetComponent<MoveOnZoom>();
+
+            if (moveOnZoom == null && interactionRunner == null) return;
 
             int camLayer = _cam.GetComponent<CameraMovement>().currentIndexLayer;
-            int hitlayer = hit.collider.GetComponent<MoveOnZoom>().GetLayer();
-            Debug.Log("cam layer : " + camLayer + " hit layer : " + hitlayer);
-
+            int hitlayer = moveOnZoom.GetLayer();
 
             if (camLayer != hitlayer) return;
 

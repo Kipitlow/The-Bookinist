@@ -77,15 +77,20 @@ public class WorldDropHandler : MonoBehaviour
             Vector3 worldPoint = _camera.ScreenToWorldPoint(screenPoint);
 
             GameObject droppedObject = Instantiate(_prefabDropableObject, worldPoint, _prefabDropableObject.transform.rotation, activeLayer);
+            BoxCollider boxCollider = droppedObject.GetComponent<BoxCollider>();
 
             //setup SpriteRenderer
-            SpriteRenderer spriterenderer = droppedObject.GetComponent<SpriteRenderer>();
-            spriterenderer.sprite = draggedItem.itemSprite;
-            spriterenderer.sortingLayerName = "Page_" + camLayer;
-            spriterenderer.sortingOrder = page.PageObjects.Count;
+            SpriteRenderer spriteRenderer = droppedObject.GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = draggedItem.itemSprite;
+            spriteRenderer.sortingLayerName = "Page_" + camLayer;
+            spriteRenderer.sortingOrder = page.PageObjects.Count;
 
-            Vector2 spriteSize = spriterenderer.sprite.bounds.size;
+            Vector2 spriteSize = spriteRenderer.sprite.bounds.size;
             Vector3 size = droppedObject.transform.localScale;
+
+
+            Vector3 worldSpriteSize = spriteRenderer.bounds.size;
+            Vector3 lossyScale = droppedObject.transform.lossyScale;
 
             Vector3 scale = droppedObject.transform.localScale;
             scale.x = size.x / spriteSize.x;
@@ -93,6 +98,19 @@ public class WorldDropHandler : MonoBehaviour
 
             droppedObject.transform.localScale = scale;
 
+            boxCollider.size = new Vector3(
+                worldSpriteSize.x / lossyScale.x,
+                worldSpriteSize.y / lossyScale.y,
+                boxCollider.size.z
+             );
+
+            Vector3 localCenter = spriteRenderer.sprite.bounds.center;
+
+            boxCollider.center = new Vector3(
+                localCenter.x,
+                localCenter.y,
+                boxCollider.center.z
+            );
             //Set MoveOnZoom
             droppedObject.GetComponent<MoveOnZoom>().SetIndexs(camLayer, _camera.GetComponent<CameraMovement>().currentIndexByLayer);
 

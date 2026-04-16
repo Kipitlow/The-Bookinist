@@ -16,7 +16,7 @@ public class MoveOnZoom : MonoBehaviour
     }
 
     [Header("Zoom Filter")]
-    [SerializeField] private int _myLayer;
+    [SerializeField] private int _myLayer = 0;
     [SerializeField] private int _lateral;
 
     [Header("Hide Movement")]

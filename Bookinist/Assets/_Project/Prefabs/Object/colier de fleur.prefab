@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2204687104674799107
+--- !u!1 &968460625904555924
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,13 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4225470704705383686}
-  - component: {fileID: 3891721628571188090}
-  - component: {fileID: 1179598157131155674}
-  - component: {fileID: 916289882676637760}
-  - component: {fileID: 2636925257542229572}
-  - component: {fileID: 4650298490336241276}
-  - component: {fileID: 116579349884712377}
+  - component: {fileID: 4561560342033769735}
+  - component: {fileID: 637349632242476645}
+  - component: {fileID: 5423360587032717130}
+  - component: {fileID: 8390929806180284438}
+  - component: {fileID: 8513184113947251809}
   m_Layer: 0
   m_Name: colier de fleur
   m_TagString: Untagged
@@ -22,28 +20,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4225470704705383686
+--- !u!4 &4561560342033769735
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2204687104674799107}
+  m_GameObject: {fileID: 968460625904555924}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.64, y: -3.33, z: 0}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3891721628571188090
+--- !u!212 &637349632242476645
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2204687104674799107}
+  m_GameObject: {fileID: 968460625904555924}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -80,32 +78,53 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1603831995
   m_SortingLayer: 4
-  m_SortingOrder: 30
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: c33823fb20e52e04d8d39bde1ed164e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 7.97, y: 1.3}
+  m_Size: {x: 49.61591, y: 35.08}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1179598157131155674
+--- !u!65 &5423360587032717130
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968460625904555924}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 21.296957, y: 13.174203, z: 4}
+  m_Center: {x: -0.030349195, y: -0.0020727515, z: 0}
+--- !u!114 &8390929806180284438
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2204687104674799107}
+  m_GameObject: {fileID: 968460625904555924}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionSets:
-  - interactionName: pick
+  - interactionName: pick flute
     conditions:
     - type: 2
       target: {fileID: 0}
@@ -125,6 +144,7 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
     actions:
     - type: 9
       target: {fileID: 0}
@@ -143,76 +163,20 @@ MonoBehaviour:
       Move: {fileID: 0}
       OffsetX: 0
       OffsetY: 0
-      pickable: {fileID: 2636925257542229572}
+      pickable: {fileID: 8513184113947251809}
       item: {fileID: 0}
---- !u!65 &916289882676637760
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2204687104674799107}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 25, y: 25, z: 2.48}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2636925257542229572
+      balance: {fileID: 0}
+--- !u!114 &8513184113947251809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2204687104674799107}
+  m_GameObject: {fileID: 968460625904555924}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d24c7b5e8bbbba14d9cb542165813fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _item: {fileID: 11400000, guid: 0a709a5066689d24fb824e471a5f0d88, type: 2}
+  _item: {fileID: 11400000, guid: 432b72a9e2276c747a23a78f42c23d62, type: 2}
   _invController: {fileID: 0}
---- !u!114 &4650298490336241276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2204687104674799107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _defaultSmoothTime: 0.2
-  _arrivalThreshold: 0.01
---- !u!114 &116579349884712377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2204687104674799107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _myLayer: 1
-  _lateral: 1
-  _hideDirection: {x: 1, y: 0}
-  _hideDistance: 2
-  _startOffsetDistance: 0
-  _smoothTime: 0.2
-  _alphaVisible: 1
-  _alphaHidden: 0
-  _alphaSpeed: 1
-  _state: 1
