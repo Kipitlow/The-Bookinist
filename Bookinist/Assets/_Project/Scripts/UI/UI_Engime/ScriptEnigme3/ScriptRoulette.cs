@@ -48,44 +48,55 @@ public class Script : MonoBehaviour
     {
         if(_enigmeRouletteTerminer == false)
         {
-            Debug.Log(other.name);
             switch (other.name)
             {
                 case "FBX_1erRoueCerber":
                     if(_boolOneCoroutine == false)
                     {
-                        _boolOneCoroutine = true;
-                        StartCoroutine(_premierCercle());
+                        if (C2D_01.DetectCollision != true)
+                        {
+                            _boolOneCoroutine = true;
+                            StartCoroutine(_premierCercle());
+                        }                        
                     }
                     else
                     {
                         _boolOneCoroutine = false;
                         StopCoroutine(_premierCercle());
                     }
+                    if (C2D_01.DetectCollision == true) _oneCercle.GetComponent<Renderer>().material.color = new Color(90.0f / 255.0f, 90.0f / 255.0f, 90.0f / 255.0f, 255.0f);
                     break;
                 case "FBX_2emeRoueCerber":
                     if (_boolTwoCoroutine == false)
                     {
-                        _boolTwoCoroutine = true;
-                        StartCoroutine(_deuxiémeCercle());
+                        if (C2D_02.DetectCollision != true)
+                        {
+                            _boolTwoCoroutine = true;
+                            StartCoroutine(_deuxiémeCercle());
+                        }
                     }
                     else
                     {
                         _boolTwoCoroutine = false;
                         StopCoroutine(_deuxiémeCercle());
                     }
+                    if (C2D_02.DetectCollision == true) _twoCercle.GetComponent<Renderer>().material.color = new Color(90.0f / 255.0f, 90.0f / 255.0f, 90.0f / 255.0f, 255.0f);
                     break;
                 case "FBX_3emeRoueCerber":
                     if (_boolThreeCoroutine == false)
                     {
-                        _boolThreeCoroutine = true;
-                        StartCoroutine(_troisiémeCercle());
+                        if (C2D_03.DetectCollision != true)
+                        {
+                            _boolThreeCoroutine = true;
+                            StartCoroutine(_troisiémeCercle());
+                        }
                     }
                     else
                     {
                         _boolThreeCoroutine = false;
                         StopCoroutine(_troisiémeCercle());
                     }
+                    if (C2D_03.DetectCollision == true) _treeCercle.GetComponent<Renderer>().material.color = new Color(90.0f / 255.0f, 90.0f / 255.0f, 90.0f / 255.0f, 255.0f);
                     break;
             }
 
@@ -95,31 +106,8 @@ public class Script : MonoBehaviour
 
                 GameObject instancierGameObject = Instantiate(_prefable, _targetSlotSpawn.transform.position, this.transform.rotation);
                 //instancierGameObject.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
-                //_oneCercle //_twoCercle //_treeCercle
-                _oneCercle.GetComponent<Material>().SetColor("_Color", Color.black);
-                _twoCercle.GetComponent<Material>().SetColor("_Color", Color.black);
-                _treeCercle.GetComponent<Material>().SetColor("_Color", Color.black);
             }
         }
-        /*if(_enigmeRouletteTerminer == false)
-        {
-            _fonctionBool = !_fonctionBool;
-            if (_fonctionBool)
-            {
-                _startcouroutineRotation(rr);
-            }
-            else
-            {
-                _stopcouroutineRotation(rr);
-            }
-
-            if (C2D_01.DetectCollision && C2D_02.DetectCollision && C2D_03.DetectCollision)
-            {
-                _enigmeRouletteTerminer = true;
-                Instantiate(_prefable, _targetSlotSpawn.transform);
-                Debug.Log("Finaly");
-            }
-        }*/
     }
     IEnumerator _premierCercle()
     {
