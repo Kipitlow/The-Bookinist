@@ -22,7 +22,7 @@ public class ShopItemUI : MonoBehaviour
         _customManager = CustomShopManager.Instance;
 
         if (_customManager == null)
-            Debug.LogWarning("[ShopItem] CustomShopManager.Instance est null");
+            Debug.LogWarning("[ShopItem] CustomShopManager.Instance est null — vérifie qu'il est bien présent dans la scène.");
 
         _buyButton.onClick.AddListener(OnBuyClicked);
     }

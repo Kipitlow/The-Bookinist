@@ -7,7 +7,12 @@ public class ShopItemData : ScriptableObject
     public string itemName;
     public Sprite icon;
     public int price;
+
+    [Header("Shop Display")]
     public bool isFurniture;
+
+    [Header("Customisation")]
+    [Range(0, 5)]
+    public int viewIndex;
     public GameObject mesh;
-    public bool isPurchased;
 }

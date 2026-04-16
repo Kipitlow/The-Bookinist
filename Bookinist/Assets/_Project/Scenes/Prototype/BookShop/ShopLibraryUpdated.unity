@@ -4620,7 +4620,6 @@ GameObject:
   m_Component:
   - component: {fileID: 355420137}
   - component: {fileID: 355420139}
-  - component: {fileID: 355420140}
   m_Layer: 5
   m_Name: ChangeViewHorizontalPanel
   m_TagString: Untagged
@@ -4675,36 +4674,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!114 &355420140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355420136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d3fe7724a34014289d80c779794f29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _customFurnitureList:
-  - {fileID: 11400000, guid: 04567908733eb0f448a0a0bcfe04c4f4, type: 2}
-  - {fileID: 11400000, guid: 9f4638359d0f2cc45bd052043bad7acc, type: 2}
-  - {fileID: 11400000, guid: 29e1733c81e38804081e02b62df5b076, type: 2}
-  - {fileID: 11400000, guid: 2045fff86a8769741a60ffa6b997ffd9, type: 2}
-  - {fileID: 11400000, guid: cf48d60c304846c43b45dd0614753fe0, type: 2}
-  - {fileID: 11400000, guid: d269c32ab40bb0147853b5b7596e6271, type: 2}
-  _spawnPointList:
-  - {fileID: 856442929}
-  - {fileID: 935915664}
-  - {fileID: 514652074}
-  - {fileID: 607915136}
-  - {fileID: 823922450}
-  - {fileID: 713062822}
-  _changeCustomView: {fileID: 1362279588}
-  _horizontalPanelPrefab: {fileID: 4919132356872621012, guid: fed6e6612584d24478e96a0569467bb7, type: 3}
-  _horizontalPanelParent: {fileID: 614882370}
-  _buttonPrefab: {fileID: 1506723144915916813, guid: a924b995149e68f4ba8f8a1cde7da44e, type: 3}
 --- !u!1 &357520922
 GameObject:
   m_ObjectHideFlags: 0
@@ -5531,7 +5500,7 @@ PrefabInstance:
       objectReference: {fileID: 1036510606}
     - target: {fileID: 4537737331346713201, guid: c154c34385ce7cf44a71557ea4993fe3, type: 3}
       propertyPath: _hitMask.m_Bits
-      value: 0
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 7012577755032749836, guid: c154c34385ce7cf44a71557ea4993fe3, type: 3}
       propertyPath: _pageManager
@@ -14331,7 +14300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1349504680}
   m_Layer: 5
-  m_Name: BottomMainMenu
+  m_Name: MainButtonsUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22550,15 +22519,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2002316182186256025, guid: 4bd47e37fb8708a45bb30f0b6c01422c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1055.0447
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2002316182186256025, guid: 4bd47e37fb8708a45bb30f0b6c01422c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 763.09796
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2002316182186256025, guid: 4bd47e37fb8708a45bb30f0b6c01422c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2165.4553
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2002316182186256025, guid: 4bd47e37fb8708a45bb30f0b6c01422c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24487,21 +24456,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d3fe7724a34014289d80c779794f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _customFurnitureList:
-  - {fileID: 11400000, guid: 04567908733eb0f448a0a0bcfe04c4f4, type: 2}
-  - {fileID: 11400000, guid: 9f4638359d0f2cc45bd052043bad7acc, type: 2}
-  - {fileID: 11400000, guid: 29e1733c81e38804081e02b62df5b076, type: 2}
-  - {fileID: 11400000, guid: 2045fff86a8769741a60ffa6b997ffd9, type: 2}
-  - {fileID: 11400000, guid: cf48d60c304846c43b45dd0614753fe0, type: 2}
-  - {fileID: 11400000, guid: d269c32ab40bb0147853b5b7596e6271, type: 2}
-  _spawnPointList:
+  _camManager: {fileID: 1362279588}
+  _rotationByView:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -40, z: 0}
+  - {x: 0, y: -70, z: 0}
+  - {x: 0, y: 110, z: 0}
+  - {x: 0, y: 110, z: 0}
+  - {x: 0, y: 180, z: 0}
+  _spawnPointByView:
   - {fileID: 856442929}
   - {fileID: 935915664}
   - {fileID: 514652074}
   - {fileID: 607915136}
   - {fileID: 823922450}
   - {fileID: 713062822}
-  _changeCustomView: {fileID: 1362279588}
   _horizontalPanelPrefab: {fileID: 4919132356872621012, guid: fed6e6612584d24478e96a0569467bb7, type: 3}
   _horizontalPanelParent: {fileID: 614882370}
   _buttonPrefab: {fileID: 1506723144915916813, guid: a924b995149e68f4ba8f8a1cde7da44e, type: 3}
@@ -25221,6 +25190,10 @@ PrefabInstance:
     - target: {fileID: 2483242479639356674, guid: 2062332a6f5aa354fb86c45df9857cfe, type: 3}
       propertyPath: _hardCurrency
       value: 650
+      objectReference: {fileID: 0}
+    - target: {fileID: 2483242479639356674, guid: 2062332a6f5aa354fb86c45df9857cfe, type: 3}
+      propertyPath: _softCurrency
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2483242479639356674, guid: 2062332a6f5aa354fb86c45df9857cfe, type: 3}
       propertyPath: OnHardCurrencyChanged.m_PersistentCalls.m_Calls.Array.size

@@ -8,20 +8,34 @@ public class CustomShopManager : MonoBehaviour
 
     public static CustomShopManager Instance { get; private set; }
 
-    [SerializeField] List<SO_FurnitureList> _customFurnitureList;
-    [SerializeField] List<GameObject> _spawnPointList;
-    [SerializeField] CamManager _changeCustomView;
+    private const int VIEW_COUNT = 6;
 
-    [SerializeField] GameObject _horizontalPanelPrefab;
-    [SerializeField] GameObject _horizontalPanelParent;
-    [SerializeField] GameObject _buttonPrefab;
-    private List<List<GameObject>> _furnitureButtons;
+    [SerializeField] private CamManager _camManager;
 
-    private List<GameObject> _currentFurnitureList;
-    private List<GameObject> _horizontalPanelMemList;
+    // Rotation à appliquer aux meubles pour chaque view (remplace SO_FurnitureList._furnitureRotationList)
+    [SerializeField] private Vector3[] _rotationByView = new Vector3[VIEW_COUNT];
+
+    // Points de spawn pour chaque view
+    [SerializeField] private GameObject[] _spawnPointByView = new GameObject[VIEW_COUNT];
+
+    [SerializeField] private GameObject _horizontalPanelPrefab;
+    [SerializeField] private GameObject _horizontalPanelParent;
+    [SerializeField] private GameObject _buttonPrefab;
+
+    // Inventaire runtime : une liste de ShopItemData par view
+    private List<ShopItemData>[] _inventoryByView;
+
+    // Listes de boutons UI par view
+    private List<GameObject>[] _buttonsByView;
+
+    // Panels horizontaux par view
+    private GameObject[] _horizontalPanels;
+
+    // Objet 3D actuellement affiché par view
+    private GameObject[] _currentObjects;
 
     private bool _isAlreadySeeCustomShop;
-    private int _previousIndexFurnitureActivated;
+    private int _previousViewIndex;
 
     #endregion
 
@@ -30,94 +44,127 @@ public class CustomShopManager : MonoBehaviour
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
 
-        _changeCustomView.OnViewChanged += ChangeButtons;
+        _camManager.OnViewChanged += OnViewChanged;
     }
 
     private void OnDestroy()
     {
-        _changeCustomView.OnViewChanged -= ChangeButtons;
+        if (_camManager != null)
+            _camManager.OnViewChanged -= OnViewChanged;
     }
 
     private void Start()
     {
-        _currentFurnitureList = new List<GameObject>();
-        _furnitureButtons = new List<List<GameObject>>();
-        _horizontalPanelMemList = new List<GameObject>();
+        // Initialisation des tableaux runtime
+        _inventoryByView = new List<ShopItemData>[VIEW_COUNT];
+        _buttonsByView = new List<GameObject>[VIEW_COUNT];
+        _horizontalPanels = new GameObject[VIEW_COUNT];
+        _currentObjects = new GameObject[VIEW_COUNT];
 
-        for (int i = 0; i < _customFurnitureList.Count; i++)
+        for (int i = 0; i < VIEW_COUNT; i++)
         {
-            _currentFurnitureList.Add(null);
-            _furnitureButtons.Add(new List<GameObject>());
+            _inventoryByView[i] = new List<ShopItemData>();
+            _buttonsByView[i] = new List<GameObject>();
+            _currentObjects[i] = null;
 
-            GameObject horizontalPanel = Instantiate(_horizontalPanelPrefab, _horizontalPanelParent.transform);
-            _horizontalPanelMemList.Add(horizontalPanel);
-
-            for (int j = 0; j < _customFurnitureList[i].GetFurnitureListLength(); j++)
-            {
-                CreateButton(i, j);
-            }
-
-            _horizontalPanelMemList[i].SetActive(false);
+            // Création du panel horizontal pour cette view
+            _horizontalPanels[i] = Instantiate(_horizontalPanelPrefab, _horizontalPanelParent.transform);
+            _horizontalPanels[i].SetActive(false);
         }
 
-        _horizontalPanelMemList[0].SetActive(true);
+        // La view 0 est active au départ
+        _horizontalPanels[0].SetActive(true);
     }
 
     /// <summary>
-    /// Crée un bouton pour le meuble à l'index donné dans le slot slotIndex.
-    /// Extrait en méthode pour être réutilisé à l'achat.
+    /// Appelé quand la caméra change de view.
     /// </summary>
-    private void CreateButton(int slotIndex, int furnitureIndex)
-    {
-        int capturedIndex = furnitureIndex;
-
-        GameObject button = Instantiate(_buttonPrefab, _horizontalPanelMemList[slotIndex].transform);
-        button.GetComponent<Button>().onClick.RemoveAllListeners();
-        button.GetComponent<Button>().onClick.AddListener(() => ChangeFurniture(capturedIndex));
-
-        _furnitureButtons[slotIndex].Add(button);
-    }
-
-    private void ChangeButtons(int index, int offset)
+    private void OnViewChanged(int index, int offset)
     {
         if (_isAlreadySeeCustomShop)
-            _horizontalPanelMemList[_previousIndexFurnitureActivated].SetActive(false);
+            _horizontalPanels[_previousViewIndex].SetActive(false);
 
-        _horizontalPanelMemList[index].SetActive(true);
-        _previousIndexFurnitureActivated = index;
+        _horizontalPanels[index].SetActive(true);
+        _previousViewIndex = index;
         _isAlreadySeeCustomShop = true;
     }
 
     /// <summary>
     /// Appelé par ShopItemUI à l'achat d'un meuble.
-    /// Ajoute le SO à la liste du slot actif ET crée le bouton correspondant dynamiquement.
+    /// Ajoute le ShopItemData dans l'inventaire de la bonne view et crée son bouton.
     /// </summary>
     public void AddObject(ShopItemData newObject)
     {
-        int currentSlot = _changeCustomView.GetCurrentIndexView();
+        int targetView = newObject.viewIndex;
 
-        _customFurnitureList[currentSlot].AddFurniture(newObject);
+        if (targetView < 0 || targetView >= VIEW_COUNT)
+        {
+            Debug.LogWarning($"[CustomShopManager] viewIndex {targetView} invalide pour '{newObject.itemName}'.");
+            return;
+        }
 
-        // FIX : création du bouton au moment de l'achat
-        int newFurnitureIndex = _customFurnitureList[currentSlot].GetFurnitureListLength() - 1;
-        CreateButton(currentSlot, newFurnitureIndex);
+        _inventoryByView[targetView].Add(newObject);
+
+        int newIndex = _inventoryByView[targetView].Count - 1;
+        CreateButton(targetView, newIndex, newObject);
     }
 
-    public void ChangeFurniture(int index)
+    /// <summary>
+    /// Crée un bouton UI pour un meuble, avec son icône et son listener.
+    /// </summary>
+    private void CreateButton(int viewIndex, int furnitureIndex, ShopItemData data)
     {
-        int currentIndex = _changeCustomView.GetCurrentIndexView();
+        int capturedIndex = furnitureIndex;
 
-        if (_customFurnitureList[currentIndex].UpdateCurrentFurnitureIndex(index) == false) return;
+        GameObject button = Instantiate(_buttonPrefab, _horizontalPanels[viewIndex].transform);
 
-        if (_currentFurnitureList[currentIndex] != null)
-            Destroy(_currentFurnitureList[currentIndex]);
+        // Affectation de l'icône du meuble sur le bouton
+        Image buttonImage = button.GetComponent<Image>();
+        if (buttonImage != null && data.icon != null)
+            buttonImage.sprite = data.icon;
 
-        Quaternion newRotation = Quaternion.Euler(_customFurnitureList[currentIndex].GetFurnitureRotation());
+        button.GetComponent<Button>().onClick.RemoveAllListeners();
+        button.GetComponent<Button>().onClick.AddListener(() => ChangeFurniture(viewIndex, capturedIndex));
 
-        _currentFurnitureList[currentIndex] = Instantiate(
-            _customFurnitureList[currentIndex].GetFurniture(index),
-            _spawnPointList[currentIndex].transform.position,
-            newRotation
-        );
+        _buttonsByView[viewIndex].Add(button);
+    }
+
+    /// <summary>
+    /// Instancie le mesh du meuble sélectionné dans la view correspondante.
+    /// </summary>
+    private void ChangeFurniture(int viewIndex, int furnitureIndex)
+    {
+        List<ShopItemData> list = _inventoryByView[viewIndex];
+
+        if (furnitureIndex < 0 || furnitureIndex >= list.Count)
+        {
+            Debug.LogWarning($"[CustomShopManager] Index {furnitureIndex} invalide pour la view {viewIndex}.");
+            return;
+        }
+
+        if (_currentObjects[viewIndex] != null)
+            Destroy(_currentObjects[viewIndex]);
+
+        ShopItemData data = list[furnitureIndex];
+        Quaternion rotation = Quaternion.Euler(_rotationByView[viewIndex]);
+        Vector3 position = _spawnPointByView[viewIndex].transform.position;
+
+        _currentObjects[viewIndex] = Instantiate(data.mesh, position, rotation);
+    }
+
+    /// <summary>
+    /// Retourne l'inventaire d'une view — utile pour la sauvegarde.
+    /// </summary>
+    public List<ShopItemData> GetInventoryForView(int viewIndex) => _inventoryByView[viewIndex];
+
+    /// <summary>
+    /// Charge un inventaire sauvegardé pour une view (appelé par le SaveSystem).
+    /// </summary>
+    public void LoadInventoryForView(int viewIndex, List<ShopItemData> items)
+    {
+        if (viewIndex < 0 || viewIndex >= VIEW_COUNT) return;
+
+        foreach (ShopItemData item in items)
+            AddObject(item);
     }
 }
