@@ -61,7 +61,8 @@ public class Page : MonoBehaviour
             if (sr == null) continue;
 
             sr.sortingLayerName = _sortingLayerName;
-            sr.sortingOrder = i;
+            //print("Sorting object in : " + _sortingLayerName);
+            sr.sortingOrder = i; // 0, 1, 2... sans limite liée aux autres pages
             pageObjects[i].layer = 3;
         }
     }

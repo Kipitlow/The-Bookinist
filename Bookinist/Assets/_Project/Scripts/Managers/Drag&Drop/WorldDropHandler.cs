@@ -13,9 +13,6 @@ public class WorldDropHandler : MonoBehaviour
     [Tooltip("Référence au PageManager pour connaître la page active.")]
     [SerializeField] private PageManager _pageManager;
 
-    [Tooltip("Référence au PageManager pour connaître la page active.")]
-    [SerializeField] private GameObject _prefabDropableObject;
-
     [Tooltip("Référence à l'InventoryController pour retirer l'item si drop réussi.")]
     [SerializeField] private InventoryController _inventoryController;
 
@@ -61,70 +58,17 @@ public class WorldDropHandler : MonoBehaviour
         Ray ray = _camera.ScreenPointToRay(screenPosition);
         Physics.Raycast(ray, out RaycastHit hit, _raycastDistance);
 
-        int camLayer = _camera.GetComponent<CameraMovement>().currentIndexLayer;
-
-        //place Object In World
         if (hit.collider == null)
         {
-            Debug.Log("tried to spawn object");
-
-            Transform activeLayer = _pageManager.GetPageFromInt(camLayer).transform;
-            Page page = activeLayer.GetComponent<Page>();
-
-            float depth = activeLayer.position.z - _camera.transform.position.z;
-
-            Vector3 screenPoint = new Vector3(screenPosition.x, screenPosition.y, depth);
-            Vector3 worldPoint = _camera.ScreenToWorldPoint(screenPoint);
-
-            GameObject droppedObject = Instantiate(_prefabDropableObject, worldPoint, _prefabDropableObject.transform.rotation, activeLayer);
-            BoxCollider boxCollider = droppedObject.GetComponent<BoxCollider>();
-
-            //setup SpriteRenderer
-            SpriteRenderer spriteRenderer = droppedObject.GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = draggedItem.itemSprite;
-            spriteRenderer.sortingLayerName = "Page_" + camLayer;
-            spriteRenderer.sortingOrder = page.PageObjects.Count;
-
-            Vector2 spriteSize = spriteRenderer.sprite.bounds.size;
-            Vector3 size = droppedObject.transform.localScale;
-
-
-            Vector3 worldSpriteSize = spriteRenderer.bounds.size;
-            Vector3 lossyScale = droppedObject.transform.lossyScale;
-
-            Vector3 scale = droppedObject.transform.localScale;
-            scale.x = size.x / spriteSize.x;
-            scale.y = size.y / spriteSize.y;
-
-            droppedObject.transform.localScale = scale;
-
-            boxCollider.size = new Vector3(
-                worldSpriteSize.x / lossyScale.x,
-                worldSpriteSize.y / lossyScale.y,
-                boxCollider.size.z
-             );
-
-            Vector3 localCenter = spriteRenderer.sprite.bounds.center;
-
-            boxCollider.center = new Vector3(
-                localCenter.x,
-                localCenter.y,
-                boxCollider.center.z
-            );
-            //Set MoveOnZoom
-            droppedObject.GetComponent<MoveOnZoom>().SetIndexs(camLayer, _camera.GetComponent<CameraMovement>().currentIndexByLayer);
-
-            //set Pickable
-            droppedObject.GetComponent<Pickable>().SetItem(draggedItem);
-
-            _inventoryController.RemoveInventoryItem(draggedItem);
-
+            //here
             return;
-        };
+        }
 
+        //InteractionRunner targetRunner = FindRunnerOnActivePage(hits, activePage);
         InteractionRunner targetRunner = hit.collider.gameObject.GetComponent<InteractionRunner>();
 
         int hitlayer = hit.collider.GetComponentInParent<Page>().PageIndex;
+        int camLayer = _camera.GetComponent<CameraMovement>().currentIndexLayer;
 
         if (targetRunner != null && hitlayer == camLayer)
         {
@@ -142,6 +86,17 @@ public class WorldDropHandler : MonoBehaviour
             bool wasHandled = targetRunner.TryExecuteAll(context);
             if (wasHandled)
                 _inventoryController.RemoveInventoryItem(draggedItem);
+            else
+            {
+                //here
+            }
+
+        }
+        else
+        {
+            // Aucun objet valide sur la page active -> l'item reste dans l'inventaire
+            Debug.Log("[WorldDropHandler] Aucun InteractionRunner sur la page active. " +
+                      "L'item retourne dans l'inventaire.");
         }
     }
 }
