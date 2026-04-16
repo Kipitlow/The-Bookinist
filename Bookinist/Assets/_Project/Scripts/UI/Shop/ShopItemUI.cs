@@ -8,6 +8,7 @@ public class ShopItemUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TextMeshProUGUI _priceText;
     [SerializeField] private Button _buyButton;
+    [SerializeField] private TextMeshProUGUI _soldText;
 
     private CustomShopManager _customManager;
     private ShopItemData _data;
@@ -22,7 +23,7 @@ public class ShopItemUI : MonoBehaviour
         _customManager = CustomShopManager.Instance;
 
         if (_customManager == null)
-            Debug.LogWarning("[ShopItem] CustomShopManager.Instance est null — vérifie qu'il est bien présent dans la scène.");
+            Debug.LogWarning("[ShopItem] CustomShopManager.Instance est null");
 
         _buyButton.onClick.AddListener(OnBuyClicked);
     }
@@ -38,9 +39,18 @@ public class ShopItemUI : MonoBehaviour
         CurrencyManager.Instance.SpendSoftCurrency(_data.price);
 
         if (_customManager != null)
+        {
             _customManager.AddObject(_data);
+            SetSoldState();
+        }
         else
             Debug.LogWarning("[ShopItem] Impossible d'ajouter le meuble : CustomShopManager est null.");
+    }
+
+    public void SetSoldState()
+    {
+        _buyButton.interactable = false;
+        _soldText.gameObject.SetActive(true);
     }
 
     private void OnDestroy()

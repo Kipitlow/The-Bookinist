@@ -153,7 +153,7 @@ public class CustomShopManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Retourne l'inventaire d'une view — utile pour la sauvegarde.
+    /// Retourne l'inventaire d'une view - utile pour la sauvegarde.
     /// </summary>
     public List<ShopItemData> GetInventoryForView(int viewIndex) => _inventoryByView[viewIndex];
 
@@ -166,5 +166,18 @@ public class CustomShopManager : MonoBehaviour
 
         foreach (ShopItemData item in items)
             AddObject(item);
+    }
+
+    /// <summary>
+    /// Retourne un booléen si l'item du shop se trouve dans l'inventaire du joueur.
+    /// </summary>
+    public bool HasItem(ShopItemData item)
+    {
+        int view = item.viewIndex;
+
+        if (view < 0 || view >= _inventoryByView.Length)
+            return false;
+
+        return _inventoryByView[view].Contains(item);
     }
 }

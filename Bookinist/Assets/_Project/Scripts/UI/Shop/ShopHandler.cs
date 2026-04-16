@@ -58,11 +58,15 @@ public class ShopHandler : MonoBehaviour
         foreach (ShopItemData item in _allItems)
         {
             bool belongs = tab == ShopTabs.Furniture ? item.isFurniture : !item.isFurniture;
-            print(belongs); 
             if (!belongs) continue;
 
             ShopItemUI ui = Instantiate(_shopItemPrefab, realContainer);
             ui.Setup(item);
+
+            if (CustomShopManager.Instance.HasItem(item))
+            {
+                ui.SetSoldState();
+            }
         }
     }
 
