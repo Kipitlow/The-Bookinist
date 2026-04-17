@@ -10,41 +10,22 @@ public class ShopItemUI : MonoBehaviour
     [SerializeField] private Button _buyButton;
     [SerializeField] private TextMeshProUGUI _soldText;
 
-    private CustomShopManager _customManager;
     private ShopItemData _data;
 
     public void Setup(ShopItemData data)
     {
         _data = data;
         _icon.sprite = data.icon;
-        // _nameText.text = data.itemName;
         _priceText.text = $"{data.price} €";
 
-        _customManager = CustomShopManager.Instance;
-
-        if (_customManager == null)
-            Debug.LogWarning("[ShopItem] CustomShopManager.Instance est null");
-
-        _buyButton.onClick.AddListener(OnBuyClicked);
+        // Au clic sur la carte, on ouvre la preview - pas d'achat direct
+        _buyButton.onClick.AddListener(OnItemClicked);
     }
 
-    private void OnBuyClicked()
+    private void OnItemClicked()
     {
-        if (CurrencyManager.Instance.GetSoftCurrency() < _data.price)
-        {
-            Debug.Log("[ShopItem] Fonds insuffisants.");
-            return;
-        }
-
-        CurrencyManager.Instance.SpendSoftCurrency(_data.price);
-
-        if (_customManager != null)
-        {
-            _customManager.AddObject(_data);
-            SetSoldState();
-        }
-        else
-            Debug.LogWarning("[ShopItem] Impossible d'ajouter le meuble : CustomShopManager est null.");
+        // On délègue à ShopPreviewPanel plutôt que d'acheter immédiatement
+        ShopPreviewPanel.Instance.ShowPreview(_data);
     }
 
     public void SetSoldState()
@@ -55,6 +36,6 @@ public class ShopItemUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        _buyButton.onClick.RemoveListener(OnBuyClicked);
+        _buyButton.onClick.RemoveListener(OnItemClicked);
     }
 }
