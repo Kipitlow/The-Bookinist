@@ -857,6 +857,8 @@ GameObject:
   - component: {fileID: 95823468}
   - component: {fileID: 95823467}
   - component: {fileID: 95823469}
+  - component: {fileID: 95823470}
+  - component: {fileID: 95823471}
   m_Layer: 0
   m_Name: SaveManager
   m_TagString: Untagged
@@ -930,6 +932,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52e746b27a8dd643887c20ce5cdabc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &95823470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95823465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b377e67b8badf14aa7d99e2ae3e6fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemList:
+  - {fileID: 11400000, guid: 76a7940eba106f1418c1c7dfedac0cb6, type: 2}
+  - {fileID: 11400000, guid: 4f596c03308136240b53ed4c5dbe5019, type: 2}
+  - {fileID: 11400000, guid: 20048840b8af1ba43a09d09c03f754e2, type: 2}
+  - {fileID: 11400000, guid: 49dbe09da27ba444dad7e4c5e4e23aa4, type: 2}
+  - {fileID: 11400000, guid: 9253815a1c5f1b64289d53b2a17efe61, type: 2}
+--- !u!114 &95823471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95823465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4423bc659b497e4fa665f9e58c52e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultItem: {fileID: 11400000, guid: 2d5a95375dc97e94e8d3ec79c94f29b6, type: 2}
 --- !u!1 &96050094
 GameObject:
   m_ObjectHideFlags: 0
@@ -22210,6 +22243,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 95823471}
+        m_TargetAssemblyTypeName: MasterDict, Assembly-CSharp
+        m_MethodName: ConverterCall
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: M1-
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1824599422
