@@ -56,10 +56,10 @@ public class ProgressionBar : MonoBehaviour
             if (Paliers[i].color == Lock)
             {
                 Paliers[i].color = Unlock;
-                for(int j = 0; rewardPalier[i].rewards.Count > 0; j++)
+                /*for(int j = 0; rewardPalier[i].rewards.Count > j; j++)
                 {
                     rewardPalier[i].rewards[j].interactable = true;
-                }
+                }*/
             }
         }
     }
@@ -108,6 +108,17 @@ public class ProgressionBar : MonoBehaviour
 
             yield return null; 
         }
+
+        /*for (int i = 0; i <= palier - 1; i++)
+        {
+            if (Paliers[i].color == Unlock)
+            {
+                for(int j = 0; rewardPalier[i].rewards.Count > j; j++)
+                {
+                    rewardPalier[i].rewards[j].interactable = true;
+                }
+            }
+        }*/
 
         xpPass = targetXp;
         BattlePassBar.fillAmount = xpPass;
