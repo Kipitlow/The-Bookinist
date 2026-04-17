@@ -70,6 +70,11 @@ public class PageManager : MonoBehaviour
         return _layerHolder[_activePageIndex].GetComponent<Page>();
     }
 
+    public GameObject GetPageFromInt(int layer)
+    {
+        return _layerHolder[layer];
+    }
+
     public void SetActivePage(int index)
     {
         _activePageIndex = Mathf.Clamp(index, 0, _layerHolder.Count - 1);

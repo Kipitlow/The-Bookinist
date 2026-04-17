@@ -63,7 +63,7 @@ public class ActionEntryDrawer : PropertyDrawer
                 break;
 
             case ActionType.Destroy:
-                lines += 0;
+                lines += 1;
                 break;
 
             case ActionType.CycleSprites:
@@ -157,6 +157,7 @@ public class ActionEntryDrawer : PropertyDrawer
                 break;
 
             case ActionType.Destroy:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 break;
 
             case ActionType.CycleSprites:

@@ -1,5 +1,6 @@
 public enum ConditionType
 {
+    ISBookFinish,
     SameLayer,
     SameZone,
     OnTouch,
@@ -16,6 +17,7 @@ public enum ConditionType
 
 public enum ActionType
 {
+    FinishBook,
     SetActive,
     Open,
     StartDialogue,
