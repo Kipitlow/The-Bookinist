@@ -189,15 +189,20 @@ public class MoveOnZoom : MonoBehaviour
         _moveObject.MoveTo(GetCurrentBasePosition(), _smoothTime);
     }
 
+    public void SetObjectEnable(bool desable)
+    {
+        foreach (GameObject obj in _objToDesable)
+        {
+            obj.SetActive(desable);
+        }
+    }
+
     private void StartShowing()
     {
         _state = ZoomState.Showing;
         _moveObject.MoveTo(GetCurrentBasePosition(), _smoothTime);
 
-        foreach (GameObject obj in _objToDesable)
-        {
-            obj.SetActive(true);
-        }
+        SetObjectEnable(true);
 
         if (_currentAlpha < 0.5f)
             _currentAlpha = 0.7f;
@@ -210,16 +215,16 @@ public class MoveOnZoom : MonoBehaviour
         _state = ZoomState.Hiding;
         _moveObject.MoveTo(GetHiddenPosition(), _smoothTime);
 
-        foreach (GameObject obj in _objToDesable)
-        {
-            obj.SetActive(false);
-        }
+        SetObjectEnable(false);
+
     }
 
     private void QuickShowing()
     {
         _state = ZoomState.Showing;
         _moveObject.MoveTo(GetCurrentBasePosition(), 0f);
+        SetObjectEnable(true);
+
     }
 
     private void QuickHiding()
@@ -227,6 +232,8 @@ public class MoveOnZoom : MonoBehaviour
         _moveObject.UpdateBasePos();
         _state = ZoomState.Hiding;
         _moveObject.MoveTo(GetHiddenPosition(), 0f);
+        SetObjectEnable(false);
+
     }
 
     private void UpdateVisual()
