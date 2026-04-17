@@ -1,28 +1,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Machine1ItemsDict : MonoBehaviour
+public class ItemDatabase : MonoBehaviour
 {
-    private int _fileIncrementer = 0;
-    [SerializeField] private List<ShopItemData> _itemList;
+    public static ItemDatabase Instance;
 
-    public Dictionary<string, ShopItemData> _machine1ItemsDict;
+    [SerializeField] private List<ShopItemData> allItems;
 
-    public static Machine1ItemsDict instance;
+    private Dictionary<string, ShopItemData> _dict;
 
     private void Awake()
     {
-        instance = this;
-    }
+        Instance = this;
 
-    private void Start()
-    {
-        _machine1ItemsDict = new Dictionary<string, ShopItemData>();
-        foreach (var item in _itemList)
+        _dict = new Dictionary<string, ShopItemData>();
+
+        foreach (var item in allItems)
         {
-            _fileIncrementer++;
-            _machine1ItemsDict.Add(("M1-1" + _fileIncrementer), item);
+            if (!_dict.ContainsKey(item.id))
+                _dict.Add(item.id, item);
+            else
+                Debug.LogWarning("Duplicate ID: " + item.id);
         }
     }
+
+    public ShopItemData Get(string id)
+    {
+        if (_dict.TryGetValue(id, out var item))
+            return item;
+
+        Debug.LogWarning("Missing ID: " + id);
+        return null;
+    }
 }
- 

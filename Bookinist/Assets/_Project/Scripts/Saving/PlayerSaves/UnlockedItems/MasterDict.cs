@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MasterDict : MonoBehaviour
 {
+    /*
     public ShopItemData _defaultItem;
 
     public ShopItemData IDToScriptable(string itemID, Dictionary<string, ShopItemData> dict)
@@ -21,4 +22,5 @@ public class MasterDict : MonoBehaviour
     {
         Debug.Log(IDToScriptable(itemID, Machine1ItemsDict.instance._machine1ItemsDict).itemName);
     }
+    */
 }
