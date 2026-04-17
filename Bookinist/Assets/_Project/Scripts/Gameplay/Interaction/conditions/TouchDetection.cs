@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,7 @@ public class TouchDetection : MonoBehaviour
 
     [SerializeField] private GraphicRaycaster _uiRaycaster;
     [SerializeField] private EventSystem _eventSystem;
+
 
     public event Action<GameObject> OnClick;
 
@@ -72,18 +74,58 @@ public class TouchDetection : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, _maxDistance, _hitMask))
         {
             InteractionRunner interactionRunner = hit.collider.GetComponent<InteractionRunner>();
+            interactionFeedBack interactionFeedBack = hit.collider.GetComponent<interactionFeedBack>();
 
-            OnClick?.Invoke(hit.collider.gameObject);
-
-            InteractionContext context = new InteractionContext
+            #region dans le bookshop
+            if (SceneManager.GetActiveScene().name == "BookShopUpdated")
             {
-                instigator = null,
-                target = hit.collider.gameObject,
-                isTouchEvent = true,
-            };
 
-            if (interactionRunner != null)
-                interactionRunner.TryExecuteAll(context);
+                OnClick?.Invoke(hit.collider.gameObject);
+
+                InteractionContext context = new InteractionContext
+                {
+                    instigator = null,
+                    target = hit.collider.gameObject,
+                    isTouchEvent = true,
+                };
+
+                if (interactionRunner != null)
+                    interactionRunner.TryExecuteAll(context);
+            }
+            #endregion
+
+
+            #region dans le jeu
+            else
+            {
+                GameObject hitObject = hit.collider.gameObject;
+                MoveOnZoom moveOnZoom = hit.collider.GetComponent<MoveOnZoom>();
+
+                if (moveOnZoom == null) return;
+
+                if (interactionRunner != null)
+                {
+                    CameraMovement cameraMovement = _cam.GetComponent<CameraMovement>();
+                    int camLayer = cameraMovement.currentIndexLayer;
+                    int hitLayer = moveOnZoom.GetLayer();
+
+                    if (camLayer == hitLayer)
+                    {
+                        OnClick?.Invoke(hitObject);
+
+                        InteractionContext context = new InteractionContext
+                        {
+                            instigator = null,
+                            target = hitObject,
+                            isTouchEvent = true,
+                        };
+
+                        interactionRunner.TryExecuteAll(context);
+                    }
+                }
+                if(interactionFeedBack) interactionFeedBack.TryFeedback();
+            }
+            #endregion
         }
     }
 }

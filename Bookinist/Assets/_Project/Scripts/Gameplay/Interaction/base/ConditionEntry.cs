@@ -62,4 +62,7 @@ public class ConditionEntry
     [Tooltip("balance")]
     public ScriptBalance balance;
 
+    [Tooltip("Is the boo finished")]
+    public bool isBookFinish;
+
 }

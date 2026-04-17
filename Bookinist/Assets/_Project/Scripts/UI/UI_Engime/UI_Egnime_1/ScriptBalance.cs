@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ScriptBalance : MonoBehaviour
@@ -57,6 +58,9 @@ public class ScriptBalance : MonoBehaviour
     [SerializeField] private int _targetWeight = 100;
     [SerializeField] private int _counterweightWeight = 100;
     [SerializeField] private float _solveDelay = 0.5f;
+
+    [Header("Text Ajoute")]
+    [SerializeField] private TextMeshPro _textValue;
 
     [Header("Spawned Item Visual")]
     [SerializeField] private Vector3 _spawnedItemScale = new Vector3(0.1f, 0.1f, 0.1f);
@@ -117,7 +121,7 @@ public class ScriptBalance : MonoBehaviour
         {
             StartSolveFlow();
         }
-
+        _textValue.text = $"{_currentWeight} >= 100Value";
         return true;
     }
 
@@ -154,7 +158,7 @@ public class ScriptBalance : MonoBehaviour
             DestroyCounterweight();
             ResetBalanceVisuals();
         }
-
+        _textValue.text = $"{_currentWeight} >= 100Value";
         return; //returnedCount;
     }
 
@@ -206,7 +210,7 @@ public class ScriptBalance : MonoBehaviour
 
     #endregion
 
-    #region destroy Balance
+    #region Reset Balance
 
     public void ResetBalance()
     {
@@ -215,7 +219,7 @@ public class ScriptBalance : MonoBehaviour
         _isSolved = false;
         _isSolving = false;
         _currentWeight = 0;
-
+        _textValue.text = $"{_currentWeight} >= 100Value";
         ClearDepositedItems();
         DestroyCounterweight();
         ResetBalanceVisuals();
@@ -390,8 +394,6 @@ public class ScriptBalance : MonoBehaviour
 
         Destroy(_counterweightInstance);
         _counterweightInstance = null;
-
-        Destroy(this);
     }
 
     #endregion
