@@ -3,24 +3,10 @@ using UnityEngine;
 
 public class MasterDict : MonoBehaviour
 {
-    /*
-    public ShopItemData _defaultItem;
+    [SerializeField] private string _shopItem;
 
-    public ShopItemData IDToScriptable(string itemID, Dictionary<string, ShopItemData> dict)
+    public void GetShopItem()
     {
-        dict.TryGetValue(itemID, out ShopItemData scriptable);
-        if (scriptable != null)
-        {
-            Debug.Log("Object found, sending item : " + scriptable.itemName);
-            return scriptable;
-        }
-        Debug.Log("Object not found, sending item : " + _defaultItem.itemName);
-        return _defaultItem;
+        Debug.Log(ItemDatabase.Instance.Get(_shopItem).itemName);
     }
-
-    public void ConverterCall(string itemID)
-    {
-        Debug.Log(IDToScriptable(itemID, Machine1ItemsDict.instance._machine1ItemsDict).itemName);
-    }
-    */
 }
