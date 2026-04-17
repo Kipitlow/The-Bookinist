@@ -56,10 +56,10 @@ public class ProgressionBar : MonoBehaviour
             if (Paliers[i].color == Lock)
             {
                 Paliers[i].color = Unlock;
-                /*for(int j = 0; rewardPalier[i].rewards.Count > j; j++)
+                for(int j = 0; rewardPalier[i].rewards.Count > j; j++)
                 {
                     rewardPalier[i].rewards[j].interactable = true;
-                }*/
+                }
             }
         }
     }
@@ -109,27 +109,11 @@ public class ProgressionBar : MonoBehaviour
             yield return null; 
         }
 
-        /*for (int i = 0; i <= palier - 1; i++)
-        {
-            if (Paliers[i].color == Unlock)
-            {
-                for(int j = 0; rewardPalier[i].rewards.Count > j; j++)
-                {
-                    rewardPalier[i].rewards[j].interactable = true;
-                }
-            }
-        }*/
-
         xpPass = targetXp;
         BattlePassBar.fillAmount = xpPass;
     }
 
-
-
-
 }
-
-
 
 /*missions quotidiennes : 100points 
   missions hebdomadaires : 500points
@@ -150,9 +134,11 @@ public class ProgressionBar : MonoBehaviour
 
 30paliers avec 500 entre chaque => 15k points à récupérer
 
-15000   5000
-1       0.333
-765 325
+
+
+
+check bool Premium == true pour activer ou non les palier
+quand on appuie sur le bouton pour debloquer le premium ca passe sur tous les palier debloqué et ca rend les boutons avec premium  interactable
 */
 
 
