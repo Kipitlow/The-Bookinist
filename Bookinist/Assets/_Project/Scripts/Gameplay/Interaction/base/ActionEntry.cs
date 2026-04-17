@@ -60,4 +60,5 @@ public class ActionEntry
 
     [Tooltip("Balance")]
     public ScriptBalance balance;
+
 }

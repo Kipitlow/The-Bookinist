@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5423360587032717130}
   - component: {fileID: 8390929806180284438}
   - component: {fileID: 8513184113947251809}
+  - component: {fileID: 9088740568789304571}
+  - component: {fileID: 532673301117548679}
   m_Layer: 0
   m_Name: flute
   m_TagString: Untagged
@@ -30,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.60876125, w: 0.79335356}
   m_LocalPosition: {x: 9.64, y: -3.33, z: 0}
-  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
+  m_LocalScale: {x: 0.24, y: 0.24, z: 0.24}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -126,7 +128,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: pick flute
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -143,8 +145,11 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -163,6 +168,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 8513184113947251809}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &8513184113947251809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,3 +183,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 432b72a9e2276c747a23a78f42c23d62, type: 2}
   _invController: {fileID: 0}
+--- !u!114 &9088740568789304571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968460625904555924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+--- !u!114 &532673301117548679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968460625904555924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 2
+  _lateral: 0
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 0
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _objToDesable: []
+  _state: 1

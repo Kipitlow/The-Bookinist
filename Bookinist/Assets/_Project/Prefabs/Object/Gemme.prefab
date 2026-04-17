@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 6917213278611893973}
   - component: {fileID: 109587939705502630}
   - component: {fileID: 3377554470943866456}
-  m_Layer: 0
+  - component: {fileID: 8836297019922656170}
+  - component: {fileID: 4448084435067074616}
+  m_Layer: 3
   m_Name: Gemme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -105,7 +107,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: pick
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -122,8 +124,11 @@ MonoBehaviour:
       Move: {fileID: 0}
       HasMoved: 0
       HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -141,6 +146,8 @@ MonoBehaviour:
       OffsetX: 0
       OffsetY: 0
       pickable: {fileID: 3377554470943866456}
+      item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!65 &109587939705502630
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -160,7 +167,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 24.739258, y: 16.5186, z: 4.8324227}
+  m_Size: {x: 24.739258, y: 16.5186, z: 30.69}
   m_Center: {x: 1.5896286, y: 0.54069674, z: -2.3162115}
 --- !u!114 &3377554470943866456
 MonoBehaviour:
@@ -176,3 +183,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 5755fe98c94558b429821530ae68f05a, type: 2}
   _invController: {fileID: 0}
+--- !u!114 &8836297019922656170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7487870290225042571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  _isDroppedItem: 0
+--- !u!114 &4448084435067074616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7487870290225042571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 2
+  _lateral: 1
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 0
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _objToDesable: []
+  _state: 1

@@ -214,6 +214,12 @@ public class NPCTalker : MonoBehaviour
         if (!hasBeenRead)
             _indicatorCoroutine = StartCoroutine(AnimateNotRead());
 
+        if( _dialogue == null)
+        {
+            _indicatorCoroutine = StartCoroutine(AnimateNotRead());
+            return;
+        }
+
         if(!_dialogue.isLoopable &&  _timesEnded > 0)
         {
             _thinkBubble.gameObject.SetActive(false);

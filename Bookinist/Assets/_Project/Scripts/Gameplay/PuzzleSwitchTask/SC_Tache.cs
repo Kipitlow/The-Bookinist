@@ -28,7 +28,7 @@ public class SC_Tache : MonoBehaviour
     //private int Layeur_Actuelle_Du_Joueur;
 
     [Header("UI_Enigme_02")]
-    public int NombreTacheValide=0;
+    public int NombreTacheValide = 0;
 
     [Header("Prefable")]
     [SerializeField] public GameObject PrefableTache;
@@ -45,8 +45,8 @@ public class SC_Tache : MonoBehaviour
     void Start()
     {
         //if (CM_Player == null) CM_Player = GameObject.Find("CameraManager").GetComponent<Camera>();
-        
-        if (SceneManager.GetActiveScene().name != "Enigme1") 
+
+        if (SceneManager.GetActiveScene().name != "Enigme1")
             StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
 
         Change_Tach_List();
@@ -77,10 +77,10 @@ public class SC_Tache : MonoBehaviour
                     }
                 }
             } //<- Actualiser les mission
-            
+
         }
     }
-    private void Spawn_Prefable_Tache(int i)               
+    private void Spawn_Prefable_Tache(int i)
     {
         GameObject New_Object = Instantiate(PrefableTache, Target_Parent_Prefable);
         Vector3 Pos = New_Object.transform.position;
@@ -116,7 +116,7 @@ public class SC_Tache : MonoBehaviour
         {
             if (Liste_Mission[i].TacheTerminer == false)
             {
-                if(Liste_Mission[i].Nom_Mission == nom_mission)
+                if (Liste_Mission[i].Nom_Mission == nom_mission)
                 {
                     Liste_Mission[i].TacheTerminer = true;
                     Change_Tach_List();
@@ -132,7 +132,7 @@ public class SC_Tache : MonoBehaviour
     public void FinEnigme2(int nbrTach)
     {
         if (nbrTach == 0) { NombreTacheValide = nbrTach; }
-        else if(NombreTacheValide+1>= nbrTach)
+        else if (NombreTacheValide + 1 >= nbrTach)
         {
             NombreTacheValide = nbrTach;
             SceneManager.LoadScene("BookShopUpdated");
@@ -153,7 +153,7 @@ public class SC_Tache : MonoBehaviour
             RR.transform.localScale = new Vector2(0.5f, 0.5f);
 
             RectTransform rt = RR.GetComponent<RectTransform>();
-            rt.anchoredPosition = new Vector2(transform.position.x / 2, transform.position .y/ 2);
+            rt.anchoredPosition = new Vector2(transform.position.x / 2, transform.position.y / 2);
         }
     }
 
@@ -179,10 +179,10 @@ public class SC_Tache : MonoBehaviour
 
     public void SetChronom(bool Continue)
     {
-        if(Continue)
+        if (Continue)
         {
-            if (!lanceCouroutine) 
-            { 
+            if (!lanceCouroutine)
+            {
                 StartCoroutine("Chronometre");
                 lanceCouroutine = true;
             }
