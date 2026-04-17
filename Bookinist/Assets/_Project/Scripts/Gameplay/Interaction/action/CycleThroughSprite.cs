@@ -32,8 +32,6 @@ public class CycleThroughSprite : MonoBehaviour
             if (_cycle) _currentFrame = 0; 
             else _currentFrame = _numberOfSprite - 1;
         }
-        print("current frame : " + _currentFrame + " number of sprites : " + _numberOfSprite);
-        Debug.Log("current frame : " + _currentFrame + " number of sprites : " + _numberOfSprite);
         _spriteRenderer.sprite = sprites[_currentFrame];
 
     }
