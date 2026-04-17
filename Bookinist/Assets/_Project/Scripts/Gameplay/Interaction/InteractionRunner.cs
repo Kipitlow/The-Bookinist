@@ -47,6 +47,10 @@ public class InteractionRunner : MonoBehaviour
     {
         switch (condition.type)
         {
+            case ConditionType.ISBookFinish:
+                return GameManager.Instance.bookFinish == condition.isBookFinish;
+
+
             case ConditionType.SameLayer:
                 if (condition.target == null)
                     return false;

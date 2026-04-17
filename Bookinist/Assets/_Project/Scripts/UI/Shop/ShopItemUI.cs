@@ -8,35 +8,34 @@ public class ShopItemUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TextMeshProUGUI _priceText;
     [SerializeField] private Button _buyButton;
+    [SerializeField] private TextMeshProUGUI _soldText;
 
-    private CustomShopManager _customManager;
     private ShopItemData _data;
 
     public void Setup(ShopItemData data)
     {
         _data = data;
         _icon.sprite = data.icon;
-        //_nameText.text = data.itemName;
         _priceText.text = $"{data.price} €";
-        _customManager = FindFirstObjectByType<CustomShopManager>();
 
-        _buyButton.onClick.AddListener(OnBuyClicked);
+        // Au clic sur la carte, on ouvre la preview - pas d'achat direct
+        _buyButton.onClick.AddListener(OnItemClicked);
     }
 
-    private void OnBuyClicked()
+    private void OnItemClicked()
     {
-        if (CurrencyManager.Instance.GetSoftCurrency() >= _data.price)
-        {
-            CurrencyManager.Instance.SpendSoftCurrency(_data.price);
-            if (_customManager != null)
-                _customManager.AddObject(_data);
-            else
-                print("Null manager");
-        }
+        // On délègue à ShopPreviewPanel plutôt que d'acheter immédiatement
+        ShopPreviewPanel.Instance.ShowPreview(_data);
+    }
+
+    public void SetSoldState()
+    {
+        _buyButton.interactable = false;
+        _soldText.gameObject.SetActive(true);
     }
 
     private void OnDestroy()
     {
-        _buyButton.onClick.RemoveListener(OnBuyClicked);
+        _buyButton.onClick.RemoveListener(OnItemClicked);
     }
 }

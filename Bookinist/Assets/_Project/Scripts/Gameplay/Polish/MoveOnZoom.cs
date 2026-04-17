@@ -16,7 +16,7 @@ public class MoveOnZoom : MonoBehaviour
     }
 
     [Header("Zoom Filter")]
-    [SerializeField] private int _myLayer;
+    [SerializeField] private int _myLayer = 0;
     [SerializeField] private int _lateral;
 
     [Header("Hide Movement")]
@@ -38,10 +38,10 @@ public class MoveOnZoom : MonoBehaviour
 
     private List<SpriteRenderer> _spriteRenderers = new();
     private float _currentAlpha;
-    private bool _isVisible;
 
     private CameraMovement _camMovement;
     private MoveObject _moveObject;
+    private Rigidbody _rb;
 
     public ZoomState _state = ZoomState.Visible;
 
@@ -52,6 +52,7 @@ public class MoveOnZoom : MonoBehaviour
     private void Awake()
     {
         _moveObject = GetComponent<MoveObject>();
+
 
         Camera mainCam = Camera.main;
         if (mainCam != null)
@@ -71,7 +72,6 @@ public class MoveOnZoom : MonoBehaviour
 
         _currentAlpha = 0f;
         _state = ZoomState.Starting;
-        _isVisible = false;
 
         ApplyAlphaToAllRenderers(_currentAlpha);
 
@@ -98,7 +98,16 @@ public class MoveOnZoom : MonoBehaviour
 
     #endregion
 
+    public void SetIndexs(int myLayer, int Lateral)
+    {
+        _myLayer = myLayer;
+        _lateral = Lateral;
+    }
 
+    public int GetLayer()
+    {
+        return _myLayer;
+    }
 
     public void OnChangingLayer(int layer, int lateralIndex)
     {
@@ -108,8 +117,11 @@ public class MoveOnZoom : MonoBehaviour
             return;
         }
 
-        if (layer == _myLayer && !_isVisible)
+        if (layer == _myLayer)
         {
+            if (_state == ZoomState.Visible || _state == ZoomState.Showing)
+                return;
+
             if (lateralIndex == _lateral)
                 StartShowing();
             else
@@ -117,6 +129,9 @@ public class MoveOnZoom : MonoBehaviour
         }
         else if (layer == _myLayer + 1)
         {
+            if (_state == ZoomState.Hidden || _state == ZoomState.Hiding)
+                return;
+
             if (lateralIndex == _lateral)
                 StartHiding();
             else
@@ -128,12 +143,10 @@ public class MoveOnZoom : MonoBehaviour
     {
         if (_state == ZoomState.Showing && _moveObject.IsAtPosition(GetCurrentBasePosition()))
         {
-            _isVisible = true;
             _state = ZoomState.Visible;
         }
         else if (_state == ZoomState.Hiding && _moveObject.IsAtPosition(GetHiddenPosition()))
         {
-            _isVisible = false;
             _state = ZoomState.Hidden;
         }
     }
@@ -176,15 +189,20 @@ public class MoveOnZoom : MonoBehaviour
         _moveObject.MoveTo(GetCurrentBasePosition(), _smoothTime);
     }
 
+    public void SetObjectEnable(bool desable)
+    {
+        foreach (GameObject obj in _objToDesable)
+        {
+            obj.SetActive(desable);
+        }
+    }
+
     private void StartShowing()
     {
         _state = ZoomState.Showing;
         _moveObject.MoveTo(GetCurrentBasePosition(), _smoothTime);
 
-        foreach (GameObject obj in _objToDesable)
-        {
-            obj.SetActive(true);
-        }
+        SetObjectEnable(true);
 
         if (_currentAlpha < 0.5f)
             _currentAlpha = 0.7f;
@@ -192,25 +210,30 @@ public class MoveOnZoom : MonoBehaviour
 
     private void StartHiding()
     {
+
+        _moveObject.UpdateBasePos();
         _state = ZoomState.Hiding;
         _moveObject.MoveTo(GetHiddenPosition(), _smoothTime);
 
-        foreach (GameObject obj in _objToDesable)
-        {
-            obj.SetActive(true);
-        }
+        SetObjectEnable(false);
+
     }
 
     private void QuickShowing()
     {
         _state = ZoomState.Showing;
         _moveObject.MoveTo(GetCurrentBasePosition(), 0f);
+        SetObjectEnable(true);
+
     }
 
     private void QuickHiding()
     {
+        _moveObject.UpdateBasePos();
         _state = ZoomState.Hiding;
         _moveObject.MoveTo(GetHiddenPosition(), 0f);
+        SetObjectEnable(false);
+
     }
 
     private void UpdateVisual()
@@ -220,12 +243,21 @@ public class MoveOnZoom : MonoBehaviour
         switch (_state)
         {
             case ZoomState.Visible:
+                targetAlpha = _alphaVisible;
+                break;
+
             case ZoomState.Showing:
                 targetAlpha = _alphaVisible;
                 break;
 
             case ZoomState.Hidden:
+                targetAlpha = _alphaHidden;
+                break;
+
             case ZoomState.Hiding:
+                targetAlpha = _alphaHidden;
+                break;
+
             case ZoomState.Starting:
                 targetAlpha = _alphaHidden;
                 break;
@@ -283,7 +315,6 @@ public class MoveOnZoom : MonoBehaviour
     public void ResetToVisible()
     {
         _state = ZoomState.Visible;
-        _isVisible = true;
         _moveObject.SetPositionImmediate(GetCurrentBasePosition());
         SetAlphaImmediate(_alphaVisible);
     }
@@ -292,7 +323,6 @@ public class MoveOnZoom : MonoBehaviour
     public void ResetToHidden()
     {
         _state = ZoomState.Hidden;
-        _isVisible = false;
         _moveObject.SetPositionImmediate(GetHiddenPosition());
         SetAlphaImmediate(_alphaHidden);
     }
