@@ -2,21 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-/// <summary>
-/// Gère la fenêtre de prévisualisation du meuble sélectionné.
-/// 
-/// Setup dans Unity :
-/// 1. Attache ce script sur le GameObject parent de la fenêtre preview (la grande zone grise).
-/// 2. Crée un RenderTexture (ex. 512x512) et assigne-la à _previewRenderTexture.
-/// 3. Crée une caméra dédiée (hors scène principale) pointant vers un layer isolé (ex. "Preview").
-///    - Assigne cette caméra à _previewCamera.
-///    - Coche "Culling Mask = Preview" uniquement.
-///    - Règle "Target Texture" = ton RenderTexture.
-/// 4. L'Image UI (_previewImage) doit avoir un RawImage component (pas Image),
-///    avec sa texture = le même RenderTexture.
-/// 5. Le GameObject _previewRoot est un Transform vide dans le layer "Preview",
-///    là où le mesh 3D sera instancié et affiché par la caméra dédiée.
-/// </summary>
 public class ShopPreviewPanel : MonoBehaviour
 {
     public static ShopPreviewPanel Instance { get; private set; }

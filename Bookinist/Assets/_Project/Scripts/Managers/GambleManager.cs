@@ -3,21 +3,25 @@ using System.Collections.Generic;
 
 public class GambleManager : MonoBehaviour
 {
-    [SerializeField] private List<ScriptableObject> _itemsUnlockable;
+    [SerializeField] private LootPools _itemsUnlockable;
     [SerializeField] private GameObject _displayObtained;
 
     public void Gamble()
     {
-        DisplayScriptable(PullItem());
+        ShopItemData pulledItem = PullItem();
+        CustomShopManager.Instance.AddObject(pulledItem);
+        SaveSystem.instance.inventory.ownedItemIDs.Add(pulledItem.id);
+        SaveSystem.instance.Save();
+        DisplayScriptable(pulledItem);
     }
 
-    public ScriptableObject PullItem()
+    public ShopItemData PullItem()
     {
         RandomService rng = new RandomService();
-        return _itemsUnlockable[rng.Range(0, _itemsUnlockable.Count)];
+        return _itemsUnlockable.items[rng.Range(0, _itemsUnlockable.items.Count)];
     }
 
-    public void DisplayScriptable(ScriptableObject itemObtained)
+    public void DisplayScriptable(ShopItemData itemObtained)
     {
         Debug.Log(itemObtained.name);
     }
