@@ -18,20 +18,19 @@ public class ShopItemUI : MonoBehaviour
         _icon.sprite = data.icon;
         _priceText.text = $"{data.price} €";
 
-        // Au clic sur la carte, on ouvre la preview - pas d'achat direct
         _buyButton.onClick.AddListener(OnItemClicked);
     }
 
     private void OnItemClicked()
     {
         // On délègue à ShopPreviewPanel plutôt que d'acheter immédiatement
-        ShopPreviewPanel.Instance.ShowPreview(_data);
+        ShopPreviewPanel.Instance.ShowPreview(_data, this);
     }
 
     public void SetSoldState()
     {
         _buyButton.interactable = false;
-        _soldText.gameObject.SetActive(true);
+        if (_soldText != null) _soldText.gameObject.SetActive(true);
     }
 
     private void OnDestroy()
