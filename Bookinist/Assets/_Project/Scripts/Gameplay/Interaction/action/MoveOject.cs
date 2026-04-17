@@ -7,6 +7,7 @@ public class MoveObject : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float _defaultSmoothTime = 0.2f;
     [SerializeField] private float _arrivalThreshold = 0.01f;
+    [SerializeField] private bool _isDroppedItem;
 
     public Vector3 _baseLocalPosition { get; private set; }
     private Vector3 _targetLocalPosition;
@@ -205,7 +206,7 @@ public class MoveObject : MonoBehaviour
 
     public void UpdateBasePos()
     {
-        _baseLocalPosition = transform.localPosition;
+        if (_isDroppedItem)_baseLocalPosition = transform.localPosition;
     }
 
     private void ResetMoveStateImmediate()

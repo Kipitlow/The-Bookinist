@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class interactionFeedBack : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private bool _isInteractable;
+    SoundManager _soundManager;
+    MoveObject _moveobject;
+
+    private void Awake()
     {
-        
+        _moveobject = GetComponent<MoveObject>();
+        _soundManager = SoundManager.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TryFeedback()
     {
-        
+
     }
+
 }

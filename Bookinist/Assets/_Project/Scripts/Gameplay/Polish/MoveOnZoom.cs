@@ -205,6 +205,7 @@ public class MoveOnZoom : MonoBehaviour
 
     private void StartHiding()
     {
+
         _moveObject.UpdateBasePos();
         _state = ZoomState.Hiding;
         _moveObject.MoveTo(GetHiddenPosition(), _smoothTime);
