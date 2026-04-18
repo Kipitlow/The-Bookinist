@@ -49,6 +49,8 @@ GameObject:
   - component: {fileID: 8817195969960435505}
   - component: {fileID: 6843465724394812295}
   - component: {fileID: 6905778844664347388}
+  - component: {fileID: 6118544157410659028}
+  - component: {fileID: 4828064540921415345}
   m_Layer: 0
   m_Name: Socle 5
   m_TagString: Untagged
@@ -65,7 +67,7 @@ Transform:
   m_GameObject: {fileID: 918881376590228950}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.03, y: -4.48, z: 0}
+  m_LocalPosition: {x: 7.98, y: -6.86, z: 0}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -162,25 +164,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: on drag orange
     conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 6905778844664347388}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 3
+    - type: 5
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -198,14 +182,16 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
+      slot: {fileID: 6905778844664347388}
+      shouldBeEmpty: 1
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -216,8 +202,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 11
+    - type: 12
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 6905778844664347388}
@@ -236,7 +224,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 4633567926509822577}
@@ -267,58 +256,10 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 4633567926509822577}
-      itemPrefab: {fileID: 4400142794986835814}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+      balance: {fileID: 0}
   - interactionName: on drag rose
     conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 3
+    - type: 5
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -326,24 +267,6 @@ MonoBehaviour:
       layerDetector: {fileID: 0}
       slot: {fileID: 6905778844664347388}
       shouldBeEmpty: 1
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -354,8 +277,30 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 6905778844664347388}
+      shouldBeEmpty: 1
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 11
+    - type: 12
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 6905778844664347388}
@@ -386,38 +331,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 4633567926509822577}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 4633567926509822577}
@@ -448,6 +363,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+      balance: {fileID: 0}
 --- !u!114 &6905778844664347388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,6 +378,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventoryController: {fileID: 0}
   _prefabSprite: {fileID: 7281052662607791975, guid: 014bfa4c62312484885a110dc4c2e64a, type: 3}
+--- !u!114 &6118544157410659028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918881376590228950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &4828064540921415345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918881376590228950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 2
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &1392852933600936539
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +429,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2475452066024184654}
   - component: {fileID: 7910104558847796758}
+  - component: {fileID: 4329805082584703226}
+  - component: {fileID: 1223025701508067225}
   m_Layer: 0
   m_Name: grass ground
   m_TagString: Untagged
@@ -488,8 +447,8 @@ Transform:
   m_GameObject: {fileID: 1392852933600936539}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.05, y: -7.45, z: -4.8320904}
-  m_LocalScale: {x: 3, y: 5, z: 3}
+  m_LocalPosition: {x: 0, y: -8.26, z: 0}
+  m_LocalScale: {x: 3.3700001, y: 6, z: 3.3700001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4706412778175483344}
@@ -549,6 +508,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4329805082584703226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392852933600936539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &1223025701508067225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392852933600936539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &1533350514069478635
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +562,8 @@ GameObject:
   - component: {fileID: 863569378214362158}
   - component: {fileID: 6765851573336285690}
   - component: {fileID: 5471089135800185935}
+  - component: {fileID: 4069850760596846054}
+  - component: {fileID: 8782274827781384117}
   m_Layer: 0
   m_Name: Socle 3
   m_TagString: Untagged
@@ -578,7 +580,7 @@ Transform:
   m_GameObject: {fileID: 1533350514069478635}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.53, y: -1.77, z: 0}
+  m_LocalPosition: {x: 10.5, y: -5.77, z: 0}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -675,25 +677,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: on drag orange
     conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 6905778844664347388}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 3
+    - type: 5
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -711,14 +695,16 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
+      slot: {fileID: 5471089135800185935}
+      shouldBeEmpty: 1
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -729,8 +715,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 11
+    - type: 12
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 5471089135800185935}
@@ -749,7 +737,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 4633567926509822577}
@@ -780,58 +769,10 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 4633567926509822577}
-      itemPrefab: {fileID: 4400142794986835814}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+      balance: {fileID: 0}
   - interactionName: on drag rose
     conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 3
+    - type: 5
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -839,24 +780,6 @@ MonoBehaviour:
       layerDetector: {fileID: 0}
       slot: {fileID: 5471089135800185935}
       shouldBeEmpty: 1
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -867,8 +790,30 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 5471089135800185935}
+      shouldBeEmpty: 1
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 11
+    - type: 12
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 5471089135800185935}
@@ -899,38 +844,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 4633567926509822577}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 4633567926509822577}
@@ -961,6 +876,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+      balance: {fileID: 0}
 --- !u!114 &5471089135800185935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,6 +891,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventoryController: {fileID: 0}
   _prefabSprite: {fileID: 7281052662607791975, guid: 014bfa4c62312484885a110dc4c2e64a, type: 3}
+--- !u!114 &4069850760596846054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533350514069478635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &8782274827781384117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533350514069478635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 2
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &1551119273995023771
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,6 +945,7 @@ GameObject:
   - component: {fileID: 689950223142195886}
   - component: {fileID: 1086951580436024200}
   - component: {fileID: 3120855301193886108}
+  - component: {fileID: 4882251627626155708}
   m_Layer: 0
   m_Name: Nuage_02
   m_TagString: Untagged
@@ -1004,7 +962,7 @@ Transform:
   m_GameObject: {fileID: 1551119273995023771}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.04, y: 5.38, z: -1.0100021}
+  m_LocalPosition: {x: -7.350001, y: 5.38, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1080,7 +1038,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: moveCloudRight
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1098,7 +1056,9 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
-    - type: 9
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1116,8 +1076,10 @@ MonoBehaviour:
       HasMoved: 1
       HowManyTimes: 1
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 7
+    - type: 8
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -1136,7 +1098,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
-    - type: 8
+      balance: {fileID: 0}
+    - type: 9
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -1155,9 +1118,10 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
+      balance: {fileID: 0}
   - interactionName: moveCloudLeft
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1175,7 +1139,9 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
-    - type: 9
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1193,8 +1159,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 7
+    - type: 8
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -1213,6 +1181,122 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
+      balance: {fileID: 0}
+  - interactionName: isAllCloudMoved
+    conditions:
+    - type: 3
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 1268568215973690842}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 1086951580436024200}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 5786420907582443606}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    actions:
+    - type: 6
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage : Trouver la lune'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 1086951580436024200}
+      OffsetX: 5
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &1086951580436024200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1225,8 +1309,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _smoothTime: 0.2
+  _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
+  isDroppedItem: 0
 --- !u!65 &3120855301193886108
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1248,6 +1333,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 4, z: 2}
   m_Center: {x: 0, y: 0.0000019073486, z: 0}
+--- !u!114 &4882251627626155708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551119273995023771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 0
+  _hideDirection: {x: -1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &1571045866772013154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,6 +1405,8 @@ GameObject:
   - component: {fileID: 7190061504540266063}
   - component: {fileID: 6340711833060292342}
   - component: {fileID: 8255195706598246378}
+  - component: {fileID: 2007674534042602080}
+  - component: {fileID: 5698607963155609876}
   m_Layer: 0
   m_Name: Fleur_Rouge_03
   m_TagString: Untagged
@@ -1390,7 +1503,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.78, y: 2.24, z: 0.2}
+  m_Size: {x: 2.78, y: 2.24, z: 3}
   m_Center: {x: 0, y: 0, z: 0.000015258789}
 --- !u!114 &6340711833060292342
 MonoBehaviour:
@@ -1407,7 +1520,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: prend fleur rouge
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1425,8 +1538,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -1445,7 +1560,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 8255195706598246378}
       item: {fileID: 0}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -1476,6 +1592,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 8255195706598246378}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &8255195706598246378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1490,6 +1607,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
   _invController: {fileID: 0}
+--- !u!114 &2007674534042602080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634506160151822110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &5698607963155609876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634506160151822110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &1665725814872255074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,6 +1661,7 @@ GameObject:
   - component: {fileID: 4394346997502161527}
   - component: {fileID: 5786420907582443606}
   - component: {fileID: 6227254505840770988}
+  - component: {fileID: 2235752426148077154}
   m_Layer: 0
   m_Name: Nuage_03
   m_TagString: Untagged
@@ -1519,7 +1678,7 @@ Transform:
   m_GameObject: {fileID: 1665725814872255074}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.23, y: 6.01, z: -1.0899963}
+  m_LocalPosition: {x: -9.54, y: 6.01, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1595,7 +1754,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: moveCloudRight
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1613,7 +1772,9 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
-    - type: 9
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1631,8 +1792,10 @@ MonoBehaviour:
       HasMoved: 1
       HowManyTimes: 1
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 7
+    - type: 8
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -1651,7 +1814,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
-    - type: 8
+      balance: {fileID: 0}
+    - type: 9
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -1670,9 +1834,10 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
+      balance: {fileID: 0}
   - interactionName: moveCloudLeft
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1690,7 +1855,9 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
-    - type: 9
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1708,8 +1875,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 7
+    - type: 8
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -1728,6 +1897,122 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
+      balance: {fileID: 0}
+  - interactionName: isAllCloudMoved
+    conditions:
+    - type: 3
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 1268568215973690842}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 1086951580436024200}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 5786420907582443606}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    actions:
+    - type: 6
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage : Trouver la lune'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 5786420907582443606}
+      OffsetX: -5
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &5786420907582443606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1740,8 +2025,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _smoothTime: 0.2
+  _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
+  isDroppedItem: 0
 --- !u!65 &6227254505840770988
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1763,6 +2049,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 4, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2235752426148077154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665725814872255074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 0
+  _hideDirection: {x: -1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &1710461516232536717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1776,6 +2088,7 @@ GameObject:
   - component: {fileID: 8412932242987822253}
   - component: {fileID: 307568562583461313}
   - component: {fileID: 1268568215973690842}
+  - component: {fileID: 4515491020983804078}
   m_Layer: 0
   m_Name: Nuage_01
   m_TagString: Untagged
@@ -1792,7 +2105,7 @@ Transform:
   m_GameObject: {fileID: 1710461516232536717}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.96, y: 4.94, z: -1.0100021}
+  m_LocalPosition: {x: -9.27, y: 4.94, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1889,7 +2202,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: moveCloudRight
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1907,7 +2220,9 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
-    - type: 9
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1925,8 +2240,10 @@ MonoBehaviour:
       HasMoved: 1
       HowManyTimes: 1
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 7
+    - type: 8
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -1945,7 +2262,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
-    - type: 8
+      balance: {fileID: 0}
+    - type: 9
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -1964,9 +2282,10 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
+      balance: {fileID: 0}
   - interactionName: moveCloudLeft
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -1984,7 +2303,9 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
-    - type: 9
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -2002,8 +2323,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 7
+    - type: 8
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -2022,6 +2345,122 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
+      balance: {fileID: 0}
+  - interactionName: isAllCloudMoved
+    conditions:
+    - type: 3
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 1268568215973690842}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 1086951580436024200}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 5786420907582443606}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    actions:
+    - type: 6
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 'SceneMariage : Trouver la lune'
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 1268568215973690842}
+      OffsetX: -5
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &1268568215973690842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2034,8 +2473,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _smoothTime: 0.2
+  _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &4515491020983804078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710461516232536717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 0
+  _hideDirection: {x: -1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &1776108927248272357
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,6 +2515,8 @@ GameObject:
   - component: {fileID: 5278581978673496566}
   - component: {fileID: 9083392245501667595}
   - component: {fileID: 6339601780718117443}
+  - component: {fileID: 3595977786523648009}
+  - component: {fileID: 4377000190245346114}
   m_Layer: 0
   m_Name: Fleur_Rouge_02
   m_TagString: Untagged
@@ -2065,7 +2533,7 @@ Transform:
   m_GameObject: {fileID: 1776108927248272357}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.1838429, y: 3.5153558, z: 0.5048096}
+  m_LocalPosition: {x: -0.1838429, y: 3.5153558, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2145,7 +2613,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.78, y: 2.24, z: 0.2}
+  m_Size: {x: 2.78, y: 2.24, z: 3}
   m_Center: {x: 0, y: 0, z: 0.000015258789}
 --- !u!114 &9083392245501667595
 MonoBehaviour:
@@ -2162,7 +2630,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: prend fleur rouge
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -2180,8 +2648,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -2200,7 +2670,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 6339601780718117443}
       item: {fileID: 0}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -2231,6 +2702,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 6339601780718117443}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &6339601780718117443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2245,6 +2717,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
   _invController: {fileID: 0}
+--- !u!114 &3595977786523648009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776108927248272357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &4377000190245346114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776108927248272357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: -1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &1947493327873725491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,7 +2783,7 @@ Transform:
   m_GameObject: {fileID: 1947493327873725491}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.0100021}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2295,6 +2808,8 @@ GameObject:
   - component: {fileID: 3778993599849404232}
   - component: {fileID: 9184805932175395502}
   - component: {fileID: 4578718461303514432}
+  - component: {fileID: 5434130762457460005}
+  - component: {fileID: 8628499339309634186}
   m_Layer: 0
   m_Name: Fleur_Mauve_02
   m_TagString: Untagged
@@ -2391,7 +2906,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.78, y: 2.24, z: 0.2}
+  m_Size: {x: 2.78, y: 2.24, z: 3}
   m_Center: {x: 0, y: 0, z: 0.000015258789}
 --- !u!114 &9184805932175395502
 MonoBehaviour:
@@ -2408,7 +2923,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: prend fleur rouge
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -2426,8 +2941,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -2446,7 +2963,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 4578718461303514432}
       item: {fileID: 0}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -2477,6 +2995,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 4578718461303514432}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &4578718461303514432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2491,6 +3010,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
   _invController: {fileID: 0}
+--- !u!114 &5434130762457460005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965428382130740928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &8628499339309634186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965428382130740928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &2078044835163157572
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,6 +3061,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8303350468881713451}
   - component: {fileID: 1021577785863427072}
+  - component: {fileID: 8729884543754914280}
+  - component: {fileID: 5171093129626436729}
   m_Layer: 0
   m_Name: ARBRE_OLIVIER (1)
   m_TagString: Untagged
@@ -2517,7 +3079,7 @@ Transform:
   m_GameObject: {fileID: 2078044835163157572}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.59, y: -1.05, z: -1.0100021}
+  m_LocalPosition: {x: -12.3, y: -1.56, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2578,6 +3140,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8729884543754914280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078044835163157572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &5171093129626436729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078044835163157572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: -1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &2569664970569748646
 GameObject:
   m_ObjectHideFlags: 0
@@ -2587,6 +3190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8466674657159576203}
+  - component: {fileID: 4441291504706735946}
   m_Layer: 0
   m_Name: SnapPoint
   m_TagString: Untagged
@@ -2609,6 +3213,179 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3844705245665300409}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4441291504706735946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2569664970569748646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Priority:
+    Enabled: 1
+    m_Value: 0
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 0}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 40
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 0
+--- !u!1 &2603890422225503645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3027254735010350600}
+  - component: {fileID: 5187256879767737385}
+  - component: {fileID: 2359829567517497188}
+  - component: {fileID: 4589374658352238764}
+  m_Layer: 0
+  m_Name: ARBRE_OLIVIER (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3027254735010350600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2603890422225503645}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 13.01, y: -2.7, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3291033382778382018}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5187256879767737385
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2603890422225503645}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1603831995
+  m_SortingLayer: 4
+  m_SortingOrder: -4
+  m_Sprite: {fileID: 21300000, guid: 65b93fb6ae34da04fa36b615964766ba, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 5.71, y: 7.31}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &2359829567517497188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2603890422225503645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &4589374658352238764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2603890422225503645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &2639512941852062160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,6 +3399,8 @@ GameObject:
   - component: {fileID: 3019464587818426319}
   - component: {fileID: 3599302331401450238}
   - component: {fileID: 4633567926509822577}
+  - component: {fileID: 6884949669525379711}
+  - component: {fileID: 5225144632727519114}
   m_Layer: 0
   m_Name: Socle 2
   m_TagString: Untagged
@@ -2638,7 +3417,7 @@ Transform:
   m_GameObject: {fileID: 2639512941852062160}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.43, y: -1.19, z: 0}
+  m_LocalPosition: {x: 8.78, y: -5.17, z: 0}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2735,25 +3514,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: on drag orange
     conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 6905778844664347388}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 3
+    - type: 5
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -2771,6 +3532,8 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -2778,7 +3541,7 @@ MonoBehaviour:
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
       slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
+      shouldBeEmpty: 1
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -2789,8 +3552,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 11
+    - type: 12
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 4633567926509822577}
@@ -2809,7 +3574,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 4633567926509822577}
@@ -2840,58 +3606,10 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 4633567926509822577}
-      itemPrefab: {fileID: 4400142794986835814}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+      balance: {fileID: 0}
   - interactionName: on drag rose
     conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 3
+    - type: 5
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -2899,7 +3617,7 @@ MonoBehaviour:
       layerDetector: {fileID: 0}
       slot: {fileID: 4633567926509822577}
       shouldBeEmpty: 1
-      item: {fileID: 0}
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
       cycleThroughSprite: {fileID: 0}
@@ -2909,6 +3627,8 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
@@ -2916,7 +3636,7 @@ MonoBehaviour:
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
       slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
+      shouldBeEmpty: 1
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -2927,8 +3647,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 11
+    - type: 12
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 4633567926509822577}
@@ -2959,38 +3681,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 4633567926509822577}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 4633567926509822577}
@@ -3021,6 +3713,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+      balance: {fileID: 0}
 --- !u!114 &4633567926509822577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3035,6 +3728,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventoryController: {fileID: 0}
   _prefabSprite: {fileID: 7281052662607791975, guid: 014bfa4c62312484885a110dc4c2e64a, type: 3}
+--- !u!114 &6884949669525379711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2639512941852062160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &5225144632727519114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2639512941852062160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 2
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &2653148738048938271
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,6 +3778,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9152575396118069578}
+  - component: {fileID: 1027123519739291387}
   m_Layer: 0
   m_Name: SnapPoint (2)
   m_TagString: Untagged
@@ -3066,6 +3801,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3844705245665300409}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1027123519739291387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2653148738048938271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Priority:
+    Enabled: 1
+    m_Value: 0
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 0}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 40
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 0
 --- !u!1 &3886226625964495449
 GameObject:
   m_ObjectHideFlags: 0
@@ -3077,7 +3855,7 @@ GameObject:
   - component: {fileID: 7112083112492688035}
   - component: {fileID: 987474785978968419}
   m_Layer: 0
-  m_Name: Mariage_Layer2
+  m_Name: Layer 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3093,7 +3871,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.47, z: 86.78}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.35, y: 1.35, z: 1.35}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3844705245665300409}
@@ -3101,6 +3879,7 @@ Transform:
   - {fileID: 2606402159680751532}
   - {fileID: 8799200867647015449}
   - {fileID: 3291033382778382018}
+  - {fileID: 6611197228720325801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &987474785978968419
@@ -3116,8 +3895,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageObjects:
-  - {fileID: 7559275831146446711}
-  - {fileID: 7559275831146446711}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 8105794944866442438}
   - {fileID: 8486927982958438086}
   - {fileID: 8800557930603560847}
@@ -3158,6 +3937,8 @@ GameObject:
   - component: {fileID: 3759810994504853888}
   - component: {fileID: 1505422808187428164}
   - component: {fileID: 4538745862027767526}
+  - component: {fileID: 8402201086408340332}
+  - component: {fileID: 958098199881670685}
   m_Layer: 0
   m_Name: Fleur_Mauve_03
   m_TagString: Untagged
@@ -3254,7 +4035,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.78, y: 2.24, z: 0.2}
+  m_Size: {x: 2.78, y: 2.24, z: 3}
   m_Center: {x: 0, y: 0, z: 0.000015258789}
 --- !u!114 &1505422808187428164
 MonoBehaviour:
@@ -3271,7 +4052,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: prend fleur rouge
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -3289,8 +4070,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -3309,7 +4092,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 4538745862027767526}
       item: {fileID: 0}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -3340,6 +4124,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 4538745862027767526}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &4538745862027767526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3354,6 +4139,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
   _invController: {fileID: 0}
+--- !u!114 &8402201086408340332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4348273619064075406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &958098199881670685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4348273619064075406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: -1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &4400142794986835814
 GameObject:
   m_ObjectHideFlags: 0
@@ -3367,6 +4193,8 @@ GameObject:
   - component: {fileID: 5726149106243213484}
   - component: {fileID: 2724702879646257498}
   - component: {fileID: 5673547119974503688}
+  - component: {fileID: 3874793773919081671}
+  - component: {fileID: 4434534907454766558}
   m_Layer: 0
   m_Name: Fleur_Mauve_01
   m_TagString: Untagged
@@ -3463,7 +4291,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.78, y: 2.24, z: 0.2}
+  m_Size: {x: 2.78, y: 2.24, z: 3}
   m_Center: {x: 0, y: 0, z: 0.000015258789}
 --- !u!114 &2724702879646257498
 MonoBehaviour:
@@ -3480,7 +4308,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: prend fleur rouge
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -3498,8 +4326,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -3518,7 +4348,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 5673547119974503688}
       item: {fileID: 0}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -3549,6 +4380,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 5673547119974503688}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &5673547119974503688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3563,6 +4395,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
   _invController: {fileID: 0}
+--- !u!114 &3874793773919081671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4400142794986835814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &4434534907454766558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4400142794986835814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &4914524472081321756
 GameObject:
   m_ObjectHideFlags: 0
@@ -3576,6 +4449,8 @@ GameObject:
   - component: {fileID: 3965221931543133120}
   - component: {fileID: 6192463288125530569}
   - component: {fileID: 6112968420535144930}
+  - component: {fileID: 379848397947514385}
+  - component: {fileID: 176936095403109252}
   m_Layer: 0
   m_Name: Socle 4
   m_TagString: Untagged
@@ -3592,7 +4467,7 @@ Transform:
   m_GameObject: {fileID: 4914524472081321756}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.77, y: -3.81, z: 0}
+  m_LocalPosition: {x: 9.73, y: -6.89, z: 0}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3689,25 +4564,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: on drag orange
     conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 6905778844664347388}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 3
+    - type: 5
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -3725,14 +4582,16 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
+      slot: {fileID: 6112968420535144930}
+      shouldBeEmpty: 1
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -3743,8 +4602,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 11
+    - type: 12
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 6112968420535144930}
@@ -3763,7 +4624,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 4633567926509822577}
@@ -3794,58 +4656,10 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 4633567926509822577}
-      itemPrefab: {fileID: 4400142794986835814}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+      balance: {fileID: 0}
   - interactionName: on drag rose
     conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 3
+    - type: 5
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -3853,24 +4667,6 @@ MonoBehaviour:
       layerDetector: {fileID: 0}
       slot: {fileID: 6112968420535144930}
       shouldBeEmpty: 1
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -3881,8 +4677,30 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 6112968420535144930}
+      shouldBeEmpty: 1
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 11
+    - type: 12
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 6112968420535144930}
@@ -3913,38 +4731,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 4633567926509822577}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 4633567926509822577}
@@ -3975,6 +4763,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+      balance: {fileID: 0}
 --- !u!114 &6112968420535144930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3989,6 +4778,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventoryController: {fileID: 0}
   _prefabSprite: {fileID: 7281052662607791975, guid: 014bfa4c62312484885a110dc4c2e64a, type: 3}
+--- !u!114 &379848397947514385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4914524472081321756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &176936095403109252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4914524472081321756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 2
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &4947474280886968778
 GameObject:
   m_ObjectHideFlags: 0
@@ -4002,6 +4832,8 @@ GameObject:
   - component: {fileID: 1119777215336757140}
   - component: {fileID: 4232155767096500678}
   - component: {fileID: 1569414847454527174}
+  - component: {fileID: 4748773876117378008}
+  - component: {fileID: 9005846918927792495}
   m_Layer: 0
   m_Name: Fleur_Rouge_01
   m_TagString: Untagged
@@ -4018,7 +4850,7 @@ Transform:
   m_GameObject: {fileID: 4947474280886968778}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.0419846, y: 4.608464, z: -0.12073712}
+  m_LocalPosition: {x: -2.0419846, y: 4.608464, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4098,7 +4930,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.78, y: 2.24, z: 0.2}
+  m_Size: {x: 2.78, y: 2.24, z: 3}
   m_Center: {x: 0, y: 0, z: 0.000015258789}
 --- !u!114 &4232155767096500678
 MonoBehaviour:
@@ -4115,7 +4947,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: prend fleur rouge
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -4133,8 +4965,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -4153,7 +4987,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 1569414847454527174}
       item: {fileID: 0}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -4184,6 +5019,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 1569414847454527174}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &1569414847454527174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4198,6 +5034,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
   _invController: {fileID: 0}
+--- !u!114 &4748773876117378008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947474280886968778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &9005846918927792495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947474280886968778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: -1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &5851616028950299277
 GameObject:
   m_ObjectHideFlags: 0
@@ -4211,6 +5088,8 @@ GameObject:
   - component: {fileID: 3689272222009226062}
   - component: {fileID: 6734192363588787237}
   - component: {fileID: 7499541439770442492}
+  - component: {fileID: 8232929203784050534}
+  - component: {fileID: 1596911743691209244}
   m_Layer: 0
   m_Name: Socle 1
   m_TagString: Untagged
@@ -4227,7 +5106,7 @@ Transform:
   m_GameObject: {fileID: 5851616028950299277}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.62, y: -2.85, z: 0}
+  m_LocalPosition: {x: 7.12, y: -5.75, z: 0}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4324,25 +5203,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: on drag orange
     conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 6905778844664347388}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 3
+    - type: 5
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -4360,14 +5221,16 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     - type: 4
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
       checkedPage: {fileID: 0}
       layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
+      slot: {fileID: 7499541439770442492}
+      shouldBeEmpty: 1
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -4378,8 +5241,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 11
+    - type: 12
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 7499541439770442492}
@@ -4398,7 +5263,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 4633567926509822577}
@@ -4429,58 +5295,10 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 4633567926509822577}
-      itemPrefab: {fileID: 4400142794986835814}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
+      balance: {fileID: 0}
   - interactionName: on drag rose
     conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
-      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 3
+    - type: 5
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -4488,24 +5306,6 @@ MonoBehaviour:
       layerDetector: {fileID: 0}
       slot: {fileID: 7499541439770442492}
       shouldBeEmpty: 1
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 4
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 4633567926509822577}
-      shouldBeEmpty: 0
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
       selectedItemIsWanted: {fileID: 0}
       npcTalker: {fileID: 0}
@@ -4516,8 +5316,30 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 4
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 7499541439770442492}
+      shouldBeEmpty: 1
+      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 11
+    - type: 12
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 7499541439770442492}
@@ -4548,38 +5370,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 4633567926509822577}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 4633567926509822577}
@@ -4610,6 +5402,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
+      balance: {fileID: 0}
 --- !u!114 &7499541439770442492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4624,6 +5417,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventoryController: {fileID: 0}
   _prefabSprite: {fileID: 7281052662607791975, guid: 014bfa4c62312484885a110dc4c2e64a, type: 3}
+--- !u!114 &8232929203784050534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5851616028950299277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &1596911743691209244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5851616028950299277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 2
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &6117205790584780616
 GameObject:
   m_ObjectHideFlags: 0
@@ -4636,6 +5470,8 @@ GameObject:
   - component: {fileID: 4281853094593211494}
   - component: {fileID: 6554706546922077623}
   - component: {fileID: 1302912034212122671}
+  - component: {fileID: 868324534133850352}
+  - component: {fileID: 8259471862411649219}
   m_Layer: 0
   m_Name: etang Nectar
   m_TagString: Untagged
@@ -4652,7 +5488,7 @@ Transform:
   m_GameObject: {fileID: 6117205790584780616}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.41, y: -5.24, z: -1.2600021}
+  m_LocalPosition: {x: -8.85, y: -6.28, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4749,25 +5585,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: get nectar
     conditions:
-    - type: 2
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-    - type: 4
+    - type: 5
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -4785,7 +5603,9 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
-    - type: 9
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -4803,7 +5623,9 @@ MonoBehaviour:
       HasMoved: 1
       HowManyTimes: 1
       HasToCheckEmptynessInventory: 0
-    - type: 9
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -4821,7 +5643,9 @@ MonoBehaviour:
       HasMoved: 1
       HowManyTimes: 1
       HasToCheckEmptynessInventory: 0
-    - type: 9
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 10
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -4839,39 +5663,10 @@ MonoBehaviour:
       HasMoved: 1
       HowManyTimes: 1
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 5
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
-            m_MethodName: RemoveInventoryItem
-            m_Mode: 2
-            m_Arguments:
-              m_ObjectArgument: {fileID: 11400000, guid: 79c71621f29b2e944ba1d568b75247eb, type: 2}
-              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 0}
-      item: {fileID: 0}
-    - type: 5
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -4902,6 +5697,80 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
+      balance: {fileID: 0}
+    - type: 6
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: "SceneMariage : 3\xE8me Offrande : Le Nectar"
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+--- !u!114 &868324534133850352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117205790584780616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &8259471862411649219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117205790584780616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 0
+  _hideDirection: {x: -1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &6454478327709482460
 GameObject:
   m_ObjectHideFlags: 0
@@ -4915,6 +5784,8 @@ GameObject:
   - component: {fileID: 3270454215032496047}
   - component: {fileID: 8579172474021792402}
   - component: {fileID: 2188342657413605326}
+  - component: {fileID: 3401173035494566914}
+  - component: {fileID: 6565076238773036792}
   m_Layer: 0
   m_Name: Fleur_Mauve_04
   m_TagString: Untagged
@@ -4931,7 +5802,7 @@ Transform:
   m_GameObject: {fileID: 6454478327709482460}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8134923, y: 4.955406, z: 0.29120687}
+  m_LocalPosition: {x: 1.8134923, y: 4.955406, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5011,7 +5882,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.78, y: 2.24, z: 0.2}
+  m_Size: {x: 2.78, y: 2.24, z: 3}
   m_Center: {x: 0, y: 0, z: 0.000015258789}
 --- !u!114 &8579172474021792402
 MonoBehaviour:
@@ -5028,7 +5899,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: prend fleur rouge
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -5046,8 +5917,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -5066,7 +5939,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 2188342657413605326}
       item: {fileID: 0}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -5097,6 +5971,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 2188342657413605326}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &2188342657413605326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5111,6 +5986,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
   _invController: {fileID: 0}
+--- !u!114 &3401173035494566914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6454478327709482460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &6565076238773036792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6454478327709482460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: -1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &6708910490051694838
 GameObject:
   m_ObjectHideFlags: 0
@@ -5121,6 +6037,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8035286412401232487}
   - component: {fileID: 6636019504948436992}
+  - component: {fileID: 2036294262304605231}
+  - component: {fileID: 5479593429661936395}
   m_Layer: 0
   m_Name: Lune
   m_TagString: Untagged
@@ -5137,7 +6055,7 @@ Transform:
   m_GameObject: {fileID: 6708910490051694838}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.145, y: 5.51, z: -1.0100021}
+  m_LocalPosition: {x: -8.455001, y: 5.51, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5198,6 +6116,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2036294262304605231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708910490051694838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &5479593429661936395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708910490051694838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 0
+  _hideDirection: {x: -1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &6725737510195940500
 GameObject:
   m_ObjectHideFlags: 0
@@ -5211,6 +6170,8 @@ GameObject:
   - component: {fileID: 165907148485740442}
   - component: {fileID: 4186604387084747127}
   - component: {fileID: 4809386697821215842}
+  - component: {fileID: 2021560972313568749}
+  - component: {fileID: 7572957740089266922}
   m_Layer: 0
   m_Name: Fleur_Mauve_06
   m_TagString: Untagged
@@ -5307,7 +6268,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.78, y: 2.24, z: 0.2}
+  m_Size: {x: 2.78, y: 2.24, z: 3}
   m_Center: {x: 0, y: 0, z: 0.000015258789}
 --- !u!114 &4186604387084747127
 MonoBehaviour:
@@ -5324,7 +6285,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: prend fleur rouge
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -5342,8 +6303,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -5362,7 +6325,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 4809386697821215842}
       item: {fileID: 0}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -5382,7 +6346,7 @@ MonoBehaviour:
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
               m_IntArgument: 0
               m_FloatArgument: 0
-              m_StringArgument: 'SceneMariage: Ramasser une fleur'
+              m_StringArgument: 'SceneMariage : Ramasser une fleur'
               m_BoolArgument: 0
             m_CallState: 2
       cycleThroughSprite: {fileID: 0}
@@ -5393,6 +6357,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 4809386697821215842}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &4809386697821215842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5407,6 +6372,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
   _invController: {fileID: 0}
+--- !u!114 &2021560972313568749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725737510195940500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &7572957740089266922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725737510195940500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &7046364437570493856
 GameObject:
   m_ObjectHideFlags: 0
@@ -5416,6 +6422,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7169705520004915177}
+  - component: {fileID: 7559723662347318944}
   m_Layer: 0
   m_Name: SnapPoint (1)
   m_TagString: Untagged
@@ -5438,6 +6445,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3844705245665300409}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7559723662347318944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7046364437570493856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Priority:
+    Enabled: 1
+    m_Value: 0
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 0}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 40
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 0
 --- !u!1 &7374055179353048465
 GameObject:
   m_ObjectHideFlags: 0
@@ -5467,6 +6517,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3027254735010350600}
   - {fileID: 4190750497323433524}
   m_Father: {fileID: 7112083112492688035}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5496,7 +6547,7 @@ Transform:
   m_GameObject: {fileID: 7402926499927796362}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5521,7 +6572,8 @@ MonoBehaviour:
   - {fileID: 2569664970569748646}
   - {fileID: 7046364437570493856}
   - {fileID: 2653148738048938271}
---- !u!1 &7559275831146446711
+  layer: 0
+--- !u!1 &7588908358289471817
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5529,85 +6581,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 525982774724417385}
-  - component: {fileID: 3050727968809506966}
+  - component: {fileID: 6611197228720325801}
+  - component: {fileID: 8494447895343211742}
   m_Layer: 0
-  m_Name: grass ground
+  m_Name: collider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &525982774724417385
+--- !u!4 &6611197228720325801
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7559275831146446711}
+  m_GameObject: {fileID: 7588908358289471817}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.1, y: -7.45, z: -4.8320904}
-  m_LocalScale: {x: 3, y: 5, z: 3}
+  m_LocalPosition: {x: 0, y: -9.06, z: -0.19}
+  m_LocalScale: {x: 0.7407408, y: 0.7407408, z: 0.7407408}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4706412778175483344}
+  m_Father: {fileID: 7112083112492688035}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3050727968809506966
-SpriteRenderer:
+--- !u!65 &8494447895343211742
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7559275831146446711}
+  m_GameObject: {fileID: 7588908358289471817}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1603831995
-  m_SortingLayer: 4
-  m_SortingOrder: -6
-  m_Sprite: {fileID: 21300000, guid: 7913f81805f9c6c40ab6c536e8e9c2ad, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 6.085, y: 10.534303}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  serializedVersion: 3
+  m_Size: {x: 49.000008, y: 4, z: 1}
+  m_Center: {x: -1.000003, y: 0, z: 0}
 --- !u!1 &8066803036229618107
 GameObject:
   m_ObjectHideFlags: 0
@@ -5621,6 +6639,8 @@ GameObject:
   - component: {fileID: 1758536482008000585}
   - component: {fileID: 7887087125988933715}
   - component: {fileID: 4431273307770345694}
+  - component: {fileID: 8571810185138298433}
+  - component: {fileID: 5734000960797356135}
   m_Layer: 0
   m_Name: Fleur_Rouge_05
   m_TagString: Untagged
@@ -5717,7 +6737,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.78, y: 2.24, z: 0.2}
+  m_Size: {x: 2.78, y: 2.24, z: 3}
   m_Center: {x: 0, y: 0, z: 0.000015258789}
 --- !u!114 &7887087125988933715
 MonoBehaviour:
@@ -5734,7 +6754,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: prend fleur rouge
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -5752,8 +6772,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -5772,7 +6794,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 4431273307770345694}
       item: {fileID: 0}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -5803,6 +6826,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 4431273307770345694}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &4431273307770345694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5817,6 +6841,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
   _invController: {fileID: 0}
+--- !u!114 &8571810185138298433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066803036229618107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &5734000960797356135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066803036229618107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &8105794944866442438
 GameObject:
   m_ObjectHideFlags: 0
@@ -5827,6 +6892,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7881866446467541549}
   - component: {fileID: 8082175565201430773}
+  - component: {fileID: 1336361607220361098}
+  - component: {fileID: 3425563615780541761}
   m_Layer: 0
   m_Name: rock ground
   m_TagString: Untagged
@@ -5843,7 +6910,7 @@ Transform:
   m_GameObject: {fileID: 8105794944866442438}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.57575, y: -6.41, z: -4.8320904}
+  m_LocalPosition: {x: 0, y: -6.71, z: 0}
   m_LocalScale: {x: 1.23, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5904,6 +6971,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1336361607220361098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8105794944866442438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &3425563615780541761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8105794944866442438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &8108103698655964381
 GameObject:
   m_ObjectHideFlags: 0
@@ -5929,7 +7037,7 @@ Transform:
   m_GameObject: {fileID: 8108103698655964381}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.12, y: -7.585, z: -1.6825104}
+  m_LocalPosition: {x: -2.83, y: -8.57, z: 0}
   m_LocalScale: {x: 0.6, y: 0.63000005, z: 0.25895315}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5958,6 +7066,8 @@ GameObject:
   - component: {fileID: 3405101499372562532}
   - component: {fileID: 9217262366064112439}
   - component: {fileID: 5898718780113638903}
+  - component: {fileID: 3840125828431095247}
+  - component: {fileID: 2192898512105542310}
   m_Layer: 0
   m_Name: Socle_Couronne
   m_TagString: Untagged
@@ -5974,9 +7084,9 @@ Transform:
   m_GameObject: {fileID: 8256351256893729805}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.74, y: -2.91, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 8.9, y: -6.13, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4190750497323433524}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6024,7 +7134,7 @@ SpriteRenderer:
   m_SortingLayerID: 1603831995
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9dfa35b49aabb8b418b254e239f68d83, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -6032,7 +7142,7 @@ SpriteRenderer:
   m_Size: {x: 7.97, y: 1.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &9217262366064112439
@@ -6050,7 +7160,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: spawn Couronne de fleur
     conditions:
-    - type: 3
+    - type: 4
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -6068,7 +7178,9 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
-    - type: 3
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 4
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -6086,7 +7198,9 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
-    - type: 3
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 4
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -6104,7 +7218,9 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
-    - type: 3
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 4
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -6122,7 +7238,9 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
-    - type: 3
+      balance: {fileID: 0}
+      isBookFinish: 0
+    - type: 4
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -6140,18 +7258,32 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 3
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 5898718780113638903}
-      itemPrefab: {fileID: 2204687104674799107, guid: c77d82d9335222446b120efb781eefab, type: 3}
+      itemPrefab: {fileID: 968460625904555924, guid: 972b3d47dc236554cb34485bff2f104f, type: 3}
       openDoor: {fileID: 0}
       npcDialogue: {fileID: 0}
       npcTalker: {fileID: 0}
       onExecute:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: AddInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 0a709a5066689d24fb824e471a5f0d88, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       cycleThroughSprite: {fileID: 0}
       cycle: 0
       sprites: []
@@ -6160,6 +7292,199 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 0}
       item: {fileID: 0}
+      balance: {fileID: 0}
+    - type: 6
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 5898718780113638903}
+      itemPrefab: {fileID: 968460625904555924, guid: 972b3d47dc236554cb34485bff2f104f, type: 3}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: "SceneMariage : 2\xE8me Offrande Couronne de Fleur"
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+    - type: 11
+      target: {fileID: 5851616028950299277}
+      activeState: 0
+      slot: {fileID: 5898718780113638903}
+      itemPrefab: {fileID: 2204687104674799107, guid: c77d82d9335222446b120efb781eefab, type: 3}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: "SceneMariage : 2\xE8me Offrande Couronne de Fleur"
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+    - type: 11
+      target: {fileID: 2639512941852062160}
+      activeState: 0
+      slot: {fileID: 5898718780113638903}
+      itemPrefab: {fileID: 2204687104674799107, guid: c77d82d9335222446b120efb781eefab, type: 3}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: "SceneMariage : 2\xE8me Offrande Couronne de Fleur"
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+    - type: 11
+      target: {fileID: 1533350514069478635}
+      activeState: 0
+      slot: {fileID: 5898718780113638903}
+      itemPrefab: {fileID: 2204687104674799107, guid: c77d82d9335222446b120efb781eefab, type: 3}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: "SceneMariage : 2\xE8me Offrande Couronne de Fleur"
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+    - type: 11
+      target: {fileID: 4914524472081321756}
+      activeState: 0
+      slot: {fileID: 5898718780113638903}
+      itemPrefab: {fileID: 2204687104674799107, guid: c77d82d9335222446b120efb781eefab, type: 3}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: "SceneMariage : 2\xE8me Offrande Couronne de Fleur"
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+    - type: 11
+      target: {fileID: 918881376590228950}
+      activeState: 0
+      slot: {fileID: 5898718780113638903}
+      itemPrefab: {fileID: 2204687104674799107, guid: c77d82d9335222446b120efb781eefab, type: 3}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+            m_MethodName: Terminer_Tache
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: "SceneMariage : 2\xE8me Offrande Couronne de Fleur"
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &5898718780113638903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6174,6 +7499,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventoryController: {fileID: 0}
   _prefabSprite: {fileID: 0}
+--- !u!114 &3840125828431095247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256351256893729805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &2192898512105542310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256351256893729805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 2
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &8486927982958438086
 GameObject:
   m_ObjectHideFlags: 0
@@ -6184,6 +7550,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8225532556651723133}
   - component: {fileID: 5128983567606822932}
+  - component: {fileID: 5039805140941683073}
+  - component: {fileID: 2607114381376683374}
   m_Layer: 0
   m_Name: 'rock ground '
   m_TagString: Untagged
@@ -6200,7 +7568,7 @@ Transform:
   m_GameObject: {fileID: 8486927982958438086}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.93575, y: -6.41, z: -4.8320904}
+  m_LocalPosition: {x: 9.64, y: -6.71, z: 0}
   m_LocalScale: {x: 1.23, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6261,6 +7629,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5039805140941683073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486927982958438086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &2607114381376683374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486927982958438086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 2
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &8666410605102737223
 GameObject:
   m_ObjectHideFlags: 0
@@ -6274,6 +7683,8 @@ GameObject:
   - component: {fileID: 2041720557345472619}
   - component: {fileID: 6215350636369460841}
   - component: {fileID: 150944911945410665}
+  - component: {fileID: 8920793526283554677}
+  - component: {fileID: 2671292956973170678}
   m_Layer: 0
   m_Name: Fleur_Mauve_05
   m_TagString: Untagged
@@ -6370,7 +7781,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.78, y: 2.24, z: 0.2}
+  m_Size: {x: 2.78, y: 2.24, z: 3}
   m_Center: {x: 0, y: 0, z: 0.000015258789}
 --- !u!114 &6215350636369460841
 MonoBehaviour:
@@ -6387,7 +7798,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: prend fleur rouge
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -6405,8 +7816,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -6425,7 +7838,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 150944911945410665}
       item: {fileID: 0}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -6456,6 +7870,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 150944911945410665}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &150944911945410665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6470,6 +7885,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 36edb829dfcf0614dafb65ec29cdd43c, type: 2}
   _invController: {fileID: 0}
+--- !u!114 &8920793526283554677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666410605102737223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &2671292956973170678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666410605102737223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: -1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &8726937502343122360
 GameObject:
   m_ObjectHideFlags: 0
@@ -6483,6 +7939,8 @@ GameObject:
   - component: {fileID: 5656208317564459795}
   - component: {fileID: 3921541761343954861}
   - component: {fileID: 5879568959394690930}
+  - component: {fileID: 50122254024867216}
+  - component: {fileID: 5306697340220370852}
   m_Layer: 0
   m_Name: Fleur_Rouge_04
   m_TagString: Untagged
@@ -6579,7 +8037,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.78, y: 2.24, z: 0.2}
+  m_Size: {x: 2.78, y: 2.24, z: 3}
   m_Center: {x: 0, y: 0, z: 0.000015258789}
 --- !u!114 &3921541761343954861
 MonoBehaviour:
@@ -6596,7 +8054,7 @@ MonoBehaviour:
   _interactionSets:
   - interactionName: prend fleur rouge
     conditions:
-    - type: 2
+    - type: 3
       target: {fileID: 0}
       requiredTag: 
       zone: {fileID: 0}
@@ -6614,8 +8072,10 @@ MonoBehaviour:
       HasMoved: 0
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
     actions:
-    - type: 9
+    - type: 10
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -6634,7 +8094,8 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 5879568959394690930}
       item: {fileID: 0}
-    - type: 5
+      balance: {fileID: 0}
+    - type: 6
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -6665,6 +8126,7 @@ MonoBehaviour:
       OffsetY: 0
       pickable: {fileID: 5879568959394690930}
       item: {fileID: 0}
+      balance: {fileID: 0}
 --- !u!114 &5879568959394690930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6679,6 +8141,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: befdb3d68617a6b45b58243b2f1f0b15, type: 2}
   _invController: {fileID: 0}
+--- !u!114 &50122254024867216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8726937502343122360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &5306697340220370852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8726937502343122360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: -1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &8800557930603560847
 GameObject:
   m_ObjectHideFlags: 0
@@ -6689,6 +8192,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7180104317158207610}
   - component: {fileID: 6793053727937898847}
+  - component: {fileID: 1244403348470692296}
+  - component: {fileID: 4266202870313425638}
   m_Layer: 0
   m_Name: ARBRE_OLIVIER
   m_TagString: Untagged
@@ -6705,7 +8210,7 @@ Transform:
   m_GameObject: {fileID: 8800557930603560847}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.39, y: -0.64, z: -1.0100021}
+  m_LocalPosition: {x: 2.47, y: -1.42, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -6766,6 +8271,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1244403348470692296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800557930603560847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &4266202870313425638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800557930603560847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
 --- !u!1 &8977658465494753902
 GameObject:
   m_ObjectHideFlags: 0
@@ -6824,12 +8370,11 @@ Transform:
   m_GameObject: {fileID: 9035727354287455250}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.57575, y: 0.47, z: 3.999998}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7881866446467541549}
-  - {fileID: 525982774724417385}
   - {fileID: 8225532556651723133}
   - {fileID: 2475452066024184654}
   m_Father: {fileID: 7112083112492688035}

@@ -25,7 +25,6 @@ public class OnboardingManager : MonoBehaviour
 
     private void CamMovementOnSwipe()
     {
-        Debug.Log("iufds");
         if (_isStartingSwipe == false)
         {
             _isStartingSwipe = true;
@@ -35,7 +34,6 @@ public class OnboardingManager : MonoBehaviour
 
     private void TouchDetectionOnClick(GameObject go)
     {
-        Debug.Log(go.name);
         if (go.name == "pomme 1 (1)")
         {
             CheckOnboarding(0);

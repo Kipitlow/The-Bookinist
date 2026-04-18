@@ -203,7 +203,6 @@ public class NPCTalker : MonoBehaviour
     public void UpdateIndicator()
     {
         bool hasBeenRead = _dialogue != null && _timesEnded > 0;
-        Debug.Log(hasBeenRead);
 
         _alreadyRead.gameObject.SetActive(hasBeenRead);
         _notRead.gameObject.SetActive(!hasBeenRead);
