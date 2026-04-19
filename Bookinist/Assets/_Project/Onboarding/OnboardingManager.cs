@@ -29,7 +29,7 @@ public class OnboardingManager : MonoBehaviour
         if (_isStartingSwipe == false)
         {
             _isStartingSwipe = true;
-            CheckOnboarding(3);
+            CheckOnboarding(2);
         }
     }
 
@@ -45,9 +45,9 @@ public class OnboardingManager : MonoBehaviour
     private void CamMovementOnZoom(int positivOrNegativ)
     {
         if (positivOrNegativ > 0)
-            CheckOnboarding(4);
+            CheckOnboarding(3);
         else
-            CheckOnboarding(5);
+            CheckOnboarding(4);
     }
 
     public void CheckOnboarding(int index)

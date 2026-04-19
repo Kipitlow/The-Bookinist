@@ -39,7 +39,12 @@ public class BookShopOnboardingManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.Instance.bookFinish == false) return;
+        if (GameManager.Instance.bookFinish == false)
+        {
+            _onboardingPanelList[0].SetActive(true);
+
+            return;
+        }
 
         foreach (GameObject go in _onboardingButtonList)
         {
