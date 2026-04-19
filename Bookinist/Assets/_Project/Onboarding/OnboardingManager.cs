@@ -15,6 +15,8 @@ public class OnboardingManager : MonoBehaviour
     private bool _isStartingDetection = false;
     private bool _isStartingSwipe = false;
 
+    private WorldDropHandler _dropHandler;
+
     private void Awake()
     {
 
@@ -23,13 +25,25 @@ public class OnboardingManager : MonoBehaviour
         _touchDetection.OnClick += TouchDetectionOnClick;
     }
 
+    private void Start()
+    {
+        _dropHandler = WorldDropHandler.Instance;
+
+        _dropHandler.OnDropItem += DropHandlerOnDropItem;
+    }
+
+    private void DropHandlerOnDropItem()
+    {
+        CheckOnboarding(2);
+    }
+
     private void CamMovementOnSwipe()
     {
         Debug.Log("iufds");
         if (_isStartingSwipe == false)
         {
             _isStartingSwipe = true;
-            CheckOnboarding(2);
+            CheckOnboarding(3);
         }
     }
 
@@ -45,9 +59,9 @@ public class OnboardingManager : MonoBehaviour
     private void CamMovementOnZoom(int positivOrNegativ)
     {
         if (positivOrNegativ > 0)
-            CheckOnboarding(3);
-        else
             CheckOnboarding(4);
+        else
+            CheckOnboarding(5);
     }
 
     public void CheckOnboarding(int index)
