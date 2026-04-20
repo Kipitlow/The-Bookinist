@@ -39,8 +39,10 @@ public class SC_Tache : MonoBehaviour
     [Header("Mission")]
     public List<List_Element_Tach> Liste_Mission = new List<List_Element_Tach>(); //Permet de stocker les Prefable_Tache.
 
+    [Header("Hint System")]
     [SerializeField] private GameObject _hintsPanel;
     [SerializeField] private GameObject _hintsButton;
+    [SerializeField] private TextMeshProUGUI _hintNumberTextMesh;
 
     #endregion
 
@@ -147,6 +149,16 @@ public class SC_Tache : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void UseHintWrapper()
+    {
+        if (GameManager.Instance.UseHint() == false) return;
+
+        Debug.Log("iufhsdf");
+        _hintNumberTextMesh.text = GameManager.Instance.GetHintNumber().ToString();
+        _hintsButton.SetActive(false);
+        _hintsPanel.SetActive(true);
     }
 
     public void FinEnigme2(int nbrTach)
