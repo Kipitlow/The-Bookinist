@@ -11,6 +11,8 @@ public class ObjectShake : MonoBehaviour
 
     private Coroutine _shakeRoutine;
     private Transform _target;
+    private Vector3 _basePosition;
+
     #endregion
 
     #region UnityMethods
@@ -18,6 +20,7 @@ public class ObjectShake : MonoBehaviour
     {
         if (_target == null)
             _target = transform;
+        _basePosition = _target.localPosition;
     }
     #endregion
 
@@ -29,6 +32,8 @@ public class ObjectShake : MonoBehaviour
 
     public void Shake(float duration, float magnitude)
     {
+
+        Debug.Log("test");
         if (_shakeRoutine != null)
             StopCoroutine(_shakeRoutine);
 
@@ -37,7 +42,6 @@ public class ObjectShake : MonoBehaviour
 
     private IEnumerator ShakeRoutine(float duration, float magnitude)
     {
-        Vector3 startLocalPosition = _target.localPosition;
         float elapsed = 0f;
 
         while (elapsed < duration)
@@ -46,13 +50,13 @@ public class ObjectShake : MonoBehaviour
             float strength = _falloff != null ? _falloff.Evaluate(t) : 1f - t;
 
             Vector2 random = Random.insideUnitCircle * magnitude * strength;
-            _target.localPosition = startLocalPosition + new Vector3(random.x, random.y, 0f);
+            _target.localPosition = _basePosition + new Vector3(random.x, random.y, 0f);
 
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        _target.localPosition = startLocalPosition;
+        _target.localPosition = _basePosition;
         _shakeRoutine = null;
     }
     #endregion

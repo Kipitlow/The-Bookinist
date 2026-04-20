@@ -30,5 +30,6 @@ public enum ActionType
     Pick,
     Destroy,
     Drop,
-    PlaceInBalance
+    PlaceInBalance,
+    FeedBack,
 }

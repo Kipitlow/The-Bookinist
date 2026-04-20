@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4699689985322120050}
   - component: {fileID: 6069410731944043143}
   - component: {fileID: 6193133427807623589}
+  - component: {fileID: 7914349845421181220}
   m_Layer: 0
   m_Name: Figuier
   m_TagString: Untagged
@@ -122,9 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72341d170f99a764a9ab8023e1c6bb8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
   _defaultDuration: 0.15
-  _defaultMagnitude: 0.05
+  _defaultMagnitude: 0.08
   _falloff:
     serializedVersion: 2
     m_Curve:
@@ -271,3 +271,59 @@ MonoBehaviour:
   _useCurrentColorAsDefaultAtStart: 1
   _defaultDuration: 0.2
   _useUnscaledTime: 0
+--- !u!114 &7914349845421181220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8420325685930928496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionSets:
+  - interactionName: 
+    conditions:
+    - type: 3
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 0}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+    actions:
+    - type: 14
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class interactionFeedBack : MonoBehaviour
+public class InteractionFeedBack : MonoBehaviour
 {
     [SerializeField] private bool _isInteractable;
 

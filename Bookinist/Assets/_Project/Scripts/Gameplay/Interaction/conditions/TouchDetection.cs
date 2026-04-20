@@ -115,13 +115,12 @@ public class TouchDetection : MonoBehaviour
     {
         GameObject hitObject = hit.collider.gameObject;
         MoveOnZoom moveOnZoom = hit.collider.GetComponent<MoveOnZoom>();
-        interactionFeedBack interactionFeedBack = hit.collider.GetComponent<interactionFeedBack>();
+        InteractionFeedBack interactionFeedBack = hit.collider.GetComponent<InteractionFeedBack>();
 
         if (moveOnZoom == null) return;
 
         if (interactionRunner != null)
         {
-            Debug.Log("test");
             CameraMovement cameraMovement = _cam.GetComponent<CameraMovement>();
             int camLayer = cameraMovement.currentIndexLayer;
             int hitLayer = moveOnZoom.GetLayer();
@@ -140,6 +139,5 @@ public class TouchDetection : MonoBehaviour
                 interactionRunner.TryExecuteAll(context);
             }
         }
-        if (interactionFeedBack) interactionFeedBack.TryFeedback();
     }
 }

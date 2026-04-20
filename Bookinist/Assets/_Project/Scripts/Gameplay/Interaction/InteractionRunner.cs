@@ -5,12 +5,12 @@ using UnityEngine;
 public class InteractionRunner : MonoBehaviour
 {
     [SerializeField] private List<InteractionSet> _interactionSets = new();
-    private interactionFeedBack _interactionFeedBack;
+    private InteractionFeedBack _interactionFeedBack;
     private bool _conditionWasTrue;
 
     private void Awake()
     {
-        _interactionFeedBack = GetComponent<interactionFeedBack>();
+        _interactionFeedBack = GetComponent<InteractionFeedBack>();
     }
 
 
@@ -35,8 +35,6 @@ public class InteractionRunner : MonoBehaviour
         {
             if (!EvaluateCondition(condition, context))
                 return false;
-            if (_interactionFeedBack != null) _interactionFeedBack.NonInteractableObject();
-
         }
 
         return true;
@@ -130,7 +128,7 @@ public class InteractionRunner : MonoBehaviour
 
     private void ExecuteAction(ActionEntry action, InteractionContext context)
     {
-        if(_interactionFeedBack != null) _interactionFeedBack.TryFeedback();
+
 
         switch (action.type)
         {
@@ -197,6 +195,11 @@ public class InteractionRunner : MonoBehaviour
             case ActionType.PlaceInBalance:
                 if (action.balance != null)
                     action.balance.TryAddItem(context.item);
+                break;
+
+            case ActionType.FeedBack:
+                if (_interactionFeedBack != null)
+                    _interactionFeedBack.TryFeedback();
                 break;
         }
     }
