@@ -112,7 +112,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3267779430044210628
 MonoBehaviour:
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
-  _isDroppedItem: 1
+  isDroppedItem: 0
 --- !u!114 &5597160231740166757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +151,9 @@ MonoBehaviour:
   _alphaHidden: 0
   _alphaSpeed: 1
   _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
   _objToDesable: []
+  _childs: []
   _state: 1
 --- !u!114 &5854375138535093047
 MonoBehaviour:
