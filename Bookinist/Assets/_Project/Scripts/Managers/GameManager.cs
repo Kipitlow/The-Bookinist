@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("ttt");
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     public bool IsBookStarted()
     {
-        return bookFinish;
+        return bookStarted;
     }
 
     public void FinishBook()
