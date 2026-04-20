@@ -20,25 +20,19 @@ public class ScriptChangeEau : MonoBehaviour
 
     }
 
-    private void _DisableInteractionRunner()
+    /*private void _DisableInteractionRunner()
     {
         _scriptActivation.enabled = false;
         boxCollider.enabled = false;
-    }
+    }*/
 
     public void ChangeColor()
     {
-        _nombreNuage += 1;
-        if (_nombreNuage >= 3)
-        {
-            StartCoroutine(IEChangeColor());
-        }
+        StartCoroutine(IEChangeColor());
     }
 
     private IEnumerator IEChangeColor()
     {
-        //new Color(1, 1, 0, 1); => this at the color is red
-        //new Color(0, 0, 1, 1); => this at the color is red
         _lerpColorFloat = 0;
 
         Color _colorOrigine = new Color(140.0f/ 255.0f,166.0f/255.0f, 163.0f / 255.0f, 1f);
