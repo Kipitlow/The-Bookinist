@@ -1,11 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class GambleManager : MonoBehaviour
 {
     [SerializeField] private LootPools _itemsUnlockable;
     [SerializeField] private List<ShopItemData> _filteredUnlockables;
-    [SerializeField] private GameObject _displayObtained;
+    [SerializeField] private Image _displayObtained;
+    [SerializeField] private Sprite _defaultIcon;
+    private float _transparency;
+
 
     private void Start()
     {
@@ -30,21 +35,22 @@ public class GambleManager : MonoBehaviour
     {
         ShopItemData pulledItem = PullItem();
 
+        DisplayScriptable(pulledItem);
+
         if (pulledItem == null)
             return;
 
         CustomShopManager.Instance.AddObject(pulledItem);
         SaveSystem.instance.inventory.ownedItemIDs.Add(pulledItem.id.ToString());
         SaveSystem.instance.Save();
-        DisplayScriptable(pulledItem);
-        
     }
 
-    public ShopItemData PullItem()
+    private ShopItemData PullItem()
     {
         if (_filteredUnlockables.Count == 0)
         {
             Debug.Log("No more items to pull.");
+            _transparency = 0f;
             return null;
         }
 
@@ -55,12 +61,21 @@ public class GambleManager : MonoBehaviour
 
         _filteredUnlockables.RemoveAt(index);
 
+        _transparency = 1f;
+
         return selectedItem;
     }
 
-    public void DisplayScriptable(ShopItemData itemObtained)
+    private void DisplayScriptable(ShopItemData itemObtained)
     {
-        Debug.Log(itemObtained.name);
+        var tempColor = _displayObtained.color;
+        if (itemObtained == null)
+            _displayObtained.sprite = _defaultIcon;
+        else
+            _displayObtained.sprite = itemObtained.icon;
+        
+        tempColor.a = _transparency;
+        _displayObtained.color = tempColor;
     }
 
 }
