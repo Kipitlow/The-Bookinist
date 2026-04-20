@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class PlayerBP
+[System.Serializable]
+public class BattlePassData
 {
-    public float PlayerBPXP;
-    public float PlayerBPUnspent;
+    public float confirmedXp;
+    public float waitingXp;
 }

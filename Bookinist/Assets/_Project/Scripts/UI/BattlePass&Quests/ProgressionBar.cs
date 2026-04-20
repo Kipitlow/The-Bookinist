@@ -8,6 +8,7 @@ public class ProgressionBar : MonoBehaviour
     public static ProgressionBar instance;
 
     [Header("UI Elements")]
+    public ScrollRect battlePassScrollRect;
     public Image BattlePassBar;
     public GameObject BattlePassIcon;
     public List<Image> Paliers = new List<Image>();
@@ -132,7 +133,7 @@ public class ProgressionBar : MonoBehaviour
     {
         for (int i = 0; i < palier; i++)
         {
-            if (i < Paliers.Count) Paliers[i].color = Unlock;
+            if (i < Paliers.Count) Paliers[i].color = Unlock &&;
 
             if (i < rewardPalier.Count && rewardPalier[i] != null)
             {
@@ -143,6 +144,8 @@ public class ProgressionBar : MonoBehaviour
             }
         }
     }
+
+
 }
 
 /*missions quotidiennes : 100points 

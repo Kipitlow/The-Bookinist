@@ -9,9 +9,3 @@ public class SaveData
     public BattlePassData battlePass;
 }
 
-[System.Serializable]
-public class BattlePassData
-{
-    public float confirmedXp;
-    public float waitingXp;  
-}
