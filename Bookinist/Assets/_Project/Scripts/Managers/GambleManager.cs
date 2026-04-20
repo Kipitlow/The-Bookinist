@@ -9,8 +9,9 @@ public class GambleManager : MonoBehaviour
     public void Gamble()
     {
         ShopItemData pulledItem = PullItem();
+        Debug.Log(pulledItem);
         CustomShopManager.Instance.AddObject(pulledItem);
-        SaveSystem.instance.inventory.ownedItemIDs.Add(pulledItem.id);
+        SaveSystem.instance.inventory.ownedItemIDs.Add(pulledItem.id.ToString());
         SaveSystem.instance.Save();
         DisplayScriptable(pulledItem);
     }
