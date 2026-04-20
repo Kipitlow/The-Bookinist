@@ -18,6 +18,7 @@ public class SC_Tache : MonoBehaviour
     #region Variable
     [Header("Variable Utiliser pour le Chronometre")]
     [SerializeField] public TextMeshProUGUI Text_Chronom;
+    [SerializeField] private bool _isActivated;
     private bool lanceCouroutine;
     //[SerializeField] public TextMeshProUGUI Text_Objectif; //////Objectif
     public int totalSeconds;
@@ -179,6 +180,12 @@ public class SC_Tache : MonoBehaviour
 
     public void SetChronom(bool Continue)
     {
+        if (_isActivated == false)
+        {
+            Text_Chronom = null;
+            return;
+        }
+
         if (Continue)
         {
             if (!lanceCouroutine)
