@@ -5,6 +5,14 @@ using UnityEngine;
 public class InteractionRunner : MonoBehaviour
 {
     [SerializeField] private List<InteractionSet> _interactionSets = new();
+    private interactionFeedBack _interactionFeedBack;
+    private bool _conditionWasTrue;
+
+    private void Awake()
+    {
+        _interactionFeedBack = GetComponent<interactionFeedBack>();
+    }
+
 
     #region Try
     public bool TryExecuteAll(InteractionContext context)
@@ -27,6 +35,8 @@ public class InteractionRunner : MonoBehaviour
         {
             if (!EvaluateCondition(condition, context))
                 return false;
+            if (_interactionFeedBack != null) _interactionFeedBack.NonInteractableObject();
+
         }
 
         return true;
@@ -120,6 +130,8 @@ public class InteractionRunner : MonoBehaviour
 
     private void ExecuteAction(ActionEntry action, InteractionContext context)
     {
+        if(_interactionFeedBack != null) _interactionFeedBack.TryFeedback();
+
         switch (action.type)
         {
             case ActionType.SetActive:

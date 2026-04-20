@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class ChangeColor : MonoBehaviour
@@ -17,6 +18,7 @@ public class ChangeColor : MonoBehaviour
     [SerializeField] private bool _useUnscaledTime = false;
 
     private Coroutine _colorRoutine;
+
 
     private void Awake()
     {
@@ -153,6 +155,8 @@ public class ChangeColor : MonoBehaviour
 
         yield return ChangeColorRoutine(targetColor, startColor, backwardDuration);
         _colorRoutine = null;
+        ResetToDefaultColor();
+
     }
 
     private void ApplyColor(Color newColor)
