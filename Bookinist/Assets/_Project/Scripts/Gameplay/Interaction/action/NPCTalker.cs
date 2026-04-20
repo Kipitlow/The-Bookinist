@@ -107,7 +107,7 @@ public class NPCTalker : MonoBehaviour
             _lineIndex++;
         }
 
-        if (_dialogue.IsShopNPC && _lineIndex == 3)
+        if (_dialogue.IsShopNPC && _lineIndex == 4)
         {
             OnShowBook?.Invoke();
         }
