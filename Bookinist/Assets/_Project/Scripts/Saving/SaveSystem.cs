@@ -30,6 +30,7 @@ public class SaveSystem : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+        Load();
     }
 
     private void Start()
