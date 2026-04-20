@@ -59,6 +59,7 @@ public class WorldDropHandler : MonoBehaviour
     {
         if (!DragContext.IsDragging) return;
 
+        bool shouldDrop = true;
         Item draggedItem = DragContext.DraggedItem;
 
         Debug.Log($"[Drop] TryDrop appelé. IsDragging={DragContext.IsDragging}, screenPos={screenPosition}");
@@ -93,10 +94,12 @@ public class WorldDropHandler : MonoBehaviour
 
             bool wasHandled = targetRunner.TryExecuteAll(context);
             if (wasHandled)
+            {
                 _inventoryController.RemoveInventoryItem(draggedItem);
-            else 
-                DropObject(screenPosition);
+                shouldDrop = false;
+            }
         }
+        if(shouldDrop) DropObject(screenPosition);
     }
     public void DropObject(Vector2 screenPosition)
     {
