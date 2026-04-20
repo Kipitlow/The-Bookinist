@@ -76,6 +76,7 @@ public class WorldDropHandler : MonoBehaviour
         if (hit.collider == null)
         {
             DropObject(screenPosition);
+            return;
         };
 
         InteractionRunner targetRunner = hit.collider.gameObject.GetComponent<InteractionRunner>();
