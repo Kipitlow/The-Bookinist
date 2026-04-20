@@ -15,12 +15,26 @@ public class OnboardingManager : MonoBehaviour
     private bool _isStartingDetection = false;
     private bool _isStartingSwipe = false;
 
+    private WorldDropHandler _dropHandler;
+
     private void Awake()
     {
 
         _camMovement.OnZoomOrDezoom += CamMovementOnZoom;
         _camMovement.OnSwipe += CamMovementOnSwipe;
         _touchDetection.OnClick += TouchDetectionOnClick;
+    }
+
+    private void Start()
+    {
+        _dropHandler = WorldDropHandler.Instance;
+
+        _dropHandler.OnDropItem += DropHandlerOnDropItem;
+    }
+
+    private void DropHandlerOnDropItem()
+    {
+        CheckOnboarding(2);
     }
 
     private void CamMovementOnSwipe()

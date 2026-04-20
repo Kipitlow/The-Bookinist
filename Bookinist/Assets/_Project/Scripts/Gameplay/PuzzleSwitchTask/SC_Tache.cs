@@ -39,6 +39,13 @@ public class SC_Tache : MonoBehaviour
     [Header("Mission")]
     public List<List_Element_Tach> Liste_Mission = new List<List_Element_Tach>(); //Permet de stocker les Prefable_Tache.
 
+    [Header("Hint System")]
+    [SerializeField] private GameObject _hintsPanel;
+    [SerializeField] private GameObject _hintsButton;
+    [SerializeField] private TextMeshProUGUI _hintNumberTextMesh;
+
+    private bool _isAlreadyOpenedPanel = false;
+
     #endregion
 
     #region Unity Methods
@@ -49,7 +56,7 @@ public class SC_Tache : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "Enigme1")
             StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
 
-        Change_Tach_List();
+        SetupTache();
     }
     #endregion
 
@@ -60,26 +67,44 @@ public class SC_Tache : MonoBehaviour
         //On fonction quand terminer la tache précédent on veut switch de tache.
         if (PrefableTache != null && Target_Parent_Prefable != null)
         {
-            {
-                // Code qui permet de supprimer tout préfable tache dans le code 
-                foreach (GameObject obj in List_Temporair_Tache)
-                {
-                    if (obj != null) Destroy(obj);
-                }
-                List_Temporair_Tache.Clear();
-                //Code permet d'afficher tous les mission terminer et une seul mission non terminer
-                for (int i = 0; i < Liste_Mission.Count; i++)
-                {
-                    Spawn_Prefable_Tache(i);
-                    if (Liste_Mission[i].TacheTerminer == false)
-                    {
-                        return; // la boucle ce terminer quand une tache n'est pas terminer
-                    }
-                }
-            } //<- Actualiser les mission
-
+            StartCoroutine(Test());
         }
     }
+
+    IEnumerator Test()
+    {
+        // Code qui permet de supprimer tout préfable tache dans le code 
+        foreach (GameObject obj in List_Temporair_Tache)
+        {
+            if (obj != null)
+            {
+                StartCoroutine(WaitForCrossList(obj));
+            }
+        }
+
+        yield return new WaitForSeconds(2.5f);
+
+
+
+        //List_Temporair_Tache.Clear();
+        //Code permet d'afficher tous les mission terminer et une seul mission non terminer
+        SetupTache();
+
+        _isAlreadyOpenedPanel = false;
+    }
+
+    private void SetupTache()
+    {
+        for (int i = 0; i < Liste_Mission.Count; i++)
+        {
+            if (Liste_Mission[i].TacheTerminer == false)
+            {
+                Spawn_Prefable_Tache(i);
+                break; // la boucle ce terminer quand une tache n'est pas terminer
+            }
+        }
+    }
+
     private void Spawn_Prefable_Tache(int i)
     {
         GameObject New_Object = Instantiate(PrefableTache, Target_Parent_Prefable);
@@ -119,6 +144,7 @@ public class SC_Tache : MonoBehaviour
                 if (Liste_Mission[i].Nom_Mission == nom_mission)
                 {
                     Liste_Mission[i].TacheTerminer = true;
+                    //Liste_Mission[i];
                     Change_Tach_List();
                 }
                 else
@@ -127,6 +153,21 @@ public class SC_Tache : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void UseHintWrapper()
+    {
+        if (_isAlreadyOpenedPanel == false)
+        {
+            if (GameManager.Instance.UseHint() == false) return;
+        }
+
+        Debug.Log("iufhsdf");
+        _hintNumberTextMesh.text = GameManager.Instance.GetHintNumber().ToString();
+        _hintsButton.SetActive(false);
+        _hintsPanel.SetActive(true);
+
+        _isAlreadyOpenedPanel = true;
     }
 
     public void FinEnigme2(int nbrTach)
@@ -175,6 +216,18 @@ public class SC_Tache : MonoBehaviour
         Text_Chronom.text = "00:00";
         lanceCouroutine = false;
         Spawn_Canva_GameOver();
+    }
+
+    IEnumerator WaitForCrossList(GameObject obj)
+    {
+        obj.GetComponent<SC_Prefable_Tache>().ligne_Barrer();
+
+        yield return new WaitForSeconds(2);
+        Destroy(obj);
+
+        _hintsPanel.SetActive(false);
+        _hintsButton.SetActive(true);
+
     }
 
     public void SetChronom(bool Continue)
