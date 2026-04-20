@@ -11,6 +11,7 @@ public class SaveSystem : MonoBehaviour
     public PlayerProfile profile;
     public PlayerSettings settings;
     public PlayerCurrency currency;
+    public BattlePassData battlePass;
 
     public Action OnDataUpdate;
 
@@ -34,11 +35,17 @@ public class SaveSystem : MonoBehaviour
 
     public void Save()
     {
+        if (ProgressionBar.instance != null)
+        {
+            battlePass = ProgressionBar.instance.GetDataForSave();
+        }
+
         SaveData data = new SaveData
         {
             profile = profile,
             settings = settings,
-            currency = currency
+            currency = currency,
+            battlePass = battlePass 
         };
 
         _saveManager.Write("saveData.json", data);
@@ -50,7 +57,6 @@ public class SaveSystem : MonoBehaviour
 
         if (data == null)
         {
-            Debug.LogWarning("Failed to load saveData.json");
             Create();
             return;
         }
@@ -59,7 +65,8 @@ public class SaveSystem : MonoBehaviour
         settings = data.settings;
         currency = data.currency;
 
-        Debug.Log("Invoke Called");
+        battlePass = data.battlePass;
+
         OnDataUpdate?.Invoke();
     }
 
@@ -73,6 +80,7 @@ public class SaveSystem : MonoBehaviour
         profile = new PlayerProfile();
         settings = new PlayerSettings();
         currency = new PlayerCurrency();
+        battlePass = new BattlePassData();
 
         Save();
     }

@@ -5,114 +5,144 @@ using UnityEngine.UI;
 
 public class ProgressionBar : MonoBehaviour
 {
+    public static ProgressionBar instance;
 
-    //battlepass
-    public int palier = 0;
-    public float xpPass;
+    [Header("UI Elements")]
     public Image BattlePassBar;
     public GameObject BattlePassIcon;
     public List<Image> Paliers = new List<Image>();
+    public List<PalierDebloqueur> rewardPalier = new List<PalierDebloqueur>();
+
+    [Header("Settings")]
+    public int palier = 0;
+    public float xpPass; // avancé du pass de 0 à 1.
+
+    private float confirmedTotalXp = 0; // avancé du pass en xp
+    private float waitingXp = 0;
 
     private Color Lock = new Color32(109, 109, 109, 255);
     private Color Unlock = new Color32(241, 211, 0, 255);
+    private float lerpTime = 0.7f;
 
-    float lerpTime = 0.7f;
-    float waitingXp = 0;
-
-    public List<PalierDebloqueur> rewardPalier = new List<PalierDebloqueur>();
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
-        BattlePassBar.fillAmount = 0;
-        xpPass = 0;
-        ResetLock();
+        SaveSystem.instance.OnDataUpdate += LoadProgression;
+        if (SaveSystem.instance.battlePass != null) LoadProgression();
     }
 
-    private void CheckPalierProgress()
+    private void LoadProgression()
     {
-        if (palier == 0)
-        {
-            if (xpPass >= 0.015)
-                palier += 1;
-        }
-        else
-        {
-            if (xpPass >= (palier * 0.0333 + 0.015))
-                palier += 1;
-        }
+        BattlePassData data = SaveSystem.instance.battlePass;
+        if (data == null) return;
+
+        // On restaure l'état visuel exact de la dernière fois
+        confirmedTotalXp = data.confirmedXp;
+        waitingXp = data.waitingXp;
+
+        xpPass = confirmedTotalXp / 15000f;
+        BattlePassBar.fillAmount = xpPass;
+
+        // On débloque instantanément les paliers déjà validés
+        SyncPalierInstant();
+
+        if (waitingXp > 0) BattlePassIcon.SetActive(true);
     }
 
-    private void ResetLock()
+    public BattlePassData GetDataForSave()
     {
-        foreach (Image img in Paliers)
+        return new BattlePassData
         {
-            img.color = Lock;
-        }
+            confirmedXp = confirmedTotalXp,
+            waitingXp = waitingXp
+        };
     }
-    public void unlockVerif()
-    {
-        for (int i = 0; i <= palier - 1; i++)
-        {
-            if (Paliers[i].color == Lock)
-            {
-                Paliers[i].color = Unlock;
-                for(int j = 0; rewardPalier[i].rewards.Count > j; j++)
-                {
-                    rewardPalier[i].rewards[j].interactable = true;
-                }
-            }
-        }
-    }
-    public void addXpPass() // fonction appeler par le bouton d'ouverture de pass, pour actualiser la barre que lorsque on est dessus
-    {
-        BattlePassIcon.SetActive(false);
-        StartCoroutine(AnimateBar(waitingXp));
-        waitingXp = 0;
-    }
-    public void xpGain(float xp) // fonction à appeler pour les récompenses de quêtes
+
+    public void xpGain(float xp) // Appelé par les quêtes
     {
         waitingXp += xp;
-        if(palier == 0)
+
+        float virtualXpPass = (confirmedTotalXp + waitingXp) / 15000f;
+        if (CheckIfNewPalier(virtualXpPass, palier))
         {
-            if ((1f / 15000f * waitingXp) + xpPass >= (palier * 0.0333 + 0.015)) // check si on a passer le palier 1
-            {
-                BattlePassIcon.SetActive(true);
-            }
+            BattlePassIcon.SetActive(true);
         }
-        else
-        {
-            if ((1f / 15000f * waitingXp) + xpPass >= (palier * 0.0333 + 0.015) && palier < 30) // check si on a passer un palier
-            {
-                BattlePassIcon.SetActive(true);
-            }
-        }
-        
+
+        SaveSystem.instance.Save();
     }
 
-    private IEnumerator AnimateBar(float xp)
+    public void addXpPass() // Appelé quand on ouvre le menu du pass
+    {
+        if (waitingXp <= 0) return;
+
+        BattlePassIcon.SetActive(false);
+        StartCoroutine(AnimateBar(waitingXp));
+
+        confirmedTotalXp += waitingXp;
+        waitingXp = 0;
+
+
+        SaveSystem.instance.Save();
+    }
+
+    private IEnumerator AnimateBar(float amount)
     {
         float currentTime = 0;
         float startXp = xpPass;
-        float targetXp = Mathf.Clamp(xpPass + (1f / 15000f) * xp, 0, 1);
+        float targetXp = Mathf.Clamp((confirmedTotalXp + amount) / 15000f, 0, 1);
 
         while (currentTime < lerpTime)
         {
             currentTime += Time.deltaTime;
-
             xpPass = Mathf.Lerp(startXp, targetXp, currentTime / lerpTime);
-
             BattlePassBar.fillAmount = xpPass;
 
-            CheckPalierProgress();
-            unlockVerif();
-
-            yield return null; 
+            if (CheckIfNewPalier(xpPass, palier))
+            {
+                palier++;
+                unlockVerif();
+            }
+            yield return null;
         }
-
         xpPass = targetXp;
         BattlePassBar.fillAmount = xpPass;
     }
 
+    private void SyncPalierInstant()
+    {
+        palier = 0;
+        while (CheckIfNewPalier(xpPass, palier))
+        {
+            palier++;
+        }
+        unlockVerif();
+    }
+
+    private bool CheckIfNewPalier(float currentXpFill, int currentPalier)
+    {
+        float threshold = (currentPalier == 0) ? 0.015f : (currentPalier * 0.0333f + 0.015f);
+        return currentXpFill >= threshold && currentPalier < 30;
+    }
+
+    public void unlockVerif()
+    {
+        for (int i = 0; i < palier; i++)
+        {
+            if (i < Paliers.Count) Paliers[i].color = Unlock;
+
+            if (i < rewardPalier.Count && rewardPalier[i] != null)
+            {
+                foreach (Button btn in rewardPalier[i].rewards)
+                {
+                    if (btn != null && !btn.interactable) btn.interactable = true;
+                }
+            }
+        }
+    }
 }
 
 /*missions quotidiennes : 100points 
