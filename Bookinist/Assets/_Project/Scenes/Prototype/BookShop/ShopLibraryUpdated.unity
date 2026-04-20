@@ -2300,7 +2300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -48}
+  m_AnchoredPosition: {x: 0, y: -47.999878}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &179303471
@@ -11322,7 +11322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -54}
+  m_AnchoredPosition: {x: 0, y: -53.999878}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1046161396
@@ -19597,7 +19597,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 1000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -20900,6 +20900,10 @@ PrefabInstance:
       propertyPath: _previewCamera
       value: 
       objectReference: {fileID: 2070655603}
+    - target: {fileID: 6053703461880222990, guid: 2594593bff63b424383f00e014c48840, type: 3}
+      propertyPath: _confirmBuyText
+      value: 
+      objectReference: {fileID: 2103482606}
     - target: {fileID: 7010906654412860699, guid: 2594593bff63b424383f00e014c48840, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -20934,7 +20938,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8637405588615133280, guid: 2594593bff63b424383f00e014c48840, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9158954420642173027, guid: 2594593bff63b424383f00e014c48840, type: 3}
       propertyPath: m_AnchorMax.y
@@ -24967,7 +24971,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2070655604}
   - component: {fileID: 2070655603}
-  - component: {fileID: 2070655602}
   - component: {fileID: 2070655601}
   m_Layer: 0
   m_Name: ShopPreviewCamera
@@ -25020,14 +25023,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &2070655602
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070655600}
-  m_Enabled: 1
 --- !u!20 &2070655603
 Camera:
   m_ObjectHideFlags: 0
@@ -25391,6 +25386,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097401547}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2103482606 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4336431008610703612, guid: 2594593bff63b424383f00e014c48840, type: 3}
+  m_PrefabInstance: {fileID: 1749599990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2121185253
 GameObject:
   m_ObjectHideFlags: 0

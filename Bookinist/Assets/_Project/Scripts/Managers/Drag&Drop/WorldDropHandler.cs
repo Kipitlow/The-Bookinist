@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -25,6 +26,8 @@ public class WorldDropHandler : MonoBehaviour
     [Header("Paramètres")]
     [Tooltip("Distance max du raycast depuis la caméra.")]
     [SerializeField] private float _raycastDistance = 200f;
+
+    public event Action OnDropItem;
 
     private void Awake()
     {
@@ -63,7 +66,7 @@ public class WorldDropHandler : MonoBehaviour
 
         int camLayer = _camera.GetComponent<CameraMovement>().currentIndexLayer;
 
-        //place Object In World
+        //place Object In World --> Naive way to do that, we need easier drop
         if (hit.collider == null)
         {
             Debug.Log("tried to spawn object");
@@ -102,7 +105,7 @@ public class WorldDropHandler : MonoBehaviour
                 worldSpriteSize.x / lossyScale.x,
                 worldSpriteSize.y / lossyScale.y,
                 boxCollider.size.z
-             );
+                );
 
             Vector3 localCenter = spriteRenderer.sprite.bounds.center;
 
@@ -119,8 +122,10 @@ public class WorldDropHandler : MonoBehaviour
 
             _inventoryController.RemoveInventoryItem(draggedItem);
 
+            OnDropItem?.Invoke();
+
             return;
-        };
+        }
 
         InteractionRunner targetRunner = hit.collider.gameObject.GetComponent<InteractionRunner>();
 
