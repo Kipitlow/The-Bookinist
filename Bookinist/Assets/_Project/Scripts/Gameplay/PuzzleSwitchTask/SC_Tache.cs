@@ -44,6 +44,8 @@ public class SC_Tache : MonoBehaviour
     [SerializeField] private GameObject _hintsButton;
     [SerializeField] private TextMeshProUGUI _hintNumberTextMesh;
 
+    private bool _isAlreadyOpenedPanel = false;
+
     #endregion
 
     #region Unity Methods
@@ -87,6 +89,8 @@ public class SC_Tache : MonoBehaviour
         //List_Temporair_Tache.Clear();
         //Code permet d'afficher tous les mission terminer et une seul mission non terminer
         SetupTache();
+
+        _isAlreadyOpenedPanel = false;
     }
 
     private void SetupTache()
@@ -153,12 +157,17 @@ public class SC_Tache : MonoBehaviour
 
     public void UseHintWrapper()
     {
-        if (GameManager.Instance.UseHint() == false) return;
+        if (_isAlreadyOpenedPanel == false)
+        {
+            if (GameManager.Instance.UseHint() == false) return;
+        }
 
         Debug.Log("iufhsdf");
         _hintNumberTextMesh.text = GameManager.Instance.GetHintNumber().ToString();
         _hintsButton.SetActive(false);
         _hintsPanel.SetActive(true);
+
+        _isAlreadyOpenedPanel = true;
     }
 
     public void FinEnigme2(int nbrTach)
