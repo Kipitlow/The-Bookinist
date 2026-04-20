@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using UnityEditor.Build;
 using UnityEngine;
 
@@ -30,6 +31,8 @@ public class WorldDropHandler : MonoBehaviour
 
     private int _camLayer;
     private int _hitlayer;
+
+    public event Action OnDropItem;
 
     private void Awake()
     {
@@ -81,9 +84,6 @@ public class WorldDropHandler : MonoBehaviour
 
         if (targetRunner != null && _hitlayer == _camLayer)
         {
-            // Drop réussi : construit le context et déclenche l'interaction
-            // instigator = GameObject de l'item UI source (pour traçabilité)
-            // target     = objet 3D touché dans le monde
             InteractionContext context = new InteractionContext
             {
                 instigator = DragContext.SourceController.gameObject,
@@ -158,6 +158,7 @@ public class WorldDropHandler : MonoBehaviour
 
         _inventoryController.RemoveInventoryItem(draggedItem);
 
+        OnDropItem?.Invoke();
         return;
     }
 }
