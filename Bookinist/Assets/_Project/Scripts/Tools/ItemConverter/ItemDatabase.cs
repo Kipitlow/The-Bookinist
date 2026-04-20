@@ -3,21 +3,21 @@ using UnityEngine;
 
 public class ItemDatabase : MonoBehaviour
 {
-    public static ItemDatabase Instance;
+    public static ItemDatabase instance;
 
-    [SerializeField] private List<ShopItemData> allItems;
+    [SerializeField] private List<ShopItemData> _allItems;
 
     private Dictionary<string, ShopItemData> _dict;
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        Instance = this;
+        instance = this;
         DontDestroyOnLoad(gameObject);
 
         LoadAllItems();

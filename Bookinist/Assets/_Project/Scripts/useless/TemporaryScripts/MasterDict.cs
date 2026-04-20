@@ -12,6 +12,6 @@ public class MasterDict : MonoBehaviour
 
     public void GetShopItem()
     {
-        Debug.Log(ItemDatabase.Instance.Get(_shopItem).itemName);
+        Debug.Log(ItemDatabase.instance.Get(_shopItem).itemName);
     }
 }

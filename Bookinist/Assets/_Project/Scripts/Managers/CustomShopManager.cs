@@ -187,7 +187,7 @@ public class CustomShopManager : MonoBehaviour
     {
         foreach (var item in SaveSystem.instance.inventory.ownedItemIDs)
         {
-            AddObject(ItemDatabase.Instance.Get(item));
+            AddObject(ItemDatabase.instance.Get(item));
         }
     }
 }
