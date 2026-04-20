@@ -1772,6 +1772,50 @@ MonoBehaviour:
       pickable: {fileID: 0}
       item: {fileID: 11400000, guid: 0a709a5066689d24fb824e471a5f0d88, type: 2}
       balance: {fileID: 0}
+    - type: 6
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 5280502122721757423}
+      itemPrefab: {fileID: 2204687104674799107, guid: 5fa77cc418a1ac246acf9623b7a7d8a7, type: 3}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 7278566874961008637}
+            m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+            m_MethodName: set_sprite
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: RemoveInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 0a709a5066689d24fb824e471a5f0d88, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 11400000, guid: 0a709a5066689d24fb824e471a5f0d88, type: 2}
+      balance: {fileID: 0}
 --- !u!114 &5280502122721757423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2308,8 +2352,8 @@ MonoBehaviour:
   - {fileID: 4323930702909417819}
   - {fileID: 726866964116380040}
   - {fileID: 388044834043946368}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3086546557685205472}
+  - {fileID: 5567584439637016600}
   - {fileID: 6891144049049427354}
   - {fileID: 4044899405079225591}
   - {fileID: 1921833531116834250}
@@ -3961,6 +4005,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6268e5ec1eaae1b4cb424cc8267c1185, type: 3}
+--- !u!1 &3086546557685205472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2403293859854776695, guid: 6268e5ec1eaae1b4cb424cc8267c1185, type: 3}
+  m_PrefabInstance: {fileID: 833072154580709527}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8844495672257688934 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8156686611596920305, guid: 6268e5ec1eaae1b4cb424cc8267c1185, type: 3}
@@ -4338,5 +4387,10 @@ PrefabInstance:
 --- !u!4 &2102161526212312222 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8156686611596920305, guid: 6268e5ec1eaae1b4cb424cc8267c1185, type: 3}
+  m_PrefabInstance: {fileID: 7790734245492423023}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5567584439637016600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2403293859854776695, guid: 6268e5ec1eaae1b4cb424cc8267c1185, type: 3}
   m_PrefabInstance: {fileID: 7790734245492423023}
   m_PrefabAsset: {fileID: 0}

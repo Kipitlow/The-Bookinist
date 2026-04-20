@@ -5,12 +5,12 @@ using UnityEngine;
 public class ObjectShake : MonoBehaviour
 {
     #region Variables
-    [SerializeField] private Transform _target;
     [SerializeField] private float _defaultDuration = 0.15f;
     [SerializeField] private float _defaultMagnitude = 0.05f;
     [SerializeField] private AnimationCurve _falloff = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
 
     private Coroutine _shakeRoutine;
+    private Transform _target;
     #endregion
 
     #region UnityMethods
