@@ -128,6 +128,13 @@ public class ScriptBalance : MonoBehaviour
             StartSolveFlow();
         }
         _textValue.text = $"{_currentWeight} >= 100Value";
+
+        Debug.Log("<color=blue>A2: wtf fonctionne bordel de Q</color>");
+
+        if (_currentWeight >= 100)
+        {
+            _npcTalker.StartDialogue(_dialogueFin);
+        }
         return true;
     }
 
@@ -165,11 +172,6 @@ public class ScriptBalance : MonoBehaviour
             ResetBalanceVisuals();
         }
         _textValue.text = $"{_currentWeight} >= 100";
-        /*if(_currentWeight>=100)
-        {
-            _npcTalker.StartDialogue(_dialogueFin);
-        }*/
-        _npcTalker.StartDialogue(_dialogueFin);
         return; //returnedCount;
     }
 
