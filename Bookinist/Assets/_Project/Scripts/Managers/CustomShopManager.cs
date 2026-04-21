@@ -74,6 +74,8 @@ public class CustomShopManager : MonoBehaviour
 
         // La view 0 est active au départ
         _horizontalPanels[0].SetActive(true);
+
+        LoadItems();
     }
 
     /// <summary>
@@ -179,5 +181,13 @@ public class CustomShopManager : MonoBehaviour
             return false;
 
         return _inventoryByView[view].Contains(item);
+    }
+
+    private void LoadItems()
+    {
+        foreach (var item in SaveSystem.instance.inventory.ownedItemIDs)
+        {
+            AddObject(ItemDatabase.instance.Get(item));
+        }
     }
 }
