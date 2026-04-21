@@ -149,7 +149,7 @@ public class SC_Tache : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning($"la mission {Liste_Mission[i].Nom_Mission} estr terminer");
+                    //Debug.LogWarning($"la mission {Liste_Mission[i].Nom_Mission} estr terminer");
                 }
             }
         }
