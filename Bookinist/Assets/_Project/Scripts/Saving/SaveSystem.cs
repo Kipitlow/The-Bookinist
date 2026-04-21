@@ -97,4 +97,9 @@ public class SaveSystem : MonoBehaviour
 
         Save();
     }
+
+    private void OnApplicationQuit()
+    {
+        Save();
+    }
 }
