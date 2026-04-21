@@ -427,8 +427,6 @@ public class ScriptBalance : MonoBehaviour
         }
 
         _textValue.text = $"{_currentWeight} / 100";
-
-
     }
 
     #endregion
