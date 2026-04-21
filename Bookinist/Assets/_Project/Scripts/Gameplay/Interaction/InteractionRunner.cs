@@ -201,6 +201,11 @@ public class InteractionRunner : MonoBehaviour
                 if (_interactionFeedBack != null)
                     _interactionFeedBack.TryFeedback();
                 break;
+
+            case ActionType.CloseDialogue:
+                if (action.npcDialogue != null && action.npcTalker != null)
+                    action.npcTalker.CloseBubble();
+                break;
         }
     }
     #endregion

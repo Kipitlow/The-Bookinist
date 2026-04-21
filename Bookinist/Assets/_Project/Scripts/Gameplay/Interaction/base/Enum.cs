@@ -32,4 +32,5 @@ public enum ActionType
     Drop,
     PlaceInBalance,
     FeedBack,
+    CloseDialogue,
 }
