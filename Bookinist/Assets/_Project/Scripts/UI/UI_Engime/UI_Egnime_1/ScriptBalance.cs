@@ -126,15 +126,9 @@ public class ScriptBalance : MonoBehaviour
         if (_currentWeight >= _targetWeight)
         {
             StartSolveFlow();
-        }
-        _textValue.text = $"{_currentWeight} >= 100Value";
-
-        Debug.Log("<color=blue>A2: wtf fonctionne bordel de Q</color>");
-
-        if (_currentWeight >= 100)
-        {
             _npcTalker.StartDialogue(_dialogueFin);
         }
+        _textValue.text = $"{_currentWeight} >= 100Value";
         return true;
     }
 
