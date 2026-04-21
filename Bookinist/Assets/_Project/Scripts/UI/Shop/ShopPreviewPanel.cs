@@ -16,6 +16,9 @@ public class ShopPreviewPanel : MonoBehaviour
 
     [Header("3D Preview")]
     [SerializeField] private Camera _previewCamera;
+
+    // _previewRoot est le pivot de rotation placé devant la caméra preview.
+    // Le prefab sera instancié en enfant de ce transform, centré via ses bounds.
     [SerializeField] private Transform _previewRoot;
     [SerializeField] private float _rotationSpeed = 45f;
 
@@ -24,7 +27,7 @@ public class ShopPreviewPanel : MonoBehaviour
 
     private ShopItemData _currentItem;
     private ShopItemUI _currentItemUI;
-    private GameObject _currentMeshInstance;
+    private GameObject _currentInstance;
 
     private void Awake()
     {
@@ -39,7 +42,6 @@ public class ShopPreviewPanel : MonoBehaviour
         ClearPreview();
     }
 
-    /// <summary>Appelé par ShopItemUI au clic sur une carte.</summary>
     public void ShowPreview(ShopItemData data, ShopItemUI sourceUI)
     {
         _currentItem = data;
@@ -53,14 +55,59 @@ public class ShopPreviewPanel : MonoBehaviour
         bool alreadyOwned = CustomShopManager.Instance != null && CustomShopManager.Instance.HasItem(data);
         RefreshBuyButton(alreadyOwned);
 
-        SpawnPreviewMesh(data.mesh);
+        SpawnPreview(data.previewPrefab);
+    }
+
+    private void SpawnPreview(GameObject prefab)
+    {
+        if (_currentInstance != null)
+        {
+            Destroy(_currentInstance);
+            _currentInstance = null;
+        }
+
+        if (prefab == null) return;
+
+        // Instancie le prefab en enfant du pivot de rotation
+        _currentInstance = Instantiate(prefab, _previewRoot);
+        _currentInstance.transform.localPosition = Vector3.zero;
+        _currentInstance.transform.localRotation = Quaternion.identity;
+
+        CenterOnBounds(_currentInstance);
+
+        // Isole le prefab dans le layer Preview pour la caméra dédiée
+        SetLayerRecursive(_currentInstance, LayerMask.NameToLayer("Preview"));
+    }
+
+    /// <summary>
+    /// Décale le mesh pour que son centre géométrique (Bounds) coïncide
+    /// avec la position locale (0,0,0) du pivot, garantissant une rotation centrée.
+    /// </summary>
+    private void CenterOnBounds(GameObject go)
+    {
+        Renderer[] renderers = go.GetComponentsInChildren<Renderer>();
+        if (renderers.Length == 0) return;
+
+        // Calcule les bounds globales de tous les renderers
+        Bounds bounds = renderers[0].bounds;
+        foreach (Renderer r in renderers)
+            bounds.Encapsulate(r.bounds);
+
+        // Décale l'instance pour centrer ses bounds sur le pivot
+        Vector3 offset = go.transform.position - bounds.center;
+        go.transform.position += offset;
+    }
+
+    private void Update()
+    {
+        if (_currentInstance != null)
+            _previewRoot.Rotate(Vector3.up, _rotationSpeed * Time.deltaTime, Space.Self);
     }
 
     private void RefreshBuyButton(bool alreadyOwned)
     {
         _confirmBuyButton.interactable = !alreadyOwned;
         if (_confirmBuyText != null)
-            _confirmBuyButton.gameObject.SetActive(true);
             _confirmBuyText.text = alreadyOwned ? "Déjà acheté" : "Acheter";
     }
 
@@ -79,11 +126,9 @@ public class ShopPreviewPanel : MonoBehaviour
         if (CustomShopManager.Instance != null)
             CustomShopManager.Instance.AddObject(_currentItem);
 
-        // Feedback uniforme : la card passe en Sold Out immédiatement
         if (_currentItemUI != null)
             _currentItemUI.SetSoldState();
 
-        // La preview reste visible mais le bouton est désactivé
         RefreshBuyButton(true);
     }
 
@@ -92,33 +137,14 @@ public class ShopPreviewPanel : MonoBehaviour
         _currentItem = null;
         _currentItemUI = null;
 
-        if (_currentMeshInstance != null) { Destroy(_currentMeshInstance); _currentMeshInstance = null; }
+        if (_currentInstance != null) { Destroy(_currentInstance); _currentInstance = null; }
 
         if (_itemNameText != null) _itemNameText.text = "";
         if (_itemPriceText != null) _itemPriceText.text = "";
 
-        RefreshBuyButton(true); // désactivé par défaut quand rien n'est sélectionné
+        RefreshBuyButton(true);
 
-        if (_emptyStateHint != null) _emptyStateHint.SetActive(true); _confirmBuyButton.gameObject.SetActive(false);
-            
-    }
-
-    private void SpawnPreviewMesh(GameObject meshPrefab)
-    {
-        if (_currentMeshInstance != null) Destroy(_currentMeshInstance);
-        if (meshPrefab == null) return;
-
-        _currentMeshInstance = Instantiate(meshPrefab, _previewRoot);
-        _currentMeshInstance.transform.localPosition = Vector3.zero;
-        _currentMeshInstance.transform.localRotation = Quaternion.identity;
-
-        SetLayerRecursive(_currentMeshInstance, LayerMask.NameToLayer("Preview"));
-    }
-
-    private void Update()
-    {
-        if (_currentMeshInstance != null)
-            _currentMeshInstance.transform.Rotate(Vector3.up, _rotationSpeed * Time.deltaTime, Space.World);
+        if (_emptyStateHint != null) _emptyStateHint.SetActive(true);
     }
 
     private static void SetLayerRecursive(GameObject go, int layer)
