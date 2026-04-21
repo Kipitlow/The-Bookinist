@@ -11,6 +11,11 @@ public class SaveSystem : MonoBehaviour
     public PlayerProfile profile;
     public PlayerSettings settings;
     public PlayerCurrency currency;
+    public PlayerInventory inventory;
+    public PlayerProgression progression;
+    public PlayerCustomShop customShop;
+    public PlayerGacha gacha;
+    public PlayerBP bp;
 
     public Action OnDataUpdate;
 
@@ -25,6 +30,7 @@ public class SaveSystem : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+        Load();
     }
 
     private void Start()
@@ -38,7 +44,12 @@ public class SaveSystem : MonoBehaviour
         {
             profile = profile,
             settings = settings,
-            currency = currency
+            currency = currency,
+            inventory = inventory,
+            progression = progression,
+            customShop = customShop,
+            gacha = gacha,
+            bp = bp
         };
 
         _saveManager.Write("saveData.json", data);
@@ -58,6 +69,11 @@ public class SaveSystem : MonoBehaviour
         profile = data.profile;
         settings = data.settings;
         currency = data.currency;
+        inventory = data.inventory;
+        progression = data.progression;
+        customShop = data.customShop;
+        gacha = data.gacha;
+        bp = data.bp;
 
         Debug.Log("Invoke Called");
         OnDataUpdate?.Invoke();
@@ -73,6 +89,11 @@ public class SaveSystem : MonoBehaviour
         profile = new PlayerProfile();
         settings = new PlayerSettings();
         currency = new PlayerCurrency();
+        inventory = new PlayerInventory();
+        progression = new PlayerProgression();
+        customShop = new PlayerCustomShop();
+        gacha = new PlayerGacha();
+        bp = new PlayerBP();
 
         Save();
     }
