@@ -162,7 +162,6 @@ public class SC_Tache : MonoBehaviour
             if (GameManager.Instance.UseHint() == false) return;
         }
 
-        Debug.Log("iufhsdf");
         _hintNumberTextMesh.text = GameManager.Instance.GetHintNumber().ToString();
         _hintsButton.SetActive(false);
         _hintsPanel.SetActive(true);

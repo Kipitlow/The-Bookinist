@@ -183,7 +183,7 @@ public class NPCTalker : MonoBehaviour
         }
     }
 
-    private void CloseBubble()
+    public void CloseBubble()
     {
         _thinkBubble.gameObject.SetActive(true);
 

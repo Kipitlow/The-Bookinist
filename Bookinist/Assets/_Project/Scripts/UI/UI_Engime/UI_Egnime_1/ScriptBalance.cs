@@ -60,12 +60,9 @@ public class ScriptBalance : MonoBehaviour
     [SerializeField] private int _counterweightWeight = 100;
     [SerializeField] private float _solveDelay = 0.5f;
 
-    [Header("Text Ajoute")]
+    [Header("Information On Weight")]
     [SerializeField] private TextMeshPro _textValue;
-    [Header("DialogueNPC")]
-    [SerializeField] private NPCDialogue _dialogueSoleil;
-    [SerializeField] private NPCDialogue _dialogueFin;
-    [SerializeField] private NPCTalker _npcTalker;
+    [SerializeField] private GameObject _resetBalance;
 
 
     [Header("Spawned Item Visual")]
@@ -80,7 +77,7 @@ public class ScriptBalance : MonoBehaviour
     private GameObject _counterweightInstance;
     private bool _isSolved;
     private bool _isSolving;
-    private int _currentWeight;
+    public int _currentWeight { get; private set; }
 
     public int CurrentWeight => _currentWeight;
     public int DepositedCount => _depositedItems.Count;
@@ -127,14 +124,7 @@ public class ScriptBalance : MonoBehaviour
         {
             StartSolveFlow();
         }
-        _textValue.text = $"{_currentWeight} >= 100Value";
 
-        Debug.Log("<color=blue>A2: wtf fonctionne bordel de Q</color>");
-
-        if (_currentWeight >= 100)
-        {
-            _npcTalker.StartDialogue(_dialogueFin);
-        }
         return true;
     }
 
@@ -142,7 +132,7 @@ public class ScriptBalance : MonoBehaviour
     public void TryTakeBackItems()
     {
         if (!CanTakeBackAtLeastOneItem())
-            return;//0;
+            return;
 
         int returnedCount = 0;
 
@@ -171,8 +161,7 @@ public class ScriptBalance : MonoBehaviour
             DestroyCounterweight();
             ResetBalanceVisuals();
         }
-        _textValue.text = $"{_currentWeight} >= 100";
-        return; //returnedCount;
+        return;
     }
 
     #endregion
@@ -436,6 +425,10 @@ public class ScriptBalance : MonoBehaviour
         {
             _plateau2.rotation = Quaternion.identity;
         }
+
+        _textValue.text = $"{_currentWeight} / 100";
+
+
     }
 
     #endregion
