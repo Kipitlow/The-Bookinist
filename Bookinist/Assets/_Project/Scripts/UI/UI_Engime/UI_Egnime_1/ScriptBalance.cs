@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class ScriptBalance : MonoBehaviour
@@ -61,6 +62,11 @@ public class ScriptBalance : MonoBehaviour
 
     [Header("Text Ajoute")]
     [SerializeField] private TextMeshPro _textValue;
+    [Header("DialogueNPC")]
+    [SerializeField] private NPCDialogue _dialogueSoleil;
+    [SerializeField] private NPCDialogue _dialogueFin;
+    [SerializeField] private NPCTalker _npcTalker;
+
 
     [Header("Spawned Item Visual")]
     [SerializeField] private Vector3 _spawnedItemScale = new Vector3(0.1f, 0.1f, 0.1f);
@@ -122,6 +128,13 @@ public class ScriptBalance : MonoBehaviour
             StartSolveFlow();
         }
         _textValue.text = $"{_currentWeight} >= 100Value";
+
+        Debug.Log("<color=blue>A2: wtf fonctionne bordel de Q</color>");
+
+        if (_currentWeight >= 100)
+        {
+            _npcTalker.StartDialogue(_dialogueFin);
+        }
         return true;
     }
 
@@ -158,7 +171,7 @@ public class ScriptBalance : MonoBehaviour
             DestroyCounterweight();
             ResetBalanceVisuals();
         }
-        _textValue.text = $"{_currentWeight} >= 100Value";
+        _textValue.text = $"{_currentWeight} >= 100";
         return; //returnedCount;
     }
 
@@ -168,6 +181,11 @@ public class ScriptBalance : MonoBehaviour
 
     public bool CanAcceptItem(Item item)
     {
+        #region FaireLeDialogue
+        //Debug.Log($"<color=green> Name Tester: {item.name} </color>");
+
+        //_interactionRunner.CallTry();
+        #endregion
         if (_isSolved || _isSolving)
             return false;
 
@@ -181,6 +199,7 @@ public class ScriptBalance : MonoBehaviour
             return false;
 
         return _weightByItem.ContainsKey(item.itemName);
+        
     }
 
     public bool ContainsItem(Item item)
