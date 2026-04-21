@@ -66,6 +66,7 @@ public class CustomShopManager : MonoBehaviour
         if (_defaultItems != null)
             foreach (ShopItemData item in _defaultItems)
                 AddObject(item);
+        LoadItems();
     }
 
     private void OnViewChanged(int index, int offset)
@@ -118,7 +119,7 @@ public class CustomShopManager : MonoBehaviour
             return;
         }
 
-        // Détruit les instances précédentes (principal + additional s'il existait)
+        // Dï¿½truit les instances prï¿½cï¿½dentes (principal + additional s'il existait)
         if (_currentObjects[viewIndex, 0] != null) Destroy(_currentObjects[viewIndex, 0]);
         if (_currentObjects[viewIndex, 1] != null) Destroy(_currentObjects[viewIndex, 1]);
 
@@ -149,5 +150,13 @@ public class CustomShopManager : MonoBehaviour
             return false;
 
         return _inventoryByView[view].Contains(item);
+    }
+
+    private void LoadItems()
+    {
+        foreach (var item in SaveSystem.instance.inventory.ownedItemIDs)
+        {
+            AddObject(ItemDatabase.instance.Get(item));
+        }
     }
 }
