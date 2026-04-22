@@ -2,6 +2,7 @@ using NUnit.Framework.Internal;
 using System;
 using System.ComponentModel.Design;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 public class ConditionEntry
@@ -64,5 +65,8 @@ public class ConditionEntry
 
     [Tooltip("Is the boo finished")]
     public bool isBookFinish;
+
+    [Tooltip("weight in balance")]
+    public int weight;
 
 }

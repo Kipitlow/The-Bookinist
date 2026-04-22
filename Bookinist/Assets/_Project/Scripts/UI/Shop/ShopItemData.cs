@@ -15,5 +15,11 @@ public class ShopItemData : ScriptableObject
     [Header("Customisation")]
     [Range(0, 5)]
     public int viewIndex;
-    public GameObject mesh;
+    public GameObject prefab;
+
+    [Tooltip("Optionnel : second prefab à instancier en même temps")]
+    public GameObject additionalPrefab;
+
+    [Tooltip("Prefab avec la scale correct pour la preview dans le shop")]
+    public GameObject previewPrefab;
 }

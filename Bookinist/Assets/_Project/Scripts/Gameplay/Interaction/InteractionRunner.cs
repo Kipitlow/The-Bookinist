@@ -5,6 +5,14 @@ using UnityEngine;
 public class InteractionRunner : MonoBehaviour
 {
     [SerializeField] private List<InteractionSet> _interactionSets = new();
+    private InteractionFeedBack _interactionFeedBack;
+    private bool _conditionWasTrue;
+
+    private void Awake()
+    {
+        _interactionFeedBack = GetComponent<InteractionFeedBack>();
+    }
+
 
     #region Try
     public bool TryExecuteAll(InteractionContext context)
@@ -111,6 +119,16 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.balance == null)
                     return false;
                 return condition.balance.CanAcceptItem(context.item);
+
+            case ConditionType.WeightIsMoreThan:
+                if (condition.balance == null)
+                    return false;
+                return condition.balance._currentWeight >= condition.weight;
+
+            case ConditionType.WeightIsLessThan:
+                if (condition.balance == null)
+                    return false;
+                return condition.balance._currentWeight <= condition.weight;
         }
     }
 
@@ -120,6 +138,8 @@ public class InteractionRunner : MonoBehaviour
 
     private void ExecuteAction(ActionEntry action, InteractionContext context)
     {
+
+
         switch (action.type)
         {
             case ActionType.SetActive:
@@ -185,6 +205,16 @@ public class InteractionRunner : MonoBehaviour
             case ActionType.PlaceInBalance:
                 if (action.balance != null)
                     action.balance.TryAddItem(context.item);
+                break;
+
+            case ActionType.FeedBack:
+                if (_interactionFeedBack != null)
+                    _interactionFeedBack.TryFeedback();
+                break;
+
+            case ActionType.CloseDialogue:
+                if (action.npcDialogue != null && action.npcTalker != null)
+                    action.npcTalker.CloseBubble();
                 break;
         }
     }

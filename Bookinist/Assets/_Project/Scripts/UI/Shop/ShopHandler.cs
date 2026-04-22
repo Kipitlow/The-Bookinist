@@ -21,6 +21,9 @@ public class ShopHandler : MonoBehaviour
     [SerializeField] private ShopItemUI _shopItemPrefab;
     [SerializeField] private List<ShopItemData> _allItems;
 
+    [Header("Contents")]
+    [SerializeField] private Transform _furnitureContent;
+
     private ShopTabs _currentTab;
 
     public void OpenShop()
@@ -55,13 +58,12 @@ public class ShopHandler : MonoBehaviour
         if (newTab == ShopTabs.Energy)
             return;
 
-        PopulateCategory(activeCategory.transform, newTab);
+        PopulateCategory(newTab);
     }
 
-    private void PopulateCategory(Transform container, ShopTabs tab)
+    private void PopulateCategory(ShopTabs tab)
     {
-        Transform realContainer = container.GetChild(0);
-        foreach (Transform child in realContainer)
+        foreach (Transform child in _furnitureContent)
             Destroy(child.gameObject);
 
         foreach (ShopItemData item in _allItems)
@@ -69,7 +71,7 @@ public class ShopHandler : MonoBehaviour
             bool belongs = tab == ShopTabs.Furniture ? item.isFurniture : !item.isFurniture;
             if (!belongs) continue;
 
-            ShopItemUI ui = Instantiate(_shopItemPrefab, realContainer);
+            ShopItemUI ui = Instantiate(_shopItemPrefab, _furnitureContent);
             ui.Setup(item);
 
             if (CustomShopManager.Instance.HasItem(item))

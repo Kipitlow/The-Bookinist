@@ -36,6 +36,11 @@ public class Page : MonoBehaviour
         ApplySortingToPageObjects();
     }
 
+    public int GetListSize()
+    {
+        return pageObjects.Count;
+    }
+
     /// <summary>
     /// Applique le Sorting Layer et un sortingOrder séquentiel (0, 1, 2...)
     /// à tous les objets pré-placés dans la liste pageObjects.
