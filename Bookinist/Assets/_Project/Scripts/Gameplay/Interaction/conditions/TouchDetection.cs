@@ -77,7 +77,7 @@ public class TouchDetection : MonoBehaviour
             interactionFeedBack interactionFeedBack = hit.collider.GetComponent<interactionFeedBack>();
 
             #region dans le bookshop
-            if (SceneManager.GetActiveScene().name == "BookShopUpdated")
+            if (SceneManager.GetActiveScene().name == "BookShopUpdated" || SceneManager.GetActiveScene().name == "LibraryTest")
             {
 
                 OnClick?.Invoke(hit.collider.gameObject);
