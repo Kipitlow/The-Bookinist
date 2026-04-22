@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private TouchDetection touchDetection;
 
     private InputSystem_Actions _inputActions;
+
 
     private void Awake()
     {
@@ -28,5 +30,6 @@ public class InputManager : MonoBehaviour
     {
         Vector2 screenPosition = _inputActions.LevelNav.Position.ReadValue<Vector2>();
         touchDetection.OnTouch(screenPosition);
+
     }
 }

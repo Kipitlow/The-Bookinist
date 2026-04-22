@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -19,6 +21,13 @@ public class NPCTalker : MonoBehaviour
     [SerializeField]
     private TextMeshPro _nameBubbleText;
 
+    [Header("Bulle de pensée")]
+    [SerializeField]
+    private Transform _alreadyRead;
+    [SerializeField]
+    private Transform _notRead;
+
+    [Header("Autre")]
     [SerializeField]
     private Vector2 _padding = new Vector2(0.5f, 0.3f);
 
@@ -27,6 +36,13 @@ public class NPCTalker : MonoBehaviour
     private Vector2 _nameTextOffset = new Vector2(-8, 0);
 
     private NPCDialogue _dialogue;
+
+    private float _animationInterval = 0.4f;
+
+    private Coroutine _indicatorCoroutine;
+    private Transform[] _notReadParts;
+    private int _timesEnded;
+    private Transform _thinkBubble;
 
     public int _lineIndex { get; private set; } = 0;
     public bool _hasDialogueEnded { get; private set; } = false;
@@ -38,6 +54,9 @@ public class NPCTalker : MonoBehaviour
     [SerializeField]
     private Vector3 _pivOffsetBook = new Vector3(-1, -3, 0);
 
+    public event Action OnShowBook;
+    public event Action OnDialogEnd;
+
     void Start()
     {
         _bubbleRenderer.enabled = false;
@@ -47,6 +66,14 @@ public class NPCTalker : MonoBehaviour
         _nameBubbleRenderer.enabled = false;
 
         _nameBubbleText.enabled = false;
+
+        _thinkBubble = _notRead.parent.transform;
+
+        _notReadParts = new Transform[_notRead.childCount];
+        for (int i = 0; i < _notRead.childCount; i++)
+            _notReadParts[i] = _notRead.GetChild(i);
+
+        UpdateIndicator();
     }
 
     public void StartDialogue(NPCDialogue SO_dialogue)
@@ -61,7 +88,9 @@ public class NPCTalker : MonoBehaviour
         {
             CloseBubble();
             _hasDialogueEnded = true;
-            _dialogue.timesEnded++;
+            _timesEnded++;
+            UpdateIndicator();
+            OnDialogEnd?.Invoke();
             return;
         }
 
@@ -72,17 +101,22 @@ public class NPCTalker : MonoBehaviour
             ShowLine(_dialogue.lines[_lineIndex]);
             _lineIndex++;
         }
-        else if (!_dialogue.isLoopable && _dialogue.timesEnded == 0)
+        else if (!_dialogue.isLoopable && _timesEnded == 0)
         {
             ShowLine(_dialogue.lines[_lineIndex]);
             _lineIndex++;
         }
-        else
-            return;
+
+        if (_dialogue.IsShopNPC && _lineIndex == 4)
+        {
+            OnShowBook?.Invoke();
+        }
     }
 
     private void ShowLine(string text)
     {
+        _thinkBubble.gameObject.SetActive(false);
+
         _bubbleText.text = text;
 
         _bubbleRenderer.enabled = true;
@@ -151,6 +185,8 @@ public class NPCTalker : MonoBehaviour
 
     private void CloseBubble()
     {
+        _thinkBubble.gameObject.SetActive(true);
+
         _bubbleRenderer.enabled = false;
 
         _bubbleText.enabled = false;
@@ -162,5 +198,44 @@ public class NPCTalker : MonoBehaviour
         _nameBubbleText.enabled = false;
 
         _lineIndex = 0; // reset pour rejouer si besoin
+    }
+
+    public void UpdateIndicator()
+    {
+        bool hasBeenRead = _dialogue != null && _timesEnded > 0;
+        Debug.Log(hasBeenRead);
+
+        _alreadyRead.gameObject.SetActive(hasBeenRead);
+        _notRead.gameObject.SetActive(!hasBeenRead);
+
+        if (_indicatorCoroutine != null)
+            StopCoroutine(_indicatorCoroutine);
+
+        if (!hasBeenRead)
+            _indicatorCoroutine = StartCoroutine(AnimateNotRead());
+
+        if( _dialogue == null)
+        {
+            _indicatorCoroutine = StartCoroutine(AnimateNotRead());
+            return;
+        }
+
+        if(!_dialogue.isLoopable &&  _timesEnded > 0)
+        {
+            _thinkBubble.gameObject.SetActive(false);
+        }
+    }
+
+    private IEnumerator AnimateNotRead()
+    {
+        int index = 0;
+        while (true)
+        {
+            for (int i = 0; i < _notReadParts.Length; i++)
+                _notReadParts[i].gameObject.SetActive(i == index);
+
+            index = (index + 1) % _notReadParts.Length;
+            yield return new WaitForSeconds(_animationInterval);
+        }
     }
 }

@@ -63,7 +63,7 @@ public class ActionEntryDrawer : PropertyDrawer
                 break;
 
             case ActionType.Destroy:
-                lines += 0;
+                lines += 1;
                 break;
 
             case ActionType.CycleSprites:
@@ -71,6 +71,10 @@ public class ActionEntryDrawer : PropertyDrawer
 
                 var spritesProp = property.FindPropertyRelative("sprites");
                 extraHeight += EditorGUI.GetPropertyHeight(spritesProp, true);
+                break;
+
+            case ActionType.PlaceInBalance:
+                lines += 1;
                 break;
         }
 
@@ -153,6 +157,7 @@ public class ActionEntryDrawer : PropertyDrawer
                 break;
 
             case ActionType.Destroy:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 break;
 
             case ActionType.CycleSprites:
@@ -166,6 +171,10 @@ public class ActionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(spritesRect, spritesProp, true);
                 r.y += spritesHeight + s;
 
+                break;
+
+            case ActionType.PlaceInBalance:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("balance"));
                 break;
         }
         EditorGUI.EndProperty();

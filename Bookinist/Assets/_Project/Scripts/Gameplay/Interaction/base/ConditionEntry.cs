@@ -59,4 +59,10 @@ public class ConditionEntry
     [Tooltip("check if inventory has one slot empty")]
     public bool HasToCheckEmptynessInventory;
 
+    [Tooltip("balance")]
+    public ScriptBalance balance;
+
+    [Tooltip("Is the boo finished")]
+    public bool isBookFinish;
+
 }

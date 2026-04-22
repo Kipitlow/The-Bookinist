@@ -1,83 +1,233 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MoveObject : MonoBehaviour
 {
-
     #region Variables
+
     [Header("Movement")]
-    [SerializeField] private float _smoothTime = 0.2f;
+    [SerializeField] private float _defaultSmoothTime = 0.2f;
     [SerializeField] private float _arrivalThreshold = 0.01f;
+    [SerializeField] private bool _isDroppedItem;
 
-    private bool _hasMoved = false; 
-    private bool _isMoving = false;
-    private bool _shouldReset = false;
-
-    private int _hasMovedThisManyTime; 
-
-    private Vector3 _targetPosition;
+    public Vector3 _baseLocalPosition { get; private set; }
+    private Vector3 _targetLocalPosition;
     private Vector3 _velocity;
+    private float _currentSmoothTime;
+
+    private bool _shouldCountMoveOnArrival;
+    private bool _shouldReset;
+
+    private bool _hasMoved;
+    private int _hasMovedThisManyTime;
+
+    public bool IsMoving { get; private set; }
+    public Vector3 CurrentTarget => _targetLocalPosition;
+
     #endregion
+
+    #region UnityMethods
 
     private void Awake()
     {
-        _targetPosition = transform.localPosition;
+        _targetLocalPosition = transform.localPosition;
+        _currentSmoothTime = _defaultSmoothTime;
+        _velocity = Vector3.zero;
+
+        _baseLocalPosition = transform.localPosition;
+
+        IsMoving = false;
+        _hasMoved = false;
         _hasMovedThisManyTime = 0;
+        _shouldCountMoveOnArrival = false;
+        _shouldReset = false;
     }
 
 
-    #region Update 
     private void Update()
     {
-        transform.localPosition = Vector3.SmoothDamp(transform.localPosition, _targetPosition, ref _velocity, _smoothTime);
-
-        if (Vector3.Distance(transform.localPosition, _targetPosition) <= _arrivalThreshold && _isMoving)
+        if (!IsMoving)
         {
-            transform.localPosition = _targetPosition;
-            _velocity = Vector3.zero;
-            _isMoving = false;
-
-            if( _shouldReset)
+            if (_shouldReset)
             {
-                _shouldReset = false;
-                _hasMoved = false;
-                _hasMovedThisManyTime = 0;
-                return;
+                ResetMoveStateImmediate();
             }
 
-            _hasMoved = true;
-            _hasMovedThisManyTime++;
+            return;
+        }
 
+        if (_currentSmoothTime <= 0f)
+        {
+            CompleteMovement();
+            return;
+        }
+
+        transform.localPosition = Vector3.SmoothDamp(
+            transform.localPosition,
+            _targetLocalPosition,
+            ref _velocity,
+            _currentSmoothTime
+        );
+
+        float sqrDistance = (transform.localPosition - _targetLocalPosition).sqrMagnitude;
+        float sqrThreshold = _arrivalThreshold * _arrivalThreshold;
+
+        if (sqrDistance <= sqrThreshold)
+        {
+            CompleteMovement();
         }
     }
+
+    #endregion
+
+    #region Methods
+
+    #region CompleteMovement
+    private void CompleteMovement()
+    {
+        transform.localPosition = _targetLocalPosition;
+        _velocity = Vector3.zero;
+        IsMoving = false;
+
+        if (_shouldCountMoveOnArrival)
+        {
+            _shouldCountMoveOnArrival = false;
+            _hasMoved = true;
+            _hasMovedThisManyTime++;
+            _baseLocalPosition = _targetLocalPosition;
+        }
+
+        if (_shouldReset)
+        {
+            ResetMoveStateImmediate();
+        }
+    }
+
     #endregion
 
     #region Move
-    public void Move(float offsetX, float offsetY)
-    {
-        _targetPosition += new Vector3(offsetX, offsetY, 0f);
-        if (_isMoving) return;
-        _isMoving = true;
 
+    #region MoveTo
+
+    //main move
+    public void MoveTo(Vector3 targetLocalPosition, float smoothTime, bool countAsInteractionMove)
+    {
+        _targetLocalPosition = targetLocalPosition;
+        _currentSmoothTime = Mathf.Max(0f, smoothTime);
+        _shouldCountMoveOnArrival = countAsInteractionMove;
+
+        if (_currentSmoothTime <= 0f)
+        {
+            CompleteMovement();
+            return;
+        }
+
+        IsMoving = true;
+    }
+
+    public void MoveTo(Vector3 targetLocalPosition)
+    {
+        MoveTo(targetLocalPosition, _defaultSmoothTime, false);
+    }
+
+    public void MoveTo(Vector3 targetLocalPosition, float smoothTime)
+    {
+        MoveTo(targetLocalPosition, smoothTime, false);
     }
     #endregion
 
-    #region ResetHasMoved
-    public void ResethasMoved()
+    #region MoveBy
+    public void MoveBy(Vector3 offset)
     {
-            _shouldReset = true;
+        MoveBy(offset, _defaultSmoothTime, false);
+    }
+
+    public void MoveBy(Vector3 offset, float smoothTime)
+    {
+        MoveBy(offset, smoothTime, false);
+    }
+
+    public void MoveBy(Vector3 offset, float smoothTime, bool countAsInteractionMove)
+    {
+        MoveTo(_targetLocalPosition + offset, smoothTime, countAsInteractionMove);
+    }
+
+
+    public void MoveInteraction(float x, float y)
+    {
+        MoveBy(new Vector3(x, y, 0), _defaultSmoothTime, true);
+    }
+
+    public void MoveInteraction(float x, float y, float smoothTime)
+    {
+        MoveBy(new Vector3(x, y, 0), smoothTime, true);
     }
 
     #endregion
 
-    #region Check
+    #endregion
 
-    public bool HasMoved(bool hasMoved, int HowManytime)
+    #region checks
+
+    public void SetPositionImmediate(Vector3 localPosition)
+    {
+        _targetLocalPosition = localPosition;
+        transform.localPosition = localPosition;
+        _velocity = Vector3.zero;
+        IsMoving = false;
+        _shouldCountMoveOnArrival = false;
+    }
+
+    public bool IsAtPosition(Vector3 localPosition)
+    {
+        return (transform.localPosition - localPosition).sqrMagnitude <= _arrivalThreshold * _arrivalThreshold;
+    }
+
+    public bool HasMoved(bool hasMoved, int howManyTime)
     {
         if (hasMoved)
-            return _hasMovedThisManyTime >= HowManytime;
-        else
-            return !_hasMoved;
+            return HasMovedAtLeast(howManyTime);
+
+        return HasNeverMoved();
     }
+
+    // Méthodes plus claires si tu veux les utiliser ailleurs
+    public bool HasMovedAtLeast(int howManyTime)
+    {
+        return _hasMovedThisManyTime >= howManyTime;
+    }
+
+    public bool HasNeverMoved()
+    {
+        return !_hasMoved;
+    }
+    #endregion
+
+    #region reset
+
+    public void UpdateBasePos()
+    {
+        if (_isDroppedItem)_baseLocalPosition = transform.localPosition;
+    }
+
+    private void ResetMoveStateImmediate()
+    {
+        _hasMoved = false;
+        _hasMovedThisManyTime = 0;
+        _shouldReset = false;
+        _shouldCountMoveOnArrival = false;
+    }
+
+    public void ResetHasMoved()
+    {
+        if (IsMoving)
+        {
+            _shouldReset = true;
+            return;
+        }
+
+        ResetMoveStateImmediate();
+    }
+    #endregion
+
     #endregion
 }

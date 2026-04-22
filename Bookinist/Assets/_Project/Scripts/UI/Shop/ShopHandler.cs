@@ -34,6 +34,10 @@ public class ShopHandler : MonoBehaviour
     {
         _uiToDisable.SetActive(true);
         _shopMenu.SetActive(false);
+
+        // Nettoie la preview 3D quand on ferme la boutique
+        if (ShopPreviewPanel.Instance != null)
+            ShopPreviewPanel.Instance.ClearPreview();
     }
 
     public void NavigateShop(ShopTabs newTab)
@@ -43,6 +47,13 @@ public class ShopHandler : MonoBehaviour
 
         GameObject activeCategory = _shopCategories[(int)newTab];
         activeCategory.SetActive(true);
+
+        // Reset la preview lors du changement d'onglet
+        if (ShopPreviewPanel.Instance != null)
+            ShopPreviewPanel.Instance.ClearPreview();
+
+        if (newTab == ShopTabs.Energy)
+            return;
 
         PopulateCategory(activeCategory.transform, newTab);
     }
@@ -56,11 +67,13 @@ public class ShopHandler : MonoBehaviour
         foreach (ShopItemData item in _allItems)
         {
             bool belongs = tab == ShopTabs.Furniture ? item.isFurniture : !item.isFurniture;
-            print(belongs); 
             if (!belongs) continue;
 
             ShopItemUI ui = Instantiate(_shopItemPrefab, realContainer);
             ui.Setup(item);
+
+            if (CustomShopManager.Instance.HasItem(item))
+                ui.SetSoldState();
         }
     }
 

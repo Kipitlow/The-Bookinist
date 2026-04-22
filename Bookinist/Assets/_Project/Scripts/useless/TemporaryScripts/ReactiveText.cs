@@ -8,7 +8,12 @@ public enum DataDisplay
     PlayerLevel,
     PlayerLevelNoPre,
     PlayerXP,
-    PlayerBooksUnlocked
+    PlayerBooksUnlocked,
+    PlayerEnergy,
+    PlayerHardCurrency,
+    PlayerHardCurrencyNoPre,
+    PlayerSoftCurrency,
+    PlayerSoftCurrencyNoPre,
 }
 
 public class ReactiveText : MonoBehaviour
@@ -19,6 +24,17 @@ public class ReactiveText : MonoBehaviour
     private void Start()
     {
         textUpdate();
+    }
+
+    private void OnEnable()
+    {
+        SaveSystem.instance.OnDataUpdate += textUpdate;
+    }
+
+    private void OnDisable()
+    {
+        if (SaveSystem.instance != null)
+            SaveSystem.instance.OnDataUpdate -= textUpdate;
     }
 
     public void textUpdate()
@@ -48,6 +64,27 @@ public class ReactiveText : MonoBehaviour
             case DataDisplay.PlayerBooksUnlocked:
                 textVal.text = "Books Unlocked : " + SaveSystem.instance.profile.playerBooksUnlocked.ToString();
                 break;
+
+            case DataDisplay.PlayerEnergy:
+                textVal.text = SaveSystem.instance.currency.playerCurrencyEnergy.ToString() + "/5";
+                break;
+
+            case DataDisplay.PlayerHardCurrency:
+                textVal.text = SaveSystem.instance.currency.playerCurrencyHard.ToString() + "$";
+                break;
+
+            case DataDisplay.PlayerHardCurrencyNoPre:
+                textVal.text = SaveSystem.instance.currency.playerCurrencyHard.ToString();
+                break;
+
+            case DataDisplay.PlayerSoftCurrency:
+                textVal.text = SaveSystem.instance.currency.playerCurrencySoft.ToString() + "$";
+                break;
+
+            case DataDisplay.PlayerSoftCurrencyNoPre:
+                textVal.text = SaveSystem.instance.currency.playerCurrencySoft.ToString();
+                break;
+
         }  
     }
 }

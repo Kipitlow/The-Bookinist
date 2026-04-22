@@ -47,6 +47,10 @@ public class InteractionRunner : MonoBehaviour
     {
         switch (condition.type)
         {
+            case ConditionType.ISBookFinish:
+                return GameManager.Instance.bookFinish == condition.isBookFinish;
+
+
             case ConditionType.SameLayer:
                 if (condition.target == null)
                     return false;
@@ -97,10 +101,16 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.Move == null)
                     return false;
                 return condition.Move.HasMoved(condition.HasMoved, condition.HowManyTimes);
+
             case ConditionType.HasToCheckEmptynessInventory:
                 return InventoryController.Instance.IsInventoryHasPlace();
             default:
                 return false;
+
+            case ConditionType.CanBePlacedInBalance:
+                if (condition.balance == null)
+                    return false;
+                return condition.balance.CanAcceptItem(context.item);
         }
     }
 
@@ -139,7 +149,7 @@ public class InteractionRunner : MonoBehaviour
 
             case ActionType.Move:
                 if (action.Move != null)
-                    action.Move.Move(action.OffsetX, action.OffsetY);
+                    action.Move.MoveInteraction(action.OffsetX, action.OffsetY);
                 break;
 
             case ActionType.CycleSprites:
@@ -154,7 +164,7 @@ public class InteractionRunner : MonoBehaviour
 
             case ActionType.ResetHasMoved:
                 if (action.Move != null)
-                    action.Move.ResethasMoved();
+                    action.Move.ResetHasMoved();
                 break;
 
             case ActionType.CallFunction:
@@ -172,6 +182,10 @@ public class InteractionRunner : MonoBehaviour
                     action.slot.FillWithSprite(action.item);
                 break;
 
+            case ActionType.PlaceInBalance:
+                if (action.balance != null)
+                    action.balance.TryAddItem(context.item);
+                break;
         }
     }
     #endregion

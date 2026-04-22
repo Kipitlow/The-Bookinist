@@ -18,7 +18,7 @@ public class ConditionEntryDrawer : PropertyDrawer
                 break;
 
             case ConditionType.SameZone:
-                lines += 3;
+                lines += 2;
                 break;
 
             case ConditionType.OnTouch:
@@ -52,6 +52,14 @@ public class ConditionEntryDrawer : PropertyDrawer
             case ConditionType.OnWichFrame:
                 lines += 3;
                 break;
+
+            case ConditionType.CanBePlacedInBalance:
+                lines += 1;
+                break;
+
+            case ConditionType.ISBookFinish:
+                lines += 1;
+                break;
         }
 
         return lines * (EditorGUIUtility.singleLineHeight + 2f);
@@ -84,8 +92,6 @@ public class ConditionEntryDrawer : PropertyDrawer
 
             case ConditionType.SameZone:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("zone"));
-                r.y += h + s;
-                EditorGUI.PropertyField(r, property.FindPropertyRelative("thisObject"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 break;
@@ -135,6 +141,14 @@ public class ConditionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("WantedFrame"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("trueIfMore"));
+                break;
+
+            case ConditionType.CanBePlacedInBalance:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("balance"));
+                break;
+
+            case ConditionType.ISBookFinish:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("isBookFinish"));
                 break;
         }
 

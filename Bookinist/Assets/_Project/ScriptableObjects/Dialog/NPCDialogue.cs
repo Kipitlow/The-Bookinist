@@ -11,6 +11,4 @@ public class NPCDialogue : ScriptableObject
     [Header("Dialogue Type")]
     public bool IsShopNPC = false;
     public bool isLoopable = false;
-
-    public int timesEnded = 0;
 }

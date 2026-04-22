@@ -2,278 +2,424 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-
 
 public class ScriptBalance : MonoBehaviour
 {
-    #region Variable
-    [Header("Gestion des sprite de la Balance")]
-    //[SerializeField] public GameObject UI_Gameplay;
-    public GameObject balanceSprite;
-    public GameObject balance;
-    public GameObject plateau1;
-    public GameObject plateau2;
 
-    [Header("Prefable GameObject")]
-    //[SerializeField] public GameObject UI_Gameplay;
-    public GameObject prefable_Poids;
-    public GameObject prefableLyre;
-    public Item lyreSTP;
+    #region Class Serializable
 
-    [Header("Interne variable")]
-    private List<GameObject> _listPoids = new();
-    private List<Item> _stockIteam = new();
-    /*
-    private GameObject _poids;
-    private GameObject _poids2;
-    */
-    private bool _targetOne; //permet de d'instantier le deuxiéme poids "c'est la lyre"
-    private int _poidAccumuller=0;
-    private int _poidAutoriser=0;
-    private GameObject _2emePoids;
+    [Serializable]
+    private class ItemWeightEntry
+    {
+        public Item item;
+        public int weight = 1;
+    }
+
+    private class DepositedItem
+    {
+
+        public Item Item;
+        public GameObject Instance;
+        public int Weight;
+
+        public DepositedItem(Item item, GameObject instance, int weight)
+        {
+            Item = item;
+            Instance = instance;
+            Weight = weight;
+        }
+    }
 
     #endregion
 
-    void Start()
+    #region Variables
+
+    [Header("Scene References")]
+    [SerializeField] private Transform _itemSpawnPoint;
+    [SerializeField] private Transform _counterweightSpawnPoint;
+    [SerializeField] private Transform _rewardSpawnPoint;
+    [SerializeField] private Transform _spawnedItemsRoot;
+    [SerializeField] private InventoryController _inventoryController;
+
+    [Header("Optional Balance Visuals")]
+    [SerializeField] private Transform _balancePivot;
+    [SerializeField] private Transform _balanceSprite;
+    [SerializeField] private Transform _plateau1;
+    [SerializeField] private Transform _plateau2;
+
+    [Header("Prefabs / Items")]
+    [SerializeField] private GameObject _balanceItemPrefab;
+    [SerializeField] private GameObject _rewardLyrePrefab;
+    [SerializeField] private Item _lyreItem;
+
+    [Header("Rules")]
+    [SerializeField] private int _maxItems = 3;
+    [SerializeField] private int _targetWeight = 100;
+    [SerializeField] private int _counterweightWeight = 100;
+    [SerializeField] private float _solveDelay = 0.5f;
+
+    [Header("Text Ajoute")]
+    [SerializeField] private TextMeshPro _textValue;
+
+    [Header("Spawned Item Visual")]
+    [SerializeField] private Vector3 _spawnedItemScale = new Vector3(0.1f, 0.1f, 0.1f);
+
+    [Header("Item Weights")]
+    [SerializeField] private List<ItemWeightEntry> _itemWeights = new();
+
+    private readonly Dictionary<string, int> _weightByItem = new();
+    private readonly List<DepositedItem> _depositedItems = new();
+
+    private GameObject _counterweightInstance;
+    private bool _isSolved;
+    private bool _isSolving;
+    private int _currentWeight;
+
+    public int CurrentWeight => _currentWeight;
+    public int DepositedCount => _depositedItems.Count;
+    public bool IsSolved => _isSolved;
+    public bool IsFull => _depositedItems.Count >= _maxItems;
+
+    #endregion
+
+    #region Unity Methods
+    private void Awake()
     {
-        _targetOne=true;    
+        RebuildWeightTable();
     }
 
     private void Update()
     {
-        if (balance == null) Debug.LogError("Balance éclater au sol");
-        Vector3 Euler = balance.transform.eulerAngles;
-
-        balanceSprite.transform.localRotation = Quaternion.Euler(Euler.x, Euler.y, Euler.z);
-        plateau1.transform.rotation = Quaternion.Euler(0, 0, 0);
-        plateau2.transform.rotation = Quaternion.Euler(0, 0, 0);
+        UpdateBalanceVisuals();
     }
 
-    public void FinishTask()
-    {
-        Vector3 _v3 = new Vector3(transform.position.x, transform.position.y + 2.6f, transform.position.z);
-        GameObject ee = Instantiate(prefableLyre, transform);
-        ee.transform.position = _v3;
+    #endregion
 
-        for (int i = 0; i < _listPoids.Count; i++)
+    #region Methods
+
+    #region Try
+
+    public bool TryAddItem(Item item)
+    {
+        if (!CanAcceptItem(item))
+            return false;
+
+        TrySpawnCounterWeight();
+
+        if (!_weightByItem.TryGetValue(item.itemName, out int weight))
+            return false;
+
+        GameObject instance = SpawnBalanceObject(item, weight, _itemSpawnPoint);
+        if (instance == null)
+            return false;
+
+        _depositedItems.Add(new DepositedItem(item, instance, weight));
+        _currentWeight += weight;
+
+        if (_currentWeight >= _targetWeight)
         {
-            if (_listPoids[i] != null)
+            StartSolveFlow();
+        }
+        _textValue.text = $"{_currentWeight} >= 100Value";
+        return true;
+    }
+
+
+    public void TryTakeBackItems()
+    {
+        if (!CanTakeBackAtLeastOneItem())
+            return;//0;
+
+        int returnedCount = 0;
+
+        for (int i = _depositedItems.Count - 1; i >= 0; i--)
+        {
+            if (_inventoryController == null || !_inventoryController.IsInventoryHasPlace())
+                break;
+
+            DepositedItem depositedItem = _depositedItems[i];
+
+            _inventoryController.AddInventoryItem(depositedItem.Item);
+            _currentWeight -= depositedItem.Weight;
+
+            if (depositedItem.Instance != null)
             {
-                Destroy(_listPoids[i]);
-                _listPoids[i] = null;
+                Destroy(depositedItem.Instance);
+            }
+
+            _depositedItems.RemoveAt(i);
+            returnedCount++;
+        }
+
+        if (_depositedItems.Count == 0)
+        {
+            _currentWeight = 0;
+            DestroyCounterweight();
+            ResetBalanceVisuals();
+        }
+        _textValue.text = $"{_currentWeight} >= 100Value";
+        return; //returnedCount;
+    }
+
+    #endregion
+
+    #region Check
+
+    public bool CanAcceptItem(Item item)
+    {
+        if (_isSolved || _isSolving)
+            return false;
+
+        if (item == null)
+            return false;
+
+        if (IsFull)
+            return false;
+
+        if (item.itemSprite == null)
+            return false;
+
+        return _weightByItem.ContainsKey(item.itemName);
+    }
+
+    public bool ContainsItem(Item item)
+    {
+        if (item == null)
+            return false;
+
+        for (int i = 0; i < _depositedItems.Count; i++)
+        {
+            if (_depositedItems[i].Item == item)
+                return true;
+        }
+
+        return false;
+    }
+
+    public bool CanTakeBackAtLeastOneItem()
+    {
+        if (_isSolved || _isSolving)
+            return false;
+
+        if (_depositedItems.Count == 0)
+            return false;
+
+        return _inventoryController != null && _inventoryController.IsInventoryHasPlace();
+    }
+
+    #endregion
+
+    #region Reset Balance
+
+    public void ResetBalance()
+    {
+        StopAllCoroutines();
+
+        _isSolved = false;
+        _isSolving = false;
+        _currentWeight = 0;
+        _textValue.text = $"{_currentWeight} >= 100Value";
+        ClearDepositedItems();
+        DestroyCounterweight();
+        ResetBalanceVisuals();
+    }
+
+    private void ResetBalanceVisuals()
+    {
+        if (_balancePivot != null)
+        {
+            _balancePivot.localRotation = Quaternion.identity;
+        }
+    }
+
+    #endregion
+
+    #region Safety
+
+    // clean le dictionaire au awake si des poids son null ou autre
+    public void RebuildWeightTable()
+    {
+        _weightByItem.Clear();
+
+        for (int i = 0; i < _itemWeights.Count; i++)
+        {
+            ItemWeightEntry entry = _itemWeights[i];
+            if (entry == null || entry.item == null)
+                continue;
+
+            _weightByItem[entry.item.itemName] = Mathf.Max(0, entry.weight);
+        }
+    }
+
+#endregion
+
+    #region Solve
+
+    private void StartSolveFlow()
+    {
+        if (_isSolved || _isSolving)
+            return;
+
+        _isSolving = true;
+
+        if (_solveDelay <= 0f)
+        {
+            CompleteSolve();
+            return;
+        }
+
+        StartCoroutine(SolveRoutine());
+    }
+
+    private IEnumerator SolveRoutine()
+    {
+        yield return new WaitForSeconds(_solveDelay);
+        CompleteSolve();
+    }
+
+    private void CompleteSolve()
+    {
+        _isSolving = false;
+        _isSolved = true;
+
+        SpawnRewardLyre();
+        ClearDepositedItems();
+        DestroyCounterweight();
+
+        _currentWeight = 0;
+        ResetBalanceVisuals();
+    }
+
+#endregion
+
+    #region Spawn Object
+
+    private void TrySpawnCounterWeight()
+    {
+        if (_counterweightInstance != null || _counterweightSpawnPoint == null || _lyreItem == null)
+            return;
+
+        _counterweightInstance = SpawnBalanceObject(_lyreItem, _counterweightWeight, _counterweightSpawnPoint);
+    }
+
+    private GameObject SpawnBalanceObject(Item item, int weight, Transform spawnPoint)
+    {
+        if (_balanceItemPrefab == null || spawnPoint == null || item == null)
+            return null;
+
+        GameObject instance;
+
+        if (_spawnedItemsRoot != null)
+            instance = Instantiate(_balanceItemPrefab, spawnPoint.position, spawnPoint.rotation, _spawnedItemsRoot);
+        else
+            instance = Instantiate(_balanceItemPrefab, spawnPoint.position, spawnPoint.rotation);
+
+        ConfigureSpawnedObject(instance, item, weight);
+        return instance;
+    }
+
+    private void ConfigureSpawnedObject(GameObject instance, Item item, int weight)
+    {
+        if (instance == null || item == null)
+            return;
+
+        instance.transform.localScale = _spawnedItemScale;
+
+        SpriteRenderer spriteRenderer = instance.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.sprite = item.itemSprite;
+        }
+
+        Rigidbody2D rigidbody2D = instance.GetComponent<Rigidbody2D>();
+        if (rigidbody2D != null)
+        {
+            rigidbody2D.mass = weight;
+        }
+
+        BoxCollider2D boxCollider2D = instance.GetComponent<BoxCollider2D>();
+        if (boxCollider2D != null && item.itemSprite != null)
+        {
+            boxCollider2D.size = item.itemSprite.bounds.size;
+            boxCollider2D.offset = item.itemSprite.bounds.center;
+        }
+    }
+
+#endregion
+
+    #region Lyre + Clean
+
+    private void SpawnRewardLyre()
+    {
+        if (_rewardSpawnPoint == null)
+            return;
+
+        if (_rewardLyrePrefab != null)
+        {
+            Instantiate(_rewardLyrePrefab, _rewardSpawnPoint.position, _rewardSpawnPoint.rotation);
+            return;
+        }
+
+        if (_lyreItem != null && _balanceItemPrefab != null)
+        {
+            GameObject reward = Instantiate(_balanceItemPrefab, _rewardSpawnPoint.position, _rewardSpawnPoint.rotation);
+            ConfigureSpawnedObject(reward, _lyreItem, _counterweightWeight);
+
+            Rigidbody2D rigidbody2D = reward.GetComponent<Rigidbody2D>();
+            if (rigidbody2D != null)
+            {
+                rigidbody2D.mass = _counterweightWeight;
             }
         }
     }
-    /*public void SpawnerPoidsBalance(int Mass)
+
+    private void ClearDepositedItems()
     {
-
-
-        Transform _ballMass = GameObject.Find("Target_spawn_Poids_R").transform;
-        _poids = Instantiate(prefable_Poids, _ballMass);
-
-        if (_poids.GetComponent<Rigidbody>() != null) { Debug.LogError("Pourquoi ce foutus de ce RigBody"); }
-
-        _ballMass = GameObject.Find("Target_spawn_Poids_L").transform;
-        if (_targetOne==true)
+        for (int i = 0; i < _depositedItems.Count; i++)
         {
-            _targetOne=false;   
-            _poids2 = Instantiate(prefable_Poids, _ballMass);
-            _poids2.GetComponent<Rigidbody2D>().mass = 100;
-        }
-        
-        
-        switch (Mass)
-        {
-            case 0:
-                if (_poids != null)
-                {
-                    Destroy(_poids);
-                    _poids = null;
-                }
-                break;
-            case 100:
-                _poids.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
-                _poids.GetComponent<Rigidbody2D>().mass = Mass;
-                break;
-            case 2:
-                _poids.transform.localScale = new Vector3(0.6f,0.6f,0.6f);
-                _poids.GetComponent<Rigidbody2D>().mass = Mass;
-                break;
-            case 3:
-                _poids.transform.localScale = new Vector3(0.4f,0.4f,0.4f);
-                _poids.GetComponent<Rigidbody2D>().mass = Mass;
-                break;
-            case 4:
-                _poids.transform.localScale = new Vector3(0.8f,0.8f,0.8f);
-                _poids.GetComponent<Rigidbody2D>().mass = Mass;
-                break;
-            case 5:
-                _poids.transform.localScale = new Vector3(1.0f,1.0f,1.0f);
-                _poids.GetComponent<Rigidbody2D>().mass = Mass;
-                break;
-        }
-
-
-    }*/
-    
-    public void SpawnerIteamBalance(Item Context )
-    {
-        Debug.Log("------------------Spawn Fonction");
-        if (_poidAutoriser >= 3) {  return; }
-        Transform _ballMass = GameObject.Find("Target_spawn_Poids_R").transform;
-        GameObject _1erPoids = Instantiate(prefable_Poids, _ballMass);
-        _listPoids.Add(_1erPoids);
-        if (_1erPoids.GetComponent<Rigidbody>() != null) { Debug.LogError("Pourquoi ce foutus de ce RigBody"); }
-
-        _ballMass = GameObject.Find("Target_spawn_Poids_L").transform;
-        if (_targetOne==true)
-        {
-            _targetOne=false;
-            _2emePoids = Instantiate(prefable_Poids, _ballMass);
-            
-            _2emePoids.GetComponent<Rigidbody2D>().mass = 100;
-            _2emePoids.GetComponent<SpriteRenderer>().sprite = lyreSTP.itemSprite;
-            _2emePoids.GetComponent<BoxCollider2D>().size = new Vector2(4.78f, 6f);
-            _2emePoids.transform.localScale = new Vector3(0.16f, 0.16f, 0.16f);
-        }
-
-
-        switch (Context.name)
-        {
-            case "":
-                if (_1erPoids != null)
-                {
-                    Destroy(_1erPoids);
-                    _poidAutoriser =0;
-                    _1erPoids = null;
-                }
-                break;
-            case "Citron" or "Figue" or "Orange" or "Pomme":
-                _1erPoids.GetComponent<Rigidbody2D>().mass = 5;
-
-                _1erPoids.GetComponent<SpriteRenderer>().sprite = Context.itemSprite;
-                _1erPoids.GetComponent<BoxCollider2D>().size = new Vector2(4.78f, 6f);
-                _1erPoids.transform.localScale = new Vector3(0.06f, 0.06f, 0.06f);
-
-                _poidAccumuller += 5;
-                _poidAutoriser += 1;
-                _stockIteam.Add(Context);
-                break;
-            case "GrosPot" or "PetitPot" or "vase": //Pug SpriteRenderer Vase: n'apparait pas
-                _1erPoids.GetComponent<Rigidbody2D>().mass = 10;
-
-                _1erPoids.GetComponent<SpriteRenderer>().sprite = Context.itemSprite;
-                _1erPoids.GetComponent<BoxCollider2D>().size = new Vector2(4f, 5f);
-                _1erPoids.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-
-                _poidAccumuller += 10;
-                _poidAutoriser += 1;
-                _stockIteam.Add(Context);
-                break;
-            case "couronne":
-                _1erPoids.GetComponent<Rigidbody2D>().mass = 45;
-
-                _1erPoids.GetComponent<SpriteRenderer>().sprite = Context.itemSprite;
-                _1erPoids.GetComponent<BoxCollider2D>().size = new Vector2(19f, 10f);
-                _1erPoids.GetComponent<BoxCollider2D>().offset = new Vector2(0f, 1.27f);
-                _1erPoids.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-
-                _poidAccumuller += 45;
-                _poidAutoriser += 1;
-                _stockIteam.Add(Context);
-                break;
-            case "collier":
-                _1erPoids.GetComponent<Rigidbody2D>().mass = 45;
-
-                _1erPoids.GetComponent<SpriteRenderer>().sprite = Context.itemSprite;
-                _1erPoids.GetComponent<BoxCollider2D>().size = new Vector2(4f, 3.64f);
-                _1erPoids.GetComponent<BoxCollider2D>().offset = new Vector2(0f, 0.2f);
-                _1erPoids.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-
-                _poidAccumuller += 45;
-                _poidAutoriser += 1;
-                _stockIteam.Add(Context);
-                break;
-            case "Améthyste":
-                _1erPoids.GetComponent<Rigidbody2D>().mass = 90;
-
-                _1erPoids.GetComponent<SpriteRenderer>().sprite = Context.itemSprite;
-                _1erPoids.GetComponent<BoxCollider2D>().size = new Vector2(22f, 15f);
-                _1erPoids.GetComponent<BoxCollider2D>().offset = new Vector2(2f, 1.3f);
-                _1erPoids.transform.localScale = new Vector3(0.06f, 0.06f, 0.06f);
-
-                _poidAccumuller += 90;
-                _poidAutoriser += 1;
-                _stockIteam.Add(Context);
-                break;
-            case "flute":
-                _1erPoids.GetComponent<Rigidbody2D>().mass = 100;
-
-                _1erPoids.GetComponent<SpriteRenderer>().sprite = Context.itemSprite;
-                _1erPoids.GetComponent<BoxCollider2D>().size = new Vector2(4.25f, 27.3f);
-                _1erPoids.GetComponent<BoxCollider2D>().offset = new Vector2(.9f, 0f);
-                _1erPoids.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-
-                _poidAccumuller += 100;
-                _poidAutoriser += 1;
-                _stockIteam.Add(Context);
-                break;
-        }
-
-        if (_poidAccumuller >= 100)
-        {
-            GameObject Chiant_Variable = GameObject.Find("B_Reset_Iteam_Balance");
-            if (Chiant_Variable) Destroy(Chiant_Variable);
-            Invoke("FinishTask", 1);
-        }
-    }
-    
-    public void resetBalance()
-    {
-        _targetOne = true;
-        _poidAutoriser = 0;
-        _poidAccumuller = 0;
-        balance.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-        StartCoroutine(_setItem());
-    }
-    IEnumerator _setItem()
-    {
-        InventoryController inventoryController = GameObject.Find("Canvas").GetComponentInChildren<InventoryController>() ;
-        if(inventoryController!=null) 
-        {
-            for(int i=0; i<_stockIteam.Count; i++)
+            if (_depositedItems[i].Instance != null)
             {
-                Debug.Log($"Place: {inventoryController.IsInventoryHasPlace()}");
-                if (_listPoids[i] != null && _stockIteam[i] != null && inventoryController.IsInventoryHasPlace())//&& inventoryController._inventoryContents
-                {
-                    inventoryController.AddInventoryItem(_stockIteam[i]);
-                    Destroy(_listPoids[i]);
-                    _poidAutoriser -= 1;
-                }
-                Destroy(_2emePoids);
-                //if (_stockIteam[i].itemName == "Lyre") Destroy(_stockIteam[i]);
-                yield return new WaitForSeconds(0.1f);
+                Destroy(_depositedItems[i].Instance);
             }
+        }
 
-            /*while (_iteamRestant <= _listPoids.Count)
-            {
-                
-                if (_listPoids[_iteamRestant] != null && _stockIteam[_iteamRestant] != null)//&& inventoryController._inventoryContents
-                {
-                    inventoryController.AddInventoryItem(_stockIteam[_iteamRestant]);
-                    Destroy(_listPoids[_iteamRestant]);
-                    *//*_stockIteam[_iteamRestant] = null;
-                    _listPoids[_iteamRestant] = null;*//*
-                    _poidAutoriser -= 1;
-                }
-                if (_stockIteam[_iteamRestant].itemName == "Lyre") Destroy(_stockIteam[_iteamRestant]); 
-                _iteamRestant += 1;
-                yield return new WaitForSeconds(0.1f);
-            }*/
-                //_stockIteam.Clear();
-        }  
+        _depositedItems.Clear();
     }
+
+    private void DestroyCounterweight()
+    {
+        if (_counterweightInstance == null)
+            return;
+
+        Destroy(_counterweightInstance);
+        _counterweightInstance = null;
+    }
+
+    #endregion
+
+    #region Update Visual
+
+    private void UpdateBalanceVisuals()
+    {
+        if (_balancePivot != null && _balanceSprite != null)
+        {
+            Vector3 euler = _balancePivot.eulerAngles;
+            _balanceSprite.localRotation = Quaternion.Euler(euler.x, euler.y, euler.z);
+        }
+
+        if (_plateau1 != null)
+        {
+            _plateau1.rotation = Quaternion.identity;
+        }
+
+        if (_plateau2 != null)
+        {
+            _plateau2.rotation = Quaternion.identity;
+        }
+    }
+
+    #endregion
+
+    #endregion
 }

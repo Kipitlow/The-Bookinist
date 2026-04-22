@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class DDOL : MonoBehaviour
 {
-    public static DDOL Instance;
+    public static DDOL Instance
+    {
+        get; private set;
+    }
 
     private void Awake()
     {
