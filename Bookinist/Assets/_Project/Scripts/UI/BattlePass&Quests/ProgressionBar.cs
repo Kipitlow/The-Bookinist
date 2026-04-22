@@ -8,22 +8,24 @@ public class ProgressionBar : MonoBehaviour
     public static ProgressionBar instance;
 
     [Header("UI Elements")]
-    public ScrollRect battlePassScrollRect;
     public Image BattlePassBar;
     public GameObject BattlePassIcon;
-    public List<Image> Paliers = new List<Image>();
-    public List<PalierDebloqueur> rewardPalier = new List<PalierDebloqueur>();
+    public List<Image> PaliersVisuals = new List<Image>();
+
+    [Header("Rewards Lists")]
+    public List<Reward> freeRewards = new List<Reward>();
+    public List<Reward> premiumRewards = new List<Reward>();
 
     [Header("Settings")]
+    public bool isPremiumActive = false;
     public int palier = 0;
-    public float xpPass; // avancé du pass de 0 à 1.
-
-    private float confirmedTotalXp = 0; // avancé du pass en xp
+    public float xpPass;
+    private float confirmedTotalXp = 0;
     private float waitingXp = 0;
-
-    private Color Lock = new Color32(109, 109, 109, 255);
-    private Color Unlock = new Color32(241, 211, 0, 255);
     private float lerpTime = 0.7f;
+
+    private Color colorLock = new Color32(109, 109, 109, 255);
+    private Color colorUnlock = new Color32(241, 211, 0, 255);
 
     private void Awake()
     {
@@ -36,47 +38,19 @@ public class ProgressionBar : MonoBehaviour
         if (SaveSystem.instance.battlePass != null) LoadProgression();
     }
 
-    private void LoadProgression()
-    {
-        BattlePassData data = SaveSystem.instance.battlePass;
-        if (data == null) return;
-
-        // On restaure l'état visuel exact de la dernière fois
-        confirmedTotalXp = data.confirmedXp;
-        waitingXp = data.waitingXp;
-
-        xpPass = confirmedTotalXp / 15000f;
-        BattlePassBar.fillAmount = xpPass;
-
-        // On débloque instantanément les paliers déjà validés
-        SyncPalierInstant();
-
-        if (waitingXp > 0) BattlePassIcon.SetActive(true);
-    }
-
-    public BattlePassData GetDataForSave()
-    {
-        return new BattlePassData
-        {
-            confirmedXp = confirmedTotalXp,
-            waitingXp = waitingXp
-        };
-    }
-
-    public void xpGain(float xp) // Appelé par les quêtes
+    public void xpGain(float xp)
     {
         waitingXp += xp;
-
         float virtualXpPass = (confirmedTotalXp + waitingXp) / 15000f;
+
         if (CheckIfNewPalier(virtualXpPass, palier))
         {
             BattlePassIcon.SetActive(true);
         }
-
         SaveSystem.instance.Save();
     }
 
-    public void addXpPass() // Appelé quand on ouvre le menu du pass
+    public void addXpPass()
     {
         if (waitingXp <= 0) return;
 
@@ -85,8 +59,6 @@ public class ProgressionBar : MonoBehaviour
 
         confirmedTotalXp += waitingXp;
         waitingXp = 0;
-
-
         SaveSystem.instance.Save();
     }
 
@@ -105,7 +77,7 @@ public class ProgressionBar : MonoBehaviour
             if (CheckIfNewPalier(xpPass, palier))
             {
                 palier++;
-                unlockVerif();
+                RefreshRewardsUI();
             }
             yield return null;
         }
@@ -113,39 +85,93 @@ public class ProgressionBar : MonoBehaviour
         BattlePassBar.fillAmount = xpPass;
     }
 
-    private void SyncPalierInstant()
+    private void LoadProgression()
     {
+        BattlePassData data = SaveSystem.instance.battlePass;
+        if (data == null) return;
+
+        confirmedTotalXp = data.confirmedXp;
+        waitingXp = data.waitingXp;
+        isPremiumActive = data.isPremiumActive;
+        xpPass = confirmedTotalXp / 15000f;
+
+        for (int i = 0; i < freeRewards.Count; i++)
+        {
+            if (i < data.freeRewardsTaken.Count) freeRewards[i].isTaken = data.freeRewardsTaken[i];
+        }
+
+        for (int i = 0; i < premiumRewards.Count; i++)
+        {
+            if (i < data.premiumRewardsTaken.Count) premiumRewards[i].isTaken = data.premiumRewardsTaken[i];
+        }
+
         palier = 0;
         while (CheckIfNewPalier(xpPass, palier))
         {
             palier++;
         }
-        unlockVerif();
+
+        RefreshRewardsUI();
     }
 
-    private bool CheckIfNewPalier(float currentXpFill, int currentPalier)
+    public void RefreshRewardsUI()
     {
-        float threshold = (currentPalier == 0) ? 0.015f : (currentPalier * 0.0333f + 0.015f);
-        return currentXpFill >= threshold && currentPalier < 30;
-    }
+        BattlePassBar.fillAmount = xpPass;
 
-    public void unlockVerif()
-    {
-        for (int i = 0; i < palier; i++)
+        for (int i = 0; i < 30; i++)
         {
-            if (i < Paliers.Count) Paliers[i].color = Unlock &&;
+            bool isReached = (i < palier);
 
-            if (i < rewardPalier.Count && rewardPalier[i] != null)
-            {
-                foreach (Button btn in rewardPalier[i].rewards)
-                {
-                    if (btn != null && !btn.interactable) btn.interactable = true;
-                }
-            }
+            if (i < PaliersVisuals.Count)
+                PaliersVisuals[i].color = isReached ? colorUnlock : colorLock;
+
+            if (i < freeRewards.Count)
+                freeRewards[i].UpdateUI(isReached, false);
+
+            if (i < premiumRewards.Count)
+                premiumRewards[i].UpdateUI(isReached, !isPremiumActive);
         }
     }
 
+    public void ClaimReward(int index, bool isPremium)
+    {
+        if (isPremium)
+            premiumRewards[index].isTaken = true;
+        else
+            freeRewards[index].isTaken = true;
 
+        RefreshRewardsUI();
+        SaveSystem.instance.Save();
+    }
+
+    private bool CheckIfNewPalier(float currentXpFill, int palierIndex)
+    {
+        float threshold = (palierIndex == 0) ? 0.015f : (palierIndex * 0.0333f + 0.015f);
+        return currentXpFill >= threshold && palierIndex < 30;
+    }
+
+    public void ActivatePremium()
+    {
+        isPremiumActive = true;
+        RefreshRewardsUI();
+        SaveSystem.instance.Save();
+    }
+
+    public BattlePassData GetDataForSave()
+    {
+        BattlePassData data = new BattlePassData();
+        data.confirmedXp = confirmedTotalXp;
+        data.waitingXp = waitingXp;
+        data.isPremiumActive = isPremiumActive;
+
+        data.freeRewardsTaken = new List<bool>();
+        foreach (var r in freeRewards) data.freeRewardsTaken.Add(r.isTaken);
+
+        data.premiumRewardsTaken = new List<bool>();
+        foreach (var r in premiumRewards) data.premiumRewardsTaken.Add(r.isTaken);
+
+        return data;
+    }
 }
 
 /*missions quotidiennes : 100points 
