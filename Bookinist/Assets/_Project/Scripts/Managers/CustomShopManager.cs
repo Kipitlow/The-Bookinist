@@ -13,18 +13,22 @@ public class CustomShopManager : MonoBehaviour
     [SerializeField] private CamManager _camManager;
     [SerializeField] private Transform _furnitureParent;
 
-    [Header("Default Items")]
-    [SerializeField] private ShopItemData[] _defaultItems;
-
     [SerializeField] private GameObject _horizontalPanelPrefab;
     [SerializeField] private GameObject _horizontalPanelParent;
     [SerializeField] private GameObject _buttonPrefab;
+
+    [Header("Inventaire de départ - placés en scène automatiquement au load")]
+    [SerializeField] private ShopItemData[] _defaultItems;
 
     private List<ShopItemData>[] _inventoryByView;
     private List<GameObject>[] _buttonsByView;
     private GameObject[] _horizontalPanels;
 
+    // Instances 3D actives par view
     private GameObject[,] _currentObjects;
+
+    // Item actuellement placé par view, pour la sauvegarde
+    private ShopItemData[] _activeItemByView;
 
     private bool _isAlreadySeeCustomShop;
     private int _previousViewIndex;
@@ -51,6 +55,7 @@ public class CustomShopManager : MonoBehaviour
         _buttonsByView = new List<GameObject>[VIEW_COUNT];
         _horizontalPanels = new GameObject[VIEW_COUNT];
         _currentObjects = new GameObject[VIEW_COUNT, 2];
+        _activeItemByView = new ShopItemData[VIEW_COUNT];
 
         for (int i = 0; i < VIEW_COUNT; i++)
         {
@@ -63,10 +68,10 @@ public class CustomShopManager : MonoBehaviour
 
         _horizontalPanels[0].SetActive(true);
 
+        // Les default items sont ajoutés à l'inventaire ET placés en scène immédiatement
         if (_defaultItems != null)
             foreach (ShopItemData item in _defaultItems)
-                AddObject(item);
-        LoadItems();
+                AddObject(item, placeImmediately: true);
     }
 
     private void OnViewChanged(int index, int offset)
@@ -79,7 +84,12 @@ public class CustomShopManager : MonoBehaviour
         _isAlreadySeeCustomShop = true;
     }
 
-    public void AddObject(ShopItemData newObject)
+    /// <summary>
+    /// Ajoute un item à l'inventaire et crée son bouton.
+    /// Si placeImmediately est true, l'instancie aussi en scène sur sa view
+    /// (sans écraser un item déjà placé sur cette view).
+    /// </summary>
+    public void AddObject(ShopItemData newObject, bool placeImmediately = false)
     {
         int targetView = newObject.viewIndex;
 
@@ -91,6 +101,10 @@ public class CustomShopManager : MonoBehaviour
 
         _inventoryByView[targetView].Add(newObject);
         CreateButton(targetView, _inventoryByView[targetView].Count - 1, newObject);
+
+        // Place en scène uniquement si aucun item n'occupe déjà cette view
+        if (placeImmediately && _activeItemByView[targetView] == null)
+            PlaceObject(targetView, newObject);
     }
 
     private void CreateButton(int viewIndex, int furnitureIndex, ShopItemData data)
@@ -109,6 +123,7 @@ public class CustomShopManager : MonoBehaviour
         _buttonsByView[viewIndex].Add(button);
     }
 
+    /// <summary>Appelé par le bouton UI : remplace ce qui est en scène par le nouvel item.</summary>
     private void ChangeFurniture(int viewIndex, int furnitureIndex)
     {
         List<ShopItemData> list = _inventoryByView[viewIndex];
@@ -119,17 +134,52 @@ public class CustomShopManager : MonoBehaviour
             return;
         }
 
-        // D�truit les instances pr�c�dentes (principal + additional s'il existait)
+        PlaceObject(viewIndex, list[furnitureIndex]);
+    }
+
+    /// <summary>Détruit les instances actuelles et instancie le nouvel item.</summary>
+    private void PlaceObject(int viewIndex, ShopItemData data)
+    {
+        // Détruit les instances précédentes
         if (_currentObjects[viewIndex, 0] != null) Destroy(_currentObjects[viewIndex, 0]);
         if (_currentObjects[viewIndex, 1] != null) Destroy(_currentObjects[viewIndex, 1]);
 
-        ShopItemData data = list[furnitureIndex];
-
         _currentObjects[viewIndex, 0] = Instantiate(data.prefab, _furnitureParent);
-
         _currentObjects[viewIndex, 1] = data.additionalPrefab != null
             ? Instantiate(data.additionalPrefab, _furnitureParent)
             : null;
+
+        _activeItemByView[viewIndex] = data;
+    }
+
+    /// <summary>Retourne l'item actif pour une view — utile pour le SaveSystem.</summary>
+    public ShopItemData GetActiveItemForView(int viewIndex)
+    {
+        if (viewIndex < 0 || viewIndex >= VIEW_COUNT) return null;
+        return _activeItemByView[viewIndex];
+    }
+
+    /// <summary>Retourne tous les items actifs pour sauvegarder l'état complet.</summary>
+    public ShopItemData[] GetAllActiveItems() => _activeItemByView;
+
+    /// <summary>
+    /// Charge un état sauvegardé.
+    /// Les default items ont déjà été placés dans Start —
+    /// on écrase uniquement les views qui avaient un item sauvegardé différent.
+    /// </summary>
+    public void LoadActiveItems(ShopItemData[] savedItems)
+    {
+        if (savedItems == null) return;
+
+        for (int i = 0; i < Mathf.Min(savedItems.Length, VIEW_COUNT); i++)
+        {
+            if (savedItems[i] == null) continue;
+
+            if (!_inventoryByView[i].Contains(savedItems[i]))
+                AddObject(savedItems[i]);
+
+            PlaceObject(i, savedItems[i]);
+        }
     }
 
     public List<ShopItemData> GetInventoryForView(int viewIndex) => _inventoryByView[viewIndex];
@@ -145,18 +195,7 @@ public class CustomShopManager : MonoBehaviour
     public bool HasItem(ShopItemData item)
     {
         int view = item.viewIndex;
-
-        if (view < 0 || view >= _inventoryByView.Length)
-            return false;
-
+        if (view < 0 || view >= _inventoryByView.Length) return false;
         return _inventoryByView[view].Contains(item);
-    }
-
-    private void LoadItems()
-    {
-        foreach (var item in SaveSystem.instance.inventory.ownedItemIDs)
-        {
-            AddObject(ItemDatabase.instance.Get(item));
-        }
     }
 }
