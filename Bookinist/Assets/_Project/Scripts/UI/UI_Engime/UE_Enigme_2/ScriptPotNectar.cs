@@ -9,26 +9,28 @@ public class ScriptPotNectar : MonoBehaviour
     private void Start()
     {
         _sprite = GetComponent<SpriteRenderer>();
-        Debug.Log($"<color=Red> SpriteName:</color> <color=white> {_sprite.sprite.name}</color>");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         _sprite = GetComponent<SpriteRenderer>();
-        if(collision.gameObject.GetComponent<SpriteRenderer>().sprite.name == "POT_NECTAR")                    
+        SpriteRenderer _otherSprite = collision.gameObject.GetComponent<SpriteRenderer>();
+        if (_otherSprite == null) return;
+
+        if (_otherSprite.sprite.name == "POT_NECTAR")                    
         {
             Sprite _newSprite = Resources.Load<Sprite>("Props/POT_2");
 
             switch (_sprite.sprite.name)
             {
                 case "POMME copie":
-                    if (_newSprite != null) collision.gameObject.GetComponent<SpriteRenderer>().sprite = _newSprite;
+                    if (_newSprite != null) _otherSprite.sprite = _newSprite;
 
                     foreach (Sprite _allsprite in _allSprite)
                     {
                         if (_allsprite.name == "POT_NECTAR_POMME")
                         {
-                            collision.gameObject.GetComponent<SpriteRenderer>().sprite = _allsprite;
+                            _otherSprite.sprite = _allsprite;
                         }
                     }
                     foreach(Item _allitem in _allItem)
@@ -42,12 +44,12 @@ public class ScriptPotNectar : MonoBehaviour
                     break;
                 case "FIGUE copie":
                     //Debug.Log("<color=green> [Sucess Critique] <color=white> La FIGUE est bien était nommée</color>");
-                    //if (_newSprite != null) collision.gameObject.GetComponent<SpriteRenderer>().sprite = _newSprite;
+                    //if (_newSprite != null) _otherSprite.sprite = _newSprite;
                     foreach (Sprite _allsprite in _allSprite)
                     {
                         if (_allsprite.name == "POT_NECTAR_FIGUE")
                         {
-                            collision.gameObject.GetComponent<SpriteRenderer>().sprite = _allsprite;
+                            _otherSprite.sprite = _allsprite;
                         }
                     }
                     foreach (Item _allitem in _allItem)
@@ -61,12 +63,12 @@ public class ScriptPotNectar : MonoBehaviour
                     break;
                 case "ORANGE copie":
                     //Debug.Log("<color=green> [Sucess Critique] <color=white> La ORANGE est bien était nommée</color>");
-                    //if (_newSprite != null) collision.gameObject.GetComponent<SpriteRenderer>().sprite = _newSprite;
+                    //if (_newSprite != null) _otherSprite.sprite = _newSprite;
                     foreach (Sprite _allsprite in _allSprite)
                     {
                         if (_allsprite.name == "POT_NECTAR_ORANGE")
                         {
-                            collision.gameObject.GetComponent<SpriteRenderer>().sprite = _allsprite;
+                            _otherSprite.sprite = _allsprite;
                         }
                     }
                     foreach (Item _allitem in _allItem)
@@ -80,12 +82,12 @@ public class ScriptPotNectar : MonoBehaviour
                     break;
                 case "CITRON copie":
                     //Debug.Log("<color=green> [Sucess Critique] <color=white> Le CITRON est bien était nommée</color>");
-                    //if (_newSprite != null) collision.gameObject.GetComponent<SpriteRenderer>().sprite = _newSprite;
+                    //if (_newSprite != null) _otherSprite.sprite = _newSprite;
                     foreach (Sprite _allsprite in _allSprite)
                     {
                         if (_allsprite.name == "POT_NECTAR_CITRON")
                         {
-                            collision.gameObject.GetComponent<SpriteRenderer>().sprite = _allsprite;
+                            _otherSprite.sprite = _allsprite;
                         }
                     }
                     foreach (Item _allitem in _allItem)
@@ -99,20 +101,20 @@ public class ScriptPotNectar : MonoBehaviour
                     break;
             }
         }
-        if(collision.gameObject.GetComponent<SpriteRenderer>().sprite.name == "PotMiel")                    
+        if(_otherSprite.sprite.name == "PotMiel")                    
         {
             Sprite _newSprite = Resources.Load<Sprite>("Props/POT_2");
 
             switch (_sprite.sprite.name)
             {
                 case "POMME copie":
-                    if (_newSprite != null) collision.gameObject.GetComponent<SpriteRenderer>().sprite = _newSprite;
+                    if (_newSprite != null) _otherSprite.sprite = _newSprite;
 
                     foreach (Sprite _allsprite in _allSprite)
                     {
                         if (_allsprite.name == "POT_MIEL_POMME")
                         {
-                            collision.gameObject.GetComponent<SpriteRenderer>().sprite = _allsprite;
+                            _otherSprite.sprite = _allsprite;
                         }
                     }
                     foreach (Item _allitem in _allItem)
@@ -126,12 +128,12 @@ public class ScriptPotNectar : MonoBehaviour
                     break;
                 case "FIGUE copie":
                     //Debug.Log("<color=green> [Sucess Critique] <color=white> La FIGUE est bien était nommée</color>");
-                    //if (_newSprite != null) collision.gameObject.GetComponent<SpriteRenderer>().sprite = _newSprite;
+                    //if (_newSprite != null) _otherSprite.sprite = _newSprite;
                     foreach (Sprite _allsprite in _allSprite)
                     {
                         if (_allsprite.name == "POT_MIEL_FIGUE")
                         {
-                            collision.gameObject.GetComponent<SpriteRenderer>().sprite = _allsprite;
+                            _otherSprite.sprite = _allsprite;
                         }
                     }
                     foreach (Item _allitem in _allItem)
@@ -145,12 +147,12 @@ public class ScriptPotNectar : MonoBehaviour
                     break;
                 case "ORANGE copie":
                     //Debug.Log("<color=green> [Sucess Critique] <color=white> La ORANGE est bien était nommée</color>");
-                    //if (_newSprite != null) collision.gameObject.GetComponent<SpriteRenderer>().sprite = _newSprite;
+                    //if (_newSprite != null) _otherSprite.sprite = _newSprite;
                     foreach (Sprite _allsprite in _allSprite)
                     {
                         if (_allsprite.name == "POT_MIEL_ORANGE")
                         {
-                            collision.gameObject.GetComponent<SpriteRenderer>().sprite = _allsprite;
+                            _otherSprite.sprite = _allsprite;
                         }
                     }
                     foreach (Item _allitem in _allItem)
@@ -164,12 +166,12 @@ public class ScriptPotNectar : MonoBehaviour
                     break;
                 case "CITRON copie":
                     //Debug.Log("<color=green> [Sucess Critique] <color=white> Le CITRON est bien était nommée</color>");
-                    //if (_newSprite != null) collision.gameObject.GetComponent<SpriteRenderer>().sprite = _newSprite;
+                    //if (_newSprite != null) _otherSprite.sprite = _newSprite;
                     foreach (Sprite _allsprite in _allSprite)
                     {
                         if (_allsprite.name == "POT_MIEL_CITRON")
                         {
-                            collision.gameObject.GetComponent<SpriteRenderer>().sprite = _allsprite;
+                            _otherSprite.sprite = _allsprite;
                         }
                     }
                     foreach (Item _allitem in _allItem)

@@ -99,13 +99,11 @@ public class WorldDropHandler : MonoBehaviour
                 shouldDrop = false;
             }
         }
-        if(shouldDrop && hit.collider.tag == "LowCollider") DropObject(screenPosition);
+        if(shouldDrop && hit.collider.tag != "LowCollider") DropObject(screenPosition);
     }
     public void DropObject(Vector2 screenPosition)
     {
         Item draggedItem = DragContext.DraggedItem;
-
-        Debug.Log("tried to spawn object");
 
         Transform activeLayer = _pageManager.GetPageFromInt(_camLayer).transform;
         Page page = activeLayer.GetComponent<Page>();
