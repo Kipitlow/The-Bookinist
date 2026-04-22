@@ -906,6 +906,13 @@ MonoBehaviour:
     playerCurrencyEnergy: 5
     playerCurrencyHard: 650
     playerCurrencySoft: 650
+  inventory:
+    ownedItemIDs: []
+  progression:
+    progressionTutoComplete: 0
+  bp:
+    playerBPXP: 0
+    playerBPUnspent: 0
 --- !u!114 &95823468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6292,6 +6299,7 @@ MonoBehaviour:
   _isFirstCustomerEncounter: 0
   bookFinish: 0
   bookStarted: 0
+  _hintsNumber: 30
 --- !u!4 &573563032
 Transform:
   m_ObjectHideFlags: 0
@@ -14743,13 +14751,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346297598}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.037118115, y: 0.9625595, z: 0.17674951, w: 0.20214142}
-  m_LocalPosition: {x: -70.20001, y: 34.53573, z: 177.7}
+  m_LocalRotation: {x: -0.03793746, y: -0, z: -0, w: 0.99928015}
+  m_LocalPosition: {x: -39.9, y: 38.3, z: 44.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1316895766}
-  m_LocalEulerAnglesHint: {x: -20.81, y: 156.28, z: 0}
+  m_LocalEulerAnglesHint: {x: -4.348, y: 0, z: 0}
 --- !u!114 &1346297600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15226,9 +15234,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _allCams:
   - {fileID: 1404022281}
+  - {fileID: 1346297600}
   - {fileID: 258455635}
   - {fileID: 1974800179}
-  - {fileID: 1346297600}
   - {fileID: 843963179}
   - {fileID: 1332132313}
   _mainCam: {fileID: 1404022281}
@@ -136847,10 +136855,10 @@ MeshFilter:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1711002192}
   - {fileID: 492059845}
   - {fileID: 1140528636}
   - {fileID: 1316895766}
   - {fileID: 1454212867}
   - {fileID: 1036510609}
   - {fileID: 7536600356072908725}
-  - {fileID: 1711002192}
