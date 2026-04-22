@@ -62,7 +62,6 @@ public class SaveSystem : MonoBehaviour
         if (data == null)
         {
             Debug.LogWarning("Failed to load saveData.json");
-            Create();
             return;
         }
 
@@ -98,8 +97,10 @@ public class SaveSystem : MonoBehaviour
         Save();
     }
 
+    /*
     private void OnApplicationQuit()
     {
         Save();
     }
+    */
 }
