@@ -38,6 +38,7 @@ public class ScriptPotNectar : MonoBehaviour
                             collision.gameObject.GetComponent <Pickable>().SetItem(_allitem);
                         }
                     }
+                    Destroy(gameObject,0.1f);
                     break;
                 case "FIGUE copie":
                     //Debug.Log("<color=green> [Sucess Critique] <color=white> La FIGUE est bien était nommée</color>");
@@ -56,11 +57,11 @@ public class ScriptPotNectar : MonoBehaviour
                             collision.gameObject.GetComponent<Pickable>().SetItem(_allitem);
                         }
                     }
+                    Destroy(gameObject,0.1f);
                     break;
                 case "ORANGE copie":
                     //Debug.Log("<color=green> [Sucess Critique] <color=white> La ORANGE est bien était nommée</color>");
                     //if (_newSprite != null) collision.gameObject.GetComponent<SpriteRenderer>().sprite = _newSprite;
-
                     foreach (Sprite _allsprite in _allSprite)
                     {
                         if (_allsprite.name == "POT_NECTAR_ORANGE")
@@ -75,6 +76,7 @@ public class ScriptPotNectar : MonoBehaviour
                             collision.gameObject.GetComponent<Pickable>().SetItem(_allitem);
                         }
                     }
+                    Destroy(gameObject,0.1f);
                     break;
                 case "CITRON copie":
                     //Debug.Log("<color=green> [Sucess Critique] <color=white> Le CITRON est bien était nommée</color>");
@@ -93,6 +95,7 @@ public class ScriptPotNectar : MonoBehaviour
                             collision.gameObject.GetComponent<Pickable>().SetItem(_allitem);
                         }
                     }
+                    Destroy(gameObject,0.1f);
                     break;
             }
         }
@@ -119,6 +122,7 @@ public class ScriptPotNectar : MonoBehaviour
                             collision.gameObject.GetComponent<Pickable>().SetItem(_allitem);
                         }
                     }
+                    Destroy(gameObject,0.1f);
                     break;
                 case "FIGUE copie":
                     //Debug.Log("<color=green> [Sucess Critique] <color=white> La FIGUE est bien était nommée</color>");
@@ -137,11 +141,11 @@ public class ScriptPotNectar : MonoBehaviour
                             collision.gameObject.GetComponent<Pickable>().SetItem(_allitem);
                         }
                     }
+                    Destroy(gameObject,0.1f);
                     break;
                 case "ORANGE copie":
                     //Debug.Log("<color=green> [Sucess Critique] <color=white> La ORANGE est bien était nommée</color>");
                     //if (_newSprite != null) collision.gameObject.GetComponent<SpriteRenderer>().sprite = _newSprite;
-
                     foreach (Sprite _allsprite in _allSprite)
                     {
                         if (_allsprite.name == "POT_MIEL_ORANGE")
@@ -156,7 +160,7 @@ public class ScriptPotNectar : MonoBehaviour
                             collision.gameObject.GetComponent<Pickable>().SetItem(_allitem);
                         }
                     }
-
+                    Destroy(gameObject,0.1f);
                     break;
                 case "CITRON copie":
                     //Debug.Log("<color=green> [Sucess Critique] <color=white> Le CITRON est bien était nommée</color>");
@@ -175,6 +179,7 @@ public class ScriptPotNectar : MonoBehaviour
                             collision.gameObject.GetComponent<Pickable>().SetItem(_allitem);
                         }
                     }
+                    Destroy(gameObject,0.1f);
                     break;
             }
         }
