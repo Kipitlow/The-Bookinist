@@ -1,6 +1,5 @@
 using JetBrains.Annotations;
 using System;
-using UnityEditor.Build;
 using UnityEngine;
 
 /// <summary>
@@ -65,7 +64,7 @@ public class WorldDropHandler : MonoBehaviour
         bool shouldDrop = true;
         Item draggedItem = DragContext.DraggedItem;
 
-        Debug.Log($"[Drop] TryDrop appelé. IsDragging={DragContext.IsDragging}, screenPos={screenPosition}");
+        //Debug.Log($"[Drop] TryDrop appelé. IsDragging={DragContext.IsDragging}, screenPos={screenPosition}");
 
         Ray ray = _camera.ScreenPointToRay(screenPosition);
         Physics.Raycast(ray, out RaycastHit hit, _raycastDistance);
@@ -100,7 +99,7 @@ public class WorldDropHandler : MonoBehaviour
                 shouldDrop = false;
             }
         }
-        if(shouldDrop) DropObject(screenPosition);
+        if(shouldDrop && hit.collider.tag == "LowCollider") DropObject(screenPosition);
     }
     public void DropObject(Vector2 screenPosition)
     {

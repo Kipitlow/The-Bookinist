@@ -119,6 +119,16 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.balance == null)
                     return false;
                 return condition.balance.CanAcceptItem(context.item);
+
+            case ConditionType.WeightIsMoreThan:
+                if (condition.balance == null)
+                    return false;
+                return condition.balance._currentWeight >= condition.weight;
+
+            case ConditionType.WeightIsLessThan:
+                if (condition.balance == null)
+                    return false;
+                return condition.balance._currentWeight <= condition.weight;
         }
     }
 
