@@ -64,8 +64,6 @@ public class WorldDropHandler : MonoBehaviour
         bool shouldDrop = true;
         Item draggedItem = DragContext.DraggedItem;
 
-        //Debug.Log($"[Drop] TryDrop appelé. IsDragging={DragContext.IsDragging}, screenPos={screenPosition}");
-
         Ray ray = _camera.ScreenPointToRay(screenPosition);
         Physics.Raycast(ray, out RaycastHit hit, _raycastDistance);
 
@@ -81,6 +79,12 @@ public class WorldDropHandler : MonoBehaviour
         InteractionRunner targetRunner = hit.collider.gameObject.GetComponent<InteractionRunner>();
 
         _hitlayer = hit.collider.GetComponentInParent<Page>().PageIndex;
+
+        if (_hitlayer == _camLayer)
+        {
+            if (hit.collider.tag.Equals("LowCollider"))
+                shouldDrop = false;
+        }
 
         if (targetRunner != null && _hitlayer == _camLayer)
         {
@@ -99,7 +103,8 @@ public class WorldDropHandler : MonoBehaviour
                 shouldDrop = false;
             }
         }
-        if(shouldDrop && hit.collider.tag != "LowCollider") DropObject(screenPosition);
+        if(shouldDrop) 
+            DropObject(screenPosition);
     }
     public void DropObject(Vector2 screenPosition)
     {
