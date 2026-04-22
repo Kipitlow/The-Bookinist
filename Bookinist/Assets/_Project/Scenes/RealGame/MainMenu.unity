@@ -236,7 +236,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64357141}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
@@ -823,7 +823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &499963274
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1492,9 +1492,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 64357142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -66.13678, y: 819.7899}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 493}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &676673272
@@ -1849,18 +1849,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1646301730}
         m_TargetAssemblyTypeName: MainMenuLoader, Assembly-CSharp
         m_MethodName: ValidateSaveSlot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 509734501}
-        m_TargetAssemblyTypeName: UIAnimator, Assembly-CSharp
-        m_MethodName: Show
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2327,7 +2315,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -176.01361}
+  m_AnchoredPosition: {x: 0, y: 66.98642}
   m_SizeDelta: {x: 851.19446, y: 176.01361}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1414007352
@@ -2855,6 +2843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _registerUI: {fileID: 1460200621}
   _loadUI: {fileID: 64357141}
+  _uiAnimator: {fileID: 509734501}
 --- !u!1 &1673787924
 GameObject:
   m_ObjectHideFlags: 0
@@ -3373,7 +3362,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -552.0272}
+  m_AnchoredPosition: {x: 0, y: -309.0272}
   m_SizeDelta: {x: 851.19446, y: 176.01361}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2131814273
@@ -3869,7 +3858,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: BookShopUpdate
+          m_StringArgument: BookShopUpdated
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &7453819487959076234
