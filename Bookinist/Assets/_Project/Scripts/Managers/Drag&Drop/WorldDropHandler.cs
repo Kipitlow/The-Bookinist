@@ -99,7 +99,7 @@ public class WorldDropHandler : MonoBehaviour
                 shouldDrop = false;
             }
         }
-        if(shouldDrop) DropObject(screenPosition);
+        if(shouldDrop && hit.collider.tag == "LowCollider") DropObject(screenPosition);
     }
     public void DropObject(Vector2 screenPosition)
     {
