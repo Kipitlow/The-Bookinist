@@ -31,8 +31,9 @@ public enum ActionType
     ResetHasMoved,
     Pick,
     Destroy,
-    Drop,
+    FillWithSprite,
     PlaceInBalance,
     FeedBack,
     CloseDialogue,
+    Drop
 }

@@ -30,6 +30,8 @@ public class WorldDropHandler : MonoBehaviour
 
     private int _camLayer;
     private int _hitlayer;
+    private Page _page;
+    private Transform _activeLayer;
 
     public event Action OnDropItem;
 
@@ -45,7 +47,7 @@ public class WorldDropHandler : MonoBehaviour
 
     private void Start()
     {
-        if (_camera == null)
+        if (_camera != null)
             _camera = Camera.main;
     }
 
@@ -106,57 +108,77 @@ public class WorldDropHandler : MonoBehaviour
         if(shouldDrop) 
             DropObject(screenPosition);
     }
+
     public void DropObject(Vector2 screenPosition)
     {
-        Item draggedItem = DragContext.DraggedItem;
+        _activeLayer = _pageManager.GetPageFromInt(_camLayer).transform;
+        _page = _activeLayer.GetComponent<Page>();
 
-        Transform activeLayer = _pageManager.GetPageFromInt(_camLayer).transform;
-        Page page = activeLayer.GetComponent<Page>();
-
-        float depth = activeLayer.position.z - _camera.transform.position.z;
+        float depth = _activeLayer.position.z - _camera.transform.position.z;
 
         Vector3 screenPoint = new Vector3(screenPosition.x, screenPosition.y, depth);
         Vector3 worldPoint = _camera.ScreenToWorldPoint(screenPoint);
 
-        GameObject droppedObject = Instantiate(_prefabDropableObject, worldPoint, _prefabDropableObject.transform.rotation, activeLayer);
+        DropObject(worldPoint, DragContext.DraggedItem );
+    }
+
+    public void DropObject(Vector3 position, Item draggedItem )
+    {
+        _camLayer = _camera.GetComponent<CameraMovement>().currentIndexLayer;
+        _activeLayer = _pageManager.GetPageFromInt(_camLayer).transform;
+        Debug.Log(_camLayer);
+
+        GameObject droppedObject = Instantiate(_prefabDropableObject, position, _prefabDropableObject.transform.rotation, _activeLayer);
         BoxCollider boxCollider = droppedObject.GetComponent<BoxCollider>();
 
-        //setup SpriteRenderer
-        SpriteRenderer spriteRenderer = droppedObject.GetComponent<SpriteRenderer>();
+        // setup SpriteRenderer
+        SpriteRenderer spriteRenderer = droppedObject.GetComponentInChildren<SpriteRenderer>();
         spriteRenderer.sprite = draggedItem.itemSprite;
         spriteRenderer.sortingLayerName = "Page_" + _camLayer;
-        spriteRenderer.sortingOrder = page.PageObjects.Count;
+        spriteRenderer.sortingOrder = _page.PageObjects.Count;
 
+        // le visuel doit être sur un enfant
+        Transform visual = spriteRenderer.transform;
+
+        // taille locale du sprite brut
         Vector2 spriteSize = spriteRenderer.sprite.bounds.size;
-        Vector3 size = droppedObject.transform.localScale;
 
+        // largeur cible = largeur actuelle du collider
+        float targetWidth = boxCollider.size.x;
 
-        Vector3 worldSpriteSize = spriteRenderer.bounds.size;
-        Vector3 lossyScale = droppedObject.transform.lossyScale;
+        // scale uniforme pour garder les proportions
+        float uniformScale = targetWidth / spriteSize.x;
 
-        Vector3 scale = droppedObject.transform.localScale;
-        scale.x = size.x / spriteSize.x;
-        scale.y = size.y / spriteSize.y;
+        // applique le scale seulement au visuel
+        visual.localScale = new Vector3(uniformScale, uniformScale, 1f);
 
-        droppedObject.transform.localScale = scale;
+        // adapte la hauteur du collider selon le ratio du sprite
+        float targetHeight = spriteSize.y * uniformScale;
 
         boxCollider.size = new Vector3(
-            worldSpriteSize.x / lossyScale.x,
-            worldSpriteSize.y / lossyScale.y,
+            boxCollider.size.x,
+            targetHeight,
             boxCollider.size.z
-         );
+        );
 
+        // centre du collider aligné sur le centre du sprite
         Vector3 localCenter = spriteRenderer.sprite.bounds.center;
+        Vector3 scaledCenter = new Vector3(
+            localCenter.x * uniformScale,
+            localCenter.y * uniformScale,
+            localCenter.z
+        );
 
         boxCollider.center = new Vector3(
-            localCenter.x,
-            localCenter.y,
+            visual.localPosition.x + scaledCenter.x,
+            visual.localPosition.y + scaledCenter.y,
             boxCollider.center.z
         );
-        //Set MoveOnZoom
+
+        // Set MoveOnZoom
         droppedObject.GetComponent<MoveOnZoom>().SetIndexs(_camLayer, _camera.GetComponent<CameraMovement>().currentIndexByLayer);
 
-        //set Pickable
+        // set Pickable
         droppedObject.GetComponent<Pickable>().SetItem(draggedItem);
 
         _inventoryController.RemoveInventoryItem(draggedItem);
