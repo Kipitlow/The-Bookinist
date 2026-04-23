@@ -17,6 +17,7 @@ public class SaveSystem : MonoBehaviour
     public PlayerGacha gacha;
     public PlayerBP bp;
 
+
     public Action OnDataUpdate;
 
 
@@ -67,7 +68,6 @@ public class SaveSystem : MonoBehaviour
         if (data == null)
         {
             Debug.LogWarning("Failed to load saveData.json");
-            Create();
             return;
         }
 
@@ -101,5 +101,10 @@ public class SaveSystem : MonoBehaviour
         bp = new PlayerBP();
 
         Save();
+    }
+
+    public void CallDataUpdate()
+    {
+        OnDataUpdate?.Invoke();
     }
 }

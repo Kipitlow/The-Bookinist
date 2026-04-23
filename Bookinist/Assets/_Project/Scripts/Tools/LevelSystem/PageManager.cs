@@ -47,7 +47,7 @@ public class PageManager : MonoBehaviour
             GameObject layer = _layerHolder[i];
 
             // Position Z inchangée (gère le z-fighting en 3D)
-            layer.transform.position = new Vector3(0, 0, _layerSpread[i]);
+            layer.transform.position = new Vector3(0, layer.transform.localPosition.y, _layerSpread[i]);
 
             // Assigne le Sorting Layer à tous les SpriteRenderer du layer
             string sortingLayerName = _sortingLayerPrefix + i;

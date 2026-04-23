@@ -15,6 +15,7 @@ public enum ConditionType
     CanBePlacedInBalance,
     WeightIsMoreThan,
     WeightIsLessThan,
+    Exist,
 }
 
 public enum ActionType

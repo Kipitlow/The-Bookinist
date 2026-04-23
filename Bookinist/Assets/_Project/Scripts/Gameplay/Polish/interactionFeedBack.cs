@@ -3,7 +3,7 @@ using UnityEngine;
 public class InteractionFeedBack : MonoBehaviour
 {
     [SerializeField] private bool _isInteractable;
-    [SerializeField] private GameObject Particles;
+    [SerializeField] private GameObject _particles;
 
     private SoundManager _soundManager;
     private MoveObject _moveobject;
@@ -23,7 +23,7 @@ public class InteractionFeedBack : MonoBehaviour
     {
         if (_isInteractable)
         {
-            if (Particles != null) SpawnParticles();
+            if (_particles != null) SpawnParticles();
         }
         else
         {
