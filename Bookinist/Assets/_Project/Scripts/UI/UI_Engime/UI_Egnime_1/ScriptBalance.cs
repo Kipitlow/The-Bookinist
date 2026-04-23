@@ -430,6 +430,9 @@ public class ScriptBalance : MonoBehaviour
         }
 
         _textValue.text = $"{_currentWeight} / 100";
+
+        if (_currentWeight >  0) _resetBalance.SetActive(true);
+        else _resetBalance.SetActive(false);
     }
 
     #endregion
