@@ -3,7 +3,7 @@ using UnityEngine;
 public class InteractionFeedBack : MonoBehaviour
 {
     [SerializeField] private bool _isInteractable;
-    [SerializeField] private GameObject Particles;
+    [SerializeField] private GameObject _particles;
 
     private SoundManager _soundManager;
     private MoveObject _moveobject;
@@ -39,7 +39,9 @@ public class InteractionFeedBack : MonoBehaviour
 
     public void SpawnParticles()
     {
-
+        GameObject ps = Instantiate(_particles, gameObject.transform.position, Quaternion.identity);
+        ps.GetComponent<ParticleSystem>().GetComponent<Renderer>().sortingLayerID = gameObject.GetComponent<SpriteRenderer>().sortingLayerID;
+        ps.GetComponent<ParticleSystem>().Play();
     }
 
 }
