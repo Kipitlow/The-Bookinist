@@ -25,14 +25,13 @@ public class ScriptChangeEau : MonoBehaviour
         if (!_hasChangedColor)
         {
             _interactionRunner.CallTry();
-            _hasChangedColor = true;
         }
     }
 
     public void ChangeColor()
     {
         StartCoroutine(IEChangeColor());
-        Debug.Log("C'est Good, sa devrais changer la couleur de l'étant");
+        _hasChangedColor = true;
     }
     public void printStatut()
     {
