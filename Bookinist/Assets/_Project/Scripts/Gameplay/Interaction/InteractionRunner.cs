@@ -129,6 +129,9 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.balance == null)
                     return false;
                 return condition.balance._currentWeight <= condition.weight;
+
+            case ConditionType.Exist:
+                return condition.target != null;
         }
     }
 
@@ -219,7 +222,12 @@ public class InteractionRunner : MonoBehaviour
 
             case ActionType.Drop:
                 if (action.slot != null && action.item != null)
-                    WorldDropHandler.Instance.DropObject(new Vector3(action.slot.transform.localPosition.x, action.slot.transform.localPosition.x, 0),action.item);
+                    WorldDropHandler.Instance.DropObject(new Vector3(action.slot.transform.localPosition.x, action.slot.transform.localPosition.y, 0),action.item);
+                break;
+
+            case ActionType.RemoveDraggedItem:
+                if (action.inventoryController != null)
+                    action.inventoryController.RemoveInventoryItem(DragContext.DraggedItem);
                 break;
         }
     }

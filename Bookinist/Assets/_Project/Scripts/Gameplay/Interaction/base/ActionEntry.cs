@@ -61,4 +61,7 @@ public class ActionEntry
     [Tooltip("Balance")]
     public ScriptBalance balance;
 
+    [Tooltip("InventoryController")]
+    public InventoryController inventoryController;
+
 }
