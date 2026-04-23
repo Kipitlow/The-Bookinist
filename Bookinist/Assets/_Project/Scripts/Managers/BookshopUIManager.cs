@@ -22,13 +22,17 @@ public class BookshopUIManager : MonoBehaviour
     [SerializeField] private int _defaultIndex = 2; // HUB
     [SerializeField] private GameObject _uiToDisable;
     [SerializeField] private float _animDuration = 0.35f;
-    [SerializeField] private float _screenWidth = 1080f; // largeur de ton Canvas
+    [SerializeField] private Canvas _canvas;
 
+    private float _screenWidth;
     private int _currentIndex = -1;
     private bool _isAnimating = false;
+    private List<int> _panelStack = new List<int>();
 
     void Start()
     {
+        _screenWidth = _canvas.GetComponent<RectTransform>().rect.width;
+
         for (int i = 0; i < _navItems.Length; i++)
         {
             int index = i;
@@ -36,7 +40,6 @@ public class BookshopUIManager : MonoBehaviour
             _navItems[i].colorDefault = _navItems[i].button.GetComponent<Image>().color;
             _navItems[i].colorActive = _navItems[i].button.colors.selectedColor;
 
-            // Cacher tous les panels au départ
             if (_navItems[i].panel != null)
                 _navItems[i].panel.SetActive(false);
         }
@@ -47,141 +50,149 @@ public class BookshopUIManager : MonoBehaviour
     public void NavigateTo(int index)
     {
         if (index == _currentIndex || _isAnimating) return;
-
-        // HUB (panel null) : on repasse par le home
-        if (_navItems[index].panel == null)
-        {
-            StartCoroutine(ReturnToHub());
-            return;
-        }
-
-        int hubIndex = _defaultIndex;
-
-        // Même côté ou navigation directe ?
-        bool goingRight = index > _currentIndex;
-        bool currentIsHub = _currentIndex == hubIndex || _currentIndex == -1;
-        bool targetIsHub = index == hubIndex;
-
-        // Cas : on est à droite et on va à gauche (ou inversement) → repasser par le hub
-        bool crossingHub = !currentIsHub && !targetIsHub &&
-                           ((index < hubIndex && _currentIndex > hubIndex) ||
-                            (index > hubIndex && _currentIndex < hubIndex));
-
-        if (crossingHub)
-        {
-            StartCoroutine(CrossHubThenNavigate(index));
-            return;
-        }
-
-        // Navigation directe
-        StartCoroutine(SlideToPanel(index, goingRight));
+        StartCoroutine(HandleNavigation(index));
     }
 
-    // Navigation simple : slide du panel entrant par dessus le courant
-    private IEnumerator SlideToPanel(int targetIndex, bool fromRight)
+    private IEnumerator HandleNavigation(int targetIndex)
     {
         _isAnimating = true;
 
-        NavItem target = _navItems[targetIndex];
-        float startX = fromRight ? _screenWidth : -_screenWidth;
+        bool targetIsHub = _navItems[targetIndex].panel == null;
+        bool currentIsHub = _currentIndex == _defaultIndex || _currentIndex == -1;
+        bool targetIsRight = targetIndex > _defaultIndex;
+        bool currentIsRight = _currentIndex > _defaultIndex;
 
-        // Préparer le panel entrant
-        target.panel.SetActive(true);
-        RectTransform targetRect = target.panel.GetComponent<RectTransform>();
-        targetRect.anchoredPosition = new Vector2(startX, targetRect.anchoredPosition.y);
+        if (targetIsHub)
+        {
+            // Retour au HUB : rétracte toute la pile
+            yield return StartCoroutine(RetractStack());
+            _uiToDisable.SetActive(true);
+        }
+        else if (currentIsHub)
+        {
+            // Depuis le HUB : empile séquentiellement jusqu'à la cible
+            yield return StartCoroutine(PushUntil(targetIndex));
+        }
+        else if (targetIsRight == currentIsRight)
+        {
+            if (IsForward(targetIndex))
+            {
+                // Même côté, on avance : empile les panels intermédiaires
+                yield return StartCoroutine(PushUntil(targetIndex));
+            }
+            else
+            {
+                // Même côté, on recule : dépile jusqu'à la cible
+                yield return StartCoroutine(RetractUntil(targetIndex));
+            }
+        }
+        else
+        {
+            // Changement de côté : rétracte tout puis empile de l'autre côté
+            yield return StartCoroutine(RetractStack());
+            _uiToDisable.SetActive(false);
+            yield return StartCoroutine(PushUntil(targetIndex));
+        }
 
-        // Slide in (par dessus, pas besoin de bouger le panel actuel)
-        yield return targetRect
-            .DOAnchorPosX(0f, _animDuration)
-            .SetEase(Ease.OutCubic)
-            .WaitForCompletion();
-
-        // Cacher l'ancien panel
-        if (_currentIndex >= 0 && _navItems[_currentIndex].panel != null)
-            _navItems[_currentIndex].panel.SetActive(false);
-
-        UpdateButtonStates(targetIndex);
-        _uiToDisable.SetActive(false);
+        _navItems[targetIndex].button.Select();
         _currentIndex = targetIndex;
         _isAnimating = false;
     }
 
-    // Retour au HUB : retrait séquentiel des panels empilés
-    private IEnumerator ReturnToHub()
+    // Empile séquentiellement tous les panels entre le sommet actuel et la cible
+    private IEnumerator PushUntil(int targetIndex)
     {
-        _isAnimating = true;
+        bool goRight = targetIndex > _defaultIndex;
 
-        // Construire la pile des panels visibles entre hub et currentIndex
-        List<int> stack = GetPanelStack();
+        // Détermine le point de départ (panel suivant après le sommet de la pile)
+        int startIndex;
+        if (_panelStack.Count == 0)
+            startIndex = goRight ? _defaultIndex + 1 : _defaultIndex - 1;
+        else
+            startIndex = goRight ? _panelStack[_panelStack.Count - 1] + 1
+                                 : _panelStack[_panelStack.Count - 1] - 1;
 
-        // Rétracter séquentiellement de la surface vers le hub
-        for (int i = stack.Count - 1; i >= 0; i--)
+        if (goRight)
         {
-            NavItem item = _navItems[stack[i]];
-            if (item.panel == null || !item.panel.activeSelf) continue;
-
-            RectTransform rect = item.panel.GetComponent<RectTransform>();
-            bool wasRight = stack[i] > _defaultIndex;
-            float exitX = wasRight ? _screenWidth : -_screenWidth;
-
-            yield return rect
-                .DOAnchorPosX(exitX, _animDuration)
-                .SetEase(Ease.InCubic)
-                .WaitForCompletion();
-
-            item.panel.SetActive(false);
-            rect.anchoredPosition = new Vector2(0f, rect.anchoredPosition.y);
-        }
-
-        UpdateButtonStates(_defaultIndex);
-        _uiToDisable.SetActive(true);
-        _currentIndex = _defaultIndex;
-        _isAnimating = false;
-    }
-
-    // Traversée du hub : retrait puis entrée de l'autre côté
-    private IEnumerator CrossHubThenNavigate(int targetIndex)
-    {
-        // D'abord retour au hub
-        yield return StartCoroutine(ReturnToHub());
-
-        // Puis navigation vers la cible
-        bool goingRight = targetIndex > _defaultIndex;
-        yield return StartCoroutine(SlideToPanel(targetIndex, goingRight));
-    }
-
-    // Retourne les indices des panels actifs entre hub et currentIndex
-    private List<int> GetPanelStack()
-    {
-        List<int> stack = new List<int>();
-
-        if (_currentIndex == _defaultIndex || _currentIndex == -1)
-            return stack;
-
-        bool isRight = _currentIndex > _defaultIndex;
-
-        if (isRight)
-        {
-            for (int i = _defaultIndex + 1; i <= _currentIndex; i++)
-                if (_navItems[i].panel != null && _navItems[i].panel.activeSelf)
-                    stack.Add(i);
+            for (int i = startIndex; i <= targetIndex; i++)
+            {
+                yield return StartCoroutine(PushPanel(i, true));
+            }
         }
         else
         {
-            for (int i = _defaultIndex - 1; i >= _currentIndex; i--)
-                if (_navItems[i].panel != null && _navItems[i].panel.activeSelf)
-                    stack.Add(i);
+            for (int i = startIndex; i >= targetIndex; i--)
+            {
+                yield return StartCoroutine(PushPanel(i, false));
+            }
         }
-
-        return stack;
     }
 
-    private void UpdateButtonStates(int activeIndex)
+    // Pousse un seul panel par dessus
+    private IEnumerator PushPanel(int targetIndex, bool fromRight)
     {
-        for (int i = 0; i < _navItems.Length; i++)
-            _navItems[i].button.Select();
+        NavItem target = _navItems[targetIndex];
+        if (target.panel == null) yield break;
 
-        _navItems[activeIndex].button.Select();
+        RectTransform rect = target.panel.GetComponent<RectTransform>();
+        float startX = fromRight ? _screenWidth : -_screenWidth;
+        rect.anchoredPosition = new Vector2(startX, rect.anchoredPosition.y);
+        target.panel.SetActive(true);
+        _uiToDisable.SetActive(false);
+
+        yield return rect
+            .DOAnchorPosX(0f, _animDuration)
+            .SetEase(Ease.OutCubic)
+            .WaitForCompletion();
+
+        _panelStack.Add(targetIndex);
+    }
+
+    // Rétracte séquentiellement jusqu'à exposer targetIndex (il doit déjà être dans la pile)
+    private IEnumerator RetractUntil(int targetIndex)
+    {
+        while (_panelStack.Count > 0 && _panelStack[_panelStack.Count - 1] != targetIndex)
+        {
+            int top = _panelStack[_panelStack.Count - 1];
+            _panelStack.RemoveAt(_panelStack.Count - 1);
+            yield return StartCoroutine(PopPanel(top));
+        }
+    }
+
+    // Rétracte toute la pile jusqu'au HUB
+    private IEnumerator RetractStack()
+    {
+        while (_panelStack.Count > 0)
+        {
+            int top = _panelStack[_panelStack.Count - 1];
+            _panelStack.RemoveAt(_panelStack.Count - 1);
+            yield return StartCoroutine(PopPanel(top));
+        }
+    }
+
+    // Fait sortir un panel du côté dont il est venu
+    private IEnumerator PopPanel(int index)
+    {
+        NavItem item = _navItems[index];
+        if (item.panel == null || !item.panel.activeSelf) yield break;
+
+        RectTransform rect = item.panel.GetComponent<RectTransform>();
+        bool isRight = index > _defaultIndex;
+        float exitX = isRight ? _screenWidth : -_screenWidth;
+
+        yield return rect
+            .DOAnchorPosX(exitX, _animDuration)
+            .SetEase(Ease.InCubic)
+            .WaitForCompletion();
+
+        item.panel.SetActive(false);
+        rect.anchoredPosition = new Vector2(0f, rect.anchoredPosition.y);
+    }
+
+    private bool IsForward(int targetIndex)
+    {
+        bool targetIsRight = targetIndex > _defaultIndex;
+        return targetIsRight ? targetIndex > _currentIndex : targetIndex < _currentIndex;
     }
 
     public void NavigateTo(string panelName)
