@@ -32,34 +32,42 @@ public class ScriptSpawnMoney : MonoBehaviour
                         if (_sprite.name == "Franc")
                         {
                             GameObject _object = Instantiate(_prefableMoney, this.transform.position, Quaternion.identity);
-                            _object.GetComponent<ScriptMoneyShop>().targetTransform = GameObject.Find("SoftMoneyImage").GetComponent<RectTransform>();
+                            ScriptMoneyShop script = _object.GetComponent<ScriptMoneyShop>();
+                            script.targetTransform = GameObject.Find("SoftMoneyImage").GetComponent<RectTransform>();
                             _object.GetComponent<SpriteRenderer>().sprite = _sprite;
+                            script.play();
                         }
                     }
                     break;
                 case _makeChoiceSprite.Gemme:
-                    foreach (Sprite rr in _allSprite)
+                    foreach (Sprite _sprite in _allSprite)
                     {
-                        if (rr.name == "Gemme")
+                        if (_sprite.name == "Gemme")
                         {
                             GameObject _object = Instantiate(_prefableMoney, this.transform.position, Quaternion.identity);
-                            _object.GetComponent<SpriteRenderer>().sprite = rr;
+                            ScriptMoneyShop script = _object.GetComponent<ScriptMoneyShop>();
+                            script.targetTransform = GameObject.Find("HardMoneyImage").GetComponent<RectTransform>();
+                            _object.GetComponent<SpriteRenderer>().sprite = _sprite;
+                            script.play();
                         }
                     }
                     break;
                 case _makeChoiceSprite.Plume:
-                    foreach (Sprite rr in _allSprite)
+                    foreach (Sprite _sprite in _allSprite)
                     {
-                        if (rr.name == "Plume")
+                        if (_sprite.name == "Plume")
                         {
                             GameObject _object = Instantiate(_prefableMoney, this.transform.position, Quaternion.identity);
-                            _object.GetComponent<SpriteRenderer>().sprite = rr;
+                            ScriptMoneyShop script = _object.GetComponent<ScriptMoneyShop>();
+                            script.targetTransform = GameObject.Find("IDunnoWhatsthis").GetComponent<RectTransform>();
+                            _object.GetComponent<SpriteRenderer>().sprite = _sprite;
+                            script.play();
                         }
                     }
                     break;
             }
             i++;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
 
     }

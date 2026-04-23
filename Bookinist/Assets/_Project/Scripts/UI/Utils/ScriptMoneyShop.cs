@@ -11,15 +11,14 @@ public class ScriptMoneyShop : MonoBehaviour
     private float _currentLerpPosition = 0;
     #endregion
     #region Method Unity
-    private void Start()
+    public void play()
     {
         _addImpulse();
         Invoke("startMoving", 2.0f);
-        //StartCoroutine(MovePiece());
     }
     #endregion
     #region Unity
-    public void startMoving()
+    private void startMoving()
     {
         StartCoroutine(MovePiece());
     }
@@ -58,11 +57,11 @@ public class ScriptMoneyShop : MonoBehaviour
             transform.position = _lerpPosition; transform.localScale = _lerpScale;
 
             yield return new WaitForSeconds(0.01f);
-        }
+        } //Move items
         Debug.Log("<color=green>[Succes: Déplacement]</color>");
         SpriteRenderer _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         float _alpha=1;
-        while (_alpha > 0)
+        while (_alpha > 0)//tranparent
         {
             _alpha -= 0.05f;
             _spriteRenderer.color = new Color(255.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f, _alpha);
