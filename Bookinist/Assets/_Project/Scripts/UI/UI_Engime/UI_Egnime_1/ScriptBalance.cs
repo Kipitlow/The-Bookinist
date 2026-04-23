@@ -59,8 +59,10 @@ public class ScriptBalance : MonoBehaviour
     [SerializeField] private int _counterweightWeight = 100;
     [SerializeField] private float _solveDelay = 0.5f;
 
-    [Header("Text Ajoute")]
+    [Header("Information On Weight")]
     [SerializeField] private TextMeshPro _textValue;
+    [SerializeField] private GameObject _resetBalance;
+
 
     [Header("Spawned Item Visual")]
     [SerializeField] private Vector3 _spawnedItemScale = new Vector3(0.1f, 0.1f, 0.1f);
@@ -68,13 +70,16 @@ public class ScriptBalance : MonoBehaviour
     [Header("Item Weights")]
     [SerializeField] private List<ItemWeightEntry> _itemWeights = new();
 
+    [Header("Task Script")]
+    [SerializeField] private SC_Tache _taskManager;
+
     private readonly Dictionary<string, int> _weightByItem = new();
     private readonly List<DepositedItem> _depositedItems = new();
 
     private GameObject _counterweightInstance;
     private bool _isSolved;
     private bool _isSolving;
-    private int _currentWeight;
+    public int _currentWeight { get; private set; }
 
     public int CurrentWeight => _currentWeight;
     public int DepositedCount => _depositedItems.Count;
@@ -121,7 +126,7 @@ public class ScriptBalance : MonoBehaviour
         {
             StartSolveFlow();
         }
-        _textValue.text = $"{_currentWeight} >= 100Value";
+
         return true;
     }
 
@@ -129,7 +134,7 @@ public class ScriptBalance : MonoBehaviour
     public void TryTakeBackItems()
     {
         if (!CanTakeBackAtLeastOneItem())
-            return;//0;
+            return;
 
         int returnedCount = 0;
 
@@ -158,8 +163,7 @@ public class ScriptBalance : MonoBehaviour
             DestroyCounterweight();
             ResetBalanceVisuals();
         }
-        _textValue.text = $"{_currentWeight} >= 100Value";
-        return; //returnedCount;
+        return;
     }
 
     #endregion
@@ -168,6 +172,11 @@ public class ScriptBalance : MonoBehaviour
 
     public bool CanAcceptItem(Item item)
     {
+        #region FaireLeDialogue
+        //Debug.Log($"<color=green> Name Tester: {item.name} </color>");
+
+        //_interactionRunner.CallTry();
+        #endregion
         if (_isSolved || _isSolving)
             return false;
 
@@ -181,6 +190,7 @@ public class ScriptBalance : MonoBehaviour
             return false;
 
         return _weightByItem.ContainsKey(item.itemName);
+        
     }
 
     public bool ContainsItem(Item item)
@@ -289,6 +299,7 @@ public class ScriptBalance : MonoBehaviour
 
         _currentWeight = 0;
         ResetBalanceVisuals();
+        _taskManager.Terminer_Tache("Faire un troc");
     }
 
 #endregion
@@ -417,6 +428,8 @@ public class ScriptBalance : MonoBehaviour
         {
             _plateau2.rotation = Quaternion.identity;
         }
+
+        _textValue.text = $"{_currentWeight} / 100";
     }
 
     #endregion

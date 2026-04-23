@@ -13,7 +13,6 @@ public enum ShopTabs
 
 public class ShopHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject _uiToDisable;
     [SerializeField] private GameObject _shopMenu;
     [SerializeField] private List<GameObject> _shopCategories;
 
@@ -21,19 +20,16 @@ public class ShopHandler : MonoBehaviour
     [SerializeField] private ShopItemUI _shopItemPrefab;
     [SerializeField] private List<ShopItemData> _allItems;
 
-    private ShopTabs _currentTab;
+    [Header("Contents")]
+    [SerializeField] private Transform _furnitureContent;
 
     public void OpenShop()
     {
-        _uiToDisable.SetActive(false);
-        _shopMenu.SetActive(true);
         NavigateShop(ShopTabs.Furniture);
     }
 
     public void CloseShop()
     {
-        _uiToDisable.SetActive(true);
-        _shopMenu.SetActive(false);
 
         // Nettoie la preview 3D quand on ferme la boutique
         if (ShopPreviewPanel.Instance != null)
@@ -55,13 +51,12 @@ public class ShopHandler : MonoBehaviour
         if (newTab == ShopTabs.Energy)
             return;
 
-        PopulateCategory(activeCategory.transform, newTab);
+        PopulateCategory(newTab);
     }
 
-    private void PopulateCategory(Transform container, ShopTabs tab)
+    private void PopulateCategory(ShopTabs tab)
     {
-        Transform realContainer = container.GetChild(0);
-        foreach (Transform child in realContainer)
+        foreach (Transform child in _furnitureContent)
             Destroy(child.gameObject);
 
         foreach (ShopItemData item in _allItems)
@@ -69,7 +64,7 @@ public class ShopHandler : MonoBehaviour
             bool belongs = tab == ShopTabs.Furniture ? item.isFurniture : !item.isFurniture;
             if (!belongs) continue;
 
-            ShopItemUI ui = Instantiate(_shopItemPrefab, realContainer);
+            ShopItemUI ui = Instantiate(_shopItemPrefab, _furnitureContent);
             ui.Setup(item);
 
             if (CustomShopManager.Instance.HasItem(item))
