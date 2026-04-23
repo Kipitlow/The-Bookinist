@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1179598157131155674}
   - component: {fileID: 916289882676637760}
   - component: {fileID: 2636925257542229572}
+  - component: {fileID: -6768309232520545509}
   m_Layer: 0
   m_Name: CourroneFleurRouge
   m_TagString: Untagged
@@ -125,8 +126,29 @@ MonoBehaviour:
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
       isBookFinish: 0
+      weight: 0
     actions:
     - type: 10
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 2636925257542229572}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+    - type: 14
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -181,3 +203,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 4b82783ca61b87b479507b0eec5f70f2, type: 2}
   _invController: {fileID: 0}
+--- !u!114 &-6768309232520545509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204687104674799107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d96b7583010c54da98af767e64a758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isInteractable: 1
+  _particles: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}

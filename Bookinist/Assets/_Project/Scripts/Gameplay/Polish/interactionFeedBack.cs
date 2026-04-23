@@ -23,7 +23,7 @@ public class InteractionFeedBack : MonoBehaviour
     {
         if (_isInteractable)
         {
-            if (Particles != null) SpawnParticles();
+            if (_particles != null) SpawnParticles();
         }
         else
         {
@@ -39,6 +39,7 @@ public class InteractionFeedBack : MonoBehaviour
 
     public void SpawnParticles()
     {
+        Debug.Log("Particles");
         GameObject ps = Instantiate(_particles, gameObject.transform.position, Quaternion.identity);
         ps.GetComponent<ParticleSystem>().GetComponent<Renderer>().sortingLayerID = gameObject.GetComponent<SpriteRenderer>().sortingLayerID;
         ps.GetComponent<ParticleSystem>().Play();

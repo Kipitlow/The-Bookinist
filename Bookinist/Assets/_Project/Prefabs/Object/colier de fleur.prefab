@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8513184113947251809}
   - component: {fileID: 4725649881267274810}
   - component: {fileID: 1489274805545004039}
+  - component: {fileID: 5799954843458341222}
   m_Layer: 0
   m_Name: colier de fleur
   m_TagString: Untagged
@@ -148,8 +149,29 @@ MonoBehaviour:
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
       isBookFinish: 0
+      weight: 0
     actions:
     - type: 10
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 8513184113947251809}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+    - type: 14
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -197,7 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
-  _isDroppedItem: 0
+  isDroppedItem: 0
 --- !u!114 &1489274805545004039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,9 +238,26 @@ MonoBehaviour:
   _hideDistance: 2
   _startOffsetDistance: 0
   _smoothTime: 0.2
+  _playStartShowAnimation: 1
   _alphaVisible: 1
   _alphaHidden: 0
   _alphaSpeed: 1
   _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
   _objToDesable: []
+  _childs: []
   _state: 1
+--- !u!114 &5799954843458341222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968460625904555924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d96b7583010c54da98af767e64a758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isInteractable: 1
+  _particles: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
