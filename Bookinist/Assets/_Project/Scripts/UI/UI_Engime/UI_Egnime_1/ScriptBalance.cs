@@ -70,6 +70,9 @@ public class ScriptBalance : MonoBehaviour
     [Header("Item Weights")]
     [SerializeField] private List<ItemWeightEntry> _itemWeights = new();
 
+    [Header("Task Script")]
+    [SerializeField] private SC_Tache _taskManager;
+
     private readonly Dictionary<string, int> _weightByItem = new();
     private readonly List<DepositedItem> _depositedItems = new();
 
@@ -296,6 +299,7 @@ public class ScriptBalance : MonoBehaviour
 
         _currentWeight = 0;
         ResetBalanceVisuals();
+        _taskManager.Terminer_Tache("Faire un troc");
     }
 
 #endregion

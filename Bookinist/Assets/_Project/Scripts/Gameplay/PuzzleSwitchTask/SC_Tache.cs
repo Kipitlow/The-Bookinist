@@ -109,9 +109,9 @@ public class SC_Tache : MonoBehaviour
     private void Spawn_Prefable_Tache(int i)
     {
         GameObject New_Object = Instantiate(PrefableTache, Target_Parent_Prefable);
-        Vector3 Pos = New_Object.transform.position;
-        Pos.y = Pos.y - 25 * i;
-        New_Object.transform.position = Pos;
+        //Vector3 Pos = New_Object.transform.position;
+        //Pos.y = Pos.y - 25 * i;
+        //New_Object.transform.position = Pos;
 
         SC_Prefable_Tache Prefable_Script_Tache = New_Object.GetComponentInChildren<SC_Prefable_Tache>();
         //Dans ce code, on vêrifier si la tache en elle même est completer, si oui on change de couleur on rouge puis on le barre
