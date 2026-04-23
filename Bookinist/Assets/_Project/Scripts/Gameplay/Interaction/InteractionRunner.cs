@@ -224,6 +224,11 @@ public class InteractionRunner : MonoBehaviour
                 if (action.slot != null && action.item != null)
                     WorldDropHandler.Instance.DropObject(new Vector3(action.slot.transform.localPosition.x, action.slot.transform.localPosition.y, 0),action.item);
                 break;
+
+            case ActionType.RemoveDraggedItem:
+                if (action.slot != null && action.item != null)
+                    action.inventoryController.RemoveInventoryItem(DragContext.DraggedItem);
+                break;
         }
     }
     #endregion

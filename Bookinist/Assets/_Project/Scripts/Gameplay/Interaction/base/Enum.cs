@@ -36,5 +36,6 @@ public enum ActionType
     PlaceInBalance,
     FeedBack,
     CloseDialogue,
-    Drop
+    Drop,
+    RemoveDraggedItem
 }
