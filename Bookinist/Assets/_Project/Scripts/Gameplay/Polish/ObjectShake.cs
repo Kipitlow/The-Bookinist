@@ -32,8 +32,6 @@ public class ObjectShake : MonoBehaviour
 
     public void Shake(float duration, float magnitude)
     {
-
-        Debug.Log("test");
         if (_shakeRoutine != null)
             StopCoroutine(_shakeRoutine);
 

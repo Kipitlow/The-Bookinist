@@ -129,6 +129,9 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.balance == null)
                     return false;
                 return condition.balance._currentWeight <= condition.weight;
+
+            case ConditionType.Exist:
+                return condition.target != null;
         }
     }
 
@@ -197,7 +200,7 @@ public class InteractionRunner : MonoBehaviour
                     Destroy(action.target);
                 break;
 
-            case ActionType.Drop:
+            case ActionType.FillWithSprite:
                 if (action.slot != null)
                     action.slot.FillWithSprite(action.item);
                 break;
@@ -215,6 +218,11 @@ public class InteractionRunner : MonoBehaviour
             case ActionType.CloseDialogue:
                 if (action.npcDialogue != null && action.npcTalker != null)
                     action.npcTalker.CloseBubble();
+                break;
+
+            case ActionType.Drop:
+                if (action.slot != null && action.item != null)
+                    WorldDropHandler.Instance.DropObject(new Vector3(action.slot.transform.localPosition.x, action.slot.transform.localPosition.y, 0),action.item);
                 break;
         }
     }

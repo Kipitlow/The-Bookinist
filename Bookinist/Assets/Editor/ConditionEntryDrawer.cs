@@ -70,6 +70,10 @@ public class ConditionEntryDrawer : PropertyDrawer
             case ConditionType.WeightIsLessThan:
                 lines += 2;
                 break;
+
+            case ConditionType.Exist:
+                lines += 1;
+                break;
         }
 
         return lines * lineHeight + extraHeight;
@@ -172,6 +176,10 @@ public class ConditionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("weight"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("balance"));
+                break;
+
+            case ConditionType.Exist:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 break;
         }
 

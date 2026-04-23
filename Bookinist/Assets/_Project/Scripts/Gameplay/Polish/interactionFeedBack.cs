@@ -23,7 +23,7 @@ public class InteractionFeedBack : MonoBehaviour
     {
         if (_isInteractable)
         {
-
+            if (Particles != null) SpawnParticles();
         }
         else
         {

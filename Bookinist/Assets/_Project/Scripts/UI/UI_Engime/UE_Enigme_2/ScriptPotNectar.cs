@@ -11,6 +11,11 @@ public class ScriptPotNectar : MonoBehaviour
         _sprite = GetComponent<SpriteRenderer>();
     }
 
+    private void Update()
+    {
+        //Debug.Log(transform.position);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         _sprite = GetComponent<SpriteRenderer>();

@@ -15,6 +15,7 @@ public enum ConditionType
     CanBePlacedInBalance,
     WeightIsMoreThan,
     WeightIsLessThan,
+    Exist,
 }
 
 public enum ActionType
@@ -31,8 +32,9 @@ public enum ActionType
     ResetHasMoved,
     Pick,
     Destroy,
-    Drop,
+    FillWithSprite,
     PlaceInBalance,
     FeedBack,
     CloseDialogue,
+    Drop
 }
