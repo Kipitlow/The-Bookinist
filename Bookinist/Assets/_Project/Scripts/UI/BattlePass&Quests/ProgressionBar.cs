@@ -35,7 +35,7 @@ public class ProgressionBar : MonoBehaviour
     void Start()
     {
         SaveSystem.instance.OnDataUpdate += LoadProgression;
-        if (SaveSystem.instance.battlePass != null) LoadProgression();
+        if (SaveSystem.instance.bp!= null) LoadProgression();
     }
 
     public void xpGain(float xp)
@@ -87,7 +87,7 @@ public class ProgressionBar : MonoBehaviour
 
     private void LoadProgression()
     {
-        BattlePassData data = SaveSystem.instance.battlePass;
+        PlayerBP data = SaveSystem.instance.bp;
         if (data == null) return;
 
         confirmedTotalXp = data.confirmedXp;
@@ -157,9 +157,9 @@ public class ProgressionBar : MonoBehaviour
         SaveSystem.instance.Save();
     }
 
-    public BattlePassData GetDataForSave()
+    public PlayerBP GetDataForSave()
     {
-        BattlePassData data = new BattlePassData();
+        PlayerBP data = new PlayerBP();
         data.confirmedXp = confirmedTotalXp;
         data.waitingXp = waitingXp;
         data.isPremiumActive = isPremiumActive;
