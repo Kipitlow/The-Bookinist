@@ -17,6 +17,7 @@ public class SaveSystem : MonoBehaviour
     public PlayerGacha gacha;
     public PlayerBP bp;
 
+
     public Action OnDataUpdate;
 
 
@@ -97,10 +98,8 @@ public class SaveSystem : MonoBehaviour
         Save();
     }
 
-    /*
-    private void OnApplicationQuit()
+    public void CallDataUpdate()
     {
-        Save();
+        OnDataUpdate?.Invoke();
     }
-    */
 }
