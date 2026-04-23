@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 1100452698193982207}
   - component: {fileID: 3664124436778857557}
   - component: {fileID: 8814831156476495843}
+  - component: {fileID: 3000921179920921028}
   m_Layer: 3
   m_Name: PrefabDroppedObject
   m_TagString: Untagged
@@ -180,6 +181,7 @@ MonoBehaviour:
   _hideDistance: 2
   _startOffsetDistance: 0
   _smoothTime: 0.2
+  _playStartShowAnimation: 1
   _alphaVisible: 1
   _alphaHidden: 0
   _alphaSpeed: 1
@@ -293,7 +295,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7281052662607791975}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4958845a1b90c654881e296988078431, type: 3}
   m_Name: 
@@ -317,3 +319,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d19013df6d1baa408d7ddf2ad4ab144, type: 2}
   - {fileID: 11400000, guid: b5ae7fbed1deb064d9b88c9ddc4e23e5, type: 2}
   - {fileID: 11400000, guid: 2b1cb514b6f5d194f851ba82041b9033, type: 2}
+--- !u!114 &3000921179920921028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7281052662607791975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a913ec3e595a74ebc6207713946a34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trackContinuouslyWhileDynamic: 1
+  _ignoreWhileScriptMoveIsRunning: 1
+  _trackOnlyWhenVisible: 1
+  _velocityThreshold: 0.03
+  _angularVelocityThreshold: 0.03
+  _settledDelay: 0.15
+  _minimumLocalDeltaToRefresh: 0.0001

@@ -101,7 +101,6 @@ public class WorldDropHandler : MonoBehaviour
             bool wasHandled = targetRunner.TryExecuteAll(context);
             if (wasHandled)
             {
-                _inventoryController.RemoveInventoryItem(draggedItem);
                 shouldDrop = false;
             }
         }
@@ -112,7 +111,6 @@ public class WorldDropHandler : MonoBehaviour
     public void DropObject(Vector2 screenPosition)
     {
         _activeLayer = _pageManager.GetPageFromInt(_camLayer).transform;
-        _page = _activeLayer.GetComponent<Page>();
 
         float depth = _activeLayer.position.z - _camera.transform.position.z;
 
@@ -126,10 +124,12 @@ public class WorldDropHandler : MonoBehaviour
     {
         _camLayer = _camera.GetComponent<CameraMovement>().currentIndexLayer;
         _activeLayer = _pageManager.GetPageFromInt(_camLayer).transform;
+        _page = _activeLayer.GetComponent<Page>();
         Debug.Log(_camLayer);
 
         GameObject droppedObject = Instantiate(_prefabDropableObject, position, _prefabDropableObject.transform.rotation, _activeLayer);
         BoxCollider boxCollider = droppedObject.GetComponent<BoxCollider>();
+        Debug.Log(droppedObject.transform.position);
 
         // setup SpriteRenderer
         SpriteRenderer spriteRenderer = droppedObject.GetComponentInChildren<SpriteRenderer>();
@@ -182,6 +182,8 @@ public class WorldDropHandler : MonoBehaviour
         droppedObject.GetComponent<Pickable>().SetItem(draggedItem);
 
         _inventoryController.RemoveInventoryItem(draggedItem);
+
+        //droppedObject.transform.localPosition = position;
 
         OnDropItem?.Invoke();
         return;

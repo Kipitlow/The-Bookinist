@@ -27,6 +27,7 @@ public class MoveOnZoom : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float _smoothTime = 0.2f;
+    [SerializeField] private bool _playStartShowAnimation = true;
 
     [Header("Visual")]
     [SerializeField] private float _alphaVisible = 1f;
@@ -69,14 +70,25 @@ public class MoveOnZoom : MonoBehaviour
         if (_autoGetChildrenColliders)
             AutoFillChilds();
 
+        _moveObject.UpdateBasePos();
+
         _alphaVisible = Mathf.Clamp01(_alphaVisible);
         _alphaHidden = Mathf.Clamp01(_alphaHidden);
 
-        _currentAlpha = 0f;
-        _state = ZoomState.Starting;
-
-        ApplyAlphaToAllRenderers(_currentAlpha);
-        StartShowingAtBeginning();
+        if (_playStartShowAnimation)
+        {
+            _currentAlpha = 0f;
+            _state = ZoomState.Starting;
+            ApplyAlphaToAllRenderers(_currentAlpha);
+            StartShowingAtBeginning();
+        }
+        else
+        {
+            _state = ZoomState.Visible;
+            _moveObject.SetPositionImmediate(_moveObject._baseLocalPosition);
+            _currentAlpha = _alphaVisible;
+            ApplyAlphaToAllRenderers(_currentAlpha);
+        }
     }
 
     private void OnEnable()

@@ -80,6 +80,10 @@ public class ActionEntryDrawer : PropertyDrawer
             case ActionType.Drop:
                 lines += 2;
                 break;
+
+            case ActionType.RemoveDraggedItem:
+                lines += 1;
+                break;
         }
 
         return lines * lineHeight + extraHeight;
@@ -185,6 +189,10 @@ public class ActionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
+                break;
+
+            case ActionType.RemoveDraggedItem:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("inventoryController"));
                 break;
         }
         EditorGUI.EndProperty();
