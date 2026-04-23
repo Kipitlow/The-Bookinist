@@ -6,15 +6,28 @@ public class ScriptChangeEau : MonoBehaviour
     #region Variable
     private float _lerpColorFloat=0;
     private Material _material;
+    private InteractionRunner _interactionRunner;
+    private bool _hasChangedColor = false;
     #endregion
     #region Methode Variable
     void Start()
     {
         _material = GetComponentInChildren<SpriteRenderer>().material;
+        _interactionRunner = GetComponentInChildren<InteractionRunner>();
+
         Invoke("_DisableInteractionRunner", 0.1f);
         _material.SetColor("BaseColor", Color.green);
     }
     #endregion
+
+    private void FixedUpdate()
+    {
+        if (!_hasChangedColor)
+        {
+            _interactionRunner.CallTry();
+            _hasChangedColor = true;
+        }
+    }
 
     public void ChangeColor()
     {
