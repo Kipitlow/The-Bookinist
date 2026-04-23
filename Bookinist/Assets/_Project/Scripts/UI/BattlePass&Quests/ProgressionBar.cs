@@ -8,11 +8,11 @@ public class ProgressionBar : MonoBehaviour
     public static ProgressionBar instance;
 
     [Header("UI Elements")]
-    public Image BattlePassBar;
-    public GameObject BattlePassIcon;
-    public List<Image> PaliersVisuals = new List<Image>();
+    [SerializeField] private Image _battlePassBar;
+    [SerializeField] private GameObject _battlePassIcon;
+    [SerializeField] private List<Image> _paliersVisuals = new List<Image>();
 
-
+    [Header("Rewards Lists")]
     public List<Reward> freeRewards = new List<Reward>();
     public List<Reward> premiumRewards = new List<Reward>();
 
@@ -20,12 +20,13 @@ public class ProgressionBar : MonoBehaviour
     public bool isPremiumActive = false;
     public int palier = 0;
     public float xpPass;
-    private float confirmedTotalXp = 0;
-    private float waitingXp = 0;
-    private float lerpTime = 0.7f;
 
-    private Color colorLock = new Color32(109, 109, 109, 255);
-    private Color colorUnlock = new Color32(241, 211, 0, 255);
+    [SerializeField] private float _confirmedTotalXp = 0;
+    [SerializeField] private float _waitingXp = 0;
+    [SerializeField] private float _lerpTime = 0.7f;
+
+    [SerializeField] private Color _colorLock = new Color32(109, 109, 109, 255);
+    [SerializeField] private Color _colorUnlock = new Color32(241, 211, 0, 255);
 
     private void Awake()
     {
@@ -35,30 +36,30 @@ public class ProgressionBar : MonoBehaviour
     void Start()
     {
         SaveSystem.instance.OnDataUpdate += LoadProgression;
-        if (SaveSystem.instance.bp!= null) LoadProgression();
+        if (SaveSystem.instance.bp != null) LoadProgression();
     }
 
-    public void xpGain(float xp)
+    public void XpGain(float xp)
     {
-        waitingXp += xp;
-        float virtualXpPass = (confirmedTotalXp + waitingXp) / 15000f;
+        _waitingXp += xp;
+        float virtualXpPass = (_confirmedTotalXp + _waitingXp) / 15000f;
 
         if (CheckIfNewPalier(virtualXpPass, palier))
         {
-            BattlePassIcon.SetActive(true);
+            _battlePassIcon.SetActive(true);
         }
         SaveSystem.instance.Save();
     }
 
-    public void addXpPass()
+    public void AddXpPass()
     {
-        if (waitingXp <= 0) return;
+        if (_waitingXp <= 0) return;
 
-        BattlePassIcon.SetActive(false);
-        StartCoroutine(AnimateBar(waitingXp));
+        _battlePassIcon.SetActive(false);
+        StartCoroutine(AnimateBar(_waitingXp));
 
-        confirmedTotalXp += waitingXp;
-        waitingXp = 0;
+        _confirmedTotalXp += _waitingXp;
+        _waitingXp = 0;
         SaveSystem.instance.Save();
     }
 
@@ -66,13 +67,13 @@ public class ProgressionBar : MonoBehaviour
     {
         float currentTime = 0;
         float startXp = xpPass;
-        float targetXp = Mathf.Clamp((confirmedTotalXp + amount) / 15000f, 0, 1);
+        float targetXp = Mathf.Clamp((_confirmedTotalXp + amount) / 15000f, 0, 1);
 
-        while (currentTime < lerpTime)
+        while (currentTime < _lerpTime)
         {
             currentTime += Time.deltaTime;
-            xpPass = Mathf.Lerp(startXp, targetXp, currentTime / lerpTime);
-            BattlePassBar.fillAmount = xpPass;
+            xpPass = Mathf.Lerp(startXp, targetXp, currentTime / _lerpTime);
+            _battlePassBar.fillAmount = xpPass;
 
             if (CheckIfNewPalier(xpPass, palier))
             {
@@ -82,7 +83,7 @@ public class ProgressionBar : MonoBehaviour
             yield return null;
         }
         xpPass = targetXp;
-        BattlePassBar.fillAmount = xpPass;
+        _battlePassBar.fillAmount = xpPass;
     }
 
     private void LoadProgression()
@@ -90,10 +91,10 @@ public class ProgressionBar : MonoBehaviour
         PlayerBP data = SaveSystem.instance.bp;
         if (data == null) return;
 
-        confirmedTotalXp = data.confirmedXp;
-        waitingXp = data.waitingXp;
+        _confirmedTotalXp = data.confirmedXp;
+        _waitingXp = data.waitingXp;
         isPremiumActive = data.isPremiumActive;
-        xpPass = confirmedTotalXp / 15000f;
+        xpPass = _confirmedTotalXp / 15000f;
 
         for (int i = 0; i < freeRewards.Count; i++)
         {
@@ -116,14 +117,14 @@ public class ProgressionBar : MonoBehaviour
 
     public void RefreshRewardsUI()
     {
-        BattlePassBar.fillAmount = xpPass;
+        _battlePassBar.fillAmount = xpPass;
 
         for (int i = 0; i < 30; i++)
         {
             bool isReached = (i < palier);
 
-            if (i < PaliersVisuals.Count)
-                PaliersVisuals[i].color = isReached ? colorUnlock : colorLock;
+            if (i < _paliersVisuals.Count)
+                _paliersVisuals[i].color = isReached ? _colorUnlock : _colorLock;
 
             if (i < freeRewards.Count)
                 freeRewards[i].UpdateUI(isReached, false);
@@ -160,8 +161,8 @@ public class ProgressionBar : MonoBehaviour
     public PlayerBP GetDataForSave()
     {
         PlayerBP data = new PlayerBP();
-        data.confirmedXp = confirmedTotalXp;
-        data.waitingXp = waitingXp;
+        data.confirmedXp = _confirmedTotalXp;
+        data.waitingXp = _waitingXp;
         data.isPremiumActive = isPremiumActive;
 
         data.freeRewardsTaken = new List<bool>();

@@ -13,8 +13,8 @@ public class Reward : MonoBehaviour
     public bool isTaken = false;
 
     [Header("UI References")]
-    [SerializeField] Image background;
-    [SerializeField] Image isTakenImage;
+    [SerializeField] private Image _background;
+    [SerializeField] private Image _isTakenImage;
     public Button button;
 
     private void Start()
@@ -49,11 +49,11 @@ public class Reward : MonoBehaviour
 
     private void SetCheckmarkAlpha(float alpha)
     {
-        if (isTakenImage != null)
+        if (_isTakenImage != null)
         {
-            Color c = isTakenImage.color;
+            Color c = _isTakenImage.color;
             c.a = alpha;
-            isTakenImage.color = c;
+            _isTakenImage.color = c;
         }
     }
 }
