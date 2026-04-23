@@ -12,7 +12,7 @@ public class ProgressionBar : MonoBehaviour
     public GameObject BattlePassIcon;
     public List<Image> PaliersVisuals = new List<Image>();
 
-    [Header("Rewards Lists")]
+
     public List<Reward> freeRewards = new List<Reward>();
     public List<Reward> premiumRewards = new List<Reward>();
 
