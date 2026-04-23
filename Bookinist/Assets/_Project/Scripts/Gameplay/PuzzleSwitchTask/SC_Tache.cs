@@ -46,13 +46,18 @@ public class SC_Tache : MonoBehaviour
 
     private bool _isAlreadyOpenedPanel = false;
 
+    [Header("Managers")]
+    [SerializeField] private PauseManager _pauseManager;
+    [SerializeField] private GameObject _touchDetection;
+    [SerializeField] private CameraMovement _cameraMovement;
+
     #endregion
 
     #region Unity Methods
     void Start()
     {
         //if (CM_Player == null) CM_Player = GameObject.Find("CameraManager").GetComponent<Camera>();
-
+        _pauseManager.SetPauseState(false);
         if (SceneManager.GetActiveScene().name != "Enigme1")
             StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
 
@@ -184,6 +189,9 @@ public class SC_Tache : MonoBehaviour
 
     private void Spawn_Canva_GameOver()
     {
+        _pauseManager.SetPauseState(true);
+        _cameraMovement.enabled = false;
+        _touchDetection.SetActive(false);
         SC_UI_GameOver PUI = Prefable_Canva_GameOver.GetComponent<SC_UI_GameOver>();
         Transform GO_Canva = GameObject.Find("Canvas").transform;
         if (PUI != null && GO_Canva != null)
@@ -249,5 +257,12 @@ public class SC_Tache : MonoBehaviour
             }
         }
     }
-    #endregion
-}
+    public void PauseActive(bool Toggled)
+    {
+        _pauseManager.SetPauseState(Toggled);
+        _cameraMovement.enabled = !Toggled;
+        _touchDetection.SetActive(!Toggled);
+    }
+
+        #endregion
+    }
