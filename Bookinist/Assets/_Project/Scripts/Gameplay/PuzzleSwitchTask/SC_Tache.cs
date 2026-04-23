@@ -56,6 +56,7 @@ public class SC_Tache : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "Enigme1")
             StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
 
+        _hintNumberTextMesh.text = GameManager.Instance.GetHintNumber().ToString();
         SetupTache();
     }
     #endregion
