@@ -8,8 +8,12 @@ public class GameManager : MonoBehaviour
     public bool bookFinish;
     public bool bookStarted;
 
+    [Range(0, 100)]
+    [SerializeField] private int _hintsNumber = 30;
+
     private void Awake()
     {
+        Debug.Log("ttt");
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -20,6 +24,10 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public int GetHintNumber()
+    { 
+        return _hintsNumber;
+    }
     public void FirstCustomerEncounter()
     {
         _isFirstCustomerEncounter = true;
@@ -34,13 +42,21 @@ public class GameManager : MonoBehaviour
 
     public bool IsBookStarted()
     {
-        return bookFinish;
+        return bookStarted;
     }
 
     public void FinishBook()
     {
         bookStarted = false;
         bookFinish = true;
+    }
+
+    public bool UseHint()
+    {
+        if (_hintsNumber <= 0) return false;
+
+        _hintsNumber--;
+        return true;
     }
 
 }

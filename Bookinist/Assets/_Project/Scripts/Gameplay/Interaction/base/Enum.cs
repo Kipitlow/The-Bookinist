@@ -12,7 +12,9 @@ public enum ConditionType
     OnWichFrame,
     HasMoved,
     HasToCheckEmptynessInventory,
-    CanBePlacedInBalance
+    CanBePlacedInBalance,
+    WeightIsMoreThan,
+    WeightIsLessThan,
 }
 
 public enum ActionType
@@ -29,6 +31,9 @@ public enum ActionType
     ResetHasMoved,
     Pick,
     Destroy,
-    Drop,
-    PlaceInBalance
+    FillWithSprite,
+    PlaceInBalance,
+    FeedBack,
+    CloseDialogue,
+    Drop
 }

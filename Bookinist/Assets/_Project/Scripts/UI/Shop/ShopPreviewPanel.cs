@@ -1,50 +1,40 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Runtime.CompilerServices;
 
-/// <summary>
-/// Gère la fenêtre de prévisualisation du meuble sélectionné.
-/// 
-/// Setup dans Unity :
-/// 1. Attache ce script sur le GameObject parent de la fenêtre preview (la grande zone grise).
-/// 2. Crée un RenderTexture (ex. 512x512) et assigne-la à _previewRenderTexture.
-/// 3. Crée une caméra dédiée (hors scène principale) pointant vers un layer isolé (ex. "Preview").
-///    - Assigne cette caméra à _previewCamera.
-///    - Coche "Culling Mask = Preview" uniquement.
-///    - Règle "Target Texture" = ton RenderTexture.
-/// 4. L'Image UI (_previewImage) doit avoir un RawImage component (pas Image),
-///    avec sa texture = le même RenderTexture.
-/// 5. Le GameObject _previewRoot est un Transform vide dans le layer "Preview",
-///    là où le mesh 3D sera instancié et affiché par la caméra dédiée.
-/// </summary>
 public class ShopPreviewPanel : MonoBehaviour
 {
     public static ShopPreviewPanel Instance { get; private set; }
 
     [Header("UI References")]
-    [SerializeField] private RawImage _previewImage;          // L'image qui affiche le RenderTexture
-    [SerializeField] private TextMeshProUGUI _itemNameText;   // Nom du meuble
-    [SerializeField] private TextMeshProUGUI _itemPriceText;  // Prix
-    [SerializeField] private Button _confirmBuyButton;        // Bouton "Acheter"
-    [SerializeField] private GameObject _emptyStateHint;      // (optionnel) texte "Sélectionne un meuble"
+    [SerializeField] private RawImage _previewImage;
+    [SerializeField] private TextMeshProUGUI _itemNameText;
+    [SerializeField] private TextMeshProUGUI _itemPriceText;
+    [SerializeField] private Button _confirmBuyButton;
+    [SerializeField] private TextMeshProUGUI _confirmBuyText;
+    [SerializeField] private GameObject _emptyStateHint;
 
     [Header("3D Preview")]
-    [SerializeField] private Camera _previewCamera;           // Caméra dédiée au preview
-    [SerializeField] private Transform _previewRoot;          // Pivot où spawn le mesh
-    [SerializeField] private float _rotationSpeed = 45f;      // Degrés/seconde
+    [SerializeField] private Camera _previewCamera;
+
+    // _previewRoot est le pivot de rotation placé devant la caméra preview.
+    // Le prefab sera instancié en enfant de ce transform, centré via ses bounds.
+    [SerializeField] private Transform _previewRoot;
+    [SerializeField] private float _rotationSpeed = 45f;
 
     [Header("Render Texture")]
     [SerializeField] private RenderTexture _previewRenderTexture;
 
     private ShopItemData _currentItem;
-    private GameObject _currentMeshInstance;
+    private ShopItemUI _currentItemUI;
+    private GameObject _currentInstance;
 
     private void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
 
-        // Branche le RenderTexture sur l'image UI
         if (_previewImage != null && _previewRenderTexture != null)
             _previewImage.texture = _previewRenderTexture;
 
@@ -53,52 +43,73 @@ public class ShopPreviewPanel : MonoBehaviour
         ClearPreview();
     }
 
-    /// <summary>
-    /// Appelé par ShopItemUI quand l'utilisateur clique sur une carte.
-    /// </summary>
-    public void ShowPreview(ShopItemData data)
+    public void ShowPreview(ShopItemData data, ShopItemUI sourceUI)
     {
         _currentItem = data;
+        _currentItemUI = sourceUI;
 
-        // Met à jour les textes
         _itemNameText.text = data.itemName;
         _itemPriceText.text = $"{data.price} €";
 
-        // Désactive le hint vide
         if (_emptyStateHint != null) _emptyStateHint.SetActive(false);
-        _previewImage.gameObject.SetActive(true);
-        _itemNameText.gameObject.SetActive(true);
-        _itemPriceText.gameObject.SetActive(true);
 
-        // Gère l'état du bouton (déjà acheté ?)
         bool alreadyOwned = CustomShopManager.Instance != null && CustomShopManager.Instance.HasItem(data);
-        _confirmBuyButton.interactable = !alreadyOwned;
-        _confirmBuyButton.GetComponentInChildren<TextMeshProUGUI>().text = alreadyOwned ? "Déjà acheté" : "Acheter";
+        RefreshBuyButton(alreadyOwned);
 
-        SpawnPreviewMesh(data.mesh);
+        SpawnPreview(data.previewPrefab);
     }
 
-    private void SpawnPreviewMesh(GameObject meshPrefab)
+    private void SpawnPreview(GameObject prefab)
     {
-        // Détruit l'ancien mesh prévisualisé
-        if (_currentMeshInstance != null)
-            Destroy(_currentMeshInstance);
+        if (_currentInstance != null)
+        {
+            Destroy(_currentInstance);
+            _currentInstance = null;
+        }
 
-        if (meshPrefab == null) return;
+        if (prefab == null) return;
 
-        _currentMeshInstance = Instantiate(meshPrefab, _previewRoot);
-        _currentMeshInstance.transform.localPosition = Vector3.zero;
-        _currentMeshInstance.transform.localRotation = Quaternion.identity;
+        // Instancie le prefab en enfant du pivot de rotation
+        _currentInstance = Instantiate(prefab, _previewRoot);
+        _currentInstance.transform.localPosition = Vector3.zero;
+        _currentInstance.transform.localRotation = Quaternion.identity;
 
-        // Place tous les renderers dans le layer "Preview" pour isoler la caméra dédiée
-        SetLayerRecursive(_currentMeshInstance, LayerMask.NameToLayer("Preview"));
+        CenterOnBounds(_currentInstance);
+
+        // Isole le prefab dans le layer Preview pour la caméra dédiée
+        SetLayerRecursive(_currentInstance, LayerMask.NameToLayer("Preview"));
+    }
+
+    /// <summary>
+    /// Décale le mesh pour que son centre géométrique (Bounds) coïncide
+    /// avec la position locale (0,0,0) du pivot, garantissant une rotation centrée.
+    /// </summary>
+    private void CenterOnBounds(GameObject go)
+    {
+        Renderer[] renderers = go.GetComponentsInChildren<Renderer>();
+        if (renderers.Length == 0) return;
+
+        // Calcule les bounds globales de tous les renderers
+        Bounds bounds = renderers[0].bounds;
+        foreach (Renderer r in renderers)
+            bounds.Encapsulate(r.bounds);
+
+        // Décale l'instance pour centrer ses bounds sur le pivot
+        Vector3 offset = go.transform.position - bounds.center;
+        go.transform.position += offset;
     }
 
     private void Update()
     {
-        // Rotation continue du mesh affiché
-        if (_currentMeshInstance != null)
-            _currentMeshInstance.transform.Rotate(Vector3.up, _rotationSpeed * Time.deltaTime, Space.World);
+        if (_currentInstance != null)
+            _previewRoot.Rotate(Vector3.up, _rotationSpeed * Time.deltaTime, Space.Self);
+    }
+
+    private void RefreshBuyButton(bool alreadyOwned)
+    {
+        _confirmBuyButton.interactable = !alreadyOwned;
+        if (_confirmBuyText != null)
+            _confirmBuyText.text = alreadyOwned ? "Déjà acheté" : "Acheter";
     }
 
     private void OnConfirmBuy()
@@ -108,32 +119,31 @@ public class ShopPreviewPanel : MonoBehaviour
         if (CurrencyManager.Instance.GetSoftCurrency() < _currentItem.price)
         {
             Debug.Log("[ShopPreview] Fonds insuffisants.");
-            // Feedback -> Todod
             return;
         }
 
         CurrencyManager.Instance.SpendSoftCurrency(_currentItem.price);
 
         if (CustomShopManager.Instance != null)
-        {
             CustomShopManager.Instance.AddObject(_currentItem);
-            _confirmBuyButton.interactable = false;
-            _confirmBuyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Déjà acheté";
-        }
+
+        if (_currentItemUI != null)
+            _currentItemUI.SetSoldState();
+
+        RefreshBuyButton(true);
     }
 
-    /// <summary>
-    /// Remet la preview à son état vide (appelé à la fermeture de la boutique, par exemple).
-    /// </summary>
     public void ClearPreview()
     {
         _currentItem = null;
+        _currentItemUI = null;
 
-        if (_currentMeshInstance != null) { Destroy(_currentMeshInstance); _currentMeshInstance = null; }
+        if (_currentInstance != null) { Destroy(_currentInstance); _currentInstance = null; }
 
-        _itemNameText.text = "";
-        _itemPriceText.text = "";
-        _confirmBuyButton.interactable = false;
+        if (_itemNameText != null) _itemNameText.text = "";
+        if (_itemPriceText != null) _itemPriceText.text = "";
+
+        RefreshBuyButton(true);
 
         if (_emptyStateHint != null) _emptyStateHint.SetActive(true);
     }
