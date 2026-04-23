@@ -828,10 +828,17 @@ MonoBehaviour:
     playerSoundMusic: 0
     playerSoundSound: 0
   currency:
+    playerCurrencyLastLogin: 1776954009
     playerCurrencyEnergy: 5
     playerCurrencyHard: 0
     playerCurrencySoft: 0
-  battlePass:
+  inventory:
+    ownedItemIDs: []
+  progression:
+    progressionTutoComplete: 0
+  customShop:
+    placedItems: []
+  bp:
     confirmedXp: 0
     waitingXp: 0
     isPremiumActive: 0
@@ -4094,23 +4101,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camManager: {fileID: 0}
-  _rotationByView:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  _spawnPointByView:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _furnitureParent: {fileID: 0}
   _horizontalPanelPrefab: {fileID: 4919132356872621012, guid: fed6e6612584d24478e96a0569467bb7, type: 3}
   _horizontalPanelParent: {fileID: 614882370}
   _buttonPrefab: {fileID: 1506723144915916813, guid: a924b995149e68f4ba8f8a1cde7da44e, type: 3}
+  _defaultItems: []
 --- !u!1 &357520922
 GameObject:
   m_ObjectHideFlags: 0
@@ -5320,6 +5315,7 @@ MonoBehaviour:
   _isFirstCustomerEncounter: 0
   bookFinish: 0
   bookStarted: 0
+  _hintsNumber: 30
 --- !u!4 &573563032
 Transform:
   m_ObjectHideFlags: 0
@@ -13873,6 +13869,7 @@ MonoBehaviour:
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
       isBookFinish: 0
+      weight: 0
     actions:
     - type: 2
       target: {fileID: 0}
@@ -24050,6 +24047,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 2367878206786735526}
+    - target: {fileID: 4344502833648757238, guid: 7871c1d9030cd814494d626612046910, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: AddXpPass
+      objectReference: {fileID: 0}
     - target: {fileID: 6144009028042941019, guid: 7871c1d9030cd814494d626612046910, type: 3}
       propertyPath: m_Name
       value: VerticalRightButton
