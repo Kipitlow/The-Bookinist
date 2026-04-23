@@ -24,6 +24,7 @@ public class CustomShopManager : MonoBehaviour
     private List<GameObject>[] _buttonsByView;
     private GameObject[] _horizontalPanels;
 
+
     // Instances 3D actives par view et par type : [viewIndex][FurnitureType] = { principal, additional }
     private Dictionary<FurnitureType, GameObject[]>[] _currentObjects;
 
@@ -51,6 +52,7 @@ public class CustomShopManager : MonoBehaviour
 
     private void Start()
     {
+
         _inventoryByView = new List<ShopItemData>[VIEW_COUNT];
         _buttonsByView = new List<GameObject>[VIEW_COUNT];
         _horizontalPanels = new GameObject[VIEW_COUNT];

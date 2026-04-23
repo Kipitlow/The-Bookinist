@@ -29,8 +29,12 @@ public class BookshopUIManager : MonoBehaviour
     private bool _isAnimating = false;
     private List<int> _panelStack = new List<int>();
 
+    private GameObject _npcToDisable;
+
     void Start()
     {
+        _npcToDisable = FindFirstObjectByType<NPCTalker>().gameObject;
+
         _screenWidth = _canvas.GetComponent<RectTransform>().rect.width;
 
         for (int i = 0; i < _navItems.Length; i++)
@@ -62,6 +66,7 @@ public class BookshopUIManager : MonoBehaviour
         bool targetIsRight = targetIndex > _defaultIndex;
         bool currentIsRight = _currentIndex > _defaultIndex;
 
+
         if (targetIsHub)
         {
             // Retour au HUB : rétracte toute la pile
@@ -92,6 +97,15 @@ public class BookshopUIManager : MonoBehaviour
             yield return StartCoroutine(RetractStack());
             _uiToDisable.SetActive(false);
             yield return StartCoroutine(PushUntil(targetIndex));
+        }
+
+        if (targetIndex == 3)
+        {
+            _npcToDisable.SetActive(false);
+        }
+        else
+        {
+            _npcToDisable.SetActive(true);
         }
 
         _navItems[targetIndex].button.Select();
