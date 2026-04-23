@@ -13,7 +13,6 @@ public enum ShopTabs
 
 public class ShopHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject _uiToDisable;
     [SerializeField] private GameObject _shopMenu;
     [SerializeField] private List<GameObject> _shopCategories;
 
@@ -24,19 +23,13 @@ public class ShopHandler : MonoBehaviour
     [Header("Contents")]
     [SerializeField] private Transform _furnitureContent;
 
-    private ShopTabs _currentTab;
-
     public void OpenShop()
     {
-        _uiToDisable.SetActive(false);
-        _shopMenu.SetActive(true);
         NavigateShop(ShopTabs.Furniture);
     }
 
     public void CloseShop()
     {
-        _uiToDisable.SetActive(true);
-        _shopMenu.SetActive(false);
 
         // Nettoie la preview 3D quand on ferme la boutique
         if (ShopPreviewPanel.Instance != null)
