@@ -13,6 +13,8 @@ public class LibraryManager : MonoBehaviour
     [SerializeField] private List<bool> _isBookUnlockedList;
 
     [SerializeField] private Quaternion _rotation;
+
+    private bool _isBookOpened = false;
     private void Start()
     {
         CheckUnlockBook();
@@ -45,6 +47,11 @@ public class LibraryManager : MonoBehaviour
 
     public void SpawnBook(int index)
     {
+        if (_isBookOpened) return;
+
         GameObject newBook = Instantiate(_bookList[index], _bookSpawnPoint.transform.position, _rotation);
+        _isBookOpened = true;
+
+        PlaceBookOnLibrary(index);
     }
 }
