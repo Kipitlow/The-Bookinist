@@ -226,7 +226,7 @@ public class InteractionRunner : MonoBehaviour
                 break;
 
             case ActionType.RemoveDraggedItem:
-                if (action.slot != null && action.item != null)
+                if (action.inventoryController != null)
                     action.inventoryController.RemoveInventoryItem(DragContext.DraggedItem);
                 break;
         }
