@@ -28,7 +28,6 @@ public class SaveSystem : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         instance = this;
         DontDestroyOnLoad(gameObject);
         Load();

@@ -25,12 +25,15 @@ public class ReactiveText : MonoBehaviour
     private void Start()
     {
         textUpdate();
+        SaveSystem.instance.OnDataUpdate += textUpdate;
     }
 
+    /*
     private void OnEnable()
     {
         SaveSystem.instance.OnDataUpdate += textUpdate;
     }
+    */
 
     private void OnDisable()
     {
