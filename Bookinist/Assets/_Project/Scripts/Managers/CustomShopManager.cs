@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using UnityEditor.Rendering;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class CustomShopManager : MonoBehaviour
 {
@@ -72,9 +75,19 @@ public class CustomShopManager : MonoBehaviour
 
         _horizontalPanels[0].SetActive(true);
 
-        if (_defaultItems != null)
-            foreach (ShopItemData item in _defaultItems)
-                AddObject(item, placeImmediately: true);
+        //if (_defaultItems != null)
+        //    foreach (ShopItemData item in _defaultItems)
+        //        AddObject(item, placeImmediately: true);
+
+        foreach (string item in SaveSystem.instance.inventory.ownedItemIDs)
+            AddObject(ItemDatabase.instance.Get(item), placeImmediately: false);
+
+        foreach (string item in SaveSystem.instance.customShop.placedItems)
+        {
+            ShopItemData newItem = ItemDatabase.instance.Get(item);
+            _activeItemByView[newItem.viewIndex][newItem.furnitureType] = newItem;
+        }
+        LoadActiveItems(_activeItemByView);
     }
 
     private void OnViewChanged(int index, int offset)
@@ -107,7 +120,8 @@ public class CustomShopManager : MonoBehaviour
         _inventoryByView[targetView].Add(newObject);
         CreateButton(targetView, _inventoryByView[targetView].Count - 1, newObject);
 
-        SaveSystem.instance.inventory.ownedItemIDs.Add(newObject.id.ToString());
+        SaveSystem.instance.inventory.AddCleanID(newObject.id.ToString());
+        SaveSystem.instance.Save();
 
         // Place en scène uniquement si ce slot de type est encore libre
         if (placeImmediately && !_activeItemByView[targetView].ContainsKey(newObject.furnitureType))
@@ -139,6 +153,9 @@ public class CustomShopManager : MonoBehaviour
             Debug.LogWarning($"[CustomShopManager] Index {furnitureIndex} invalide pour la view {viewIndex}.");
             return;
         }
+
+        SaveSystem.instance.customShop.AddCleanID(GetAllActiveItems());
+        SaveSystem.instance.Save();
 
         PlaceObject(viewIndex, list[furnitureIndex]);
     }
