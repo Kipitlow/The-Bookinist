@@ -1,19 +1,35 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
+
+
+enum _makeChoiceSprite { Money, Gemme, Plume }
+
+public class typeMoney
+{
+    
+}
 
 public class ScriptSpawnMoney : MonoBehaviour
 {
     #region Variable
+    [Header("SetupPrefable")]
     [SerializeField] private GameObject _prefableMoney;
-    [SerializeField] private int _nombreInstanceMoney;
     [SerializeField] private Sprite[] _allSprite;
     [SerializeField] private _makeChoiceSprite _choiceSprite;
-    enum _makeChoiceSprite{Money,Gemme,Plume}
+
+    [Header("SetCurrent")]
+    [SerializeField] private int _currentMoney;
+    private int _nombreInstanceMoney;
     #endregion
     #region Method Unity
     private void Start()
     {
+        switch (_choiceSprite)
+        {
+            case _makeChoiceSprite.Money: _nombreInstanceMoney = 10; break;
+            case _makeChoiceSprite.Gemme: _nombreInstanceMoney = 8; break;
+            case _makeChoiceSprite.Plume: _nombreInstanceMoney = 5; break;
+        }
         StartCoroutine(_instantiateMoney());
     }
     #endregion
@@ -23,7 +39,6 @@ public class ScriptSpawnMoney : MonoBehaviour
         int i = 0;
         while(i< _nombreInstanceMoney)
         {
-            
             switch(_choiceSprite)
             {
                 case _makeChoiceSprite.Money:
@@ -35,7 +50,7 @@ public class ScriptSpawnMoney : MonoBehaviour
                             ScriptMoneyShop script = _object.GetComponent<ScriptMoneyShop>();
                             script.targetTransform = GameObject.Find("SoftMoneyImage").GetComponent<RectTransform>();
                             _object.GetComponent<SpriteRenderer>().sprite = _sprite;
-                            script.play();
+                            script.play(_currentMoney, _sprite.name);
                         }
                     }
                     break;
@@ -48,7 +63,7 @@ public class ScriptSpawnMoney : MonoBehaviour
                             ScriptMoneyShop script = _object.GetComponent<ScriptMoneyShop>();
                             script.targetTransform = GameObject.Find("HardMoneyImage").GetComponent<RectTransform>();
                             _object.GetComponent<SpriteRenderer>().sprite = _sprite;
-                            script.play();
+                            script.play(_currentMoney, _sprite.name);
                         }
                     }
                     break;
@@ -61,7 +76,7 @@ public class ScriptSpawnMoney : MonoBehaviour
                             ScriptMoneyShop script = _object.GetComponent<ScriptMoneyShop>();
                             script.targetTransform = GameObject.Find("IDunnoWhatsthis").GetComponent<RectTransform>();
                             _object.GetComponent<SpriteRenderer>().sprite = _sprite;
-                            script.play();
+                            script.play(_currentMoney, _sprite.name);
                         }
                     }
                     break;

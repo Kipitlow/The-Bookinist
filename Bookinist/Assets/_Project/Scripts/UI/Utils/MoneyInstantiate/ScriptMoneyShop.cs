@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScriptMoneyShop : MonoBehaviour
@@ -7,12 +6,19 @@ public class ScriptMoneyShop : MonoBehaviour
     #region Variable
     [Header("VariablePiece")]
     public RectTransform targetTransform;
-    private float _impulsefloat;
     private float _currentLerpPosition = 0;
+    private float _impulsefloat;
+
+    [Header("TypeMoney")]
+    private string _typeMoney;
+    private int _currentMoney;
+
     #endregion
     #region Method Unity
-    public void play()
+    public void play(int _current, string _name)
     {
+        _typeMoney = _name;
+        _currentMoney = _current;
         _addImpulse();
         Invoke("startMoving", 2.0f);
     }
@@ -22,13 +28,11 @@ public class ScriptMoneyShop : MonoBehaviour
     {
         StartCoroutine(MovePiece());
     }
-
     private void _addImpulse()
     {
         Rigidbody2D _rb2 = gameObject.GetComponent<Rigidbody2D>();
-        
-        float _randomfloat = Random.Range(-0.2f,0.2f);
-        _impulsefloat = Random.Range(600.0f, 1500.0f);
+        float _randomfloat = Random.Range(-25f,25);
+        _impulsefloat = Random.Range(2, 5);
         Vector2 _direction = new Vector2(_randomfloat, 1.0f);
         _rb2.AddForce(_direction * _impulsefloat, ForceMode2D.Impulse);
         StartCoroutine(_influenceGraviter());
@@ -36,6 +40,7 @@ public class ScriptMoneyShop : MonoBehaviour
     IEnumerator _influenceGraviter()
     {
         Rigidbody2D _rb2 = gameObject.GetComponent<Rigidbody2D>();
+        _rb2.gravityScale = 1.0f;
         while (_rb2.gravityScale > 0)
         {
             _rb2.gravityScale -= 5f;
@@ -45,6 +50,7 @@ public class ScriptMoneyShop : MonoBehaviour
     }
     IEnumerator MovePiece()
     {
+        #region MoveMoney
         _currentLerpPosition = 0;
         Rigidbody2D _rb2 = gameObject.GetComponent<Rigidbody2D>();
         _rb2.simulated = false;
@@ -58,7 +64,31 @@ public class ScriptMoneyShop : MonoBehaviour
 
             yield return new WaitForSeconds(0.01f);
         } //Move items
-        Debug.Log("<color=green>[Succes: Déplacement]</color>");
+        #endregion
+        #region AddMoney
+        CurrencyManager _currencyManager = GameObject.FindAnyObjectByType<CurrencyManager>();
+        if( _currencyManager != null )
+        {
+            switch (_typeMoney)
+            {
+                case "Franc":
+                    _currencyManager.AddSoftCurrency(_currentMoney);
+                    break;
+                case "Gemme":
+                    _currencyManager.AddHardCurrency(_currentMoney);
+                    break;
+                case "Plume":
+                    //_currencyManager.AddHardCurrency(_currentMoney);
+                    Debug.LogWarning("Crow");
+                    break;
+            }
+        }
+        else
+        {
+            Debug.LogError("!!! No Resulte CurrentManager !!!");
+        }
+        #endregion
+        #region ChangeScaleEndTransparent
         SpriteRenderer _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         float _alpha=1;
         while (_alpha > 0)//tranparent
@@ -67,7 +97,7 @@ public class ScriptMoneyShop : MonoBehaviour
             _spriteRenderer.color = new Color(255.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f, _alpha);
             yield return new WaitForSeconds(0.05f);
         }
-
+        #endregion
     }
     #endregion
 }
