@@ -188,13 +188,15 @@ public class SC_Tache : MonoBehaviour
         Transform GO_Canva = GameObject.Find("Canvas").transform;
         if (PUI != null && GO_Canva != null)
         {
-            GameObject RR = Instantiate(Prefable_Canva_GameOver, transform.position, transform.rotation);
-            RR.transform.SetParent(GO_Canva, false); // Permet d'annuler
-
-            RR.transform.localScale = new Vector2(0.5f, 0.5f);
+            GameObject RR = Instantiate(Prefable_Canva_GameOver);
+            RR.transform.SetParent(GO_Canva, false);
 
             RectTransform rt = RR.GetComponent<RectTransform>();
-            rt.anchoredPosition = new Vector2(transform.position.x / 2, transform.position.y / 2);
+
+            rt.anchorMin = Vector2.zero;      // (0,0)
+            rt.anchorMax = Vector2.one;       // (1,1)
+            rt.offsetMin = Vector2.zero;
+            rt.offsetMax = Vector2.zero;
         }
     }
 
