@@ -4,5 +4,4 @@ using UnityEngine;
 public class PlayerProgression
 {
     public bool progressionTutoComplete = false;
-    //public bool 
 }

@@ -10,6 +10,7 @@ public enum DataDisplay
     PlayerXP,
     PlayerBooksUnlocked,
     PlayerEnergy,
+    PlayerEnergyNoPre,
     PlayerHardCurrency,
     PlayerHardCurrencyNoPre,
     PlayerSoftCurrency,
@@ -66,7 +67,11 @@ public class ReactiveText : MonoBehaviour
                 break;
 
             case DataDisplay.PlayerEnergy:
-                textVal.text = SaveSystem.instance.currency.playerCurrencyEnergy.ToString() + "/5";
+                textVal.text = SaveSystem.instance.currency.playerCurrencyEnergy.ToString() + "/60";
+                break;
+
+            case DataDisplay.PlayerEnergyNoPre:
+                textVal.text = SaveSystem.instance.currency.playerCurrencyEnergy.ToString();
                 break;
 
             case DataDisplay.PlayerHardCurrency:

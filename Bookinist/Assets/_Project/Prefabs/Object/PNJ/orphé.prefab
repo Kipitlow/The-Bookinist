@@ -200,9 +200,9 @@ Transform:
   m_GameObject: {fileID: 2701608312234113460}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.03, y: 0, z: -0.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 4.84, y: -5.48, z: -0.3}
+  m_LocalScale: {x: 3.07, y: 3.07, z: 3.07}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2278968247961357136}
   - {fileID: 9094451315450592515}
@@ -976,6 +976,7 @@ MonoBehaviour:
   _alreadyRead: {fileID: 5127520720208698718}
   _notRead: {fileID: 6327997279326736915}
   _padding: {x: 3, y: 2}
+  _bubbleSize: {x: 1, y: 1, z: 1}
   _pivOffsetBook: {x: -1, y: -3, z: 0}
 --- !u!65 &3009974066733437666
 BoxCollider:
@@ -992,11 +993,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.085, y: 18.455687, z: 0.19999997}
+  m_Size: {x: 6.085, y: 18.455687, z: 2}
   m_Center: {x: 0, y: -3.9606938, z: 0}
 --- !u!114 &2681934721818488901
 MonoBehaviour:
@@ -1032,6 +1033,8 @@ MonoBehaviour:
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
+      isBookFinish: 0
+      weight: 0
     actions:
     - type: 9
       target: {fileID: 5212050367482895212}
@@ -1150,6 +1153,8 @@ MonoBehaviour:
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
+      isBookFinish: 0
+      weight: 0
     - type: 5
       target: {fileID: 0}
       requiredTag: 
@@ -1169,6 +1174,8 @@ MonoBehaviour:
       HowManyTimes: 0
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
+      isBookFinish: 0
+      weight: 0
     actions:
     - type: 2
       target: {fileID: 0}
@@ -1258,9 +1265,11 @@ MonoBehaviour:
   _alphaHidden: 0
   _alphaSpeed: 1
   _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
   _objToDesable:
   - {fileID: 3223050807170320776}
   - {fileID: 3289598149048114392}
+  _childs: []
   _state: 1
 --- !u!114 &2206512947527249471
 MonoBehaviour:
@@ -1276,6 +1285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
+  isDroppedItem: 0
 --- !u!1 &5423328955602233233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,7 +1721,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 7.49846, y: 1.8764505, z: -1.1096497, w: 2.2199974}
+  m_margin: {x: 11.443941, y: 1.8764505, z: 3.0718017, w: 2.2199974}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0

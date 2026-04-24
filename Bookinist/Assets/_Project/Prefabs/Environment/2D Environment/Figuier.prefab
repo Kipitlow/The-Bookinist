@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8286544330167021952}
   - component: {fileID: 2717378695853074487}
   - component: {fileID: 4699689985322120050}
+  - component: {fileID: 4421048777316240980}
   - component: {fileID: 6069410731944043143}
   - component: {fileID: 6193133427807623589}
   - component: {fileID: 7914349845421181220}
@@ -167,6 +168,7 @@ MonoBehaviour:
   _hideDistance: 2
   _startOffsetDistance: 30
   _smoothTime: 0.2
+  _playStartShowAnimation: 1
   _alphaVisible: 1
   _alphaHidden: 0
   _alphaSpeed: 1
@@ -194,10 +196,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.5
-  m_Height: 0
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.68, z: 0}
+  m_Radius: 9.6
+  m_Height: 37.98
+  m_Direction: 0
+  m_Center: {x: -3.6, y: 5.16, z: 10}
 --- !u!65 &2717378695853074487
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -217,8 +219,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3180987, y: 3.4638453, z: 0.5}
-  m_Center: {x: -0.11174147, y: -1.9230767, z: 0}
+  m_Size: {x: 6.83, y: 3.4638453, z: 2}
+  m_Center: {x: -8.46, y: -5.98, z: 1}
 --- !u!65 &4699689985322120050
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -238,8 +240,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.3585615, y: 1.5321739, z: 0.5}
-  m_Center: {x: 0.1908095, y: -2.8889096, z: 0}
+  m_Size: {x: 6.35, y: 3.24, z: 2}
+  m_Center: {x: -2.02, y: -6.01, z: 1}
+--- !u!65 &4421048777316240980
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8420325685930928496}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.11, y: 5.8, z: 2}
+  m_Center: {x: -5.32, y: -10.74, z: 1}
 --- !u!114 &6069410731944043143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isInteractable: 0
-  Particles: {fileID: 0}
+  _particles: {fileID: 0}
 --- !u!114 &6193133427807623589
 MonoBehaviour:
   m_ObjectHideFlags: 0

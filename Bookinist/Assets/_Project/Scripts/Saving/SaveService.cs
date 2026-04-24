@@ -5,7 +5,6 @@ public class SaveService : MonoBehaviour
     public static SaveService instance;
 
     private PlayerProfile profile => SaveSystem.instance.profile;
-    private PlayerSettings settings => SaveSystem.instance.settings;
     private PlayerCurrency currency => SaveSystem.instance.currency;
 
 
@@ -27,6 +26,19 @@ public class SaveService : MonoBehaviour
 
         SaveSystem.instance.Save();
     }
+    public void ModifyEnergy(int modifVal)
+    {
+        currency.ChangeEnergyVal(currency.playerCurrencyEnergy + modifVal);
+
+        SaveSystem.instance.Save();
+    }
+    public void ChangeLastLogin(long lastLogin)
+    {
+        currency.ChangeLastLogin(lastLogin);
+
+        SaveSystem.instance.Save();
+    }
+
     public void ChangeHard(int newVal)
     {
         currency.ChangeHardVal(newVal);
