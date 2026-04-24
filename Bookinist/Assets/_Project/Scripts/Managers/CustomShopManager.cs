@@ -24,6 +24,7 @@ public class CustomShopManager : MonoBehaviour
     private List<GameObject>[] _buttonsByView;
     private GameObject[] _horizontalPanels;
 
+
     // Instances 3D actives par view et par type : [viewIndex][FurnitureType] = { principal, additional }
     private Dictionary<FurnitureType, GameObject[]>[] _currentObjects;
 
@@ -51,6 +52,7 @@ public class CustomShopManager : MonoBehaviour
 
     private void Start()
     {
+
         _inventoryByView = new List<ShopItemData>[VIEW_COUNT];
         _buttonsByView = new List<GameObject>[VIEW_COUNT];
         _horizontalPanels = new GameObject[VIEW_COUNT];
@@ -104,6 +106,8 @@ public class CustomShopManager : MonoBehaviour
 
         _inventoryByView[targetView].Add(newObject);
         CreateButton(targetView, _inventoryByView[targetView].Count - 1, newObject);
+
+        SaveSystem.instance.inventory.ownedItemIDs.Add(newObject.id.ToString());
 
         // Place en scène uniquement si ce slot de type est encore libre
         if (placeImmediately && !_activeItemByView[targetView].ContainsKey(newObject.furnitureType))

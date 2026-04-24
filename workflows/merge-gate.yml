@@ -17,8 +17,8 @@ jobs:
 
             const reviewers = pr.requested_reviewers.map(r => r.login);
 
-            const tech = "tech-reviewer";
-            const qaList = ["qa1", "qa2", "qa3"];
+            const tech = "DivineVoices";
+            const qaList = ["ErwanHAMIDA", "TheWanou21"];
 
             const hasTech = reviewers.includes(tech);
             const hasQA = reviewers.some(r => qaList.includes(r));

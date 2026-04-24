@@ -110,21 +110,15 @@ public class ScriptCouronne : MonoBehaviour
             {
                 case "crownFlowerRed":
                     _itemInstantiate = Instantiate(prefableCrownFlowerViolet, this.transform.position, this.transform.rotation);
-                    _itemInstantiate.transform.localScale = new Vector3(0.14f, 0.14f, 0.14f);
-                    _itemInstantiate.transform.SetParent(this.transform);
                     break;
                 case "crownFlowerViolet":
                     _itemInstantiate = Instantiate(prefableCrownFlowerRed, this.transform.position, this.transform.rotation);
-                    _itemInstantiate.transform.localScale = new Vector3(0.14f, 0.14f, 0.14f);
-                    _itemInstantiate.transform.SetParent(this.transform);
                     break;
                 case "crownFlowerMultiColor":
                     _itemInstantiate = Instantiate(prefableCrownFlowerRV, this.transform.position, this.transform.rotation);
-                    _itemInstantiate.transform.localScale = new Vector3(0.14f, 0.14f, 0.14f);
-                    _itemInstantiate.transform.SetParent(this.transform);
                     break;
                     //_itemInstantiate.transform.localScale = new Vector3(0.12f, 0.12f, 0.12f);
-                    
+                    _itemInstantiate.transform.SetParent(this.transform);
             }
             
             #endregion
