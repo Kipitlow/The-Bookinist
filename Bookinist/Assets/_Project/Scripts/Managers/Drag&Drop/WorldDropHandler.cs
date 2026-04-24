@@ -101,7 +101,6 @@ public class WorldDropHandler : MonoBehaviour
             bool wasHandled = targetRunner.TryExecuteAll(context);
             if (wasHandled)
             {
-                _inventoryController.RemoveInventoryItem(draggedItem);
                 shouldDrop = false;
             }
         }

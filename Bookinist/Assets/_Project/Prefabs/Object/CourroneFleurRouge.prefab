@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4225470704705383686}
   - component: {fileID: 3891721628571188090}
-  - component: {fileID: 1179598157131155674}
   - component: {fileID: 916289882676637760}
+  - component: {fileID: 1179598157131155674}
   - component: {fileID: 2636925257542229572}
-  - component: {fileID: -6768309232520545509}
-  m_Layer: 0
+  - component: {fileID: -7264720943698683149}
+  - component: {fileID: 8496918422972499282}
+  m_Layer: 3
   m_Name: CourroneFleurRouge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2204687104674799107}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.04, y: -3.5799997, z: -0.67250824}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -91,6 +92,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &916289882676637760
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204687104674799107}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 13, z: 2.48}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1179598157131155674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,47 +170,6 @@ MonoBehaviour:
       pickable: {fileID: 2636925257542229572}
       item: {fileID: 0}
       balance: {fileID: 0}
-    - type: 14
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 2636925257542229572}
-      item: {fileID: 0}
-      balance: {fileID: 0}
---- !u!65 &916289882676637760
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2204687104674799107}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 20, y: 13, z: 2.48}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2636925257542229572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 4b82783ca61b87b479507b0eec5f70f2, type: 2}
   _invController: {fileID: 0}
---- !u!114 &-6768309232520545509
+--- !u!114 &-7264720943698683149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,8 +193,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 2204687104674799107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d96b7583010c54da98af767e64a758, type: 3}
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isInteractable: 1
-  _particles: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &8496918422972499282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204687104674799107}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 1
+  _lateral: 1
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1

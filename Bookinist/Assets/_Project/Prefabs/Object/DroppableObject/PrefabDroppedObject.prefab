@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 1100452698193982207}
   - component: {fileID: 3664124436778857557}
   - component: {fileID: 8814831156476495843}
-  - component: {fileID: 3058110479014456831}
+  - component: {fileID: 3000921179920921028}
   m_Layer: 3
   m_Name: PrefabDroppedObject
   m_TagString: Untagged
@@ -226,49 +226,8 @@ MonoBehaviour:
       balance: {fileID: 0}
       isBookFinish: 0
       weight: 0
-    - type: 3
-      target: {fileID: 0}
-      requiredTag: 
-      zone: {fileID: 0}
-      checkedPage: {fileID: 0}
-      layerDetector: {fileID: 0}
-      slot: {fileID: 0}
-      shouldBeEmpty: 0
-      item: {fileID: 0}
-      selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 0}
-      cycleThroughSprite: {fileID: 0}
-      WantedFrame: 0
-      trueIfMore: 0
-      Move: {fileID: 0}
-      HasMoved: 0
-      HowManyTimes: 0
-      HasToCheckEmptynessInventory: 0
-      balance: {fileID: 0}
-      isBookFinish: 0
-      weight: 0
     actions:
     - type: 10
-      target: {fileID: 0}
-      activeState: 0
-      slot: {fileID: 0}
-      itemPrefab: {fileID: 0}
-      openDoor: {fileID: 0}
-      npcDialogue: {fileID: 0}
-      npcTalker: {fileID: 0}
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      cycleThroughSprite: {fileID: 0}
-      cycle: 0
-      sprites: []
-      Move: {fileID: 0}
-      OffsetX: 0
-      OffsetY: 0
-      pickable: {fileID: 1100452698193982207}
-      item: {fileID: 0}
-      balance: {fileID: 0}
-    - type: 14
       target: {fileID: 0}
       activeState: 0
       slot: {fileID: 0}
@@ -360,7 +319,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d19013df6d1baa408d7ddf2ad4ab144, type: 2}
   - {fileID: 11400000, guid: b5ae7fbed1deb064d9b88c9ddc4e23e5, type: 2}
   - {fileID: 11400000, guid: 2b1cb514b6f5d194f851ba82041b9033, type: 2}
---- !u!114 &3058110479014456831
+--- !u!114 &3000921179920921028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -369,8 +328,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7281052662607791975}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d96b7583010c54da98af767e64a758, type: 3}
+  m_Script: {fileID: 11500000, guid: 76a913ec3e595a74ebc6207713946a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isInteractable: 1
-  _particles: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
+  _trackContinuouslyWhileDynamic: 1
+  _ignoreWhileScriptMoveIsRunning: 1
+  _trackOnlyWhenVisible: 1
+  _velocityThreshold: 0.03
+  _angularVelocityThreshold: 0.03
+  _settledDelay: 0.15
+  _minimumLocalDeltaToRefresh: 0.0001

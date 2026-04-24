@@ -1,4 +1,3 @@
-// DroppedObjectTracker.cs
 using UnityEngine;
 
 [RequireComponent(typeof(MoveObject))]
@@ -9,6 +8,7 @@ public class DroppedObjectTracker : MonoBehaviour
     [Header("Tracking")]
     [SerializeField] private bool _trackContinuouslyWhileDynamic = true;
     [SerializeField] private bool _ignoreWhileScriptMoveIsRunning = true;
+    [SerializeField] private bool _trackOnlyWhenVisible = true;
 
     [Header("Settling")]
     [SerializeField] private float _velocityThreshold = 0.03f;
@@ -48,6 +48,9 @@ public class DroppedObjectTracker : MonoBehaviour
         if (_rb == null || _moveObject == null)
             return;
 
+        if (!CanTrackNow())
+            return;
+
         if (_ignoreWhileScriptMoveIsRunning && _moveObject.isMoving)
             return;
 
@@ -75,7 +78,12 @@ public class DroppedObjectTracker : MonoBehaviour
         }
 
         if (HasMovedEnoughSinceLastCapture())
+        {
             CaptureCurrentAsBase();
+            isSettled = false;
+            _settledTimer = 0f;
+            return;
+        }
 
         _settledTimer += Time.deltaTime;
 
@@ -90,9 +98,20 @@ public class DroppedObjectTracker : MonoBehaviour
     #region Methods
     public void ForceRefreshBaseNow()
     {
+        if (!CanTrackNow())
+            return;
+
         CaptureCurrentAsBase();
         isSettled = true;
         _settledTimer = 0f;
+    }
+
+    private bool CanTrackNow()
+    {
+        if (_moveOnZoom == null || !_trackOnlyWhenVisible)
+            return true;
+
+        return _moveOnZoom.State == MoveOnZoom.ZoomState.Visible;
     }
 
     private bool HasMovedEnoughSinceLastCapture()
@@ -105,9 +124,6 @@ public class DroppedObjectTracker : MonoBehaviour
     {
         _lastRecordedLocalPosition = transform.localPosition;
         _moveObject.SetBasePosition(_lastRecordedLocalPosition);
-
-        if (_moveOnZoom != null && _moveOnZoom.State == MoveOnZoom.ZoomState.Hidden)
-            _moveOnZoom.ResetToHidden();
     }
     #endregion
 }
