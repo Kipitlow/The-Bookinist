@@ -11,6 +11,8 @@ public class LibraryManager : MonoBehaviour
     [SerializeField] private GameObject _bookSpawnPoint;
 
     [SerializeField] private List<bool> _isBookUnlockedList;
+
+    [SerializeField] private Quaternion _rotation;
     private void Start()
     {
         CheckUnlockBook();
@@ -43,6 +45,6 @@ public class LibraryManager : MonoBehaviour
 
     public void SpawnBook(int index)
     {
-        GameObject newBook = Instantiate(_bookList[index], _bookSpawnPoint.transform.position, Quaternion.identity);
+        GameObject newBook = Instantiate(_bookList[index], _bookSpawnPoint.transform.position, _rotation);
     }
 }
