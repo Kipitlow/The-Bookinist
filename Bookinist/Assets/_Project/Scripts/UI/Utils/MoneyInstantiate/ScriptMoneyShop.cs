@@ -1,11 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScriptMoneyShop : MonoBehaviour
 {
     #region Variable
     [Header("VariablePiece")]
-    public RectTransform targetTransform;
+    private RectTransform _targetTransform;
     private float _currentLerpPosition = 0;
     private float _impulsefloat;
 
@@ -13,17 +14,45 @@ public class ScriptMoneyShop : MonoBehaviour
     private string _typeMoney;
     private int _currentMoney;
 
+    [Header("Spriting")]
+    [SerializeField] private Sprite[] _allSprite;
+
     #endregion
-    #region Method Unity
+ 
+    #region Unity
+    //public RectTransform GetRectTransform()
+    //{
+    //    return _targetTransform;
+    //}
     public void play(int _current, string _name)
     {
         _typeMoney = _name;
         _currentMoney = _current;
+
+        foreach (Sprite _sprite in _allSprite)
+        {
+            if (_sprite.name == "Franc" && _typeMoney== "Franc")
+            {
+                _targetTransform = GameObject.Find("SoftMoneyImage").GetComponent<RectTransform>();
+                gameObject.GetComponent<Image>().sprite = _sprite;
+            }
+            if (_sprite.name == "Gemme" && _typeMoney == "Gemme")
+            {
+                _targetTransform = GameObject.Find("HardMoneyImage").GetComponent<RectTransform>();
+                gameObject.GetComponent<Image>().sprite = _sprite;
+            }
+            if (_sprite.name == "Plume" && _typeMoney == "Plume")
+            {
+                _targetTransform = GameObject.Find("IDunnoWhatsthis").GetComponent<RectTransform>();
+                gameObject.GetComponent<Image>().sprite = _sprite;
+            }
+        }
+
+
+
         _addImpulse();
         Invoke("startMoving", 2.0f);
     }
-    #endregion
-    #region Unity
     private void startMoving()
     {
         StartCoroutine(MovePiece());
@@ -57,8 +86,8 @@ public class ScriptMoneyShop : MonoBehaviour
         while (_currentLerpPosition<0.1)
         {
             _currentLerpPosition += 0.001f;
-            Vector2 _lerpPosition = Vector2.Lerp(this.transform.position, targetTransform.position, _currentLerpPosition);
-            transform.localRotation = Quaternion.Lerp(this.transform.localRotation, targetTransform.localRotation, _currentLerpPosition);
+            Vector2 _lerpPosition = Vector2.Lerp(this.transform.position, _targetTransform.position, _currentLerpPosition);
+            transform.localRotation = Quaternion.Lerp(this.transform.localRotation, _targetTransform.localRotation, _currentLerpPosition);
             Vector2 _lerpScale = Vector2.Lerp(this.transform.localScale, Vector2.zero, _currentLerpPosition);
             transform.position = _lerpPosition; transform.localScale = _lerpScale;
 
@@ -89,7 +118,7 @@ public class ScriptMoneyShop : MonoBehaviour
         }
         #endregion
         #region ChangeScaleEndTransparent
-        SpriteRenderer _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        Image _spriteRenderer = gameObject.GetComponent<Image>();
         float _alpha=1;
         while (_alpha > 0)//tranparent
         {
@@ -98,6 +127,7 @@ public class ScriptMoneyShop : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         #endregion
+        Destroy(gameObject, 0.1f);
     }
     #endregion
 }
