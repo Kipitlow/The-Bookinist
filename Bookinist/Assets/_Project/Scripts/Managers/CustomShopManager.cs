@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using UnityEditor.Rendering;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class CustomShopManager : MonoBehaviour
 {
@@ -26,7 +23,6 @@ public class CustomShopManager : MonoBehaviour
     private List<ShopItemData>[] _inventoryByView;
     private List<GameObject>[] _buttonsByView;
     private GameObject[] _horizontalPanels;
-
 
     // Instances 3D actives par view et par type : [viewIndex][FurnitureType] = { principal, additional }
     private Dictionary<FurnitureType, GameObject[]>[] _currentObjects;
@@ -55,7 +51,6 @@ public class CustomShopManager : MonoBehaviour
 
     private void Start()
     {
-
         _inventoryByView = new List<ShopItemData>[VIEW_COUNT];
         _buttonsByView = new List<GameObject>[VIEW_COUNT];
         _horizontalPanels = new GameObject[VIEW_COUNT];
@@ -75,30 +70,20 @@ public class CustomShopManager : MonoBehaviour
 
         _horizontalPanels[0].SetActive(true);
 
-        //if (_defaultItems != null)
-        //    foreach (ShopItemData item in _defaultItems)
-        //        AddObject(item, placeImmediately: true);
+        // 1. Place les items par défaut (sans écraser ce qui sera chargé)
+        if (_defaultItems != null)
+            foreach (ShopItemData item in _defaultItems)
+                AddObjectSilent(item, placeImmediately: true);
 
-        foreach (string item in SaveSystem.instance.inventory.ownedItemIDs)
-            AddObject(ItemDatabase.instance.Get(item), placeImmediately: false);
-
-        foreach (string item in SaveSystem.instance.customShop.placedItems)
-        {
-            ShopItemData newItem = ItemDatabase.instance.Get(item);
-            _activeItemByView[newItem.viewIndex][newItem.furnitureType] = newItem;
-        }
-        LoadActiveItems(_activeItemByView);
+        // 2. Charge l'état sauvegardé par-dessus
+        LoadFromSave();
     }
 
     private void OnViewChanged(int index, int offset)
     {
-        
         _horizontalPanels[_previousViewIndex].SetActive(false);
-
         _horizontalPanels[index].SetActive(true);
-
         _previousViewIndex = index;
-
         _isAlreadySeeCustomShop = true;
     }
 
@@ -117,13 +102,20 @@ public class CustomShopManager : MonoBehaviour
             return;
         }
 
-        _inventoryByView[targetView].Add(newObject);
-        CreateButton(targetView, _inventoryByView[targetView].Count - 1, newObject);
+        // Evite les doublons dans l'inventaire
+        if (!_inventoryByView[targetView].Contains(newObject))
+        {
+            _inventoryByView[targetView].Add(newObject);
+            CreateButton(targetView, _inventoryByView[targetView].Count - 1, newObject);
+        }
 
-        SaveSystem.instance.inventory.AddCleanID(newObject.id.ToString());
-        SaveSystem.instance.Save();
+        // Sauvegarde l'inventaire
+        if (!SaveSystem.instance.inventory.ownedItemIDs.Contains(newObject.id))
+        {
+            SaveSystem.instance.inventory.ownedItemIDs.Add(newObject.id);
+            SaveSystem.instance.Save();
+        }
 
-        // Place en scène uniquement si ce slot de type est encore libre
         if (placeImmediately && !_activeItemByView[targetView].ContainsKey(newObject.furnitureType))
             PlaceObject(targetView, newObject);
     }
@@ -154,9 +146,6 @@ public class CustomShopManager : MonoBehaviour
             return;
         }
 
-        SaveSystem.instance.customShop.AddCleanID(GetAllActiveItems());
-        SaveSystem.instance.Save();
-
         PlaceObject(viewIndex, list[furnitureIndex]);
     }
 
@@ -183,9 +172,89 @@ public class CustomShopManager : MonoBehaviour
 
         _currentObjects[viewIndex][type] = instances;
         _activeItemByView[viewIndex][type] = data;
+
+        // Sauvegarde l'item placé
+        SaveSystem.instance.customShop.SetPlacedItem(viewIndex, type, data.id);
+        SaveSystem.instance.Save();
     }
 
-    /// <summary>Retourne l'item actif pour un type donné dans une view.</summary>
+    // ─── Save / Load ───────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Recharge l'inventaire et les items placés depuis la sauvegarde.
+    /// Appelé une seule fois dans Start(), après les defaultItems.
+    /// </summary>
+    private void LoadFromSave()
+    {
+        if (SaveSystem.instance == null || ItemDatabase.instance == null) return;
+
+        // --- Inventaire ---
+        foreach (string id in SaveSystem.instance.inventory.ownedItemIDs)
+        {
+            ShopItemData item = ItemDatabase.instance.Get(id);
+            if (item == null) continue;
+
+            int v = item.viewIndex;
+            if (v < 0 || v >= VIEW_COUNT) continue;
+
+            if (!_inventoryByView[v].Contains(item))
+            {
+                _inventoryByView[v].Add(item);
+                CreateButton(v, _inventoryByView[v].Count - 1, item);
+            }
+        }
+
+        // --- Items placés (CustomShop) ---
+        Dictionary<FurnitureType, string>[] parsed =
+            SaveSystem.instance.customShop.ParsePlacedItems(VIEW_COUNT);
+
+        for (int i = 0; i < VIEW_COUNT; i++)
+        {
+            foreach (KeyValuePair<FurnitureType, string> entry in parsed[i])
+            {
+                ShopItemData item = ItemDatabase.instance.Get(entry.Value);
+                if (item == null) continue;
+
+                // S'assure que l'item est dans l'inventaire avant de le placer
+                int v = item.viewIndex;
+                if (!_inventoryByView[v].Contains(item))
+                {
+                    _inventoryByView[v].Add(item);
+                    CreateButton(v, _inventoryByView[v].Count - 1, item);
+                }
+
+                PlaceObjectSilent(i, item);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Place un objet en scène sans déclencher une nouvelle sauvegarde
+    /// (utilisé uniquement pendant le chargement).
+    /// </summary>
+    private void PlaceObjectSilent(int viewIndex, ShopItemData data)
+    {
+        FurnitureType type = data.furnitureType;
+
+        if (_currentObjects[viewIndex].TryGetValue(type, out GameObject[] existing))
+        {
+            if (existing[0] != null) Destroy(existing[0]);
+            if (existing[1] != null) Destroy(existing[1]);
+        }
+
+        GameObject[] instances = new GameObject[2];
+        instances[0] = Instantiate(data.prefab, _furnitureParent);
+        instances[1] = data.additionalPrefab != null
+            ? Instantiate(data.additionalPrefab, _furnitureParent)
+            : null;
+
+        _currentObjects[viewIndex][type] = instances;
+        _activeItemByView[viewIndex][type] = data;
+        // Pas de Save() ici
+    }
+
+    // ─── API publique (inchangée) ───────────────────────────────────────────────
+
     public ShopItemData GetActiveItemForView(int viewIndex, FurnitureType type)
     {
         if (viewIndex < 0 || viewIndex >= VIEW_COUNT) return null;
@@ -193,14 +262,8 @@ public class CustomShopManager : MonoBehaviour
         return item;
     }
 
-    /// <summary>
-    /// Retourne tous les items actifs (toutes views, tous types).
-    /// </summary>
     public Dictionary<FurnitureType, ShopItemData>[] GetAllActiveItems() => _activeItemByView;
 
-    /// <summary>
-    /// Charge un état sauvegardé.
-    /// </summary>
     public void LoadActiveItems(Dictionary<FurnitureType, ShopItemData>[] savedItems)
     {
         if (savedItems == null) return;
@@ -237,5 +300,25 @@ public class CustomShopManager : MonoBehaviour
         int view = item.viewIndex;
         if (view < 0 || view >= _inventoryByView.Length) return false;
         return _inventoryByView[view].Contains(item);
+    }
+
+    private void AddObjectSilent(ShopItemData newObject, bool placeImmediately = false)
+    {
+        int targetView = newObject.viewIndex;
+
+        if (targetView < 0 || targetView >= VIEW_COUNT)
+        {
+            Debug.LogWarning($"[CustomShopManager] viewIndex {targetView} invalide pour '{newObject.itemName}'.");
+            return;
+        }
+
+        if (!_inventoryByView[targetView].Contains(newObject))
+        {
+            _inventoryByView[targetView].Add(newObject);
+            CreateButton(targetView, _inventoryByView[targetView].Count - 1, newObject);
+        }
+
+        if (placeImmediately && !_activeItemByView[targetView].ContainsKey(newObject.furnitureType))
+            PlaceObjectSilent(targetView, newObject);
     }
 }
