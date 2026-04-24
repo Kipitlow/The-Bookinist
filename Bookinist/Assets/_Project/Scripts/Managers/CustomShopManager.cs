@@ -107,6 +107,8 @@ public class CustomShopManager : MonoBehaviour
         _inventoryByView[targetView].Add(newObject);
         CreateButton(targetView, _inventoryByView[targetView].Count - 1, newObject);
 
+        SaveSystem.instance.inventory.ownedItemIDs.Add(newObject.id.ToString());
+
         // Place en scène uniquement si ce slot de type est encore libre
         if (placeImmediately && !_activeItemByView[targetView].ContainsKey(newObject.furnitureType))
             PlaceObject(targetView, newObject);
