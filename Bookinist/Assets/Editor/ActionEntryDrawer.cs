@@ -58,7 +58,7 @@ public class ActionEntryDrawer : PropertyDrawer
                 lines += 1;
                 break;
 
-            case ActionType.Drop:
+            case ActionType.FillWithSprite:
                 lines += 2;
                 break;
 
@@ -74,6 +74,14 @@ public class ActionEntryDrawer : PropertyDrawer
                 break;
 
             case ActionType.PlaceInBalance:
+                lines += 1;
+                break;
+
+            case ActionType.Drop:
+                lines += 2;
+                break;
+
+            case ActionType.RemoveDraggedItem:
                 lines += 1;
                 break;
         }
@@ -150,7 +158,7 @@ public class ActionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("pickable"));
                 break;
 
-            case ActionType.Drop:
+            case ActionType.FillWithSprite:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
@@ -175,6 +183,16 @@ public class ActionEntryDrawer : PropertyDrawer
 
             case ActionType.PlaceInBalance:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("balance"));
+                break;
+
+            case ActionType.Drop:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
+                break;
+
+            case ActionType.RemoveDraggedItem:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("inventoryController"));
                 break;
         }
         EditorGUI.EndProperty();

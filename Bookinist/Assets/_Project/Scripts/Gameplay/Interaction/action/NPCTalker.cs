@@ -35,6 +35,8 @@ public class NPCTalker : MonoBehaviour
 
     private Vector2 _nameTextOffset = new Vector2(-8, 0);
 
+    [SerializeField] private Vector3 _bubbleSize = new Vector3(1f, 1f, 1f);
+
     private NPCDialogue _dialogue;
 
     private float _animationInterval = 0.4f;
@@ -107,7 +109,7 @@ public class NPCTalker : MonoBehaviour
             _lineIndex++;
         }
 
-        if (_dialogue.IsShopNPC && _lineIndex == 4)
+        if (_dialogue.IsShopNPC && _lineIndex == 3)
         {
             OnShowBook?.Invoke();
         }
@@ -125,13 +127,10 @@ public class NPCTalker : MonoBehaviour
 
         _bubbleVisible = true;
 
-        _bubbleText.transform.localPosition = _baseTextOffset;
-        _bubbleText.ForceMeshUpdate();
         Vector2 textSize = _bubbleText.textBounds.size;
 
         Vector2 newSize = textSize + _padding;
 
-        _bubbleRenderer.size = newSize;
 
         if (_dialogue.IsShopNPC)
         {
@@ -146,11 +145,10 @@ public class NPCTalker : MonoBehaviour
             _nameBubbleRenderer.enabled = true;
             _nameBubbleText.enabled = true;
             _nameBubbleText.text = _dialogue.NPCName;
-            _nameBubbleText.ForceMeshUpdate();
 
             _nameBubbleText.transform.localPosition = _nameTextOffset;
             _bubbleParent.transform.localPosition = _pivOffsetShop;
-            _bubbleParent.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+            _bubbleParent.transform.localScale = _bubbleSize;
 
             float offsetX = newSize.x / 5f;
             float offsetY = -newSize.y / 5f;
@@ -165,7 +163,6 @@ public class NPCTalker : MonoBehaviour
             float nameBubbleX = offsetX + nameSize.x / 5f;
             float nameBubbleY = offsetY + (newSize.y / 5f)*4; // bord supérieur de la bulle principale
 
-            _nameBubbleRenderer.transform.localPosition = new Vector3(nameBubbleX, nameBubbleY, 0f);
         }
         else
         {
@@ -173,17 +170,10 @@ public class NPCTalker : MonoBehaviour
 
             float offsetX = newSize.x / 5f;
             float offsetY = -newSize.y / 5f; // bord supérieur collé au point d'ancrage
-
-            _bubbleRenderer.transform.localPosition = new Vector3(offsetX, offsetY, 0f);
-
-            _bubbleText.transform.localPosition =
-                new Vector3(offsetX, offsetY, -0.5f) + (Vector3)_baseTextOffset;
-
-            _bubbleParent.transform.localPosition = _pivOffsetBook;
         }
     }
 
-    private void CloseBubble()
+    public void CloseBubble()
     {
         _thinkBubble.gameObject.SetActive(true);
 
@@ -203,7 +193,7 @@ public class NPCTalker : MonoBehaviour
     public void UpdateIndicator()
     {
         bool hasBeenRead = _dialogue != null && _timesEnded > 0;
-        Debug.Log(hasBeenRead);
+        //Debug.Log(hasBeenRead);
 
         _alreadyRead.gameObject.SetActive(hasBeenRead);
         _notRead.gameObject.SetActive(!hasBeenRead);

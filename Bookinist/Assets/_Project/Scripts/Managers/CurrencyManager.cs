@@ -107,7 +107,6 @@ public class CurrencyManager : MonoBehaviour
 
     public void SetupCurrency()
     {
-        Debug.Log("SetupCurrency Executed");
         SetSoftCurrency(SaveSystem.instance.currency.playerCurrencySoft);
         SetHardCurrency(SaveSystem.instance.currency.playerCurrencyHard);
     }

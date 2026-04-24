@@ -46,16 +46,22 @@ public class SC_Tache : MonoBehaviour
 
     private bool _isAlreadyOpenedPanel = false;
 
+    [Header("Managers")]
+    [SerializeField] private PauseManager _pauseManager;
+    [SerializeField] private GameObject _touchDetection;
+    [SerializeField] private CameraMovement _cameraMovement;
+
     #endregion
 
     #region Unity Methods
     void Start()
     {
         //if (CM_Player == null) CM_Player = GameObject.Find("CameraManager").GetComponent<Camera>();
-
+        _pauseManager.SetPauseState(false);
         if (SceneManager.GetActiveScene().name != "Enigme1")
             StartCoroutine("Chronometre"); //Permet de lancer la coroutine;
 
+        _hintNumberTextMesh.text = GameManager.Instance.GetHintNumber().ToString();
         SetupTache();
     }
     #endregion
@@ -108,9 +114,9 @@ public class SC_Tache : MonoBehaviour
     private void Spawn_Prefable_Tache(int i)
     {
         GameObject New_Object = Instantiate(PrefableTache, Target_Parent_Prefable);
-        Vector3 Pos = New_Object.transform.position;
-        Pos.y = Pos.y - 25 * i;
-        New_Object.transform.position = Pos;
+        //Vector3 Pos = New_Object.transform.position;
+        //Pos.y = Pos.y - 25 * i;
+        //New_Object.transform.position = Pos;
 
         SC_Prefable_Tache Prefable_Script_Tache = New_Object.GetComponentInChildren<SC_Prefable_Tache>();
         //Dans ce code, on vêrifier si la tache en elle même est completer, si oui on change de couleur on rouge puis on le barre
@@ -149,7 +155,7 @@ public class SC_Tache : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning($"la mission {Liste_Mission[i].Nom_Mission} estr terminer");
+                    //Debug.LogWarning($"la mission {Liste_Mission[i].Nom_Mission} estr terminer");
                 }
             }
         }
@@ -162,7 +168,6 @@ public class SC_Tache : MonoBehaviour
             if (GameManager.Instance.UseHint() == false) return;
         }
 
-        Debug.Log("iufhsdf");
         _hintNumberTextMesh.text = GameManager.Instance.GetHintNumber().ToString();
         _hintsButton.SetActive(false);
         _hintsPanel.SetActive(true);
@@ -184,17 +189,22 @@ public class SC_Tache : MonoBehaviour
 
     private void Spawn_Canva_GameOver()
     {
+        _pauseManager.SetPauseState(true);
+        _cameraMovement.enabled = false;
+        _touchDetection.SetActive(false);
         SC_UI_GameOver PUI = Prefable_Canva_GameOver.GetComponent<SC_UI_GameOver>();
         Transform GO_Canva = GameObject.Find("Canvas").transform;
         if (PUI != null && GO_Canva != null)
         {
-            GameObject RR = Instantiate(Prefable_Canva_GameOver, transform.position, transform.rotation);
-            RR.transform.SetParent(GO_Canva, false); // Permet d'annuler
-
-            RR.transform.localScale = new Vector2(0.5f, 0.5f);
+            GameObject RR = Instantiate(Prefable_Canva_GameOver);
+            RR.transform.SetParent(GO_Canva, false);
 
             RectTransform rt = RR.GetComponent<RectTransform>();
-            rt.anchoredPosition = new Vector2(transform.position.x / 2, transform.position.y / 2);
+
+            rt.anchorMin = Vector2.zero;      // (0,0)
+            rt.anchorMax = Vector2.one;       // (1,1)
+            rt.offsetMin = Vector2.zero;
+            rt.offsetMax = Vector2.zero;
         }
     }
 
@@ -249,5 +259,12 @@ public class SC_Tache : MonoBehaviour
             }
         }
     }
-    #endregion
-}
+    public void PauseActive(bool Toggled)
+    {
+        _pauseManager.SetPauseState(Toggled);
+        _cameraMovement.enabled = !Toggled;
+        _touchDetection.SetActive(!Toggled);
+    }
+
+        #endregion
+    }

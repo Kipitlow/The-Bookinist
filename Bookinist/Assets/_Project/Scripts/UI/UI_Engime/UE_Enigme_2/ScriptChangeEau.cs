@@ -3,54 +3,59 @@ using UnityEngine;
 
 public class ScriptChangeEau : MonoBehaviour
 {
-    private InteractionRunner _scriptActivation;
-    private BoxCollider boxCollider;
-    private SpriteRenderer _selfSprite;
-    private int _nombreNuage;
-    private float _lerpColorFloat;
-
+    #region Variable
+    private float _lerpColorFloat=0;
+    private Material _material;
+    private InteractionRunner _interactionRunner;
+    private bool _hasChangedColor = false;
+    #endregion
+    #region Methode Variable
     void Start()
     {
-        _selfSprite = GetComponent<SpriteRenderer>();
-        _scriptActivation = GetComponent<InteractionRunner>();
-        boxCollider= GetComponent<BoxCollider>();
+        _material = GetComponentInChildren<SpriteRenderer>().material;
+        _interactionRunner = GetComponentInChildren<InteractionRunner>();
+
         Invoke("_DisableInteractionRunner", 0.1f);
-        _nombreNuage = 0;
-        _lerpColorFloat = 0;
-
+        _material.SetColor("BaseColor", Color.green);
     }
+    #endregion
 
-    private void _DisableInteractionRunner()
+    private void FixedUpdate()
     {
-        _scriptActivation.enabled = false;
-        boxCollider.enabled = false;
+        if (!_hasChangedColor)
+        {
+            _interactionRunner.CallTry();
+        }
     }
 
     public void ChangeColor()
     {
-        _nombreNuage += 1;
-        if (_nombreNuage >= 3)
-        {
-            StartCoroutine(IEChangeColor());
-        }
+        StartCoroutine(IEChangeColor());
+        _hasChangedColor = true;
     }
-
+    public void printStatut()
+    {
+        Debug.Log("Tourne Banddéla");
+    }
     private IEnumerator IEChangeColor()
     {
-        //new Color(1, 1, 0, 1); => this at the color is red
-        //new Color(0, 0, 1, 1); => this at the color is red
         _lerpColorFloat = 0;
 
-        Color _colorOrigine = new Color(140.0f/ 255.0f,166.0f/255.0f, 163.0f / 255.0f, 1f);
-        Color _colorChange = new Color(230.0f / 255.0f, 255.0f / 255.0f, 168.0f/255.0f, 1f);
+        Color _colorOrigine = new Color(46.0f / 255.0f, 123.0f / 255.0f, 197.0f / 255.0f, 1f);
+        Color _colorChange = new Color(255.0f / 255.0f, 170.0f / 255.0f, 103.0f / 255.0f, 1f);
+        Color _changingShadering;
         while (_lerpColorFloat < 1)
         {
             _lerpColorFloat+= 0.1f;
             //_selfSprite.color = Color.Lerp(Color.white, Color.yellow, _lerpColorFloat);
-            _selfSprite.color = Color.Lerp(_colorOrigine, _colorChange, _lerpColorFloat);
+            //_selfSprite.color = Color.Lerp(_colorOrigine, _colorChange, _lerpColorFloat);
+            _changingShadering = Color.Lerp(_colorOrigine, _colorChange, _lerpColorFloat);
+            if(_material!=null)_material.SetColor("BaseColor", _changingShadering);
+            if(_material!=null)_material.SetColor("_BaseColor", _changingShadering);
+            Debug.Log("<color=green> Success</color>" + "ColorMaterial: " + _changingShadering);
             yield return new WaitForSeconds(0.1f);
         }
-        _scriptActivation.enabled= true;
-        boxCollider.enabled= true;
+        //_scriptActivation.enabled= true;
+        //_boxCollider.enabled= true;
     }
 }

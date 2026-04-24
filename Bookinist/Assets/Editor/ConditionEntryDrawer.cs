@@ -9,7 +9,9 @@ public class ConditionEntryDrawer : PropertyDrawer
         var typeProp = property.FindPropertyRelative("type");
         ConditionType type = (ConditionType)typeProp.enumValueIndex;
 
-        int lines = 2; // titre + type
+        float lines = 2;
+        float lineHeight = EditorGUIUtility.singleLineHeight + 2f;
+        float extraHeight = 0f;
 
         switch (type)
         {
@@ -60,9 +62,22 @@ public class ConditionEntryDrawer : PropertyDrawer
             case ConditionType.ISBookFinish:
                 lines += 1;
                 break;
+
+            case ConditionType.WeightIsMoreThan:
+                lines += 2;
+                break;
+
+            case ConditionType.WeightIsLessThan:
+                lines += 2;
+                break;
+
+            case ConditionType.Exist:
+                lines += 1;
+                break;
         }
 
-        return lines * (EditorGUIUtility.singleLineHeight + 2f);
+        return lines * lineHeight + extraHeight;
+
     }
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -149,6 +164,22 @@ public class ConditionEntryDrawer : PropertyDrawer
 
             case ConditionType.ISBookFinish:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("isBookFinish"));
+                break;
+
+            case ConditionType.WeightIsMoreThan:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("weight"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("balance"));
+                break;
+
+            case ConditionType.WeightIsLessThan:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("weight"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("balance"));
+                break;
+
+            case ConditionType.Exist:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 break;
         }
 

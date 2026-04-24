@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     {
         bookStarted = false;
         bookFinish = true;
+        SaveSystem.instance.progression.progressionTutoComplete = bookFinish;
     }
 
     public bool UseHint()

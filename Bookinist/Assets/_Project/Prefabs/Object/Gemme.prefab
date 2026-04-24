@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -127,6 +127,7 @@ MonoBehaviour:
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
       isBookFinish: 0
+      weight: 0
     actions:
     - type: 10
       target: {fileID: 0}
@@ -181,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24c7b5e8bbbba14d9cb542165813fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _item: {fileID: 11400000, guid: 5755fe98c94558b429821530ae68f05a, type: 2}
+  _item: {fileID: 11400000, guid: 7439c859235314a4083db17631921c12, type: 2}
   _invController: {fileID: 0}
 --- !u!114 &8836297019922656170
 MonoBehaviour:
@@ -197,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
-  _isDroppedItem: 0
+  isDroppedItem: 0
 --- !u!114 &4448084435067074616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,5 +221,7 @@ MonoBehaviour:
   _alphaHidden: 0
   _alphaSpeed: 1
   _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
   _objToDesable: []
+  _childs: []
   _state: 1

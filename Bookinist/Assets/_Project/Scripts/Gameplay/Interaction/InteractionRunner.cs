@@ -5,6 +5,14 @@ using UnityEngine;
 public class InteractionRunner : MonoBehaviour
 {
     [SerializeField] private List<InteractionSet> _interactionSets = new();
+    private InteractionFeedBack _interactionFeedBack;
+    private bool _conditionWasTrue;
+
+    private void Awake()
+    {
+        _interactionFeedBack = GetComponent<InteractionFeedBack>();
+    }
+
 
     #region Try
     public bool TryExecuteAll(InteractionContext context)
@@ -111,6 +119,19 @@ public class InteractionRunner : MonoBehaviour
                 if (condition.balance == null)
                     return false;
                 return condition.balance.CanAcceptItem(context.item);
+
+            case ConditionType.WeightIsMoreThan:
+                if (condition.balance == null)
+                    return false;
+                return condition.balance._currentWeight >= condition.weight;
+
+            case ConditionType.WeightIsLessThan:
+                if (condition.balance == null)
+                    return false;
+                return condition.balance._currentWeight <= condition.weight;
+
+            case ConditionType.Exist:
+                return condition.target != null;
         }
     }
 
@@ -120,6 +141,8 @@ public class InteractionRunner : MonoBehaviour
 
     private void ExecuteAction(ActionEntry action, InteractionContext context)
     {
+
+
         switch (action.type)
         {
             case ActionType.SetActive:
@@ -177,7 +200,7 @@ public class InteractionRunner : MonoBehaviour
                     Destroy(action.target);
                 break;
 
-            case ActionType.Drop:
+            case ActionType.FillWithSprite:
                 if (action.slot != null)
                     action.slot.FillWithSprite(action.item);
                 break;
@@ -185,6 +208,26 @@ public class InteractionRunner : MonoBehaviour
             case ActionType.PlaceInBalance:
                 if (action.balance != null)
                     action.balance.TryAddItem(context.item);
+                break;
+
+            case ActionType.FeedBack:
+                if (_interactionFeedBack != null)
+                    _interactionFeedBack.TryFeedback();
+                break;
+
+            case ActionType.CloseDialogue:
+                if (action.npcDialogue != null && action.npcTalker != null)
+                    action.npcTalker.CloseBubble();
+                break;
+
+            case ActionType.Drop:
+                if (action.slot != null && action.item != null)
+                    WorldDropHandler.Instance.DropObject(new Vector3(action.slot.transform.localPosition.x, action.slot.transform.localPosition.y, 0),action.item);
+                break;
+
+            case ActionType.RemoveDraggedItem:
+                if (action.inventoryController != null)
+                    action.inventoryController.RemoveInventoryItem(DragContext.DraggedItem);
                 break;
         }
     }
