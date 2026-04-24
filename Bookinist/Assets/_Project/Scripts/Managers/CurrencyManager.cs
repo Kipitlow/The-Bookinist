@@ -18,7 +18,7 @@ public class CurrencyManager : MonoBehaviour
     public UnityEvent<int> OnSoftCurrencyChanged;
     public UnityEvent<int> OnHardCurrencyChanged;
 
-    private void OnEnable()
+    private void Start()
     {
         SaveSystem.instance.OnDataUpdate += SetupCurrency;
     }
