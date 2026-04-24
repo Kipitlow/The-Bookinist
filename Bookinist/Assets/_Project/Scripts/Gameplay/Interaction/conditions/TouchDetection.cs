@@ -27,14 +27,14 @@ public class TouchDetection : MonoBehaviour
         if (_uiRaycaster == null || _eventSystem == null || _cam == null)
             return;
 
-        UIRaycast(screenPosition);
+        if (UIRaycast(screenPosition))
+            return;
 
         Raycast3D(screenPosition);
     }
 
-    public void UIRaycast(Vector2 screenPosition)
+    public bool UIRaycast(Vector2 screenPosition)
     {
-        // --- 1. RAYCAST UI ---
         PointerEventData pointerData = new PointerEventData(_eventSystem)
         {
             position = screenPosition
@@ -47,32 +47,27 @@ public class TouchDetection : MonoBehaviour
         {
             foreach (var result in results)
             {
-                // CanvasGroup qui bloque visuellement
                 CanvasGroup cg = result.gameObject.GetComponentInParent<CanvasGroup>();
                 if (cg != null && cg.blocksRaycasts && cg.alpha > 0.01f)
-                {
-                    return; // UI bloque la touche
-                }
+                    return true;
 
                 var shaderRaycast = result.gameObject.GetComponent<ShaderBasedRaycast>();
 
                 if (shaderRaycast != null)
                 {
-                    bool isValid = shaderRaycast.IsRaycastLocationValid(screenPosition, _cam);
-
-                    // CORRECTION : si valide (opaque) => bloquer la propagation
-                    if (isValid)
-                        return;
+                    if (shaderRaycast.IsRaycastLocationValid(screenPosition, _cam))
+                        return true; // Pixel opaque => bloque
                     else
-                        continue; // transparent, continuer la vérification
+                        continue;   // Pixel transparent => continue
                 }
                 else
                 {
-                    // UI sans shader => bloque
-                    return;
+                    return true;
                 }
             }
         }
+
+        return false;
     }
 
     public void Raycast3D(Vector2 screenPosition)
