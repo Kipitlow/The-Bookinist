@@ -118,6 +118,7 @@ public class NPCTalker : MonoBehaviour
 
         if (_dialogue.IsShopNPC && _lineIndex == 4 && GameManager.Instance.bookFinish == false)
         {
+            GetComponent<SpriteRenderer>().sprite = _spritePoses[0];
             OnShowBook?.Invoke(true);
         }
     }
@@ -126,6 +127,10 @@ public class NPCTalker : MonoBehaviour
     {
         _dialogue = SO_dialogue;
 
+        if (_lineIndex == 1)
+        {
+            GetComponent<SpriteRenderer>().sprite = _spritePoses[2];
+        }
 
         if (_lineIndex >= _dialogue.lines.Length)
         {
