@@ -66,17 +66,21 @@ public class BookshopUIManager : MonoBehaviour
         bool targetIsRight = targetIndex > _defaultIndex;
         bool currentIsRight = _currentIndex > _defaultIndex;
 
-
         if (targetIsHub)
         {
             // Retour au HUB : rétracte toute la pile
             yield return StartCoroutine(RetractStack());
             _uiToDisable.SetActive(true);
+
+            _npcToDisable.SetActive(true);
         }
         else if (currentIsHub)
         {
+            _npcToDisable.SetActive(false);
+
             // Depuis le HUB : empile séquentiellement jusqu'à la cible
             yield return StartCoroutine(PushUntil(targetIndex));
+
         }
         else if (targetIsRight == currentIsRight)
         {
@@ -97,15 +101,6 @@ public class BookshopUIManager : MonoBehaviour
             yield return StartCoroutine(RetractStack());
             _uiToDisable.SetActive(false);
             yield return StartCoroutine(PushUntil(targetIndex));
-        }
-
-        if (targetIndex == 3)
-        {
-            _npcToDisable.SetActive(false);
-        }
-        else
-        {
-            _npcToDisable.SetActive(true);
         }
 
         _navItems[targetIndex].button.Select();
