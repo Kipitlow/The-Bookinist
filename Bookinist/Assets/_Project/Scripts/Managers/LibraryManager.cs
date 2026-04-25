@@ -15,6 +15,13 @@ public class LibraryManager : MonoBehaviour
     [SerializeField] private Quaternion _rotation;
 
     private bool _isBookRevealed = false;
+
+    private void OnEnable()
+    {
+        if (GameManager.Instance.bookFinish)
+            SpawnBook(0, false);
+    }
+
     private void Start()
     {
         CheckUnlockBook();
@@ -46,15 +53,18 @@ public class LibraryManager : MonoBehaviour
         }
     }
 
-    public void SpawnBook(int index)
+    public void SpawnBook(int index, bool isAppearing)
     {
         if (_isBookRevealed) return;
 
-        //GameObject newBook = Instantiate(_bookList[index], _bookSpawnPoint.transform.position, _rotation);
         _bookList[index].transform.position = _bookSpawnPoint.transform.position;
         _bookList[index].transform.rotation = _rotation;
-        _isBookRevealed = true;
+        
+        if (isAppearing)
+        {
+            _isBookRevealed = true;
 
-        PlaceBookOnLibrary(index);
+            PlaceBookOnLibrary(index);
+        }
     }
 }
