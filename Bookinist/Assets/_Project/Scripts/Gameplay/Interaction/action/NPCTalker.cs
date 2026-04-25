@@ -93,6 +93,7 @@ public class NPCTalker : MonoBehaviour
             _timesEnded++;
             UpdateIndicator();
             OnDialogEnd?.Invoke();
+            GameManager.Instance._isFirstCustomerFinishDialog = true;
             return;
         }
 
@@ -109,7 +110,7 @@ public class NPCTalker : MonoBehaviour
             _lineIndex++;
         }
 
-        if (_dialogue.IsShopNPC && _lineIndex == 3)
+        if (_dialogue.IsShopNPC && _lineIndex == 4)
         {
             OnShowBook?.Invoke();
         }

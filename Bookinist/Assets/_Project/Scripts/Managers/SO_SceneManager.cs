@@ -15,4 +15,10 @@ public class SO_SceneManager : ScriptableObject
         Debug.Log("Exiting game...");
         Application.Quit();
     }
+
+    public void LoadSceneDuringOnboardingShop(string sceneToLoad)
+    {
+        if (GameManager.Instance._isFirstCustomerFinishDialog)
+            SceneManager.LoadScene(sceneToLoad);
+    }
 }

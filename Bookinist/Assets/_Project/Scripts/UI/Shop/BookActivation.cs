@@ -16,15 +16,15 @@ public class BookActivation : MonoBehaviour
         _npcTalker.OnDialogEnd += NpcTalkerOnDialogEnd;
     }
 
-    private void Start()
+    private void OnDestroy()
     {
-        //_bookToActivateAnimator.SetBool("IsTimeToOpenBook", false);
+        _npcTalker.OnShowBook -= NpcTalkerOnShowBook;
+        _npcTalker.OnDialogEnd -= NpcTalkerOnDialogEnd;
     }
 
     private void NpcTalkerOnDialogEnd()
     {
-        _bookToActivateAnimator.SetBool("IsTimeToOpenBook", true);
-        //_bookToActivateAnimator.Play(0);
+        _bookToActivateAnimator.SetTrigger("OpenBook");
     }
 
     private void NpcTalkerOnShowBook()

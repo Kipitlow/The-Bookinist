@@ -16,6 +16,11 @@ public class BookShopOnboardingManager : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        _talker.OnDialogEnd -= TalkerOnDialogEnd;
+    }
+
     private void TalkerOnDialogEnd()
     {
         if (GameManager.Instance.bookFinish) return;

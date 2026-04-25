@@ -244,6 +244,7 @@ MonoBehaviour:
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
       isBookFinish: 0
+      weight: 0
     actions:
     - type: 6
       target: {fileID: 0}
@@ -258,7 +259,7 @@ MonoBehaviour:
           m_Calls:
           - m_Target: {fileID: 11400000, guid: 7db92e633979bbf48bf86c410442437c, type: 2}
             m_TargetAssemblyTypeName: SO_SceneManager, Assembly-CSharp
-            m_MethodName: LoadScene
+            m_MethodName: LoadSceneDuringOnboardingShop
             m_Mode: 5
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -277,6 +278,7 @@ MonoBehaviour:
       pickable: {fileID: 0}
       item: {fileID: 0}
       balance: {fileID: 0}
+      inventoryController: {fileID: 0}
 --- !u!65 &-6765776131520286950
 BoxCollider:
   m_ObjectHideFlags: 0
