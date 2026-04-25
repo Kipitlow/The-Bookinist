@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class BookShopOnboardingManager : MonoBehaviour
     [SerializeField] private List<GameObject> _onboardingButtonList;
     [SerializeField] private List<GameObject> _onboardingPanelList;
     [SerializeField] private GameObject _allMenus;
+    [SerializeField] private BookshopUIManager _bookShopUIManager;
     [SerializeField] private NPCTalker _talker;
 
     private bool _isAlreadyStartFirstDialog = false;
@@ -13,7 +15,6 @@ public class BookShopOnboardingManager : MonoBehaviour
     private void Awake()
     {
         _talker.OnDialogEnd += TalkerOnDialogEnd;
-
     }
 
     private void OnDestroy()
@@ -23,9 +24,20 @@ public class BookShopOnboardingManager : MonoBehaviour
 
     private void TalkerOnDialogEnd(bool isAppearing)
     {
-        if (GameManager.Instance.bookFinish) return;
+        if (GameManager.Instance.bookFinish)
+        {
+            StartCoroutine(WaitCloseBook(1f));
+        }
+        else
+            _onboardingPanelList[1].SetActive(true);
 
-        _onboardingPanelList[1].SetActive(true);
+    }
+
+    IEnumerator WaitCloseBook(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        _bookShopUIManager.NavigateTo(1);
     }
 
     public void TalkToNPC()
