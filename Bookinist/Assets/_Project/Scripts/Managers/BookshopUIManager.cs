@@ -104,8 +104,18 @@ public class BookshopUIManager : MonoBehaviour
         }
 
         _navItems[targetIndex].button.Select();
+        SwitchButtonActivation(targetIndex);
         _currentIndex = targetIndex;
         _isAnimating = false;
+    }
+
+    private void SwitchButtonActivation(int targetIndex)
+    {
+        foreach (var item in _navItems)
+        {
+            item.button.interactable = true;
+        }
+        _navItems[targetIndex].button.interactable = false;
     }
 
     // Empile séquentiellement tous les panels entre le sommet actuel et la cible

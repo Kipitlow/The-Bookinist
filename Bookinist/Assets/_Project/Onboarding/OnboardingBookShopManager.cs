@@ -5,6 +5,7 @@ public class BookShopOnboardingManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _onboardingButtonList;
     [SerializeField] private List<GameObject> _onboardingPanelList;
+    [SerializeField] private GameObject _allMenus;
     [SerializeField] private NPCTalker _talker;
 
     private bool _isAlreadyStartFirstDialog = false;
@@ -41,6 +42,7 @@ public class BookShopOnboardingManager : MonoBehaviour
     {
         if (GameManager.Instance.bookFinish == false)
         {
+            _allMenus.SetActive(false);
             _onboardingPanelList[0].SetActive(true);
 
             return;
