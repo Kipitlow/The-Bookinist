@@ -42,6 +42,7 @@ public class LibraryManager : MonoBehaviour
         if (GameManager.Instance.bookFinish)
         {
             _isBookUnlockedList[index] = true;
+            CheckUnlockBook();
         }
     }
 
