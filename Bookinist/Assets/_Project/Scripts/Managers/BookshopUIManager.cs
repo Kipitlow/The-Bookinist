@@ -66,6 +66,9 @@ public class BookshopUIManager : MonoBehaviour
         bool targetIsRight = targetIndex > _defaultIndex;
         bool currentIsRight = _currentIndex > _defaultIndex;
 
+        SwitchButtonActivation(targetIndex);
+
+
         if (targetIsHub)
         {
             // Retour au HUB : rétracte toute la pile
@@ -104,17 +107,15 @@ public class BookshopUIManager : MonoBehaviour
         }
 
         _navItems[targetIndex].button.Select();
-        SwitchButtonActivation(targetIndex);
         _currentIndex = targetIndex;
         _isAnimating = false;
     }
 
     private void SwitchButtonActivation(int targetIndex)
     {
-        foreach (var item in _navItems)
-        {
-            item.button.interactable = true;
-        }
+        if (_currentIndex == -1) return;
+
+        _navItems[_currentIndex].button.interactable = true;
         _navItems[targetIndex].button.interactable = false;
     }
 
