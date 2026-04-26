@@ -21,4 +21,10 @@ public class SO_SceneManager : ScriptableObject
         if (GameManager.Instance._isFirstCustomerFinishDialog)
             SceneManager.LoadScene(sceneToLoad);
     }
+
+    public void LoadSceneAfterFirstBook(string sceneToLoad)
+    {
+        GameManager.Instance.bookFinish = true;
+        SceneManager.LoadScene(sceneToLoad);
+    }
 }

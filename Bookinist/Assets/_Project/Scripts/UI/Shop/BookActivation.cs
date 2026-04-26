@@ -53,6 +53,6 @@ public class BookActivation : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        Destroy(targetToDestroy);
+        targetToDestroy.SetActive(false);
     }
 }

@@ -44,6 +44,9 @@ public class BookShopOnboardingManager : MonoBehaviour
         for (int i = 0; i < _onboardingButtonList.Count; i++)
         {
             int index = i; // important fix
+
+            if (_onboardingButtonList[index] == null) continue;
+
             _onboardingButtonList[i].onClick.AddListener(() => CheckOnboarding(index + 1));
             Debug.Log($"Button {i}: {_onboardingButtonList[i]}");
         }
@@ -106,58 +109,67 @@ public class BookShopOnboardingManager : MonoBehaviour
 
         _isOnboardingPageActivated[index] = true;
 
+        Debug.Log(index);
+
         switch (index)
         {
             case 0:
-                _secondOnboardingPanelList[index].SetActive(true);
-                StartCoroutine(WaitBeforeAutoChangeOnboardingPanel(3.0f, _secondOnboardingPanelList[index], _secondOnboardingPanelList[index + 1]));
-                break;
-            case 1:
-                _bookShopUIManager.NavigateTo(2);
-                _secondOnboardingPanelList[_currentIndex + 1].SetActive(false);
+                _secondOnboardingPanelList[0].SetActive(true);
+                StartCoroutine(WaitBeforeAutoChangeOnboardingPanel(3.0f, _secondOnboardingPanelList[0], _secondOnboardingPanelList[1]));
                 break;
             case 2:
-                _secondOnboardingPanelList[_currentIndex + 1].SetActive(false);
-                _secondOnboardingPanelList[index + 1].SetActive(true);
+                _bookShopUIManager.NavigateTo(2);
+                _secondOnboardingPanelList[1].SetActive(false);
                 break;
             case 3:
-                _secondOnboardingPanelList[_currentIndex].SetActive(false);
-                _secondOnboardingPanelList[index].SetActive(true);
+                _secondOnboardingPanelList[2].SetActive(true);
                 break;
             case 4:
+                _secondOnboardingPanelList[2].SetActive(false);
+                _secondOnboardingPanelList[3].SetActive(true);
+                break;
+            case 5:
+                _secondOnboardingPanelList[3].SetActive(false);
+                _secondOnboardingPanelList[4].SetActive(true);
+                break;
+            case 6:
+                _secondOnboardingPanelList[4].SetActive(false);
+                _secondOnboardingPanelList[5].SetActive(true);
+                break;
+            case 7:
                 if (_currentCustomPage == 0)
                 {
                     _isOnboardingPageActivated[index] = false;
-                    _currentCustomPage++;                
+                    _currentCustomPage++;
                 }
                 else
                 {
-                    _secondOnboardingPanelList[_currentIndex].SetActive(false);
-                    _secondOnboardingPanelList[index].SetActive(true);
+                    _secondOnboardingPanelList[5].SetActive(false);
+                    _secondOnboardingPanelList[6].SetActive(true);
                 }
                 break;
-            case 5:
-                _secondOnboardingPanelList[_currentIndex + 1].SetActive(false);
-                _secondOnboardingPanelList[index + 1].SetActive(true);
-                break;
-            case 6:
-                _secondOnboardingPanelList[_currentIndex + 1].SetActive(false);
-                _secondOnboardingPanelList[index + 1].SetActive(true);
-                break;
-            case 7:
-                _secondOnboardingPanelList[_currentIndex + 1].SetActive(false);
-                _secondOnboardingPanelList[index + 1].SetActive(true);
-                break;
             case 8:
-                _secondOnboardingPanelList[_currentIndex + 1].SetActive(false);
-                _secondOnboardingPanelList[index + 1].SetActive(true);
+                _secondOnboardingPanelList[6].SetActive(false);
+                _secondOnboardingPanelList[7].SetActive(true);
                 break;
-            default:
-                if (_currentIndex + 1 != -1 && _currentIndex + 1 < _secondOnboardingPanelList.Count)
-                    _secondOnboardingPanelList[_currentIndex + 1].SetActive(false);
-
-                if (index < _secondOnboardingPanelList.Count)
-                    _secondOnboardingPanelList[index + 1].SetActive(true);
+            case 9:
+                _secondOnboardingPanelList[7].SetActive(false);
+                break;
+            case 10:
+                _secondOnboardingPanelList[8].SetActive(true);
+                break;
+            case 11:
+                _secondOnboardingPanelList[8].SetActive(false);
+                break;
+            case 12:
+                _secondOnboardingPanelList[10].SetActive(true);
+                break;
+            case 13:
+                _secondOnboardingPanelList[9].SetActive(true);
+                break;
+            case 14:
+                _secondOnboardingPanelList[9].SetActive(false);
+                //_secondOnboardingPanelList[10].SetActive(true);
                 break;
         }
 

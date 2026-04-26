@@ -16,6 +16,7 @@ public class CustomShopManager : MonoBehaviour
     [SerializeField] private GameObject _horizontalPanelPrefab;
     [SerializeField] private GameObject _horizontalPanelParent;
     [SerializeField] private GameObject _buttonPrefab;
+    [SerializeField] private BookShopOnboardingManager _onboardingManager;
 
     [Header("Inventaire de départ - placés en scène automatiquement au load")]
     [SerializeField] private ShopItemData[] _defaultItems;
@@ -83,6 +84,7 @@ public class CustomShopManager : MonoBehaviour
     {
         _horizontalPanels[_previousViewIndex].SetActive(false);
         _horizontalPanels[index].SetActive(true);
+
         _previousViewIndex = index;
         _isAlreadySeeCustomShop = true;
     }
@@ -124,6 +126,9 @@ public class CustomShopManager : MonoBehaviour
     {
         int capturedIndex = furnitureIndex;
 
+        //int remapped = RemapViewIndex(viewIndex);
+
+        //GameObject button = Instantiate(_buttonPrefab, _horizontalPanels[remapped].transform);
         GameObject button = Instantiate(_buttonPrefab, _horizontalPanels[viewIndex].transform);
 
         Image buttonImage = button.GetComponent<Image>();
@@ -174,7 +179,9 @@ public class CustomShopManager : MonoBehaviour
         _activeItemByView[viewIndex][type] = data;
 
         if (_activeItemByView[viewIndex][type].name == "FauteuilBleu")
-        Debug.Log(_activeItemByView[viewIndex][type].name);
+        {
+            _onboardingManager.CheckOnboarding(8);
+        }
 
         // Sauvegarde l'item placé
         SaveSystem.instance.customShop.SetPlacedItem(viewIndex, type, data.id);
