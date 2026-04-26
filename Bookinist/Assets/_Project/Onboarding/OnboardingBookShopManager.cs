@@ -9,6 +9,7 @@ public class BookShopOnboardingManager : MonoBehaviour
     [SerializeField] private List<GameObject> _onboardingPanelList;
     [SerializeField] private List<GameObject> _secondOnboardingPanelList;
     [SerializeField] private GameObject _allMenus;
+    [SerializeField] private List<GameObject> _specificLockedMenus;
     [SerializeField] private BookshopUIManager _bookShopUIManager;
     [SerializeField] private BarFill _barFill;
     [SerializeField] private NPCTalker _talker;
@@ -38,6 +39,13 @@ public class BookShopOnboardingManager : MonoBehaviour
                 _onboardingPanelList[0].SetActive(true);
 
             return;
+        }
+        else
+        {
+            foreach (GameObject go in _specificLockedMenus)
+            {
+                go.SetActive(false);
+            }
         }
 
         // Button listeners (FIXED CLOSURE BUG)
@@ -77,6 +85,7 @@ public class BookShopOnboardingManager : MonoBehaviour
 
         _bookShopUIManager.NavigateTo(1);
         CheckOnboarding(0);
+        yield return new WaitForSeconds(0.5f);
         _barFill.ModifCur(20);
     }
 
@@ -107,6 +116,8 @@ public class BookShopOnboardingManager : MonoBehaviour
         if (_isOnboardingPageActivated[index])
             return;
 
+        if (index == 9 && _currentCustomPage == 0) return;
+
         _isOnboardingPageActivated[index] = true;
 
         Debug.Log(index);
@@ -131,10 +142,11 @@ public class BookShopOnboardingManager : MonoBehaviour
             case 5:
                 _secondOnboardingPanelList[3].SetActive(false);
                 _secondOnboardingPanelList[4].SetActive(true);
+                _specificLockedMenus[0].SetActive(true);
                 break;
             case 6:
                 _secondOnboardingPanelList[4].SetActive(false);
-                _secondOnboardingPanelList[5].SetActive(true);
+                StartCoroutine(WaitBeforeActivatingPanel(0.5f, 5));
                 break;
             case 7:
                 if (_currentCustomPage == 0)
@@ -154,12 +166,17 @@ public class BookShopOnboardingManager : MonoBehaviour
                 break;
             case 9:
                 _secondOnboardingPanelList[7].SetActive(false);
+                _specificLockedMenus[1].SetActive(true);
+
                 break;
             case 10:
                 _secondOnboardingPanelList[8].SetActive(true);
+
                 break;
             case 11:
                 _secondOnboardingPanelList[8].SetActive(false);
+                _specificLockedMenus[3].SetActive(true);
+
                 break;
             case 12:
                 _secondOnboardingPanelList[10].SetActive(true);
@@ -169,7 +186,8 @@ public class BookShopOnboardingManager : MonoBehaviour
                 break;
             case 14:
                 _secondOnboardingPanelList[9].SetActive(false);
-                //_secondOnboardingPanelList[10].SetActive(true);
+                _specificLockedMenus[2].SetActive(true);
+
                 break;
         }
 
@@ -182,5 +200,12 @@ public class BookShopOnboardingManager : MonoBehaviour
 
         panelActivate?.SetActive(true);
         panelDeactivate?.SetActive(false);
+    }
+
+    IEnumerator WaitBeforeActivatingPanel(float delay, int index)
+    {
+        yield return new WaitForSeconds(delay); 
+
+        _secondOnboardingPanelList[index].SetActive(true);
     }
 }
