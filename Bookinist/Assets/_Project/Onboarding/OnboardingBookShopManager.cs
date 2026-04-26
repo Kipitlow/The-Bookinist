@@ -8,6 +8,7 @@ public class BookShopOnboardingManager : MonoBehaviour
     [SerializeField] private List<GameObject> _onboardingPanelList;
     [SerializeField] private GameObject _allMenus;
     [SerializeField] private BookshopUIManager _bookShopUIManager;
+    [SerializeField] private BarFill _barFill;
     [SerializeField] private NPCTalker _talker;
 
     private bool _isAlreadyStartFirstDialog = false;
@@ -38,6 +39,8 @@ public class BookShopOnboardingManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         _bookShopUIManager.NavigateTo(1);
+        _barFill.ModifCur(20);
+        _barFill.RefreshBarUI();
     }
 
     public void TalkToNPC()
