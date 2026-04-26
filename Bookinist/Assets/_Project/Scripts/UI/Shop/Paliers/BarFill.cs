@@ -9,59 +9,47 @@ public class BarFill : MonoBehaviour
     public float maxXP = 100f;
 
     [Header("Visual")]
-    public float Width;
     public float animDuration = 0.4f;
-    [Range(0f, 0.3f)]
-    [SerializeField] private float waveAmplification = 0.015f;
 
     [Header("Refs")]
-    [SerializeField] private RectTransform FillBar;
-    [SerializeField] private RectTransform backgroundBar;
-    [SerializeField] private Image glowImage;
-    [SerializeField] private Material liquidMaterial;
+    [SerializeField] private RectTransform _fillBar;
+    [SerializeField] private RectTransform _backgroundBar;
+    [SerializeField] private Image _glowImage;
+    [SerializeField] private Material _liquidMaterial;
 
-    private float displayedXP;
-    private Tween currentTween;
+    private float _displayedXP;
+    private Tween _currentTween;
 
-    private Vector2 basePos;
-    private float waveOffset;
+    private Vector2 _basePos;
+    private float _waveOffset;
 
     void Start()
     {
-        FillBar.pivot = new Vector2(0.5f, 0f);
+        _fillBar.pivot = new Vector2(0.5f, 0f);
 
-        basePos = FillBar.anchoredPosition;
+        _basePos = _fillBar.anchoredPosition;
 
-        RectTransform rt = FillBar;
+        RectTransform rt = _fillBar;
 
-        rt.sizeDelta = new Vector2(backgroundBar.rect.width, backgroundBar.rect.height);
+        rt.sizeDelta = new Vector2(_backgroundBar.rect.width, _backgroundBar.rect.height);
 
-        displayedXP = curXP;
+        _displayedXP = curXP;
 
-        liquidMaterial = Instantiate(liquidMaterial);
-        FillBar.GetComponent<Image>().material = liquidMaterial;
+        _liquidMaterial = Instantiate(_liquidMaterial);
+        _fillBar.GetComponent<Image>().material = _liquidMaterial;
 
         RefreshBarUI();
     }
 
-    void Update()
-    {
-        //ApplyLiquidEffect();
-    }
-
-    // -----------------------
-    // CORE UI UPDATE
-    // -----------------------
-
     public void RefreshBarUI()
     {
-        float ratio = displayedXP / maxXP;
+        float ratio = _displayedXP / maxXP;
 
-        FillBar.GetComponent<Image>().fillAmount = 1f;
+        _fillBar.GetComponent<Image>().fillAmount = 1f;
 
         UpdateGlow(ratio);
 
-        liquidMaterial.SetFloat("_Fill", ratio);
+        _liquidMaterial.SetFloat("_Fill", ratio);
     }
 
     // -----------------------
@@ -73,20 +61,20 @@ public class BarFill : MonoBehaviour
         float targetXP = Mathf.Clamp(curXP + newVal, 0, maxXP);
         curXP = targetXP;
 
-        currentTween?.Kill();
+        _currentTween?.Kill();
 
-        currentTween = DOTween.To(
-            () => displayedXP,
+        _currentTween = DOTween.To(
+            () => _displayedXP,
             x =>
             {
-                displayedXP = x;
+                _displayedXP = x;
                 RefreshBarUI();
             },
             targetXP,
             animDuration
         )
         .SetEase(Ease.OutCubic)
-        .OnComplete(() => displayedXP = targetXP);
+        .OnComplete(() => _displayedXP = targetXP);
 
         PlayGameFeel(newVal);
     }
@@ -97,32 +85,15 @@ public class BarFill : MonoBehaviour
 
     void PlayGameFeel(int value)
     {
-        FillBar.DOKill();
+        _fillBar.DOKill();
         // petit punch toujours
-        FillBar.DOPunchScale(new Vector3(0.03f, 0.05f, 0f), 0.15f);
+        _fillBar.DOPunchScale(new Vector3(0.03f, 0.05f, 0f), 0.15f);
 
         // shake si gros gain
         if (value > 20)
         {
-            FillBar.DOShakeAnchorPos(0.2f, 4f, 12, 90f);
+            _fillBar.DOShakeAnchorPos(0.2f, 4f, 12, 90f);
         }
-    }
-
-    // -----------------------
-    // LIQUID EFFECT
-    // -----------------------
-
-    void ApplyLiquidEffect()
-    {
-        waveOffset += Time.deltaTime * 4f;
-
-        float wave = Mathf.Sin(waveOffset) * 1.5f;
-
-        // léger mouvement vertical
-        //FillBar.anchoredPosition = basePos + new Vector2(0f, wave);
-
-        // léger stretch pour effet liquide
-        FillBar.localScale = new Vector3(1f, 1f + Mathf.Sin(waveOffset) * waveAmplification, 1f);
     }
 
     // -----------------------
@@ -131,11 +102,11 @@ public class BarFill : MonoBehaviour
 
     void UpdateGlow(float ratio)
     {
-        if (glowImage == null) return;
+        if (_glowImage == null) return;
 
         Color baseColor = new Color(1f, 1f, 1f, 0f);
         Color fullGlow = new Color(1f, 0.6f, 0.2f, 0.6f);
 
-        glowImage.color = Color.Lerp(baseColor, fullGlow, ratio);
+        _glowImage.color = Color.Lerp(baseColor, fullGlow, ratio);
     }
 }

@@ -55,15 +55,15 @@ Shader "UI/LiquidFill"
 
             struct v2f
             {
-                float4 vertex : SV_POSITION;
+                float4 pos : SV_POSITION;
                 float2 uv : TEXCOORD0;
                 float4 worldPosition : TEXCOORD1;
             };
 
             v2f vert (appdata v)
             {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
+               v2f o;
+                o.pos = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.worldPosition = v.vertex;
                 return o;
@@ -121,7 +121,7 @@ Shader "UI/LiquidFill"
                 col.a *= alphaMask;
 
                 // UI mask scrollview safe
-                col.a *= UnityGet2DClipping(i.worldPosition.xy, _ClipRect);
+                col.a *= UnityGet2DClipping(i.pos.xy, _ClipRect);
 
                 return col;
             }
