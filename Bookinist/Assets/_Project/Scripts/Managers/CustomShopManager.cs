@@ -173,6 +173,9 @@ public class CustomShopManager : MonoBehaviour
         _currentObjects[viewIndex][type] = instances;
         _activeItemByView[viewIndex][type] = data;
 
+        if (_activeItemByView[viewIndex][type].name == "FauteuilBleu")
+        Debug.Log(_activeItemByView[viewIndex][type].name);
+
         // Sauvegarde l'item placé
         SaveSystem.instance.customShop.SetPlacedItem(viewIndex, type, data.id);
         SaveSystem.instance.Save();
