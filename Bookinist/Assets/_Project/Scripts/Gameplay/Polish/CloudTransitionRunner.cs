@@ -21,27 +21,27 @@ public class CloudTransitionController : MonoBehaviour
 
 
     [Header("Clouds")]
-    [SerializeField] private RectTransform[] _leftClouds;
-    [SerializeField] private RectTransform[] _rightClouds;
+    [SerializeField] private RectTransform[] leftClouds;
+    [SerializeField] private RectTransform[] rightClouds;
 
     [Header("Events")]
-    [SerializeField] private SO_SceneManager _sceneManager;
+    [SerializeField] private SO_SceneManager sceneManager;
 
     [Header("Settings")]
-    [SerializeField] private float _duration = 0.6f;
-    [SerializeField] private float _coveredDelay = 0.3f;
+    [SerializeField] private float duration = 0.6f;
+    [SerializeField] private float coveredDelay = 0.3f;
 
-    [SerializeField] private Vector2[] _leftHiddenPosition;
-    [SerializeField] private Vector2[] _leftVisiblePosition;
+    [SerializeField] private Vector2[] leftHiddenPosition;
+    [SerializeField] private Vector2[] leftVisiblePosition;
 
-    [SerializeField] private Vector2[] _rightHiddenPosition;
-    [SerializeField] private Vector2[] _rightVisiblePosition;
+    [SerializeField] private Vector2[] rightHiddenPosition;
+    [SerializeField] private Vector2[] rightVisiblePosition;
 
-    private bool _isTransitionPlaying;
+    private bool isTransitionPlaying;
 
     public void PlayTransition(string sceneToLoad, string sceneToUnload)
     {
-        if (_isTransitionPlaying)
+        if (isTransitionPlaying)
             return;
 
         StartCoroutine(TransitionRoutine(sceneToLoad, sceneToUnload));
@@ -49,59 +49,59 @@ public class CloudTransitionController : MonoBehaviour
 
     private IEnumerator TransitionRoutine(string sceneToLoad, string sceneToUnload)
     {
-        _isTransitionPlaying = true;
+        isTransitionPlaying = true;
 
         yield return MoveCloudsIn();
 
-        _sceneManager.LoadScene(sceneToLoad);
+        sceneManager.LoadScene(sceneToLoad);
 
-        yield return new WaitForSeconds(_coveredDelay);
+        yield return new WaitForSeconds(coveredDelay);
 
         yield return MoveCloudsOut();
 
-        _sceneManager.UnloadScene(sceneToLoad);
+        sceneManager.UnloadScene(sceneToLoad);
 
-        _isTransitionPlaying = false;
+        isTransitionPlaying = false;
     }
 
     private IEnumerator MoveCloudsIn()
     {
         float timer = 0f;
 
-        while (timer < _duration)
+        while (timer < duration)
         {
-            float t = timer / _duration;
+            float t = timer / duration;
             t = EaseOut(t);
 
-            MoveCloudGroup(_leftClouds, _leftHiddenPosition, _leftVisiblePosition, t);
-            MoveCloudGroup(_rightClouds, _rightHiddenPosition, _rightVisiblePosition, t);
+            MoveCloudGroup(leftClouds, leftHiddenPosition, leftVisiblePosition, t);
+            MoveCloudGroup(rightClouds, rightHiddenPosition, rightVisiblePosition, t);
 
             timer += Time.deltaTime;
             yield return null;
         }
 
-        SetCloudGroupPosition(_leftClouds, _leftVisiblePosition);
-        SetCloudGroupPosition(_rightClouds, _rightVisiblePosition);
+        SetCloudGroupPosition(leftClouds, leftVisiblePosition);
+        SetCloudGroupPosition(rightClouds, rightVisiblePosition);
     }
 
     private IEnumerator MoveCloudsOut()
     {
         float timer = 0f;
 
-        while (timer < _duration)
+        while (timer < duration)
         {
-            float t = timer / _duration;
+            float t = timer / duration;
             t = EaseIn(t);
 
-            MoveCloudGroup(_leftClouds, _leftHiddenPosition, _leftVisiblePosition, t);
-            MoveCloudGroup(_rightClouds, _leftHiddenPosition, _leftVisiblePosition, t);
+            MoveCloudGroup(leftClouds, leftVisiblePosition, leftHiddenPosition, t);
+            MoveCloudGroup(rightClouds, rightVisiblePosition, rightHiddenPosition, t);
 
             timer += Time.deltaTime;
             yield return null;
         }
 
-        SetCloudGroupPosition(_leftClouds, _leftHiddenPosition);
-        SetCloudGroupPosition(_rightClouds, _rightHiddenPosition);
+        SetCloudGroupPosition(leftClouds, leftHiddenPosition);
+        SetCloudGroupPosition(rightClouds, rightHiddenPosition);
     }
 
     private void MoveCloudGroup(
