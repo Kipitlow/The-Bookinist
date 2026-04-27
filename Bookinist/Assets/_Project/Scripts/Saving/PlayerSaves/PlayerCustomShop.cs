@@ -6,7 +6,7 @@ public class PlayerCustomShop
 {
     // Format de chaque entrée : "viewIndex:FurnitureType:itemID"
     // Exemple : "0:Lamp:item_lamp_01"
-    public List<string> placedItems = new List<string>();
+    public List<string> playerCustomShopPlacedItems = new List<string>();
 
     /// <summary>
     /// Encode et ajoute (ou remplace) une entrée pour une view + type donnés.
@@ -16,16 +16,16 @@ public class PlayerCustomShop
         string prefix = $"{viewIndex}:{type}:";
 
         // Remplace l'entrée existante pour cette view+type si elle existe
-        for (int i = 0; i < placedItems.Count; i++)
+        for (int i = 0; i < playerCustomShopPlacedItems.Count; i++)
         {
-            if (placedItems[i].StartsWith(prefix))
+            if (playerCustomShopPlacedItems[i].StartsWith(prefix))
             {
-                placedItems[i] = $"{prefix}{itemID}";
+                playerCustomShopPlacedItems[i] = $"{prefix}{itemID}";
                 return;
             }
         }
 
-        placedItems.Add($"{prefix}{itemID}");
+        playerCustomShopPlacedItems.Add($"{prefix}{itemID}");
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ public class PlayerCustomShop
     public void RemovePlacedItem(int viewIndex, FurnitureType type)
     {
         string prefix = $"{viewIndex}:{type}:";
-        placedItems.RemoveAll(entry => entry.StartsWith(prefix));
+        playerCustomShopPlacedItems.RemoveAll(entry => entry.StartsWith(prefix));
     }
 
     /// <summary>
@@ -48,7 +48,7 @@ public class PlayerCustomShop
         for (int i = 0; i < viewCount; i++)
             result[i] = new Dictionary<FurnitureType, string>();
 
-        foreach (string entry in placedItems)
+        foreach (string entry in playerCustomShopPlacedItems)
         {
             string[] parts = entry.Split(':');
 

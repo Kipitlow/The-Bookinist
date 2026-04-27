@@ -112,9 +112,9 @@ public class CustomShopManager : MonoBehaviour
         }
 
         // Sauvegarde l'inventaire
-        if (!SaveSystem.instance.inventory.ownedItemIDs.Contains(newObject.id))
+        if (!SaveSystem.instance.inventory.playerInventoryOwnedItemIDs.Contains(newObject.id))
         {
-            SaveSystem.instance.inventory.ownedItemIDs.Add(newObject.id);
+            SaveSystem.instance.inventory.playerInventoryOwnedItemIDs.Add(newObject.id);
             SaveSystem.instance.Save();
         }
 
@@ -199,7 +199,7 @@ public class CustomShopManager : MonoBehaviour
         if (SaveSystem.instance == null || ItemDatabase.instance == null) return;
 
         // --- Inventaire ---
-        foreach (string id in SaveSystem.instance.inventory.ownedItemIDs)
+        foreach (string id in SaveSystem.instance.inventory.playerInventoryOwnedItemIDs)
         {
             ShopItemData item = ItemDatabase.instance.Get(id);
             if (item == null) continue;
