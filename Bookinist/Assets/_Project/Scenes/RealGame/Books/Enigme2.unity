@@ -457,6 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 257414583}
   - component: {fileID: 257414584}
+  - component: {fileID: 257414585}
   m_Layer: 0
   m_Name: CamManager
   m_TagString: Untagged
@@ -503,6 +504,19 @@ MonoBehaviour:
   - {fileID: 1740320989}
   _mainCam: {fileID: 254298882}
   _activeCam: {fileID: 254298882}
+--- !u!114 &257414585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257414582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 326fd612628b6ea4388b84c496765f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineBrain: {fileID: 935569763}
 --- !u!114 &342407415 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1027123519739291387, guid: abde5900fef9895409a3da322287422f, type: 3}
@@ -1501,6 +1515,8 @@ MonoBehaviour:
   currentIndexLayer: 0
   currentIndexByLayer: 0
   _camManager: {fileID: 257414584}
+  _cinemachineBrain: {fileID: 0}
+  _CameraBlendRuntime: {fileID: 257414585}
 --- !u!114 &935569759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2937,7 +2953,7 @@ PrefabInstance:
     - target: {fileID: 987474785978968419, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: 'pageObjects.Array.data[6]'
       value: 
-      objectReference: {fileID: 1915755018}
+      objectReference: {fileID: 0}
     - target: {fileID: 987474785978968419, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: 'pageObjects.Array.data[7]'
       value: 
@@ -4479,11 +4495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563134a4431f3e94bb61479f7af96b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1915755018 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8105794944866442438, guid: abde5900fef9895409a3da322287422f, type: 3}
-  m_PrefabInstance: {fileID: 1587385644}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1947135227 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8799200867647015449, guid: abde5900fef9895409a3da322287422f, type: 3}
