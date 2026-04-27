@@ -45,6 +45,9 @@ public class OnboardingManager : MonoBehaviour
 
         _dropHandler.OnDropItem += DropHandlerOnDropItem;
 
+        if (GameManager.Instance.bookFinish) return;
+
+        _onboardingPanelList[0].SetActive(true);
         _handList[0].SetActive(true);
         _handAnimatorList[0].SetBool("IsOnboardingTap", true);
     }
@@ -93,7 +96,7 @@ public class OnboardingManager : MonoBehaviour
     public void CheckOnboarding(int index)
     {
         //Debug.Log(index);
-        if (index != _onboardingCurrentIndex)
+        if (index != _onboardingCurrentIndex || GameManager.Instance.bookFinish)
             return;
 
         SetPanelActive(_onboardingCurrentIndex, false);
