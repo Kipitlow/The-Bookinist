@@ -12,7 +12,8 @@ public class BarFill : MonoBehaviour
     public float animDuration = 0.4f;
 
     [Header("Refs")]
-    [SerializeField] private RectTransform _fillBar;
+    [SerializeField] private RectTransform _palierFillBar;
+    [SerializeField] private RectTransform _ProfileFillBar;
     [SerializeField] private RectTransform _backgroundBar;
     [SerializeField] private Image _glowImage;
     [SerializeField] private Material _liquidMaterial;
@@ -25,18 +26,18 @@ public class BarFill : MonoBehaviour
 
     void Start()
     {
-        _fillBar.pivot = new Vector2(0.5f, 0f);
+        _palierFillBar.pivot = new Vector2(0.5f, 0f);
 
-        _basePos = _fillBar.anchoredPosition;
+        _basePos = _palierFillBar.anchoredPosition;
 
-        RectTransform rt = _fillBar;
+        RectTransform rt = _palierFillBar;
 
         rt.sizeDelta = new Vector2(_backgroundBar.rect.width, _backgroundBar.rect.height);
 
         _displayedXP = curXP;
 
         _liquidMaterial = Instantiate(_liquidMaterial);
-        _fillBar.GetComponent<Image>().material = _liquidMaterial;
+        _palierFillBar.GetComponent<Image>().material = _liquidMaterial;
 
         RefreshBarUI();
     }
@@ -45,7 +46,7 @@ public class BarFill : MonoBehaviour
     {
         float ratio = _displayedXP / maxXP;
 
-        _fillBar.GetComponent<Image>().fillAmount = 1f;
+        _palierFillBar.GetComponent<Image>().fillAmount = 1f;
 
         UpdateGlow(ratio);
 
@@ -85,14 +86,14 @@ public class BarFill : MonoBehaviour
 
     void PlayGameFeel(int value)
     {
-        _fillBar.DOKill();
+        _palierFillBar.DOKill();
         // petit punch toujours
-        _fillBar.DOPunchScale(new Vector3(0.03f, 0.05f, 0f), 0.15f);
+        _palierFillBar.DOPunchScale(new Vector3(0.03f, 0.05f, 0f), 0.15f);
 
         // shake si gros gain
         if (value > 20)
         {
-            _fillBar.DOShakeAnchorPos(0.2f, 4f, 12, 90f);
+            _palierFillBar.DOShakeAnchorPos(0.2f, 4f, 12, 90f);
         }
     }
 
