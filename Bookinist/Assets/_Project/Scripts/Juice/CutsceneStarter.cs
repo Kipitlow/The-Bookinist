@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class CutsceneStarter : MonoBehaviour
 {
-    [SerializeField] private PlayableDirector sceneStarter;
+    [SerializeField] private PlayableDirector _sceneStarter;
 
     public void StartIntroCutscene()
     {
-        sceneStarter.Play();
+        _sceneStarter.Play();
     }
 }
