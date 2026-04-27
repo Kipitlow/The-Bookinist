@@ -84,6 +84,10 @@ public class ActionEntryDrawer : PropertyDrawer
             case ActionType.RemoveDraggedItem:
                 lines += 1;
                 break;
+
+            case ActionType.CustomerLeave:
+                lines += 3;
+                break;
         }
 
         return lines * lineHeight + extraHeight;
@@ -193,6 +197,14 @@ public class ActionEntryDrawer : PropertyDrawer
 
             case ActionType.RemoveDraggedItem:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("inventoryController"));
+                break;
+
+            case ActionType.CustomerLeave:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("npcDialogue"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("npcTalker"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("customer"));
                 break;
         }
         EditorGUI.EndProperty();

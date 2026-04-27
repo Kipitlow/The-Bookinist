@@ -19,10 +19,14 @@ public class BookshopUIManager : MonoBehaviour
     }
 
     [SerializeField] private NavItem[] _navItems;
-    [SerializeField] private int _defaultIndex = 2; // HUB
+    [SerializeField] private int _defaultIndex = 2;
     [SerializeField] private GameObject _uiToDisable;
     [SerializeField] private float _animDuration = 0.35f;
     [SerializeField] private Canvas _canvas;
+
+    [Header("Managers")]
+    [SerializeField] private CustomShopManager _customShopManager;
+    [SerializeField] private CamManager _camManager;
 
     private float _screenWidth;
     private int _currentIndex = -1;
@@ -42,7 +46,7 @@ public class BookshopUIManager : MonoBehaviour
             int index = i;
             _navItems[i].button.onClick.AddListener(() => NavigateTo(index));
             _navItems[i].colorDefault = _navItems[i].button.GetComponent<Image>().color;
-            _navItems[i].colorActive = _navItems[i].button.colors.selectedColor;
+            _navItems[i].colorActive = _navItems[i].button.GetComponent<Image>().color;
 
             if (_navItems[i].panel != null)
                 _navItems[i].panel.SetActive(false);
@@ -66,17 +70,28 @@ public class BookshopUIManager : MonoBehaviour
         bool targetIsRight = targetIndex > _defaultIndex;
         bool currentIsRight = _currentIndex > _defaultIndex;
 
+        SwitchButtonActivation(targetIndex);
+
 
         if (targetIsHub)
         {
             // Retour au HUB : rétracte toute la pile
             yield return StartCoroutine(RetractStack());
             _uiToDisable.SetActive(true);
+
+            _npcToDisable.SetActive(true);
+            _camManager.ResetToView(0);
         }
         else if (currentIsHub)
         {
+            _npcToDisable.SetActive(false);
+
+            _camManager.ResetToView(0);
+            _customShopManager.ResetPanelToCurrentView();
+
             // Depuis le HUB : empile séquentiellement jusqu'à la cible
             yield return StartCoroutine(PushUntil(targetIndex));
+
         }
         else if (targetIsRight == currentIsRight)
         {
@@ -96,21 +111,21 @@ public class BookshopUIManager : MonoBehaviour
             // Changement de côté : rétracte tout puis empile de l'autre côté
             yield return StartCoroutine(RetractStack());
             _uiToDisable.SetActive(false);
+            _camManager.ResetToView(0);
             yield return StartCoroutine(PushUntil(targetIndex));
-        }
-
-        if (targetIndex == 3)
-        {
-            _npcToDisable.SetActive(false);
-        }
-        else
-        {
-            _npcToDisable.SetActive(true);
         }
 
         _navItems[targetIndex].button.Select();
         _currentIndex = targetIndex;
         _isAnimating = false;
+    }
+
+    private void SwitchButtonActivation(int targetIndex)
+    {
+        if (_currentIndex == -1) return;
+
+        _navItems[_currentIndex].button.interactable = true;
+        _navItems[targetIndex].button.interactable = false;
     }
 
     // Empile séquentiellement tous les panels entre le sommet actuel et la cible

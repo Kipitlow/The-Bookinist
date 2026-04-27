@@ -37,4 +37,9 @@ public class ShopItemUI : MonoBehaviour
     {
         _buyButton.onClick.RemoveListener(OnItemClicked);
     }
+
+    public Image GetIcon()
+    {
+        return _icon; 
+    }
 }
