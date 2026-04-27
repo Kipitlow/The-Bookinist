@@ -331,4 +331,12 @@ public class CustomShopManager : MonoBehaviour
         if (placeImmediately && !_activeItemByView[targetView].ContainsKey(newObject.furnitureType))
             PlaceObjectSilent(targetView, newObject);
     }
+
+    public void ResetPanelToCurrentView()
+    {
+        for (int i = 0; i < VIEW_COUNT; i++)
+            _horizontalPanels[i].SetActive(i == 0);
+
+        _previousViewIndex = 0;
+    }
 }
