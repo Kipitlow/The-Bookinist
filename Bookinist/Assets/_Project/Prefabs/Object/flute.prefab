@@ -148,6 +148,7 @@ MonoBehaviour:
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
       isBookFinish: 0
+      weight: 0
     actions:
     - type: 10
       target: {fileID: 0}
@@ -169,6 +170,8 @@ MonoBehaviour:
       pickable: {fileID: 8513184113947251809}
       item: {fileID: 0}
       balance: {fileID: 0}
+      inventoryController: {fileID: 0}
+      customer: {fileID: 0}
 --- !u!114 &8513184113947251809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 432b72a9e2276c747a23a78f42c23d62, type: 2}
   _invController: {fileID: 0}
+  _particles: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
 --- !u!114 &9088740568789304571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
+  isDroppedItem: 0
 --- !u!114 &532673301117548679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,9 +220,12 @@ MonoBehaviour:
   _hideDistance: 2
   _startOffsetDistance: 0
   _smoothTime: 0.2
+  _playStartShowAnimation: 1
   _alphaVisible: 1
   _alphaHidden: 0
   _alphaSpeed: 1
   _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
   _objToDesable: []
+  _childs: []
   _state: 1
