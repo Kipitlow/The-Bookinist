@@ -2,13 +2,11 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class CloudTransitionController : MonoBehaviour
 {
     public static CloudTransitionController Instance { get; private set; }
-
-    [SerializeField] private GameObject missionCanvasRoot;
-    [SerializeField] private TMP_Text missionText;
 
     private void Awake()
     {
@@ -27,8 +25,7 @@ public class CloudTransitionController : MonoBehaviour
     [SerializeField] private RectTransform[] rightClouds;
 
     [Header("Events")]
-    [SerializeField] private UnityEvent onScreenCovered;
-    [SerializeField] private UnityEvent onTransitionFinished;
+    [SerializeField] private SO_SceneManager sceneManager;
 
     [Header("Settings")]
     [SerializeField] private float duration = 0.6f;
@@ -42,27 +39,27 @@ public class CloudTransitionController : MonoBehaviour
 
     private bool isTransitionPlaying;
 
-    public void PlayTransition()
+    public void PlayTransition(string sceneToLoad, string sceneToUnload)
     {
         if (isTransitionPlaying)
             return;
 
-        StartCoroutine(TransitionRoutine());
+        StartCoroutine(TransitionRoutine(sceneToLoad, sceneToUnload));
     }
 
-    private IEnumerator TransitionRoutine()
+    private IEnumerator TransitionRoutine(string sceneToLoad, string sceneToUnload)
     {
         isTransitionPlaying = true;
 
         yield return MoveCloudsIn();
 
-        onScreenCovered?.Invoke();
+        sceneManager.LoadScene(sceneToLoad);
 
         yield return new WaitForSeconds(coveredDelay);
 
         yield return MoveCloudsOut();
 
-        onTransitionFinished?.Invoke();
+        sceneManager.UnloadScene(sceneToLoad);
 
         isTransitionPlaying = false;
     }
