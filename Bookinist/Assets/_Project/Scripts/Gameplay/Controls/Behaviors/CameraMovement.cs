@@ -341,6 +341,7 @@ public class CameraMovement : MonoBehaviour
                         currentIndexByLayer++;
                         _camManager.NextCamera();
                         StartEdgeCheckAfterBlend();
+                        OnSwipe?.Invoke();
                     }
 
                 }
@@ -351,6 +352,7 @@ public class CameraMovement : MonoBehaviour
                         currentIndexByLayer--;
                         _camManager.PreviousCamera();
                         StartEdgeCheckAfterBlend();
+                        OnSwipe?.Invoke();
                     }
                 }
                 if (currentIndexByLayer == 0 || currentIndexByLayer == SnapPointNumberOnOneLayer)
