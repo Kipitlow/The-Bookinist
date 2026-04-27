@@ -46,7 +46,7 @@ public class BookshopUIManager : MonoBehaviour
             int index = i;
             _navItems[i].button.onClick.AddListener(() => NavigateTo(index));
             _navItems[i].colorDefault = _navItems[i].button.GetComponent<Image>().color;
-            _navItems[i].colorActive = _navItems[i].button.colors.selectedColor;
+            _navItems[i].colorActive = _navItems[i].button.GetComponent<Image>().color;
 
             if (_navItems[i].panel != null)
                 _navItems[i].panel.SetActive(false);
