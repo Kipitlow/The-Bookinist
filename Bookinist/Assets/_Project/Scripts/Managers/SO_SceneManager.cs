@@ -9,6 +9,16 @@ public class SO_SceneManager : ScriptableObject
         SceneManager.LoadScene(sceneToLoad);
     }
 
+    public void LoadSceneAditive(string sceneToLoad)
+    {
+        SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+    }
+
+    public void UnloadScene(string sceneToUnLoad)
+    {
+        SceneManager.UnloadSceneAsync(sceneToUnLoad);
+    }
+
     public void ExitGame()
     {
         Debug.Log("Exiting game...");
