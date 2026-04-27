@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.SettingsManagement;
 using UnityEngine;
 
 /// <summary>
@@ -27,7 +28,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField][Range(1, 100)] private int _poolSize = 10;
     private List<AudioSource> _audioSources = new();
     private Dictionary<string, AudioClip> _soundDictionary = new();
-    private float _globalSfxVolume = 1f;
+    [SerializeField] private float _globalSfxVolume = 1f;
 
     public static SoundManager Instance;
 
@@ -68,6 +69,13 @@ public class SoundManager : MonoBehaviour
                 _soundDictionary[sound.name] = sound.clip;
             }
         }
+    }
+
+    private void Start()
+    {
+        SaveSystem.instance.OnDataUpdate += UpdateVolume;
+
+        _globalSfxVolume = SaveSystem.instance.settings.playerSoundGeneral;
     }
 
     #endregion
@@ -184,6 +192,12 @@ public class SoundManager : MonoBehaviour
             _audioSources.RemoveAt(_audioSources.Count - 1);
             Destroy(source);
         }
+    }
+
+
+    public void UpdateVolume()
+    {
+        _globalSfxVolume = SaveSystem.instance.settings.playerSoundGeneral;
     }
 
     #endregion
