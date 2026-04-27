@@ -37,5 +37,6 @@ public enum ActionType
     FeedBack,
     CloseDialogue,
     Drop,
-    RemoveDraggedItem
+    RemoveDraggedItem,
+    CustomerLeave
 }

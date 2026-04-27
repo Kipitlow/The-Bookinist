@@ -25,6 +25,14 @@ public class OnboardingManager : MonoBehaviour
         _touchDetection.OnClick += TouchDetectionOnClick;
     }
 
+    private void OnDestroy()
+    {
+        _camMovement.OnZoomOrDezoom -= CamMovementOnZoom;
+        _camMovement.OnSwipe -= CamMovementOnSwipe;
+        _touchDetection.OnClick -= TouchDetectionOnClick;
+        _dropHandler.OnDropItem -= DropHandlerOnDropItem;
+    }
+
     private void Start()
     {
         _dropHandler = WorldDropHandler.Instance;

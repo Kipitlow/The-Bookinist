@@ -28,7 +28,6 @@ public class SaveSystem : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         instance = this;
         DontDestroyOnLoad(gameObject);
         Load();
@@ -41,6 +40,11 @@ public class SaveSystem : MonoBehaviour
 
     public void Save()
     {
+        if(ProgressionBar.instance != null)
+        {
+            bp = ProgressionBar.instance.GetDataForSave();
+        }
+
         SaveData data = new SaveData
         {
             profile = profile,

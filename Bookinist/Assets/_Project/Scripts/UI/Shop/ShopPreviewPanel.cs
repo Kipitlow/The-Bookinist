@@ -26,6 +26,8 @@ public class ShopPreviewPanel : MonoBehaviour
     [Header("Render Texture")]
     [SerializeField] private RenderTexture _previewRenderTexture;
 
+    [SerializeField] private BookShopOnboardingManager _bookShopOnboardingManager;
+
     private ShopItemData _currentItem;
     private ShopItemUI _currentItemUI;
     private GameObject _currentInstance;
@@ -45,6 +47,9 @@ public class ShopPreviewPanel : MonoBehaviour
 
     public void ShowPreview(ShopItemData data, ShopItemUI sourceUI)
     {
+        if (sourceUI.GetIcon().GetComponent<Image>().sprite.name == "FauteuilBleu")
+            _bookShopOnboardingManager.CheckOnboarding(4);
+
         _currentItem = data;
         _currentItemUI = sourceUI;
 
@@ -131,6 +136,9 @@ public class ShopPreviewPanel : MonoBehaviour
             _currentItemUI.SetSoldState();
 
         RefreshBuyButton(true);
+
+        if (_currentItemUI.GetIcon().GetComponent<Image>().sprite.name == "FauteuilBleu")
+            _bookShopOnboardingManager.CheckOnboarding(5);
     }
 
     public void ClearPreview()

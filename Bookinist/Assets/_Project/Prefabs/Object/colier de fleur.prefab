@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5423360587032717130}
   - component: {fileID: 8390929806180284438}
   - component: {fileID: 8513184113947251809}
-  - component: {fileID: 1664964504883665354}
-  - component: {fileID: -7176091693382298548}
-  m_Layer: 3
+  - component: {fileID: 4725649881267274810}
+  - component: {fileID: 1489274805545004039}
+  m_Layer: 0
   m_Name: colier de fleur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 968460625904555924}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 9.64, y: -3.33, z: 0}
   m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -148,7 +148,6 @@ MonoBehaviour:
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
       isBookFinish: 0
-      weight: 0
     actions:
     - type: 10
       target: {fileID: 0}
@@ -182,9 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24c7b5e8bbbba14d9cb542165813fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _item: {fileID: 11400000, guid: 0a709a5066689d24fb824e471a5f0d88, type: 2}
+  _item: {fileID: 11400000, guid: 432b72a9e2276c747a23a78f42c23d62, type: 2}
   _invController: {fileID: 0}
---- !u!114 &1664964504883665354
+--- !u!114 &4725649881267274810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,30 +197,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
-  isDroppedItem: 0
---- !u!114 &-7176091693382298548
+  _isDroppedItem: 0
+--- !u!114 &1489274805545004039
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968460625904555924}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _myLayer: 1
-  _lateral: 1
+  _lateral: 2
   _hideDirection: {x: 1, y: 0}
   _hideDistance: 2
-  _startOffsetDistance: 30
+  _startOffsetDistance: 0
   _smoothTime: 0.2
   _alphaVisible: 1
   _alphaHidden: 0
   _alphaSpeed: 1
   _autoGetChildrenSprites: 1
-  _autoGetChildrenColliders: 1
   _objToDesable: []
-  _childs: []
   _state: 1

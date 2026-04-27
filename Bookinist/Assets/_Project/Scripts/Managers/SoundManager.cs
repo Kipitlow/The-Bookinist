@@ -29,7 +29,7 @@ public class SoundManager : MonoBehaviour
     private Dictionary<string, AudioClip> _soundDictionary = new();
     private float _globalSfxVolume = 1f;
 
-    public static SoundManager Instance { get; private set; }
+    public static SoundManager Instance;
 
     public float GlobalSfxVolume
     {
@@ -45,6 +45,7 @@ public class SoundManager : MonoBehaviour
     {
         if (Instance == null)
         {
+            Debug.Log("DDOL");
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -85,6 +86,32 @@ public class SoundManager : MonoBehaviour
         return _audioSources.Count > 0 ? _audioSources[0] : null;
     }
 
+    public void PlaySound(string soundName)
+    {
+        if (!_soundDictionary.TryGetValue(soundName, out AudioClip clip))
+        {
+            Debug.LogWarning($"Sound '{soundName}' not found!");
+            return;
+        }
+
+        AudioSource source = GetAvailableAudioSource();
+        if (source != null)
+        {
+            foreach (SoundEffect sound in _soundEffects)
+            {
+                if (sound.name == soundName)
+                {
+                    source.clip = clip;
+                    source.volume = sound.volume * _globalSfxVolume;
+                    source.pitch = 1f;
+                    source.loop = false;
+                    source.Play();
+                    return;
+                }
+            }
+        }
+    }
+
     public void PlaySound(string soundName, float pitch = 1f, bool loop = false)
     {
         if (!_soundDictionary.TryGetValue(soundName, out AudioClip clip))
@@ -102,7 +129,7 @@ public class SoundManager : MonoBehaviour
                 {
                     source.clip = clip;
                     source.volume = sound.volume * _globalSfxVolume;
-                    source.pitch = pitch;
+                    source.pitch = pitch * pitch; 
                     source.loop = loop;
                     source.Play();
                     return;

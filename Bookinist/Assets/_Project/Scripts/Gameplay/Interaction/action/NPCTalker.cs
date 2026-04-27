@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -54,10 +55,10 @@ public class NPCTalker : MonoBehaviour
     private Vector3 _pivOffsetShop = new Vector3(1f, 0f, 0);
 
     [SerializeField]
-    private Vector3 _pivOffsetBook = new Vector3(-1, -3, 0);
+    private List<Sprite> _spritePoses;
 
-    public event Action OnShowBook;
-    public event Action OnDialogEnd;
+    public event Action<bool> OnShowBook;
+    public event Action<bool> OnDialogEnd;
 
     void Start()
     {
@@ -76,6 +77,11 @@ public class NPCTalker : MonoBehaviour
             _notReadParts[i] = _notRead.GetChild(i);
 
         UpdateIndicator();
+
+        if (GameManager.Instance.bookFinish)
+        {
+            GetComponent<SpriteRenderer>().sprite = _spritePoses[1];
+        }
     }
 
     public void StartDialogue(NPCDialogue SO_dialogue)
@@ -92,7 +98,8 @@ public class NPCTalker : MonoBehaviour
             _hasDialogueEnded = true;
             _timesEnded++;
             UpdateIndicator();
-            OnDialogEnd?.Invoke();
+            OnDialogEnd?.Invoke(true);
+            GameManager.Instance._isFirstCustomerFinishDialog = true;
             return;
         }
 
@@ -109,10 +116,45 @@ public class NPCTalker : MonoBehaviour
             _lineIndex++;
         }
 
-        if (_dialogue.IsShopNPC && _lineIndex == 3)
+        if (_dialogue.IsShopNPC && _lineIndex == 4 && GameManager.Instance.bookFinish == false)
         {
-            OnShowBook?.Invoke();
+            GetComponent<SpriteRenderer>().sprite = _spritePoses[0];
+            OnShowBook?.Invoke(true);
         }
+    }
+
+    public void CustomerLeave(NPCDialogue SO_dialogue, GameObject talker)
+    {
+        _dialogue = SO_dialogue;
+
+        if (_lineIndex == 1)
+        {
+            GetComponent<SpriteRenderer>().sprite = _spritePoses[2];
+        }
+
+        if (_lineIndex >= _dialogue.lines.Length)
+        {
+            CloseBubble();
+            _hasDialogueEnded = true;
+            _timesEnded++;
+            UpdateIndicator();
+            OnDialogEnd?.Invoke(false);
+            StartCoroutine(WaitToInvisible(0.7f, talker));
+            return;
+        }
+
+        if (!_dialogue.isLoopable && _timesEnded == 0)
+        {
+            ShowLine(_dialogue.lines[_lineIndex]);
+            _lineIndex++;
+        }
+    }
+
+    IEnumerator WaitToInvisible(float delay, GameObject talker)
+    {
+        yield return new WaitForSeconds(delay);
+
+        talker.gameObject.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f, 0f);
     }
 
     private void ShowLine(string text)
