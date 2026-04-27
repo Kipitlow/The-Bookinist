@@ -29,8 +29,12 @@ public class BookshopUIManager : MonoBehaviour
     private bool _isAnimating = false;
     private List<int> _panelStack = new List<int>();
 
+    private GameObject _npcToDisable;
+
     void Start()
     {
+        _npcToDisable = FindFirstObjectByType<NPCTalker>().gameObject;
+
         _screenWidth = _canvas.GetComponent<RectTransform>().rect.width;
 
         for (int i = 0; i < _navItems.Length; i++)
@@ -62,16 +66,24 @@ public class BookshopUIManager : MonoBehaviour
         bool targetIsRight = targetIndex > _defaultIndex;
         bool currentIsRight = _currentIndex > _defaultIndex;
 
+        SwitchButtonActivation(targetIndex);
+
+
         if (targetIsHub)
         {
             // Retour au HUB : rétracte toute la pile
             yield return StartCoroutine(RetractStack());
             _uiToDisable.SetActive(true);
+
+            _npcToDisable.SetActive(true);
         }
         else if (currentIsHub)
         {
+            _npcToDisable.SetActive(false);
+
             // Depuis le HUB : empile séquentiellement jusqu'à la cible
             yield return StartCoroutine(PushUntil(targetIndex));
+
         }
         else if (targetIsRight == currentIsRight)
         {
@@ -97,6 +109,14 @@ public class BookshopUIManager : MonoBehaviour
         _navItems[targetIndex].button.Select();
         _currentIndex = targetIndex;
         _isAnimating = false;
+    }
+
+    private void SwitchButtonActivation(int targetIndex)
+    {
+        if (_currentIndex == -1) return;
+
+        _navItems[_currentIndex].button.interactable = true;
+        _navItems[targetIndex].button.interactable = false;
     }
 
     // Empile séquentiellement tous les panels entre le sommet actuel et la cible

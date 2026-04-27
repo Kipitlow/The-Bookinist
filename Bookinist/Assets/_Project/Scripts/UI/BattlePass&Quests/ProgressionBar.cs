@@ -91,19 +91,19 @@ public class ProgressionBar : MonoBehaviour
         PlayerBP data = SaveSystem.instance.bp;
         if (data == null) return;
 
-        _confirmedTotalXp = data.confirmedXp;
-        _waitingXp = data.waitingXp;
-        isPremiumActive = data.isPremiumActive;
+        _confirmedTotalXp = data.playerBPConfirmedXp;
+        _waitingXp = data.playerBPWaitingXp;
+        isPremiumActive = data.playerBPIsPremiumActive;
         xpPass = _confirmedTotalXp / 15000f;
 
         for (int i = 0; i < freeRewards.Count; i++)
         {
-            if (i < data.freeRewardsTaken.Count) freeRewards[i].isTaken = data.freeRewardsTaken[i];
+            if (i < data.playerBPFreeRewardsTaken.Count) freeRewards[i].isTaken = data.playerBPFreeRewardsTaken[i];
         }
 
         for (int i = 0; i < premiumRewards.Count; i++)
         {
-            if (i < data.premiumRewardsTaken.Count) premiumRewards[i].isTaken = data.premiumRewardsTaken[i];
+            if (i < data.playerBPPremiumRewardsTaken.Count) premiumRewards[i].isTaken = data.playerBPPremiumRewardsTaken[i];
         }
 
         palier = 0;
@@ -161,15 +161,15 @@ public class ProgressionBar : MonoBehaviour
     public PlayerBP GetDataForSave()
     {
         PlayerBP data = new PlayerBP();
-        data.confirmedXp = _confirmedTotalXp;
-        data.waitingXp = _waitingXp;
-        data.isPremiumActive = isPremiumActive;
+        data.playerBPConfirmedXp = _confirmedTotalXp;
+        data.playerBPWaitingXp = _waitingXp;
+        data.playerBPIsPremiumActive = isPremiumActive;
 
-        data.freeRewardsTaken = new List<bool>();
-        foreach (var r in freeRewards) data.freeRewardsTaken.Add(r.isTaken);
+        data.playerBPFreeRewardsTaken = new List<bool>();
+        foreach (var r in freeRewards) data.playerBPFreeRewardsTaken.Add(r.isTaken);
 
-        data.premiumRewardsTaken = new List<bool>();
-        foreach (var r in premiumRewards) data.premiumRewardsTaken.Add(r.isTaken);
+        data.playerBPPremiumRewardsTaken = new List<bool>();
+        foreach (var r in premiumRewards) data.playerBPPremiumRewardsTaken.Add(r.isTaken);
 
         return data;
     }

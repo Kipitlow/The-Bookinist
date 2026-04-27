@@ -229,6 +229,11 @@ public class InteractionRunner : MonoBehaviour
                 if (action.inventoryController != null)
                     action.inventoryController.RemoveInventoryItem(DragContext.DraggedItem);
                 break;
+
+            case ActionType.CustomerLeave:
+                if (action.npcDialogue != null && action.npcTalker != null)
+                    action.npcTalker.CustomerLeave(action.npcDialogue, action.customer);
+                break;
         }
     }
     #endregion
