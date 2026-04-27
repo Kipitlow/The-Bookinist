@@ -996,7 +996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiElement: {fileID: 326197834}
-  _slideSpeed: 2
+  _slideSpeed: 4
   _hiddenPosition: {x: 0, y: -3000}
   _shownPosition: {x: 0, y: 600}
 --- !u!1 &550881383
@@ -1280,8 +1280,11 @@ MonoBehaviour:
   customShop:
     placedItems: []
   bp:
-    playerBPXP: 0
-    playerBPUnspent: 0
+    confirmedXp: 0
+    waitingXp: 0
+    isPremiumActive: 0
+    freeRewardsTaken: 
+    premiumRewardsTaken: 
 --- !u!114 &646579145
 MonoBehaviour:
   m_ObjectHideFlags: 0

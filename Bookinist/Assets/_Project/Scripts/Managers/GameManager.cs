@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public bool _isFirstCustomerEncounter;
+    public bool _isFirstCustomerFinishDialog = false;
     public bool bookFinish;
     public bool bookStarted;
 
@@ -13,7 +14,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("ttt");
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);

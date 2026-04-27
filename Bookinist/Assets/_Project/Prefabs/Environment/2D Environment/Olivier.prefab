@@ -167,6 +167,7 @@ MonoBehaviour:
   _hideDistance: 2
   _startOffsetDistance: 30
   _smoothTime: 0.2
+  _playStartShowAnimation: 1
   _alphaVisible: 1
   _alphaHidden: 0
   _alphaSpeed: 1
@@ -197,7 +198,7 @@ CapsuleCollider:
   m_Radius: 2.5
   m_Height: 0
   m_Direction: 1
-  m_Center: {x: 0, y: 1.68, z: 0}
+  m_Center: {x: 0, y: 1.68, z: 2.4}
 --- !u!65 &4352990694576456800
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -253,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isInteractable: 0
-  Particles: {fileID: 0}
+  _particles: {fileID: 0}
 --- !u!114 &7795833698502276724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,3 +330,4 @@ MonoBehaviour:
       pickable: {fileID: 0}
       item: {fileID: 0}
       balance: {fileID: 0}
+      inventoryController: {fileID: 0}

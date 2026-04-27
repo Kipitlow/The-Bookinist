@@ -25,6 +25,11 @@ public class PlayGifOnEditor : MonoBehaviour
         vp.Play();
     }
 
+    private void OnDestroy()
+    {
+        videoPlayer.prepareCompleted -= OnPrepared;
+    }
+
     void Update()
     {
 #if UNITY_EDITOR

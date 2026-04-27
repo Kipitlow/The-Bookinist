@@ -1,8 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public class PlayerBP
 {
-    public float playerBPXP = 0;
-    public float playerBPUnspent = 0;
+    public float confirmedXp;
+    public float waitingXp;
+    public bool isPremiumActive;
+    public List<bool> freeRewardsTaken = new List<bool>();
+    public List<bool> premiumRewardsTaken = new List<bool>();
 }

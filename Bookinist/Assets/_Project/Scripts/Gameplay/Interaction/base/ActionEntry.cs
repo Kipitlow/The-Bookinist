@@ -64,4 +64,7 @@ public class ActionEntry
     [Tooltip("InventoryController")]
     public InventoryController inventoryController;
 
+    [Tooltip("Customer qui parle au joueur")]
+    public GameObject customer;
+
 }
