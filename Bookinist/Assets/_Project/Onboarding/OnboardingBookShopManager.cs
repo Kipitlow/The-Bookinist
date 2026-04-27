@@ -35,9 +35,6 @@ public class BookShopOnboardingManager : MonoBehaviour
             if (_allMenus != null)
                 _allMenus.SetActive(false);
 
-            if (_onboardingPanelList.Count > 0)
-                _onboardingPanelList[0].SetActive(true);
-
             return;
         }
         else
@@ -108,6 +105,11 @@ public class BookShopOnboardingManager : MonoBehaviour
             _onboardingPanelList[2].SetActive(true);
     }
 
+    public void StartOnboarding()
+    {
+        if (_onboardingPanelList.Count > 0)
+            _onboardingPanelList[0].SetActive(true);
+    }
     public void CheckOnboarding(int index)
     {
         if (_isOnboardingPageActivated == null || index >= _isOnboardingPageActivated.Count)
