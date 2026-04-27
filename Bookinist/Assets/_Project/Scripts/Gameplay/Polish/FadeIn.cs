@@ -4,10 +4,10 @@ using System.Collections;
 [RequireComponent(typeof(SpriteRenderer))]
 public class SpriteFadeIn : MonoBehaviour
 {
-    [SerializeField] private float duration = 1f;
+    [SerializeField] private float _duration = 1f;
 
-    private SpriteRenderer sr;
-    private Material runtimeMat;
+    private SpriteRenderer _sr;
+    private Material _runtimeMat;
 
     // URP Lit/Unlit commonly expose Base Color as _BaseColor
     private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
@@ -16,10 +16,10 @@ public class SpriteFadeIn : MonoBehaviour
 
     void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
+        _sr = GetComponent<SpriteRenderer>();
 
         // IMPORTANT: material creates an instance so we don't edit shared asset
-        runtimeMat = sr.material;
+        _runtimeMat = _sr.material;
     }
 
     void OnEnable()
@@ -32,10 +32,10 @@ public class SpriteFadeIn : MonoBehaviour
     IEnumerator FadeIn()
     {
         float t = 0f;
-        while (t < duration)
+        while (t < _duration)
         {
             t += Time.deltaTime;
-            float a = Mathf.Clamp01(t / duration);
+            float a = Mathf.Clamp01(t / _duration);
             SetAlpha(a);
             yield return null;
         }
@@ -45,26 +45,26 @@ public class SpriteFadeIn : MonoBehaviour
 
     private void SetAlpha(float a)
     {
-        if (runtimeMat == null) return;
+        if (_runtimeMat == null) return;
 
-        if (runtimeMat.HasProperty(BaseColorId))
+        if (_runtimeMat.HasProperty(BaseColorId))
         {
-            Color c = runtimeMat.GetColor(BaseColorId);
+            Color c = _runtimeMat.GetColor(BaseColorId);
             c.a = a;
-            runtimeMat.SetColor(BaseColorId, c);
+            _runtimeMat.SetColor(BaseColorId, c);
         }
-        else if (runtimeMat.HasProperty(ColorId))
+        else if (_runtimeMat.HasProperty(ColorId))
         {
-            Color c = runtimeMat.GetColor(ColorId);
+            Color c = _runtimeMat.GetColor(ColorId);
             c.a = a;
-            runtimeMat.SetColor(ColorId, c);
+            _runtimeMat.SetColor(ColorId, c);
         }
     }
 
     void OnDestroy()
     {
         // Clean up instantiated material
-        if (runtimeMat != null)
-            Destroy(runtimeMat);
+        if (_runtimeMat != null)
+            Destroy(_runtimeMat);
     }
 }
