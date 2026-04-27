@@ -3,7 +3,6 @@ using UnityEngine;
 public class InteractionFeedBack : MonoBehaviour
 {
     [SerializeField] private bool _isInteractable;
-    [SerializeField] private GameObject _particles;
 
     private SoundManager _soundManager;
     private MoveObject _moveobject;
@@ -23,7 +22,6 @@ public class InteractionFeedBack : MonoBehaviour
     {
         if (_isInteractable)
         {
-            if (_particles != null) SpawnParticles();
         }
         else
         {
@@ -37,19 +35,5 @@ public class InteractionFeedBack : MonoBehaviour
         //_changeColor.PingPongColor(Color.gray);
     }
 
-    public void SpawnParticles()
-    {
-        Debug.Log("Particles");
-        GameObject ps = Instantiate(_particles, gameObject.transform.position, Quaternion.identity);
-        if (gameObject.GetComponent<SpriteRenderer>() == null)
-        {
-            ps.GetComponent<ParticleSystem>().GetComponent<Renderer>().sortingLayerID = gameObject.GetComponentInChildren<SpriteRenderer>().sortingLayerID;
-        }
-        else
-        {
-            ps.GetComponent<ParticleSystem>().GetComponent<Renderer>().sortingLayerID = gameObject.GetComponent<SpriteRenderer>().sortingLayerID;
-        }
-        ps.GetComponent<ParticleSystem>().Play();
-    }
 
 }
