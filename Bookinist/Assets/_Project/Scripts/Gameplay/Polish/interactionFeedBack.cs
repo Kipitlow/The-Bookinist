@@ -3,7 +3,6 @@ using UnityEngine;
 public class InteractionFeedBack : MonoBehaviour
 {
     [SerializeField] private bool _isInteractable;
-    [SerializeField] private GameObject _particles;
 
     private SoundManager _soundManager;
     private MoveObject _moveobject;
@@ -23,7 +22,6 @@ public class InteractionFeedBack : MonoBehaviour
     {
         if (_isInteractable)
         {
-            if (_particles != null) SpawnParticles();
         }
         else
         {
@@ -37,9 +35,5 @@ public class InteractionFeedBack : MonoBehaviour
         //_changeColor.PingPongColor(Color.gray);
     }
 
-    public void SpawnParticles()
-    {
-
-    }
 
 }

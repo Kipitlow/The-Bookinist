@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pageManager: {fileID: 8088425598552217270}
+  _prefabDropableObject: {fileID: 0}
   _inventoryController: {fileID: 0}
   _camera: {fileID: 0}
   _raycastDistance: 200
@@ -276,6 +277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4576342772238902111}
   - component: {fileID: 4537737331346713201}
+  - component: {fileID: 4731214518966044538}
   m_Layer: 0
   m_Name: Conditions
   m_TagString: Untagged
@@ -314,6 +316,20 @@ MonoBehaviour:
   _hitMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  _uiRaycaster: {fileID: 0}
+  _eventSystem: {fileID: 0}
+--- !u!114 &4731214518966044538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8844840457681627126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57346898879e18a43a746e0a8ea7454a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9182936303358098352
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,4 +376,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layerHolder: []
   _sortingLayerPrefix: Page_
+  _layerSpread: 
   _activePageIndex: 0
