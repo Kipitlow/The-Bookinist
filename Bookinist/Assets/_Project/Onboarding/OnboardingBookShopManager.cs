@@ -14,6 +14,9 @@ public class BookShopOnboardingManager : MonoBehaviour
     [SerializeField] private BarFill _barFill;
     [SerializeField] private NPCTalker _talker;
 
+    [SerializeField] private List<Animator> _handAnimatorList;
+    [SerializeField] private List<GameObject> _handList;
+
     private bool _isAlreadyStartFirstDialog = false;
 
     [SerializeField] private List<bool> _isOnboardingPageActivated;
@@ -72,7 +75,14 @@ public class BookShopOnboardingManager : MonoBehaviour
         else
         {
             if (_onboardingPanelList.Count > 1)
+            {
+                _onboardingPanelList[0].SetActive(false);
                 _onboardingPanelList[1].SetActive(true);
+
+                _handList[0].SetActive(false);
+                _handList[1].SetActive(true);
+                _handAnimatorList[1].SetBool("IsOnboardingTap", true);
+            }
         }
     }
 
@@ -108,7 +118,14 @@ public class BookShopOnboardingManager : MonoBehaviour
     public void StartOnboarding()
     {
         if (_onboardingPanelList.Count > 0)
+        {
             _onboardingPanelList[0].SetActive(true);
+
+            _handList[0].SetActive(true);
+            _handAnimatorList[0].SetBool("IsOnboardingTap", true);
+        }
+
+        _isAlreadyStartFirstDialog = true;
     }
     public void CheckOnboarding(int index)
     {
