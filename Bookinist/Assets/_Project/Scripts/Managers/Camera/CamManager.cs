@@ -122,4 +122,13 @@ public class CamManager : MonoBehaviour
             Gizmos.DrawWireSphere(_activeCam.transform.position, 0.5f);
         }
     }
+
+    public void ResetToView(int index)
+    {
+        if (index < 0 || index >= _allCams.Count) return;
+        if (_allCams[index] == _activeCam) return; // déjà sur cette caméra
+
+        SwitchToCam(index, false);
+        OnViewChanged?.Invoke(index, 0);
+    }
 }

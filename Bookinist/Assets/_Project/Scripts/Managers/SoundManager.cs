@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using UnityEditor.SettingsManagement;
 using UnityEngine;
 
 /// <summary>
@@ -9,14 +11,21 @@ public class SoundManager : MonoBehaviour
 {
     #region Types
 
+    public enum SoundType
+        {
+            SFX,
+            Music,
+        }
+
     [System.Serializable]
     public class SoundEffect
     {
         public string name;
         public AudioClip clip;
-        [Range(0f, 1f)] public float volume = 1f;
+        [Range(0f, 1f)] public float volume = 0.5f;
         [Range(0.1f, 3f)] public float pitch = 1f;
         public bool loop = false;
+        public SoundType soundType;
     }
 
     #endregion
@@ -27,15 +36,10 @@ public class SoundManager : MonoBehaviour
     [SerializeField][Range(1, 100)] private int _poolSize = 10;
     private List<AudioSource> _audioSources = new();
     private Dictionary<string, AudioClip> _soundDictionary = new();
-    private float _globalSfxVolume = 1f;
+    [SerializeField] private float _sfxVolume = 0.5f;
+    [SerializeField] private float _musicVolume = 0.5f;
 
     public static SoundManager Instance;
-
-    public float GlobalSfxVolume
-    {
-        get { return _globalSfxVolume; }
-        set { _globalSfxVolume = Mathf.Clamp01(value); }
-    }
 
     #endregion
 
@@ -70,6 +74,14 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        SaveSystem.instance.OnDataUpdate += UpdateVolume;
+
+        _sfxVolume = SaveSystem.instance.settings.playerSoundEffects;
+        _musicVolume = SaveSystem.instance.settings.playerSoundMusic;
+    }
+
     #endregion
 
     #region Methods
@@ -101,8 +113,16 @@ public class SoundManager : MonoBehaviour
             {
                 if (sound.name == soundName)
                 {
+                    switch (sound.soundType)
+                    {
+                        case SoundType.SFX:
+                            source.volume = sound.volume * _sfxVolume;
+                            break;
+                        case SoundType.Music:
+                            source.volume = sound.volume * _musicVolume;
+                            break;
+                    }
                     source.clip = clip;
-                    source.volume = sound.volume * _globalSfxVolume;
                     source.pitch = 1f;
                     source.loop = false;
                     source.Play();
@@ -127,8 +147,16 @@ public class SoundManager : MonoBehaviour
             {
                 if (sound.name == soundName)
                 {
+                    switch (sound.soundType)
+                    {
+                        case SoundType.SFX:
+                            source.volume = sound.volume * _sfxVolume;
+                            break;
+                        case SoundType.Music:
+                            source.volume = sound.volume * _musicVolume;
+                            break;
+                    }
                     source.clip = clip;
-                    source.volume = sound.volume * _globalSfxVolume;
                     source.pitch = pitch * pitch; 
                     source.loop = loop;
                     source.Play();
@@ -186,5 +214,41 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+
+    public void UpdateVolume()
+    {
+        _sfxVolume = SaveSystem.instance.settings.playerSoundEffects;
+        _musicVolume = SaveSystem.instance.settings.playerSoundMusic;
+        UpdateAudioSettings();
+    }
+
+    public void UpdateAudioSettings()
+    {
+        foreach (var source in _audioSources)
+        {
+            if (source.isPlaying)
+            {
+                if (source.clip != null)
+                {
+                    foreach (SoundEffect sound in _soundEffects)
+                    {
+                        if (sound.clip == source.clip)
+                        {
+                            switch (sound.soundType)
+                            {
+                                case SoundType.SFX:
+                                    source.volume = sound.volume * _sfxVolume;
+                                    break;
+                                case SoundType.Music:
+                                    source.volume = sound.volume * _musicVolume;
+                                    break;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
     #endregion
 }
