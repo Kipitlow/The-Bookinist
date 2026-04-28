@@ -673,6 +673,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1965428382130740928, guid: abde5900fef9895409a3da322287422f, type: 3}
   m_PrefabInstance: {fileID: 1587385644}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &512728048 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1142813964843007996, guid: abde5900fef9895409a3da322287422f, type: 3}
+  m_PrefabInstance: {fileID: 1587385644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &512728051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512728048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82614d68f6fa545428f23f66efb72eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lakeInteractionRunner: {fileID: 1750867313}
 --- !u!1001 &549954325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3738,7 +3756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8680378336121634240, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8680378336121634240, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[3].Move
@@ -3773,6 +3791,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8680378336121634240, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 512728051}
+    - target: {fileID: 8680378336121634240, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6982762688801521220}
@@ -3780,6 +3802,10 @@ PrefabInstance:
       propertyPath: _interactionSets.Array.data[1].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 8680378336121634240, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeColor
+      objectReference: {fileID: 0}
     - target: {fileID: 8680378336121634240, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Terminer_Tache
@@ -3844,7 +3870,8 @@ PrefabInstance:
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Construire la couronne de fleur
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6727381525533646998, guid: abde5900fef9895409a3da322287422f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8486927982958438086, guid: abde5900fef9895409a3da322287422f, type: 3}
     - {fileID: 2044660248842792689, guid: abde5900fef9895409a3da322287422f, type: 3}
@@ -3858,6 +3885,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1219484330}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1142813964843007996, guid: abde5900fef9895409a3da322287422f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 512728051}
     - targetCorrespondingSourceObject: {fileID: 7588908358289471817, guid: abde5900fef9895409a3da322287422f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1587385652}
@@ -4196,6 +4226,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1750867313 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8680378336121634240, guid: abde5900fef9895409a3da322287422f, type: 3}
+  m_PrefabInstance: {fileID: 1587385644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1761371545 stripped
