@@ -61,18 +61,25 @@ public class InventoryController : MonoBehaviour
     public void AddInventoryItem(Item ItemToAdd)
     {
         _inventoryModel.AddItem(ItemToAdd);
-        UpdateInventory();
+        if (_inventoryModel.GetInventoryContent().Count <=5)
+        {
+            UpdateInventory(false, false);
+        }
+        else
+        {
+            UpdateInventory(true, false);
+        }
     }
     public void RemoveInventoryItem(Item ItemToAdd)
     {
         _inventoryModel.RemoveItem(ItemToAdd);
-        UpdateInventory();
+        UpdateInventory(true, true);
         activeItem = _emptySlot;
     }
 
-    public void UpdateInventory()
+    public void UpdateInventory(bool isInventoryFull, bool isRemovingItem)
     {
-        _inventoryView.UpdateInventory(_inventoryModel.GetInventoryContent());
+        _inventoryView.UpdateInventory(_inventoryModel.GetInventoryContent(), isInventoryFull, isRemovingItem);
     }
 
     private void HandleItemClicked(Item item)
