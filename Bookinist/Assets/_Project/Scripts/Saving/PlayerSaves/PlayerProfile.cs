@@ -18,4 +18,18 @@ public class PlayerProfile
     {
         return level * 200;
     }
+
+    public void ModifyXP(int xpChange)
+    {
+        if (xpChange < 0) 
+            return;
+
+        playerXP += xpChange;
+        if (playerXP >= LevelToMaxExp(playerLevel))
+        {
+            playerXP = 0;
+            playerLevel++;
+        }
+
+    }
 }
