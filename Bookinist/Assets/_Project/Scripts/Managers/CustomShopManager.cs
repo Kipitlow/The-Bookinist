@@ -131,7 +131,7 @@ public class CustomShopManager : MonoBehaviour
         //GameObject button = Instantiate(_buttonPrefab, _horizontalPanels[remapped].transform);
         GameObject button = Instantiate(_buttonPrefab, _horizontalPanels[viewIndex].transform);
 
-        Image buttonImage = button.GetComponent<Image>();
+        Image buttonImage = button.GetComponentInChildren<Image>();
         if (buttonImage != null && data.icon != null)
             buttonImage.sprite = data.icon;
 
