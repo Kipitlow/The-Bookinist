@@ -58,6 +58,7 @@ public class CameraMovement : MonoBehaviour
 
     private bool isPressing;
     private bool isDragging;
+    private bool _canCamMove;
     private float pressStartTime;
     private Vector2 pressStartPosition;
 
@@ -116,6 +117,8 @@ public class CameraMovement : MonoBehaviour
         currentIndexByLayer =2;
         currentIndexLayer = 0;
         transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
+
+        _canCamMove = true;
     }
 
     void Update()
@@ -125,9 +128,16 @@ public class CameraMovement : MonoBehaviour
 
         // Bloquer / débloquer les InputActions référencées pour "bloquer toutes les actions"
         ManageActionsEnabledState(!_isPointerBlocked);
+        if (_canCamMove)
+        {
+            HandleTapAndDrag();
+            HandleZoom();
+        }
+    }
 
-        HandleTapAndDrag();
-        HandleZoom();
+    public void CanCamMove(bool canCamMove)
+    {
+        _canCamMove = canCamMove;
     }
 
     private void CheckEdge()

@@ -40,7 +40,7 @@ public class ConditionEntryDrawer : PropertyDrawer
                 break;
 
             case ConditionType.HasDialogueStarted:
-                lines += 1;
+                lines += 2;
                 break;
 
             case ConditionType.HasDialogueEnded:
@@ -135,6 +135,7 @@ public class ConditionEntryDrawer : PropertyDrawer
             case ConditionType.HasDialogueStarted:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("npcTalker"));
                 r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("hasStarted"));
                 break;
 
             case ConditionType.HasDialogueEnded:

@@ -98,7 +98,7 @@ public class InteractionRunner : MonoBehaviour
             case ConditionType.HasDialogueStarted:
                 if (condition.npcTalker == null)
                     return false;
-                return condition.npcTalker._lineIndex >= 1;
+                return (condition.npcTalker._lineIndex >= 1) == condition.hasStarted;
 
             case ConditionType.HasDialogueEnded:
                 if (condition.npcTalker == null)
