@@ -54,24 +54,17 @@ public class SaveService : MonoBehaviour
         SaveSystem.instance.Save();
     }
 
-    public void ChangeMaster(float newVal)
-    {
-        settings.ChangeGeneralVal(newVal);
-
-        SaveSystem.instance.Save();
-    }
-
     public void ChangeMusic(float newVal)
     {
         settings.ChangeMusicVal(newVal);
-
+        SoundManager.Instance.UpdateVolume();
         SaveSystem.instance.Save();
     }
 
     public void ChangeEffects(float newVal)
     {
         settings.ChangeEffectVal(newVal);
-
+        SoundManager.Instance.UpdateVolume();
         SaveSystem.instance.Save();
     }
 }
