@@ -10,6 +10,11 @@ public class QuestManager : MonoBehaviour
 
     private HashSet<Button> _readyToClaimQuests = new HashSet<Button>();
 
+    private void Start()
+    {
+        RefreshNotification();
+    }
+
     public void SuccessQuest(Button quest)
     {
         quest.interactable = true;

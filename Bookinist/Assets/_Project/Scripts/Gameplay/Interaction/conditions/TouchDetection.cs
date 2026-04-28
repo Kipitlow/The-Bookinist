@@ -78,8 +78,7 @@ public class TouchDetection : MonoBehaviour
         {
             InteractionRunner interactionRunner = hit.collider.GetComponent<InteractionRunner>();
 
-
-            if (SceneManager.GetActiveScene().name == "BookShopUpdated")
+            if (SceneManager.GetActiveScene().name == "BookShopUpdated" || SceneManager.GetActiveScene().name == "LibraryTest")
             {
                 BookshopRaycast(hit, interactionRunner);
             }

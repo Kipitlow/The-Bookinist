@@ -24,7 +24,7 @@ public class GambleManager : MonoBehaviour
 
         foreach (var item in _itemsUnlockable.items)
         {
-            if (!SaveSystem.instance.inventory.ownedItemIDs.Contains(item.id.ToString()))
+            if (!SaveSystem.instance.inventory.playerInventoryOwnedItemIDs.Contains(item.id.ToString()))
             {
                 _filteredUnlockables.Add(item);
             }
@@ -41,7 +41,7 @@ public class GambleManager : MonoBehaviour
             return;
 
         CustomShopManager.Instance.AddObject(pulledItem);
-        SaveSystem.instance.inventory.ownedItemIDs.Add(pulledItem.id.ToString());
+        SaveSystem.instance.inventory.playerInventoryOwnedItemIDs.Add(pulledItem.id.ToString());
         SaveSystem.instance.Save();
     }
 

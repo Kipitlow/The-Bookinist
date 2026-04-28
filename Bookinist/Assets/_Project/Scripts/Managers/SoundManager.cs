@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.SettingsManagement;
 using UnityEngine;
 
 /// <summary>
@@ -27,9 +28,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField][Range(1, 100)] private int _poolSize = 10;
     private List<AudioSource> _audioSources = new();
     private Dictionary<string, AudioClip> _soundDictionary = new();
-    private float _globalSfxVolume = 1f;
+    [SerializeField] private float _globalSfxVolume = 1f;
 
-    public static SoundManager Instance { get; private set; }
+    public static SoundManager Instance;
 
     public float GlobalSfxVolume
     {
@@ -45,6 +46,7 @@ public class SoundManager : MonoBehaviour
     {
         if (Instance == null)
         {
+            Debug.Log("DDOL");
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -69,6 +71,13 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        SaveSystem.instance.OnDataUpdate += UpdateVolume;
+
+        _globalSfxVolume = SaveSystem.instance.settings.playerSoundGeneral;
+    }
+
     #endregion
 
     #region Methods
@@ -83,6 +92,32 @@ public class SoundManager : MonoBehaviour
             }
         }
         return _audioSources.Count > 0 ? _audioSources[0] : null;
+    }
+
+    public void PlaySound(string soundName)
+    {
+        if (!_soundDictionary.TryGetValue(soundName, out AudioClip clip))
+        {
+            Debug.LogWarning($"Sound '{soundName}' not found!");
+            return;
+        }
+
+        AudioSource source = GetAvailableAudioSource();
+        if (source != null)
+        {
+            foreach (SoundEffect sound in _soundEffects)
+            {
+                if (sound.name == soundName)
+                {
+                    source.clip = clip;
+                    source.volume = sound.volume * _globalSfxVolume;
+                    source.pitch = 1f;
+                    source.loop = false;
+                    source.Play();
+                    return;
+                }
+            }
+        }
     }
 
     public void PlaySound(string soundName, float pitch = 1f, bool loop = false)
@@ -102,7 +137,7 @@ public class SoundManager : MonoBehaviour
                 {
                     source.clip = clip;
                     source.volume = sound.volume * _globalSfxVolume;
-                    source.pitch = pitch;
+                    source.pitch = pitch * pitch; 
                     source.loop = loop;
                     source.Play();
                     return;
@@ -157,6 +192,12 @@ public class SoundManager : MonoBehaviour
             _audioSources.RemoveAt(_audioSources.Count - 1);
             Destroy(source);
         }
+    }
+
+
+    public void UpdateVolume()
+    {
+        _globalSfxVolume = SaveSystem.instance.settings.playerSoundGeneral;
     }
 
     #endregion

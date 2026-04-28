@@ -3,5 +3,6 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerProgression
 {
-    public bool progressionTutoComplete = false;
+    public bool playerProgressionTutoComplete = false;
+    public bool playerProgressionBookComplete = false;
 }

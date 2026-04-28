@@ -4,9 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerBP
 {
-    public float confirmedXp;
-    public float waitingXp;
-    public bool isPremiumActive;
-    public List<bool> freeRewardsTaken = new List<bool>();
-    public List<bool> premiumRewardsTaken = new List<bool>();
+    public float playerBPConfirmedXp;
+    public float playerBPWaitingXp;
+    public bool playerBPIsPremiumActive;
+    public List<bool> playerBPFreeRewardsTaken = new List<bool>();
+    public List<bool> playerBPPremiumRewardsTaken = new List<bool>();
 }
