@@ -4,16 +4,16 @@ using UnityEngine;
 public class ScriptChangeEau : MonoBehaviour
 {
     #region Variable
+
+    [SerializeField] InteractionRunner _lakeInteractionRunner;
     private float _lerpColorFloat=0;
     private Material _material;
-    private InteractionRunner _interactionRunner;
     private bool _hasChangedColor = false;
     #endregion
     #region Methode Variable
     void Start()
     {
         _material = GetComponentInChildren<SpriteRenderer>().material;
-        _interactionRunner = GetComponentInChildren<InteractionRunner>();
 
         Invoke("_DisableInteractionRunner", 0.1f);
         _material.SetColor("BaseColor", Color.green);
@@ -24,14 +24,17 @@ public class ScriptChangeEau : MonoBehaviour
     {
         if (!_hasChangedColor)
         {
-            _interactionRunner.CallTry();
+            _lakeInteractionRunner.CallTry();
         }
     }
 
     public void ChangeColor()
     {
-        StartCoroutine(IEChangeColor());
-        _hasChangedColor = true;
+        if (!_hasChangedColor)
+        {
+            StartCoroutine(IEChangeColor());
+            _hasChangedColor = true;
+        }
     }
     public void printStatut()
     {
