@@ -3,14 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerSettings
 {
-    public float playerSoundGeneral = 0.5f;
     public float playerSoundMusic = 0.5f;
-    public float playerSoundSound = 0.5f;
-
-    public void ChangeGeneralVal(float newVal)
-    {
-        playerSoundGeneral = Mathf.Clamp(newVal, 0f, 1f);
-    }
+    public float playerSoundEffects = 0.5f;
 
     public void ChangeMusicVal(float newVal)
     {
@@ -19,6 +13,6 @@ public class PlayerSettings
 
     public void ChangeEffectVal(float newVal)
     {
-        playerSoundSound = Mathf.Clamp(newVal, 0f, 1f);
+        playerSoundEffects = Mathf.Clamp(newVal, 0f, 1f);
     }
 }
