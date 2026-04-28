@@ -545,8 +545,6 @@ GameObject:
   - component: {fileID: 8753606015872192715}
   - component: {fileID: 8712970810185520729}
   - component: {fileID: 8663571128843934295}
-  - component: {fileID: 4794578059972209295}
-  - component: {fileID: 9033338440498332491}
   m_Layer: 0
   m_Name: Eurydice
   m_TagString: Untagged
@@ -562,13 +560,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2298967620621889583}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.59, y: -5.02, z: 0}
   m_LocalScale: {x: 0.38000003, y: 0.38000003, z: 0.38000003}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5251163935934989034}
   - {fileID: 4649415205464241444}
+  - {fileID: 8449985694504444978}
+  - {fileID: 3333948900636081699}
+  - {fileID: 2759743166317334556}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1703942962752601517
@@ -660,6 +661,87 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionSets:
+  - interactionName: euridys base dialogue
+    conditions:
+    - type: 3
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: f59613ac304424a4fb4fa3ed9708d763, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+      hasStarted: 0
+      weight: 0
+    - type: 7
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: f59613ac304424a4fb4fa3ed9708d763, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 2865901195146227426}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+      hasStarted: 0
+      weight: 0
+    actions:
+    - type: 3
+      target: {fileID: 0}
+      activeState: 1
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 11400000, guid: 24f21ad80479be748a312135fbf8ae49, type: 2}
+      npcTalker: {fileID: 2053745486259885856}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: CameraMovement, Assembly-CSharp
+            m_MethodName: CanCamMove
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: Enigme2
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+      inventoryController: {fileID: 0}
+      customer: {fileID: 0}
   - interactionName: "orph\xE9e charme euridice"
     conditions:
     - type: 5
@@ -682,9 +764,44 @@ MonoBehaviour:
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
       isBookFinish: 0
+      hasStarted: 0
       weight: 0
     actions:
-    - type: 4
+    - type: 6
+      target: {fileID: 0}
+      activeState: 1
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 11400000, guid: 9ce2eea080e81ec47a91f1416a2118c8, type: 2}
+      npcTalker: {fileID: 2865901195146227426}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: CameraMovement, Assembly-CSharp
+            m_MethodName: CanCamMove
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: Enigme2
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+      inventoryController: {fileID: 0}
+      customer: {fileID: 0}
+    - type: 1
       target: {fileID: 0}
       activeState: 1
       slot: {fileID: 0}
@@ -752,6 +869,40 @@ MonoBehaviour:
       balance: {fileID: 0}
       inventoryController: {fileID: 0}
       customer: {fileID: 0}
+    - type: 3
+      target: {fileID: 0}
+      activeState: 1
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 11400000, guid: 9ce2eea080e81ec47a91f1416a2118c8, type: 2}
+      npcTalker: {fileID: 2865901195146227426}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: TransitionCaller, Assembly-CSharp
+            m_MethodName: CallNuages
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: Enigme2
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+      inventoryController: {fileID: 0}
+      customer: {fileID: 0}
     - type: 6
       target: {fileID: 0}
       activeState: 1
@@ -786,6 +937,53 @@ MonoBehaviour:
       balance: {fileID: 0}
       inventoryController: {fileID: 0}
       customer: {fileID: 0}
+  - interactionName: eurydice suite bonjour
+    conditions:
+    - type: 3
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: f59613ac304424a4fb4fa3ed9708d763, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+      hasStarted: 0
+      weight: 0
+    - type: 7
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: f59613ac304424a4fb4fa3ed9708d763, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 2865901195146227426}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+      hasStarted: 1
+      weight: 0
+    actions:
     - type: 3
       target: {fileID: 0}
       activeState: 1
@@ -793,7 +991,7 @@ MonoBehaviour:
       itemPrefab: {fileID: 0}
       openDoor: {fileID: 0}
       npcDialogue: {fileID: 11400000, guid: 9ce2eea080e81ec47a91f1416a2118c8, type: 2}
-      npcTalker: {fileID: 4794578059972209295}
+      npcTalker: {fileID: 2865901195146227426}
       onExecute:
         m_PersistentCalls:
           m_Calls:
@@ -820,7 +1018,7 @@ MonoBehaviour:
       balance: {fileID: 0}
       inventoryController: {fileID: 0}
       customer: {fileID: 0}
-  - interactionName: "orph\xE9e 2eme partie dialogue"
+  - interactionName: Activate bubble
     conditions:
     - type: 3
       target: {fileID: 0}
@@ -842,6 +1040,29 @@ MonoBehaviour:
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
       isBookFinish: 0
+      hasStarted: 0
+      weight: 0
+    - type: 8
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: f59613ac304424a4fb4fa3ed9708d763, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 2865901195146227426}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+      hasStarted: 0
       weight: 0
     - type: 7
       target: {fileID: 0}
@@ -853,7 +1074,7 @@ MonoBehaviour:
       shouldBeEmpty: 0
       item: {fileID: 11400000, guid: f59613ac304424a4fb4fa3ed9708d763, type: 2}
       selectedItemIsWanted: {fileID: 0}
-      npcTalker: {fileID: 4794578059972209295}
+      npcTalker: {fileID: 7616836423665938518}
       cycleThroughSprite: {fileID: 0}
       WantedFrame: 0
       trueIfMore: 0
@@ -863,6 +1084,122 @@ MonoBehaviour:
       HasToCheckEmptynessInventory: 0
       balance: {fileID: 0}
       isBookFinish: 0
+      hasStarted: 0
+      weight: 0
+    actions:
+    - type: 1
+      target: {fileID: 7332365153549772905}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 11400000, guid: b7049538c9554f74c9a9025dce843406, type: 2}
+      npcTalker: {fileID: 7616836423665938518}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 8663571128843934295}
+            m_TargetAssemblyTypeName: TransitionCaller, Assembly-CSharp
+            m_MethodName: CallNuages
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: Enigme2
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+      inventoryController: {fileID: 0}
+      customer: {fileID: 0}
+    - type: 1
+      target: {fileID: 0}
+      activeState: 1
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 11400000, guid: b7049538c9554f74c9a9025dce843406, type: 2}
+      npcTalker: {fileID: 7616836423665938518}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 8663571128843934295}
+            m_TargetAssemblyTypeName: TransitionCaller, Assembly-CSharp
+            m_MethodName: CallNuages
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: Enigme2
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+      inventoryController: {fileID: 0}
+      customer: {fileID: 0}
+  - interactionName: euridys repond
+    conditions:
+    - type: 3
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: f59613ac304424a4fb4fa3ed9708d763, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+      hasStarted: 0
+      weight: 0
+    - type: 8
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: f59613ac304424a4fb4fa3ed9708d763, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+      hasStarted: 0
       weight: 0
     actions:
     - type: 3
@@ -871,8 +1208,8 @@ MonoBehaviour:
       slot: {fileID: 0}
       itemPrefab: {fileID: 0}
       openDoor: {fileID: 0}
-      npcDialogue: {fileID: 11400000, guid: 9ce2eea080e81ec47a91f1416a2118c8, type: 2}
-      npcTalker: {fileID: 4794578059972209295}
+      npcDialogue: {fileID: 11400000, guid: b7049538c9554f74c9a9025dce843406, type: 2}
+      npcTalker: {fileID: 7616836423665938518}
       onExecute:
         m_PersistentCalls:
           m_Calls:
@@ -880,6 +1217,87 @@ MonoBehaviour:
             m_TargetAssemblyTypeName: CameraMovement, Assembly-CSharp
             m_MethodName: CanCamMove
             m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: Enigme2
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+      inventoryController: {fileID: 0}
+      customer: {fileID: 0}
+  - interactionName: switch scene
+    conditions:
+    - type: 3
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: f59613ac304424a4fb4fa3ed9708d763, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+      hasStarted: 0
+      weight: 0
+    - type: 8
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: f59613ac304424a4fb4fa3ed9708d763, type: 2}
+      selectedItemIsWanted: {fileID: 0}
+      npcTalker: {fileID: 7616836423665938518}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+      hasStarted: 0
+      weight: 0
+    actions:
+    - type: 6
+      target: {fileID: 0}
+      activeState: 1
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 11400000, guid: b7049538c9554f74c9a9025dce843406, type: 2}
+      npcTalker: {fileID: 7616836423665938518}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 8663571128843934295}
+            m_TargetAssemblyTypeName: TransitionCaller, Assembly-CSharp
+            m_MethodName: CallNuages
+            m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -923,7 +1341,11 @@ MonoBehaviour:
   _alphaSpeed: 1
   _autoGetChildrenSprites: 1
   _autoGetChildrenColliders: 1
-  _objToDesable: []
+  _objToDesable:
+  - {fileID: 7529164480962574345}
+  - {fileID: 7295051234533958852}
+  - {fileID: 8004009442856625192}
+  - {fileID: 150984293049567905}
   _childs: []
   _state: 1
 --- !u!114 &8712970810185520729
@@ -955,13 +1377,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneToLoad: Enigme2
   _sceneToUnload: Enigme1
---- !u!114 &4794578059972209295
+--- !u!1 &2379135325602258103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8449985694504444978}
+  - component: {fileID: 2053745486259885856}
+  m_Layer: 0
+  m_Name: BaseDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8449985694504444978
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2379135325602258103}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1495702400646245668}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2053745486259885856
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2298967620621889583}
+  m_GameObject: {fileID: 2379135325602258103}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b60005bac8cfd5418d98f88de330f1f, type: 3}
@@ -977,13 +1431,45 @@ MonoBehaviour:
   _padding: {x: 0.5, y: 0.3}
   _bubbleSize: {x: 1, y: 1, z: 1}
   _spritePoses: []
---- !u!114 &9033338440498332491
+--- !u!1 &2382110956213740844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3333948900636081699}
+  - component: {fileID: 2865901195146227426}
+  m_Layer: 0
+  m_Name: "FirstTalkToOrph\xE9e"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3333948900636081699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2382110956213740844}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1495702400646245668}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2865901195146227426
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2298967620621889583}
+  m_GameObject: {fileID: 2382110956213740844}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b60005bac8cfd5418d98f88de330f1f, type: 3}
@@ -1352,6 +1838,60 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6937303811590237570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2759743166317334556}
+  - component: {fileID: 7616836423665938518}
+  m_Layer: 0
+  m_Name: "repondOrph\xE9e"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2759743166317334556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937303811590237570}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1495702400646245668}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7616836423665938518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937303811590237570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b60005bac8cfd5418d98f88de330f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bubbleRenderer: {fileID: 2925105549158117934}
+  _bubbleText: {fileID: 804246045036973637}
+  _bubbleParent: {fileID: 5251163935934989034}
+  _nameBubbleRenderer: {fileID: 6179613114178355911}
+  _nameBubbleText: {fileID: 4773417130551354495}
+  _alreadyRead: {fileID: 6907337686895866347}
+  _notRead: {fileID: 2349082953798679368}
+  _padding: {x: 0.5, y: 0.3}
+  _bubbleSize: {x: 1, y: 1, z: 1}
+  _spritePoses: []
 --- !u!1 &6987550246139970919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,7 +2093,7 @@ Transform:
   m_GameObject: {fileID: 6996150537782787713}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 56.866096, y: 4.192682, z: -0.21003887}
+  m_LocalPosition: {x: 4.84, y: -1.8, z: 0}
   m_LocalScale: {x: 2.3131576, y: 2.343605, z: 2.1003945}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1763,7 +2303,7 @@ Transform:
   m_GameObject: {fileID: 7332365153549772905}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 53.134205, y: 8.473683, z: 0}
+  m_LocalPosition: {x: 0, y: 2.41, z: 0}
   m_LocalScale: {x: 1.1565788, y: 1.1718156, z: 1.0501841}
   m_ConstrainProportionsScale: 1
   m_Children:
