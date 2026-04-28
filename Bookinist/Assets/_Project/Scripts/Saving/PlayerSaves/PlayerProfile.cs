@@ -8,6 +8,8 @@ public class PlayerProfile
     public int playerXP = 0;
     public int playerBooksUnlocked = 0;
     public ScriptableObject playerDisplayedBook;
+    //public enum playerPhoto;
+    //public enum playerTitle;
 
     public void ChangePlayerName(string newName)
     {
