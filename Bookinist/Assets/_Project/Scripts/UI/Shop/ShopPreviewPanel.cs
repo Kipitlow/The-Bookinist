@@ -14,6 +14,7 @@ public class ShopPreviewPanel : MonoBehaviour
     [SerializeField] private Button _confirmBuyButton;
     [SerializeField] private TextMeshProUGUI _confirmBuyText;
     [SerializeField] private GameObject _emptyStateHint;
+    [SerializeField] private GameObject _moneySprite;
 
     [Header("3D Preview")]
     [SerializeField] private Camera _previewCamera;
@@ -56,7 +57,11 @@ public class ShopPreviewPanel : MonoBehaviour
         _itemNameText.text = data.itemName;
         _itemPriceText.text = $"{data.price} €";
 
-        if (_emptyStateHint != null) _emptyStateHint.SetActive(false);
+        if (_emptyStateHint != null)
+        {
+            _emptyStateHint.SetActive(false);
+            _moneySprite.SetActive(true);
+        }
 
         bool alreadyOwned = CustomShopManager.Instance != null && CustomShopManager.Instance.HasItem(data);
         RefreshBuyButton(alreadyOwned);
