@@ -457,6 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 257414583}
   - component: {fileID: 257414584}
+  - component: {fileID: 257414585}
   m_Layer: 0
   m_Name: CamManager
   m_TagString: Untagged
@@ -503,6 +504,19 @@ MonoBehaviour:
   - {fileID: 1740320989}
   _mainCam: {fileID: 254298882}
   _activeCam: {fileID: 254298882}
+--- !u!114 &257414585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257414582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 326fd612628b6ea4388b84c496765f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineBrain: {fileID: 935569763}
 --- !u!114 &342407415 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1027123519739291387, guid: abde5900fef9895409a3da322287422f, type: 3}
@@ -947,7 +961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4153277463300080394, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4153277463300080394, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -956,7 +970,7 @@ PrefabInstance:
     - target: {fileID: 4153277463300080394, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 7db92e633979bbf48bf86c410442437c, type: 2}
+      objectReference: {fileID: 1927270462}
     - target: {fileID: 4153277463300080394, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -967,7 +981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4153277463300080394, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadSceneAfterFirstBook
+      value: CallNuages
       objectReference: {fileID: 0}
     - target: {fileID: 4153277463300080394, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -975,7 +989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4153277463300080394, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SO_SceneManager, Assembly-CSharp
+      value: TransitionCaller, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4153277463300080394, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -1005,6 +1019,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4870577328146110398, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
     - target: {fileID: 4870577328146110398, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _invController
       value: 
@@ -1163,7 +1181,7 @@ PrefabInstance:
       objectReference: {fileID: 6982762688801521220}
     - target: {fileID: 7737865133552073110, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: "R\xE9cup\xE9rer le calisse"
+      value: "R\xE9cup\xE9rer le calice"
       objectReference: {fileID: 0}
     - target: {fileID: 8344842002886523218, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: m_text
@@ -1182,6 +1200,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 5547b4fa0d93d1a40861952eb6ca17a2, type: 2}
     - target: {fileID: 9113229780959623252, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
+    - target: {fileID: 9113229780959623252, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
@@ -1196,6 +1218,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 343726916}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 317858236752316192, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1927270462}
     - targetCorrespondingSourceObject: {fileID: 8437118224555223540, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -1493,6 +1518,8 @@ MonoBehaviour:
   currentIndexLayer: 0
   currentIndexByLayer: 0
   _camManager: {fileID: 257414584}
+  _cinemachineBrain: {fileID: 0}
+  _CameraBlendRuntime: {fileID: 257414585}
 --- !u!114 &935569759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2075,7 +2102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8965020575644918690, guid: 2ba3d7b5362355a499bc0c94c2a3790e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.44
+      value: -10.14
       objectReference: {fileID: 0}
     - target: {fileID: 8965020575644918690, guid: 2ba3d7b5362355a499bc0c94c2a3790e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2397,7 +2424,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4153277463300080394, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
   m_PrefabInstance: {fileID: 549954325}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1927270461}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
@@ -2887,6 +2914,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 114452390}
     m_Modifications:
     - target: {fileID: 150944911945410665, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
+    - target: {fileID: 150944911945410665, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
@@ -2925,7 +2956,7 @@ PrefabInstance:
     - target: {fileID: 987474785978968419, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: 'pageObjects.Array.data[6]'
       value: 
-      objectReference: {fileID: 1915755018}
+      objectReference: {fileID: 0}
     - target: {fileID: 987474785978968419, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: 'pageObjects.Array.data[7]'
       value: 
@@ -3083,6 +3114,10 @@ PrefabInstance:
       value: -6.77
       objectReference: {fileID: 0}
     - target: {fileID: 1569414847454527174, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
+    - target: {fileID: 1569414847454527174, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
@@ -3094,6 +3129,10 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2188342657413605326, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
     - target: {fileID: 2188342657413605326, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
@@ -3283,13 +3322,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6982762688801521220}
     - target: {fileID: 4431273307770345694, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
+    - target: {fileID: 4431273307770345694, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
     - target: {fileID: 4538745862027767526, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
+    - target: {fileID: 4538745862027767526, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 4578718461303514432, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
     - target: {fileID: 4578718461303514432, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
@@ -3298,6 +3349,10 @@ PrefabInstance:
       propertyPath: _inventoryController
       value: 
       objectReference: {fileID: 1190348954}
+    - target: {fileID: 4809386697821215842, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
     - target: {fileID: 4809386697821215842, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
@@ -3315,6 +3370,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5673547119974503688, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
+    - target: {fileID: 5673547119974503688, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
@@ -3322,6 +3381,10 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5879568959394690930, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
     - target: {fileID: 5879568959394690930, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
@@ -3470,6 +3533,10 @@ PrefabInstance:
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[1].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: "R\xE9cup\xE9rer des fleurs"
       objectReference: {fileID: 0}
+    - target: {fileID: 6339601780718117443, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
     - target: {fileID: 6339601780718117443, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
@@ -3951,6 +4018,10 @@ PrefabInstance:
       value: "R\xE9cup\xE9rer des fleurs"
       objectReference: {fileID: 0}
     - target: {fileID: 8255195706598246378, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 2289645549271188361, guid: 609df0d25344b92478349c99ea889bcf, type: 3}
+    - target: {fileID: 8255195706598246378, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _invController
       value: 
       objectReference: {fileID: 1190348954}
@@ -4427,11 +4498,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563134a4431f3e94bb61479f7af96b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1915755018 stripped
+--- !u!1 &1927270461 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8105794944866442438, guid: abde5900fef9895409a3da322287422f, type: 3}
-  m_PrefabInstance: {fileID: 1587385644}
+  m_CorrespondingSourceObject: {fileID: 317858236752316192, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+  m_PrefabInstance: {fileID: 549954325}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1927270462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927270461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57346898879e18a43a746e0a8ea7454a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneToLoad: BookShopUpdated
+  _sceneToUnload: Enigme2
 --- !u!4 &1947135227 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8799200867647015449, guid: abde5900fef9895409a3da322287422f, type: 3}
@@ -6586,8 +6671,8 @@ MonoBehaviour:
   - Nom_Mission: "R\xE9cup\xE9rer la jarre"
     Tache: "R\xE9cup\xE9rer la jarre"
     TacheTerminer: 0
-  - Nom_Mission: "R\xE9cup\xE9rer le calisse"
-    Tache: "R\xE9cup\xE9rer le calisse"
+  - Nom_Mission: "R\xE9cup\xE9rer le calice"
+    Tache: "R\xE9cup\xE9rer le calice"
     TacheTerminer: 0
   - Nom_Mission: Ecarter les nuages recouvrant la lune
     Tache: Ecarter les nuages recouvrant la lune
