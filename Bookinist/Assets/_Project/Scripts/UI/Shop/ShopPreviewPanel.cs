@@ -55,7 +55,7 @@ public class ShopPreviewPanel : MonoBehaviour
         _currentItemUI = sourceUI;
 
         _itemNameText.text = data.itemName;
-        _itemPriceText.text = $"{data.price} €";
+        _itemPriceText.text = $"{data.price}";
 
         if (_emptyStateHint != null)
         {
