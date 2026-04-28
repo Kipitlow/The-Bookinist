@@ -45,7 +45,7 @@ public class CameraMovement : MonoBehaviour
 
     [Header("Global Navigation")]
     public List<SnapPointManager> snapPointsManager = new();
-    [SerializeField] private int SnapPointNumberOnOneLayer = 3;
+    [SerializeField] private int SnapPointNumberOnOneLayer = 5;
     public int currentIndexLayer = 0;
     public int currentIndexByLayer = 2;
 
@@ -433,7 +433,7 @@ public class CameraMovement : MonoBehaviour
         }
         else if (delta > 0)
         {
-            if (currentIndexLayer != SnapPointNumberOnOneLayer)
+            if (currentIndexLayer != snapPointsManager.Count)
             {
                 currentIndexLayer++;
                 for (int i = 0; i < SnapPointNumberOnOneLayer; i++)
