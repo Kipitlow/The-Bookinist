@@ -655,6 +655,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &845703125 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8744596062219498877, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+  m_PrefabInstance: {fileID: 3543458223470951669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &878806459 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2372982070939433472, guid: 41b4e3a11aa78f541ba9be877e3a25e7, type: 3}
@@ -2106,6 +2111,416 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7882210797306144341, guid: e3b17a6aca6034646be1bc578323b8d8, type: 3}
   m_PrefabInstance: {fileID: 1493263037}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1847201203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847201204}
+  - component: {fileID: 1847201209}
+  - component: {fileID: 1847201208}
+  - component: {fileID: 1847201207}
+  - component: {fileID: 1847201206}
+  - component: {fileID: 1847201205}
+  m_Layer: 0
+  m_Name: Eau
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1847201204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847201203}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 0.33831874, y: 0.38, z: 0.38}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 845703125}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1847201205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847201203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50b8a09b7ea68a48836818f92ad9783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionSets:
+  - interactionName: remplir gros pot
+    conditions:
+    - type: 5
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 6eebcdfd04c3e9f4fa5f14420453f3fb, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+      hasStarted: 0
+      weight: 0
+    actions:
+    - type: 17
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+      inventoryController: {fileID: 9145709697792363077}
+      customer: {fileID: 0}
+    - type: 6
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 9145709697792363077}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: AddInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 2afa8c4a4dad59740bbcf98aeaa4f92f, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+      inventoryController: {fileID: 0}
+      customer: {fileID: 0}
+  - interactionName: remplir petit pot
+    conditions:
+    - type: 5
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 7308a310cafd67744a377b3936025613, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+      hasStarted: 0
+      weight: 0
+    actions:
+    - type: 17
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+      inventoryController: {fileID: 9145709697792363077}
+      customer: {fileID: 0}
+    - type: 6
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 9145709697792363077}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: AddInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: c5f2db4e94928e04186330eb2a112fdd, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+      inventoryController: {fileID: 0}
+      customer: {fileID: 0}
+  - interactionName: remplir vase
+    conditions:
+    - type: 5
+      target: {fileID: 0}
+      requiredTag: 
+      zone: {fileID: 0}
+      checkedPage: {fileID: 0}
+      layerDetector: {fileID: 0}
+      slot: {fileID: 0}
+      shouldBeEmpty: 0
+      item: {fileID: 11400000, guid: 1f263dd5a994d6f48b3a1edc4fe07c1d, type: 2}
+      selectedItemIsWanted: {fileID: 247390102}
+      npcTalker: {fileID: 0}
+      cycleThroughSprite: {fileID: 0}
+      WantedFrame: 0
+      trueIfMore: 0
+      Move: {fileID: 0}
+      HasMoved: 0
+      HowManyTimes: 0
+      HasToCheckEmptynessInventory: 0
+      balance: {fileID: 0}
+      isBookFinish: 0
+      hasStarted: 0
+      weight: 0
+    actions:
+    - type: 17
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+      inventoryController: {fileID: 9145709697792363077}
+      customer: {fileID: 0}
+    - type: 6
+      target: {fileID: 0}
+      activeState: 0
+      slot: {fileID: 0}
+      itemPrefab: {fileID: 0}
+      openDoor: {fileID: 0}
+      npcDialogue: {fileID: 0}
+      npcTalker: {fileID: 0}
+      onExecute:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 9145709697792363077}
+            m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+            m_MethodName: AddInventoryItem
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: 9a2350d2b51c418469ce4f2d6245cbb9, type: 2}
+              m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      cycleThroughSprite: {fileID: 0}
+      cycle: 0
+      sprites: []
+      Move: {fileID: 0}
+      OffsetX: 0
+      OffsetY: 0
+      pickable: {fileID: 0}
+      item: {fileID: 0}
+      balance: {fileID: 0}
+      inventoryController: {fileID: 0}
+      customer: {fileID: 0}
+--- !u!65 &1847201206
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847201203}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.11, y: 6.35, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1847201207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847201203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348c232955a30c4ba9044fc59e087a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSmoothTime: 0.2
+  _arrivalThreshold: 0.01
+  isDroppedItem: 0
+--- !u!114 &1847201208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847201203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f825eaa42b3c94e838ed67e647ab21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myLayer: 0
+  _lateral: 1
+  _hideDirection: {x: 1, y: 0}
+  _hideDistance: 2
+  _startOffsetDistance: 30
+  _smoothTime: 0.2
+  _playStartShowAnimation: 1
+  _alphaVisible: 1
+  _alphaHidden: 0
+  _alphaSpeed: 1
+  _autoGetChildrenSprites: 1
+  _autoGetChildrenColliders: 1
+  _objToDesable: []
+  _childs: []
+  _state: 1
+--- !u!212 &1847201209
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847201203}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -876546973899608171, guid: 07ae01e870890ca418c8e1119464eb81, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 2048427503
+  m_SortingLayer: 5
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: d36f26c7ceaf6bf49a8bcad589f7f345, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 9.11, y: 6.35}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1001 &1911882951
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2974,7 +3389,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventoryParent: {fileID: 5397633212138471134}
+  _inventorySignPanel: {fileID: 984747900887864581}
   _itemBase: {fileID: 9219245431412487473, guid: 7d052335bf5a82f44a3710c2b4ac2f88, type: 3}
+  _addedItemColor: {r: 0, g: 0, b: 0, a: 0}
+  _fullInvColor: {r: 0, g: 0, b: 0, a: 0}
+  _flashDuration: 1
 --- !u!1 &914122970820507273
 GameObject:
   m_ObjectHideFlags: 0
@@ -4539,6 +4958,18 @@ PrefabInstance:
       propertyPath: _inventoryController
       value: 
       objectReference: {fileID: 9145709697792363077}
+    - target: {fileID: 5545028349737647760, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: pageObjects.Array.size
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545028349737647760, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: 'pageObjects.Array.data[26]'
+      value: 
+      objectReference: {fileID: 1847201203}
+    - target: {fileID: 5545028349737647760, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: 'pageObjects.Array.data[27]'
+      value: 
+      objectReference: {fileID: 3543458223470951670}
     - target: {fileID: 7237595373935860042, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4584,7 +5015,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9145709697792363077}
     - target: {fileID: 7392496759680648835, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[2].inventoryController
+      value: 
+      objectReference: {fileID: 9145709697792363077}
+    - target: {fileID: 7392496759680648835, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].selectedItemIsWanted
+      value: 
+      objectReference: {fileID: 247390102}
+    - target: {fileID: 7392496759680648835, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: _interactionSets.Array.data[1].conditions.Array.data[0].selectedItemIsWanted
       value: 
       objectReference: {fileID: 247390102}
     - target: {fileID: 7392496759680648835, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
@@ -4604,8 +5043,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3543458223470951671}
     - target: {fileID: 7392496759680648835, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 935569758}
+    - target: {fileID: 7392496759680648835, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[4].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2473188493633891254}
+    - target: {fileID: 7392496759680648835, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[3].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CallNuages
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392496759680648835, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[0].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CanCamMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392496759680648835, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      propertyPath: _interactionSets.Array.data[1].actions.Array.data[4].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Terminer_Tache
       objectReference: {fileID: 0}
     - target: {fileID: 7392496759680648835, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
       propertyPath: _interactionSets.Array.data[0].actions.Array.data[3].onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -4645,11 +5100,29 @@ PrefabInstance:
       objectReference: {fileID: 2473188493633891254}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8744596062219498877, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1847201204}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6201324371918218376, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3543458223470951671}
+    - targetCorrespondingSourceObject: {fileID: 3230540009195532387, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 2419807679798160558, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 2959100914297688512, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 4984047091073476504, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8454373785276316892, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 3907449852912811157, guid: ee28659686157144995f9f0c4ffb4084, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
