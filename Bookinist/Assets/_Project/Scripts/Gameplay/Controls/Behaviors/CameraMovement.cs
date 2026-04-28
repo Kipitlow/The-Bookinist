@@ -443,7 +443,7 @@ public class CameraMovement : MonoBehaviour
         }
         else if (delta > 0)
         {
-            if (currentIndexLayer != snapPointsManager.Count)
+            if (currentIndexLayer != snapPointsManager.Count - 1)
             {
                 currentIndexLayer++;
                 for (int i = 0; i < SnapPointNumberOnOneLayer; i++)
