@@ -23,6 +23,11 @@ public class Pickable : MonoBehaviour
         {
             Destroy(objetclicked);
             _invController.AddInventoryItem(_item);
+            SpawnParticles();
+        }
+        else
+        {
+            _invController.UpdateInventory(true,false);
         }
     }
 

@@ -6,6 +6,7 @@ public class SaveService : MonoBehaviour
 
     private PlayerProfile profile => SaveSystem.instance.profile;
     private PlayerCurrency currency => SaveSystem.instance.currency;
+    private PlayerSettings settings => SaveSystem.instance.settings;
 
 
     public void Awake()
@@ -50,6 +51,20 @@ public class SaveService : MonoBehaviour
     {
         currency.ChangeSoftVal(newVal);
 
+        SaveSystem.instance.Save();
+    }
+
+    public void ChangeMusic(float newVal)
+    {
+        settings.ChangeMusicVal(newVal);
+        SoundManager.Instance.UpdateVolume();
+        SaveSystem.instance.Save();
+    }
+
+    public void ChangeEffects(float newVal)
+    {
+        settings.ChangeEffectVal(newVal);
+        SoundManager.Instance.UpdateVolume();
         SaveSystem.instance.Save();
     }
 }

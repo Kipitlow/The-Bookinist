@@ -16,7 +16,7 @@ public class ShopItemUI : MonoBehaviour
     {
         _data = data;
         _icon.sprite = data.icon;
-        _priceText.text = $"{data.price} €";
+        _priceText.text = $"{data.price}";
 
         _buyButton.onClick.AddListener(OnItemClicked);
     }
