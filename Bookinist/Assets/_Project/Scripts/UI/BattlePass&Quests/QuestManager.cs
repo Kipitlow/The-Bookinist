@@ -27,12 +27,11 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        // 1. Initialiser les listes (ajouter les écouteurs de clics)
         InitList(dailyQuests);
         InitList(hebdoQuests);
         InitList(saisonQuests);
 
-        // 2. Condition de départ : succès sur la première quête journalière
+        // La première quête Daily est réussie au départ si jamais faite
         if (dailyQuests.Count > 0 && !dailyQuests[0].isClaimed)
         {
             SetQuestSuccess(dailyQuests[0]);
@@ -45,33 +44,31 @@ public class QuestManager : MonoBehaviour
     {
         foreach (var quest in list)
         {
-            // On nettoie les anciens écouteurs pour éviter les doubles clics
+            // Sécurité : on nettoie et on lie le bouton au code
             quest.questButton.onClick.RemoveAllListeners();
-
-            // On ajoute l'action de clic dynamiquement
-            // On utilise une "capture" de la variable quest pour le délégué
             QuestData capturedQuest = quest;
             quest.questButton.onClick.AddListener(() => ClaimQuest(capturedQuest));
 
-            // Chargement de la sauvegarde
-            bool savedState = PlayerPrefs.GetInt("Quest_" + quest.questID, 0) == 1;
-            quest.isClaimed = savedState;
+            // Chargement
+            quest.isClaimed = PlayerPrefs.GetInt("Quest_" + quest.questID, 0) == 1;
 
             if (quest.isClaimed)
             {
                 quest.questButton.interactable = false;
-                // Optionnel: ChangeColor(quest.questImage); si tu veux garder la couleur orange une fois pris
+                // On peut laisser la couleur de succès ou mettre une couleur "Validée"
+                ChangeColor(quest.questImage);
             }
             else
             {
-                quest.questButton.interactable = false; // Désactivé tant que pas Success
+                quest.questButton.interactable = false;
+                quest.questImage.color = Color.white; // Couleur par défaut
             }
         }
     }
 
     public void SetQuestSuccess(QuestData quest)
     {
-        if (quest.isClaimed) return;
+        if (quest == null || quest.isClaimed) return;
 
         quest.questButton.interactable = true;
         ChangeColor(quest.questImage);
@@ -85,7 +82,6 @@ public class QuestManager : MonoBehaviour
 
     public void ClaimQuest(QuestData quest)
     {
-        // On vérifie si elle est déjà prise pour plus de sécurité
         if (quest.isClaimed) return;
 
         quest.isClaimed = true;
@@ -98,8 +94,7 @@ public class QuestManager : MonoBehaviour
         RefreshNotification();
     }
 
-    // --- RESET ---
-
+    // --- RESETS ---
     public void ResetDaily() => ResetList(dailyQuests);
     public void ResetHebdo() => ResetList(hebdoQuests);
     public void ResetSaison() => ResetList(saisonQuests);
