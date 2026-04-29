@@ -84,6 +84,11 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        RemoveGhost(eventData);
+    }
+
+    public void RemoveGhost(PointerEventData eventData)
+    {
         // Restaure l'opacité
         if (_canvasGroup != null)
             _canvasGroup.alpha = 1f;
@@ -95,13 +100,13 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         {
             Destroy(_ghost);
             _ghost = null;
+            Debug.Log("[Dragger] Destroy ghost");
         }
 
         // Tente le drop dans le monde
         if (WorldDropHandler.Instance != null)
             WorldDropHandler.Instance.TryDrop(eventData.position);
 
-        
 
         // Nettoie le contexte
         DragContext.EndDrag();

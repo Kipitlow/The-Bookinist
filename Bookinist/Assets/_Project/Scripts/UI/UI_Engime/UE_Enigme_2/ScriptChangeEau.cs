@@ -20,13 +20,6 @@ public class ScriptChangeEau : MonoBehaviour
     }
     #endregion
 
-    private void FixedUpdate()
-    {
-        if (!_hasChangedColor)
-        {
-            _lakeInteractionRunner.CallTry();
-        }
-    }
 
     public void ChangeColor()
     {
@@ -55,7 +48,6 @@ public class ScriptChangeEau : MonoBehaviour
             _changingShadering = Color.Lerp(_colorOrigine, _colorChange, _lerpColorFloat);
             if(_material!=null)_material.SetColor("BaseColor", _changingShadering);
             if(_material!=null)_material.SetColor("_BaseColor", _changingShadering);
-            Debug.Log("<color=green> Success</color>" + "ColorMaterial: " + _changingShadering);
             yield return new WaitForSeconds(0.1f);
         }
         //_scriptActivation.enabled= true;
