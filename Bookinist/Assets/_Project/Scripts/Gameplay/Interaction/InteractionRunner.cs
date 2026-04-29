@@ -227,7 +227,10 @@ public class InteractionRunner : MonoBehaviour
 
             case ActionType.RemoveDraggedItem:
                 if (action.inventoryController != null)
+                {
                     action.inventoryController.RemoveInventoryItem(DragContext.DraggedItem);
+                    DragContext.SourceController.GetComponent<ItemDragHandler>().RemoveGhost();
+                }
                 break;
 
             case ActionType.CustomerLeave:
