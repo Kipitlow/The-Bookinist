@@ -10,10 +10,11 @@ public class UIAnimator : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private float _slideSpeed = 5f;
 
-
     [Header("Positions")]
     [SerializeField] private Vector2 _hiddenPosition;
     [SerializeField] private Vector2 _shownPosition;
+
+    private Coroutine _currentFade;
 
     private Coroutine _currentAnimation;
 
@@ -23,8 +24,20 @@ public class UIAnimator : MonoBehaviour
             _uiElement = GetComponent<RectTransform>();
         _uiElement.anchoredPosition = _hiddenPosition;
     }
+
     public void Show()
     {
+        StartMove(_shownPosition);
+    }
+
+    public void DelayedShow(int seconds)
+    {
+        StartCoroutine(_disappearRoutine(seconds));
+    }
+
+    IEnumerator _disappearRoutine(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
         StartMove(_shownPosition);
     }
 
