@@ -11,11 +11,6 @@ public class EnterBookCutscene : MonoBehaviour
 
     [SerializeField] private TimelineAsset _enterTimeline;
 
-    private void Start()
-    {
-        EnterBook(false);
-    }
-
     public void EnterBook(bool enterBook)
     {
         if (enterBook)
