@@ -34,7 +34,6 @@ public class Pickable : MonoBehaviour
 
     public void SpawnParticles()
     {
-        Debug.Log("Particles");
         GameObject ps = Instantiate(_particles, gameObject.transform.position, Quaternion.identity);
         if (gameObject.GetComponent<SpriteRenderer>() == null)
         {

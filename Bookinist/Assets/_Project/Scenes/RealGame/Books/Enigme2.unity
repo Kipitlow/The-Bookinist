@@ -346,6 +346,7 @@ MonoBehaviour:
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
   isDroppedItem: 0
+  _lake: {fileID: 0}
 --- !u!1 &247390099
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +634,7 @@ MonoBehaviour:
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
   isDroppedItem: 0
+  _lake: {fileID: 0}
 --- !u!65 &343726919
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -975,6 +977,14 @@ PrefabInstance:
     - target: {fileID: 3886226625964495449, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: m_Name
       value: Layer 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932393611923995897, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: m_Size.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932393611923995897, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
+      propertyPath: m_Center.z
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3932393611923995897, guid: 1c4bcd7b215230d4393e70b8d4415267, type: 3}
       propertyPath: m_IsTrigger
@@ -1389,6 +1399,7 @@ MonoBehaviour:
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
   isDroppedItem: 0
+  _lake: {fileID: 0}
 --- !u!1 &575212671 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3886226625964495449, guid: abde5900fef9895409a3da322287422f, type: 3}
@@ -1496,6 +1507,7 @@ MonoBehaviour:
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
   isDroppedItem: 0
+  _lake: {fileID: 0}
 --- !u!65 &763717953
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2130,6 +2142,7 @@ MonoBehaviour:
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
   isDroppedItem: 0
+  _lake: {fileID: 0}
 --- !u!65 &1219484333
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2270,6 +2283,7 @@ MonoBehaviour:
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
   isDroppedItem: 0
+  _lake: {fileID: 0}
 --- !u!65 &1413332925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2459,6 +2473,7 @@ MonoBehaviour:
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
   isDroppedItem: 0
+  _lake: {fileID: 0}
 --- !u!65 &1529262615
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2847,10 +2862,18 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1603831995
       objectReference: {fileID: 0}
+    - target: {fileID: 1086951580436024200, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _lake
+      value: 
+      objectReference: {fileID: 1750867313}
     - target: {fileID: 1119777215336757140, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: m_Size.z
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1268568215973690842, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _lake
+      value: 
+      objectReference: {fileID: 1750867313}
     - target: {fileID: 1302912034212122671, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _interactionSets.Array.data[0].conditions.Array.data[0].selectedItemIsWanted
       value: 
@@ -3163,6 +3186,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5786420907582443606, guid: abde5900fef9895409a3da322287422f, type: 3}
+      propertyPath: _lake
+      value: 
+      objectReference: {fileID: 1750867313}
     - target: {fileID: 5879568959394690930, guid: abde5900fef9895409a3da322287422f, type: 3}
       propertyPath: _particles
       value: 
@@ -4032,6 +4059,7 @@ MonoBehaviour:
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
   isDroppedItem: 0
+  _lake: {fileID: 0}
 --- !u!1 &1591546935
 GameObject:
   m_ObjectHideFlags: 0
@@ -4474,6 +4502,7 @@ MonoBehaviour:
   _defaultSmoothTime: 0.2
   _arrivalThreshold: 0.01
   isDroppedItem: 0
+  _lake: {fileID: 0}
 --- !u!65 &2057586169
 BoxCollider:
   m_ObjectHideFlags: 0
