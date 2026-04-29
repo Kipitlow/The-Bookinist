@@ -60,16 +60,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: efa1bf2d82d32614b981e351ae02dcab, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: efa1bf2d82d32614b981e351ae02dcab, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 13a91824a2ff1e44c948d49ddadcbd08, type: 2}
     - target: {fileID: 919132149155446097, guid: efa1bf2d82d32614b981e351ae02dcab, type: 3}
       propertyPath: m_Name
-      value: tapis (3)
+      value: tapisVertP
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: efa1bf2d82d32614b981e351ae02dcab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1404141815128401554}
   m_SourcePrefab: {fileID: 100100000, guid: efa1bf2d82d32614b981e351ae02dcab, type: 3}
+--- !u!1 &6885447045638663337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: efa1bf2d82d32614b981e351ae02dcab, type: 3}
+  m_PrefabInstance: {fileID: 6003135896059318776}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1404141815128401554
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885447045638663337}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e7c1ed8d79c90ca4e990dbce8c6bfa1e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
