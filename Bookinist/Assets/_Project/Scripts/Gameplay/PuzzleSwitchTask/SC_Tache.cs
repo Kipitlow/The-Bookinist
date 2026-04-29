@@ -169,7 +169,7 @@ public class SC_Tache : MonoBehaviour
         }
 
         _hintNumberTextMesh.text = GameManager.Instance.GetHintNumber().ToString();
-        _hintsButton.SetActive(false);
+        //_hintsButton.SetActive(false);
         _hintsPanel.SetActive(true);
 
         _isAlreadyOpenedPanel = true;
