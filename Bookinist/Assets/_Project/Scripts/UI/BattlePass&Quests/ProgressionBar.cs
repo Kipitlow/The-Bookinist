@@ -25,8 +25,8 @@ public class ProgressionBar : MonoBehaviour
     [SerializeField] private float _waitingXp = 0;
     [SerializeField] private float _lerpTime = 0.7f;
 
-    [SerializeField] private Color _colorLock = new Color32(109, 109, 109, 255);
-    [SerializeField] private Color _colorUnlock = new Color32(241, 211, 0, 255);
+    [SerializeField] private Sprite _colorLock;
+    [SerializeField] private Sprite _colorUnlock;
 
     private void Awake()
     {
@@ -124,7 +124,7 @@ public class ProgressionBar : MonoBehaviour
             bool isReached = (i < palier);
 
             if (i < _paliersVisuals.Count)
-                _paliersVisuals[i].color = isReached ? _colorUnlock : _colorLock;
+                _paliersVisuals[i].sprite = isReached ? _colorUnlock : _colorLock;
 
             if (i < freeRewards.Count)
                 freeRewards[i].UpdateUI(isReached, false);

@@ -12,7 +12,8 @@ public class BarFill : MonoBehaviour
     public float animDuration = 0.4f;
 
     [Header("Refs")]
-    [SerializeField] private RectTransform _fillBar;
+    [SerializeField] private RectTransform _palierFillBar;  
+    [SerializeField] private RectTransform _profileFillBar;  
     [SerializeField] private RectTransform _backgroundBar;
     [SerializeField] private Image _glowImage;
     [SerializeField] private Material _liquidMaterial;
@@ -20,41 +21,39 @@ public class BarFill : MonoBehaviour
     private float _displayedXP;
     private Tween _currentTween;
 
-    private Vector2 _basePos;
-    private float _waveOffset;
+    private Image _palierImage;
+    private Image _profileImage;
 
     void Start()
     {
-        _fillBar.pivot = new Vector2(0.5f, 0f);
+        _palierImage = _palierFillBar.GetComponent<Image>();
+        _profileImage = _profileFillBar.GetComponent<Image>();
 
-        _basePos = _fillBar.anchoredPosition;
-
-        RectTransform rt = _fillBar;
-
-        rt.sizeDelta = new Vector2(_backgroundBar.rect.width, _backgroundBar.rect.height);
-
-        _displayedXP = curXP;
+        _palierFillBar.pivot = new Vector2(0.5f, 0f);
+        _palierFillBar.sizeDelta = new Vector2(_backgroundBar.rect.width, _backgroundBar.rect.height);
 
         _liquidMaterial = Instantiate(_liquidMaterial);
-        _fillBar.GetComponent<Image>().material = _liquidMaterial;
+        _palierImage.material = _liquidMaterial;
+
+        _displayedXP = curXP;
 
         RefreshBarUI();
     }
 
     public void RefreshBarUI()
     {
-        float ratio = _displayedXP / maxXP;
+        float ratio = Mathf.Clamp01(_displayedXP / maxXP);
 
-        _fillBar.GetComponent<Image>().fillAmount = 1f;
+        _palierImage.fillAmount = 1f; 
+        _liquidMaterial.SetFloat("_Fill", ratio);
+
+        if (_profileImage != null)
+        {
+            _profileImage.fillAmount = ratio;
+        }
 
         UpdateGlow(ratio);
-
-        _liquidMaterial.SetFloat("_Fill", ratio);
     }
-
-    // -----------------------
-    // XP MODIFICATION
-    // -----------------------
 
     public void ModifCur(int newVal)
     {
@@ -79,26 +78,17 @@ public class BarFill : MonoBehaviour
         PlayGameFeel(newVal);
     }
 
-    // -----------------------
-    // GAME FEEL
-    // -----------------------
-
     void PlayGameFeel(int value)
     {
-        _fillBar.DOKill();
-        // petit punch toujours
-        _fillBar.DOPunchScale(new Vector3(0.03f, 0.05f, 0f), 0.15f);
+        _palierFillBar.DOKill();
 
-        // shake si gros gain
+        _palierFillBar.DOPunchScale(new Vector3(0.03f, 0.05f, 0f), 0.15f);
+
         if (value > 20)
         {
-            _fillBar.DOShakeAnchorPos(0.2f, 4f, 12, 90f);
+            _palierFillBar.DOShakeAnchorPos(0.2f, 4f, 12, 90f);
         }
     }
-
-    // -----------------------
-    // GLOW SYSTEM
-    // -----------------------
 
     void UpdateGlow(float ratio)
     {
