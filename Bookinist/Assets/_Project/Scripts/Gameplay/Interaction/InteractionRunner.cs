@@ -22,6 +22,7 @@ public class InteractionRunner : MonoBehaviour
         {
             if (AreConditionsValid(set.conditions, context))
             {
+                Debug.Log(set.interactionName);
                 ExecuteActions(set.actions, context);
                 anyExecuted = true;
             }
@@ -98,7 +99,7 @@ public class InteractionRunner : MonoBehaviour
             case ConditionType.HasDialogueStarted:
                 if (condition.npcTalker == null)
                     return false;
-                return (condition.npcTalker._lineIndex >= 1) == condition.hasStarted;
+                return (condition.npcTalker._hasStarted) == condition.hasStarted;
 
             case ConditionType.HasDialogueEnded:
                 if (condition.npcTalker == null)

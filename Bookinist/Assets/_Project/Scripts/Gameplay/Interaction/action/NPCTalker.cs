@@ -51,6 +51,7 @@ public class NPCTalker : MonoBehaviour
     public bool _hasDialogueEnded { get; private set; } = false;
 
     private bool _bubbleVisible = false;
+    public bool _hasStarted = false;
 
     private Vector3 _pivOffsetShop = new Vector3(1f, 0f, 0);
 
@@ -88,8 +89,8 @@ public class NPCTalker : MonoBehaviour
     {
         if (SO_dialogue.IsShopNPC)
             GetComponent<SpriteRenderer>().sprite = _spritePoses[2];
-
-        print("Starting Dialogue");
+        
+        _hasStarted = true;
 
         _dialogue = SO_dialogue;
 
@@ -233,6 +234,8 @@ public class NPCTalker : MonoBehaviour
         _nameBubbleText.enabled = false;
 
         _lineIndex = 0; // reset pour rejouer si besoin
+        if (_dialogue.isLoopable)
+            _hasStarted = false;
     }
 
     public void UpdateIndicator()
