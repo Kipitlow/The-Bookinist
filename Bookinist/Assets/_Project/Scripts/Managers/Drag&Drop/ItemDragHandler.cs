@@ -105,7 +105,6 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         {
             Destroy(_ghost);
             _ghost = null;
-            Debug.Log("[Dragger] Destroy ghost");
         }
 
         // Tente le drop dans le monde
