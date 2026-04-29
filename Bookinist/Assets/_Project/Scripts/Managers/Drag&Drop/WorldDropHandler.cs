@@ -125,11 +125,9 @@ public class WorldDropHandler : MonoBehaviour
         _camLayer = _camera.GetComponent<CameraMovement>().currentIndexLayer;
         _activeLayer = _pageManager.GetPageFromInt(_camLayer).transform;
         _page = _activeLayer.GetComponent<Page>();
-        Debug.Log(_camLayer);
 
         GameObject droppedObject = Instantiate(_prefabDropableObject, position, _prefabDropableObject.transform.rotation, _activeLayer);
         BoxCollider boxCollider = droppedObject.GetComponent<BoxCollider>();
-        Debug.Log(droppedObject.transform.position);
 
         // setup SpriteRenderer
         SpriteRenderer spriteRenderer = droppedObject.GetComponentInChildren<SpriteRenderer>();

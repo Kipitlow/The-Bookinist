@@ -26,6 +26,8 @@ public class MoveObject : MonoBehaviour
 
     public bool isMoving { get; private set; }
     public Vector3 CurrentTarget => _targetLocalPosition;
+
+    [SerializeField] private InteractionRunner _lake;
     #endregion
 
     #region UnityMethods
@@ -96,6 +98,8 @@ public class MoveObject : MonoBehaviour
             _hasMovedThisManyTime++;
             _baseLocalPosition = _targetLocalPosition;
         }
+
+        if (_lake) _lake.CallTry();
 
         RestoreRigidbodyAfterMove();
 
