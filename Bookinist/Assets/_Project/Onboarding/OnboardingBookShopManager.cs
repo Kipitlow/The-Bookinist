@@ -230,6 +230,7 @@ public class BookShopOnboardingManager : MonoBehaviour
                 break;
             case 12:
                 _handList[10].SetActive(true);
+                _handAnimatorList[10].SetBool("IsOnboardingTap", true);
                 _secondOnboardingPanelList[10].SetActive(true);
                 break;
             case 13:
