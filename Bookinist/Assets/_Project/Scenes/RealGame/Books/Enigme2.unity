@@ -1415,63 +1415,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1533350514069478635, guid: abde5900fef9895409a3da322287422f, type: 3}
   m_PrefabInstance: {fileID: 1587385644}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &663294700
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1688270323248460054, guid: 2ee4ba3331aac9641ae953f15e170811, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 884.0671
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688270323248460054, guid: 2ee4ba3331aac9641ae953f15e170811, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1609.5315
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688270323248460054, guid: 2ee4ba3331aac9641ae953f15e170811, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -8.20286
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688270323248460054, guid: 2ee4ba3331aac9641ae953f15e170811, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688270323248460054, guid: 2ee4ba3331aac9641ae953f15e170811, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688270323248460054, guid: 2ee4ba3331aac9641ae953f15e170811, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688270323248460054, guid: 2ee4ba3331aac9641ae953f15e170811, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688270323248460054, guid: 2ee4ba3331aac9641ae953f15e170811, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688270323248460054, guid: 2ee4ba3331aac9641ae953f15e170811, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1688270323248460054, guid: 2ee4ba3331aac9641ae953f15e170811, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3475425842847281501, guid: 2ee4ba3331aac9641ae953f15e170811, type: 3}
-      propertyPath: m_Name
-      value: DDOL
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2ee4ba3331aac9641ae953f15e170811, type: 3}
 --- !u!1 &746750931 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6708910490051694838, guid: abde5900fef9895409a3da322287422f, type: 3}
@@ -5714,10 +5657,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 7db92e633979bbf48bf86c410442437c, type: 2}
-        m_TargetAssemblyTypeName: SO_SceneManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 6555623796212079838}
+        m_TargetAssemblyTypeName: TransitionCaller, Assembly-CSharp
+        m_MethodName: CallNuages
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5896,6 +5839,7 @@ GameObject:
   - component: {fileID: 1863236380179365243}
   - component: {fileID: 1274277954573461729}
   - component: {fileID: 5441274006571582651}
+  - component: {fileID: 6555623796212079838}
   m_Layer: 5
   m_Name: GoHome
   m_TagString: Untagged
@@ -5903,6 +5847,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6555623796212079838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555623796212079837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57346898879e18a43a746e0a8ea7454a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneToLoad: BookShopUpdated
+  _sceneToUnload: Enigme2
 --- !u!224 &6609766051662045458
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6014,6 +5972,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 6982762688801521220}
+        m_TargetAssemblyTypeName: SC_Tache, Assembly-CSharp
+        m_MethodName: PauseActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 9006874164381456837}
         m_TargetAssemblyTypeName: TransitionCaller, Assembly-CSharp
         m_MethodName: CallNuages
@@ -6024,18 +5994,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: BookShopUpdated
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 9006874164381456836}
-        m_TargetAssemblyTypeName: TriggerButton, Assembly-CSharp
-        m_MethodName: ClickButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1001 &6916962808897003235
@@ -6963,4 +6921,3 @@ SceneRoots:
   - {fileID: 1591546938}
   - {fileID: 114452390}
   - {fileID: 687463493951801595}
-  - {fileID: 663294700}
