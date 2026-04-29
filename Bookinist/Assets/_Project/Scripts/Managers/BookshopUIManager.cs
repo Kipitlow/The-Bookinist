@@ -28,6 +28,12 @@ public class BookshopUIManager : MonoBehaviour
     [SerializeField] private CustomShopManager _customShopManager;
     [SerializeField] private CamManager _camManager;
 
+    [Header("Other SubMenu")]
+    [SerializeField] private List<GameObject> _otherSubmenuPanelList;
+
+    [Header("Button to Reactivate on HUB")]
+    [SerializeField] private List<GameObject> _buttonToReactivateList;
+
     private float _screenWidth;
     private int _currentIndex = -1;
     private bool _isAnimating = false;
@@ -58,6 +64,12 @@ public class BookshopUIManager : MonoBehaviour
     public void NavigateTo(int index)
     {
         if (index == _currentIndex || _isAnimating) return;
+
+        foreach (GameObject panel in _otherSubmenuPanelList)
+        {
+            panel.SetActive(false);
+        }
+
         StartCoroutine(HandleNavigation(index));
     }
 
@@ -191,6 +203,11 @@ public class BookshopUIManager : MonoBehaviour
     // Rétracte toute la pile jusqu'au HUB
     private IEnumerator RetractStack()
     {
+        foreach (GameObject button in _buttonToReactivateList)
+        {
+            button.SetActive(true);
+        }
+
         while (_panelStack.Count > 0)
         {
             int top = _panelStack[_panelStack.Count - 1];

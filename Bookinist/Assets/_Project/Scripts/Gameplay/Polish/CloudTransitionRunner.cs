@@ -62,9 +62,9 @@ public class CloudTransitionController : MonoBehaviour
 
         yield return new WaitForSeconds(_coveredDelay);
 
-        yield return MoveCloudsOut();
-
         _sceneManager.UnloadScene(sceneToLoad);
+
+        yield return MoveCloudsOut();
 
         _isTransitionPlaying = false;
     }

@@ -86,6 +86,8 @@ public class NPCTalker : MonoBehaviour
 
     public void StartDialogue(NPCDialogue SO_dialogue)
     {
+        GetComponent<SpriteRenderer>().sprite = _spritePoses[2];
+
         print("Starting Dialogue");
 
         _dialogue = SO_dialogue;
@@ -118,7 +120,7 @@ public class NPCTalker : MonoBehaviour
 
         if (_dialogue.IsShopNPC && _lineIndex == 4 && GameManager.Instance.bookFinish == false)
         {
-            GetComponent<SpriteRenderer>().sprite = _spritePoses[0];
+            GetComponent<SpriteRenderer>().sprite = _spritePoses[1];
             OnShowBook?.Invoke(true);
         }
     }

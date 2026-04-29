@@ -66,6 +66,9 @@ public class ConditionEntry
     [Tooltip("Is the boo finished")]
     public bool isBookFinish;
 
+    [Tooltip("has started")]
+    public bool hasStarted;
+
     [Tooltip("weight in balance")]
     public int weight;
 
