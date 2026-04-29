@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Cette classe permet de définir ce qu'est une quête dans l'inspecteur
 [System.Serializable]
 public class QuestData
 {
-    public string questID; // ID unique pour la sauvegarde (ex: "daily_1")
+    public string questID;
     public Button questButton;
     public Image questImage;
     [HideInInspector] public bool isClaimed = false;
@@ -28,9 +27,12 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        LoadAllQuests();
+        // 1. Initialiser les listes (ajouter les écouteurs de clics)
+        InitList(dailyQuests);
+        InitList(hebdoQuests);
+        InitList(saisonQuests);
 
-        // Condition spécifique : La première quête Daily est réussie au départ
+        // 2. Condition de départ : succès sur la première quête journalière
         if (dailyQuests.Count > 0 && !dailyQuests[0].isClaimed)
         {
             SetQuestSuccess(dailyQuests[0]);
@@ -39,9 +41,34 @@ public class QuestManager : MonoBehaviour
         RefreshNotification();
     }
 
-    // --- LOGIQUE CORE ---
+    private void InitList(List<QuestData> list)
+    {
+        foreach (var quest in list)
+        {
+            // On nettoie les anciens écouteurs pour éviter les doubles clics
+            quest.questButton.onClick.RemoveAllListeners();
 
-    // Rend une quête réussie (prête à être cliquée)
+            // On ajoute l'action de clic dynamiquement
+            // On utilise une "capture" de la variable quest pour le délégué
+            QuestData capturedQuest = quest;
+            quest.questButton.onClick.AddListener(() => ClaimQuest(capturedQuest));
+
+            // Chargement de la sauvegarde
+            bool savedState = PlayerPrefs.GetInt("Quest_" + quest.questID, 0) == 1;
+            quest.isClaimed = savedState;
+
+            if (quest.isClaimed)
+            {
+                quest.questButton.interactable = false;
+                // Optionnel: ChangeColor(quest.questImage); si tu veux garder la couleur orange une fois pris
+            }
+            else
+            {
+                quest.questButton.interactable = false; // Désactivé tant que pas Success
+            }
+        }
+    }
+
     public void SetQuestSuccess(QuestData quest)
     {
         if (quest.isClaimed) return;
@@ -53,23 +80,39 @@ public class QuestManager : MonoBehaviour
         {
             _readyToClaimQuests.Add(quest.questButton);
         }
+        RefreshNotification();
+    }
+
+    public void ClaimQuest(QuestData quest)
+    {
+        // On vérifie si elle est déjà prise pour plus de sécurité
+        if (quest.isClaimed) return;
+
+        quest.isClaimed = true;
+        _readyToClaimQuests.Remove(quest.questButton);
+        quest.questButton.interactable = false;
+
+        PlayerPrefs.SetInt("Quest_" + quest.questID, 1);
+        PlayerPrefs.Save();
 
         RefreshNotification();
     }
 
-    // Appelé quand on clique sur le bouton de la quête
-    public void ClaimQuest(QuestData quest)
+    // --- RESET ---
+
+    public void ResetDaily() => ResetList(dailyQuests);
+    public void ResetHebdo() => ResetList(hebdoQuests);
+    public void ResetSaison() => ResetList(saisonQuests);
+
+    private void ResetList(List<QuestData> list)
     {
-        quest.isClaimed = true;
-        _readyToClaimQuests.Remove(quest.questButton);
-
-        // On désactive le bouton car la récompense est prise
-        quest.questButton.interactable = false;
-
-        // Sauvegarde de l'état
-        PlayerPrefs.SetInt("Quest_" + quest.questID, 1);
-        PlayerPrefs.Save();
-
+        foreach (var quest in list)
+        {
+            quest.isClaimed = false;
+            PlayerPrefs.DeleteKey("Quest_" + quest.questID);
+            quest.questButton.interactable = false;
+            quest.questImage.color = Color.white;
+        }
         RefreshNotification();
     }
 
@@ -84,52 +127,5 @@ public class QuestManager : MonoBehaviour
         {
             _notificationIcon.SetActive(_readyToClaimQuests.Count > 0);
         }
-    }
-
-    // --- SAUVEGARDE ET CHARGEMENT ---
-
-    private void LoadAllQuests()
-    {
-        CheckAndLoadList(dailyQuests);
-        CheckAndLoadList(hebdoQuests);
-        CheckAndLoadList(saisonQuests);
-    }
-
-    private void CheckAndLoadList(List<QuestData> list)
-    {
-        foreach (var quest in list)
-        {
-            // On récupère 1 si complété, 0 sinon
-            bool savedState = PlayerPrefs.GetInt("Quest_" + quest.questID, 0) == 1;
-            quest.isClaimed = savedState;
-
-            if (quest.isClaimed)
-            {
-                quest.questButton.interactable = false;
-                // Optionnel : mettre une couleur "grisée" ici
-            }
-            else
-            {
-                quest.questButton.interactable = false; // Par défaut non cliquable tant que pas success
-            }
-        }
-    }
-
-    // --- FONCTIONS DE RESET ---
-
-    public void ResetDailyQuests() => ResetList(dailyQuests);
-    public void ResetHebdoQuests() => ResetList(hebdoQuests);
-    public void ResetSaisonQuests() => ResetList(saisonQuests);
-
-    private void ResetList(List<QuestData> list)
-    {
-        foreach (var quest in list)
-        {
-            quest.isClaimed = false;
-            PlayerPrefs.DeleteKey("Quest_" + quest.questID);
-            quest.questButton.interactable = false;
-            quest.questImage.color = Color.white; // Retour couleur d'origine
-        }
-        RefreshNotification();
     }
 }
