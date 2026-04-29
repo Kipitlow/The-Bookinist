@@ -39,10 +39,15 @@ public class CloudTransitionController : MonoBehaviour
 
     private bool _isTransitionPlaying;
 
+    private void Start()
+    {
+        _isTransitionPlaying = false;
+    }
+
     public void PlayTransition(string sceneToLoad, string sceneToUnload)
     {
-        if (_isTransitionPlaying)
-            return;
+        //if (_isTransitionPlaying)
+        //    return;
 
         StartCoroutine(TransitionRoutine(sceneToLoad, sceneToUnload));
     }
@@ -57,9 +62,9 @@ public class CloudTransitionController : MonoBehaviour
 
         yield return new WaitForSeconds(_coveredDelay);
 
-        yield return MoveCloudsOut();
-
         _sceneManager.UnloadScene(sceneToLoad);
+
+        yield return MoveCloudsOut();
 
         _isTransitionPlaying = false;
     }

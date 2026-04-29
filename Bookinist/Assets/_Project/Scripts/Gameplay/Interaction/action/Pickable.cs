@@ -25,6 +25,10 @@ public class Pickable : MonoBehaviour
             _invController.AddInventoryItem(_item);
             SpawnParticles();
         }
+        else
+        {
+            _invController.UpdateInventory(true,false);
+        }
     }
 
 
