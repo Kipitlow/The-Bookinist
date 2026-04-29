@@ -86,7 +86,8 @@ public class NPCTalker : MonoBehaviour
 
     public void StartDialogue(NPCDialogue SO_dialogue)
     {
-        GetComponent<SpriteRenderer>().sprite = _spritePoses[2];
+        if (SO_dialogue.IsShopNPC)
+            GetComponent<SpriteRenderer>().sprite = _spritePoses[2];
 
         print("Starting Dialogue");
 
