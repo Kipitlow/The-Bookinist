@@ -9,15 +9,16 @@ public class EnterBookCutscene : MonoBehaviour
     [SerializeField] private TimelineAsset _loadTimeline;
 
     [SerializeField] private TimelineAsset _enterTimeline;
-    [SerializeField] private GameObject _onBoardingPanelToDeactivate;
-    [SerializeField] private GameObject _hand;
+
+    [SerializeField] private GameObject _handToDisable;
+    [SerializeField] private GameObject _onboardingPanelToDisable;
 
     public void EnterBook(bool enterBook)
     {
         if (enterBook)
         {
-            _onBoardingPanelToDeactivate.SetActive(false);
-            _hand.SetActive(false);
+            _handToDisable.SetActive(false);
+            _onboardingPanelToDisable.SetActive(false);
             _sceneStarter.playableAsset = _enterTimeline;
         }
         else
