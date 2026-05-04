@@ -7,7 +7,7 @@ public class PlayerCurrency
     public long playerCurrencyLastLogin = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
     public int playerCurrencyEnergy = 60;
     public int playerCurrencyHard = 0;
-    public int playerCurrencySoft = 10000;
+    public int playerCurrencySoft = 100000;
 
     public void ChangeLastLogin(long newVal)
     {
