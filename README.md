@@ -1,141 +1,80 @@
-# 🚀 Git Workflow & PR Pipeline
+<div align="center">
 
-![Git](https://img.shields.io/badge/Git-Workflow-orange)
-![PR](https://img.shields.io/badge/Pull_Request-Driven-blue)
-![CI](https://img.shields.io/badge/CI-Pipeline-green)
-![QA](https://img.shields.io/badge/QA-Required-red)
+# 📖 The Bookinist
+### *What if you could read between the lines?*
 
-📘 Documentation interne du workflow Git  
-⚙️ GitHub Desktop • Review • CI • QA • Production  
+**A 2.5D narrative puzzle game set in late 19th-century Paris.**
 
-> 🧠 *Clean commits, clean pipeline, clean production.*
+[![Highly Commended](https://d3stdg5so273ei.cloudfront.net/andrew/2023-07-27/974918/150x150/rookie-awards-goty-hc.png)](https://www.therookies.co/entries/51796)
+[![Finalist](https://d3stdg5so273ei.cloudfront.net/andrew/2021-02-16/016415/150x150/finalist-rookie-awards.png)](https://www.therookies.co/entries/51796)
+[![Draft Selection](https://d3stdg5so273ei.cloudfront.net/andrew/2021-02-16/580598/150x150/draft-selection.png)](https://www.therookies.co/entries/51796)
 
----
+**Rookie Awards 2026** — Game of the Year: *Highly Commended* · Rookie of the Year: *Finalist* · *Draft Selection*
 
-## 📚 Sommaire
+[View the full Rookies entry](https://www.therookies.co/entries/51796) · [Play on itch.io](#) *(coming soon)*
 
-- 🌿 [Branching Strategy](#-1-branching-strategy)
-- 🧾 [Naming Convention](#-naming-convention)
-- 🔄 [Clean Git Setup](#-2-clean-git-setup)
-- 🚀 [Pull Request Pipeline](#-3-pull-request-pipeline)
-- 📝 [Contenu d’une PR](#-contenu-obligatoire-dune-pr)
-- 📊 [Pipeline visuelle](#-4-pipeline-visuelle)
-- 🧪 [GitHub Actions](#-5-github-actions-ci-suggestion)
-- 🚀 [Résultat attendu](#-résultat-attendu)
-- 🧩 [Pipeline final](#-6-pipeline-final)
+</div>
 
 ---
 
-## 🌿 1. Branching Strategy
+## About
 
-### 📌 Branches principales
+A bookseller possesses the unique gift of bringing stories to life. That bookseller is *you*.
 
-| Branche      | Rôle                         |
-|--------------|------------------------------|
-| `main`       | Production                   |
-| `Acceptance` | Validation QA + intégration  |
-| `feature/*`  | Développement                |
-| `fix/*`      | Correction de bug            |
-| `hotfix/*`   | Correction critique prod     |
+**The Bookinist** is a 2.5D narrative puzzle game developed in two months by a team of students from Gaming Campus Lyon. Players step into the shoes of a bookseller with an extraordinary talent: venturing into the books brought by their customers. By exploring these stories from within, players uncover hidden clues, solve narrative-driven puzzles, and help a diverse clientele find the answers they seek.
 
----
+| | |
+|---|---|
+| **Genre** | Narrative Puzzle Game |
+| **Platform** | Mobile (iOS / Android) |
+| **Engine** | Unity |
+| **Development time** | 2 months |
 
-## 🧾 Naming Convention
+## Gameplay Loop
 
-### 🚀 Features
-- `feature/login-system`
-- `feature/payment-integration`
+The gameplay revolves around a simple yet engaging cycle:
 
-### 🐛 Fixes
-- `fix/login-error`
-- `fix/null-pointer-dashboard`
+**1. Welcome Customers** — Customers arrive one at a time, each carrying a book and a unique request.
 
-### 🚨 Hotfix
-- `hotfix/security-patch`
+**2. Explore the Book** — Using the Bookinist's gift, players step inside the world contained within the book, interacting with its environment and characters to solve narrative-driven puzzles before time runs out.
 
----
+**3. Fulfill the Request** — Players return to the shop and present their findings. The accuracy of their answer determines the customer's satisfaction and the reward they receive.
 
-## 🔄 2. Clean Git Setup
+For the Rookie Awards demo, players step into the myth of Orpheus and Eurydice.
 
-### 🧹 Activer le prune automatique
-```bash
-git config --global fetch.prune true
-```
+## Art Direction
 
-### Sync propre :
-```bash
-git fetch --prune
-```
+Inspired by Art Nouveau and the aesthetics of late 19th-century Paris, **The Bookinist** uses two distinct visual styles to contrast reality and imagination: the bookshop embraces a grounded, semi-realistic aesthetic, while the worlds within books adopt a softer, more whimsical direction — reinforcing the feeling of stepping into a story.
 
-## 🚀 3. Pull Request Pipeline : 
+## The Team
 
-### 🔀 Étape obligatoire avant PR :
-```bash
-git checkout feature/xxx
-```
-```bash
-git merge origin/Acceptance
-```
+**Art**
+- Nao Khuth
+- Axel Rebout
+- Célia Retailleau
+- Léni
+- Joy Mwansa
+- Solenn Hribersek
+- Margo Noizet Pin
 
-### 👉 Objectif : 
-- Résoudre conflits localement
-- Partir d’une base stable
-- 📝 PR obligatoire
+**Tech**
+- Taha Taadi
+- Enzo Omani
+- Paul Ferran
+- Erwan Hamida
+- Vatea Rui
+- Amelia Pereme
 
-### Contenu de la PR : 
-- 📁 fichiers modifiés
-- 🧠 description fonctionnelle
-- 🧪 tests à effectuer
-- 👀 Review + QA flow
+**Sound Design**
+- Maxence
+- Pierre-Emmanuel P.E.
 
-### ⚠️ Règles :
-- Code review obligatoire
-- QA validation (avant / pendant / après review possible)
-- Merge uniquement si validé 
+**TV / Presentation**
+- Sidy Diao
+- Hippolyte Van Cottom
 
-### ❌ Si PR refusée :
-- Commentaire obligatoire
-- Conversion en Draft PR
-- Corrections requises 
+## Links
 
-## 📊 4. Pipeline visuelle (Mermaid) : 
-
-<img width="1167" height="2553" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/90a5d377-c495-47d7-9d0b-9f9d2a92b19a" /> 
-
-## 🧪 5. GitHub Actions (CI suggestion) : 
-
-### Exemple simple de CI :
-
-```bash
-name: CI Pipeline
-
-on:
-  pull_request:
-    branches:
-      - Acceptance
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
-```
-
-### 🚀 Résultat attendu : 
-Ce workflow garantit : 
-- Code propre
-- Intégration sans conflit
-- QA contrôlée
-- Historique Git lisible
-- Zéro surprise en production
-
-## 🧩 6. Pipeline final réaliste : 
-feature → PR → CI runs → review → QA → manual merge → Acceptance
+- 🏆 [Rookie Awards 2026 entry](https://www.therookies.co/entries/51796) — full pitch, trailer, and screenshots
+- 🎮 itch.io page — *coming soon*
+- 🤝 Want to know how we work? See [CONTRIBUTING.md](./CONTRIBUTING.md) for our Git workflow and PR pipeline.
