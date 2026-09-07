@@ -3,11 +3,13 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerProfile
 {
-    public string playerName;
-    public int playerLevel;
-    public int playerXP;
-    public int playerBooksUnlocked;
+    public string playerName = "Bookinist";
+    public int playerLevel = 1;
+    public int playerXP = 0;
+    public int playerBooksUnlocked = 0;
     public ScriptableObject playerDisplayedBook;
+    //public enum playerPhoto;
+    //public enum playerTitle;
 
     public void ChangePlayerName(string newName)
     {
@@ -17,5 +19,19 @@ public class PlayerProfile
     public int LevelToMaxExp(int level)
     {
         return level * 200;
+    }
+
+    public void ModifyXP(int xpChange)
+    {
+        if (xpChange < 0) 
+            return;
+
+        playerXP += xpChange;
+        if (playerXP >= LevelToMaxExp(playerLevel))
+        {
+            playerXP = 0;
+            playerLevel++;
+        }
+
     }
 }

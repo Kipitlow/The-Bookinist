@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SaveSystem : MonoBehaviour
 {
@@ -8,6 +10,16 @@ public class SaveSystem : MonoBehaviour
 
     public PlayerProfile profile;
     public PlayerSettings settings;
+    public PlayerCurrency currency;
+    public PlayerInventory inventory;
+    public PlayerProgression progression;
+    public PlayerCustomShop customShop;
+    public PlayerGacha gacha;
+    public PlayerBP bp;
+
+
+    public Action OnDataUpdate;
+
 
     private void Awake()
     {
@@ -16,18 +28,33 @@ public class SaveSystem : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         instance = this;
         DontDestroyOnLoad(gameObject);
         Load();
     }
 
+    private void Start()
+    {
+        Load();
+    }
+
     public void Save()
     {
+        if(ProgressionBar.instance != null)
+        {
+            bp = ProgressionBar.instance.GetDataForSave();
+        }
+
         SaveData data = new SaveData
         {
             profile = profile,
-            settings = settings
+            settings = settings,
+            currency = currency,
+            inventory = inventory,
+            progression = progression,
+            customShop = customShop,
+            gacha = gacha,
+            bp = bp
         };
 
         _saveManager.Write("saveData.json", data);
@@ -45,10 +72,38 @@ public class SaveSystem : MonoBehaviour
 
         profile = data.profile;
         settings = data.settings;
+        currency = data.currency;
+        inventory = data.inventory;
+        progression = data.progression;
+        customShop = data.customShop;
+        gacha = data.gacha;
+        bp = data.bp;
+
+        Debug.Log("Invoke Called");
+        OnDataUpdate?.Invoke();
     }
 
     public void Delete()
     {
         _saveManager.Delete("saveData.json");
+    }
+
+    public void Create()
+    {
+        profile = new PlayerProfile();
+        settings = new PlayerSettings();
+        currency = new PlayerCurrency();
+        inventory = new PlayerInventory();
+        progression = new PlayerProgression();
+        customShop = new PlayerCustomShop();
+        gacha = new PlayerGacha();
+        bp = new PlayerBP();
+
+        Save();
+    }
+
+    public void CallDataUpdate()
+    {
+        OnDataUpdate?.Invoke();
     }
 }

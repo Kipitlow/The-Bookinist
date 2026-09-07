@@ -1,5 +1,6 @@
 public enum ConditionType
 {
+    ISBookFinish,
     SameLayer,
     SameZone,
     OnTouch,
@@ -10,11 +11,16 @@ public enum ConditionType
     HasDialogueEnded,
     OnWichFrame,
     HasMoved,
-    HasToCheckEmptynessInventory
+    HasToCheckEmptynessInventory,
+    CanBePlacedInBalance,
+    WeightIsMoreThan,
+    WeightIsLessThan,
+    Exist,
 }
 
 public enum ActionType
 {
+    FinishBook,
     SetActive,
     Open,
     StartDialogue,
@@ -26,6 +32,11 @@ public enum ActionType
     ResetHasMoved,
     Pick,
     Destroy,
-    Drop
-
+    FillWithSprite,
+    PlaceInBalance,
+    FeedBack,
+    CloseDialogue,
+    Drop,
+    RemoveDraggedItem,
+    CustomerLeave
 }

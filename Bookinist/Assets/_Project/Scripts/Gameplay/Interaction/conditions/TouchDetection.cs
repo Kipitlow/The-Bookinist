@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +14,9 @@ public class TouchDetection : MonoBehaviour
     [SerializeField] private GraphicRaycaster _uiRaycaster;
     [SerializeField] private EventSystem _eventSystem;
 
+
+    public event Action<GameObject> OnClick;
+
     private void Awake()
     {
         _cam = Camera.main;
@@ -23,7 +27,14 @@ public class TouchDetection : MonoBehaviour
         if (_uiRaycaster == null || _eventSystem == null || _cam == null)
             return;
 
-        // --- 1. RAYCAST UI ---
+        if (UIRaycast(screenPosition))
+            return;
+
+        Raycast3D(screenPosition);
+    }
+
+    public bool UIRaycast(Vector2 screenPosition)
+    {
         PointerEventData pointerData = new PointerEventData(_eventSystem)
         {
             position = screenPosition
@@ -36,49 +47,90 @@ public class TouchDetection : MonoBehaviour
         {
             foreach (var result in results)
             {
-                // CanvasGroup qui bloque visuellement
                 CanvasGroup cg = result.gameObject.GetComponentInParent<CanvasGroup>();
                 if (cg != null && cg.blocksRaycasts && cg.alpha > 0.01f)
-                {
-                    return; // UI bloque la touche
-                }
+                    return true;
 
                 var shaderRaycast = result.gameObject.GetComponent<ShaderBasedRaycast>();
 
                 if (shaderRaycast != null)
                 {
-                    bool isValid = shaderRaycast.IsRaycastLocationValid(screenPosition, _cam);
-
-                    // CORRECTION : si valide (opaque) => bloquer la propagation
-                    if (isValid)
-                        return;
+                    if (shaderRaycast.IsRaycastLocationValid(screenPosition, _cam))
+                        return true; // Pixel opaque => bloque
                     else
-                        continue; // transparent, continuer la vérification
+                        continue;   // Pixel transparent => continue
                 }
                 else
                 {
-                    // UI sans shader => bloque
-                    return;
+                    return true;
                 }
             }
         }
 
-        // --- 2. RAYCAST 3D ---
+        return false;
+    }
+
+    public void Raycast3D(Vector2 screenPosition)
+    {
         Ray ray = _cam.ScreenPointToRay(screenPosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit, _maxDistance, _hitMask))
         {
             InteractionRunner interactionRunner = hit.collider.GetComponent<InteractionRunner>();
 
-            InteractionContext context = new InteractionContext
+            if (SceneManager.GetActiveScene().name == "BookShopUpdated" || SceneManager.GetActiveScene().name == "LibraryTest")
             {
-                instigator = null,
-                target = hit.collider.gameObject,
-                isTouchEvent = true,
-            };
+                BookshopRaycast(hit, interactionRunner);
+            }
+            else
+            {
+                BookRaycast(hit, interactionRunner);
+            }
+        }
+    }
 
-            if (interactionRunner != null)
+    public void BookshopRaycast(RaycastHit hit, InteractionRunner interactionRunner)
+    {
+        OnClick?.Invoke(hit.collider.gameObject);
+
+        InteractionContext context = new InteractionContext
+        {
+            instigator = null,
+            target = hit.collider.gameObject,
+            isTouchEvent = true,
+        };
+
+        if (interactionRunner != null)
+            interactionRunner.TryExecuteAll(context);
+    }
+
+    public void BookRaycast(RaycastHit hit, InteractionRunner interactionRunner)
+    {
+        GameObject hitObject = hit.collider.gameObject;
+        MoveOnZoom moveOnZoom = hit.collider.GetComponent<MoveOnZoom>();
+        InteractionFeedBack interactionFeedBack = hit.collider.GetComponent<InteractionFeedBack>();
+
+        if (moveOnZoom == null) return;
+
+        if (interactionRunner != null)
+        {
+            CameraMovement cameraMovement = _cam.GetComponent<CameraMovement>();
+            int camLayer = cameraMovement.currentIndexLayer;
+            int hitLayer = moveOnZoom.GetLayer();
+
+            if (camLayer == hitLayer)
+            {
+                OnClick?.Invoke(hitObject);
+
+                InteractionContext context = new InteractionContext
+                {
+                    instigator = null,
+                    target = hitObject,
+                    isTouchEvent = true,
+                };
+
                 interactionRunner.TryExecuteAll(context);
+            }
         }
     }
 }

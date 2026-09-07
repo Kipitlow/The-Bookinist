@@ -47,7 +47,7 @@ public class PageManager : MonoBehaviour
             GameObject layer = _layerHolder[i];
 
             // Position Z inchangée (gère le z-fighting en 3D)
-            layer.transform.position = new Vector3(0, 0, _layerSpread[i]);
+            layer.transform.position = new Vector3(0, layer.transform.localPosition.y, _layerSpread[i]);
 
             // Assigne le Sorting Layer à tous les SpriteRenderer du layer
             string sortingLayerName = _sortingLayerPrefix + i;
@@ -68,6 +68,11 @@ public class PageManager : MonoBehaviour
         if (_activePageIndex < 0 || _activePageIndex >= _layerHolder.Count)
             return null;
         return _layerHolder[_activePageIndex].GetComponent<Page>();
+    }
+
+    public GameObject GetPageFromInt(int layer)
+    {
+        return _layerHolder[layer];
     }
 
     public void SetActivePage(int index)

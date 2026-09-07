@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -13,6 +15,9 @@ public class WorldDropHandler : MonoBehaviour
     [Tooltip("Référence au PageManager pour connaître la page active.")]
     [SerializeField] private PageManager _pageManager;
 
+    [Tooltip("Référence au PageManager pour connaître la page active.")]
+    [SerializeField] private GameObject _prefabDropableObject;
+
     [Tooltip("Référence à l'InventoryController pour retirer l'item si drop réussi.")]
     [SerializeField] private InventoryController _inventoryController;
 
@@ -22,6 +27,13 @@ public class WorldDropHandler : MonoBehaviour
     [Header("Paramètres")]
     [Tooltip("Distance max du raycast depuis la caméra.")]
     [SerializeField] private float _raycastDistance = 200f;
+
+    private int _camLayer;
+    private int _hitlayer;
+    private Page _page;
+    private Transform _activeLayer;
+
+    public event Action OnDropItem;
 
     private void Awake()
     {
@@ -35,7 +47,7 @@ public class WorldDropHandler : MonoBehaviour
 
     private void Start()
     {
-        if (_camera == null)
+        if (_camera != null)
             _camera = Camera.main;
     }
 
@@ -51,26 +63,33 @@ public class WorldDropHandler : MonoBehaviour
     {
         if (!DragContext.IsDragging) return;
 
+        bool shouldDrop = true;
         Item draggedItem = DragContext.DraggedItem;
-
-        Debug.Log($"[Drop] TryDrop appelé. IsDragging={DragContext.IsDragging}, screenPos={screenPosition}");
 
         Ray ray = _camera.ScreenPointToRay(screenPosition);
         Physics.Raycast(ray, out RaycastHit hit, _raycastDistance);
 
-        if (hit.collider == null) return;
+        _camLayer = _camera.GetComponent<CameraMovement>().currentIndexLayer;
 
-        //InteractionRunner targetRunner = FindRunnerOnActivePage(hits, activePage);
+        //place Object In World
+        if (hit.collider == null)
+        {
+            DropObject(screenPosition);
+            return;
+        };
+
         InteractionRunner targetRunner = hit.collider.gameObject.GetComponent<InteractionRunner>();
 
-        int hitlayer = hit.collider.GetComponentInParent<Page>().PageIndex;
-        int camLayer = _camera.GetComponent<CameraMovement>().currentIndexLayer;
+        _hitlayer = hit.collider.GetComponentInParent<Page>().PageIndex;
 
-        if (targetRunner != null && hitlayer == camLayer)
+        if (_hitlayer == _camLayer)
         {
-            // Drop réussi : construit le context et déclenche l'interaction
-            // instigator = GameObject de l'item UI source (pour traçabilité)
-            // target     = objet 3D touché dans le monde
+            if (hit.collider.tag.Equals("LowCollider"))
+                shouldDrop = false;
+        }
+
+        if (targetRunner != null && _hitlayer == _camLayer)
+        {
             InteractionContext context = new InteractionContext
             {
                 instigator = DragContext.SourceController.gameObject,
@@ -81,14 +100,90 @@ public class WorldDropHandler : MonoBehaviour
 
             bool wasHandled = targetRunner.TryExecuteAll(context);
             if (wasHandled)
-                _inventoryController.RemoveInventoryItem(draggedItem);
+            {
+                shouldDrop = false;
+            }
+        }
+        if(shouldDrop) 
+            DropObject(screenPosition);
+    }
 
-        }
-        else
-        {
-            // Aucun objet valide sur la page active -> l'item reste dans l'inventaire
-            Debug.Log("[WorldDropHandler] Aucun InteractionRunner sur la page active. " +
-                      "L'item retourne dans l'inventaire.");
-        }
+    public void DropObject(Vector2 screenPosition)
+    {
+        _activeLayer = _pageManager.GetPageFromInt(_camLayer).transform;
+
+        float depth = _activeLayer.position.z - _camera.transform.position.z;
+
+        Vector3 screenPoint = new Vector3(screenPosition.x, screenPosition.y, depth);
+        Vector3 worldPoint = _camera.ScreenToWorldPoint(screenPoint);
+
+        DropObject(worldPoint, DragContext.DraggedItem );
+    }
+
+    public void DropObject(Vector3 position, Item draggedItem )
+    {
+        _camLayer = _camera.GetComponent<CameraMovement>().currentIndexLayer;
+        _activeLayer = _pageManager.GetPageFromInt(_camLayer).transform;
+        _page = _activeLayer.GetComponent<Page>();
+
+        GameObject droppedObject = Instantiate(_prefabDropableObject, position, _prefabDropableObject.transform.rotation, _activeLayer);
+        BoxCollider boxCollider = droppedObject.GetComponent<BoxCollider>();
+
+        // setup SpriteRenderer
+        SpriteRenderer spriteRenderer = droppedObject.GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer.sprite = draggedItem.itemSprite;
+        spriteRenderer.sortingLayerName = "Page_" + _camLayer;
+        spriteRenderer.sortingOrder = _page.PageObjects.Count;
+
+        // le visuel doit être sur un enfant
+        Transform visual = spriteRenderer.transform;
+
+        // taille locale du sprite brut
+        Vector2 spriteSize = spriteRenderer.sprite.bounds.size;
+
+        // largeur cible = largeur actuelle du collider
+        float targetWidth = boxCollider.size.x;
+
+        // scale uniforme pour garder les proportions
+        float uniformScale = targetWidth / spriteSize.x;
+
+        // applique le scale seulement au visuel
+        visual.localScale = new Vector3(uniformScale, uniformScale, 1f);
+
+        // adapte la hauteur du collider selon le ratio du sprite
+        float targetHeight = spriteSize.y * uniformScale;
+
+        boxCollider.size = new Vector3(
+            boxCollider.size.x,
+            targetHeight,
+            boxCollider.size.z
+        );
+
+        // centre du collider aligné sur le centre du sprite
+        Vector3 localCenter = spriteRenderer.sprite.bounds.center;
+        Vector3 scaledCenter = new Vector3(
+            localCenter.x * uniformScale,
+            localCenter.y * uniformScale,
+            localCenter.z
+        );
+
+        boxCollider.center = new Vector3(
+            visual.localPosition.x + scaledCenter.x,
+            visual.localPosition.y + scaledCenter.y,
+            boxCollider.center.z
+        );
+
+        // Set MoveOnZoom
+        droppedObject.GetComponent<MoveOnZoom>().SetIndexs(_camLayer, _camera.GetComponent<CameraMovement>().currentIndexByLayer);
+
+        // set Pickable
+        droppedObject.GetComponent<Pickable>().SetItem(draggedItem);
+
+        _inventoryController.RemoveInventoryItem(draggedItem);
+
+        //droppedObject.transform.localPosition = position;
+
+        OnDropItem?.Invoke();
+        return;
     }
 }

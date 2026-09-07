@@ -13,7 +13,6 @@ public enum ShopTabs
 
 public class ShopHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject _uiToDisable;
     [SerializeField] private GameObject _shopMenu;
     [SerializeField] private List<GameObject> _shopCategories;
 
@@ -21,19 +20,20 @@ public class ShopHandler : MonoBehaviour
     [SerializeField] private ShopItemUI _shopItemPrefab;
     [SerializeField] private List<ShopItemData> _allItems;
 
-    private ShopTabs _currentTab;
+    [Header("Contents")]
+    [SerializeField] private Transform _furnitureContent;
 
     public void OpenShop()
     {
-        _uiToDisable.SetActive(false);
-        _shopMenu.SetActive(true);
         NavigateShop(ShopTabs.Furniture);
     }
 
     public void CloseShop()
     {
-        _uiToDisable.SetActive(true);
-        _shopMenu.SetActive(false);
+
+        // Nettoie la preview 3D quand on ferme la boutique
+        if (ShopPreviewPanel.Instance != null)
+            ShopPreviewPanel.Instance.ClearPreview();
     }
 
     public void NavigateShop(ShopTabs newTab)
@@ -44,23 +44,31 @@ public class ShopHandler : MonoBehaviour
         GameObject activeCategory = _shopCategories[(int)newTab];
         activeCategory.SetActive(true);
 
-        PopulateCategory(activeCategory.transform, newTab);
+        // Reset la preview lors du changement d'onglet
+        if (ShopPreviewPanel.Instance != null)
+            ShopPreviewPanel.Instance.ClearPreview();
+
+        if (newTab == ShopTabs.Energy)
+            return;
+
+        PopulateCategory(newTab);
     }
 
-    private void PopulateCategory(Transform container, ShopTabs tab)
+    private void PopulateCategory(ShopTabs tab)
     {
-        Transform realContainer = container.GetChild(0);
-        foreach (Transform child in realContainer)
+        foreach (Transform child in _furnitureContent)
             Destroy(child.gameObject);
 
         foreach (ShopItemData item in _allItems)
         {
             bool belongs = tab == ShopTabs.Furniture ? item.isFurniture : !item.isFurniture;
-            print(belongs); 
             if (!belongs) continue;
 
-            ShopItemUI ui = Instantiate(_shopItemPrefab, realContainer);
+            ShopItemUI ui = Instantiate(_shopItemPrefab, _furnitureContent);
             ui.Setup(item);
+
+            if (CustomShopManager.Instance.HasItem(item))
+                ui.SetSoldState();
         }
     }
 

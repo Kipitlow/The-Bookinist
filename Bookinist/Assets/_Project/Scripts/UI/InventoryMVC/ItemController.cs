@@ -32,7 +32,7 @@ public class ItemController : MonoBehaviour/*, IDragHandler, IBeginDragHandler, 
     
     public void OnItemClick()
     {
-        Debug.Log("Event called OnClick, with item " + gameObject);
+        //Debug.Log("Event called OnClick, with item " + gameObject);
         onItemClicked?.Invoke(_itemModel.itemScriptable);
     }
     /*

@@ -9,5 +9,8 @@ public class SelectedItemIsWanted : MonoBehaviour
         if (DragContext.DraggedItem == null) return false; // pas de drag en cours
         //Debug.Log($"[IsCorrectObject] Item dragged : ' {DragContext.DraggedItem.itemName}'");
         return DragContext.DraggedItem.itemName == objName.itemName;
+        
+        // Old ontouch system
+        //return objName.itemName == _inventoryController.activeItem.itemName;
     }
 }

@@ -11,7 +11,7 @@ public class SO_FurnitureList : ScriptableObject
 
     public GameObject GetFurniture(int index)
     {
-        return _furnitureList[index].mesh;
+        return _furnitureList[index].prefab;
     }
 
     public int GetFurnitureListLength()

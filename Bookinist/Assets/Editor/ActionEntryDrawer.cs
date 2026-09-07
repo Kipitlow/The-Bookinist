@@ -58,12 +58,12 @@ public class ActionEntryDrawer : PropertyDrawer
                 lines += 1;
                 break;
 
-            case ActionType.Drop:
+            case ActionType.FillWithSprite:
                 lines += 2;
                 break;
 
             case ActionType.Destroy:
-                lines += 0;
+                lines += 1;
                 break;
 
             case ActionType.CycleSprites:
@@ -71,6 +71,22 @@ public class ActionEntryDrawer : PropertyDrawer
 
                 var spritesProp = property.FindPropertyRelative("sprites");
                 extraHeight += EditorGUI.GetPropertyHeight(spritesProp, true);
+                break;
+
+            case ActionType.PlaceInBalance:
+                lines += 1;
+                break;
+
+            case ActionType.Drop:
+                lines += 2;
+                break;
+
+            case ActionType.RemoveDraggedItem:
+                lines += 1;
+                break;
+
+            case ActionType.CustomerLeave:
+                lines += 3;
                 break;
         }
 
@@ -146,13 +162,14 @@ public class ActionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("pickable"));
                 break;
 
-            case ActionType.Drop:
+            case ActionType.FillWithSprite:
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
                 r.y += h + s;
                 EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
                 break;
 
             case ActionType.Destroy:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("target"));
                 break;
 
             case ActionType.CycleSprites:
@@ -166,6 +183,28 @@ public class ActionEntryDrawer : PropertyDrawer
                 EditorGUI.PropertyField(spritesRect, spritesProp, true);
                 r.y += spritesHeight + s;
 
+                break;
+
+            case ActionType.PlaceInBalance:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("balance"));
+                break;
+
+            case ActionType.Drop:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("slot"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("item"));
+                break;
+
+            case ActionType.RemoveDraggedItem:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("inventoryController"));
+                break;
+
+            case ActionType.CustomerLeave:
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("npcDialogue"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("npcTalker"));
+                r.y += h + s;
+                EditorGUI.PropertyField(r, property.FindPropertyRelative("customer"));
                 break;
         }
         EditorGUI.EndProperty();

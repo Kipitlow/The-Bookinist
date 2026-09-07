@@ -1,10 +1,11 @@
-using UnityEngine;
+using System;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 namespace TMPro.Examples
 {
-    
     public class CameraController : MonoBehaviour
     {
         public enum CameraModes { Follow, Isometric, Free }
@@ -42,13 +43,15 @@ namespace TMPro.Examples
         private Vector3 moveVector;
         private float mouseWheel;
 
+        private Vector2 _startTouch;
+        private bool _isSwiping;
+
         // Controls for Touches on Mobile devices
         //private float prev_ZoomDelta;
 
 
         private const string event_SmoothingValue = "Slider - Smoothing Value";
         private const string event_FollowDistance = "Slider - Camera Zoom";
-
 
         void Awake()
         {
@@ -125,6 +128,7 @@ namespace TMPro.Examples
 
         void GetPlayerInput()
         {
+            Debug.Log("touchCount = " + Input.touchCount);
             moveVector = Vector3.zero;
 
             // Check Mouse Wheel Input prior to Shift Key so we can apply multiplier on Shift for Scrolling

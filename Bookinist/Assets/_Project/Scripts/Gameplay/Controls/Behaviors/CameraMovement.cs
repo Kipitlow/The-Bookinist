@@ -9,6 +9,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using UnityEngine.Events;
+using Unity.Cinemachine;
+using System.Collections;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -42,14 +45,20 @@ public class CameraMovement : MonoBehaviour
 
     [Header("Global Navigation")]
     public List<SnapPointManager> snapPointsManager = new();
-    [SerializeField] private int SnapPointNumberOnOneLayer = 3;
+    [SerializeField] private int SnapPointNumberOnOneLayer = 5;
     public int currentIndexLayer = 0;
-    public int currentIndexByLayer = 1;
+    public int currentIndexByLayer = 2;
+
+    [Header("Cinemachine")]
+    [SerializeField] private CamManager _camManager;
+    [SerializeField] private CinemachineBrain _cinemachineBrain;
+    [SerializeField] private CameraBlendRuntime _CameraBlendRuntime;
 
     private float previousPinchDistance;
 
     private bool isPressing;
     private bool isDragging;
+    private bool _canCamMove;
     private float pressStartTime;
     private Vector2 pressStartPosition;
 
@@ -61,6 +70,12 @@ public class CameraMovement : MonoBehaviour
 
     private bool _isPointerBlocked;
     private bool _actionsDisabled;
+    private Coroutine edgeCheckCoroutine;
+
+    public event Action<int, int> OnZoom;
+    public event Action<int> OnZoomOrDezoom;
+    public event Action OnSwipe;
+
 
 
     void OnEnable()
@@ -83,22 +98,27 @@ public class CameraMovement : MonoBehaviour
 
     private void Awake()
     {
-        currentIndexByLayer = 1;
+        currentIndexByLayer = 2;
         _cam = Camera.main;
+
+        if (_cinemachineBrain == null && _cam != null)
+            _cinemachineBrain = _cam.GetComponent<CinemachineBrain>();
     }
 
     private void Start()
     {
         int turn = PageManager.Instance.LayerHolder.Count;
 
-        for (int i = 0; i < turn; i++)
+        for (int i = 0; i < turn - 1; i++)
         {
-            maxZ = PageManager.maxLayer * (PageManager.Instance.LayerSpread[i + 1] / 2);
+            maxZ = PageManager.maxLayer * (PageManager.Instance.LayerSpread[i] / 2);
         
         }
-        currentIndexByLayer = 1;
+        currentIndexByLayer =2;
         currentIndexLayer = 0;
         transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
+
+        _canCamMove = true;
     }
 
     void Update()
@@ -108,9 +128,53 @@ public class CameraMovement : MonoBehaviour
 
         // Bloquer / débloquer les InputActions référencées pour "bloquer toutes les actions"
         ManageActionsEnabledState(!_isPointerBlocked);
+        if (_canCamMove)
+        {
+            HandleTapAndDrag();
+            HandleZoom();
+        }
+    }
 
-        HandleTapAndDrag();
-        HandleZoom();
+    public void CanCamMove(bool canCamMove)
+    {
+        _canCamMove = canCamMove;
+    }
+
+    private void CheckEdge()
+    {
+        if (_cinemachineBrain.IsBlending)
+            return;
+
+        int maxIndex = snapPointsManager[currentIndexLayer].snapPoints.Length - 1;
+
+        if (currentIndexByLayer == 0)
+        {
+            currentIndexByLayer++;
+            _camManager.NextCamera();
+        }
+        else if (currentIndexByLayer >= maxIndex)
+        {
+            currentIndexByLayer--;
+            _camManager.PreviousCamera();
+        }
+    }
+    private void StartEdgeCheckAfterBlend()
+    {
+        if (edgeCheckCoroutine != null)
+            StopCoroutine(edgeCheckCoroutine);
+
+        edgeCheckCoroutine = StartCoroutine(CheckEdgeAfterBlendRoutine());
+    }
+
+    private IEnumerator CheckEdgeAfterBlendRoutine()
+    {
+        yield return null;
+        yield return null;
+
+        while (_cinemachineBrain != null && _cinemachineBrain.IsBlending)
+            yield return null;
+
+        CheckEdge();
     }
 
     private void ManageActionsEnabledState(bool enable)
@@ -261,11 +325,6 @@ public class CameraMovement : MonoBehaviour
                 }
       
             }
-
-            if (isDragging)
-            {
-                // drag logic
-            }
         }
 
         // Press released
@@ -287,20 +346,30 @@ public class CameraMovement : MonoBehaviour
             {
                 if (GetPointerPosition().x < pressStartPosition.x)
                 {
-                    currentIndexByLayer++;
+                    if (currentIndexByLayer != 4)
+                    { 
+                        currentIndexByLayer++;
+                        _camManager.NextCamera();
+                        StartEdgeCheckAfterBlend();
+                        OnSwipe?.Invoke();
+                    }
 
-                    if (currentIndexByLayer > snapPointsManager[currentIndexLayer].snapPoints.Length - 1)
-                        currentIndexByLayer = snapPointsManager[currentIndexLayer].snapPoints.Length - 1;
                 }
                 else if (GetPointerPosition().x > pressStartPosition.x)
                 {
-                    currentIndexByLayer--;
-
-                    if (currentIndexByLayer < 0)
-                        currentIndexByLayer = 0;
+                    if (currentIndexByLayer != 0)
+                    { 
+                        currentIndexByLayer--;
+                        _camManager.PreviousCamera();
+                        StartEdgeCheckAfterBlend();
+                        OnSwipe?.Invoke();
+                    }
                 }
-                transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
-                //print(currentIndexByLayer);
+                if (currentIndexByLayer == 0 || currentIndexByLayer == SnapPointNumberOnOneLayer)
+                    _CameraBlendRuntime.SetEaseInBlend(0.3f);
+                else
+                    _CameraBlendRuntime.SetEaseInBlend(1f);
+
             }
             isDragging = false;
             isHolding = false;
@@ -361,14 +430,34 @@ public class CameraMovement : MonoBehaviour
         if (snapPointsManager[currentIndexLayer].snapPoints.Length == 0) return;
 
         if (delta < 0)
-            currentIndexLayer--;
-
+        {
+            if (currentIndexLayer != 0)
+            {
+                currentIndexLayer--;
+                for (int i = 0; i < SnapPointNumberOnOneLayer; i++)
+                {
+                    _camManager.PreviousCamera();
+                }
+                OnZoomOrDezoom?.Invoke(-1);
+            }
+        }
         else if (delta > 0)
-            currentIndexLayer++;
+        {
+            if (currentIndexLayer != snapPointsManager.Count - 1)
+            {
+                currentIndexLayer++;
+                for (int i = 0; i < SnapPointNumberOnOneLayer; i++)
+                {
+                    _camManager.NextCamera();
+                }
+                OnZoomOrDezoom?.Invoke(1);
+            }
+        }
 
-            currentIndexLayer = Mathf.Clamp(currentIndexLayer, 0, snapPointsManager.Count - 1);
-
+        currentIndexLayer = Mathf.Clamp(currentIndexLayer, 0, snapPointsManager.Count - 1);
         currentIndexByLayer = Mathf.Clamp(currentIndexByLayer, 0, snapPointsManager[currentIndexLayer].snapPoints.Length - 1);
+
+        OnZoom?.Invoke(currentIndexLayer, currentIndexByLayer);
 
         transform.position = snapPointsManager[currentIndexLayer].snapPoints[currentIndexByLayer].transform.position;
     }

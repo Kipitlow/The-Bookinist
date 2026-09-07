@@ -6,12 +6,35 @@ public class SO_SceneManager : ScriptableObject
 {
     public void LoadScene(string sceneToLoad)
     {
+        Debug.Log("Load scene...");
         SceneManager.LoadScene(sceneToLoad);
+    }
+
+    public void LoadSceneAditive(string sceneToLoad)
+    {
+        SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+    }
+
+    public void UnloadScene(string sceneToUnLoad)
+    {
+        SceneManager.UnloadSceneAsync(sceneToUnLoad);
     }
 
     public void ExitGame()
     {
         Debug.Log("Exiting game...");
         Application.Quit();
+    }
+
+    public void LoadSceneDuringOnboardingShop(string sceneToLoad)
+    {
+        if (GameManager.Instance._isFirstCustomerFinishDialog)
+            SceneManager.LoadScene(sceneToLoad);
+    }
+
+    public void LoadSceneAfterFirstBook(string sceneToLoad)
+    {
+        GameManager.Instance.bookFinish = true;
+        SceneManager.LoadScene(sceneToLoad);
     }
 }
