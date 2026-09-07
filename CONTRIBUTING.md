@@ -5,7 +5,7 @@
 ![CI](https://img.shields.io/badge/CI-Pipeline-green)
 ![QA](https://img.shields.io/badge/QA-Required-red)
 
-📘 Internal Git workflow documentation
+📘 Internal Git workflow documentation <br/><br/>
 ⚙️ GitHub Desktop • Review • CI • QA • Production
 
 > 🧠 *Clean commits, clean pipeline, clean production.*
