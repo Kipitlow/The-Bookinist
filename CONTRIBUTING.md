@@ -1,7 +1,13 @@
 # 🚀 Git Workflow & PR Pipeline
 
+![Git](https://img.shields.io/badge/Git-Workflow-orange)
+![PR](https://img.shields.io/badge/Pull_Request-Driven-blue)
+![CI](https://img.shields.io/badge/CI-Pipeline-green)
+![QA](https://img.shields.io/badge/QA-Required-red)
+
 📘 Internal Git workflow documentation
 ⚙️ GitHub Desktop • Review • CI • QA • Production
+
 > 🧠 *Clean commits, clean pipeline, clean production.*
 
 ---
