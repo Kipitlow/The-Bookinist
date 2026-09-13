@@ -11,7 +11,7 @@
 
 **Rookie Awards 2026** - Game of the Year: *Highly Commended* · Rookie of the Year: *Finalist* · *Draft Selection*
 
-[View the full Rookies entry](https://www.therookies.co/entries/51796) · [Play on itch.io](https://nyevius.itch.io/the-bookinist) *(coming soon)*
+[View the full Rookies entry](https://www.therookies.co/entries/51796) · [Play on itch.io](https://nyevius.itch.io/the-bookinist)
 
 </div>
 
